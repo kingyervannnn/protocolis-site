@@ -94,8 +94,11 @@ p{margin:0}
 .vs tfoot td{white-space:nowrap;font-family:var(--font-display);font-size:1.6rem;color:var(--dim);font-variant-numeric:tabular-nums}
 .vs tfoot td small{display:block;font-family:var(--font-mono);font-size:.66rem;letter-spacing:.06em;color:var(--dim);margin-top:.2rem;text-transform:uppercase}
 .vs tfoot td.us{color:var(--accent);background:none;border:0;text-align:center}
-.vs tr.grp th{padding:1.6rem 1.1rem .7rem;border-bottom:1px solid var(--rule);font-family:var(--font-mono);font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);font-weight:500}
-.vs tr.grp th span{color:var(--fg-2);letter-spacing:.04em;text-transform:none;font-family:var(--font-body);font-size:.9rem;margin-left:.9rem}
+.vs tr.grp th,.vs tr.grp td{padding:1.5rem 1.1rem .75rem;border-bottom:1px solid var(--accent);border-top:1px solid var(--rule);vertical-align:bottom}
+.vs tr.grp th{font-family:var(--font-display);font-size:1.25rem;letter-spacing:.05em;color:var(--fg);font-weight:600}
+.vs tr.grp th span{display:block;color:var(--fg-2);letter-spacing:0;font-family:var(--font-body);font-size:.88rem;font-weight:400;margin-top:.3rem}
+.vs tr.grp td.us{font-family:var(--font-mono);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.vs tr.grp:first-child th,.vs tr.grp:first-child td{border-top:0;padding-top:1.1rem}
 .ok{display:inline-grid;place-items:center;width:1.9rem;height:1.9rem;border-radius:50%;background:var(--accent)}
 .ok svg{width:1rem;height:1rem;stroke:var(--accent-ink);stroke-width:3;fill:none}
 .no{display:inline-flex;align-items:center;gap:.55rem;color:var(--dim)}
@@ -212,7 +215,7 @@ footer{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;paddin
       <table class="vs">
         <thead><tr><th scope="col">Capability</th><th scope="col" class="us">Protocolis</th><th scope="col">Browser Use · default agent</th><th scope="col">Browser Use · tools mode</th></tr></thead>
         <tbody>
-          <tr class="grp"><th colspan="4" scope="colgroup">Compiler engine<span>turns the application into operations an agent can call</span></th></tr>
+          <tr class="grp"><th scope="rowgroup">Compiler engine<span>Turns the application into operations an agent can call.</span></th><td class="us">patent pending</td><td></td><td></td></tr>
           <tr><th scope="row">Operations compiled from the application itself</th><td class="us" data-v="y"></td><td data-v="n">Generic browser actions</td><td data-v="n">Generic browser tools</td></tr>
           <tr><th scope="row">Application compiled without model calls</th><td class="us" data-v="y"></td><td data-v="n"></td><td data-v="n"></td></tr>
           <tr><th scope="row">No screenshots needed by the model</th><td class="us" data-v="y"></td><td data-v="p">On by default</td><td data-v="p">Optional</td></tr>
@@ -220,7 +223,7 @@ footer{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;paddin
           <tr><th scope="row">Task completion proved from the application's own evidence</th><td class="us" data-v="y"></td><td data-v="p">Optional model judge</td><td data-v="p">Optional model judge</td></tr>
           <tr><th scope="row">Compiled applications cached for reuse</th><td class="us" data-v="y"></td><td data-v="n"></td><td data-v="n"></td></tr>
           <tr><th scope="row">Replay checked live at every step, stopping before protected actions</th><td class="us" data-v="y"></td><td data-v="p">Rerun of saved history, with retries</td><td data-v="p">Rerun of saved history, with retries</td></tr>
-          <tr class="grp"><th colspan="4" scope="colgroup">Credential broker<span>keeps passwords, API keys and passkeys out of the model's context</span></th></tr>
+          <tr class="grp"><th scope="rowgroup">Credential broker<span>Keeps passwords, API keys and passkeys out of the model's context.</span></th><td class="us">patent pending</td><td></td><td></td></tr>
           <tr><th scope="row">Credentials released only to a verified field on the live page</th><td class="us" data-v="y"></td><td data-v="p">Placeholders, scoped by domain</td><td data-v="p">Placeholders, scoped by domain</td></tr>
           <tr><th scope="row">New API keys captured without the model seeing them</th><td class="us" data-v="y"></td><td data-v="n"></td><td data-v="n"></td></tr>
           <tr><th scope="row">Passkeys</th><td class="us" data-v="y"></td><td data-v="n"></td><td data-v="n"></td></tr>
