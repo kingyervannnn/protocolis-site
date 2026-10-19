@@ -70,11 +70,14 @@ p{margin:0}
 .bar.full:not(.us) .val{color:var(--fg)}
 .stat .c{font-family:var(--font-mono);font-size:.68rem;letter-spacing:.06em;color:var(--fg-2);text-transform:uppercase;margin-top:auto}
 /* sections */
-.sec{display:grid;grid-template-columns:13rem minmax(0,1fr);gap:clamp(1.5rem,4vw,4rem);padding-block:clamp(3.5rem,7vw,6.5rem);border-bottom:1px solid var(--rule)}
-.rail{font-family:var(--font-mono);font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--fg-2);padding-top:.6rem}
+.sec{padding-block:clamp(3.5rem,7vw,6.5rem);border-bottom:1px solid var(--rule)}
+.rail{font-family:var(--font-mono);font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--fg-2);margin-bottom:1.1rem}
 .rail b{color:var(--accent);font-weight:500;margin-right:.6rem}
 .sec h2{font-family:var(--font-display);font-size:clamp(1.9rem,3.6vw,3.3rem);line-height:1.1;letter-spacing:.01em}
 .sub{color:var(--fg-2);font-size:1.08rem;margin-top:1.1rem;max-width:52rem}
+#compare .head{text-align:center}
+#compare .head .sub{margin-inline:auto}
+#compare .legend{justify-content:center}
 
 /* comparison table */
 .vs{width:100%;border-collapse:separate;border-spacing:0;margin-top:2.75rem;font-size:.98rem}
@@ -148,8 +151,6 @@ footer{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;paddin
   .stat:nth-child(3),.m:nth-child(3){padding-left:0;border-left:0}
   .stat:nth-child(n+3){border-top:1px solid var(--rule)}
   .m:nth-child(n+3){margin-top:1.6rem;border-top:1px solid var(--rule)}
-  .sec{grid-template-columns:minmax(0,1fr)}
-  .rail{padding-top:0}
 }
 @media (max-width:760px){
   .hero{grid-template-columns:minmax(0,1fr)}
@@ -198,10 +199,12 @@ footer{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;paddin
 </section>
 
 <section class="sec" id="compare">
-  <div class="rail"><b>01</b>compare</div>
-  <div>
+  <div class="head">
+    <div class="rail"><b>01</b>compare</div>
     <h2>Feature for feature, it isn't close.</h2>
     <p class="sub">Browser Use ships two agents: a default agent that reads a screenshot every step, and a separate tools mode for tool-calling models. Protocolis is one engine on every model, and it costs less than either mode in every comparison we have run.</p>
+  </div>
+  <div>
 
     <div class="vs-wrap">
       <table class="vs">
