@@ -77,6 +77,41 @@ h2{font-family:var(--font-display);font-size:clamp(1.25rem,2.2vw,1.65rem);letter
 .grid3 p{color:var(--fg-2);font-size:.98rem;margin:0}
 .note{font-family:var(--font-mono);font-size:.78rem;color:var(--fg-2);margin:2rem 0 0;max-width:46rem}
 
+/* compare: one engine vs two modes */
+.cmp{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule)}
+.col{background:var(--bg-2);padding:1.4rem 1.3rem 1.5rem;min-width:0;display:flex;flex-direction:column;gap:1rem}
+.col.us{background:var(--bg-3);box-shadow:inset 0 2px 0 var(--accent)}
+.col .tag{font-family:var(--font-mono);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--fg-2)}
+.col h3{font-family:var(--font-display);font-size:1.15rem;letter-spacing:.04em;line-height:1.25}
+.col.us h3{color:var(--accent)}
+.col .what{color:var(--fg-2);font-size:.92rem;margin:0}
+.tier{border-top:1px solid var(--rule);padding-top:.85rem}
+.tier .t{font-family:var(--font-mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--fg-2);margin-bottom:.55rem}
+.tier dl{display:grid;grid-template-columns:auto 1fr;gap:.35rem .9rem;margin:0;font-size:.92rem}
+.tier dt{color:var(--fg-2)}
+.tier dd{margin:0;font-family:var(--font-mono);font-variant-numeric:tabular-nums;color:var(--fg);text-align:right}
+.tier dd b{color:var(--accent);font-weight:500}
+.us ul{list-style:none;margin:0;padding:0;display:grid;gap:.6rem;font-size:.95rem}
+.us li{display:grid;grid-template-columns:.9rem 1fr;gap:.5rem;align-items:baseline}
+.us li::before{content:"";width:.45rem;height:.45rem;background:var(--accent);transform:rotate(45deg) translateY(-.1rem)}
+.lead{font-size:1.05rem;color:var(--fg-2);margin:-.5rem 0 1.75rem;max-width:46rem}
+@media (max-width:900px){.cmp{grid-template-columns:minmax(0,1fr)}}
+
+/* feature chart */
+.fwrap{overflow-x:auto;margin-top:2.25rem;border:1px solid var(--rule)}
+.feat{width:100%;min-width:44rem;border-collapse:collapse;font-size:.92rem}
+.feat th,.feat td{padding:.7rem .9rem;border-bottom:1px solid var(--rule);text-align:left;vertical-align:top}
+.feat thead th{font-family:var(--font-mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--fg-2);font-weight:500;background:var(--bg-3)}
+.feat thead th.us{color:var(--accent)}
+.feat tbody th{font-weight:400;color:var(--fg);width:40%}
+.feat td{color:var(--fg-2);width:20%}
+.feat td.us{background:rgba(195,154,91,.06)}
+.feat tr:last-child th,.feat tr:last-child td{border-bottom:0}
+.yes{display:inline-flex;align-items:center;gap:.5rem;color:var(--fg)}
+.yes::before{content:"";width:.5rem;height:.5rem;background:var(--accent);transform:rotate(45deg)}
+.no{color:var(--fg-2);opacity:.6}
+.fh{font-family:var(--font-display);font-size:1.1rem;letter-spacing:.05em;margin:2.75rem 0 0}
+
 /* demo */
 .frame{aspect-ratio:16/9;max-width:100%;background:#0b0d10;border:1px solid var(--rule);display:grid;place-items:center;position:relative;overflow:hidden}
 .frame video{width:100%;height:100%;display:block}
@@ -143,15 +178,63 @@ footer{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;border
 </section>
 
 <section id="results" class="panel">
-  <header><span><b>01</b> &nbsp;results</span><span>vs the leading browser-agent framework</span></header>
+  <header><span><b>01</b> &nbsp;results</span><span>one engine · two modes</span></header>
   <div class="body">
-    <h2>Lower cost. Faster. Higher completion.</h2>
-    <div class="grid3">
-      <div><h3>Cost</h3><p>Fewer model calls and fewer tokens for the same task. The gap is widest on small, inexpensive models.</p></div>
-      <div><h3>Speed</h3><p>Less time from instruction to finished task, on the same model and the same budget.</p></div>
-      <div><h3>Completion</h3><p>More tasks finished correctly, judged by the same judge on the same task set.</p></div>
+    <h2>Browser Use ships two agents. Protocolis is one engine.</h2>
+    <p class="lead">Browser Use asks you to pick a mode: its default agent, which reads screenshots every step, or a separate tools mode offered per model provider. Protocolis runs the same engine on every model, and it costs less than either mode in every comparison we have run.</p>
+    <div class="cmp">
+      <div class="col us">
+        <span class="tag">protocolis</span>
+        <h3>One engine, every model</h3>
+        <p class="what">Compiles the application into typed operations on first contact and verifies each one against the application's own evidence.</p>
+        <ul>
+          <li>No mode to choose, no setup per model</li>
+          <li>No screenshots sent to the model</li>
+          <li>Secrets never enter the model's context</li>
+          <li>Lower cost than both Browser Use modes on every model measured</li>
+        </ul>
+      </div>
+      <div class="col">
+        <span class="tag">browser use · default agent</span>
+        <h3>Screenshots every step</h3>
+        <p class="what">Protocolis against it, same model, same tasks:</p>
+        <div class="tier"><div class="t">Small model · GLM-5.3-flash · 98 held-out tasks</div>
+          <dl><dt>Completed</dt><dd><b>71</b> vs 46</dd><dt>Cost per completed task</dt><dd><b>0.46×</b></dd><dt>Time per completed task</dt><dd><b>0.30×</b></dd></dl></div>
+        <div class="tier"><div class="t">Mid model · Grok 4.6 · 66 held-out tasks</div>
+          <dl><dt>Completed</dt><dd><b>50</b> vs 43</dd><dt>Cost per completed task</dt><dd><b>0.51×</b></dd><dt>Time per completed task</dt><dd><b>0.57×</b></dd></dl></div>
+      </div>
+      <div class="col">
+        <span class="tag">browser use · tools mode</span>
+        <h3>A second agent for tool-calling models</h3>
+        <p class="what">Protocolis against it, same model, same tasks:</p>
+        <div class="tier"><div class="t">Small model · GLM-5.3-flash · 36 development tasks</div>
+          <dl><dt>Completed</dt><dd><b>26</b> vs 24</dd><dt>Cost</dt><dd><b>0.47×</b></dd><dt>Prompt tokens</dt><dd><b>0.34×</b></dd></dl></div>
+        <div class="tier"><div class="t">Frontier model · Claude Opus 5.5 · 93 held-out tasks</div>
+          <dl><dt>Completed</dt><dd><b>68</b> vs 61</dd><dt>Cost</dt><dd><b>0.87×</b></dd><dt>Model calls</dt><dd><b>0.51×</b></dd></dl></div>
+      </div>
     </div>
-    <p class="note">Internal benchmarks. Paired runs on live websites, equal step and time budgets. Full results, build hashes and the reproduction kit are available under NDA.</p>
+    <p class="note">Internal benchmarks on live websites: paired runs, the same model and the same tasks for both tools. Held-out tasks are Online-Mind2Web tasks never used in development. Cost is estimated at each provider's cached list prices. Browser Use 0.13.10 (default agent) and 0.13.13 (tools mode). Full results, build hashes and the reproduction kit are available under NDA.</p>
+    <h3 class="fh">Feature by feature</h3>
+    <div class="fwrap">
+      <table class="feat">
+        <thead><tr><th scope="col">Capability</th><th scope="col" class="us">Protocolis</th><th scope="col">Browser Use · default agent</th><th scope="col">Browser Use · tools mode</th></tr></thead>
+        <tbody>
+        <tr><th scope="row">One engine for every model tier</th><td class="us"><span class="yes">Yes</span></td><td>One of two modes</td><td>One of two modes</td></tr>
+        <tr><th scope="row">Operations compiled from the application itself</th><td class="us"><span class="yes">Yes</span></td><td>Generic browser actions</td><td>Generic browser tools</td></tr>
+        <tr><th scope="row">Application compiled without model calls</th><td class="us"><span class="yes">Yes</span></td><td><span class="no">—</span></td><td><span class="no">—</span></td></tr>
+        <tr><th scope="row">No screenshots sent to the model</th><td class="us"><span class="yes">Yes</span></td><td>A screenshot every step by default</td><td>Optional</td></tr>
+        <tr><th scope="row">Each action's effect checked against the application</th><td class="us"><span class="yes">Yes</span></td><td>Typed-value check only</td><td>Typed-value check only</td></tr>
+        <tr><th scope="row">Task completion proved from the application's own evidence</th><td class="us"><span class="yes">Yes</span></td><td>Optional model judge</td><td>Optional model judge</td></tr>
+        <tr><th scope="row">Compiled applications cached for reuse</th><td class="us"><span class="yes">Yes</span></td><td><span class="no">—</span></td><td><span class="no">—</span></td></tr>
+        <tr><th scope="row">Replay that checks every step against the live page and stops before protected actions</th><td class="us"><span class="yes">Yes</span></td><td>Rerun of saved history, with retries</td><td>Rerun of saved history, with retries</td></tr>
+        <tr><th scope="row">Credentials released only to a verified field on the live page</th><td class="us"><span class="yes">Yes</span></td><td>Placeholder substitution, scoped by domain</td><td>Placeholder substitution, scoped by domain</td></tr>
+        <tr><th scope="row">New API keys captured without the model seeing them</th><td class="us"><span class="yes">Yes</span></td><td><span class="no">—</span></td><td><span class="no">—</span></td></tr>
+        <tr><th scope="row">Passkeys</th><td class="us"><span class="yes">Yes</span></td><td><span class="no">—</span></td><td><span class="no">—</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">Browser Use capabilities as published in its source code, version 0.13.13.</p>
+
   </div>
 </section>
 
@@ -172,9 +255,9 @@ footer{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;border
   <div class="body">
     <div class="frame">
       <!-- Replace the placeholder with: <video controls preload="metadata" src="media/demo.mp4" poster="media/demo-poster.jpg"></video> -->
-      <div class="ph"><img src="logo.svg" alt=""><p>Recording: Protocolis beside the leading browser-agent framework, same task, same small model.</p></div>
+      <div class="ph"><img src="logo.svg" alt=""><p>Recording: Protocolis beside Browser Use's default agent, same task, same small model.</p></div>
     </div>
-    <p class="caption">The recording shows the gap at its widest. On frontier models the gap narrows and the advantage holds: lower cost, faster, higher completion.</p>
+    <p class="caption">Recorded against Browser Use's default agent on GLM-5.3-flash, the same task and the same budget for both.</p>
   </div>
 </section>
 
@@ -195,7 +278,7 @@ footer{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;border
   <header><span><b>05</b> &nbsp;contact</span><span>introductory call · demonstration · executive summary</span></header>
   <div class="body">
     <h2>Vahagn Boudakian, inventor.</h2>
-    <p>Write to start a conversation.</p>
+    <p>Write to start a conversation. The five-page executive summary is available on request.</p>
     <div class="row">
       <span class="addr" id="addr">vahagnboudakian@gmail.com</span>
       <button type="button" id="copy" aria-label="Copy email address">Copy</button>
