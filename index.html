@@ -222,23 +222,23 @@ html::-webkit-scrollbar{width:0;height:0}
   <div class="stat"><div class="n">3.4×<small>faster per completed task</small></div><div class="bars"><div class="bar us"><span>Protocolis</span><span class="track" style="--w:29.7%"><span class="fill" style="width:29.7%"></span><span class="val">315 s</span></span></div><div class="bar full"><span>Browser Use</span><span class="track" style="--w:100%"><span class="fill" style="width:100%"></span><span class="val">1,061 s</span></span></div></div><p class="c">vs Browser Use default agent · GLM-5.3-flash · 98 held-out tasks</p></div>
   <div class="stat"><div class="n">2.2×<small>cheaper per completed task</small></div><div class="bars"><div class="bar us"><span>Protocolis</span><span class="track" style="--w:46%"><span class="fill" style="width:46%"></span><span class="val">46%</span></span></div><div class="bar full"><span>Browser Use</span><span class="track" style="--w:100%"><span class="fill" style="width:100%"></span><span class="val">100%</span></span></div></div><p class="c">vs Browser Use default agent · GLM-5.3-flash · 98 held-out tasks</p></div>
   <div class="stat"><div class="n">54%<small>more tasks completed</small></div><div class="bars"><div class="bar us full"><span>Protocolis</span><span class="track" style="--w:100%"><span class="fill" style="width:100%"></span><span class="val">71</span></span></div><div class="bar"><span>Browser Use</span><span class="track" style="--w:64.8%"><span class="fill" style="width:64.8%"></span><span class="val">46</span></span></div></div><p class="c">vs Browser Use default agent · GLM-5.3-flash · 98 held-out tasks</p></div>
-  <div class="stat"><div class="n">26%<small>cheaper per completed task on a frontier model</small></div><div class="bars"><div class="bar us"><span>Protocolis</span><span class="track" style="--w:74.0%"><span class="fill" style="width:74.0%"></span><span class="val">$0.54</span></span></div><div class="bar full"><span>Browser Use</span><span class="track" style="--w:100%"><span class="fill" style="width:100%"></span><span class="val">$0.73</span></span></div></div><p class="c">vs Browser Use tools mode · Claude Opus 5.5 · 93 held-out tasks</p></div>
+  <div class="stat"><div class="n">26%<small>cheaper per completed task on a frontier model</small></div><div class="bars"><div class="bar us"><span>Protocolis</span><span class="track" style="--w:74.0%"><span class="fill" style="width:74.0%"></span><span class="val">$0.54</span></span></div><div class="bar full"><span>Browser Use</span><span class="track" style="--w:100%"><span class="fill" style="width:100%"></span><span class="val">$0.73</span></span></div></div><p class="c">vs OpenAI browser tools on a Browser Use driver · Claude Opus 5.5 · 93 held-out tasks</p></div>
 </section>
 
 <section class="sec" id="compare">
   <div class="head">
     <div class="rail"><b>01</b>compare</div>
     <h2>Feature for feature, it isn't close.</h2>
-    <p class="sub">Browser Use has two modes: a default agent that reads a screenshot every step, and a tools mode for tool-calling models. Protocolis costs less than either on every model we have measured, and does ten things neither mode does.</p>
+    <p class="sub">Browser Use comes two ways: as its own agent, which reads a screenshot every step, or as a browser driver underneath OpenAI's browser tools, run by OpenAI's tool runner. Protocolis is one engine with its own operations, verification and credential broker. It costs less than either on every model we have measured, and does ten things neither mode does.</p>
   </div>
   <div>
 
     <div class="vs-wrap">
       <table class="vs">
-        <thead><tr><th scope="col">Capability</th><th scope="col" class="us">Protocolis</th><th scope="col">Browser Use · default agent</th><th scope="col">Browser Use · tools mode</th></tr></thead>
+        <thead><tr><th scope="col">Capability</th><th scope="col" class="us">Protocolis</th><th scope="col">Browser Use · default agent</th><th scope="col">OpenAI browser tools + Browser Use driver</th></tr></thead>
         <tbody>
           <tr class="grp"><th scope="rowgroup">Compiler engine<span>Turns the application into operations an agent can call.</span></th><td class="us"><span class="gk"><span class="ok" aria-label="Yes"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><small>patent pending</small></span></td><td data-v="n">No compiler</td><td data-v="n">No compiler</td></tr>
-          <tr><th scope="row">Operations compiled from the application itself</th><td class="us" data-v="y"></td><td data-v="n">Generic browser actions</td><td data-v="n">Generic browser tools</td></tr>
+          <tr><th scope="row">Operations compiled from the application itself</th><td class="us" data-v="y"></td><td data-v="n">Generic browser actions</td><td data-v="n">OpenAI's generic browser tools</td></tr>
           <tr><th scope="row">Application compiled without model calls</th><td class="us" data-v="y"></td><td data-v="n"></td><td data-v="n"></td></tr>
           <tr><th scope="row">No screenshots needed by the model</th><td class="us" data-v="y"></td><td data-v="p">On by default</td><td data-v="p">Optional</td></tr>
           <tr><th scope="row">Each action's effect checked against the application</th><td class="us" data-v="y"></td><td data-v="p">Typed-value check only</td><td data-v="p">Typed-value check only</td></tr>
@@ -260,12 +260,12 @@ html::-webkit-scrollbar{width:0;height:0}
         <dl><dt>Completed</dt><dd>71 <span>vs 46</span></dd><dt>Cost per completed task</dt><dd>54% lower</dd><dt>Time per completed task</dt><dd>70% less</dd></dl></div>
       <div class="m"><p class="who"><b>Mid model</b>Grok 4.6 · default agent · 66 held-out tasks</p>
         <dl><dt>Completed</dt><dd>50 <span>vs 43</span></dd><dt>Cost per completed task</dt><dd>49% lower</dd><dt>Time per completed task</dt><dd>43% less</dd></dl></div>
-      <div class="m"><p class="who"><b>Small model</b>GLM-5.3-flash · tools mode · 36 development tasks</p>
+      <div class="m"><p class="who"><b>Small model</b>GLM-5.3-flash · OpenAI tools + Browser Use driver · 36 development tasks</p>
         <dl><dt>Completed</dt><dd>26 <span>vs 24</span></dd><dt>Cost</dt><dd>53% lower</dd><dt>Prompt tokens</dt><dd>66% fewer</dd></dl></div>
-      <div class="m"><p class="who"><b>Frontier model</b>Claude Opus 5.5 · tools mode · 93 held-out tasks</p>
+      <div class="m"><p class="who"><b>Frontier model</b>Claude Opus 5.5 · OpenAI tools + Browser Use driver · 93 held-out tasks</p>
         <dl><dt>Completed</dt><dd>68 <span>vs 61</span></dd><dt>Cost</dt><dd>13% lower</dd><dt>Cost per completed task</dt><dd>26% lower</dd></dl></div>
     </div>
-    <p class="note">Protocolis against Browser Use on live websites: paired runs, the same model and the same tasks for both. Held-out tasks are Online-Mind2Web tasks never used in development. Cost is estimated at each provider's cached list prices. Browser Use 0.13.10 (default agent) and 0.13.13 (tools mode); its capabilities are taken from its published source code, version 0.13.13. Full results, build hashes and the reproduction kit are available under NDA.</p>
+    <p class="note">Protocolis against Browser Use on live websites: paired runs, the same model and the same tasks for both. Held-out tasks are Online-Mind2Web tasks never used in development. Cost is estimated at each provider's cached list prices. Browser Use 0.13.10 (its own agent) and 0.13.13 (as the driver under OpenAI's browser tools from the OpenAI SDK: the agent calls OpenAI's tools, OpenAI's tool runner runs the loop, and Browser Use only operates the browser); its capabilities are taken from its published source code, version 0.13.13. Full results, build hashes and the reproduction kit are available under NDA.</p>
   </div>
 </section>
 
