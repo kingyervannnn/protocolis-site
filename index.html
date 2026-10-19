@@ -178,6 +178,19 @@ footer{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;paddin
   .stat+.stat,.m+.m{border-top:1px solid var(--rule)}
   .m+.m{margin-top:1.6rem}
 }
+
+/* scrollbar: no page gutter; a thin overlay rail drawn by the page */
+html{scrollbar-width:none}
+html::-webkit-scrollbar{width:0;height:0}
+.rail-y{position:fixed;top:0;right:0;bottom:0;width:10px;z-index:50;padding-right:env(safe-area-inset-right,0px)}
+.rail-y .thumb{position:absolute;right:3px;width:4px;border-radius:4px;background:var(--accent);opacity:.35;transition:opacity .2s,width .15s,right .15s;cursor:grab}
+.rail-y:hover .thumb,.rail-y.on .thumb{opacity:.85;width:6px;right:2px}
+.rail-y.drag .thumb{cursor:grabbing;opacity:1}
+.vs-wrap{scrollbar-width:thin;scrollbar-color:var(--accent) transparent}
+.vs-wrap::-webkit-scrollbar{height:6px}
+.vs-wrap::-webkit-scrollbar-thumb{background:var(--accent);border-radius:6px}
+.vs-wrap::-webkit-scrollbar-track{background:transparent}
+@media (hover:none){.rail-y{display:none}}
 </style>
 </head>
 <body>
@@ -329,6 +342,22 @@ footer{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;paddin
     function sel(){var r=document.createRange();r.selectNodeContents(a);var s=window.getSelection();s.removeAllRanges();s.addRange(r)}
     if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(done,sel)}else{sel()}
   });
+})();
+
+(function(){
+  var r=document.createElement('div');r.className='rail-y';r.setAttribute('aria-hidden','true');
+  var t=document.createElement('div');t.className='thumb';r.appendChild(t);document.body.appendChild(r);
+  var de=document.documentElement,hide;
+  function size(){var vh=innerHeight,sh=de.scrollHeight;if(sh<=vh+1){r.style.display='none';return}r.style.display='';
+    var th=Math.max(40,vh*vh/sh),top=(scrollY/(sh-vh))*(vh-th);t.style.height=th+'px';t.style.top=top+'px'}
+  function flash(){r.classList.add('on');clearTimeout(hide);hide=setTimeout(function(){r.classList.remove('on')},900)}
+  addEventListener('scroll',function(){size();flash()},{passive:true});addEventListener('resize',size);
+  var y0,s0;t.addEventListener('pointerdown',function(e){y0=e.clientY;s0=scrollY;r.classList.add('drag');t.setPointerCapture(e.pointerId);e.preventDefault()});
+  t.addEventListener('pointermove',function(e){if(!r.classList.contains('drag'))return;var vh=innerHeight,sh=de.scrollHeight,th=t.offsetHeight;
+    scrollTo(0,s0+(e.clientY-y0)*(sh-vh)/(vh-th))});
+  t.addEventListener('pointerup',function(){r.classList.remove('drag')});
+  r.addEventListener('pointerdown',function(e){if(e.target!==r)return;var vh=innerHeight,sh=de.scrollHeight;scrollTo({top:(e.clientY/vh)*(sh-vh),behavior:'smooth'})});
+  size();if(document.fonts)document.fonts.ready.then(size);
 })();
 </script>
 </body>
