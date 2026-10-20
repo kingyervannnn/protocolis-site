@@ -45,7 +45,7 @@ p{margin:0}
 .top nav a:hover,.top nav a:focus-visible{color:var(--accent)}
 
 /* hero */
-.hero{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,4fr);gap:clamp(2rem,5vw,6rem);align-items:center;padding-block:clamp(3.5rem,8vw,7.5rem)}
+.hero{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,4fr);gap:clamp(2rem,5vw,6rem);align-items:center;padding-block:clamp(2rem,4vw,3.5rem) clamp(3rem,6vw,5.5rem)}
 .motto{font-family:var(--font-mono);font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:1.6rem}
 .hero h1{font-family:var(--font-display);font-size:clamp(2.2rem,5vw,4.6rem);line-height:1.08;letter-spacing:.01em}
 .lede{font-size:clamp(1.05rem,1.3vw,1.25rem);color:var(--fg-2);margin-top:1.75rem;max-width:44rem}
@@ -77,9 +77,11 @@ p{margin:0}
 .rail b{color:var(--accent);font-weight:500;margin-right:.6rem}
 .sec h2{font-family:var(--font-display);font-size:clamp(1.9rem,3.6vw,3.3rem);line-height:1.1;letter-spacing:.01em}
 .sub{color:var(--fg-2);font-size:1.08rem;margin-top:1.1rem;max-width:52rem}
-#compare .head{text-align:center}
-#compare .head .sub{margin-inline:auto}
-#compare .legend{justify-content:center}
+.head{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:1rem clamp(2rem,5vw,6rem);align-items:end;margin-bottom:.5rem}
+.head .rail{grid-column:1/-1;margin-bottom:.2rem}
+.head .sub{font-size:.92rem;line-height:1.55;margin:0;max-width:36rem;justify-self:end}
+.head .sub+.sub{grid-column:2;margin-top:.75rem}
+@media (max-width:760px){.head{grid-template-columns:minmax(0,1fr)}.head .sub{justify-self:start}.head .sub+.sub{grid-column:auto}}
 
 /* comparison table */
 .vs{width:100%;border-collapse:separate;border-spacing:0;margin-top:2.75rem;font-size:.98rem}
@@ -312,10 +314,12 @@ html::-webkit-scrollbar{width:0;height:0}
 </section>
 
 <section class="sec" id="measured">
-  <div class="rail"><b>01</b>measured</div>
-  <div>
+  <div class="head">
+    <div class="rail"><b>01</b>measured</div>
     <h2>Three models. Both ways to run Browser Use. Ahead or level in every cell.</h2>
     <p class="sub">Paired runs on live websites: the same model, the same tasks and the same budget on both sides. Completion is judged blind by WebJudge from the screenshots. Time is a stopwatch from the task's arrival to the answer. Cost is the metered tokens at the provider's list prices. Each cell names its task set.</p>
+  </div>
+  <div>
     <div class="mx-wrap">
     <div class="mx">
       <div class="mx-corner"></div>
@@ -457,10 +461,12 @@ html::-webkit-scrollbar{width:0;height:0}
 </section>
 
 <section class="sec" id="contact">
-  <div class="rail"><b>06</b>contact</div>
-  <div>
+  <div class="head">
+    <div class="rail"><b>06</b>contact</div>
     <h2>Vahagn Boudakian, inventor.</h2>
     <p class="sub">Write to start a conversation. The five-page executive summary is available on request.</p>
+  </div>
+  <div>
     <div class="mail">
       <span class="addr" id="addr">vahagnboudakian@gmail.com</span>
       <button type="button" id="copy" aria-label="Copy email address">Copy</button>
