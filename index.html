@@ -312,15 +312,18 @@ html::-webkit-scrollbar{width:0;height:0}
         <p class="n">16 development tasks · 11 vs 7 completed · Browser Use 0.13.13</p>
       </div>
 
-      <div class="mx-row"><b>Frontier model</b><span>Claude Opus 5.5</span></div>
-      <div data-op="Browser Use · own agent" class="cell pending">
-        <p class="pend">Frontier against Browser Use's own agent is being measured on gpt-6.1-sol; the cell posts when the run is judged.</p>
+      <div class="mx-row"><b>Frontier models</b><span>Claude Opus 5.5 · gpt-6.1-sol</span></div>
+      <div data-op="Browser Use · own agent" class="cell">
+        <div class="mb"><span class="k">Completed</span><span class="tr"><i class="us" style="width:73.5%"></i><i style="width:73.5%"></i></span><span class="v"><b>74%</b> vs 74%</span></div>
+        <div class="mb"><span class="k">Time</span><span class="tr"><i class="us" style="width:87%"></i><i style="width:100%"></i></span><span class="v"><b>13% less</b></span></div>
+        <div class="mb"><span class="k">Cost</span><span class="tr"><i class="us" style="width:14%"></i><i style="width:100%"></i></span><span class="v"><b>86% lower</b></span></div>
+        <p class="n">gpt-6.1-sol on both sides · 39 development tasks · 25 vs 25 completed · Browser Use 0.13.13</p>
       </div>
       <div data-op="OpenAI browser tools + Browser Use driver" class="cell">
         <div class="mb"><span class="k">Completed</span><span class="tr"><i class="us" style="width:64.1%"></i><i style="width:48.7%"></i></span><span class="v"><b>64%</b> vs 49%</span></div>
         <div class="mb"><span class="k">Time</span><span class="tr"><i class="us" style="width:69%"></i><i style="width:100%"></i></span><span class="v"><b>31% less</b></span></div>
         <div class="mb"><span class="k">Cost</span><span class="tr"><i class="us" style="width:63%"></i><i style="width:100%"></i></span><span class="v"><b>37% lower</b></span></div>
-        <p class="n">39 development tasks · 25 vs 19 completed · Browser Use 0.13.13 · held-out 100: 68 vs 61 completed, cost 13% lower</p>
+        <p class="n">Claude Opus 5.5 on both sides · 39 development tasks · 25 vs 19 completed · Browser Use 0.13.13 · held-out 100: 68 vs 61 completed, cost 13% lower · gpt-6.1-sol, same 39: 25 vs 24 completed, cost 62% lower</p>
       </div>
     </div>
     </div>
@@ -338,7 +341,7 @@ html::-webkit-scrollbar{width:0;height:0}
       </tbody>
     </table>
     </div>
-    <p class="note">Which Browser Use mode is the stronger opponent depends on the model: on the small model its tools mode completes more and runs faster than its own agent; on Grok its own agent is the faster one. Protocolis is measured against both and is ahead or level against whichever is stronger on each metric. Held-out tasks are Online-Mind2Web tasks never used in development; development tasks are 39 live websites and component demos used across every round. Simple and complex are split by step count. Browser Use 0.13.10 as its own agent and 0.13.13 in both modes. Full results, build hashes and the reproduction kit are available under NDA.</p>
+    <p class="note">Which Browser Use mode is the stronger opponent depends on the model: on the small model its tools mode completes more and runs faster than its own agent; on Grok and gpt-6.1-sol its own agent is the faster one. Protocolis is measured against both and is ahead or level against whichever is stronger on each metric. Held-out tasks are Online-Mind2Web tasks never used in development; development tasks are 39 live websites and component demos used across every round. Simple and complex are split by step count. Browser Use 0.13.10 as its own agent and 0.13.13 in both modes. Full results, build hashes and the reproduction kit are available under NDA.</p>
   </div>
 </section>
 
