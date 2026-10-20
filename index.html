@@ -243,8 +243,8 @@ html::-webkit-scrollbar{width:0;height:0}
 <header class="top">
   <a class="brand" href="#" aria-label="Protocolis"><img src="glyph.svg" alt=""><b aria-hidden="true">rotocolis</b></a>
   <nav aria-label="Sections">
-    <a href="#compare">compare</a>
     <a href="#measured">measured</a>
+    <a href="#compare">compare</a>
     <a href="#how">how it works</a>
     <a href="#demo">demonstration</a>
     <a href="#acquisition">acquisition</a>
@@ -273,43 +273,8 @@ html::-webkit-scrollbar{width:0;height:0}
   <div class="stat"><div class="n">31%<small>less time per task on a frontier model</small></div><div class="bars"><div class="bar us"><span>Protocolis</span><span class="track" style="--w:69%"><span class="fill" style="width:69%"></span><span class="val">69%</span></span></div><div class="bar full"><span>Browser Use</span><span class="track" style="--w:100%"><span class="fill" style="width:100%"></span><span class="val">100%</span></span></div></div><p class="c">vs OpenAI browser tools on a Browser Use driver · Claude Opus 5.5 · 39 development tasks · stopwatch, task to answer</p></div>
 </section>
 
-<section class="sec" id="compare">
-  <div class="head">
-    <div class="rail"><b>01</b>compare</div>
-    <h2>Feature for feature, it isn't close.</h2>
-    <p class="sub">Browser Use comes two ways: as its own agent, which reads a screenshot every step, or as a browser driver underneath OpenAI's browser tools, run by OpenAI's tool runner. Protocolis is one engine with its own operations, verification and credential broker. It costs less than either on every model we have measured, and does ten things neither mode does.</p>
-    <p class="sub">That combination depends on two companies' release cycles, and no one can acquire it whole. Protocolis is one codebase: the engine, the tool layer, the credential broker and the patent filing transfer together.</p>
-  </div>
-  <div>
-
-    <div class="vs-wrap">
-      <table class="vs">
-        <thead><tr><th scope="col">Capability</th><th scope="col" class="us">Protocolis</th><th scope="col">Browser Use · default agent</th><th scope="col">OpenAI browser tools + Browser Use driver</th></tr></thead>
-        <tbody>
-          <tr class="grp"><th scope="rowgroup">Compiler engine<span>Turns the application into operations an agent can call.</span></th><td class="us"><span class="gk"><span class="ok" aria-label="Yes"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><small>patent pending</small></span></td><td data-v="n">No compiler</td><td data-v="n">No compiler</td></tr>
-          <tr><th scope="row">Operations compiled from the application itself</th><td class="us" data-v="y"></td><td data-v="n">Generic browser actions</td><td data-v="n">OpenAI's generic browser tools</td></tr>
-          <tr><th scope="row">Application compiled without model calls</th><td class="us" data-v="y"></td><td data-v="n"></td><td data-v="n"></td></tr>
-          <tr><th scope="row">No screenshots needed by the model</th><td class="us" data-v="y"></td><td data-v="p">On by default</td><td data-v="p">Optional</td></tr>
-          <tr><th scope="row">Each action's effect checked against the application</th><td class="us" data-v="y"></td><td data-v="p">Typed-value check only</td><td data-v="p">Typed-value check only</td></tr>
-          <tr><th scope="row">Verified done: task completion proved from the application's own evidence</th><td class="us" data-v="y"></td><td data-v="n">No proof; optional model judge</td><td data-v="n">No proof; optional model judge</td></tr>
-          <tr><th scope="row">Compiled applications cached for reuse</th><td class="us" data-v="y"></td><td data-v="n"></td><td data-v="n"></td></tr>
-          <tr class="last-in-grp"><th scope="row">Replay checked live at every step, stopping before protected actions</th><td class="us" data-v="y"></td><td data-v="p">Rerun of saved history, with retries</td><td data-v="p">Rerun of saved history, with retries</td></tr>
-          <tr class="grp"><th scope="rowgroup">Model-blind credential broker<span>Passwords, API keys and passkeys are used without the model ever seeing them.</span></th><td class="us"><span class="gk"><span class="ok" aria-label="Yes"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><small>patent pending</small></span></td><td data-v="n">No broker; placeholders only</td><td data-v="n">No broker; placeholders only</td></tr>
-          <tr><th scope="row">Credentials released only to a verified field on the live page</th><td class="us" data-v="y"></td><td data-v="p">Placeholders, scoped by domain</td><td data-v="p">Placeholders, scoped by domain</td></tr>
-          <tr><th scope="row">New API keys captured without the model seeing them</th><td class="us" data-v="y"></td><td data-v="n"></td><td data-v="n"></td></tr>
-          <tr class="last-in-grp"><th scope="row">Passkeys</th><td class="us" data-v="y"></td><td data-v="n"></td><td data-v="n"></td></tr>
-        </tbody>
-        <tfoot><tr><th scope="row">Full support</th><td class="us">10 of 10</td><td>0 of 10<small>4 partial</small></td><td>0 of 10<small>4 partial</small></td></tr></tfoot>
-      </table>
-    </div>
-    <div class="legend"><span><span class="ok" style="width:1.2rem;height:1.2rem"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>full</span><span><span class="part"><i></i></span>partial</span><span><span class="no"><svg viewBox="0 0 24 24"><path d="M5 5l14 14M19 5L5 19"/></svg></span>none</span></div>
-
-    <p class="note">Browser Use 0.13.13's capabilities are taken from its published source code, as its own agent and as the driver under OpenAI's browser tools from the OpenAI SDK (the agent calls OpenAI's tools, OpenAI's tool runner runs the loop, and Browser Use only operates the browser).</p>
-  </div>
-</section>
-
 <section class="sec" id="measured">
-  <div class="rail"><b>02</b>measured</div>
+  <div class="rail"><b>01</b>measured</div>
   <div>
     <h2>Three models. Both ways to run Browser Use. Ahead or level in every cell.</h2>
     <p class="sub">Paired runs on live websites: the same model, the same tasks and the same budget on both sides. Completion is judged blind by WebJudge from the screenshots. Time is a stopwatch from the task's arrival to the answer. Cost is the metered tokens at the provider's list prices. Each cell names its task set.</p>
@@ -374,6 +339,41 @@ html::-webkit-scrollbar{width:0;height:0}
     </table>
     </div>
     <p class="note">Which Browser Use mode is the stronger opponent depends on the model: on the small model its tools mode completes more and runs faster than its own agent; on Grok its own agent is the faster one. Protocolis is measured against both and is ahead or level against whichever is stronger on each metric. Held-out tasks are Online-Mind2Web tasks never used in development; development tasks are 39 live websites and component demos used across every round. Simple and complex are split by step count. Browser Use 0.13.10 as its own agent and 0.13.13 in both modes. Full results, build hashes and the reproduction kit are available under NDA.</p>
+  </div>
+</section>
+
+<section class="sec" id="compare">
+  <div class="head">
+    <div class="rail"><b>02</b>compare</div>
+    <h2>Feature for feature, it isn't close.</h2>
+    <p class="sub">Browser Use comes two ways: as its own agent, which reads a screenshot every step, or as a browser driver underneath OpenAI's browser tools, run by OpenAI's tool runner. Protocolis is one engine with its own operations, verification and credential broker. It costs less than either on every model we have measured, and does ten things neither mode does.</p>
+    <p class="sub">That combination depends on two companies' release cycles, and no one can acquire it whole. Protocolis is one codebase: the engine, the tool layer, the credential broker and the patent filing transfer together.</p>
+  </div>
+  <div>
+
+    <div class="vs-wrap">
+      <table class="vs">
+        <thead><tr><th scope="col">Capability</th><th scope="col" class="us">Protocolis</th><th scope="col">Browser Use · default agent</th><th scope="col">OpenAI browser tools + Browser Use driver</th></tr></thead>
+        <tbody>
+          <tr class="grp"><th scope="rowgroup">Compiler engine<span>Turns the application into operations an agent can call.</span></th><td class="us"><span class="gk"><span class="ok" aria-label="Yes"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><small>patent pending</small></span></td><td data-v="n">No compiler</td><td data-v="n">No compiler</td></tr>
+          <tr><th scope="row">Operations compiled from the application itself</th><td class="us" data-v="y"></td><td data-v="n">Generic browser actions</td><td data-v="n">OpenAI's generic browser tools</td></tr>
+          <tr><th scope="row">Application compiled without model calls</th><td class="us" data-v="y"></td><td data-v="n"></td><td data-v="n"></td></tr>
+          <tr><th scope="row">No screenshots needed by the model</th><td class="us" data-v="y"></td><td data-v="p">On by default</td><td data-v="p">Optional</td></tr>
+          <tr><th scope="row">Each action's effect checked against the application</th><td class="us" data-v="y"></td><td data-v="p">Typed-value check only</td><td data-v="p">Typed-value check only</td></tr>
+          <tr><th scope="row">Verified done: task completion proved from the application's own evidence</th><td class="us" data-v="y"></td><td data-v="n">No proof; optional model judge</td><td data-v="n">No proof; optional model judge</td></tr>
+          <tr><th scope="row">Compiled applications cached for reuse</th><td class="us" data-v="y"></td><td data-v="n"></td><td data-v="n"></td></tr>
+          <tr class="last-in-grp"><th scope="row">Replay checked live at every step, stopping before protected actions</th><td class="us" data-v="y"></td><td data-v="p">Rerun of saved history, with retries</td><td data-v="p">Rerun of saved history, with retries</td></tr>
+          <tr class="grp"><th scope="rowgroup">Model-blind credential broker<span>Passwords, API keys and passkeys are used without the model ever seeing them.</span></th><td class="us"><span class="gk"><span class="ok" aria-label="Yes"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><small>patent pending</small></span></td><td data-v="n">No broker; placeholders only</td><td data-v="n">No broker; placeholders only</td></tr>
+          <tr><th scope="row">Credentials released only to a verified field on the live page</th><td class="us" data-v="y"></td><td data-v="p">Placeholders, scoped by domain</td><td data-v="p">Placeholders, scoped by domain</td></tr>
+          <tr><th scope="row">New API keys captured without the model seeing them</th><td class="us" data-v="y"></td><td data-v="n"></td><td data-v="n"></td></tr>
+          <tr class="last-in-grp"><th scope="row">Passkeys</th><td class="us" data-v="y"></td><td data-v="n"></td><td data-v="n"></td></tr>
+        </tbody>
+        <tfoot><tr><th scope="row">Full support</th><td class="us">10 of 10</td><td>0 of 10<small>4 partial</small></td><td>0 of 10<small>4 partial</small></td></tr></tfoot>
+      </table>
+    </div>
+    <div class="legend"><span><span class="ok" style="width:1.2rem;height:1.2rem"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>full</span><span><span class="part"><i></i></span>partial</span><span><span class="no"><svg viewBox="0 0 24 24"><path d="M5 5l14 14M19 5L5 19"/></svg></span>none</span></div>
+
+    <p class="note">Browser Use 0.13.13's capabilities are taken from its published source code, as its own agent and as the driver under OpenAI's browser tools from the OpenAI SDK (the agent calls OpenAI's tools, OpenAI's tool runner runs the loop, and Browser Use only operates the browser).</p>
   </div>
 </section>
 
