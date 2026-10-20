@@ -56,7 +56,7 @@ p{margin:0}
 .emblem{width:100%;max-width:30rem;height:auto;justify-self:center;display:block}
 
 /* stat band: headline + two bars drawn to scale */
-.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.stats{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
 .stat{padding:2.2rem 1.75rem 2.4rem 0;min-width:0;display:flex;flex-direction:column;gap:1.1rem}
 .stat+.stat{padding-left:1.75rem;border-left:1px solid var(--rule)}
 .stat .n{font-family:var(--font-display);font-weight:600;font-size:clamp(2.6rem,4.6vw,4.4rem);line-height:.95;color:var(--accent);font-variant-numeric:tabular-nums;letter-spacing:-.01em}
@@ -130,6 +130,49 @@ p{margin:0}
 .m dd span{color:var(--fg-2)}
 .note{font-family:var(--font-mono);font-size:.74rem;color:var(--fg-2);margin-top:2.25rem;max-width:62rem;line-height:1.7}
 
+/* measured matrix */
+.mx-wrap{overflow-x:auto;margin-top:2.75rem}
+.mx{display:grid;grid-template-columns:11rem minmax(18rem,1fr) minmax(18rem,1fr);border-top:1px solid var(--rule);min-width:44rem}
+.mx-corner{border-bottom:1px solid var(--fg-2)}
+.mx-col{padding:1.1rem 1.25rem;border-bottom:1px solid var(--fg-2);border-left:1px solid var(--rule)}
+.mx-col b,.mx-row b{display:block;font-family:var(--font-display);font-size:1.05rem;font-weight:600;letter-spacing:.03em;color:var(--fg)}
+.mx-col span,.mx-row span{display:block;font-family:var(--font-mono);font-size:.68rem;letter-spacing:.06em;color:var(--fg-2);margin-top:.35rem;text-transform:uppercase}
+.mx-row{padding:1.6rem 1rem 1.6rem 1rem;border-bottom:1px solid var(--rule);border-left:3px solid var(--accent);background:var(--bg-2)}
+.cell{padding:1.5rem 1.25rem;border-bottom:1px solid var(--rule);border-left:1px solid var(--rule);display:grid;gap:.8rem;align-content:start}
+.mb{display:grid;grid-template-columns:5.2rem 1fr 7.5rem;gap:.8rem;align-items:center}
+.mb .k{font-family:var(--font-mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--fg-2)}
+.mb .tr{display:grid;gap:.25rem}
+.mb .tr i{display:block;height:.55rem;background:var(--dim);opacity:.55}
+.mb .tr i.us{background:var(--accent);opacity:1}
+.mb .v{font-family:var(--font-mono);font-size:.82rem;color:var(--fg-2);font-variant-numeric:tabular-nums;white-space:nowrap}
+.mb .v b{color:var(--accent);font-weight:500;font-size:.95rem}
+.cell .n{font-family:var(--font-mono);font-size:.66rem;letter-spacing:.04em;color:var(--dim);line-height:1.6;margin-top:.4rem}
+.cell.pending{align-content:center}
+.cell .pend{font-family:var(--font-mono);font-size:.76rem;color:var(--fg-2);line-height:1.7;max-width:26rem}
+.mx-legend{display:flex;gap:1.5rem;flex-wrap:wrap;margin-top:1.1rem;font-family:var(--font-mono);font-size:.68rem;letter-spacing:.06em;color:var(--fg-2);text-transform:uppercase}
+.mx-legend span{display:inline-flex;align-items:center;gap:.5rem}
+.mx-legend i{display:inline-block;width:1.4rem;height:.5rem;background:var(--dim);opacity:.55}
+.mx-legend i.us{background:var(--accent);opacity:1}
+.cx-h{font-family:var(--font-display);font-size:clamp(1.3rem,2.2vw,1.8rem);margin-top:3.5rem;letter-spacing:.02em}
+.cx-wrap{overflow-x:auto}
+.cx{width:100%;border-collapse:collapse;margin-top:1.4rem;min-width:36rem}
+.cx th,.cx td{padding:.9rem 1.1rem;border-bottom:1px solid var(--rule);text-align:left;vertical-align:middle}
+.cx thead th{font-family:var(--font-mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--fg-2);font-weight:500;border-bottom:1px solid var(--fg-2)}
+.cx thead th:not(:first-child),.cx td{text-align:center}
+.cx tbody th{font-weight:400;font-size:.95rem}
+.cx tbody th span{display:block;font-family:var(--font-mono);font-size:.64rem;letter-spacing:.06em;text-transform:uppercase;color:var(--dim);margin-top:.2rem}
+.cx td{font-family:var(--font-mono);font-size:.88rem;color:var(--fg-2);font-variant-numeric:tabular-nums;white-space:nowrap}
+.cx td b{color:var(--accent);font-weight:500;font-size:1.05rem}
+.cell::before{content:attr(data-op);display:none;font-family:var(--font-mono);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:.2rem}
+@media (max-width:760px){
+  .mb{grid-template-columns:4.2rem 1fr 6.4rem;gap:.5rem}
+  .mx{grid-template-columns:minmax(0,1fr);min-width:0}
+  .mx-corner,.mx-col{display:none}
+  .mx-row{border-left:3px solid var(--accent);padding:1.2rem 1rem}
+  .cell{border-left:0;padding:1.3rem 0 1.5rem}
+  .cell::before{display:block}
+}
+
 /* how */
 .how{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(1.5rem,3vw,3.5rem);margin-top:2.75rem}
 .how h3{font-family:var(--font-display);font-size:1.4rem;color:var(--accent);margin-bottom:.8rem;letter-spacing:.04em}
@@ -162,9 +205,9 @@ footer{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;paddin
 
 @media (prefers-reduced-motion:no-preference){.cursor{animation:blink 1.1s steps(1) infinite}@keyframes blink{50%{opacity:0}}}
 @media (max-width:1100px){
-  .stats,.meas{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .stat:nth-child(3),.m:nth-child(3){padding-left:0;border-left:0}
-  .stat:nth-child(n+3){border-top:1px solid var(--rule)}
+  .stats{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .stat:nth-child(4){padding-left:0;border-left:0}
+  .stat:nth-child(n+4){border-top:1px solid var(--rule)}
   .m:nth-child(n+3){margin-top:1.6rem;border-top:1px solid var(--rule)}
 }
 @media (max-width:760px){
@@ -174,7 +217,8 @@ footer{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;paddin
   .top nav{display:none}
 }
 @media (max-width:520px){
-  .stats,.meas{grid-template-columns:minmax(0,1fr)}
+  .stats{grid-template-columns:minmax(0,1fr)}
+  .stat:nth-child(2),.stat:nth-child(3){border-top:1px solid var(--rule)}
   .stat,.stat+.stat,.m,.m+.m{padding-left:0;border-left:0}
   .stat+.stat,.m+.m{border-top:1px solid var(--rule)}
   .m+.m{margin-top:1.6rem}
@@ -200,6 +244,7 @@ html::-webkit-scrollbar{width:0;height:0}
   <a class="brand" href="#" aria-label="Protocolis"><img src="glyph.svg" alt=""><b aria-hidden="true">rotocolis</b></a>
   <nav aria-label="Sections">
     <a href="#compare">compare</a>
+    <a href="#measured">measured</a>
     <a href="#how">how it works</a>
     <a href="#demo">demonstration</a>
     <a href="#acquisition">acquisition</a>
@@ -224,7 +269,8 @@ html::-webkit-scrollbar{width:0;height:0}
   <div class="stat"><div class="n">3.4×<small>faster per completed task</small></div><div class="bars"><div class="bar us"><span>Protocolis</span><span class="track" style="--w:29.7%"><span class="fill" style="width:29.7%"></span><span class="val">315 s</span></span></div><div class="bar full"><span>Browser Use</span><span class="track" style="--w:100%"><span class="fill" style="width:100%"></span><span class="val">1,061 s</span></span></div></div><p class="c">vs Browser Use default agent · GLM-5.3-flash · 98 held-out tasks</p></div>
   <div class="stat"><div class="n">2.2×<small>cheaper per completed task</small></div><div class="bars"><div class="bar us"><span>Protocolis</span><span class="track" style="--w:46%"><span class="fill" style="width:46%"></span><span class="val">46%</span></span></div><div class="bar full"><span>Browser Use</span><span class="track" style="--w:100%"><span class="fill" style="width:100%"></span><span class="val">100%</span></span></div></div><p class="c">vs Browser Use default agent · GLM-5.3-flash · 98 held-out tasks</p></div>
   <div class="stat"><div class="n">54%<small>more tasks completed</small></div><div class="bars"><div class="bar us full"><span>Protocolis</span><span class="track" style="--w:100%"><span class="fill" style="width:100%"></span><span class="val">71</span></span></div><div class="bar"><span>Browser Use</span><span class="track" style="--w:64.8%"><span class="fill" style="width:64.8%"></span><span class="val">46</span></span></div></div><p class="c">vs Browser Use default agent · GLM-5.3-flash · 98 held-out tasks</p></div>
-  <div class="stat"><div class="n">26%<small>cheaper per completed task on a frontier model</small></div><div class="bars"><div class="bar us"><span>Protocolis</span><span class="track" style="--w:74.0%"><span class="fill" style="width:74.0%"></span><span class="val">$0.54</span></span></div><div class="bar full"><span>Browser Use</span><span class="track" style="--w:100%"><span class="fill" style="width:100%"></span><span class="val">$0.73</span></span></div></div><p class="c">vs OpenAI browser tools on a Browser Use driver · Claude Opus 5.5 · 93 held-out tasks</p></div>
+  <div class="stat"><div class="n">32%<small>more tasks completed on a frontier model</small></div><div class="bars"><div class="bar us full"><span>Protocolis</span><span class="track" style="--w:100%"><span class="fill" style="width:100%"></span><span class="val">25</span></span></div><div class="bar"><span>Browser Use</span><span class="track" style="--w:76%"><span class="fill" style="width:76%"></span><span class="val">19</span></span></div></div><p class="c">vs OpenAI browser tools on a Browser Use driver · Claude Opus 5.5 · 39 development tasks</p></div>
+  <div class="stat"><div class="n">31%<small>less time per task on a frontier model</small></div><div class="bars"><div class="bar us"><span>Protocolis</span><span class="track" style="--w:69%"><span class="fill" style="width:69%"></span><span class="val">69%</span></span></div><div class="bar full"><span>Browser Use</span><span class="track" style="--w:100%"><span class="fill" style="width:100%"></span><span class="val">100%</span></span></div></div><p class="c">vs OpenAI browser tools on a Browser Use driver · Claude Opus 5.5 · 39 development tasks · stopwatch, task to answer</p></div>
 </section>
 
 <section class="sec" id="compare">
@@ -258,22 +304,81 @@ html::-webkit-scrollbar{width:0;height:0}
     </div>
     <div class="legend"><span><span class="ok" style="width:1.2rem;height:1.2rem"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>full</span><span><span class="part"><i></i></span>partial</span><span><span class="no"><svg viewBox="0 0 24 24"><path d="M5 5l14 14M19 5L5 19"/></svg></span>none</span></div>
 
-    <div class="meas">
-      <div class="m"><p class="who"><b>Small model</b>GLM-5.3-flash · default agent · 98 held-out tasks</p>
-        <dl><dt>Completed</dt><dd>71 <span>vs 46</span></dd><dt>Cost per completed task</dt><dd>54% lower</dd><dt>Time per completed task</dt><dd>70% less</dd></dl></div>
-      <div class="m"><p class="who"><b>Mid model</b>Grok 4.6 · default agent · 66 held-out tasks</p>
-        <dl><dt>Completed</dt><dd>50 <span>vs 43</span></dd><dt>Cost per completed task</dt><dd>49% lower</dd><dt>Time per completed task</dt><dd>43% less</dd></dl></div>
-      <div class="m"><p class="who"><b>Small model</b>GLM-5.3-flash · OpenAI tools + Browser Use driver · 36 development tasks</p>
-        <dl><dt>Completed</dt><dd>26 <span>vs 24</span></dd><dt>Cost</dt><dd>53% lower</dd><dt>Prompt tokens</dt><dd>66% fewer</dd></dl></div>
-      <div class="m"><p class="who"><b>Frontier model</b>Claude Opus 5.5 · OpenAI tools + Browser Use driver · 93 held-out tasks</p>
-        <dl><dt>Completed</dt><dd>68 <span>vs 61</span></dd><dt>Cost</dt><dd>13% lower</dd><dt>Cost per completed task</dt><dd>26% lower</dd></dl></div>
+    <p class="note">Browser Use 0.13.13's capabilities are taken from its published source code, as its own agent and as the driver under OpenAI's browser tools from the OpenAI SDK (the agent calls OpenAI's tools, OpenAI's tool runner runs the loop, and Browser Use only operates the browser).</p>
+  </div>
+</section>
+
+<section class="sec" id="measured">
+  <div class="rail"><b>02</b>measured</div>
+  <div>
+    <h2>Three models. Both ways to run Browser Use. Ahead or level in every cell.</h2>
+    <p class="sub">Paired runs on live websites: the same model, the same tasks and the same budget on both sides. Completion is judged blind by WebJudge from the screenshots. Time is a stopwatch from the task's arrival to the answer. Cost is the metered tokens at the provider's list prices. Each cell names its task set.</p>
+    <div class="mx-wrap">
+    <div class="mx">
+      <div class="mx-corner"></div>
+      <div class="mx-col"><b>Browser Use · own agent</b><span>Its planner, a screenshot every step</span></div>
+      <div class="mx-col"><b>OpenAI browser tools + Browser Use driver</b><span>OpenAI's tool runner; Browser Use operates the browser</span></div>
+
+      <div class="mx-row"><b>Small model</b><span>GLM-5.3-flash</span></div>
+      <div data-op="Browser Use · own agent" class="cell">
+        <div class="mb"><span class="k">Completed</span><span class="tr"><i class="us" style="width:72.4%"></i><i style="width:46.9%"></i></span><span class="v"><b>72%</b> vs 47%</span></div>
+        <div class="mb"><span class="k">Time</span><span class="tr"><i class="us" style="width:42%"></i><i style="width:100%"></i></span><span class="v"><b>58% less</b></span></div>
+        <div class="mb"><span class="k">Cost</span><span class="tr"><i class="us" style="width:38%"></i><i style="width:100%"></i></span><span class="v"><b>62% lower</b></span></div>
+        <p class="n">98 held-out tasks · 71 vs 46 completed · Browser Use 0.13.10</p>
+      </div>
+      <div data-op="OpenAI browser tools + Browser Use driver" class="cell">
+        <div class="mb"><span class="k">Completed</span><span class="tr"><i class="us" style="width:71.4%"></i><i style="width:62.9%"></i></span><span class="v"><b>71%</b> vs 63%</span></div>
+        <div class="mb"><span class="k">Time</span><span class="tr"><i class="us" style="width:98%"></i><i style="width:100%"></i></span><span class="v"><b>level</b></span></div>
+        <div class="mb"><span class="k">Cost</span><span class="tr"><i class="us" style="width:38%"></i><i style="width:100%"></i></span><span class="v"><b>62% lower</b></span></div>
+        <p class="n">39 development tasks · 25 vs 22 completed · Browser Use 0.13.13</p>
+      </div>
+
+      <div class="mx-row"><b>Mid model</b><span>Grok 4.6</span></div>
+      <div data-op="Browser Use · own agent" class="cell">
+        <div class="mb"><span class="k">Completed</span><span class="tr"><i class="us" style="width:75.8%"></i><i style="width:65.2%"></i></span><span class="v"><b>76%</b> vs 65%</span></div>
+        <div class="mb"><span class="k">Time</span><span class="tr"><i class="us" style="width:80%"></i><i style="width:100%"></i></span><span class="v"><b>20% less</b></span></div>
+        <div class="mb"><span class="k">Cost</span><span class="tr"><i class="us" style="width:59%"></i><i style="width:100%"></i></span><span class="v"><b>41% lower</b></span></div>
+        <p class="n">66 held-out tasks · 50 vs 43 completed · Browser Use 0.13.10</p>
+      </div>
+      <div data-op="OpenAI browser tools + Browser Use driver" class="cell">
+        <div class="mb"><span class="k">Completed</span><span class="tr"><i class="us" style="width:78.6%"></i><i style="width:50%"></i></span><span class="v"><b>79%</b> vs 50%</span></div>
+        <div class="mb"><span class="k">Time</span><span class="tr"><i class="us" style="width:67%"></i><i style="width:100%"></i></span><span class="v"><b>33% less</b></span></div>
+        <div class="mb"><span class="k">Cost</span><span class="tr"><i class="us" style="width:15%"></i><i style="width:100%"></i></span><span class="v"><b>85% lower</b></span></div>
+        <p class="n">16 development tasks · 11 vs 7 completed · Browser Use 0.13.13</p>
+      </div>
+
+      <div class="mx-row"><b>Frontier model</b><span>Claude Opus 5.5</span></div>
+      <div data-op="Browser Use · own agent" class="cell pending">
+        <p class="pend">Frontier against Browser Use's own agent is being measured on gpt-6.1-sol; the cell posts when the run is judged.</p>
+      </div>
+      <div data-op="OpenAI browser tools + Browser Use driver" class="cell">
+        <div class="mb"><span class="k">Completed</span><span class="tr"><i class="us" style="width:64.1%"></i><i style="width:48.7%"></i></span><span class="v"><b>64%</b> vs 49%</span></div>
+        <div class="mb"><span class="k">Time</span><span class="tr"><i class="us" style="width:69%"></i><i style="width:100%"></i></span><span class="v"><b>31% less</b></span></div>
+        <div class="mb"><span class="k">Cost</span><span class="tr"><i class="us" style="width:63%"></i><i style="width:100%"></i></span><span class="v"><b>37% lower</b></span></div>
+        <p class="n">39 development tasks · 25 vs 19 completed · Browser Use 0.13.13 · held-out 100: 68 vs 61 completed, cost 13% lower</p>
+      </div>
     </div>
-    <p class="note">Protocolis against Browser Use on live websites: paired runs, the same model and the same tasks for both. Held-out tasks are Online-Mind2Web tasks never used in development. Cost is estimated at each provider's cached list prices. Browser Use 0.13.10 (its own agent) and 0.13.13 (as the driver under OpenAI's browser tools from the OpenAI SDK: the agent calls OpenAI's tools, OpenAI's tool runner runs the loop, and Browser Use only operates the browser); its capabilities are taken from its published source code, version 0.13.13. Full results, build hashes and the reproduction kit are available under NDA.</p>
+    </div>
+    <div class="mx-legend"><span><i class="us"></i>Protocolis</span><span><i></i>Browser Use</span><span>time and cost bars: Protocolis as a share of Browser Use's</span></div>
+
+    <h3 class="cx-h">It holds on the hard tasks.</h3>
+    <div class="cx-wrap">
+    <table class="cx">
+      <thead><tr><th scope="col">Completed</th><th scope="col">Simple tasks</th><th scope="col">Complex tasks</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">GLM-5.3-flash vs Browser Use's own agent<span>held-out</span></th><td><b>88%</b> vs 50%</td><td><b>72%</b> vs 47%</td></tr>
+        <tr><th scope="row">Grok 4.6 vs Browser Use's own agent<span>held-out</span></th><td><b>94%</b> vs 89%</td><td><b>76%</b> vs 65%</td></tr>
+        <tr><th scope="row">Grok 4.6 vs OpenAI tools + Browser Use driver<span>16 development tasks</span></th><td><b>100%</b> vs 75%</td><td><b>50%</b> vs 17%</td></tr>
+        <tr><th scope="row">Claude Opus 5.5 vs OpenAI tools + Browser Use driver<span>six development rounds, 222 paired runs</span></th><td><b>85%</b> vs 75%</td><td><b>42%</b> vs 36%</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="note">Which Browser Use mode is the stronger opponent depends on the model: on the small model its tools mode completes more and runs faster than its own agent; on Grok its own agent is the faster one. Protocolis is measured against both and is ahead or level against whichever is stronger on each metric. Held-out tasks are Online-Mind2Web tasks never used in development; development tasks are 39 live websites and component demos used across every round. Simple and complex are split by step count. Browser Use 0.13.10 as its own agent and 0.13.13 in both modes. Full results, build hashes and the reproduction kit are available under NDA.</p>
   </div>
 </section>
 
 <section class="sec" id="how">
-  <div class="rail"><b>02</b>how it works</div>
+  <div class="rail"><b>03</b>how it works</div>
   <div>
     <h2>Compile. Operate. Verify.</h2>
     <div class="how">
@@ -285,7 +390,7 @@ html::-webkit-scrollbar{width:0;height:0}
 </section>
 
 <section class="sec" id="demo">
-  <div class="rail"><b>03</b>demonstration</div>
+  <div class="rail"><b>04</b>demonstration</div>
   <div>
     <h2>Same task. Same budget. Same small model.</h2>
     <div class="frame"><video controls preload="metadata" playsinline src="media/demo.mp4" poster="media/demo-poster.jpg"></video></div>
@@ -294,7 +399,7 @@ html::-webkit-scrollbar{width:0;height:0}
 </section>
 
 <section class="sec" id="acquisition">
-  <div class="rail"><b>04</b>acquisition</div>
+  <div class="rail"><b>05</b>acquisition</div>
   <div>
     <h2>Offered for outright acquisition.</h2>
     <div class="two">
@@ -309,7 +414,7 @@ html::-webkit-scrollbar{width:0;height:0}
 </section>
 
 <section class="sec" id="contact">
-  <div class="rail"><b>05</b>contact</div>
+  <div class="rail"><b>06</b>contact</div>
   <div>
     <h2>Vahagn Boudakian, inventor.</h2>
     <p class="sub">Write to start a conversation. The five-page executive summary is available on request.</p>
