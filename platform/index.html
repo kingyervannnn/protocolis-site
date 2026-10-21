@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Protocolis · Evaluation platform</title>
+<meta name="description" content="The Protocolis evaluation platform: under NDA, an acquirer's engineers run their own agents and tasks against a hosted instance.">
+<link rel="icon" type="image/svg+xml" href="../glyph.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* The main page's tokens and section layout, for one page. Basalt, marble, bronze. */
+:root{
+  --bg:#0f1114;
+  --fg:#ece8df;
+  --fg-2:#a7a297;
+  --rule:rgba(236,232,223,.13);
+  --accent:#c9a061;
+  --accent-ink:#0f1114;
+  --gut:clamp(16px,5vw,96px);
+  --font-display:"Cinzel",Georgia,serif;
+  --font-body:"Instrument Sans","Helvetica Neue",Arial,sans-serif;
+  --font-mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{background:var(--bg);-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size:17px;line-height:1.6;
+  padding-left:max(var(--gut),env(safe-area-inset-left,0px));padding-right:max(var(--gut),env(safe-area-inset-right,0px))}
+a{color:inherit}
+h1,h2,h3{margin:0;font-weight:500;text-wrap:balance}
+p{margin:0}
+.top{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;padding-block:1.1rem;border-bottom:1px solid var(--rule)}
+.brand{display:flex;align-items:center;gap:.3rem;text-decoration:none}
+.brand img{height:2.6rem;width:auto;display:block}
+.brand b{font-family:var(--font-display);font-weight:600;letter-spacing:.3em;font-size:1.25rem;text-transform:uppercase;line-height:1}
+.top nav{display:flex;gap:1.75rem;flex-wrap:wrap;font-family:var(--font-mono);font-size:.78rem;color:var(--fg-2)}
+.top nav a{text-decoration:none;letter-spacing:.05em}
+.top nav a:hover,.top nav a:focus-visible,.top nav a[aria-current]{color:var(--accent)}
+.hero{padding-block:clamp(2.5rem,5vw,4.5rem) clamp(3rem,6vw,5rem);border-bottom:1px solid var(--rule)}
+.motto{font-family:var(--font-mono);font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:1.6rem}
+.hero h1{font-family:var(--font-display);font-size:clamp(2.1rem,4.4vw,3.9rem);line-height:1.08;letter-spacing:.01em;max-width:58rem}
+.lede{font-size:clamp(1.05rem,1.3vw,1.25rem);color:var(--fg-2);margin-top:1.75rem;max-width:46rem}
+.actions{display:flex;gap:.75rem;flex-wrap:wrap;margin-top:2.25rem}
+.btn{display:inline-block;font-family:var(--font-mono);font-size:.75rem;letter-spacing:.16em;text-transform:uppercase;text-decoration:none;padding:.8rem 1.4rem;font-weight:500}
+.btn.primary{background:var(--accent);color:var(--accent-ink)}
+.btn.primary:hover{filter:brightness(1.1)}
+.btn.quiet{border:1px solid var(--rule);color:var(--fg)}
+.btn.quiet:hover{border-color:var(--accent);color:var(--accent)}
+a:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.sec{padding-block:clamp(3rem,6vw,5.5rem);border-bottom:1px solid var(--rule)}
+.rail{font-family:var(--font-mono);font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--fg-2);margin-bottom:1.1rem}
+.rail b{color:var(--accent);font-weight:500;margin-right:.6rem}
+.sec h2{font-family:var(--font-display);font-size:clamp(1.6rem,3vw,2.8rem);line-height:1.1;letter-spacing:.01em}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:2rem clamp(2rem,5vw,5rem);margin-top:2.5rem}
+.grid h3{font-family:var(--font-display);font-size:1.15rem;letter-spacing:.02em;color:var(--fg)}
+.grid p{color:var(--fg-2);font-size:1.02rem;margin-top:.45rem}
+.stages{list-style:none;margin:2.5rem 0 0;padding:0;display:grid;gap:1.4rem;max-width:46rem}
+.stages li{display:grid;grid-template-columns:3rem 1fr;gap:1rem;align-items:baseline}
+.stages .num{font-family:var(--font-display);color:var(--accent);font-size:1.6rem}
+.stages b{font-weight:600}
+.stages p{color:var(--fg-2);font-size:.98rem;margin-top:.2rem}
+.note{font-family:var(--font-mono);font-size:.74rem;color:var(--fg-2);margin-top:2.25rem;max-width:58rem;line-height:1.7}
+footer{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;padding-block:1.75rem 2.5rem;font-family:var(--font-mono);font-size:.75rem;color:var(--fg-2)}
+.cursor{animation:blink 1.1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+@media (prefers-reduced-motion:reduce){.cursor{animation:none}}
+@media (max-width:760px){.grid{grid-template-columns:minmax(0,1fr)}.top nav{gap:1.1rem}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <a class="brand" href="../" aria-label="Protocolis home"><img src="../glyph.svg" alt=""><b aria-hidden="true">rotocolis</b></a>
+  <nav aria-label="Site">
+    <a href="../">home</a>
+    <a href="../#acquisition">acquisition</a>
+    <a href="./" aria-current="page">platform</a>
+    <a href="../#contact">contact</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <p class="motto">Evaluation platform</p>
+  <h1>Try Protocolis with your own agents, on your own tasks.</h1>
+  <p class="lede">Stage II of an acquisition review. Under NDA, your engineers point their own agent, model and tasks at a hosted instance of Protocolis and measure it themselves.</p>
+  <div class="actions">
+    <a class="btn primary" id="signin" href="https://platform.protocolis.co/platform">Sign in</a>
+    <a class="btn quiet" href="../#contact">Request access</a>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="rail"><b>01</b>what your team receives</div>
+  <h2>One organisation, one sign-in, one endpoint.</h2>
+  <div class="grid">
+    <div><h3>Your own page</h3><p>Your organisation signs in to its own page: your API key (copied there, never sent by email), your session prefix, your limits and your access window.</p></div>
+    <div><h3>One HTTPS endpoint</h3><p>One JSON command per call, from any agent, framework or language. Worked examples are on your page.</p></div>
+    <div><h3>The exact instance</h3><p>The engine build, the browser version and the host are declared on your page, so every result can be traced to what produced it.</p></div>
+    <div><h3>Confidential by default</h3><p>No organisation sees another's name, sessions or results.</p></div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="rail"><b>02</b>how access works</div>
+  <h2>By invitation, after the NDA.</h2>
+  <ol class="stages">
+    <li><span class="num">I</span><div><b>NDA</b><p>Access begins once the NDA is countersigned.</p></div></li>
+    <li><span class="num">II</span><div><b>Sign-in</b><p>Your welcome note arrives by email; your platform password arrives separately.</p></div></li>
+    <li><span class="num">III</span><div><b>Run</b><p>Sign in, copy your API key and run your tasks within your window. Access can be paused, extended or ended on request.</p></div></li>
+  </ol>
+  <p class="note">The platform is for organisations evaluating an acquisition of Protocolis. To begin, write from the contact section of the main page.</p>
+</section>
+
+<footer>
+  <span>protocolis<span class="cursor">_</span> · patent pending</span>
+  <span>new york</span>
+</footer>
+
+</body>
+</html>
