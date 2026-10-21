@@ -587,7 +587,7 @@ body::before{
   video.addEventListener('error',finish,{once:true});
   function start(){
     if(finished)return;
-    video.muted=true;video.src=video.dataset.src;
+    video.muted=true;video.defaultPlaybackRate=1.2;video.playbackRate=1.2;video.src=video.dataset.src;
     if(video.requestVideoFrameCallback)frame=video.requestVideoFrameCallback(nextFrame);
     var play=video.play();
     if(play&&play.catch)play.catch(finish);
