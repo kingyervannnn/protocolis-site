@@ -59,8 +59,8 @@ p{margin:0}
 .emblem-motion{position:absolute;left:-.610208%;top:-.456594%;width:101.226493%;height:100.848940%;max-width:none;object-fit:fill;opacity:0;mix-blend-mode:lighten;pointer-events:none;-webkit-mask-image:linear-gradient(transparent,#000 var(--edge-fade,6%),#000 calc(100% - var(--edge-fade,6%)),transparent);mask-image:linear-gradient(transparent,#000 var(--edge-fade,6%),#000 calc(100% - var(--edge-fade,6%)),transparent)}
 .emblem.is-playing .emblem-still{opacity:0}
 .emblem.is-playing .emblem-motion{opacity:1}
-.emblem.is-settling .emblem-still{transition:opacity 1s ease}
-.emblem.is-settling .emblem-motion{transition:opacity .7s ease .45s}
+.emblem.is-settling .emblem-still{transition:opacity .6s ease}
+.emblem.is-settling .emblem-motion{transition:opacity .5s ease .15s}
 .emblem.is-settling .emblem-still{opacity:1}
 .emblem.is-settling .emblem-motion{opacity:0}
 
@@ -564,6 +564,10 @@ body::before{
     // Feather the source's cropped orbit; reveal the full final logo as it forms.
     var edge=6*Math.max(0,Math.min(1,(5.4-time)/.8));
     video.style.setProperty('--edge-fade',edge+'%');
+    // Preserve the opening pace, then smoothly accelerate the formation of the logo.
+    var progress=Math.max(0,Math.min(1,(time-1.5)/4));
+    var rate=1.2+.65*progress*progress*(3-2*progress);
+    if(Math.abs(video.playbackRate-rate)>.02)video.playbackRate=rate;
   }
   function settle(){
     if(finished)return;
@@ -571,7 +575,7 @@ body::before{
     video.style.setProperty('--edge-fade','0%');
     // Keep the last decoded frame until both fades complete. The SVG comes in first.
     emblem.classList.add('is-settling');
-    settleTimer=setTimeout(finish,1300);
+    settleTimer=setTimeout(finish,800);
   }
   function nextFrame(now,metadata){
     if(finished)return;
