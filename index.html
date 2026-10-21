@@ -417,7 +417,7 @@ body::before{
   <div class="head">
     <div class="rail"><b>02</b>compare</div>
     <h2>Feature for feature, it isn't close.</h2>
-    <p class="sub">Browser Use comes two ways: as its own agent, which reads a screenshot every step, or as a browser driver underneath OpenAI's browser tools, run by OpenAI's tool runner. Protocolis is one engine with its own operations, verification and credential broker. It costs less than either on every model we have measured, and does fifteen things neither mode does.</p>
+    <p class="sub">Browser Use comes two ways: as its own agent, which reads a screenshot every step, or as a browser driver underneath OpenAI's browser tools, run by OpenAI's tool runner. Protocolis is one engine with its own operations, verification and credential broker. It costs less than either on every model we have measured, and does thirteen things neither mode does.</p>
     <p class="sub">That combination depends on two companies' release cycles, and no one can acquire it whole. Protocolis is one codebase: the engine, the tool layer, the credential broker and the patent filing transfer together.</p>
   </div>
   <div>
@@ -432,7 +432,7 @@ body::before{
           <tr><th scope="row">No screenshots needed by the model</th><td class="us" data-v="y"></td><td data-v="p">On by default</td><td data-v="p">Optional</td></tr>
           <tr><th scope="row">Each action's effect checked against the application</th><td class="us" data-v="y"></td><td data-v="p">Typed-value check only</td><td data-v="p">Typed-value check only</td></tr>
           <tr><th scope="row">Verified done: task completion proved from the application's own evidence</th><td class="us" data-v="y"></td><td data-v="n">No proof; optional model judge</td><td data-v="n">No proof; optional model judge</td></tr>
-          <tr><th scope="row">Compiled applications cached for reuse</th><td class="us" data-v="y"></td><td data-v="n"></td><td data-v="n"></td></tr>
+          <tr><th scope="row">Warm compile: what one visit compiles is reused on the next</th><td class="us" data-v="y"></td><td data-v="n">Every visit starts from scratch</td><td data-v="n">Every visit starts from scratch</td></tr>
           <tr><th scope="row">Replay checked live at every step, stopping before protected actions</th><td class="us" data-v="y"></td><td data-v="p">Rerun of saved history, with retries</td><td data-v="p">Rerun of saved history, with retries</td></tr>
           <tr><th scope="row">Runs on sites behind modern bot protection, built in</th><td class="us" data-v="y"></td><td data-v="p">Not in the library; sold separately as a paid cloud browser</td><td data-v="p">Not in the library; sold separately as a paid cloud browser</td></tr>
           <tr><th scope="row">Simple challenges handled automatically; complex challenges escalated in isolation</th><td class="us" data-v="y"></td><td data-v="p">Waits for its paid cloud proxy to solve it</td><td data-v="p">Waits for its paid cloud proxy to solve it</td></tr>
@@ -441,11 +441,8 @@ body::before{
           <tr><th scope="row">Credentials released only to a verified field on the live page</th><td class="us" data-v="y"></td><td data-v="p">Placeholders, scoped by domain</td><td data-v="p">Placeholders, scoped by domain</td></tr>
           <tr><th scope="row">New API keys captured without the model seeing them</th><td class="us" data-v="y"></td><td data-v="n"></td><td data-v="n"></td></tr>
           <tr class="last-in-grp"><th scope="row">Passkeys</th><td class="us" data-v="y"></td><td data-v="n"></td><td data-v="n"></td></tr>
-          <tr class="grp"><th scope="rowgroup">Person in control<span>The person sees and steers every agent session; agents never change security settings.</span></th><td class="us"><span class="gk"><span class="ok" aria-label="Yes"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></span></td><td data-v="p">Live preview in its paid cloud</td><td data-v="p">Live preview in its paid cloud</td></tr>
-          <tr><th scope="row">Every agent session in one view: what it did, when it closes, close or keep in one key</th><td class="us" data-v="y"></td><td data-v="p">Live preview in its paid cloud</td><td data-v="p">Live preview in its paid cloud</td></tr>
-          <tr class="last-in-grp"><th scope="row">Agents adjust session and site settings; security settings stay with the person</th><td class="us" data-v="y"></td><td data-v="n"></td><td data-v="n"></td></tr>
         </tbody>
-        <tfoot><tr><th scope="row">Full support</th><td class="us">15 of 15</td><td>0 of 15<small>7 partial</small></td><td>0 of 15<small>7 partial</small></td></tr></tfoot>
+        <tfoot><tr><th scope="row">Full support</th><td class="us">13 of 13</td><td>0 of 13<small>6 partial</small></td><td>0 of 13<small>6 partial</small></td></tr></tfoot>
       </table>
     </div>
     <div class="legend"><span><span class="ok" style="width:1.2rem;height:1.2rem"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>full</span><span><span class="part"><i></i></span>partial</span><span><span class="no"><svg viewBox="0 0 24 24"><path d="M5 5l14 14M19 5L5 19"/></svg></span>none</span></div>
