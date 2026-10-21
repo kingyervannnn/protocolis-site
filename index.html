@@ -284,6 +284,21 @@ html::-webkit-scrollbar{width:0;height:0}
 .vs-wrap::-webkit-scrollbar-thumb{background:var(--accent);border-radius:6px}
 .vs-wrap::-webkit-scrollbar-track{background:transparent}
 @media (hover:none){.rail-y{display:none}}
+
+/* A quiet grid anchored to the viewport. */
+body{isolation:isolate}
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  pointer-events:none;
+  background-image:linear-gradient(rgba(201,160,97,.075) 1px,transparent 1px),linear-gradient(90deg,rgba(201,160,97,.075) 1px,transparent 1px);
+  background-size:72px 72px;
+  background-position:center center;
+  -webkit-mask-image:radial-gradient(ellipse at 50% 38%,#000 20%,transparent 80%);
+  mask-image:radial-gradient(ellipse at 50% 38%,#000 20%,transparent 80%);
+}
 </style>
 </head>
 <body>
