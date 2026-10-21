@@ -62,7 +62,7 @@ p{margin:0}
 .emblem.is-settling .emblem-still,.emblem.is-settling .emblem-motion{transition:opacity .3s ease}
 .emblem.is-settling .emblem-still{opacity:1}
 .emblem.is-settling .emblem-motion{opacity:0}
-@media (prefers-reduced-motion:reduce){.emblem .emblem-motion{display:none}.emblem .emblem-still{opacity:1;transition:none}}
+
 
 /* stat band: headline + two bars drawn to scale */
 .stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
@@ -269,7 +269,7 @@ footer{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;paddin
 }
 @media (max-width:760px){
   .hero{grid-template-columns:minmax(0,1fr)}
-  .emblem{display:none}
+  .emblem{display:block;order:-1;width:min(52vw,14rem)}
   .how,.two{grid-template-columns:minmax(0,1fr)}
   .top nav{display:none}
 }
@@ -336,7 +336,7 @@ body::before{
   </div>
   <div class="emblem" aria-hidden="true">
     <img class="emblem-still" src="logo.svg" alt="" width="1254" height="1254">
-    <video class="emblem-motion" data-src="media/logo-intro.mp4" muted playsinline preload="none" disablepictureinpicture tabindex="-1"></video>
+    <video class="emblem-motion" data-src="media/logo-intro.mp4" muted playsinline preload="none" disablepictureinpicture tabindex="-1" aria-hidden="true"></video>
   </div>
 </section>
 
@@ -550,8 +550,7 @@ body::before{
 
 (function(){
   var emblem=document.querySelector('.emblem'),video=emblem&&emblem.querySelector('video');
-  var reduced=matchMedia('(prefers-reduced-motion: reduce)'),desktop=matchMedia('(min-width: 761px)');
-  if(!video||reduced.matches||!desktop.matches||(navigator.connection&&navigator.connection.saveData))return;
+  if(!video)return;
   var finished=false,frame;
   function finish(){
     if(finished)return;
@@ -559,10 +558,7 @@ body::before{
     if(frame&&video.cancelVideoFrameCallback)video.cancelVideoFrameCallback(frame);
     emblem.classList.remove('is-playing','is-settling');
     video.pause();video.removeAttribute('src');video.load();
-    reduced.removeEventListener('change',preferenceChanged);
-    desktop.removeEventListener('change',preferenceChanged);
   }
-  function preferenceChanged(){if(reduced.matches||!desktop.matches)finish()}
   function settle(time){
     if(!finished&&isFinite(video.duration)&&time>=video.duration-.4)emblem.classList.add('is-settling');
   }
@@ -575,12 +571,20 @@ body::before{
   video.addEventListener('timeupdate',function(){settle(video.currentTime)});
   video.addEventListener('ended',finish,{once:true});
   video.addEventListener('error',finish,{once:true});
-  reduced.addEventListener('change',preferenceChanged);
-  desktop.addEventListener('change',preferenceChanged);
-  video.muted=true;video.src=video.dataset.src;
-  if(video.requestVideoFrameCallback)frame=video.requestVideoFrameCallback(nextFrame);
-  var play=video.play();
-  if(play&&play.catch)play.catch(finish);
+  function start(){
+    if(finished)return;
+    video.muted=true;video.src=video.dataset.src;
+    if(video.requestVideoFrameCallback)frame=video.requestVideoFrameCallback(nextFrame);
+    var play=video.play();
+    if(play&&play.catch)play.catch(finish);
+  }
+  // Begin when the page is visible, so a background-opened page does not finish unseen.
+  if(document.visibilityState==='hidden'){
+    document.addEventListener('visibilitychange',function onVisible(){
+      if(document.visibilityState==='hidden')return;
+      document.removeEventListener('visibilitychange',onVisible);start();
+    });
+  }else start();
 })();
 </script>
 <script data-goatcounter="https://protocolis.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
