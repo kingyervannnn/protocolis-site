@@ -27,7 +27,7 @@
   color-scheme:dark;
 }
 *{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+html{background:var(--bg);-webkit-text-size-adjust:100%;scroll-behavior:smooth}
 body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size:17px;line-height:1.6;
   padding-left:max(var(--gut),env(safe-area-inset-left,0px));padding-right:max(var(--gut),env(safe-area-inset-right,0px))}
 a{color:inherit}
@@ -53,7 +53,16 @@ p{margin:0}
 .chip{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;border:1px solid var(--rule);padding:.4rem .7rem}
 .fk{font-family:var(--font-mono);font-size:.68rem;letter-spacing:.04em;color:var(--fg-2);margin-top:1rem;opacity:.8}
 .chip.on{border-color:var(--accent);color:var(--accent)}
-.emblem{width:100%;max-width:30rem;height:auto;justify-self:center;display:block}
+.emblem{position:relative;width:100%;max-width:30rem;aspect-ratio:1;justify-self:center;display:block;overflow:hidden}
+.emblem-still{display:block;width:100%;height:100%;position:relative;z-index:1}
+/* Match the final video silhouette to the SVG's bounds; both share one square. */
+.emblem-motion{position:absolute;left:-.648854%;top:-.079187%;width:101.446281%;height:100.311284%;max-width:none;object-fit:fill;opacity:0;mix-blend-mode:lighten;pointer-events:none}
+.emblem.is-playing .emblem-still{opacity:0}
+.emblem.is-playing .emblem-motion{opacity:1}
+.emblem.is-settling .emblem-still,.emblem.is-settling .emblem-motion{transition:opacity .3s ease}
+.emblem.is-settling .emblem-still{opacity:1}
+.emblem.is-settling .emblem-motion{opacity:0}
+@media (prefers-reduced-motion:reduce){.emblem .emblem-motion{display:none}.emblem .emblem-still{opacity:1;transition:none}}
 
 /* stat band: headline + two bars drawn to scale */
 .stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
@@ -325,7 +334,10 @@ body::before{
     </div>
     <p class="fk">First known: to the inventor's knowledge and the public systems reviewed.</p>
   </div>
-  <img class="emblem" src="logo.svg" alt="">
+  <div class="emblem" aria-hidden="true">
+    <img class="emblem-still" src="logo.svg" alt="" width="1254" height="1254">
+    <video class="emblem-motion" data-src="media/logo-intro.mp4" muted playsinline preload="none" disablepictureinpicture tabindex="-1"></video>
+  </div>
 </section>
 
 <section class="stats" aria-label="Headline results">
@@ -534,6 +546,41 @@ body::before{
   t.addEventListener('pointerup',function(){r.classList.remove('drag')});
   r.addEventListener('pointerdown',function(e){if(e.target!==r)return;var vh=innerHeight,sh=de.scrollHeight;scrollTo({top:(e.clientY/vh)*(sh-vh),behavior:'smooth'})});
   size();if(document.fonts)document.fonts.ready.then(size);
+})();
+
+(function(){
+  var emblem=document.querySelector('.emblem'),video=emblem&&emblem.querySelector('video');
+  var reduced=matchMedia('(prefers-reduced-motion: reduce)'),desktop=matchMedia('(min-width: 761px)');
+  if(!video||reduced.matches||!desktop.matches||(navigator.connection&&navigator.connection.saveData))return;
+  var finished=false,frame;
+  function finish(){
+    if(finished)return;
+    finished=true;
+    if(frame&&video.cancelVideoFrameCallback)video.cancelVideoFrameCallback(frame);
+    emblem.classList.remove('is-playing','is-settling');
+    video.pause();video.removeAttribute('src');video.load();
+    reduced.removeEventListener('change',preferenceChanged);
+    desktop.removeEventListener('change',preferenceChanged);
+  }
+  function preferenceChanged(){if(reduced.matches||!desktop.matches)finish()}
+  function settle(time){
+    if(!finished&&isFinite(video.duration)&&time>=video.duration-.4)emblem.classList.add('is-settling');
+  }
+  function nextFrame(now,metadata){
+    if(finished)return;
+    settle(metadata.mediaTime);
+    frame=video.requestVideoFrameCallback(nextFrame);
+  }
+  video.addEventListener('playing',function(){if(!finished)emblem.classList.add('is-playing')},{once:true});
+  video.addEventListener('timeupdate',function(){settle(video.currentTime)});
+  video.addEventListener('ended',finish,{once:true});
+  video.addEventListener('error',finish,{once:true});
+  reduced.addEventListener('change',preferenceChanged);
+  desktop.addEventListener('change',preferenceChanged);
+  video.muted=true;video.src=video.dataset.src;
+  if(video.requestVideoFrameCallback)frame=video.requestVideoFrameCallback(nextFrame);
+  var play=video.play();
+  if(play&&play.catch)play.catch(finish);
 })();
 </script>
 <script data-goatcounter="https://protocolis.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
