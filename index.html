@@ -59,8 +59,8 @@ p{margin:0}
 .emblem-motion{position:absolute;left:-.610208%;top:-.456594%;width:101.226493%;height:100.848940%;max-width:none;object-fit:fill;opacity:0;mix-blend-mode:lighten;pointer-events:none;-webkit-mask-image:linear-gradient(transparent,#000 var(--edge-fade,6%),#000 calc(100% - var(--edge-fade,6%)),transparent);mask-image:linear-gradient(transparent,#000 var(--edge-fade,6%),#000 calc(100% - var(--edge-fade,6%)),transparent)}
 .emblem.is-playing .emblem-still{opacity:0}
 .emblem.is-playing .emblem-motion{opacity:1}
-.emblem.is-settling .emblem-still{transition:opacity .6s ease}
-.emblem.is-settling .emblem-motion{transition:opacity .5s ease .15s}
+.emblem.is-settling .emblem-still{transition:opacity .5s ease}
+.emblem.is-settling .emblem-motion{transition:opacity .4s ease .1s}
 .emblem.is-settling .emblem-still{opacity:1}
 .emblem.is-settling .emblem-motion{opacity:0}
 
@@ -566,7 +566,7 @@ body::before{
     video.style.setProperty('--edge-fade',edge+'%');
     // Preserve the opening pace, then smoothly accelerate the formation of the logo.
     var progress=Math.max(0,Math.min(1,(time-1.5)/4));
-    var rate=1.2+.65*progress*progress*(3-2*progress);
+    var rate=3.4+1.8*progress*progress*(3-2*progress);
     if(Math.abs(video.playbackRate-rate)>.02)video.playbackRate=rate;
   }
   function settle(){
@@ -575,7 +575,7 @@ body::before{
     video.style.setProperty('--edge-fade','0%');
     // Keep the last decoded frame until both fades complete. The SVG comes in first.
     emblem.classList.add('is-settling');
-    settleTimer=setTimeout(finish,800);
+    settleTimer=setTimeout(finish,650);
   }
   function nextFrame(now,metadata){
     if(finished)return;
@@ -591,7 +591,7 @@ body::before{
   video.addEventListener('error',finish,{once:true});
   function start(){
     if(finished)return;
-    video.muted=true;video.defaultPlaybackRate=1.2;video.playbackRate=1.2;video.src=video.dataset.src;
+    video.muted=true;video.defaultPlaybackRate=3.4;video.playbackRate=3.4;video.src=video.dataset.src;
     if(video.requestVideoFrameCallback)frame=video.requestVideoFrameCallback(nextFrame);
     var play=video.play();
     if(play&&play.catch)play.catch(finish);
