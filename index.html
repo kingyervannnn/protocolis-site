@@ -159,6 +159,17 @@ p{margin:0}
 .mx-legend span{display:inline-flex;align-items:center;gap:.5rem}
 .mx-legend i{display:inline-block;width:1.4rem;height:.5rem;background:var(--dim);opacity:.55}
 .mx-legend i.us{background:var(--accent);opacity:1}
+.fb-wrap{margin-top:1.4rem;border-top:1px solid var(--fg-2)}
+.fb{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}
+.fb-col{padding:1.3rem 1.25rem 1.5rem 0;border-bottom:1px solid var(--rule);display:grid;gap:.6rem;align-content:start;min-width:0}
+.fb-col+.fb-col{padding-left:1.25rem;border-left:1px solid var(--rule)}
+.fb-col>b{font-family:var(--font-display);font-size:1.05rem;font-weight:600;letter-spacing:.03em;color:var(--fg);margin-bottom:.5rem}
+.fb-col>b small{display:block;font-family:var(--font-mono);font-size:.66rem;letter-spacing:.06em;color:var(--fg-2);text-transform:uppercase;margin-top:.3rem;font-weight:500}
+.fb .bar{grid-template-columns:9.9rem 1fr}
+.fb .bar.us.s .fill{opacity:.55}
+.mx-legend i.us.s{opacity:.55}
+@media (max-width:760px){.fb{grid-template-columns:minmax(0,1fr)}.fb-col{padding-right:0}.fb-col+.fb-col{padding-left:0;border-left:0}.fb .bar{grid-template-columns:7.2rem 1fr}}
+.fb-h{font-family:var(--font-display);font-size:1.15rem;font-weight:600;letter-spacing:.02em;margin-top:2.6rem}
 .cx-h{font-family:var(--font-display);font-size:clamp(1.3rem,2.2vw,1.8rem);margin-top:3.5rem;letter-spacing:.02em}
 .cx-wrap{overflow-x:auto}
 .cx{width:100%;border-collapse:collapse;margin-top:1.4rem;min-width:36rem}
@@ -419,27 +430,50 @@ body::before{
     <p class="note">Which Browser Use mode is the stronger opponent depends on the model: on the small model its tools mode completes more and runs faster than its own agent; on Grok and gpt-6.1-sol its own agent is the faster one. Protocolis is measured against both and is ahead or level against whichever is stronger on each metric. Held-out tasks are Online-Mind2Web tasks never used in development; development tasks are 39 live websites and component demos used across every round. Simple and complex are split by step count. Browser Use 0.13.10 as its own agent and 0.13.13 in both modes. Full results, build hashes and the reproduction kit are available under NDA.</p>
 
     <h3 class="cx-h">Fast and Ultrafast: a choice model takes the routine steps.</h3>
-    <div class="cx-wrap">
-    <table class="cx fx">
-      <thead><tr><th scope="col">Per completed task, 20 fresh public tasks &times; 2</th><th scope="col">Completed</th><th scope="col">Seconds</th><th scope="col">Large-model tokens</th></tr></thead>
-      <tbody>
-        <tr><th scope="row">Protocolis Fast<span>APC + TypeSafe choice model + Grok 4.6</span></th><td data-k="Completed"><b>40/40</b></td><td data-k="Seconds per completed task"><b>23.4</b></td><td data-k="Large-model tokens per completed task"><b>11.3k</b></td></tr>
-        <tr><th scope="row">Protocolis Standard<span>APC + Grok 4.6</span></th><td data-k="Completed">40/40</td><td data-k="Seconds per completed task">31.5</td><td data-k="Large-model tokens per completed task">15.9k</td></tr>
-        <tr><th scope="row">Browser Use flash mode<span>Grok 4.6</span></th><td data-k="Completed">40/40</td><td data-k="Seconds per completed task">30.1</td><td data-k="Large-model tokens per completed task">42.4k</td></tr>
-        <tr><th scope="row">Browser Use agent<span>Grok 4.6</span></th><td data-k="Completed">40/40</td><td data-k="Seconds per completed task">37.7</td><td data-k="Large-model tokens per completed task">56.8k</td></tr>
-      </tbody>
-    </table>
+    <div class="fb-wrap">
+    <div class="fb">
+      <div class="fb-col"><b>Completed<small>of 40 runs</small></b>
+      <div class="bar us full"><span>Protocolis Fast</span><span class="track" style="--w:100%"><span class="fill" style="width:100%"></span><span class="val">40</span></span></div>
+      <div class="bar us s full"><span>Protocolis Standard</span><span class="track" style="--w:100%"><span class="fill" style="width:100%"></span><span class="val">40</span></span></div>
+      <div class="bar full"><span>Browser Use flash</span><span class="track" style="--w:100%"><span class="fill" style="width:100%"></span><span class="val">40</span></span></div>
+      <div class="bar full"><span>Browser Use agent</span><span class="track" style="--w:100%"><span class="fill" style="width:100%"></span><span class="val">40</span></span></div>
+      </div>
+      <div class="fb-col"><b>Seconds<small>per completed task</small></b>
+      <div class="bar us"><span>Protocolis Fast</span><span class="track" style="--w:62.1%"><span class="fill" style="width:62.1%"></span><span class="val">23.4</span></span></div>
+      <div class="bar us s"><span>Protocolis Standard</span><span class="track" style="--w:83.6%"><span class="fill" style="width:83.6%"></span><span class="val">31.5</span></span></div>
+      <div class="bar"><span>Browser Use flash</span><span class="track" style="--w:79.8%"><span class="fill" style="width:79.8%"></span><span class="val">30.1</span></span></div>
+      <div class="bar full"><span>Browser Use agent</span><span class="track" style="--w:100%"><span class="fill" style="width:100%"></span><span class="val">37.7</span></span></div>
+      </div>
+      <div class="fb-col"><b>Large-model tokens<small>per completed task</small></b>
+      <div class="bar us"><span>Protocolis Fast</span><span class="track" style="--w:19.9%"><span class="fill" style="width:19.9%"></span><span class="val">11.3k</span></span></div>
+      <div class="bar us s"><span>Protocolis Standard</span><span class="track" style="--w:28%"><span class="fill" style="width:28%"></span><span class="val">15.9k</span></span></div>
+      <div class="bar"><span>Browser Use flash</span><span class="track" style="--w:74.6%"><span class="fill" style="width:74.6%"></span><span class="val">42.4k</span></span></div>
+      <div class="bar full"><span>Browser Use agent</span><span class="track" style="--w:100%"><span class="fill" style="width:100%"></span><span class="val">56.8k</span></span></div>
+      </div>
+    </div>
+    <div class="mx-legend"><span><i class="us"></i>Protocolis Fast · APC + TypeSafe choice model + Grok 4.6</span><span><i class="us s"></i>Protocolis Standard · APC + Grok 4.6</span><span><i></i>Browser Use flash mode and agent · Grok 4.6</span><span>20 fresh public tasks × 2</span></div>
     </div>
     <p class="note">Fast: TypeSafe chooses from the compiled operations where it is sure, Protocolis executes and checks each step, the agent's model takes the rest, so a doubtful choice costs no completion. Against Standard, 26% less time and 29% fewer large-model tokens per completed task; against Browser Use's agent, 38% and 80% less; against its flash mode, 22% and 73% less. Every written answer was correct in every arm. On long open-ended tasks Fast runs level with Standard.</p>
-    <div class="cx-wrap">
-    <table class="cx fx">
-      <thead><tr><th scope="col">Ultrafast: no large model at all, same 40 task runs</th><th scope="col">Completed</th><th scope="col">Seconds per completed task</th><th scope="col">Choice-model calls</th></tr></thead>
-      <tbody>
-        <tr><th scope="row">Protocolis Ultrafast<span>APC + TypeSafe, defaults</span></th><td data-k="Completed"><b>30/40</b></td><td data-k="Seconds per completed task"><b>12.6</b></td><td data-k="Choice-model calls per completed task"><b>2.7</b></td></tr>
-        <tr><th scope="row">Protocolis Ultrafast, lean<span>arrival motion and settle waits off; every step still checked</span></th><td data-k="Completed">29/40</td><td data-k="Seconds per completed task"><b>10.0</b></td><td data-k="Choice-model calls per completed task">2.9</td></tr>
-        <tr><th scope="row">Jev Ultrafast<span>Browser Use's open-source agent on the same choice model</span></th><td data-k="Completed">28/40</td><td data-k="Seconds per completed task">16.6</td><td data-k="Choice-model calls per completed task">8.7</td></tr>
-      </tbody>
-    </table>
+    <h4 class="fb-h">Ultrafast: no large model at all, the same 40 runs.</h4>
+    <div class="fb-wrap">
+    <div class="fb">
+      <div class="fb-col"><b>Completed<small>of 40 runs</small></b>
+      <div class="bar us"><span>Protocolis Ultrafast</span><span class="track" style="--w:75%"><span class="fill" style="width:75%"></span><span class="val">30</span></span></div>
+      <div class="bar us s"><span>Ultrafast, lean</span><span class="track" style="--w:72.5%"><span class="fill" style="width:72.5%"></span><span class="val">29</span></span></div>
+      <div class="bar"><span>Jev Ultrafast</span><span class="track" style="--w:70%"><span class="fill" style="width:70%"></span><span class="val">28</span></span></div>
+      </div>
+      <div class="fb-col"><b>Seconds<small>per completed task</small></b>
+      <div class="bar us"><span>Protocolis Ultrafast</span><span class="track" style="--w:75.9%"><span class="fill" style="width:75.9%"></span><span class="val">12.6</span></span></div>
+      <div class="bar us s"><span>Ultrafast, lean</span><span class="track" style="--w:60.2%"><span class="fill" style="width:60.2%"></span><span class="val">10.0</span></span></div>
+      <div class="bar full"><span>Jev Ultrafast</span><span class="track" style="--w:100%"><span class="fill" style="width:100%"></span><span class="val">16.6</span></span></div>
+      </div>
+      <div class="fb-col"><b>Choice-model calls<small>per completed task</small></b>
+      <div class="bar us"><span>Protocolis Ultrafast</span><span class="track" style="--w:31%"><span class="fill" style="width:31%"></span><span class="val">2.7</span></span></div>
+      <div class="bar us s"><span>Ultrafast, lean</span><span class="track" style="--w:33.3%"><span class="fill" style="width:33.3%"></span><span class="val">2.9</span></span></div>
+      <div class="bar full"><span>Jev Ultrafast</span><span class="track" style="--w:100%"><span class="fill" style="width:100%"></span><span class="val">8.7</span></span></div>
+      </div>
+    </div>
+    <div class="mx-legend"><span><i class="us"></i>Protocolis Ultrafast · APC + TypeSafe, defaults</span><span><i class="us s"></i>Lean · arrival motion and settle waits off; every step still checked</span><span><i></i>Jev Ultrafast · Browser Use's open-source agent on the same choice model</span></div>
     </div>
     <p class="note">Same choice model, different substrate. Protocolis's misses were all declines to act when unsure; Jev's were 5 blocked, 2 declared done on the wrong page, 2 at its own caps and 2 stalled on a dialog. On the runs both completed, lean Protocolis was 26% faster than Jev; typical completed task 7.4 s lean, 7.3 s Jev, 9.7 s defaults. In another run of the same tasks Jev took 10.0 s per completed task, so its figure swings with its loops; Protocolis's did not. One session per read, arms rotating per task; completion is the same final-page check for every arm plus the written answer against a gold where an arm writes one; every attempt counted.</p>
   </div>
