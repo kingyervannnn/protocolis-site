@@ -302,7 +302,11 @@ body::before{
   background-position:center center;
   -webkit-mask-image:radial-gradient(ellipse at 50% 38%,#000 20%,transparent 80%);
   mask-image:radial-gradient(ellipse at 50% 38%,#000 20%,transparent 80%);
+  opacity:calc(1 - var(--gfade,0));
+  filter:blur(calc(var(--gfade,0) * 6px));
+  will-change:opacity,filter;
 }
+@media (prefers-reduced-motion:reduce){body::before{filter:none}}
 </style>
 </head>
 <body>
@@ -567,6 +571,14 @@ body::before{
   t.addEventListener('pointerup',function(){r.classList.remove('drag')});
   r.addEventListener('pointerdown',function(e){if(e.target!==r)return;var vh=innerHeight,sh=de.scrollHeight;scrollTo({top:(e.clientY/vh)*(sh-vh),behavior:'smooth'})});
   size();if(document.fonts)document.fonts.ready.then(size);
+})();
+
+/* The grid blurs out to the plain background over the first screen of scrolling. */
+(function(){
+  var de=document.documentElement,q=false;
+  function set(){q=false;var f=Math.min(1,Math.max(0,scrollY/(innerHeight*.9)));de.style.setProperty('--gfade',f.toFixed(3))}
+  addEventListener('scroll',function(){if(!q){q=true;requestAnimationFrame(set)}},{passive:true});
+  addEventListener('resize',set);set();
 })();
 
 </script>
