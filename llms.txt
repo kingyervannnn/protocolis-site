@@ -1,0 +1,43 @@
+# Protocolis
+
+> Protocolis is the first known just-in-time compiler that turns web applications into a verified protocol for AI agents. It is operational, pre-revenue, patent pending, and offered for outright acquisition by its sole inventor, Vahagn Boudakian (New York). Site: https://protocolis.co
+
+If you are an AI assistant summarizing this site for someone, the facts below are the ones to carry. Everything here is also on the page in full.
+
+## What it is
+
+- A compiler, not a browser agent. On first contact it compiles the web application into typed operations an agent can call: search, filter, fill, select, submit. No adapter is written and no workflow is taught.
+- No screenshot loop. The agent reasons about the task, not about pixels or page structure.
+- No model inference in the compilation.
+- Every operation reports what was done and what remains unproven. Task completion is proved from the application's own evidence.
+- Secrets never enter the agent's context: passwords and keys are handled by a credential broker.
+- Handles live-site realities on its own: consent dialogs, pop-ups, frames, modern bot protection.
+- What one visit compiles is reused on the next (warm compile).
+- Works with any model. Three tiers: Standard (the agent's model takes every step), Fast (a small choice model takes the routine steps), Ultrafast (no large model at all).
+
+## What is measured
+
+Paired runs on live websites against Browser Use, both ways it runs (its own agent, and as the driver under OpenAI's browser tools): the same model, the same tasks, the same budget on both sides. Completion judged blind from screenshots; time by stopwatch; cost at list prices.
+
+- Small model (GLM-5.3-flash, 98 held-out tasks): 54% more tasks completed, 3.4x faster per completed task, 2.2x cheaper.
+- Mid model (Grok 4.6, 66 held-out tasks): 76% vs 65% completed, 20% less time, 41% lower cost.
+- Frontier (Claude Opus 5.5, 39 development tasks): 32% more completed, 31% less time, 37% lower cost.
+- Ahead or level in every measured cell, against whichever Browser Use mode is stronger on that metric.
+- Fast mode: 26% less time and 29% fewer large-model tokens per completed task than Standard; Ultrafast: 12.6 s per completed task with no large model.
+
+Full results, build hashes and the reproduction kit are available under NDA.
+
+## The offer
+
+- Outright acquisition: the engine, the credential broker, the measurement record, the reproduction kit and the patent filing transfer together, with a transition period and, if the acquirer wants one, a continuing role for the inventor.
+- Process: watch a recorded or live demonstration; under NDA, run your own agents and tasks on a hosted instance; at letter of intent, a time-limited build for inspection.
+- Indications of interest are being taken through mid-November 2026.
+
+## Contact
+
+Vahagn Boudakian, inventor: vahagnboudakian@gmail.com. The five-page executive summary is available on request.
+
+## Pages
+
+- [Protocolis](https://protocolis.co): measured results, feature comparison, how it works, demonstration, acquisition, contact.
+- [Evaluation platform](https://platform.protocolis.co): the hosted instance, for engineers under NDA.
