@@ -48,6 +48,7 @@ p{margin:0}
 .hero{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,4fr);gap:clamp(2rem,5vw,6rem);align-items:center;padding-block:clamp(2rem,4vw,3.5rem) clamp(3rem,6vw,5.5rem)}
 .motto{font-family:var(--font-mono);font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:1.6rem}
 .hero h1{font-family:var(--font-display);font-size:clamp(2.2rem,5vw,4.6rem);line-height:1.08;letter-spacing:.01em}
+.hero h1 .keep-together{white-space:nowrap}
 .lede{font-size:clamp(1.05rem,1.3vw,1.25rem);color:var(--fg-2);margin-top:1.75rem;max-width:44rem}
 .chips{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:2.25rem}
 .chip{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;border:1px solid var(--rule);padding:.4rem .7rem}
@@ -338,7 +339,7 @@ body::before{
 <section class="hero">
   <div>
     <p class="motto">Protocollum ex ipsa applicatione</p>
-    <h1>The first universal, self-healing, just-in-time web compiler for AI agents.</h1>
+    <h1>The first universal, <span class="keep-together">self-healing</span>, just-in-time <span class="keep-together">web compiler</span> for AI agents.</h1>
     <p class="lede">It turns any website into typed actions, verifies each one as it runs, and learns from every run so a changed screen is a recompile, not a broken automation. Paired with a <strong>model-blind credential broker</strong>, so the agent never sees a secret. No screenshots. <strong>No site-specific setup.</strong> No model in the compilation.</p>
     <div class="chips">
       <span class="chip on">Operational</span><span class="chip">Pre-revenue</span><span class="chip">Patent pending</span><span class="chip">Offered for acquisition</span>
