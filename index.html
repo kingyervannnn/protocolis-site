@@ -265,6 +265,8 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-off
 footer{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;padding-block:1.75rem 2.5rem;font-family:var(--font-mono);font-size:.75rem;color:var(--fg-2)}
 
 @media (min-width:761px){
+  /* Align the motto with the badge text, allowing for badge padding and line height. */
+  .hero-brand{align-self:end;padding-bottom:calc(.352rem + 1px)}
   .hero h1{font-size:clamp(2.266rem,4.326vw,4.002rem)}
   .hero h1 .keep-together-desktop{white-space:nowrap}
   .sec h2{font-size:clamp(1.596rem,3.024vw,2.772rem)}
