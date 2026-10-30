@@ -616,6 +616,33 @@ body::before{
   size();if(document.fonts)document.fonts.ready.then(size);
 })();
 
+/* Keep the desktop just-in-time phrase near the top with a bounded size adjustment. */
+(function(){
+  var heading=document.querySelector('.hero h1');
+  var phrase=heading&&heading.querySelector('.keep-together-desktop');
+  if(!phrase)return;
+  var queued=false;
+  function fit(){
+    queued=false;
+    heading.style.removeProperty('font-size');
+    if(!matchMedia('(min-width:761px)').matches)return;
+    var base=parseFloat(getComputedStyle(heading).fontSize);
+    var first=document.createRange();
+    first.setStart(heading.firstChild,0);first.setEnd(heading.firstChild,1);
+    function onThirdLine(){
+      var lineHeight=parseFloat(getComputedStyle(heading).lineHeight);
+      return phrase.getBoundingClientRect().top-first.getBoundingClientRect().top>lineHeight*1.5;
+    }
+    for(var step=1;step<=6&&onThirdLine();step++){
+      heading.style.fontSize=(base*(1-step/100)).toFixed(3)+'px';
+    }
+  }
+  function schedule(){if(!queued){queued=true;requestAnimationFrame(fit)}}
+  addEventListener('resize',schedule,{passive:true});
+  if(document.fonts)document.fonts.ready.then(schedule);
+  schedule();
+})();
+
 /* The grid blurs out to the plain background over the first screen of scrolling. */
 (function(){
   var de=document.documentElement,q=false;
