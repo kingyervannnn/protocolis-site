@@ -52,7 +52,7 @@ p{margin:0}
 .lede{font-size:clamp(1.05rem,1.3vw,1.25rem);color:var(--fg-2);margin-top:1.75rem;max-width:44rem}
 .chips{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:2.25rem}
 .chip{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;border:1px solid var(--rule);padding:.4rem .7rem}
-.fk{font-family:var(--font-mono);font-size:.68rem;letter-spacing:.04em;color:var(--fg-2);margin-top:1rem;opacity:.8}
+footer .fk{flex-basis:100%;font-family:var(--font-mono);font-size:.68rem;letter-spacing:.04em;color:var(--fg-2);opacity:.8}
 .chip.on{border-color:var(--accent);color:var(--accent)}
 .chip.patent-status{border-color:rgba(236,232,223,.6)}
 .emblem{position:relative;width:100%;max-width:30rem;aspect-ratio:1;justify-self:center;display:block;overflow:hidden}
@@ -345,7 +345,6 @@ body::before{
     <div class="chips">
       <span class="chip on">Operational · Offered for acquisition</span><span class="chip patent-status">Patents pending</span>
     </div>
-    <p class="fk">First: to the inventor's knowledge and the public systems reviewed. Self-healing: learned verification.</p>
   </div>
   <div class="emblem" aria-hidden="true">
     <img class="emblem-still" src="logo.svg" alt="" width="1254" height="1254">
@@ -571,8 +570,9 @@ body::before{
 </section>
 
 <footer>
-  <span>protocolis<span class="cursor">_</span> · patent pending</span>
+  <span>protocolis<span class="cursor">_</span> · patents pending</span>
   <span>new york</span>
+  <p class="fk">First: to the inventor's knowledge and the public systems reviewed.</p>
 </footer>
 
 <script>
