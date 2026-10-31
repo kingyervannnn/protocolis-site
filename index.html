@@ -245,9 +245,11 @@ footer .fk{flex-basis:100%;font-family:var(--font-mono);font-size:.68rem;letter-
 .carousel .track::-webkit-scrollbar{display:none}
 .carousel .slide{flex:0 0 100%;scroll-snap-align:start;margin:0;min-width:0}
 .carousel .slide .frame{margin-top:0}
-.carousel .slide{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:1.75rem;align-items:center}
-.carousel .slide .cap{margin:0}
-@media (max-width:900px){.carousel .slide{grid-template-columns:minmax(0,1fr);gap:.9rem}}
+.demo-grid{display:grid;grid-template-columns:minmax(0,2.4fr) minmax(0,1fr);gap:2.25rem;align-items:start;margin-top:2.5rem}
+.demo-grid .carousel{margin-top:0}
+.demo-grid > .sub{margin:0}
+.carousel .slide .cap{margin-top:.8rem}
+@media (max-width:900px){.demo-grid{grid-template-columns:minmax(0,1fr);gap:1.25rem}.demo-grid > .sub{order:-1}}
 .cnav{display:flex;align-items:center;justify-content:center;gap:1rem;margin-top:1rem}
 .cnav button{background:none;border:1px solid var(--rule);color:var(--fg);font-family:var(--font-mono);padding:.35rem .8rem;cursor:pointer}
 .cnav button:hover{border-color:var(--accent);color:var(--accent)}
@@ -348,8 +350,8 @@ body::before{
 <header class="top">
   <a class="brand" href="#" aria-label="Protocolis"><img src="glyph.svg" alt=""><b aria-hidden="true">rotocolis</b></a>
   <nav aria-label="Sections">
-    <a href="#measured">measured</a>
     <a href="#demo">demonstration</a>
+    <a href="#measured">measured</a>
     <a href="#compare">compare</a>
     <a href="#how">how it works</a>
     <a href="#acquisition">acquisition</a>
@@ -382,9 +384,48 @@ body::before{
   <div class="stat"><p class="lab">Ultrafast</p><div class="n">24%<small>faster per task, 3× fewer model calls, more tasks completed, no large model</small></div><div class="bars"><div class="bar us"><span>Protocolis</span><span class="track" style="--w:75.9%"><span class="fill" style="width:75.9%"></span><span class="val">12.6 s</span></span></div><div class="bar full"><span>Jev</span><span class="track" style="--w:100%"><span class="fill" style="width:100%"></span><span class="val">16.6 s</span></span></div></div><p class="c">vs Jev Ultrafast · Browser Use's agent on the same choice model · 40 runs</p></div>
 </section>
 
+<section class="sec" id="demo">
+  <div class="rail"><b>01</b>demonstration</div>
+  <div>
+    <h2>Same task. Same model. Head to head.</h2>
+    <div class="demo-grid">
+    <div class="carousel" aria-roledescription="carousel">
+        <div class="track" tabindex="0">
+        <figure class="slide" data-i="0">
+          <div class="frame"><video controls preload="none" playsinline src="media/race-opus.mp4" poster="media/race-opus.jpg"></video></div>
+          <figcaption class="cap"><b>Frontier: Claude Code + Opus 5.5.</b> Protocolis (lean) 29 s, 8 model calls, $0.164. Browser Harness 40 s, 10 model calls, $0.197. Both answers correct.</figcaption>
+        </figure>
+        <figure class="slide" data-i="1">
+          <div class="frame"><video controls preload="none" playsinline src="media/race-astra.mp4" poster="media/race-astra.jpg"></video></div>
+          <figcaption class="cap"><b>Codex + GPT-6 Astra.</b> Protocolis (lean) 18 s, 5 model calls, $0.334. Browser Harness 20 s, 7 model calls, $0.367. Both answers correct.</figcaption>
+        </figure>
+        <figure class="slide" data-i="2">
+          <div class="frame"><video controls preload="none" playsinline src="media/race-sol.mp4" poster="media/race-sol.jpg"></video></div>
+          <figcaption class="cap"><b>Codex + GPT-6.1 Sol.</b> Protocolis (lean) 19 s, 5 model calls, $0.055. Browser Harness 20 s, 7 model calls, $0.072. Both answers correct.</figcaption>
+        </figure>
+        <figure class="slide" data-i="3">
+          <div class="frame"><video controls preload="none" playsinline src="media/race-luna.mp4" poster="media/race-luna.jpg"></video></div>
+          <figcaption class="cap"><b>Browser Use's own eval setup: Codex + GPT-6 Luna.</b> Protocolis (Fast mode) 36 s, 7 model calls, $0.0040. Browser Harness 41 s, 15 model calls, $0.0074. Both answers correct.</figcaption>
+        </figure>
+        <figure class="slide" data-i="4">
+          <div class="frame"><video controls preload="none" playsinline src="media/race-glm.mp4" poster="media/race-glm.jpg"></video></div>
+          <figcaption class="cap"><b>Small model: GLM-5.3-flash.</b> Protocolis 52 s, 7 model calls, $0.0024. Browser Harness 2 min 12 s, 16 model calls, $0.0061. Both answers correct.</figcaption>
+        </figure>
+        <figure class="slide" data-i="5">
+          <div class="frame"><video controls preload="none" playsinline src="media/demo.mp4" poster="media/demo-poster.jpg"></video></div>
+          <figcaption class="cap"><b>Against Browser Use's own agent: GLM-5.3-flash.</b> Shown at 3.5× speed. A task drawn at random from the held-out set. Protocolis 172 s for $0.010; Browser Use's own agent (0.13.10) 512 s for $0.030. Both answers passed.</figcaption>
+        </figure>
+        </div>
+        <div class="cnav"><button class="cprev" aria-label="Previous video">&larr;</button><span class="cdots"></span><button class="cnext" aria-label="Next video">&rarr;</button></div>
+      </div>
+    <p class="sub">Protocolis against Browser Harness, Browser Use's newest tool: the same coding agent, model and prompt in both, each driving a fresh headless Chrome on one Mac, recorded in real time and unedited, played here at 4× speed; the clocks on screen show real time. The task: find the week's top Show HN on Hacker News and report its title, points, comments and submitter. Answers checked against Hacker News's own API and by Browser Use's judge model. Selected runs, one per model. Lean is a single engine setting, settle waits off, with every step still checked. Browser Harness is designed to drive your own signed-in Chrome; this task needs no sign-in.</p>
+    </div>
+  </div>
+</section>
+
 <section class="sec" id="measured">
   <div class="head">
-    <div class="rail"><b>01</b>measured</div>
+    <div class="rail"><b>02</b>measured</div>
     <h2>Three models. Both ways to run Browser Use. Ahead or level in every cell.</h2>
     <p class="sub">Measured against Browser Use, the most widely used open-source browser agent and the standard reference for this category. Paired runs on live websites: the same model, the same tasks and the same budget on both sides. Completion is judged blind by WebJudge from the screenshots. Time is a stopwatch from the task's arrival to the answer. Cost is the metered tokens at the provider's list prices. Each cell names its task set.</p>
   </div>
@@ -501,43 +542,6 @@ body::before{
     <div class="mx-legend"><span><i class="us"></i>Protocolis Ultrafast · APC + TypeSafe, defaults</span><span><i class="us s"></i>Lean · arrival motion and settle waits off; every step still checked</span><span><i></i>Jev Ultrafast · Browser Use's open-source agent on the same choice model</span></div>
     </div>
     <p class="note">Same choice model, different substrate. Protocolis's misses were all declines to act when unsure; Jev's were 5 blocked, 2 declared done on the wrong page, 2 at its own caps and 2 stalled on a dialog. On the runs both completed, lean Protocolis was 26% faster than Jev; typical completed task 7.4 s lean, 7.3 s Jev, 9.7 s defaults. In another run of the same tasks Jev took 10.0 s per completed task, so its figure swings with its loops; Protocolis's did not. One session per read, arms rotating per task; completion is the same final-page check for every arm plus the written answer against a gold where an arm writes one; every attempt counted.</p>
-  </div>
-</section>
-
-<section class="sec" id="demo">
-  <div class="rail"><b>02</b>demonstration</div>
-  <div>
-    <h2>Same task. Same model. Head to head.</h2>
-    <p class="sub">Protocolis against Browser Harness, Browser Use's newest tool: the same coding agent, model and prompt in both, each driving a fresh headless Chrome on one Mac, recorded in real time and unedited, played here at 4× speed; the clocks on screen show real time. The task: find the week's top Show HN on Hacker News and report its title, points, comments and submitter. Answers checked against Hacker News's own API and by Browser Use's judge model. Selected runs, one per model. Lean is a single engine setting, settle waits off, with every step still checked. Browser Harness is designed to drive your own signed-in Chrome; this task needs no sign-in.</p>
-    <div class="carousel" aria-roledescription="carousel">
-      <div class="track" tabindex="0">
-      <figure class="slide" data-i="0">
-        <div class="frame"><video controls preload="none" playsinline src="media/race-opus.mp4" poster="media/race-opus.jpg"></video></div>
-        <figcaption class="cap"><b>Frontier: Claude Code + Opus 5.5.</b> Protocolis (lean) 29 s, 8 model calls, $0.164. Browser Harness 40 s, 10 model calls, $0.197. Both answers correct.</figcaption>
-      </figure>
-      <figure class="slide" data-i="1">
-        <div class="frame"><video controls preload="none" playsinline src="media/race-astra.mp4" poster="media/race-astra.jpg"></video></div>
-        <figcaption class="cap"><b>Codex + GPT-6 Astra.</b> Protocolis (lean) 18 s, 5 model calls, $0.334. Browser Harness 20 s, 7 model calls, $0.367. Both answers correct.</figcaption>
-      </figure>
-      <figure class="slide" data-i="2">
-        <div class="frame"><video controls preload="none" playsinline src="media/race-sol.mp4" poster="media/race-sol.jpg"></video></div>
-        <figcaption class="cap"><b>Codex + GPT-6.1 Sol.</b> Protocolis (lean) 19 s, 5 model calls, $0.055. Browser Harness 20 s, 7 model calls, $0.072. Both answers correct.</figcaption>
-      </figure>
-      <figure class="slide" data-i="3">
-        <div class="frame"><video controls preload="none" playsinline src="media/race-luna.mp4" poster="media/race-luna.jpg"></video></div>
-        <figcaption class="cap"><b>Browser Use's own eval setup: Codex + GPT-6 Luna.</b> Protocolis (Fast mode) 36 s, 7 model calls, $0.0040. Browser Harness 41 s, 15 model calls, $0.0074. Both answers correct.</figcaption>
-      </figure>
-      <figure class="slide" data-i="4">
-        <div class="frame"><video controls preload="none" playsinline src="media/race-glm.mp4" poster="media/race-glm.jpg"></video></div>
-        <figcaption class="cap"><b>Small model: GLM-5.3-flash.</b> Protocolis 52 s, 7 model calls, $0.0024. Browser Harness 2 min 12 s, 16 model calls, $0.0061. Both answers correct.</figcaption>
-      </figure>
-      <figure class="slide" data-i="5">
-        <div class="frame"><video controls preload="none" playsinline src="media/demo.mp4" poster="media/demo-poster.jpg"></video></div>
-        <figcaption class="cap"><b>Against Browser Use's own agent: GLM-5.3-flash.</b> Shown at 3.5× speed. A task drawn at random from the held-out set. Protocolis 172 s for $0.010; Browser Use's own agent (0.13.10) 512 s for $0.030. Both answers passed.</figcaption>
-      </figure>
-      </div>
-      <div class="cnav"><button class="cprev" aria-label="Previous video">&larr;</button><span class="cdots"></span><button class="cnext" aria-label="Next video">&rarr;</button></div>
-    </div>
   </div>
 </section>
 
