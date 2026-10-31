@@ -245,20 +245,22 @@ footer .fk{flex-basis:100%;font-family:var(--font-mono);font-size:.68rem;letter-
 .carousel .track::-webkit-scrollbar{display:none}
 .carousel .slide{flex:0 0 100%;scroll-snap-align:start;margin:0;min-width:0}
 .carousel .slide .frame{margin-top:0}
-.cfilters{display:flex;flex-direction:column;gap:.6rem;margin-top:2rem}
+.cbar{display:flex;flex-wrap:wrap;align-items:center;gap:.6rem 1.25rem;margin-top:1rem;padding-top:.9rem;border-top:1px solid var(--rule)}
+.cbar .cnav{margin:0 0 0 auto}
 .ctabs,.ctiers{display:flex;flex-wrap:wrap;gap:.4rem}
-.cfilters button{background:none;border:1px solid var(--rule);color:var(--fg-2);font-family:var(--font-mono);font-size:.74rem;letter-spacing:.06em;padding:.4rem .75rem;cursor:pointer}
+@media (max-width:900px){.cbar .cnav{margin:0 auto}}
+.cbar button{background:none;border:1px solid var(--rule);color:var(--fg-2);font-family:var(--font-mono);font-size:.74rem;letter-spacing:.06em;padding:.4rem .75rem;cursor:pointer}
 .ctabs button{color:var(--fg);font-size:.8rem}
-.cfilters button.on{border-color:var(--accent);color:var(--accent)}
-.cfilters button:hover{border-color:var(--accent)}
+.cbar button.on{border-color:var(--accent);color:var(--accent)}
+.cbar button:hover{border-color:var(--accent)}
 .slide.soon .ph{font-size:1rem;letter-spacing:.12em;text-transform:uppercase}
 .slide[hidden]{display:none}
-.demo-grid{display:grid;grid-template-columns:minmax(0,2.4fr) minmax(0,1fr);gap:2.25rem;align-items:start;margin-top:1.25rem}
+.demo-grid{display:grid;grid-template-columns:minmax(0,2.4fr) minmax(0,1fr);gap:2.25rem;align-items:start;margin-top:2.5rem}
 .demo-grid .carousel{margin-top:0}
 .demo-grid > .sub{margin:0}
 .carousel .slide .cap{margin-top:.8rem}
 @media (max-width:900px){.demo-grid{grid-template-columns:minmax(0,1fr);gap:1.25rem}.demo-grid > .sub{order:-1}}
-.cnav{display:flex;align-items:center;justify-content:center;gap:1rem;margin-top:1rem}
+.cnav{display:flex;align-items:center;justify-content:center;gap:1rem}
 .cnav button{background:none;border:1px solid var(--rule);color:var(--fg);font-family:var(--font-mono);padding:.35rem .8rem;cursor:pointer}
 .cnav button:hover{border-color:var(--accent);color:var(--accent)}
 .cdots{display:flex;gap:.45rem}
@@ -396,14 +398,6 @@ body::before{
   <div class="rail"><b>01</b>demonstration</div>
   <div>
     <h2>Same task. Same model. Head to head.</h2>
-    <div class="cfilters">
-      <div class="ctabs" role="tablist" aria-label="Opponent">
-        <button data-opp="harness" class="on">Browser Harness</button><button data-opp="agent">Browser Use agent</button><button data-opp="tools">Browser Use tools mode</button><button data-opp="jev">Jev Ultrafast</button>
-      </div>
-      <div class="ctiers" role="tablist" aria-label="Model tier">
-        <button data-tier="all" class="on">All</button><button data-tier="frontier">Frontier</button><button data-tier="strong">Strong</button><button data-tier="weak">Weak</button>
-      </div>
-    </div>
     <div class="demo-grid">
     <div class="carousel" aria-roledescription="carousel">
         <div class="track" tabindex="0">
@@ -436,7 +430,15 @@ body::before{
           <figcaption class="cap">This race hasn't been recorded yet.</figcaption>
         </figure>
         </div>
-        <div class="cnav"><button class="cprev" aria-label="Previous video">&larr;</button><span class="cdots"></span><button class="cnext" aria-label="Next video">&rarr;</button></div>
+        <div class="cbar">
+          <div class="ctabs" role="tablist" aria-label="Opponent">
+        <button data-opp="harness" class="on">Browser Harness</button><button data-opp="agent">Browser Use agent</button><button data-opp="tools">Browser Use tools mode</button><button data-opp="jev">Jev Ultrafast</button>
+      </div>
+          <div class="ctiers" role="tablist" aria-label="Model tier">
+        <button data-tier="all" class="on">All</button><button data-tier="frontier">Frontier</button><button data-tier="strong">Strong</button><button data-tier="weak">Weak</button>
+      </div>
+          <div class="cnav"><button class="cprev" aria-label="Previous video">&larr;</button><span class="cdots"></span><button class="cnext" aria-label="Next video">&rarr;</button></div>
+        </div>
       </div>
     <p class="sub" data-opp="harness">Protocolis against Browser Harness, Browser Use's newest tool: the same coding agent, model and prompt in both, each driving a fresh headless Chrome on one Mac, recorded in real time and unedited, played here at 4× speed; the clocks on screen show real time. The task: find the week's top Show HN on Hacker News and report its title, points, comments and submitter. Answers checked against Hacker News's own API and by Browser Use's judge model. Selected runs, one per model. Lean is a single engine setting, settle waits off, with every step still checked. Browser Harness is designed to drive your own signed-in Chrome; this task needs no sign-in.</p>
     <p class="sub" data-opp="agent" hidden>Protocolis against Browser Use's own agent, the open-source library that reads the page and picks one action per step: the same model, task and budget in both, answers judged blind. This recording is shown at 3.5× speed.</p>
