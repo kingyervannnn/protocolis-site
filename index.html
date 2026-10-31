@@ -555,7 +555,7 @@ body::before{
   <div class="rail"><b>04</b>demonstration</div>
   <div>
     <h2>Same task. Same model. Head to head.</h2>
-    <p class="sub">Protocolis against Browser Harness, Browser Use's newest tool: the same coding agent, model and prompt in both, each driving a fresh headless Chrome on one Mac, recorded in real time and unedited. The task: find the week's top Show HN on Hacker News and report its title, points, comments and submitter. Answers checked against Hacker News's own API and by Browser Use's judge model. Selected runs, one per model. Lean is a single engine setting, settle waits off, with every step still checked. Browser Harness is designed to drive your own signed-in Chrome; this task needs no sign-in.</p>
+    <p class="sub">Protocolis against Browser Harness, Browser Use's newest tool: the same coding agent, model and prompt in both, each driving a fresh headless Chrome on one Mac, recorded in real time and unedited, played here at 4× speed; the clocks on screen show real time. The task: find the week's top Show HN on Hacker News and report its title, points, comments and submitter. Answers checked against Hacker News's own API and by Browser Use's judge model. Selected runs, one per model. Lean is a single engine setting, settle waits off, with every step still checked. Browser Harness is designed to drive your own signed-in Chrome; this task needs no sign-in.</p>
     <div class="carousel" aria-roledescription="carousel">
       <div class="track" tabindex="0">
       <figure class="slide" data-i="0">
@@ -703,7 +703,8 @@ function mark(){var k=idx();[].forEach.call(d.children,function(e,i){e.className
 function go(i){i=Math.max(0,Math.min(sl.length-1,i));var L=sl[i].offsetLeft-sl[0].offsetLeft,s0=t.scrollLeft;t.scrollTo({left:L,behavior:'smooth'});setTimeout(function(){if(Math.abs(t.scrollLeft-s0)<2&&Math.abs(L-s0)>2){t.scrollLeft=L}mark()},450)}
 c.querySelector('.cprev').addEventListener('click',function(){go(idx()-1)});c.querySelector('.cnext').addEventListener('click',function(){go(idx()+1)});
 t.addEventListener('keydown',function(e){if(e.key==='ArrowRight')go(idx()+1);if(e.key==='ArrowLeft')go(idx()-1)});
-t.addEventListener('scroll',function(){clearTimeout(t._m);t._m=setTimeout(mark,80)});window.addEventListener('load',mark);mark()})();
+t.addEventListener('scroll',function(){clearTimeout(t._m);t._m=setTimeout(mark,80)});window.addEventListener('load',mark);mark();
+sl.forEach(function(s){var v=s.querySelector('video');if(!v||/demo\.mp4/.test(v.getAttribute('src')))return;var r=4;v.defaultPlaybackRate=r;v.playbackRate=r;v.addEventListener('play',function(){if(v.playbackRate===1)v.playbackRate=r});v.addEventListener('loadedmetadata',function(){v.playbackRate=r})})})();
 </script>
 </body>
 </html>
