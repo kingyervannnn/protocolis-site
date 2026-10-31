@@ -245,6 +245,15 @@ footer .fk{flex-basis:100%;font-family:var(--font-mono);font-size:.68rem;letter-
 .carousel .track::-webkit-scrollbar{display:none}
 .carousel .slide{flex:0 0 100%;scroll-snap-align:start;margin:0;min-width:0}
 .carousel .slide .frame{margin-top:0}
+.frame{position:relative}
+.fin{position:absolute;bottom:15%;left:25%;transform:translate(-50%,8px);display:flex;align-items:center;gap:.5rem;padding:.4rem .85rem .4rem .45rem;border-radius:999px;background:rgba(9,11,13,.8);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.14);font-family:var(--font-mono);font-size:.76rem;letter-spacing:.03em;color:#e9e6df;white-space:nowrap;opacity:0;transition:opacity .4s ease,transform .4s ease;pointer-events:none;box-shadow:0 6px 24px rgba(0,0,0,.35)}
+.fin.b{left:75%}
+.fin.show{opacity:1;transform:translate(-50%,0)}
+.fin .ck{width:1.2rem;height:1.2rem;border-radius:50%;display:grid;place-items:center;background:#3ccf7a;color:#08100b;flex:none}
+.fin b{font-weight:600;margin-left:.15rem;color:#fff}
+.fin.win{border-color:var(--accent)}
+.fin.win b{color:var(--accent)}
+@media (max-width:700px){.fin{font-size:.58rem;padding:.25rem .55rem .25rem .3rem;gap:.35rem;bottom:18%}.fin .ck{width:.9rem;height:.9rem}}
 .cbar{display:flex;flex-wrap:wrap;align-items:center;gap:.6rem 1.25rem;margin-top:1rem;padding-top:.9rem;border-top:1px solid var(--rule)}
 .cbar .cnav{margin:0 0 0 auto}
 .ctabs,.ctiers{display:flex;flex-wrap:wrap;gap:.4rem}
@@ -402,23 +411,23 @@ body::before{
     <div class="carousel" aria-roledescription="carousel">
         <div class="track" tabindex="0">
         <figure class="slide" data-opp="harness" data-tier="weak">
-          <div class="frame"><video controls preload="none" playsinline src="media/race-glm.mp4" poster="media/race-glm.jpg"></video></div>
+          <div class="frame"><video controls preload="none" playsinline src="media/race-glm.mp4" poster="media/race-glm.jpg"></video><div class="fin a" data-at="142.6"><span class="ck"><svg viewBox="0 0 16 16" width="11" height="11" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Browser Harness<b>132.1 s</b></div><div class="fin b win" data-at="63.0"><span class="ck"><svg viewBox="0 0 16 16" width="11" height="11" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Protocolis<b>52.5 s</b></div></div>
           <figcaption class="cap"><b>Small model: GLM-5.3-flash.</b> Protocolis 52 s, 7 model calls, $0.0024. Browser Harness 2 min 12 s, 16 model calls, $0.0061. Both answers correct.</figcaption>
         </figure>
         <figure class="slide" data-opp="harness" data-tier="frontier">
-          <div class="frame"><video controls preload="none" playsinline src="media/race-opus.mp4" poster="media/race-opus.jpg"></video></div>
+          <div class="frame"><video controls preload="none" playsinline src="media/race-opus.mp4" poster="media/race-opus.jpg"></video><div class="fin a" data-at="46.8"><span class="ck"><svg viewBox="0 0 16 16" width="11" height="11" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Browser Harness<b>40.0 s</b></div><div class="fin b win" data-at="36.0"><span class="ck"><svg viewBox="0 0 16 16" width="11" height="11" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Protocolis<b>29.2 s</b></div></div>
           <figcaption class="cap"><b>Frontier: Claude Code + Opus 5.5.</b> Protocolis (lean) 29 s, 8 model calls, $0.164. Browser Harness 40 s, 10 model calls, $0.197. Both answers correct.</figcaption>
         </figure>
         <figure class="slide" data-opp="harness" data-tier="strong">
-          <div class="frame"><video controls preload="none" playsinline src="media/race-luna.mp4" poster="media/race-luna.jpg"></video></div>
+          <div class="frame"><video controls preload="none" playsinline src="media/race-luna.mp4" poster="media/race-luna.jpg"></video><div class="fin a" data-at="48.9"><span class="ck"><svg viewBox="0 0 16 16" width="11" height="11" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Browser Harness<b>41.4 s</b></div><div class="fin b win" data-at="44.9"><span class="ck"><svg viewBox="0 0 16 16" width="11" height="11" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Protocolis<b>36.4 s</b></div></div>
           <figcaption class="cap"><b>Browser Use's own eval setup: Codex + GPT-6 Luna.</b> Protocolis (Fast mode) 36 s, 7 model calls, $0.0040. Browser Harness 41 s, 15 model calls, $0.0074. Both answers correct.</figcaption>
         </figure>
         <figure class="slide" data-opp="harness" data-tier="frontier">
-          <div class="frame"><video controls preload="none" playsinline src="media/race-astra.mp4" poster="media/race-astra.jpg"></video></div>
+          <div class="frame"><video controls preload="none" playsinline src="media/race-astra.mp4" poster="media/race-astra.jpg"></video><div class="fin a" data-at="28.4"><span class="ck"><svg viewBox="0 0 16 16" width="11" height="11" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Browser Harness<b>20.9 s</b></div><div class="fin b win" data-at="26.2"><span class="ck"><svg viewBox="0 0 16 16" width="11" height="11" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Protocolis<b>18.7 s</b></div></div>
           <figcaption class="cap"><b>Codex + GPT-6 Astra.</b> Protocolis (lean) 18 s, 5 model calls, $0.334. Browser Harness 20 s, 7 model calls, $0.367. Both answers correct.</figcaption>
         </figure>
         <figure class="slide" data-opp="harness" data-tier="frontier">
-          <div class="frame"><video controls preload="none" playsinline src="media/race-sol.mp4" poster="media/race-sol.jpg"></video></div>
+          <div class="frame"><video controls preload="none" playsinline src="media/race-sol.mp4" poster="media/race-sol.jpg"></video><div class="fin a" data-at="28.0"><span class="ck"><svg viewBox="0 0 16 16" width="11" height="11" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Browser Harness<b>20.5 s</b></div><div class="fin b win" data-at="26.9"><span class="ck"><svg viewBox="0 0 16 16" width="11" height="11" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Protocolis<b>19.4 s</b></div></div>
           <figcaption class="cap"><b>Codex + GPT-6.1 Sol.</b> Protocolis (lean) 19 s, 5 model calls, $0.055. Browser Harness 20 s, 7 model calls, $0.072. Both answers correct.</figcaption>
         </figure>
         <figure class="slide" data-opp="agent" data-tier="weak">
@@ -730,6 +739,7 @@ body::before{
 <script>
 (function(){var root=document.getElementById('demo');if(!root)return;var c=root.querySelector('.carousel'),t=c.querySelector('.track'),d=c.querySelector('.cdots'),all=[].slice.call(t.querySelectorAll('.slide')),soon=t.querySelector('.slide.soon'),opp='harness',tier='all',vis=[];
 all.forEach(function(s){var v=s.querySelector('video');if(!v||/demo\.mp4/.test(v.getAttribute('src')))return;var r=4;v.defaultPlaybackRate=r;v.playbackRate=r;v.addEventListener('play',function(){if(v.playbackRate===1)v.playbackRate=r});v.addEventListener('loadedmetadata',function(){v.playbackRate=r})});
+all.forEach(function(s){var v=s.querySelector('video'),fs=[].slice.call(s.querySelectorAll('.fin'));if(!v||!fs.length)return;var raf;function upd(){var t=v.currentTime;fs.forEach(function(f){f.classList.toggle('show',t>=parseFloat(f.dataset.at))})}function loop(){upd();if(!v.paused&&!v.ended)raf=requestAnimationFrame(loop)}v.addEventListener('play',function(){cancelAnimationFrame(raf);loop()});['timeupdate','seeked','pause','ended','loadedmetadata'].forEach(function(e){v.addEventListener(e,upd)})});
 function pauseAll(){all.forEach(function(s){var v=s.querySelector('video');if(v&&!v.paused)v.pause()})}
 function apply(){pauseAll();vis=all.filter(function(s){return s!==soon&&s.dataset.opp===opp&&(tier==='all'||s.dataset.tier===tier)});all.forEach(function(s){s.hidden=vis.indexOf(s)<0});if(!vis.length){soon.hidden=false;vis=[soon]}
 d.innerHTML='';vis.forEach(function(_,i){var b=document.createElement('i');b.addEventListener('click',function(){go(i)});d.appendChild(b)});c.querySelector('.cnav').style.visibility=vis.length>1?'visible':'hidden';t.scrollLeft=0;
