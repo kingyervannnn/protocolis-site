@@ -519,7 +519,7 @@ body::before{
         </div>
         <div class="cbar">
           <div class="ctabs" role="tablist" aria-label="Opponent">
-        <button data-opp="harness" class="on">Browser Harness</button><button data-opp="agent">Browser Use agent</button><button data-opp="tools">Browser Use tools mode</button><button data-opp="jev">Jev Ultrafast</button><button data-opp="dvg">David vs Goliath</button>
+        <button data-opp="dvg">David vs Goliath</button><button data-opp="harness" class="on">Browser Harness</button><button data-opp="agent">Browser Use agent</button><button data-opp="tools">Browser Use tools mode</button><button data-opp="jev">Jev Ultrafast</button>
       </div>
           <div class="ctiers" role="tablist" aria-label="Model tier">
         <button data-tier="all" class="on">All</button><button data-tier="frontier">Frontier</button><button data-tier="strong">Strong</button><button data-tier="weak">Weak</button>
@@ -836,6 +836,7 @@ t.addEventListener('scroll',function(){clearTimeout(t._m);t._m=setTimeout(mark,8
 [].forEach.call(root.querySelectorAll('.ctabs button'),function(b){b.addEventListener('click',function(){opp=b.dataset.opp;tier='all';apply()})});
 [].forEach.call(root.querySelectorAll('.ctiers button'),function(b){b.addEventListener('click',function(){tier=b.dataset.tier;apply()})});
 [].forEach.call(root.querySelectorAll('.ccx button'),function(b){b.addEventListener('click',function(){cx=b.dataset.cx;apply()})});
+if(all.some(function(s){return s.dataset.opp==='dvg'}))opp='dvg';
 window.addEventListener('load',mark);apply()})();
 </script>
 </body>
