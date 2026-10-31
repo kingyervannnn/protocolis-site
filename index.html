@@ -245,7 +245,15 @@ footer .fk{flex-basis:100%;font-family:var(--font-mono);font-size:.68rem;letter-
 .carousel .track::-webkit-scrollbar{display:none}
 .carousel .slide{flex:0 0 100%;scroll-snap-align:start;margin:0;min-width:0}
 .carousel .slide .frame{margin-top:0}
-.demo-grid{display:grid;grid-template-columns:minmax(0,2.4fr) minmax(0,1fr);gap:2.25rem;align-items:start;margin-top:2.5rem}
+.cfilters{display:flex;flex-direction:column;gap:.6rem;margin-top:2rem}
+.ctabs,.ctiers{display:flex;flex-wrap:wrap;gap:.4rem}
+.cfilters button{background:none;border:1px solid var(--rule);color:var(--fg-2);font-family:var(--font-mono);font-size:.74rem;letter-spacing:.06em;padding:.4rem .75rem;cursor:pointer}
+.ctabs button{color:var(--fg);font-size:.8rem}
+.cfilters button.on{border-color:var(--accent);color:var(--accent)}
+.cfilters button:hover{border-color:var(--accent)}
+.slide.soon .ph{font-size:1rem;letter-spacing:.12em;text-transform:uppercase}
+.slide[hidden]{display:none}
+.demo-grid{display:grid;grid-template-columns:minmax(0,2.4fr) minmax(0,1fr);gap:2.25rem;align-items:start;margin-top:1.25rem}
 .demo-grid .carousel{margin-top:0}
 .demo-grid > .sub{margin:0}
 .carousel .slide .cap{margin-top:.8rem}
@@ -388,37 +396,52 @@ body::before{
   <div class="rail"><b>01</b>demonstration</div>
   <div>
     <h2>Same task. Same model. Head to head.</h2>
+    <div class="cfilters">
+      <div class="ctabs" role="tablist" aria-label="Opponent">
+        <button data-opp="harness" class="on">Browser Harness</button><button data-opp="agent">Browser Use agent</button><button data-opp="tools">Browser Use tools mode</button><button data-opp="jev">Jev Ultrafast</button>
+      </div>
+      <div class="ctiers" role="tablist" aria-label="Model tier">
+        <button data-tier="all" class="on">All</button><button data-tier="frontier">Frontier</button><button data-tier="strong">Strong</button><button data-tier="weak">Weak</button>
+      </div>
+    </div>
     <div class="demo-grid">
     <div class="carousel" aria-roledescription="carousel">
         <div class="track" tabindex="0">
-        <figure class="slide" data-i="0">
+        <figure class="slide" data-opp="harness" data-tier="weak">
           <div class="frame"><video controls preload="none" playsinline src="media/race-glm.mp4" poster="media/race-glm.jpg"></video></div>
           <figcaption class="cap"><b>Small model: GLM-5.3-flash.</b> Protocolis 52 s, 7 model calls, $0.0024. Browser Harness 2 min 12 s, 16 model calls, $0.0061. Both answers correct.</figcaption>
         </figure>
-        <figure class="slide" data-i="1">
+        <figure class="slide" data-opp="harness" data-tier="frontier">
           <div class="frame"><video controls preload="none" playsinline src="media/race-opus.mp4" poster="media/race-opus.jpg"></video></div>
           <figcaption class="cap"><b>Frontier: Claude Code + Opus 5.5.</b> Protocolis (lean) 29 s, 8 model calls, $0.164. Browser Harness 40 s, 10 model calls, $0.197. Both answers correct.</figcaption>
         </figure>
-        <figure class="slide" data-i="2">
+        <figure class="slide" data-opp="harness" data-tier="strong">
           <div class="frame"><video controls preload="none" playsinline src="media/race-luna.mp4" poster="media/race-luna.jpg"></video></div>
           <figcaption class="cap"><b>Browser Use's own eval setup: Codex + GPT-6 Luna.</b> Protocolis (Fast mode) 36 s, 7 model calls, $0.0040. Browser Harness 41 s, 15 model calls, $0.0074. Both answers correct.</figcaption>
         </figure>
-        <figure class="slide" data-i="3">
+        <figure class="slide" data-opp="harness" data-tier="frontier">
           <div class="frame"><video controls preload="none" playsinline src="media/race-astra.mp4" poster="media/race-astra.jpg"></video></div>
           <figcaption class="cap"><b>Codex + GPT-6 Astra.</b> Protocolis (lean) 18 s, 5 model calls, $0.334. Browser Harness 20 s, 7 model calls, $0.367. Both answers correct.</figcaption>
         </figure>
-        <figure class="slide" data-i="4">
+        <figure class="slide" data-opp="harness" data-tier="frontier">
           <div class="frame"><video controls preload="none" playsinline src="media/race-sol.mp4" poster="media/race-sol.jpg"></video></div>
           <figcaption class="cap"><b>Codex + GPT-6.1 Sol.</b> Protocolis (lean) 19 s, 5 model calls, $0.055. Browser Harness 20 s, 7 model calls, $0.072. Both answers correct.</figcaption>
         </figure>
-        <figure class="slide" data-i="5">
+        <figure class="slide" data-opp="agent" data-tier="weak">
           <div class="frame"><video controls preload="none" playsinline src="media/demo.mp4" poster="media/demo-poster.jpg"></video></div>
           <figcaption class="cap"><b>Against Browser Use's own agent: GLM-5.3-flash.</b> Shown at 3.5× speed. A task drawn at random from the held-out set. Protocolis 172 s for $0.010; Browser Use's own agent (0.13.10) 512 s for $0.030. Both answers passed.</figcaption>
+        </figure>
+        <figure class="slide soon" hidden>
+          <div class="frame"><div class="ph">Coming soon</div></div>
+          <figcaption class="cap">This race hasn't been recorded yet.</figcaption>
         </figure>
         </div>
         <div class="cnav"><button class="cprev" aria-label="Previous video">&larr;</button><span class="cdots"></span><button class="cnext" aria-label="Next video">&rarr;</button></div>
       </div>
-    <p class="sub">Protocolis against Browser Harness, Browser Use's newest tool: the same coding agent, model and prompt in both, each driving a fresh headless Chrome on one Mac, recorded in real time and unedited, played here at 4× speed; the clocks on screen show real time. The task: find the week's top Show HN on Hacker News and report its title, points, comments and submitter. Answers checked against Hacker News's own API and by Browser Use's judge model. Selected runs, one per model. Lean is a single engine setting, settle waits off, with every step still checked. Browser Harness is designed to drive your own signed-in Chrome; this task needs no sign-in.</p>
+    <p class="sub" data-opp="harness">Protocolis against Browser Harness, Browser Use's newest tool: the same coding agent, model and prompt in both, each driving a fresh headless Chrome on one Mac, recorded in real time and unedited, played here at 4× speed; the clocks on screen show real time. The task: find the week's top Show HN on Hacker News and report its title, points, comments and submitter. Answers checked against Hacker News's own API and by Browser Use's judge model. Selected runs, one per model. Lean is a single engine setting, settle waits off, with every step still checked. Browser Harness is designed to drive your own signed-in Chrome; this task needs no sign-in.</p>
+    <p class="sub" data-opp="agent" hidden>Protocolis against Browser Use's own agent, the open-source library that reads the page and picks one action per step: the same model, task and budget in both, answers judged blind. This recording is shown at 3.5× speed.</p>
+    <p class="sub" data-opp="tools" hidden>Protocolis against Browser Use driving OpenAI's browser tools: the agent's model picks from a fixed menu of actions and Browser Use carries them out. Recordings coming soon; the measured results are in the section below.</p>
+    <p class="sub" data-opp="jev" hidden>Protocolis Ultrafast against Jev Ultrafast, Browser Use's agent on the same small choice model with no large model in the loop. Recordings coming soon; the measured results are in the section below.</p>
     </div>
   </div>
 </section>
@@ -703,15 +726,22 @@ body::before{
 </script>
 <script data-goatcounter="https://protocolis.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
-(function(){var c=document.querySelector('#demo .carousel');if(!c)return;var t=c.querySelector('.track'),sl=[].slice.call(t.children),d=c.querySelector('.cdots');
-sl.forEach(function(_,i){var b=document.createElement('i');b.addEventListener('click',function(){go(i)});d.appendChild(b)});
-function idx(){var x=t.scrollLeft,b=0,bd=1e9;sl.forEach(function(s,i){var dd=Math.abs(s.offsetLeft-sl[0].offsetLeft-x);if(dd<bd){bd=dd;b=i}});return b}
-function mark(){var k=idx();[].forEach.call(d.children,function(e,i){e.className=i===k?'on':''});sl.forEach(function(s,i){if(i!==k){var v=s.querySelector('video');if(v&&!v.paused)v.pause()}})}
-function go(i){i=Math.max(0,Math.min(sl.length-1,i));var L=sl[i].offsetLeft-sl[0].offsetLeft,s0=t.scrollLeft;t.scrollTo({left:L,behavior:'smooth'});setTimeout(function(){if(Math.abs(t.scrollLeft-s0)<2&&Math.abs(L-s0)>2){t.scrollLeft=L}mark()},450)}
+(function(){var root=document.getElementById('demo');if(!root)return;var c=root.querySelector('.carousel'),t=c.querySelector('.track'),d=c.querySelector('.cdots'),all=[].slice.call(t.querySelectorAll('.slide')),soon=t.querySelector('.slide.soon'),opp='harness',tier='all',vis=[];
+all.forEach(function(s){var v=s.querySelector('video');if(!v||/demo\.mp4/.test(v.getAttribute('src')))return;var r=4;v.defaultPlaybackRate=r;v.playbackRate=r;v.addEventListener('play',function(){if(v.playbackRate===1)v.playbackRate=r});v.addEventListener('loadedmetadata',function(){v.playbackRate=r})});
+function pauseAll(){all.forEach(function(s){var v=s.querySelector('video');if(v&&!v.paused)v.pause()})}
+function apply(){pauseAll();vis=all.filter(function(s){return s!==soon&&s.dataset.opp===opp&&(tier==='all'||s.dataset.tier===tier)});all.forEach(function(s){s.hidden=vis.indexOf(s)<0});if(!vis.length){soon.hidden=false;vis=[soon]}
+d.innerHTML='';vis.forEach(function(_,i){var b=document.createElement('i');b.addEventListener('click',function(){go(i)});d.appendChild(b)});c.querySelector('.cnav').style.visibility=vis.length>1?'visible':'hidden';t.scrollLeft=0;
+[].forEach.call(root.querySelectorAll('.demo-grid > .sub'),function(p){p.hidden=p.dataset.opp!==opp});
+[].forEach.call(root.querySelectorAll('.ctabs button'),function(b){b.className=b.dataset.opp===opp?'on':''});[].forEach.call(root.querySelectorAll('.ctiers button'),function(b){b.className=b.dataset.tier===tier?'on':''});mark()}
+function idx(){var x=t.scrollLeft,b=0,bd=1e9;vis.forEach(function(s,i){var dd=Math.abs(s.offsetLeft-vis[0].offsetLeft-x);if(dd<bd){bd=dd;b=i}});return b}
+function mark(){var k=idx();[].forEach.call(d.children,function(e,i){e.className=i===k?'on':''});vis.forEach(function(s,i){if(i!==k){var v=s.querySelector('video');if(v&&!v.paused)v.pause()}})}
+function go(i){i=Math.max(0,Math.min(vis.length-1,i));var L=vis[i].offsetLeft-vis[0].offsetLeft,s0=t.scrollLeft;t.scrollTo({left:L,behavior:'smooth'});setTimeout(function(){if(Math.abs(t.scrollLeft-s0)<2&&Math.abs(L-s0)>2){t.scrollLeft=L}mark()},450)}
 c.querySelector('.cprev').addEventListener('click',function(){go(idx()-1)});c.querySelector('.cnext').addEventListener('click',function(){go(idx()+1)});
 t.addEventListener('keydown',function(e){if(e.key==='ArrowRight')go(idx()+1);if(e.key==='ArrowLeft')go(idx()-1)});
-t.addEventListener('scroll',function(){clearTimeout(t._m);t._m=setTimeout(mark,80)});window.addEventListener('load',mark);mark();
-sl.forEach(function(s){var v=s.querySelector('video');if(!v||/demo\.mp4/.test(v.getAttribute('src')))return;var r=4;v.defaultPlaybackRate=r;v.playbackRate=r;v.addEventListener('play',function(){if(v.playbackRate===1)v.playbackRate=r});v.addEventListener('loadedmetadata',function(){v.playbackRate=r})})})();
+t.addEventListener('scroll',function(){clearTimeout(t._m);t._m=setTimeout(mark,80)});
+[].forEach.call(root.querySelectorAll('.ctabs button'),function(b){b.addEventListener('click',function(){opp=b.dataset.opp;tier='all';apply()})});
+[].forEach.call(root.querySelectorAll('.ctiers button'),function(b){b.addEventListener('click',function(){tier=b.dataset.tier;apply()})});
+window.addEventListener('load',mark);apply()})();
 </script>
 </body>
 </html>
