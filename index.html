@@ -58,8 +58,10 @@ p{margin:0}
 footer .fk{flex-basis:100%;font-family:var(--font-mono);font-size:.68rem;letter-spacing:.04em;color:var(--fg-2);opacity:.8}
 .chip.on{border-color:var(--accent);color:var(--accent)}
 .chip.patent-status{border-color:rgba(236,232,223,.6)}
-a.chip{color:inherit;text-decoration:none;transition:border-color .2s}
-a.chip:hover{border-color:var(--accent)}
+a.chip{color:inherit;text-decoration:none;transition:background-color .2s,color .2s,border-color .2s}
+a.chip.on:hover,a.chip.on:focus-visible{background:var(--accent);color:#fff}
+/* White would vanish on the cream fill, so the patent badge inverts to the page colour. */
+a.chip.patent-status:hover,a.chip.patent-status:focus-visible{background:rgb(236,232,223);border-color:rgb(236,232,223);color:var(--bg)}
 .hero-brand{width:100%;max-width:30rem;justify-self:center}
 .emblem{position:relative;width:100%;max-width:30rem;aspect-ratio:1;margin-inline:auto;display:block;overflow:hidden}
 .emblem-still{display:block;width:100%;height:100%;position:relative;z-index:1}
