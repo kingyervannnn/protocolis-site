@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Hermes Agent with Protocolis</title>
+<meta name="description" content="Hermes Agent running the same task with Protocolis as its browser tool and with its stock Browser Use tool. Same model, same task, recorded unedited.">
+<link rel="icon" type="image/svg+xml" href="../glyph.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+:root{--bg:#0f1114;--fg:#ece8df;--fg-2:#a7a297;--dim:#6d6a63;--rule:rgba(236,232,223,.13);--accent:#c9a061;--gut:clamp(16px,5vw,96px);
+  --font-display:"Cinzel",Georgia,serif;--font-body:"Instrument Sans","Helvetica Neue",Arial,sans-serif;--font-mono:"JetBrains Mono",ui-monospace,Menlo,monospace;color-scheme:dark}
+*{box-sizing:border-box}
+html{background:var(--bg)}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size:17px;line-height:1.6;padding:0 var(--gut) 4rem}
+a{color:inherit}
+.top{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;padding-block:1.1rem;border-bottom:1px solid var(--rule)}
+.brand{display:flex;align-items:center;gap:.5rem;text-decoration:none;font-family:var(--font-display);font-size:1.05rem;letter-spacing:.06em}
+.brand img{height:22px}
+.top a.back{color:var(--fg-2);text-decoration:none;font-size:.95rem}
+.top a.back:hover{color:var(--fg)}
+main{max-width:1100px;margin:0 auto}
+h1{font-family:var(--font-display);font-weight:500;font-size:clamp(1.6rem,3.2vw,2.4rem);line-height:1.2;margin:2.6rem 0 1rem;text-wrap:balance}
+.lede{color:var(--fg-2);max-width:62ch;margin-bottom:1.8rem}
+.frame{position:relative;border:1px solid var(--rule);background:#000}
+video{display:block;width:100%;height:auto}
+.res{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule);border:1px solid var(--rule);border-top:0}
+.res div{background:var(--bg);padding:.9rem 1rem;font-size:.95rem;color:var(--fg-2)}
+.res b{display:block;font-family:var(--font-mono);font-weight:500;font-size:1.5rem;color:var(--fg);margin-top:.15rem}
+.res .win b{color:var(--accent)}
+.notes{margin-top:2rem;max-width:70ch;color:var(--fg-2);font-size:.98rem}
+.notes p{margin:0 0 .9rem}
+.notes code{font-family:var(--font-mono);font-size:.88em;color:var(--fg)}
+.cta{margin-top:2.2rem;padding-top:1.4rem;border-top:1px solid var(--rule);font-size:.98rem}
+.cta a{color:var(--accent)}
+</style>
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="../"><img src="../logo.svg" alt="Protocolis"></a>
+  <a class="back" href="../">All races →</a>
+</header>
+<main>
+  <h1>Hermes Agent, same model, same task, two browser tools</h1>
+  <p class="lede">Upstream Hermes Agent in both panes, Grok 4.6 in both. Left: its stock Browser Use tool. Right: Protocolis as its browser tool. The task is a count across every page of a category on a demo bookshop. Recorded unedited, played at 4x.</p>
+  <div class="frame"><video controls playsinline preload="metadata" src="../media/hermes-vs-stock.mp4" poster="../media/hermes-vs-stock.jpg"></video></div>
+  <div class="res">
+    <div class="win">Hermes + Protocolis<b>43.3 s · $0.11</b>correct · 64k input tokens</div>
+    <div>Hermes + stock Browser Use tool<b>78.2 s · $0.18</b>correct · 125k input tokens</div>
+  </div>
+  <div class="notes">
+    <p>Hermes Agent at upstream commit <code>d9f15af</code>, unmodified, in both panes. Its only core browser tool is Browser Use's CLI; on the right that tool is replaced by Protocolis, which compiles the page into typed, verified operations, so the count across both pages ends in one extract instead of a page-by-page read.</p>
+    <p>Task: count the Mystery books under £20 across every page of books.toscrape.com. Both runs answered 10, which matches a count fetched before the run. Mac load under 15 during recording. Cost is at Grok 4.6 list price ($2 in, $0.50 cached, $6 out per million tokens); the run itself used a subscription.</p>
+    <p>Protocolis is not a Hermes fork. It is the layer under the agent: the same drop-in works for any agent loop that drives a browser.</p>
+  </div>
+  <p class="cta">The full set of recorded races, with models, calls, tokens and cost, is on <a href="../?ref=hermes-page">the main page</a>. The reproduction kit is available on request: <a href="mailto:vahagn@protocolis.co">vahagn@protocolis.co</a>.</p>
+</main>
+</body>
+</html>
