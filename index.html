@@ -258,6 +258,8 @@ a.chip.patent-status:hover,a.chip.patent-status:focus-visible{background:rgb(236
 .fin b{font-weight:600;margin-left:.15rem;color:#fff}
 .fin.win{border-color:var(--accent)}
 .fin.win b{color:var(--accent)}
+.fin.no .ck{background:#e5484d;color:#fff}
+.fin.no b{color:#f3a5a7}
 @media (max-width:700px){.fin{font-size:.58rem;padding:.25rem .55rem .25rem .3rem;gap:.35rem;bottom:18%}.fin .ck{width:.9rem;height:.9rem}}
 .cbar{display:flex;flex-wrap:wrap;align-items:center;gap:.6rem 1.25rem;margin-top:1rem;padding-top:.9rem;border-top:1px solid var(--rule)}
 .cbar .cnav{margin:0 0 0 auto}
@@ -533,6 +535,10 @@ body::before{
         <figure class="slide" data-cx="simple" data-opp="jev" data-tier="all">
           <div class="frame"><video controls preload="none" playsinline data-rate="1" src="media/race-ultra-gutenberg.mp4" poster="media/race-ultra-gutenberg.jpg"></video><div class="fin a win" data-at="11.7"><span class="ck"><svg viewBox="0 0 16 16" width="11" height="11" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Jev Ultrafast<b>3.1 s</b></div><div class="fin b" data-at="12.7"><span class="ck"><svg viewBox="0 0 16 16" width="11" height="11" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Protocolis<b>4.1 s</b></div></div>
           <figcaption class="cap"><span class="cxt">Simple task</span><b>Project Gutenberg: Alice in Wonderland's release date.</b> Jev ahead here: 3.1 s against Protocolis 4.1 s; Protocolis 2 picker calls, Jev 7. Both answers correct. Shown in real time.</figcaption>
+        </figure>
+        <figure class="slide" data-cx="complex" data-opp="jev" data-tier="all">
+          <div class="frame"><video controls preload="none" playsinline data-rate="1" src="media/race-ultra-apollo.mp4" poster="media/race-ultra-apollo.jpg"></video><div class="fin a no" data-at="32.7"><span class="ck"><svg viewBox="0 0 16 16" width="11" height="11" aria-hidden="true"><path d="M4.5 4.5l7 7M11.5 4.5l-7 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></span>Jev Ultrafast<b>stopped</b></div><div class="fin b win" data-at="13.7"><span class="ck"><svg viewBox="0 0 16 16" width="11" height="11" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Protocolis<b>5.6 s</b></div></div>
+          <figcaption class="cap"><span class="cxt">Complex task</span><b>Wikipedia: Apollo 11 to Michael Collins to West Point's founding year.</b> Two page hops, then a read. Protocolis Ultrafast 5.6 s, 3 picker calls, answer 1802. Jev Ultrafast stayed on Collins's page and stopped at its own 120-call budget after 24.6 s; a second take went the same way (Protocolis 6.2 s). Shown in real time.</figcaption>
         </figure>
         <figure class="slide" data-cx="simple" data-opp="tools" data-tier="weak">
           <div class="frame"><video controls preload="none" playsinline src="media/race-tools-phones.mp4" poster="media/race-tools-phones.jpg"></video><div class="fin a" data-at="52.0"><span class="ck"><svg viewBox="0 0 16 16" width="11" height="11" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Browser Use tools<b>44.8 s</b></div><div class="fin b win" data-at="30.1"><span class="ck"><svg viewBox="0 0 16 16" width="11" height="11" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Protocolis<b>22.8 s</b></div></div>
