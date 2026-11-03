@@ -54,6 +54,14 @@ video{display:block;width:100%;height:auto}
     <p>Task: count the Mystery books under £20 across every page of books.toscrape.com. Both runs answered 10, which matches a count fetched before the run. Mac load under 15 during recording. Cost is at Grok 4.6 list price ($2 in, $0.50 cached, $6 out per million tokens); the run itself used a subscription.</p>
     <p>Protocolis is not a Hermes fork. It is the layer under the agent: the same drop-in works for any agent loop that drives a browser.</p>
   </div>
+
+  <h1 style="margin-top:3.4rem">Hermes Protocolis: the agent makes the account, and never sees the password</h1>
+  <p class="lede">A concept build of Hermes with Protocolis inside: a sessions panel beside the chat and a credential broker. One prompt: create an account on a site, keep the login in the broker, download a report. The broker generates the password and fills it; the model never receives it. 54 s, played at 4x.</p>
+  <div class="frame"><video controls playsinline preload="metadata" src="../media/hermes-broker.mp4" poster="../media/hermes-broker.jpg"></video></div>
+  <div class="notes">
+    <p>What is on screen: the prompt goes in and three live web sessions appear in the panel; the broker creates the account with a password it generated and fills it; the agent reads the verification code from the mailbox; the report is downloaded and opened in the viewer; the session is pinned open. The vault shown is a demo vault.</p>
+    <p>Concept build on upstream Hermes Agent, shown here for discussion; not a Nous Research product.</p>
+  </div>
   <p class="cta">The full set of recorded races, with models, calls, tokens and cost, is on <a href="../?ref=hermes-page">the main page</a>. The reproduction kit is available on request: <a href="mailto:vahagn@protocolis.co">vahagn@protocolis.co</a>.</p>
 </main>
 </body>
