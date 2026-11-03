@@ -34,6 +34,19 @@ video{display:block;width:100%;height:auto}
 .notes code{font-family:var(--font-mono);font-size:.88em;color:var(--fg)}
 .cta{margin-top:2.2rem;padding-top:1.4rem;border-top:1px solid var(--rule);font-size:.98rem}
 .cta a{color:var(--accent)}
+
+.car{position:relative;margin-top:1.8rem}
+.strip{display:flex;gap:1rem;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.strip::-webkit-scrollbar{display:none}
+.slide{flex:0 0 100%;scroll-snap-align:start;margin:0}
+.slide .cap{margin-top:.7rem;color:var(--fg-2);font-size:.95rem}
+.slide .cap b{color:var(--fg);font-weight:500}
+.nav{display:flex;justify-content:space-between;align-items:center;margin-top:.9rem;font-size:.9rem;color:var(--dim)}
+.nav button{background:none;border:1px solid var(--rule);color:var(--fg);font:inherit;padding:.35rem .8rem;cursor:pointer}
+.nav button:hover{border-color:var(--accent);color:var(--accent)}
+.dots{display:flex;gap:.45rem}
+.dots i{width:7px;height:7px;border-radius:50%;background:var(--rule);display:block}
+.dots i.on{background:var(--accent)}
 </style>
 </head>
 <body>
@@ -42,19 +55,48 @@ video{display:block;width:100%;height:auto}
   <a class="back" href="../">All races →</a>
 </header>
 <main>
-  <h1>Hermes Agent, same model, same task, two browser tools</h1>
-  <p class="lede">Upstream Hermes Agent in both panes, Grok 4.6 in both. Left: its stock Browser Use tool. Right: Protocolis as its browser tool. The task is a search in a hockey statistics table: the season in which Detroit won the most games. Recorded unedited, played at 4x.</p>
-  <div class="frame"><video controls playsinline preload="metadata" src="../media/hermes-vs-stock.mp4" poster="../media/hermes-vs-stock.jpg"></video></div>
-  <div class="res">
-    <div class="win">Hermes + Protocolis<b>25.3 s · $0.06</b>correct · 40k input tokens</div>
-    <div>Hermes + stock Browser Use tool<b>56.6 s · $0.18</b>correct · 115k input tokens</div>
-  </div>
+  <h1>Hermes Agent, same model, same tasks, two browser tools</h1>
+  <p class="lede">Upstream Hermes Agent in both panes, Grok 4.6 in both. Left: its stock Browser Use tool. Right: Protocolis as its browser tool. Five tasks, ordered by gap. Recorded unedited, played at 4x.</p>
+<div class="car"><div class="strip" id="strip">
+  <figure class="slide">
+    <div class="frame"><video controls playsinline preload="metadata" src="../media/hermes-vs-stock.mp4" poster="../media/hermes-vs-stock.jpg"></video></div>
+    <div class="res"><div class="win">Hermes + Protocolis<b>25.3 s · $0.06</b>correct · 40k input tokens</div><div>Hermes + stock Browser Use tool<b>56.6 s · $0.18</b>correct · 115k input tokens</div></div>
+    <figcaption class="cap"><b>A hockey statistics table: search for Detroit, report the season with the most wins.</b> Both answered 1995, 62 wins. 2.2x faster, 64% cheaper.</figcaption>
+  </figure>
+  <figure class="slide">
+    <div class="frame"><video controls playsinline preload="metadata" src="../media/hermes-mystery.mp4" poster="../media/hermes-mystery.jpg"></video></div>
+    <div class="res"><div class="win">Hermes + Protocolis<b>43.3 s · $0.11</b>correct · 64k input tokens</div><div>Hermes + stock Browser Use tool<b>78.2 s · $0.18</b>correct · 125k input tokens</div></div>
+    <figcaption class="cap"><b>Books to Scrape: count the Mystery books under £20 across every page.</b> Both answered 10. 1.8x faster, 40% cheaper.</figcaption>
+  </figure>
+  <figure class="slide">
+    <div class="frame"><video controls playsinline preload="metadata" src="../media/hermes-mystery-page2.mp4" poster="../media/hermes-mystery-page2.jpg"></video></div>
+    <div class="res"><div class="win">Hermes + Protocolis<b>38.4 s · $0.10</b>correct</div><div>Hermes + stock Browser Use tool<b>66.6 s · $0.16</b>correct</div></div>
+    <figcaption class="cap"><b>Books to Scrape: the first book on page 2 of Mystery.</b> Both answers correct. 1.7x faster, 38% cheaper.</figcaption>
+  </figure>
+  <figure class="slide">
+    <div class="frame"><video controls playsinline preload="metadata" src="../media/hermes-sequential-art.mp4" poster="../media/hermes-sequential-art.jpg"></video></div>
+    <div class="res"><div class="win">Hermes + Protocolis<b>41.4 s · $0.21</b>correct</div><div>Hermes + stock Browser Use tool<b>52.6 s · $0.22</b>correct</div></div>
+    <figcaption class="cap"><b>Books to Scrape: the cheapest Sequential Art book.</b> Both answered Patience, £10.16. 1.3x faster.</figcaption>
+  </figure>
+  <figure class="slide">
+    <div class="frame"><video controls playsinline preload="metadata" src="../media/hermes-quotes-inspirational.mp4" poster="../media/hermes-quotes-inspirational.jpg"></video></div>
+    <div class="res"><div class="win">Hermes + Protocolis<b>38.7 s · $0.12</b>correct</div><div>Hermes + stock Browser Use tool<b>47.6 s · $0.17</b>correct</div></div>
+    <figcaption class="cap"><b>A quotes site: count the quotes tagged inspirational.</b> Both answers correct. 1.2x faster, 29% cheaper.</figcaption>
+  </figure>
+</div>
+<div class="nav"><button type="button" data-go="-1">← Previous</button><div class="dots" id="dots"></div><button type="button" data-go="1">Next →</button></div></div>
+<script>
+(function(){var st=document.getElementById('strip'),sl=st.children,d=document.getElementById('dots'),i=0;
+for(var k=0;k<sl.length;k++){var e=document.createElement('i');if(!k)e.className='on';d.appendChild(e)}
+function go(n){i=Math.max(0,Math.min(sl.length-1,i+n));sl[i].scrollIntoView({behavior:'smooth',inline:'start',block:'nearest'});for(var k=0;k<sl.length;k++){var v=sl[k].querySelector('video');if(k!==i&&!v.paused)v.pause();d.children[k].className=k===i?'on':''}}
+document.querySelectorAll('[data-go]').forEach(function(b){b.addEventListener('click',function(){go(+b.dataset.go)})});
+st.addEventListener('scroll',function(){var n=Math.round(st.scrollLeft/st.clientWidth);if(n!==i){i=n;for(var k=0;k<sl.length;k++)d.children[k].className=k===i?'on':''}},{passive:true});
+})();
+</script>
   <div class="notes">
-    <p>Hermes Agent at upstream commit <code>d9f15af</code>, unmodified, in both panes. Its only core browser tool is Browser Use's CLI; on the right that tool is replaced by Protocolis, which compiles the page into typed, verified operations, so the table search is one operation instead of a look-click-look loop.</p>
-    <p>Task: on a hockey statistics table, find the season in which Detroit won the most games. Both runs answered 1995, 62 wins, which matches the answer fetched before the run. Mac load under 15 during recording. Cost is at Grok 4.6 list price ($2 in, $0.50 cached, $6 out per million tokens); the run itself used a subscription.</p>
-    <p>Protocolis is not a Hermes fork. It is the layer under the agent: the same drop-in works for any agent loop that drives a browser.</p>
+    <p>Hermes Agent at upstream commit <code>d9f15af</code>, unmodified, in both panes. Its only core browser tool is Browser Use's CLI; on the right that tool is replaced by Protocolis, which compiles the page into typed, verified operations, so a search or a count is one operation instead of a look-click-look loop.</p>
+    <p>Every race: Grok 4.6 in both arms, same prompt, started together, recorded unedited and played at 4x; answers checked against values fetched before the run; cost at Grok 4.6 list price ($2 in, $0.50 cached, $6 out per million tokens). Mac load under 15 during recording.</p>
   </div>
-
   <h1 style="margin-top:3.4rem">Hermes Protocolis: the agent makes the account, and never sees the password</h1>
   <p class="lede">A concept build of Hermes with Protocolis inside: a sessions panel beside the chat and a credential broker. One prompt: create an account on a site, keep the login in the broker, download a report. The broker generates the password and fills it; the model never receives it. 54 s, played at 4x.</p>
   <div class="frame"><video controls playsinline preload="metadata" src="../media/hermes-broker.mp4" poster="../media/hermes-broker.jpg"></video></div>
