@@ -88,9 +88,9 @@ video{display:block;width:100%;height:auto}
 <script>
 (function(){var st=document.getElementById('strip'),sl=st.children,d=document.getElementById('dots'),i=0;
 for(var k=0;k<sl.length;k++){var e=document.createElement('i');if(!k)e.className='on';d.appendChild(e)}
-function go(n){i=Math.max(0,Math.min(sl.length-1,i+n));sl[i].scrollIntoView({behavior:'smooth',inline:'start',block:'nearest'});for(var k=0;k<sl.length;k++){var v=sl[k].querySelector('video');if(k!==i&&!v.paused)v.pause();d.children[k].className=k===i?'on':''}}
+var lock=0;function go(n){i=Math.max(0,Math.min(sl.length-1,i+n));clearTimeout(lock);lock=setTimeout(function(){lock=0},700);sl[i].scrollIntoView({behavior:'smooth',inline:'start',block:'nearest'});for(var k=0;k<sl.length;k++){var v=sl[k].querySelector('video');if(k!==i&&!v.paused)v.pause();d.children[k].className=k===i?'on':''}}
 document.querySelectorAll('[data-go]').forEach(function(b){b.addEventListener('click',function(){go(+b.dataset.go)})});
-st.addEventListener('scroll',function(){var n=Math.round(st.scrollLeft/st.clientWidth);if(n!==i){i=n;for(var k=0;k<sl.length;k++)d.children[k].className=k===i?'on':''}},{passive:true});
+st.addEventListener('scroll',function(){if(lock)return;var n=Math.round(st.scrollLeft/st.clientWidth);if(n!==i){i=n;for(var k=0;k<sl.length;k++)d.children[k].className=k===i?'on':''}},{passive:true});
 })();
 </script>
   <div class="notes">
