@@ -43,15 +43,15 @@ video{display:block;width:100%;height:auto}
 </header>
 <main>
   <h1>Hermes Agent, same model, same task, two browser tools</h1>
-  <p class="lede">Upstream Hermes Agent in both panes, Grok 4.6 in both. Left: its stock Browser Use tool. Right: Protocolis as its browser tool. The task is a count across every page of a category on a demo bookshop. Recorded unedited, played at 4x.</p>
+  <p class="lede">Upstream Hermes Agent in both panes, Grok 4.6 in both. Left: its stock Browser Use tool. Right: Protocolis as its browser tool. The task is a search in a hockey statistics table: the season in which Detroit won the most games. Recorded unedited, played at 4x.</p>
   <div class="frame"><video controls playsinline preload="metadata" src="../media/hermes-vs-stock.mp4" poster="../media/hermes-vs-stock.jpg"></video></div>
   <div class="res">
-    <div class="win">Hermes + Protocolis<b>43.3 s · $0.11</b>correct · 64k input tokens</div>
-    <div>Hermes + stock Browser Use tool<b>78.2 s · $0.18</b>correct · 125k input tokens</div>
+    <div class="win">Hermes + Protocolis<b>25.3 s · $0.06</b>correct · 40k input tokens</div>
+    <div>Hermes + stock Browser Use tool<b>56.6 s · $0.18</b>correct · 115k input tokens</div>
   </div>
   <div class="notes">
-    <p>Hermes Agent at upstream commit <code>d9f15af</code>, unmodified, in both panes. Its only core browser tool is Browser Use's CLI; on the right that tool is replaced by Protocolis, which compiles the page into typed, verified operations, so the count across both pages ends in one extract instead of a page-by-page read.</p>
-    <p>Task: count the Mystery books under £20 across every page of books.toscrape.com. Both runs answered 10, which matches a count fetched before the run. Mac load under 15 during recording. Cost is at Grok 4.6 list price ($2 in, $0.50 cached, $6 out per million tokens); the run itself used a subscription.</p>
+    <p>Hermes Agent at upstream commit <code>d9f15af</code>, unmodified, in both panes. Its only core browser tool is Browser Use's CLI; on the right that tool is replaced by Protocolis, which compiles the page into typed, verified operations, so the table search is one operation instead of a look-click-look loop.</p>
+    <p>Task: on a hockey statistics table, find the season in which Detroit won the most games. Both runs answered 1995, 62 wins, which matches the answer fetched before the run. Mac load under 15 during recording. Cost is at Grok 4.6 list price ($2 in, $0.50 cached, $6 out per million tokens); the run itself used a subscription.</p>
     <p>Protocolis is not a Hermes fork. It is the layer under the agent: the same drop-in works for any agent loop that drives a browser.</p>
   </div>
 
