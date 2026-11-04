@@ -477,7 +477,7 @@ body::before{
         </figure>
         <figure class="slide" data-cx="simple" data-opp="harness" data-tier="strong">
           <div class="frame"><video controls preload="none" playsinline src="media/race-luna.mp4" poster="media/race-luna.jpg"></video><div class="fin a" data-at="48.9"><span class="ck"><svg viewBox="0 0 16 16" width="11" height="11" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Browser Harness<b>41.4 s</b></div><div class="fin b win" data-at="44.9"><span class="ck"><svg viewBox="0 0 16 16" width="11" height="11" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Protocolis<b>36.4 s</b></div></div>
-          <figcaption class="cap"><span class="cxt">Simple task</span><b>Browser Use's own eval setup: Codex + GPT-6 Luna.</b> Protocolis (Fast mode) 36 s, 7 model calls, $0.0040. Browser Harness 41 s, 15 model calls, $0.0074. Both answers correct.</figcaption>
+          <figcaption class="cap"><span class="cxt">Simple task</span><b>Browser Use's own eval setup: Codex + GPT-6 Luna.</b> Protocolis (Adaptive mode) 36 s, 7 model calls, $0.0040. Browser Harness 41 s, 15 model calls, $0.0074. Both answers correct.</figcaption>
         </figure>
         <figure class="slide" data-cx="simple" data-opp="harness" data-tier="frontier">
           <div class="frame"><video controls preload="none" playsinline src="media/race-astra.mp4" poster="media/race-astra.jpg"></video><div class="fin a" data-at="28.4"><span class="ck"><svg viewBox="0 0 16 16" width="11" height="11" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Browser Harness<b>20.9 s</b></div><div class="fin b win" data-at="26.2"><span class="ck"><svg viewBox="0 0 16 16" width="11" height="11" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Protocolis<b>18.7 s</b></div></div>
@@ -695,27 +695,27 @@ body::before{
     <div class="fb-wrap">
     <div class="fb">
       <div class="fb-col"><b>Completed<small>of 40 runs</small></b>
-      <div class="bar us full"><span>Protocolis Fast</span><span class="track" style="--w:100%"><span class="fill" style="width:100%"></span><span class="val">40</span></span></div>
+      <div class="bar us full"><span>Protocolis Adaptive</span><span class="track" style="--w:100%"><span class="fill" style="width:100%"></span><span class="val">40</span></span></div>
       <div class="bar us s full"><span>Protocolis Standard</span><span class="track" style="--w:100%"><span class="fill" style="width:100%"></span><span class="val">40</span></span></div>
       <div class="bar full"><span>Browser Use flash</span><span class="track" style="--w:100%"><span class="fill" style="width:100%"></span><span class="val">40</span></span></div>
       <div class="bar full"><span>Browser Use agent</span><span class="track" style="--w:100%"><span class="fill" style="width:100%"></span><span class="val">40</span></span></div>
       </div>
       <div class="fb-col"><b>Seconds<small>per completed task</small></b>
-      <div class="bar us"><span>Protocolis Fast</span><span class="track" style="--w:62.1%"><span class="fill" style="width:62.1%"></span><span class="val">23.4</span></span></div>
+      <div class="bar us"><span>Protocolis Adaptive</span><span class="track" style="--w:62.1%"><span class="fill" style="width:62.1%"></span><span class="val">23.4</span></span></div>
       <div class="bar us s"><span>Protocolis Standard</span><span class="track" style="--w:83.6%"><span class="fill" style="width:83.6%"></span><span class="val">31.5</span></span></div>
       <div class="bar"><span>Browser Use flash</span><span class="track" style="--w:79.8%"><span class="fill" style="width:79.8%"></span><span class="val">30.1</span></span></div>
       <div class="bar full"><span>Browser Use agent</span><span class="track" style="--w:100%"><span class="fill" style="width:100%"></span><span class="val">37.7</span></span></div>
       </div>
       <div class="fb-col"><b>Large-model tokens<small>per completed task</small></b>
-      <div class="bar us"><span>Protocolis Fast</span><span class="track" style="--w:19.9%"><span class="fill" style="width:19.9%"></span><span class="val">11.3k</span></span></div>
+      <div class="bar us"><span>Protocolis Adaptive</span><span class="track" style="--w:19.9%"><span class="fill" style="width:19.9%"></span><span class="val">11.3k</span></span></div>
       <div class="bar us s"><span>Protocolis Standard</span><span class="track" style="--w:28%"><span class="fill" style="width:28%"></span><span class="val">15.9k</span></span></div>
       <div class="bar"><span>Browser Use flash</span><span class="track" style="--w:74.6%"><span class="fill" style="width:74.6%"></span><span class="val">42.4k</span></span></div>
       <div class="bar full"><span>Browser Use agent</span><span class="track" style="--w:100%"><span class="fill" style="width:100%"></span><span class="val">56.8k</span></span></div>
       </div>
     </div>
-    <div class="mx-legend"><span><i class="us"></i>Protocolis Fast · APC + TypeSafe choice model + Grok 4.6</span><span><i class="us s"></i>Protocolis Standard · APC + Grok 4.6</span><span><i></i>Browser Use flash mode and agent · Grok 4.6</span><span>20 fresh public tasks × 2</span></div>
+    <div class="mx-legend"><span><i class="us"></i>Protocolis Adaptive · APC + TypeSafe choice model + Grok 4.6</span><span><i class="us s"></i>Protocolis Standard · APC + Grok 4.6</span><span><i></i>Browser Use flash mode and agent · Grok 4.6</span><span>20 fresh public tasks × 2</span></div>
     </div>
-    <p class="note">Fast: TypeSafe chooses from the compiled operations where it is sure, Protocolis executes and checks each step, the agent's model takes the rest, so a doubtful choice costs no completion. Against Standard, 26% less time and 29% fewer large-model tokens per completed task; against Browser Use's agent, 38% and 80% less; against its flash mode, 22% and 73% less. Every written answer was correct in every arm. On long open-ended tasks Fast runs level with Standard.</p>
+    <p class="note">Adaptive: for each step, the engine's own evidence decides whether the model is needed at all. TypeSafe chooses from the compiled operations where it is sure, Protocolis executes and checks each step, the agent's model takes the rest, so a doubtful choice costs no completion. Against Standard, 26% less time and 29% fewer large-model tokens per completed task; against Browser Use's agent, 38% and 80% less; against its flash mode, 22% and 73% less. Every written answer was correct in every arm. On long open-ended tasks Adaptive runs level with Standard.</p>
     <h4 class="fb-h">Ultrafast: no large model at all, the same 40 runs.</h4>
     <div class="fb-wrap">
     <div class="fb">
