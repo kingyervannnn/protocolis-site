@@ -180,6 +180,13 @@ a.chip.patent-status:hover,a.chip.patent-status:focus-visible{background:rgb(236
 .fb .bar.us.s .fill{opacity:.55}
 .mx-legend i.us.s{opacity:.55}
 @media (max-width:760px){.fb{grid-template-columns:minmax(0,1fr)}.fb-col{padding-right:0}.fb-col+.fb-col{padding-left:0;border-left:0}.fb .bar{grid-template-columns:7.2rem 1fr}}
+.pop{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin-top:1.4rem;border-top:1px solid var(--fg-2);border-bottom:1px solid var(--rule)}
+.pop>div{padding:1.5rem 1.25rem 1.6rem 0;min-width:0}
+.pop>div+div{padding-left:1.25rem;border-left:1px solid var(--rule)}
+.pop .n{font-family:var(--font-display);font-weight:600;font-size:clamp(2.4rem,4.2vw,3.8rem);line-height:.95;color:var(--accent);font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.pop .n small{display:block;font-size:.34em;color:var(--fg);font-weight:500;letter-spacing:.02em;margin-top:.5rem;line-height:1.3}
+.pop .c{font-family:var(--font-mono);font-size:.66rem;letter-spacing:.06em;color:var(--fg-2);text-transform:uppercase;margin-top:.8rem}
+@media (max-width:760px){.pop{grid-template-columns:minmax(0,1fr)}.pop>div{padding-right:0}.pop>div+div{padding-left:0;border-left:0;border-top:1px solid var(--rule)}}
 .fb-h{font-family:var(--font-display);font-size:1.15rem;font-weight:600;letter-spacing:.02em;margin-top:2.6rem}
 .cx-h{font-family:var(--font-display);font-size:clamp(1.3rem,2.2vw,1.8rem);margin-top:3.5rem;letter-spacing:.02em}
 .cx-wrap{overflow-x:auto}
@@ -417,7 +424,7 @@ body::before{
   <div class="stat"><p class="lab">Speed</p><div class="n">3.4×<small>faster per completed task</small></div><div class="bars"><div class="bar us"><span>Protocolis</span><span class="track" style="--w:29.7%"><span class="fill" style="width:29.7%"></span><span class="val">315 s</span></span></div><div class="bar full"><span>Browser Use</span><span class="track" style="--w:100%"><span class="fill" style="width:100%"></span><span class="val">1,061 s</span></span></div></div><p class="c">vs Browser Use's own agent · GLM-5.3-flash · 98 held-out tasks</p></div>
   <div class="stat"><p class="lab">Cost</p><div class="n">2.2×<small>cheaper per completed task</small></div><div class="bars"><div class="bar us"><span>Protocolis</span><span class="track" style="--w:46%"><span class="fill" style="width:46%"></span><span class="val">46%</span></span></div><div class="bar full"><span>Browser Use</span><span class="track" style="--w:100%"><span class="fill" style="width:100%"></span><span class="val">100%</span></span></div></div><p class="c">vs Browser Use's own agent · GLM-5.3-flash · 98 held-out tasks</p></div>
   <div class="stat"><p class="lab">Frontier model</p><div class="n">32%<small>more tasks completed, 31% less time, 37% lower cost</small></div><div class="bars"><div class="bar us full"><span>Protocolis</span><span class="track" style="--w:100%"><span class="fill" style="width:100%"></span><span class="val">25</span></span></div><div class="bar"><span>Browser Use</span><span class="track" style="--w:76%"><span class="fill" style="width:76%"></span><span class="val">19</span></span></div></div><p class="c">vs OpenAI browser tools on a Browser Use driver · Claude Opus 5.5 · 39 development tasks</p></div>
-  <div class="stat"><p class="lab">Ultrafast</p><div class="n">24%<small>faster per task, 3× fewer model calls, more tasks completed, no large model</small></div><div class="bars"><div class="bar us"><span>Protocolis</span><span class="track" style="--w:75.9%"><span class="fill" style="width:75.9%"></span><span class="val">12.6 s</span></span></div><div class="bar full"><span>Jev</span><span class="track" style="--w:100%"><span class="fill" style="width:100%"></span><span class="val">16.6 s</span></span></div></div><p class="c">vs Jev Ultrafast · Browser Use's agent on the same choice model · 40 runs</p></div>
+  <div class="stat"><p class="lab">Ultrafast</p><div class="n">40%<small>less time per completed task, 3× fewer model calls, more tasks completed, no large model</small></div><div class="bars"><div class="bar us"><span>Protocolis</span><span class="track" style="--w:60.2%"><span class="fill" style="width:60.2%"></span><span class="val">10.0 s</span></span></div><div class="bar full"><span>Jev</span><span class="track" style="--w:100%"><span class="fill" style="width:100%"></span><span class="val">16.6 s</span></span></div></div><p class="c">vs Jev Ultrafast · Browser Use's agent on the same choice model · 40 runs</p></div>
 </section>
 
 <section class="sec" id="demo">
@@ -735,6 +742,53 @@ body::before{
     <div class="mx-legend"><span><i class="us"></i>Protocolis Ultrafast · APC + TypeSafe; every step checked</span><span><i></i>Jev Ultrafast · Browser Use's open-source agent on the same choice model</span></div>
     </div>
     <p class="note">Same choice model, different substrate. Protocolis's misses were all declines to act when unsure; Jev's were 5 blocked, 2 declared done on the wrong page, 2 at its own caps and 2 stalled on a dialog. On the runs both completed, Protocolis was 26% faster than Jev; typical completed task 7.4 s Protocolis, 7.3 s Jev. In another run of the same tasks Jev took 10.0 s per completed task, so its figure swings with its loops; Protocolis's did not. One session per read, arms rotating per task; completion is the same final-page check for every arm plus the written answer against a gold where an arm writes one; every attempt counted.</p>
+    <h3 class="cx-h">It holds against Stagehand and Playwright MCP.</h3>
+    <div class="pop">
+      <div><div class="n">11×<small>lower cost per completed long task than Stagehand</small></div><p class="c">$0.29 vs $3.23 · Grok 4.6 · 40 long tasks</p></div>
+      <div><div class="n">77%<small>more long tasks completed than Stagehand, in 48% less time</small></div><p class="c">23 vs 13 completed · 281 s vs 539 s</p></div>
+      <div><div class="n">7×<small>lower cost per completed task than Playwright MCP, every task completed</small></div><p class="c">$0.011 vs $0.081 · Grok 4.6 · 120 runs</p></div>
+    </div>
+    <h4 class="fb-h">Long open-web tasks: Protocolis against Stagehand.</h4>
+    <div class="fb-wrap">
+    <div class="fb">
+      <div class="fb-col"><b>Completed<small>of 40 runs</small></b>
+      <div class="bar us"><span>Protocolis Adaptive</span><span class="track" style="--w:57.5%"><span class="fill" style="width:57.5%"></span><span class="val">23</span></span></div>
+      <div class="bar us s"><span>Protocolis Standard</span><span class="track" style="--w:55%"><span class="fill" style="width:55%"></span><span class="val">22</span></span></div>
+      <div class="bar"><span>Stagehand</span><span class="track" style="--w:32.5%"><span class="fill" style="width:32.5%"></span><span class="val">13</span></span></div>
+      </div>
+      <div class="fb-col"><b>Seconds<small>per completed task</small></b>
+      <div class="bar us"><span>Protocolis Adaptive</span><span class="track" style="--w:52.1%"><span class="fill" style="width:52.1%"></span><span class="val">281</span></span></div>
+      <div class="bar us s"><span>Protocolis Standard</span><span class="track" style="--w:61.2%"><span class="fill" style="width:61.2%"></span><span class="val">330</span></span></div>
+      <div class="bar full"><span>Stagehand</span><span class="track" style="--w:100%"><span class="fill" style="width:100%"></span><span class="val">539</span></span></div>
+      </div>
+      <div class="fb-col"><b>Cost<small>per completed task</small></b>
+      <div class="bar us"><span>Protocolis Adaptive</span><span class="track" style="--w:9.0%"><span class="fill" style="width:9.0%"></span><span class="val">$0.29</span></span></div>
+      <div class="bar us s"><span>Protocolis Standard</span><span class="track" style="--w:9.9%"><span class="fill" style="width:9.9%"></span><span class="val">$0.32</span></span></div>
+      <div class="bar full"><span>Stagehand</span><span class="track" style="--w:100%"><span class="fill" style="width:100%"></span><span class="val">$3.23</span></span></div>
+      </div>
+    </div>
+    <div class="mx-legend"><span><i class="us"></i>Protocolis Adaptive · APC + TypeSafe choice model + Grok 4.6</span><span><i class="us s"></i>Protocolis Standard · APC + Grok 4.6</span><span><i></i>Stagehand 3.7.3 · its own agent on Grok 4.6</span><span>40 long open-web tasks</span></div>
+    </div>
+    <p class="note">Stagehand 3.7.3 runs its native agent, with Grok 4.6 for the agent and every internal call; Protocolis uses the same model. Each arm ran the same 40 long tasks on live websites, arms rotating per task in one session. Completion is judged blind by WebJudge from the screenshots, with a second judge on disputed tasks, and every attempt counts. Stagehand made 67 model calls per completed task; Protocolis Adaptive 23, Standard 22.</p>
+    <h4 class="fb-h">Public tasks: Protocolis against Playwright MCP.</h4>
+    <div class="fb-wrap">
+    <div class="fb">
+      <div class="fb-col"><b>Completed<small>of 120 runs</small></b>
+      <div class="bar us full"><span>Protocolis Ultrafast</span><span class="track" style="--w:100%"><span class="fill" style="width:100%"></span><span class="val">120</span></span></div>
+      <div class="bar full"><span>Playwright MCP</span><span class="track" style="--w:100%"><span class="fill" style="width:100%"></span><span class="val">120</span></span></div>
+      </div>
+      <div class="fb-col"><b>Cost<small>per completed task</small></b>
+      <div class="bar us"><span>Protocolis Ultrafast</span><span class="track" style="--w:13.6%"><span class="fill" style="width:13.6%"></span><span class="val">$0.011</span></span></div>
+      <div class="bar full"><span>Playwright MCP</span><span class="track" style="--w:100%"><span class="fill" style="width:100%"></span><span class="val">$0.081</span></span></div>
+      </div>
+      <div class="fb-col"><b>Model calls<small>per completed task</small></b>
+      <div class="bar us"><span>Protocolis Ultrafast</span><span class="track" style="--w:24.6%"><span class="fill" style="width:24.6%"></span><span class="val">1.4</span></span></div>
+      <div class="bar full"><span>Playwright MCP</span><span class="track" style="--w:100%"><span class="fill" style="width:100%"></span><span class="val">5.6</span></span></div>
+      </div>
+    </div>
+    <div class="mx-legend"><span><i class="us"></i>Protocolis Ultrafast · APC + TypeSafe; Grok 4.6 takes over when unsure</span><span><i></i>Playwright MCP 0.0.84 · Microsoft's browser server, driven by Grok 4.6</span><span>20 public tasks × 6 rounds</span></div>
+    </div>
+    <p class="note">Playwright MCP gives the agent's model the page's accessibility snapshot and a set of browser tools; Protocolis gives it compiled operations, and the choice model takes the steps it is sure of. Six rounds of the same 20 public tasks, 120 runs per side, pooled as registered before the runs; every attempt counted. Both completed every task; Protocolis took 8% less time per completed task, 15.1 s against 16.4 s, on a quarter of the model calls.</p>
   </div>
 </section>
 
