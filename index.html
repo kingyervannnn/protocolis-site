@@ -691,7 +691,7 @@ body::before{
     </div>
     <p class="note">Which Browser Use mode is the stronger opponent depends on the model: on the small model its tools mode completes more and runs faster than its own agent; on Grok and gpt-6.1-sol its own agent is the faster one. Protocolis is measured against both and is ahead or level against whichever is stronger on each metric. Held-out tasks are Online-Mind2Web tasks never used in development; development tasks are 39 live websites and component demos used across every round. Simple and complex are split by step count. Browser Use 0.13.10 as its own agent and 0.13.13 in both modes. Full results, build hashes and the reproduction kit are available under NDA.</p>
 
-    <h3 class="cx-h">Adaptive and Ultrafast: a choice model takes the routine steps.</h3>
+    <h3 class="cx-h">Standard and Adaptive: the engine with your model, and the engine deciding per step.</h3>
     <div class="fb-wrap">
     <div class="fb">
       <div class="fb-col"><b>Completed<small>of 40 runs</small></b>
@@ -713,7 +713,7 @@ body::before{
     <div class="mx-legend"><span><i class="us"></i>Protocolis Adaptive · APC + TypeSafe choice model + Grok 4.6</span><span><i></i>Browser Use flash mode and agent · Grok 4.6</span><span>20 fresh public tasks × 2</span></div>
     </div>
     <p class="note">Adaptive: for each step, the engine's own evidence decides whether the model is needed at all. TypeSafe chooses from the compiled operations where it is sure, Protocolis executes and checks each step, the agent's model takes the rest, so a doubtful choice costs no completion. Against Standard, 26% less time and 29% fewer large-model tokens per completed task; against Browser Use's agent, 38% and 80% less; against its flash mode, 22% and 73% less. Every written answer was correct in every arm. On long open-ended tasks Adaptive runs level with Standard.</p>
-    <h4 class="fb-h">Ultrafast: no large model at all, the same 40 runs.</h4>
+    <h4 class="fb-h">Adaptive, chooser alone (Ultrafast): no large model at all, the same 40 runs.</h4>
     <div class="fb-wrap">
     <div class="fb">
       <div class="fb-col"><b>Completed<small>of 40 runs</small></b>
