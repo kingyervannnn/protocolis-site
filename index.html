@@ -333,7 +333,7 @@ a.chip.patent-status:hover,a.chip.patent-status:focus-visible{background:rgb(236
 .demo-sidebar{display:flex;flex-direction:column;align-self:stretch}
 .demo-sidebar > .cbar{margin-top:auto;padding-top:1rem;border-top:1px solid var(--rule);margin-bottom:0}
 .demo-results{padding-bottom:1rem}
-.demo-ready .carousel > .demo-method{grid-column:2;margin-top:0}
+.demo-ready .carousel > .demo-method{grid-column:1/-1;margin-top:0;padding-top:1rem;border-top:1px solid var(--rule)}
 .demo-ready .carousel > .track{align-self:stretch}
 .demo-ready .slide .frame{height:100%;min-height:0;aspect-ratio:auto;overflow:hidden}
 .demo-ready .frame video{position:absolute;inset:0;object-fit:contain}
@@ -344,8 +344,8 @@ a.chip.patent-status:hover,a.chip.patent-status:focus-visible{background:rgb(236
 .demo-sidebar .cbar button{font-size:.68rem;padding:.4rem .55rem}
 .demo-sidebar .demo-meta{margin:.75rem 0 0;color:var(--fg-2);font-size:.76rem;line-height:1.5}
 .demo-method{margin-top:1rem;color:var(--fg-2);font-size:.82rem;line-height:1.6}
-.demo-method summary{cursor:pointer;color:var(--fg);width:fit-content}
-.demo-method .sub{font-size:inherit;margin:.7rem 0 0}
+.demo-method h3{font-family:var(--font-body);font-size:.85rem;font-weight:600;color:var(--fg);margin:0}
+.demo-method .sub{font-size:inherit;margin:.7rem 0 0;max-width:none}
 .demo-method [hidden]{display:none}
 .demo-clip-detail{margin:.7rem 0 0}
 @media(max-width:1100px){.demo-ready .carousel{grid-template-columns:minmax(0,1fr);gap:1.25rem}.demo-sidebar{width:100%}}
@@ -1008,12 +1008,12 @@ body::before{
 <script>
 (function(){var root=document.getElementById('demo');if(!root)return;var c=root.querySelector('.carousel'),t=c.querySelector('.track'),d=c.querySelector('.cdots'),all=[].slice.call(t.querySelectorAll('.slide')),soon=t.querySelector('.slide.soon'),opp='harness',tier='all',cx='all',vis=[];
 
-var grid=root.querySelector('.demo-grid'),sidebar=document.createElement('div'),heading=root.querySelector('h2'),caption=document.createElement('div'),meta=document.createElement('p'),details=document.createElement('details'),summary=document.createElement('summary'),clipDetail=document.createElement('div'),currentSlide=null;
+var grid=root.querySelector('.demo-grid'),sidebar=document.createElement('div'),heading=root.querySelector('h2'),caption=document.createElement('div'),meta=document.createElement('p'),details=document.createElement('div'),summary=document.createElement('h3'),clipDetail=document.createElement('div'),currentSlide=null;
 sidebar.className='demo-sidebar';caption.className='demo-caption cap';caption.id='demo-active-caption';meta.className='demo-meta';details.className='demo-method';clipDetail.className='demo-clip-detail';summary.textContent='Recording details';details.appendChild(summary);details.appendChild(clipDetail);
 [].forEach.call(grid.querySelectorAll(':scope > .sub'),function(p){details.appendChild(p)});
 var results=document.createElement('div');results.className='demo-results';results.appendChild(heading);results.appendChild(caption);results.appendChild(meta);sidebar.appendChild(results);sidebar.appendChild(c.querySelector('.cbar'));c.appendChild(sidebar);c.appendChild(details);grid.classList.add('demo-ready');
 function showDetails(s){
- if(!s||s===currentSlide)return;currentSlide=s;details.open=false;
+ if(!s||s===currentSlide)return;currentSlide=s;
  var group=s.dataset.opp||opp,cap=s.querySelector('.cap'),v=s.querySelector('video');caption.innerHTML=cap?cap.innerHTML:'';
  [].forEach.call(caption.querySelectorAll('.cnote'),function(n){if(n.textContent.indexOf('Replayed from the saved runs')===0)n.remove()});
  var notes=cap?[].map.call(cap.querySelectorAll('.cnote'),function(n){return n.textContent}).join(' '):'';
@@ -1032,11 +1032,11 @@ function showDetails(s){
 
 
 function sizeDemo(){
- var selected=currentSlide,wasOpen=details.open,maxHeight=0;
+ var selected=currentSlide,maxHeight=0;
  results.style.minHeight='0';
  all.forEach(function(slide){if(slide===soon)return;showDetails(slide);maxHeight=Math.max(maxHeight,results.getBoundingClientRect().height)});
  results.style.minHeight=Math.ceil(maxHeight)+'px';
- currentSlide=null;showDetails(selected||vis[0]);details.open=wasOpen;
+ currentSlide=null;showDetails(selected||vis[0]);
  t.style.minHeight=matchMedia('(min-width:1101px)').matches?Math.ceil(t.clientWidth*9/16)+'px':'';
 }
 var resizeDemoTimer;addEventListener('resize',function(){clearTimeout(resizeDemoTimer);resizeDemoTimer=setTimeout(sizeDemo,150)});
