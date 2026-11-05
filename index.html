@@ -509,6 +509,75 @@ body::before{
 @media (prefers-reduced-motion:reduce){body::before{filter:none}}
 
 .frame{container-type:inline-size}.fin{display:grid !important;grid-template-columns:auto auto;align-items:center;justify-items:center;column-gap:.55em;row-gap:.15em;padding:.7em 1.1em .6em !important;border-radius:14px !important;border-width:2px !important;background:rgba(9,11,13,.9) !important;font-size:clamp(.55rem,1.7cqw,.95rem) !important;bottom:12% !important}.fin .ck{width:1.4em !important;height:1.4em !important}.fin .ck svg{width:.9em;height:.9em}.fin b{grid-column:1/-1;font-size:2.4em;line-height:1.05;margin:0 !important;letter-spacing:.01em}.fin.p1,.fin.p2,.fin.p3{font-size:clamp(.5rem,1.45cqw,.85rem) !important;max-width:30cqw;white-space:normal !important;text-align:center;line-height:1.2}
+
+.draft-flag{position:fixed;top:0;left:0;right:0;z-index:999;background:#7a2b2b;color:#fff;font:600 .75rem var(--font-mono);letter-spacing:.12em;text-align:center;padding:.35rem}
+.mt-bar{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.8rem 1.5rem;margin-top:1.8rem}
+.mt-tabs{display:inline-flex;border:1px solid var(--rule);border-radius:999px;padding:3px}
+.mt-tabs button{all:unset;cursor:pointer;font:500 .72rem var(--font-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--fg-2);padding:.45rem 1rem;border-radius:999px}
+.mt-tabs button.on{background:var(--accent);color:var(--accent-ink)}
+.mt-key{display:flex;gap:1.2rem;flex-wrap:wrap;font:.7rem var(--font-mono);letter-spacing:.06em;color:var(--fg-2)}
+.mt-key .k::before{content:"";display:inline-block;width:.7rem;height:.7rem;border-radius:3px;margin-right:.45rem;vertical-align:-1px;background:rgba(236,232,223,.25)}
+.mt-key .k.ad::before{background:var(--accent)}.mt-key .k.st::before{background:#8fa3b8}
+.mt{margin-top:1rem;border-top:1px solid var(--fg-2)}
+.mt-h,.mt-l{display:grid;grid-template-columns:minmax(0,2.2fr) repeat(3,minmax(0,1fr));gap:0 1rem;align-items:center}
+.mt-h{font:500 .68rem var(--font-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--fg-2);padding:.8rem .9rem}
+.mt-h small{display:block;font-size:.85em;letter-spacing:.06em;text-transform:none;color:var(--dim);margin-top:.15rem}
+.mt-g{border-top:1px solid var(--rule);padding:.9rem 0 1rem}
+.mt-o{padding:0 .9rem .5rem}.mt-o b{font-weight:500;font-size:1.02rem}
+.mt-o span{display:block;font:.66rem var(--font-mono);letter-spacing:.05em;color:var(--dim);margin-top:.15rem}
+.mt-l{padding:.42rem .9rem;border-radius:8px;font:.86rem var(--font-mono);font-variant-numeric:tabular-nums;color:var(--fg-2)}
+.mt-l b{font-weight:500;color:var(--fg)}
+.mt-l .nm{font-family:var(--font-body);font-size:.9rem}
+.mt-l.ad{background:var(--accent-wash)}.mt-l.ad .nm,.mt-l.ad b{color:var(--accent)}
+.mt-l.st{background:rgba(127,147,168,.1);margin-top:3px}.mt-l.st .nm,.mt-l.st b{color:#b9c7d6}
+.mt-l.op{margin-top:3px}.mt-l.op .nm{color:var(--fg-2)}.mt-l.op b{color:var(--fg-2);font-weight:400}
+.mt-l .x{font-style:normal;font-size:.78em;margin-left:.5em;padding:.08em .45em;border-radius:5px;border:1px solid currentColor;opacity:.9}
+.pend{font:.64rem var(--font-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--dim);opacity:.85}
+.mt-status{font-family:var(--font-mono);font-size:.74rem;color:var(--fg-2);line-height:1.7;margin-top:1.6rem;max-width:62rem}
+.msz{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;margin-top:1.3rem}
+.ms{border:1px solid var(--rule);border-radius:12px;padding:1rem 1.1rem;background:var(--bg-2)}
+.ms>b{display:block;font:500 .7rem var(--font-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--fg-2)}
+.ms .mdl{display:block;font-size:1.05rem;margin-top:.3rem}.ms .vs{display:block;font-size:.8rem;color:var(--dim)}
+.ms dl{display:grid;grid-template-columns:auto 1fr;gap:.25rem .8rem;margin:.8rem 0 0;font:.8rem var(--font-mono)}
+.ms dt{color:var(--dim)}.ms dd{margin:0;text-align:right}
+.how{margin-top:3rem;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.how summary{cursor:pointer;list-style:none;padding:1rem 0;font:500 .74rem var(--font-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--fg-2)}
+.how summary::before{content:"+";display:inline-block;width:1.2rem;color:var(--accent)}.how[open] summary::before{content:"−"}
+.how-b{padding:0 0 1.2rem;max-width:62rem;font-size:.86rem;line-height:1.65;color:var(--fg-2)}.how-b b{color:var(--fg);font-weight:500}
+.result-strip.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media (max-width:700px){
+ .mt-h,.mt-l{grid-template-columns:minmax(0,1.25fr) repeat(3,minmax(0,1fr));gap:0 .45rem}
+ .mt-h{padding:.7rem .5rem;font-size:.58rem;letter-spacing:.08em}.mt-h small{display:none}
+ .mt-l{padding:.4rem .5rem;font-size:.74rem}.mt-l .nm{font-size:.76rem}
+ .mt-l .x{display:block;margin:.15rem 0 0;width:max-content}
+ .mt-o{padding:0 .5rem .45rem}
+ .msz{grid-template-columns:minmax(0,1fr)}
+ .result-strip.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+/* Access requests */
+.mail-actions{display:inline-flex;gap:.75rem;align-items:center;flex-wrap:wrap}
+
+.mail .request-access{background:transparent;color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent);letter-spacing:.08em}
+.access-dialog{width:min(35rem,calc(100% - 2rem));max-height:calc(100dvh - 2rem);padding:clamp(1.25rem,4vw,2rem);border:1px solid var(--rule);border-top:2px solid var(--accent);border-radius:6px;background:var(--bg);color:var(--fg);overflow-y:auto}
+.access-dialog::backdrop{background:rgba(0,0,0,.75);backdrop-filter:blur(5px)}
+.access-head{display:flex;align-items:start;justify-content:space-between;gap:1rem}
+.access-head h2{font-family:var(--font-display);font-size:clamp(1.65rem,5vw,2.2rem);line-height:1.2}
+.access-close{flex:none;background:transparent;color:var(--fg-2);font:1.6rem/1 var(--font-body);padding:.2rem .4rem;letter-spacing:0}
+.access-intro{font-size:.95rem;color:var(--fg-2);margin-top:.8rem;line-height:1.5}
+.access-form{display:grid;gap:1rem;margin-top:1.5rem}
+.access-form label{display:grid;gap:.35rem;font-size:.9rem;font-weight:600}
+.access-form label span{font-size:.8rem;font-weight:400;color:var(--fg-2)}
+.access-form input,.access-form textarea{width:100%;min-width:0;border:1px solid var(--rule);border-radius:3px;background:var(--bg-2);color:var(--fg);padding:.65rem .75rem;font:1rem/1.4 var(--font-body)}
+.access-form input:focus,.access-form textarea:focus{outline:2px solid var(--accent);outline-offset:2px}
+.access-form textarea{resize:vertical;min-height:7rem}
+.access-form .access-submit{justify-self:start;letter-spacing:.08em}
+.access-form button:disabled{opacity:.6;cursor:wait}
+.access-status{font-size:.9rem;line-height:1.5;overflow-wrap:anywhere}
+.access-status:empty{display:none}
+.access-status[data-state="error"]{color:#f0b4a7}
+.access-status[data-state="success"]{color:var(--accent)}
+html:has(.access-dialog[open]){overflow:hidden}
+
 /*MEASURED-CSS*/
 .draft-flag{position:fixed;top:0;left:0;right:0;z-index:999;background:#7a2b2b;color:#fff;font:600 .75rem var(--font-mono);letter-spacing:.12em;text-align:center;padding:.35rem}
 .mt-bar{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.8rem 1.5rem;margin-top:1.8rem}
@@ -533,7 +602,7 @@ body::before{
 .mt-l.op{margin-top:3px}.mt-l.op .nm{color:var(--fg-2)}.mt-l.op b{color:var(--fg-2);font-weight:400}
 .mt-n{font:.66rem var(--font-mono);color:var(--dim);margin:.55rem 0 0;padding:0 .9rem;line-height:1.6}
 .mt-l .x{font-style:normal;font-size:.78em;margin-left:.5em;padding:.08em .45em;border-radius:5px;border:1px solid currentColor;opacity:.9}
-.mt-l .x.worse{opacity:.6;border-style:dashed}.mt-l .x.lvl{opacity:.6}
+.mt-l .x.worse{opacity:.6;border-style:dashed}.mt-l .base{color:var(--dim);font-size:.9em}.mt-l .x.lvl{opacity:.6}
 .pend{font:.64rem var(--font-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--dim);opacity:.85}
 .mt-status{font-family:var(--font-mono);font-size:.74rem;color:var(--fg-2);line-height:1.7;margin-top:1.6rem;max-width:62rem}
 .msz{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;margin-top:1.3rem}
@@ -556,31 +625,7 @@ body::before{
  .msz{grid-template-columns:minmax(0,1fr)}
  .result-strip.three{grid-template-columns:repeat(3,minmax(0,1fr))}
 }
-/*END-MEASURED-CSS*//* Access requests */
-.mail-actions{display:inline-flex;gap:.75rem;align-items:center;flex-wrap:wrap}
-
-.mail .request-access{background:transparent;color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent);letter-spacing:.08em}
-.access-dialog{width:min(35rem,calc(100% - 2rem));max-height:calc(100dvh - 2rem);padding:clamp(1.25rem,4vw,2rem);border:1px solid var(--rule);border-top:2px solid var(--accent);border-radius:6px;background:var(--bg);color:var(--fg);overflow-y:auto}
-.access-dialog::backdrop{background:rgba(0,0,0,.75);backdrop-filter:blur(5px)}
-.access-head{display:flex;align-items:start;justify-content:space-between;gap:1rem}
-.access-head h2{font-family:var(--font-display);font-size:clamp(1.65rem,5vw,2.2rem);line-height:1.2}
-.access-close{flex:none;background:transparent;color:var(--fg-2);font:1.6rem/1 var(--font-body);padding:.2rem .4rem;letter-spacing:0}
-.access-intro{font-size:.95rem;color:var(--fg-2);margin-top:.8rem;line-height:1.5}
-.access-form{display:grid;gap:1rem;margin-top:1.5rem}
-.access-form label{display:grid;gap:.35rem;font-size:.9rem;font-weight:600}
-.access-form label span{font-size:.8rem;font-weight:400;color:var(--fg-2)}
-.access-form input,.access-form textarea{width:100%;min-width:0;border:1px solid var(--rule);border-radius:3px;background:var(--bg-2);color:var(--fg);padding:.65rem .75rem;font:1rem/1.4 var(--font-body)}
-.access-form input:focus,.access-form textarea:focus{outline:2px solid var(--accent);outline-offset:2px}
-.access-form textarea{resize:vertical;min-height:7rem}
-.access-form .access-submit{justify-self:start;letter-spacing:.08em}
-.access-form button:disabled{opacity:.6;cursor:wait}
-.access-status{font-size:.9rem;line-height:1.5;overflow-wrap:anywhere}
-.access-status:empty{display:none}
-.access-status[data-state="error"]{color:#f0b4a7}
-.access-status[data-state="success"]{color:var(--accent)}
-html:has(.access-dialog[open]){overflow:hidden}
-
-</style>
+/*END-MEASURED-CSS*/</style>
 </head>
 <body>
 
@@ -1079,14 +1124,16 @@ html:has(.access-dialog[open]){overflow:hidden}
 <div class="mt" data-set="short">
 <div class="mt-h"><span></span><span>Completed</span><span>Time<small>per completed task</small></span><span>Cost<small>per completed task</small></span></div>
 <div class="mt-g"><div class="mt-o"><b>Browser Use · own agent</b><span>Browser Use 0.13.13, its own planner · Grok 4.6</span></div>
-<div class="mt-l ad"><span class="nm">Protocolis Adaptive</span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span></div>
-<div class="mt-l st"><span class="nm">Protocolis Standard</span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span></div>
-<div class="mt-l op"><span class="nm">Browser Use · own agent</span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span></div>
+<div class="mt-l ad"><span class="nm">Protocolis Adaptive</span><span><b>40/40</b></span><span><b>23.4 s</b><i class="x">1.6×</i></span><span><span class="pend">measuring</span></span></div>
+<div class="mt-l st"><span class="nm">Protocolis Standard</span><span><b>40/40</b></span><span><b>31.5 s</b><i class="x">20% less</i></span><span><span class="pend">measuring</span></span></div>
+<div class="mt-l op"><span class="nm">Browser Use · own agent</span><span><b>40/40</b></span><span><b>37.7 s</b></span><span><span class="pend">measuring</span></span></div>
+<p class="mt-n">20 fresh public tasks, each run twice · 40 runs per arm · every attempt counted · every arm completed every task. Large-model tokens per completed task: Adaptive 11.3k, Standard 15.9k, Browser Use 56.8k.</p>
 </div>
 <div class="mt-g"><div class="mt-o"><b>Browser Use · tools mode</b><span>OpenAI tool runner + Browser Use driver · Grok 4.6</span></div>
 <div class="mt-l ad"><span class="nm">Protocolis Adaptive</span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span></div>
-<div class="mt-l st"><span class="nm">Protocolis Standard</span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span></div>
-<div class="mt-l op"><span class="nm">Browser Use · tools mode</span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span></div>
+<div class="mt-l st"><span class="nm">Protocolis Standard</span><span><b>11/16</b></span><span><b>33% less</b></span><span><b>85% lower</b></span></div>
+<div class="mt-l op"><span class="nm">Browser Use · tools mode</span><span><b>7/16</b></span><span><span class="base">baseline</span></span><span><span class="base">baseline</span></span></div>
+<p class="mt-n">16 development tasks on live websites · Browser Use 0.13.13 · Protocolis Standard. Against the same mode on a small model (GLM-5.3-flash, 39 development tasks): 25 of 39 completed against 22, at 62% lower cost.</p>
 </div>
 <div class="mt-g"><div class="mt-o"><b>Stagehand</b><span>Browserbase · Stagehand 3.7.3, native agent · Grok 4.6</span></div>
 <div class="mt-l ad"><span class="nm">Protocolis Adaptive</span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span></div>
@@ -1094,9 +1141,10 @@ html:has(.access-dialog[open]){overflow:hidden}
 <div class="mt-l op"><span class="nm">Stagehand</span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span></div>
 </div>
 <div class="mt-g"><div class="mt-o"><b>Playwright MCP</b><span>Microsoft · Playwright MCP 0.0.84 · Grok 4.6</span></div>
-<div class="mt-l ad"><span class="nm">Protocolis Adaptive</span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span></div>
+<div class="mt-l ad"><span class="nm">Protocolis Adaptive</span><span><b>120/120</b></span><span><b>15.1 s</b><i class="x">9% less</i></span><span><b>$0.011</b><i class="x">7.4×</i></span></div>
 <div class="mt-l st"><span class="nm">Protocolis Standard</span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span></div>
-<div class="mt-l op"><span class="nm">Playwright MCP</span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span></div>
+<div class="mt-l op"><span class="nm">Playwright MCP</span><span><b>120/120</b></span><span><b>16.4 s</b></span><span><b>$0.081</b></span></div>
+<p class="mt-n">20 public tasks × 6 rounds · 120 runs per side, pooled as registered before the runs · every attempt counted · both completed every task. Model calls per completed task: Adaptive 1.4, Playwright MCP 5.6.</p>
 </div>
 <div class="mt-g"><div class="mt-o"><b>Browser Harness</b><span>Browser Use · Browser Harness 0.1.13 · Grok 4.6</span></div>
 <div class="mt-l ad"><span class="nm">Protocolis Adaptive</span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span></div>
@@ -1117,9 +1165,10 @@ html:has(.access-dialog[open]){overflow:hidden}
 <div class="mt-l op"><span class="nm">Browser Use · tools mode</span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span></div>
 </div>
 <div class="mt-g"><div class="mt-o"><b>Stagehand</b><span>Browserbase · Stagehand 3.7.3, native agent · Grok 4.6</span></div>
-<div class="mt-l ad"><span class="nm">Protocolis Adaptive</span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span></div>
-<div class="mt-l st"><span class="nm">Protocolis Standard</span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span></div>
-<div class="mt-l op"><span class="nm">Stagehand</span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span></div>
+<div class="mt-l ad"><span class="nm">Protocolis Adaptive</span><span><b>23/40</b></span><span><b>281 s</b><i class="x">1.9×</i></span><span><b>$0.29</b><i class="x">11.1×</i></span></div>
+<div class="mt-l st"><span class="nm">Protocolis Standard</span><span><b>22/40</b></span><span><b>330 s</b><i class="x">1.6×</i></span><span><b>$0.32</b><i class="x">10.1×</i></span></div>
+<div class="mt-l op"><span class="nm">Stagehand</span><span><b>13/40</b></span><span><b>539 s</b></span><span><b>$3.23</b></span></div>
+<p class="mt-n">40 long open-web tasks · arms rotated per task in one session · judged blind by WebJudge from the screenshots, second judge on disputed tasks · every attempt counted. Model calls per completed task: Adaptive 23, Standard 22, Stagehand 67.</p>
 </div>
 <div class="mt-g"><div class="mt-o"><b>Playwright MCP</b><span>Microsoft · Playwright MCP 0.0.84 · Grok 4.6</span></div>
 <div class="mt-l ad"><span class="nm">Protocolis Adaptive</span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span></div>
@@ -1132,7 +1181,7 @@ html:has(.access-dialog[open]){overflow:hidden}
 <div class="mt-l op"><span class="nm">Browser Harness</span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span></div>
 </div>
 </div>
-<p class="mt-status">No figure goes up here until its run is on the current build and the owner has signed it off. Cells marked <span class="pend">measuring</span> are still running. Updated 5 November 2026.</p>
+<p class="mt-status">Each row names the round it comes from. Every arm is being re-measured on the current build; cells marked <span class="pend">measuring</span> are running now. Cells marked <span class="pend">measuring</span> are still running. Updated 5 November 2026.</p>
 <h3 class="cx-h">Small model to frontier.</h3><div class="msz"><div class="ms"><b>Small model</b><span class="mdl">GLM-5.3-flash</span><span class="vs">vs Browser Use tools mode</span><dl><dt>Completed</dt><dd><span class="pend">measuring</span></dd><dt>Time</dt><dd><span class="pend">measuring</span></dd><dt>Cost</dt><dd><span class="pend">measuring</span></dd></dl></div><div class="ms"><b>Mid model</b><span class="mdl">Grok 4.6</span><span class="vs">vs the strongest opponent on Grok</span><dl><dt>Completed</dt><dd><span class="pend">measuring</span></dd><dt>Time</dt><dd><span class="pend">measuring</span></dd><dt>Cost</dt><dd><span class="pend">measuring</span></dd></dl></div><div class="ms"><b>Frontier model</b><span class="mdl">gpt-6.1-sol</span><span class="vs">vs Browser Use's own agent</span><dl><dt>Completed</dt><dd><span class="pend">measuring</span></dd><dt>Time</dt><dd><span class="pend">measuring</span></dd><dt>Cost</dt><dd><span class="pend">measuring</span></dd></dl></div></div>
 <details class="how"><summary>How we measured</summary><div class="how-b">
 <p><b>Same model, same tasks, same budget.</b> Every arm runs the same model on the same tasks, on live websites, arms rotating per task in one session. Protocolis Adaptive adds its small choice model, and its cost is counted.</p>
