@@ -359,7 +359,7 @@ a.chip.patent-status:hover,a.chip.patent-status:focus-visible{background:rgb(236
 .summary-stats .n small{font-family:var(--font-body);font-size:1rem;line-height:1.4;letter-spacing:normal}
 .summary-stats .stat .n{font-size:clamp(2.6rem,4vw,3.6rem)}
 .evidence-link{margin:1.25rem 0 0;font-size:.9rem}.evidence-link a{color:var(--accent);text-decoration:underline;text-underline-offset:.2em}
-#benchmarks .extra-stats{grid-template-columns:repeat(2,minmax(0,1fr));margin-block:2rem}
+#benchmarks .extra-stats{grid-template-columns:repeat(5,minmax(0,1fr));margin-block:2rem}
 @media(max-width:760px){.measured-summary .summary-stats,#benchmarks .extra-stats{grid-template-columns:minmax(0,1fr)}}
 
 
@@ -387,6 +387,18 @@ a.chip.patent-status:hover,a.chip.patent-status:focus-visible{background:rgb(236
 .feature-details p,.feature-details dl{margin-top:1rem}
 .feature-details dt{color:var(--fg);font-weight:600;margin-top:.8rem}.feature-details dd{margin:.15rem 0 0}
 @media(max-width:760px){.feature-matrix .feature-name{width:46%}.feature-matrix{font-size:.78rem}.feature-matrix th,.feature-matrix td{padding:.4rem .35rem}.feature-matrix thead th{font-size:.76rem}.feature-matrix small{font-size:.6rem}.feature-matrix tfoot strong{font-size:1rem}}
+
+
+/* Unheaded results strip between demonstration and capabilities. */
+#measured.measured-summary{padding-block:1.6rem}
+.result-strip{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.5rem}
+.result-strip>div{display:flex;align-items:center;gap:1rem;min-width:0}
+.result-number{font-family:var(--font-display);font-size:clamp(2rem,3.4vw,3rem);font-weight:600;color:var(--accent);line-height:1.1;white-space:nowrap}
+.result-label{font-size:.9rem;color:var(--fg);line-height:1.4;max-width:10rem}
+.result-foot{display:flex;justify-content:space-between;align-items:baseline;gap:.5rem 1.5rem;flex-wrap:wrap;margin-top:1rem;font-size:.75rem;color:var(--fg-2)}
+.result-foot p{margin:0}.result-foot a{color:var(--accent);text-decoration:underline;text-underline-offset:.2em}
+@media(max-width:1000px){#benchmarks .extra-stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:760px){.result-strip{gap:1rem}.result-strip>div{flex-direction:column;align-items:flex-start;gap:.3rem}.result-label{font-size:.75rem}.result-foot{font-size:.7rem}#benchmarks .extra-stats{grid-template-columns:minmax(0,1fr)}}
 
 /* acquisition */
 .two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(1.5rem,4vw,4rem);margin-top:2.25rem;align-items:start}
@@ -729,19 +741,17 @@ body::before{
   </div>
 </section>
 
-<section class="sec measured-summary" id="measured">
-  <div class="rail"><b>02</b>measured</div>
-  <h2>Measured results.</h2>
-  <div class="stats summary-stats" aria-label="Headline results">
-<div class="stat"><p class="lab">Completion</p><div class="n">54%<small>more tasks completed</small></div><div class="bars"><div class="bar us full"><span>Protocolis Standard</span><span class="track" style="--w:100%"><span class="fill" style="width:100%"></span><span class="val">71</span></span></div><div class="bar"><span>Browser Use</span><span class="track" style="--w:64.8%"><span class="fill" style="width:64.8%"></span><span class="val">46</span></span></div></div><p class="c">vs Browser Use's own agent · GLM-5.3-flash · 98 held-out tasks</p></div>
-<div class="stat"><p class="lab">Speed</p><div class="n">3.4×<small>faster per completed task</small></div><div class="bars"><div class="bar us"><span>Protocolis Standard</span><span class="track" style="--w:29.7%"><span class="fill" style="width:29.7%"></span><span class="val">315 s</span></span></div><div class="bar full"><span>Browser Use</span><span class="track" style="--w:100%"><span class="fill" style="width:100%"></span><span class="val">1,061 s</span></span></div></div><p class="c">vs Browser Use's own agent · GLM-5.3-flash · 98 held-out tasks</p></div>
-<div class="stat"><p class="lab">Cost</p><div class="n">2.2×<small>cheaper per completed task</small></div><div class="bars"><div class="bar us"><span>Protocolis Standard</span><span class="track" style="--w:46%"><span class="fill" style="width:46%"></span><span class="val">46%</span></span></div><div class="bar full"><span>Browser Use</span><span class="track" style="--w:100%"><span class="fill" style="width:100%"></span><span class="val">100%</span></span></div></div><p class="c">vs Browser Use's own agent · GLM-5.3-flash · 98 held-out tasks</p></div>
+<section class="sec measured-summary" id="measured" aria-label="Measured results">
+  <div class="result-strip">
+    <div><span class="result-number">54%</span><span class="result-label">more tasks completed</span></div>
+    <div><span class="result-number">3.4×</span><span class="result-label">faster per completed task</span></div>
+    <div><span class="result-number">2.2×</span><span class="result-label">cheaper per completed task</span></div>
   </div>
-  <p class="evidence-link"><a href="#benchmarks">Explore the detailed benchmarks and methodology <span aria-hidden="true">↓</span></a></p>
+  <div class="result-foot"><p>Protocolis Standard vs Browser Use’s own agent · GLM-5.3-flash · 98 held-out tasks</p><a href="#benchmarks">Detailed benchmarks <span aria-hidden="true">↓</span></a></div>
 </section>
 
 <section class="sec compact-compare" id="compare">
-  <div class="rail"><b>03</b>compare</div>
+  <div class="rail"><b>02</b>compare</div>
   <h2>Feature for feature, it isn't close.</h2>
   <p class="feature-intro">One engine. Thirteen built-in capabilities.</p>
   <table class="feature-matrix" aria-label="Protocolis and Browser Use capability comparison">
@@ -777,11 +787,14 @@ body::before{
 
 <section class="sec" id="benchmarks">
   <div class="head">
-    <div class="rail"><b>04</b>detailed benchmarks</div>
+    <div class="rail"><b>03</b>detailed benchmarks</div>
     <h2>Three models. Both ways to run Browser Use. Ahead or level in every cell.</h2>
     <p class="sub">Measured against Browser Use, the most widely used open-source browser agent and the standard reference for this category. Paired runs on live websites: the same model, the same tasks and the same budget on both sides. Completion is judged blind by WebJudge from the screenshots. Time is a stopwatch from the task's arrival to the answer. Cost is the metered tokens at the provider's list prices. Each cell names its task set.</p>
   </div>
 <div class="stats extra-stats" aria-label="Additional headline results">
+<div class="stat"><p class="lab">Completion</p><div class="n">54%<small>more tasks completed</small></div><div class="bars"><div class="bar us full"><span>Protocolis Standard</span><span class="track" style="--w:100%"><span class="fill" style="width:100%"></span><span class="val">71</span></span></div><div class="bar"><span>Browser Use</span><span class="track" style="--w:64.8%"><span class="fill" style="width:64.8%"></span><span class="val">46</span></span></div></div><p class="c">vs Browser Use's own agent · GLM-5.3-flash · 98 held-out tasks</p></div>
+<div class="stat"><p class="lab">Speed</p><div class="n">3.4×<small>faster per completed task</small></div><div class="bars"><div class="bar us"><span>Protocolis Standard</span><span class="track" style="--w:29.7%"><span class="fill" style="width:29.7%"></span><span class="val">315 s</span></span></div><div class="bar full"><span>Browser Use</span><span class="track" style="--w:100%"><span class="fill" style="width:100%"></span><span class="val">1,061 s</span></span></div></div><p class="c">vs Browser Use's own agent · GLM-5.3-flash · 98 held-out tasks</p></div>
+<div class="stat"><p class="lab">Cost</p><div class="n">2.2×<small>cheaper per completed task</small></div><div class="bars"><div class="bar us"><span>Protocolis Standard</span><span class="track" style="--w:46%"><span class="fill" style="width:46%"></span><span class="val">46%</span></span></div><div class="bar full"><span>Browser Use</span><span class="track" style="--w:100%"><span class="fill" style="width:100%"></span><span class="val">100%</span></span></div></div><p class="c">vs Browser Use's own agent · GLM-5.3-flash · 98 held-out tasks</p></div>
 <div class="stat"><p class="lab">Frontier model</p><div class="n">32%<small>more tasks completed, 31% less time, 37% lower cost</small></div><div class="bars"><div class="bar us full"><span>Protocolis Standard</span><span class="track" style="--w:100%"><span class="fill" style="width:100%"></span><span class="val">25</span></span></div><div class="bar"><span>Browser Use</span><span class="track" style="--w:76%"><span class="fill" style="width:76%"></span><span class="val">19</span></span></div></div><p class="c">vs OpenAI browser tools on a Browser Use driver · Claude Opus 5.5 · 39 development tasks</p></div>
 <div class="stat"><p class="lab">Vs ultrafast</p><div class="n">40%<small>less time per completed task, 3× fewer model calls, more tasks completed, no large model</small></div><div class="bars"><div class="bar us"><span>Protocolis Adaptive</span><span class="track" style="--w:60.2%"><span class="fill" style="width:60.2%"></span><span class="val">10.0 s</span></span></div><div class="bar full"><span>Jev</span><span class="track" style="--w:100%"><span class="fill" style="width:100%"></span><span class="val">16.6 s</span></span></div></div><p class="c">vs Jev Ultrafast · Browser Use's agent on the same choice model · 40 runs</p></div>
 </div>
@@ -927,7 +940,7 @@ body::before{
 </section>
 
 <section class="sec" id="how">
-  <div class="rail"><b>05</b>how it works</div>
+  <div class="rail"><b>04</b>how it works</div>
   <div>
     <h2>Compile. Operate. Verify.</h2>
     <div class="how">
@@ -940,7 +953,7 @@ body::before{
 </section>
 
 <section class="sec" id="acquisition">
-  <div class="rail"><b>06</b>acquisition</div>
+  <div class="rail"><b>05</b>acquisition</div>
   <div>
     <h2>Offered for outright acquisition.</h2>
     <div class="two">
@@ -956,7 +969,7 @@ body::before{
 
 <section class="sec" id="contact">
   <div class="head">
-    <div class="rail"><b>07</b>contact</div>
+    <div class="rail"><b>06</b>contact</div>
     <h2>Vahagn Boudakian, inventor.</h2>
     <p class="sub">Write to start a conversation. The five-page executive summary is available on request.</p>
   </div>
