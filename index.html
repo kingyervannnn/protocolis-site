@@ -47,6 +47,7 @@ p{margin:0}
 /* hero */
 .hero{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,4fr);gap:clamp(2rem,5vw,6rem);align-items:center;padding-block:clamp(2rem,4vw,3.5rem) clamp(3rem,6vw,5.5rem)}
 .motto{font-family:var(--font-mono);font-size:.8rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-top:1.25rem;text-align:center;text-wrap:balance;max-width:72%;margin-inline:auto}
+.motto.typing{text-wrap:initial}.motto .cur{display:inline-block;width:.5em;height:.95em;background:var(--accent);vertical-align:-.12em;margin-left:.08em;animation:cur-blink .9s steps(2,start) infinite}@keyframes cur-blink{to{visibility:hidden}}@media (prefers-reduced-motion:reduce){.motto .cur{display:none}}
 .hero h1{font-family:var(--font-display);font-size:clamp(2.266rem,5.15vw,4.738rem);line-height:1.08;letter-spacing:.01em}
 .hero h1 .keep-together{white-space:nowrap}
 .architecture-heading{font-family:var(--font-mono);font-weight:400;letter-spacing:normal;font-size:clamp(.85rem,1vw,1rem);line-height:1.4;margin-top:3rem;text-wrap:balance}
@@ -949,6 +950,7 @@ body::before{
 })();
 
 </script>
+<script>(function(){var m=document.querySelector('.hero .motto');if(!m)return;if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;var t=m.textContent.trim();var h=m.getBoundingClientRect().height;m.style.minHeight=h+'px';m.classList.add('typing');m.textContent='';var c=document.createElement('span');c.className='cur';c.setAttribute('aria-hidden','true');m.appendChild(c);m.setAttribute('aria-label',t);var i=0;function step(){if(i<t.length){var ch=t[i++];m.insertBefore(document.createTextNode(ch),c);setTimeout(step,ch===' '?110:48+Math.random()*52)}else{setTimeout(function(){c.remove();m.classList.remove('typing');m.removeAttribute('aria-label')},2400)}}setTimeout(step,420)})();</script>
 <script data-goatcounter="https://protocolis.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 (function(){var root=document.getElementById('demo');if(!root)return;var c=root.querySelector('.carousel'),t=c.querySelector('.track'),d=c.querySelector('.cdots'),all=[].slice.call(t.querySelectorAll('.slide')),soon=t.querySelector('.slide.soon'),opp='harness',tier='all',cx='all',vis=[];
