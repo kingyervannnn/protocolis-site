@@ -364,31 +364,49 @@ a.chip.patent-status:hover,a.chip.patent-status:focus-visible{background:rgb(236
 @media(max-width:760px){.measured-summary .summary-stats,#benchmarks .extra-stats{grid-template-columns:minmax(0,1fr)}}
 
 
-/* Compact comparison: identical Browser Use ratings share one column. */
+/* Individually sourced comparison; focus one competitor on narrower screens. */
 #compare.compact-compare{padding-block:2.5rem}
 #compare.compact-compare h2{font-size:clamp(1.5rem,2.8vw,2.4rem)}
 .compact-compare .rail{margin-bottom:.6rem}
 .feature-intro{margin:.65rem 0 1rem;color:var(--fg-2);font-size:.9rem}
-.feature-matrix{width:100%;table-layout:fixed;border-collapse:collapse;font-size:.9rem;line-height:1.35}
-.feature-matrix .feature-name{width:60%}
-.feature-matrix th,.feature-matrix td{border-bottom:1px solid var(--rule);padding:.32rem .75rem}
+.feature-picker{display:none;align-items:center;flex-wrap:wrap;gap:.5rem 1rem;margin-bottom:1rem;font-size:.8rem;color:var(--fg-2)}
+.feature-picker select{font:inherit;color:var(--fg);background:var(--bg-2);border:1px solid var(--rule);padding:.55rem 2rem .55rem .7rem;max-width:100%;border-radius:0}
+.feature-picker select:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.feature-table-wrap{overflow-x:auto}
+.feature-matrix{width:100%;table-layout:fixed;border-collapse:collapse;font-size:.82rem;line-height:1.35}
+.feature-matrix .feature-name{width:29%}
+.feature-matrix th,.feature-matrix td{border-bottom:1px solid var(--rule);padding:.4rem .45rem}
 .feature-matrix th{text-align:left;font-weight:400}
 .feature-matrix td,.feature-matrix thead th:not(:first-child){text-align:center}
-.feature-matrix thead th{padding-block:.7rem;font-weight:600;color:var(--fg);background:var(--bg-2);border-top:1px solid var(--rule);border-bottom:2px solid var(--accent)}
-.feature-matrix small{display:block;font-size:.68rem;font-weight:400;color:var(--fg-2);margin-top:.15rem}
+.feature-matrix thead th{padding-block:.7rem;font-weight:600;color:var(--fg);background:var(--bg-2);border-top:1px solid var(--rule);border-bottom:2px solid var(--accent);font-size:.78rem}
+.feature-matrix small{display:block;font-size:.65rem;font-weight:400;color:var(--fg-2);margin-top:.2rem}
 .feature-matrix .feature-us{background:var(--accent-wash);color:var(--accent)}
 .feature-matrix .feature-group th{background:color-mix(in srgb,var(--accent) 15%,var(--bg-2));font-size:.82rem;letter-spacing:.03em;padding-block:.6rem;font-weight:600;color:var(--fg);border-left:3px solid var(--accent);border-top:1px solid var(--accent);border-bottom:1px solid var(--accent)}
 .feature-yes{color:var(--accent);font-size:1.1rem;font-weight:600;line-height:1}
-.feature-part{color:var(--fg-2);font-size:.8rem}.feature-none{color:var(--dim)}
+.feature-part{color:var(--fg-2);font-size:.75rem}.feature-none{color:var(--dim)}
 .feature-matrix tfoot th,.feature-matrix tfoot td{padding-block:.6rem;border-bottom:0}
-.feature-matrix tfoot strong{font-size:1.15rem;font-weight:600}
+.feature-matrix tfoot strong{font-size:1.1rem;font-weight:600}
+.feature-denominator{font-size:.7rem;color:var(--fg-2);font-weight:400}
 .feature-key{display:flex;flex-wrap:wrap;gap:.3rem 1.25rem;font-size:.72rem;color:var(--fg-2);margin:.6rem 0}
+.feature-review{font-size:.7rem;color:var(--fg-2)}
 .feature-details{font-size:.85rem;color:var(--fg-2);line-height:1.6;margin-top:.65rem}
 .feature-details summary{cursor:pointer;color:var(--fg);width:fit-content}
-.feature-details p,.feature-details dl{margin-top:1rem}
+.feature-details p,.feature-details dl{margin-top:.8rem}
 .feature-details dt{color:var(--fg);font-weight:600;margin-top:.8rem}.feature-details dd{margin:.15rem 0 0}
-@media(max-width:760px){.feature-matrix .feature-name{width:46%}.feature-matrix{font-size:.78rem}.feature-matrix th,.feature-matrix td{padding:.4rem .35rem}.feature-matrix thead th{font-size:.76rem}.feature-matrix small{font-size:.6rem}.feature-matrix tfoot strong{font-size:1rem}}
-
+.feature-source{padding:.7rem 0;border-bottom:1px solid var(--rule)}
+.feature-source:first-of-type{margin-top:.8rem}
+.feature-source summary span{color:var(--fg-2);font-weight:400}
+.feature-source-links a{color:var(--accent);text-underline-offset:.2em}
+@media(max-width:1279px){
+ .feature-picker{display:flex}
+ .feature-matrix{font-size:.9rem}
+ .feature-matrix .feature-name{width:56%}
+ .feature-matrix [data-product]{display:none}
+ .feature-matrix [data-product].feature-selected{display:table-cell}
+ .feature-matrix col[data-product].feature-selected{display:table-column}
+ .feature-matrix th,.feature-matrix td{padding:.4rem .65rem}
+}
+@media(max-width:760px){.feature-matrix .feature-name{width:46%}.feature-matrix{font-size:.78rem}.feature-matrix th,.feature-matrix td{padding:.4rem .35rem}.feature-matrix thead th{font-size:.76rem}.feature-matrix small{font-size:.6rem}.feature-matrix tfoot strong{font-size:1rem}.feature-picker{align-items:flex-start;flex-direction:column}.feature-picker select{width:100%}}
 
 /* Unheaded results strip between demonstration and capabilities. */
 #measured.measured-summary{padding-top:.65rem;padding-bottom:1.6rem}
@@ -755,36 +773,218 @@ body::before{
 <section class="sec compact-compare" id="compare">
   <div class="rail"><b>02</b>compare</div>
   <h2>Feature for feature, it isn't close.</h2>
-  <p class="feature-intro">One engine. Fourteen built-in capabilities.</p>
-  <table class="feature-matrix" aria-label="Protocolis and Browser Use capability comparison">
-    <colgroup><col class="feature-name"><col><col></colgroup>
-    <thead><tr><th scope="col">Capability</th><th scope="col" class="feature-us">Protocolis</th><th scope="col">Browser Use<small>Agent + OpenAI tools mode</small></th></tr></thead>
-    <tbody>
-<tr><th scope="row">Compiler engine</th><td class="feature-us"><span class="feature-yes" aria-label="Full support">✓</span></td><td><span class="feature-none" aria-label="No support">—</span></td></tr>
-<tr><th scope="row">Compiled application operations</th><td class="feature-us"><span class="feature-yes" aria-label="Full support">✓</span></td><td><span class="feature-none" aria-label="No support">—</span></td></tr>
-<tr><th scope="row">Compilation without model calls</th><td class="feature-us"><span class="feature-yes" aria-label="Full support">✓</span></td><td><span class="feature-none" aria-label="No support">—</span></td></tr>
-<tr><th scope="row">No screenshots required</th><td class="feature-us"><span class="feature-yes" aria-label="Full support">✓</span></td><td><span class="feature-part">Partial</span></td></tr>
-<tr><th scope="row">Verified action effects</th><td class="feature-us"><span class="feature-yes" aria-label="Full support">✓</span></td><td><span class="feature-part">Partial</span></td></tr>
-<tr><th scope="row">Verified task completion</th><td class="feature-us"><span class="feature-yes" aria-label="Full support">✓</span></td><td><span class="feature-none" aria-label="No support">—</span></td></tr>
-<tr><th scope="row">Compiled knowledge reused across visits</th><td class="feature-us"><span class="feature-yes" aria-label="Full support">✓</span></td><td><span class="feature-none" aria-label="No support">—</span></td></tr>
-<tr><th scope="row">Verified replay with protected-action stops</th><td class="feature-us"><span class="feature-yes" aria-label="Full support">✓</span></td><td><span class="feature-part">Partial</span></td></tr>
-<tr><th scope="row">Built-in bot-protection handling</th><td class="feature-us"><span class="feature-yes" aria-label="Full support">✓</span></td><td><span class="feature-part">Partial</span></td></tr>
-<tr><th scope="row">Challenge handling and isolated escalation</th><td class="feature-us"><span class="feature-yes" aria-label="Full support">✓</span></td><td><span class="feature-part">Partial</span></td></tr>
-<tr><th scope="row">Challenge lessons shared across sites</th><td class="feature-us"><span class="feature-yes" aria-label="Full support">✓</span></td><td><span class="feature-none" aria-label="No support">—</span></td></tr>
-<tr class="feature-group"><th colspan="3" scope="rowgroup">Model-blind credential broker</th></tr>
-<tr><th scope="row">Credentials bound to verified fields</th><td class="feature-us"><span class="feature-yes" aria-label="Full support">✓</span></td><td><span class="feature-part">Partial</span></td></tr>
-<tr><th scope="row">New API keys captured model-blind</th><td class="feature-us"><span class="feature-yes" aria-label="Full support">✓</span></td><td><span class="feature-none" aria-label="No support">—</span></td></tr>
-<tr><th scope="row">Passkeys</th><td class="feature-us"><span class="feature-yes" aria-label="Full support">✓</span></td><td><span class="feature-none" aria-label="No support">—</span></td></tr>
-    </tbody>
-    <tfoot><tr><th scope="row">Full support</th><td class="feature-us"><strong>14 of 14</strong></td><td><strong>0 of 14</strong><small>6 partial in each mode</small></td></tr></tfoot>
-  </table>
-  <p class="feature-key">✓ Full support <span>Partial: related capability with limits</span> <span>— No support for the listed capability</span></p>
-  <details class="feature-details"><summary>Comparison details</summary>
-    <p>Both Browser Use modes receive the same rating on every listed capability. Their screenshot behavior differs: screenshots are on by default in the agent and optional in OpenAI tools mode. These ratings compare the full capability defined in each row, not whether a developer can build similar behavior around the tool.</p>
-    <dl><dt>Compiler engine</dt><dd>Turns the application into operations an agent can call. Neither reviewed Browser Use mode provides a compiler.</dd><dt>Operations compiled from the application itself</dt><dd>Browser Use agent: Generic browser actions. OpenAI tools mode: OpenAI's generic browser tools.</dd><dt>Application compiled without model calls</dt><dd>No equivalent built-in capability listed in either reviewed mode.</dd><dt>No screenshots needed by the model</dt><dd>Browser Use agent: On by default. OpenAI tools mode: Optional.</dd><dt>Each action's effect checked against the application</dt><dd>Both Browser Use modes: Typed-value check only.</dd><dt>Verified done: task completion proved from the application's own evidence</dt><dd>Both Browser Use modes: No proof; optional model judge.</dd><dt>Warm compile: what one visit compiles is reused on the next</dt><dd>Both Browser Use modes: Nothing compiled to reuse; each new task re-reads the site.</dd><dt>Replay checked live at every step, stopping before protected actions</dt><dd>Both Browser Use modes: Rerun of saved history, with retries.</dd><dt>Runs on sites behind modern bot protection, built in</dt><dd>Both Browser Use modes: Not in the library; sold separately as a paid cloud browser.</dd><dt>Simple challenges handled automatically; complex challenges escalated in isolation</dt><dd>Both Browser Use modes: Waits for its paid cloud proxy to solve it.</dd><dt>Challenge lessons shared across sites; no site's history cuts an attempt short</dt><dd>Both Browser Use modes: Not in the library.</dd><dt>Credentials released only to a verified field on the live page</dt><dd>Both Browser Use modes: Placeholders, scoped by domain.</dd><dt>New API keys captured without the model seeing them</dt><dd>No equivalent built-in capability listed in either reviewed mode.</dd><dt>Passkeys</dt><dd>No equivalent built-in capability listed in either reviewed mode.</dd></dl>
-    <p>Browser Use 0.13.13's capabilities are taken from its published source code, as its own agent and as the driver under OpenAI's browser tools from the OpenAI SDK (the agent calls OpenAI's tools, OpenAI's tool runner runs the loop, and Browser Use only operates the browser).</p>
-    <p>Browser Use comes two ways: as its own agent, which reads a screenshot every step, or as a browser driver underneath OpenAI's browser tools, run by OpenAI's tool runner. Protocolis is one engine with its own operations, verification and credential broker. It costs less than either on every model we have measured, and provides the built-in capabilities compared above.</p><p>That combination depends on two companies' release cycles, and no one can acquire it whole. Protocolis is one codebase: the engine, the tool layer, the credential broker and the patent filing transfer together.</p>
-  </details>
+  <p class="feature-intro">Fourteen capabilities, compared product by product.</p>
+<div class="feature-picker"><label for="feature-product">Compare Protocolis with</label><select id="feature-product"><option value="bu-agent">Browser Use · own agent</option><option value="bu-openai">Browser Use · OpenAI tools</option><option value="harness">Browser Harness</option><option value="stagehand">Stagehand</option><option value="playwright">Playwright MCP</option><option value="unbrowse">Unbrowse</option><option value="control">Browser Control</option></select></div>
+<div class="feature-table-wrap"><table class="feature-matrix" aria-describedby="feature-key feature-review" aria-label="Protocolis capability comparison">
+<colgroup><col class="feature-name"><col class="feature-protocolis"><col data-product="bu-agent" class="feature-selected"><col data-product="bu-openai"><col data-product="harness"><col data-product="stagehand"><col data-product="playwright"><col data-product="unbrowse"><col data-product="control"></colgroup>
+<thead><tr><th scope="col">Capability</th><th scope="col" class="feature-us">Protocolis</th><th scope="col" data-product="bu-agent" class="feature-selected">Browser Use<small>Own agent</small></th><th scope="col" data-product="bu-openai">Browser Use<small>OpenAI tools</small></th><th scope="col" data-product="harness">Browser Harness<small>Browser Use</small></th><th scope="col" data-product="stagehand">Stagehand<small>v4 docs</small></th><th scope="col" data-product="playwright">Playwright MCP<small>Microsoft</small></th><th scope="col" data-product="unbrowse">Unbrowse<small>Hosted service</small></th><th scope="col" data-product="control">Browser Control<small>keon</small></th></tr></thead><tbody>
+<tr data-feature="1"><th scope="row" title="Compiles the application or its recorded requests into structured, callable operations.">Compiler engine</th><td class="feature-us"><span class="feature-yes" aria-label="Supported">✓</span></td>
+<td data-product="bu-agent" class="feature-selected" title="The reviewed sources do not establish this capability. This is not a claim that the product cannot support it."><span class="feature-none" aria-label="Not established in reviewed sources">—</span></td>
+<td data-product="bu-openai" title="The reviewed sources do not establish this capability. This is not a claim that the product cannot support it."><span class="feature-none" aria-label="Not established in reviewed sources">—</span></td>
+<td data-product="harness" title="The reviewed sources do not establish this capability. This is not a claim that the product cannot support it."><span class="feature-none" aria-label="Not established in reviewed sources">—</span></td>
+<td data-product="stagehand" title="The reviewed sources do not establish this capability. This is not a claim that the product cannot support it."><span class="feature-none" aria-label="Not established in reviewed sources">—</span></td>
+<td data-product="playwright" title="The reviewed sources do not establish this capability. This is not a claim that the product cannot support it."><span class="feature-none" aria-label="Not established in reviewed sources">—</span></td>
+<td data-product="unbrowse" title="Documents compilation of recorded network flows into typed, versioned capability packages."><span class="feature-yes" aria-label="Documented match">✓</span></td>
+<td data-product="control" title="The reviewed sources do not establish this capability. This is not a claim that the product cannot support it."><span class="feature-none" aria-label="Not established in reviewed sources">—</span></td>
+</tr>
+<tr data-feature="2"><th scope="row" title="Exposes application-specific operations, beyond generic click, type and inspect tools.">Compiled application operations</th><td class="feature-us"><span class="feature-yes" aria-label="Supported">✓</span></td>
+<td data-product="bu-agent" class="feature-selected" title="The reviewed sources do not establish this capability. This is not a claim that the product cannot support it."><span class="feature-none" aria-label="Not established in reviewed sources">—</span></td>
+<td data-product="bu-openai" title="The reviewed sources do not establish this capability. This is not a claim that the product cannot support it."><span class="feature-none" aria-label="Not established in reviewed sources">—</span></td>
+<td data-product="harness" title="The reviewed sources do not establish this capability. This is not a claim that the product cannot support it."><span class="feature-none" aria-label="Not established in reviewed sources">—</span></td>
+<td data-product="stagehand" title="The reviewed sources do not establish this capability. This is not a claim that the product cannot support it."><span class="feature-none" aria-label="Not established in reviewed sources">—</span></td>
+<td data-product="playwright" title="The reviewed sources do not establish this capability. This is not a claim that the product cannot support it."><span class="feature-none" aria-label="Not established in reviewed sources">—</span></td>
+<td data-product="unbrowse" title="Learned capabilities expose application-specific inputs and HTTP request chains as callable operations."><span class="feature-yes" aria-label="Documented match">✓</span></td>
+<td data-product="control" title="The reviewed sources do not establish this capability. This is not a claim that the product cannot support it."><span class="feature-none" aria-label="Not established in reviewed sources">—</span></td>
+</tr>
+<tr data-feature="3"><th scope="row" title="The compilation step itself requires no model inference; model-free replay alone is not enough.">Compilation without model calls</th><td class="feature-us"><span class="feature-yes" aria-label="Supported">✓</span></td>
+<td data-product="bu-agent" class="feature-selected" title="The reviewed sources do not establish this capability. This is not a claim that the product cannot support it."><span class="feature-none" aria-label="Not established in reviewed sources">—</span></td>
+<td data-product="bu-openai" title="The reviewed sources do not establish this capability. This is not a claim that the product cannot support it."><span class="feature-none" aria-label="Not established in reviewed sources">—</span></td>
+<td data-product="harness" title="The reviewed sources do not establish this capability. This is not a claim that the product cannot support it."><span class="feature-none" aria-label="Not established in reviewed sources">—</span></td>
+<td data-product="stagehand" title="The reviewed sources do not establish this capability. This is not a claim that the product cannot support it."><span class="feature-none" aria-label="Not established in reviewed sources">—</span></td>
+<td data-product="playwright" title="The reviewed sources do not establish this capability. This is not a claim that the product cannot support it."><span class="feature-none" aria-label="Not established in reviewed sources">—</span></td>
+<td data-product="unbrowse" title="The documented learn algorithm does not establish that every compilation path runs without model inference."><span class="feature-none" aria-label="Not established in reviewed sources">—</span></td>
+<td data-product="control" title="The reviewed sources do not establish this capability. This is not a claim that the product cannot support it."><span class="feature-none" aria-label="Not established in reviewed sources">—</span></td>
+</tr>
+<tr data-feature="4"><th scope="row" title="Documents a text, DOM, accessibility-tree or HTTP execution path that does not require screenshots. Vision-only tasks are outside this claim.">No screenshots required</th><td class="feature-us"><span class="feature-yes" aria-label="Supported">✓</span></td>
+<td data-product="bu-agent" class="feature-selected" title="A screenshot-free configuration is available with use_vision=False and the visual judge disabled. Vision and judging are enabled by default."><span class="feature-yes" aria-label="Documented match">✓</span></td>
+<td data-product="bu-openai" title="Page text, accessibility reads and element finding support text-led operation; screenshots are optional."><span class="feature-yes" aria-label="Documented match">✓</span></td>
+<td data-product="harness" title="The documented workflow prefers accessibility-tree and DOM inspection, with screenshots for visual needs."><span class="feature-yes" aria-label="Documented match">✓</span></td>
+<td data-product="stagehand" title="DOM-based act, observe and extract paths do not require screenshots. Separate visual-agent paths may use them."><span class="feature-yes" aria-label="Documented match">✓</span></td>
+<td data-product="playwright" title="Structured accessibility snapshots are the default path and explicitly avoid requiring screenshots or a vision model."><span class="feature-yes" aria-label="Documented match">✓</span></td>
+<td data-product="unbrowse" title="Warm capabilities replay over HTTP without a browser; cold browser operation also offers text snapshots."><span class="feature-yes" aria-label="Documented match">✓</span></td>
+<td data-product="control" title="Text snapshots, element references and CDP inspection allow operation without screenshots."><span class="feature-yes" aria-label="Documented match">✓</span></td>
+</tr>
+<tr data-feature="5"><th scope="row" title="The runtime checks an action’s actual application effect. Agent-authored checks and generic assertions receive partial credit.">Verified action effects</th><td class="feature-us"><span class="feature-yes" aria-label="Supported">✓</span></td>
+<td data-product="bu-agent" class="feature-selected" title="Browser-state feedback and individual action checks support agent verification; general application-effect proof is not enforced."><span class="feature-part" aria-label="Related capability with limits">Partial</span></td>
+<td data-product="bu-openai" title="The caller can read page state to check effects. Action confirmation is an authorization callback, not an outcome verifier."><span class="feature-part" aria-label="Related capability with limits">Partial</span></td>
+<td data-product="harness" title="The skill directs the agent to check effects with targeted JavaScript or page_info; enforcement remains with the agent."><span class="feature-part" aria-label="Related capability with limits">Partial</span></td>
+<td data-product="stagehand" title="Observe/extract and caller-authored assertions can check state, but do not impose automatic action-effect proof."><span class="feature-part" aria-label="Related capability with limits">Partial</span></td>
+<td data-product="playwright" title="Assertions and snapshots let the caller check effects; they do not automatically verify every application action."><span class="feature-part" aria-label="Related capability with limits">Partial</span></td>
+<td data-product="unbrowse" title="Packages declare guards and outcome checks, and uncertain writes are not resent. Verification of every individual effect is not established."><span class="feature-part" aria-label="Related capability with limits">Partial</span></td>
+<td data-product="control" title="The agent can inspect page state and check action results; automatic effect proof is not established."><span class="feature-part" aria-label="Related capability with limits">Partial</span></td>
+</tr>
+<tr data-feature="6"><th scope="row" title="Success requires application evidence of the requested outcome. Model judges and caller-supplied checks receive partial credit.">Verified task completion</th><td class="feature-us"><span class="feature-yes" aria-label="Supported">✓</span></td>
+<td data-product="bu-agent" class="feature-selected" title="The optional model judge evaluates completion. That is related functionality, not independent application proof."><span class="feature-part" aria-label="Related capability with limits">Partial</span></td>
+<td data-product="bu-openai" title="The integration calls for independent verification of important external actions; no automatic task-proof mechanism is documented."><span class="feature-part" aria-label="Related capability with limits">Partial</span></td>
+<td data-product="harness" title="The workflow asks the agent to verify results; no automatic application-level completion proof is established."><span class="feature-part" aria-label="Related capability with limits">Partial</span></td>
+<td data-product="stagehand" title="The caller can assert completion from extracted page data. Automatic application-level task proof is not established."><span class="feature-part" aria-label="Related capability with limits">Partial</span></td>
+<td data-product="playwright" title="Verification tools can assert page state when the caller chooses. No automatic task-level proof requirement is established."><span class="feature-part" aria-label="Related capability with limits">Partial</span></td>
+<td data-product="unbrowse" title="The published run contract requires independent verification of the declared business outcome before succeeded is returned."><span class="feature-yes" aria-label="Documented match">✓</span></td>
+<td data-product="control" title="The bundled final-answer skill requires evidence and constraint checks. These are agent instructions, not a runtime completion verifier."><span class="feature-part" aria-label="Related capability with limits">Partial</span></td>
+</tr>
+<tr data-feature="7"><th scope="row" title="Persisted application-derived operations are reused on later visits. Cached model-generated actions receive partial credit; manually authored scripts alone do not.">Compiled knowledge reused across visits</th><td class="feature-us"><span class="feature-yes" aria-label="Supported">✓</span></td>
+<td data-product="bu-agent" class="feature-selected" title="The reviewed sources do not establish this capability. This is not a claim that the product cannot support it."><span class="feature-none" aria-label="Not established in reviewed sources">—</span></td>
+<td data-product="bu-openai" title="The reviewed sources do not establish this capability. This is not a claim that the product cannot support it."><span class="feature-none" aria-label="Not established in reviewed sources">—</span></td>
+<td data-product="harness" title="Reusable scripts and site skills are supported, but they are not automatically compiled application knowledge."><span class="feature-none" aria-label="Not established in reviewed sources">—</span></td>
+<td data-product="stagehand" title="Browserbase’s server cache reuses eligible model-generated act, observe and extract results. Initial inference is still required; local-browser caching differs."><span class="feature-part" aria-label="Related capability with limits">Partial</span></td>
+<td data-product="playwright" title="The reviewed sources do not establish this capability. This is not a claim that the product cannot support it."><span class="feature-none" aria-label="Not established in reviewed sources">—</span></td>
+<td data-product="unbrowse" title="Persisted learned capabilities are reused on subsequent requests. Public-registry reliability is separately marked as an open acceptance check."><span class="feature-yes" aria-label="Documented match">✓</span></td>
+<td data-product="control" title="Scripts and domain skills can be reused, but the tool does not document automatic application compilation."><span class="feature-none" aria-label="Not established in reviewed sources">—</span></td>
+</tr>
+<tr data-feature="8"><th scope="row" title="Replay checks current application evidence and stops before protected actions. History reruns, retries or partial policy gates receive partial credit.">Verified replay with protected-action stops</th><td class="feature-us"><span class="feature-yes" aria-label="Supported">✓</span></td>
+<td data-product="bu-agent" class="feature-selected" title="Saved history can be rerun with retries. Full live verification and protected-action stops are not established."><span class="feature-part" aria-label="Related capability with limits">Partial</span></td>
+<td data-product="bu-openai" title="Read retries are documented, but clicks and typing are explicitly not replayed after uncertain effects."><span class="feature-none" aria-label="Not established in reviewed sources">—</span></td>
+<td data-product="harness" title="The reviewed sources do not establish this capability. This is not a claim that the product cannot support it."><span class="feature-none" aria-label="Not established in reviewed sources">—</span></td>
+<td data-product="stagehand" title="Observed actions can be reused and self-healing can retry failures. Full protected-action gating is not established."><span class="feature-part" aria-label="Related capability with limits">Partial</span></td>
+<td data-product="playwright" title="The reviewed sources do not establish this capability. This is not a claim that the product cannot support it."><span class="feature-none" aria-label="Not established in reviewed sources">—</span></td>
+<td data-product="unbrowse" title="Verified outcomes, guards and no automatic retry of uncertain writes are documented; complete protected-action stops at every replay step are not established."><span class="feature-part" aria-label="Related capability with limits">Partial</span></td>
+<td data-product="control" title="The reviewed sources do not establish this capability. This is not a claim that the product cannot support it."><span class="feature-none" aria-label="Not established in reviewed sources">—</span></td>
+</tr>
+<tr data-feature="9"><th scope="row" title="The product includes handling for bot-protected sites. A separately supplied cloud browser receives partial credit. No rating promises success against every protection.">Built-in bot-protection handling</th><td class="feature-us"><span class="feature-yes" aria-label="Supported">✓</span></td>
+<td data-product="bu-agent" class="feature-selected" title="Stealth and CAPTCHA handling are supplied by optional Browser Use Cloud, rather than the open-source library."><span class="feature-part" aria-label="Related capability with limits">Partial</span></td>
+<td data-product="bu-openai" title="The documented cloud setup can use Browser Use Cloud’s separate stealth and CAPTCHA service."><span class="feature-part" aria-label="Related capability with limits">Partial</span></td>
+<td data-product="harness" title="Optional Browser Use Cloud supplies managed stealth; this is a separate cloud service."><span class="feature-part" aria-label="Related capability with limits">Partial</span></td>
+<td data-product="stagehand" title="Hosted Browserbase supplies stealth and CAPTCHA handling; this is an additional service."><span class="feature-part" aria-label="Related capability with limits">Partial</span></td>
+<td data-product="playwright" title="The reviewed sources do not establish this capability. This is not a claim that the product cannot support it."><span class="feature-none" aria-label="Not established in reviewed sources">—</span></td>
+<td data-product="unbrowse" title="The service includes browser-earned clearance, Chrome-fingerprint transport retries and browser/render fallbacks. This does not promise bypass of every challenge."><span class="feature-yes" aria-label="Documented match">✓</span></td>
+<td data-product="control" title="The CLI explicitly supports provisioning Browser Use and other cloud providers. Their stealth is external to the CLI."><span class="feature-part" aria-label="Related capability with limits">Partial</span></td>
+</tr>
+<tr data-feature="10"><th scope="row" title="Handles simple challenges and escalates difficult challenges in an isolated flow. Solving or waiting without the full escalation mechanism receives partial credit.">Challenge handling and isolated escalation</th><td class="feature-us"><span class="feature-yes" aria-label="Supported">✓</span></td>
+<td data-product="bu-agent" class="feature-selected" title="Cloud CAPTCHA solving is documented; isolated escalation with the complete row contract is not established."><span class="feature-part" aria-label="Related capability with limits">Partial</span></td>
+<td data-product="bu-openai" title="Cloud challenge solving is related functionality; the complete isolated-escalation contract is not established."><span class="feature-part" aria-label="Related capability with limits">Partial</span></td>
+<td data-product="harness" title="The optional cloud service supplies CAPTCHA solving. The complete isolated-escalation contract is not established."><span class="feature-part" aria-label="Related capability with limits">Partial</span></td>
+<td data-product="stagehand" title="Hosted CAPTCHA handling is documented; the full isolated-escalation contract is not established."><span class="feature-part" aria-label="Related capability with limits">Partial</span></td>
+<td data-product="playwright" title="The reviewed sources do not establish this capability. This is not a claim that the product cannot support it."><span class="feature-none" aria-label="Not established in reviewed sources">—</span></td>
+<td data-product="unbrowse" title="Waits out simple challenges and can request same-session verification. The full isolated-escalation contract is not established."><span class="feature-part" aria-label="Related capability with limits">Partial</span></td>
+<td data-product="control" title="A separately provisioned Browser Use Cloud browser can provide CAPTCHA solving; the CLI does not establish isolated escalation."><span class="feature-part" aria-label="Related capability with limits">Partial</span></td>
+</tr>
+<tr data-feature="11"><th scope="row" title="Challenge-handling lessons transfer between sites; a site’s earlier history does not prematurely terminate a new attempt.">Challenge lessons shared across sites</th><td class="feature-us"><span class="feature-yes" aria-label="Supported">✓</span></td>
+<td data-product="bu-agent" class="feature-selected" title="The reviewed sources do not establish this capability. This is not a claim that the product cannot support it."><span class="feature-none" aria-label="Not established in reviewed sources">—</span></td>
+<td data-product="bu-openai" title="The reviewed sources do not establish this capability. This is not a claim that the product cannot support it."><span class="feature-none" aria-label="Not established in reviewed sources">—</span></td>
+<td data-product="harness" title="The reviewed sources do not establish this capability. This is not a claim that the product cannot support it."><span class="feature-none" aria-label="Not established in reviewed sources">—</span></td>
+<td data-product="stagehand" title="The reviewed sources do not establish this capability. This is not a claim that the product cannot support it."><span class="feature-none" aria-label="Not established in reviewed sources">—</span></td>
+<td data-product="playwright" title="The reviewed sources do not establish this capability. This is not a claim that the product cannot support it."><span class="feature-none" aria-label="Not established in reviewed sources">—</span></td>
+<td data-product="unbrowse" title="The reviewed sources do not establish this capability. This is not a claim that the product cannot support it."><span class="feature-none" aria-label="Not established in reviewed sources">—</span></td>
+<td data-product="control" title="The reviewed sources do not establish this capability. This is not a claim that the product cannot support it."><span class="feature-none" aria-label="Not established in reviewed sources">—</span></td>
+</tr>
+<tr class="feature-group"><th colspan="9" scope="rowgroup">Model-blind credential broker</th></tr>
+<tr data-feature="12"><th scope="row" title="Secret values stay out of model context and are released only to verified fields on the current live page. Placeholders, masking or domain scoping alone receive partial credit.">Credentials bound to verified fields</th><td class="feature-us"><span class="feature-yes" aria-label="Supported">✓</span></td>
+<td data-product="bu-agent" class="feature-selected" title="Sensitive-data placeholders can be scoped by domain. Verified live-field binding is not established."><span class="feature-part" aria-label="Related capability with limits">Partial</span></td>
+<td data-product="bu-openai" title="The Agent’s sensitive_data mechanism is not established for this distinct integration, so its credential score is not inherited."><span class="feature-none" aria-label="Not established in reviewed sources">—</span></td>
+<td data-product="harness" title="Existing browser sign-in and SSO are usable, but a model-blind, verified-field credential broker is not established."><span class="feature-none" aria-label="Not established in reviewed sources">—</span></td>
+<td data-product="stagehand" title="Variables can keep actual values out of model instructions. The documentation warns that server caching can receive values unless cache:false is used; verified-field brokerage is not established."><span class="feature-part" aria-label="Related capability with limits">Partial</span></td>
+<td data-product="playwright" title="Secrets substitution and response redaction are documented conveniences, explicitly not a security boundary or verified-field broker."><span class="feature-part" aria-label="Related capability with limits">Partial</span></td>
+<td data-product="unbrowse" title="Documents model-blind vault references and autofill. The reviewed shipped-scope sources do not establish the full verified-live-field release contract; autofill acceptance checks are marked open."><span class="feature-part" aria-label="Related capability with limits">Partial</span></td>
+<td data-product="control" title="The reviewed sources do not establish this capability. This is not a claim that the product cannot support it."><span class="feature-none" aria-label="Not established in reviewed sources">—</span></td>
+</tr>
+<tr data-feature="13"><th scope="row" title="Newly generated API keys are captured into protected custody without passing through model-visible output. Redaction alone is not capture.">New API keys captured model-blind</th><td class="feature-us"><span class="feature-yes" aria-label="Supported">✓</span></td>
+<td data-product="bu-agent" class="feature-selected" title="The reviewed sources do not establish this capability. This is not a claim that the product cannot support it."><span class="feature-none" aria-label="Not established in reviewed sources">—</span></td>
+<td data-product="bu-openai" title="The reviewed sources do not establish this capability. This is not a claim that the product cannot support it."><span class="feature-none" aria-label="Not established in reviewed sources">—</span></td>
+<td data-product="harness" title="The reviewed sources do not establish this capability. This is not a claim that the product cannot support it."><span class="feature-none" aria-label="Not established in reviewed sources">—</span></td>
+<td data-product="stagehand" title="The reviewed sources do not establish this capability. This is not a claim that the product cannot support it."><span class="feature-none" aria-label="Not established in reviewed sources">—</span></td>
+<td data-product="playwright" title="Runtime URL-token redaction is documented, but that does not establish model-blind capture of newly generated API keys into a vault."><span class="feature-none" aria-label="Not established in reviewed sources">—</span></td>
+<td data-product="unbrowse" title="The reviewed sources do not establish this capability. This is not a claim that the product cannot support it."><span class="feature-none" aria-label="Not established in reviewed sources">—</span></td>
+<td data-product="control" title="The reviewed sources do not establish this capability. This is not a claim that the product cannot support it."><span class="feature-none" aria-label="Not established in reviewed sources">—</span></td>
+</tr>
+<tr data-feature="14"><th scope="row" title="A built-in broker supports passkey registration and authentication for agent workflows, beyond reusing an already signed-in browser.">Passkeys</th><td class="feature-us"><span class="feature-yes" aria-label="Supported">✓</span></td>
+<td data-product="bu-agent" class="feature-selected" title="The reviewed sources do not establish this capability. This is not a claim that the product cannot support it."><span class="feature-none" aria-label="Not established in reviewed sources">—</span></td>
+<td data-product="bu-openai" title="The reviewed sources do not establish this capability. This is not a claim that the product cannot support it."><span class="feature-none" aria-label="Not established in reviewed sources">—</span></td>
+<td data-product="harness" title="The reviewed sources do not establish this capability. This is not a claim that the product cannot support it."><span class="feature-none" aria-label="Not established in reviewed sources">—</span></td>
+<td data-product="stagehand" title="The reviewed sources do not establish this capability. This is not a claim that the product cannot support it."><span class="feature-none" aria-label="Not established in reviewed sources">—</span></td>
+<td data-product="playwright" title="The reviewed sources do not establish this capability. This is not a claim that the product cannot support it."><span class="feature-none" aria-label="Not established in reviewed sources">—</span></td>
+<td data-product="unbrowse" title="The reviewed sources do not establish this capability. This is not a claim that the product cannot support it."><span class="feature-none" aria-label="Not established in reviewed sources">—</span></td>
+<td data-product="control" title="The reviewed sources do not establish this capability. This is not a claim that the product cannot support it."><span class="feature-none" aria-label="Not established in reviewed sources">—</span></td>
+</tr>
+</tbody><tfoot><tr><th scope="row">Full matches<small>Out of 14 listed capabilities</small></th><td class="feature-us"><strong>14<span class="feature-denominator"> / 14</span></strong></td>
+<td data-product="bu-agent" class="feature-selected"><strong>1<span class="feature-denominator"> / 14</span></strong><small>6 partial</small></td>
+<td data-product="bu-openai"><strong>1<span class="feature-denominator"> / 14</span></strong><small>4 partial</small></td>
+<td data-product="harness"><strong>1<span class="feature-denominator"> / 14</span></strong><small>4 partial</small></td>
+<td data-product="stagehand"><strong>1<span class="feature-denominator"> / 14</span></strong><small>7 partial</small></td>
+<td data-product="playwright"><strong>1<span class="feature-denominator"> / 14</span></strong><small>3 partial</small></td>
+<td data-product="unbrowse"><strong>6<span class="feature-denominator"> / 14</span></strong><small>4 partial</small></td>
+<td data-product="control"><strong>1<span class="feature-denominator"> / 14</span></strong><small>4 partial</small></td>
+</tr></tfoot></table></div>
+<p class="feature-key" id="feature-key"><span>✓ Matches the defined capability</span><span>Partial: related support with limits</span><span>— Not established in reviewed sources</span></p>
+<p class="feature-review" id="feature-review">Documentation review · 5 November 2026 · Ratings use the definitions and scope below; they are not new benchmark results.</p>
+<details class="feature-details"><summary>Comparison details &amp; sources</summary>
+<p>Each alternative was reviewed individually against the same definitions. “Partial” includes narrower mechanisms and separately supplied cloud services. A dash means the reviewed sources do not establish the capability, not that support is impossible. Protocolis ratings describe our engine’s supported capabilities; competitor ratings describe their published documentation and source, not independent runtime testing. Current documentation may differ from the versions used in the demonstrations and benchmarks.</p>
+<details class="feature-source"><summary>What each row means</summary><dl><dt>Compiler engine</dt><dd>Compiles the application or its recorded requests into structured, callable operations.</dd><dt>Compiled application operations</dt><dd>Exposes application-specific operations, beyond generic click, type and inspect tools.</dd><dt>Compilation without model calls</dt><dd>The compilation step itself requires no model inference; model-free replay alone is not enough.</dd><dt>No screenshots required</dt><dd>Documents a text, DOM, accessibility-tree or HTTP execution path that does not require screenshots. Vision-only tasks are outside this claim.</dd><dt>Verified action effects</dt><dd>The runtime checks an action’s actual application effect. Agent-authored checks and generic assertions receive partial credit.</dd><dt>Verified task completion</dt><dd>Success requires application evidence of the requested outcome. Model judges and caller-supplied checks receive partial credit.</dd><dt>Compiled knowledge reused across visits</dt><dd>Persisted application-derived operations are reused on later visits. Cached model-generated actions receive partial credit; manually authored scripts alone do not.</dd><dt>Verified replay with protected-action stops</dt><dd>Replay checks current application evidence and stops before protected actions. History reruns, retries or partial policy gates receive partial credit.</dd><dt>Built-in bot-protection handling</dt><dd>The product includes handling for bot-protected sites. A separately supplied cloud browser receives partial credit. No rating promises success against every protection.</dd><dt>Challenge handling and isolated escalation</dt><dd>Handles simple challenges and escalates difficult challenges in an isolated flow. Solving or waiting without the full escalation mechanism receives partial credit.</dd><dt>Challenge lessons shared across sites</dt><dd>Challenge-handling lessons transfer between sites; a site’s earlier history does not prematurely terminate a new attempt.</dd><dt>Credentials bound to verified fields</dt><dd>Secret values stay out of model context and are released only to verified fields on the current live page. Placeholders, masking or domain scoping alone receive partial credit.</dd><dt>New API keys captured model-blind</dt><dd>Newly generated API keys are captured into protected custody without passing through model-visible output. Redaction alone is not capture.</dd><dt>Passkeys</dt><dd>A built-in broker supports passkey registration and authentication for agent workflows, beyond reusing an already signed-in browser.</dd></dl></details>
+<details class="feature-source" id="source-bu-agent"><summary>Browser Use · own agent <span>· 1 full, 6 partial</span></summary><p>Open-source Agent, with optional Browser Use Cloud. Current source review; the benchmarks below retain their separately named versions.</p><p class="feature-source-links"><a href="https://github.com/browser-use/browser-use/blob/b49a68e4060acb226da8f784194fef301c53a6d7/browser_use/agent/service.py" target="_blank" rel="noopener noreferrer">Agent source</a> · <a href="https://github.com/browser-use/browser-use/blob/b49a68e4060acb226da8f784194fef301c53a6d7/CLOUD.md" target="_blank" rel="noopener noreferrer">Cloud capabilities</a></p><dl>
+<dt>No screenshots required — Documented match</dt><dd>A screenshot-free configuration is available with use_vision=False and the visual judge disabled. Vision and judging are enabled by default.</dd>
+<dt>Verified action effects — Related capability with limits</dt><dd>Browser-state feedback and individual action checks support agent verification; general application-effect proof is not enforced.</dd>
+<dt>Verified task completion — Related capability with limits</dt><dd>The optional model judge evaluates completion. That is related functionality, not independent application proof.</dd>
+<dt>Verified replay with protected-action stops — Related capability with limits</dt><dd>Saved history can be rerun with retries. Full live verification and protected-action stops are not established.</dd>
+<dt>Built-in bot-protection handling — Related capability with limits</dt><dd>Stealth and CAPTCHA handling are supplied by optional Browser Use Cloud, rather than the open-source library.</dd>
+<dt>Challenge handling and isolated escalation — Related capability with limits</dt><dd>Cloud CAPTCHA solving is documented; isolated escalation with the complete row contract is not established.</dd>
+<dt>Credentials bound to verified fields — Related capability with limits</dt><dd>Sensitive-data placeholders can be scoped by domain. Verified live-field binding is not established.</dd>
+</dl><p>Other dashed rows: not established in the sources linked above.</p></details>
+<details class="feature-source" id="source-bu-openai"><summary>Browser Use · OpenAI tools <span>· 1 full, 4 partial</span></summary><p>The documented OpenAI browser-tool integration with Browser Use as browser driver; this is a separate tool loop from Browser Use Agent.</p><p class="feature-source-links"><a href="https://docs.browser-use.com/open-source/customize/integrations/openai" target="_blank" rel="noopener noreferrer">OpenAI integration</a> · <a href="https://github.com/browser-use/browser-use/blob/b49a68e4060acb226da8f784194fef301c53a6d7/CLOUD.md" target="_blank" rel="noopener noreferrer">Cloud capabilities</a></p><dl>
+<dt>No screenshots required — Documented match</dt><dd>Page text, accessibility reads and element finding support text-led operation; screenshots are optional.</dd>
+<dt>Verified action effects — Related capability with limits</dt><dd>The caller can read page state to check effects. Action confirmation is an authorization callback, not an outcome verifier.</dd>
+<dt>Verified task completion — Related capability with limits</dt><dd>The integration calls for independent verification of important external actions; no automatic task-proof mechanism is documented.</dd>
+<dt>Verified replay with protected-action stops — Not established in reviewed sources</dt><dd>Read retries are documented, but clicks and typing are explicitly not replayed after uncertain effects.</dd>
+<dt>Built-in bot-protection handling — Related capability with limits</dt><dd>The documented cloud setup can use Browser Use Cloud’s separate stealth and CAPTCHA service.</dd>
+<dt>Challenge handling and isolated escalation — Related capability with limits</dt><dd>Cloud challenge solving is related functionality; the complete isolated-escalation contract is not established.</dd>
+<dt>Credentials bound to verified fields — Not established in reviewed sources</dt><dd>The Agent’s sensitive_data mechanism is not established for this distinct integration, so its credential score is not inherited.</dd>
+</dl><p>Other dashed rows: not established in the sources linked above.</p></details>
+<details class="feature-source" id="source-harness"><summary>Browser Harness <span>· 1 full, 4 partial</span></summary><p>Browser Use’s browser-harness CDP tool and skill. Reviewed independently of Browser Use Agent and the OpenAI integration.</p><p class="feature-source-links"><a href="https://github.com/browser-use/browser-harness/blob/be26283ee9c3dd089aefa70ffb04cf71dc6f59e1/README.md" target="_blank" rel="noopener noreferrer">README</a> · <a href="https://github.com/browser-use/browser-harness/blob/be26283ee9c3dd089aefa70ffb04cf71dc6f59e1/SKILL.md" target="_blank" rel="noopener noreferrer">Page workflow</a> · <a href="https://github.com/browser-use/browser-use/blob/b49a68e4060acb226da8f784194fef301c53a6d7/CLOUD.md" target="_blank" rel="noopener noreferrer">Optional cloud service</a></p><dl>
+<dt>No screenshots required — Documented match</dt><dd>The documented workflow prefers accessibility-tree and DOM inspection, with screenshots for visual needs.</dd>
+<dt>Verified action effects — Related capability with limits</dt><dd>The skill directs the agent to check effects with targeted JavaScript or page_info; enforcement remains with the agent.</dd>
+<dt>Verified task completion — Related capability with limits</dt><dd>The workflow asks the agent to verify results; no automatic application-level completion proof is established.</dd>
+<dt>Compiled knowledge reused across visits — Not established in reviewed sources</dt><dd>Reusable scripts and site skills are supported, but they are not automatically compiled application knowledge.</dd>
+<dt>Built-in bot-protection handling — Related capability with limits</dt><dd>Optional Browser Use Cloud supplies managed stealth; this is a separate cloud service.</dd>
+<dt>Challenge handling and isolated escalation — Related capability with limits</dt><dd>The optional cloud service supplies CAPTCHA solving. The complete isolated-escalation contract is not established.</dd>
+<dt>Credentials bound to verified fields — Not established in reviewed sources</dt><dd>Existing browser sign-in and SSO are usable, but a model-blind, verified-field credential broker is not established.</dd>
+</dl><p>Other dashed rows: not established in the sources linked above.</p></details>
+<details class="feature-source" id="source-stagehand"><summary>Stagehand <span>· 1 full, 7 partial</span></summary><p>Current v4 documentation, including optional Browserbase services. The Stagehand demonstration uses its explicitly named older version; these are not new benchmark results.</p><p class="feature-source-links"><a href="https://github.com/browserbase/stagehand/blob/ce298c60bd7e617e38d67db8db7d34de9d37cd18/packages/docs/v4/basics/act.mdx" target="_blank" rel="noopener noreferrer">Actions and variables</a> · <a href="https://github.com/browserbase/stagehand/blob/ce298c60bd7e617e38d67db8db7d34de9d37cd18/packages/docs/v4/basics/observe.mdx" target="_blank" rel="noopener noreferrer">Observe</a> · <a href="https://github.com/browserbase/stagehand/blob/ce298c60bd7e617e38d67db8db7d34de9d37cd18/packages/docs/v4/basics/extract.mdx" target="_blank" rel="noopener noreferrer">Extract</a> · <a href="https://github.com/browserbase/stagehand/blob/ce298c60bd7e617e38d67db8db7d34de9d37cd18/packages/docs/v4/best-practices/caching.mdx" target="_blank" rel="noopener noreferrer">Caching</a> · <a href="https://docs.browserbase.com/features/stealth-mode" target="_blank" rel="noopener noreferrer">Browserbase CAPTCHA handling</a></p><dl>
+<dt>No screenshots required — Documented match</dt><dd>DOM-based act, observe and extract paths do not require screenshots. Separate visual-agent paths may use them.</dd>
+<dt>Verified action effects — Related capability with limits</dt><dd>Observe/extract and caller-authored assertions can check state, but do not impose automatic action-effect proof.</dd>
+<dt>Verified task completion — Related capability with limits</dt><dd>The caller can assert completion from extracted page data. Automatic application-level task proof is not established.</dd>
+<dt>Compiled knowledge reused across visits — Related capability with limits</dt><dd>Browserbase’s server cache reuses eligible model-generated act, observe and extract results. Initial inference is still required; local-browser caching differs.</dd>
+<dt>Verified replay with protected-action stops — Related capability with limits</dt><dd>Observed actions can be reused and self-healing can retry failures. Full protected-action gating is not established.</dd>
+<dt>Built-in bot-protection handling — Related capability with limits</dt><dd>Hosted Browserbase supplies stealth and CAPTCHA handling; this is an additional service.</dd>
+<dt>Challenge handling and isolated escalation — Related capability with limits</dt><dd>Hosted CAPTCHA handling is documented; the full isolated-escalation contract is not established.</dd>
+<dt>Credentials bound to verified fields — Related capability with limits</dt><dd>Variables can keep actual values out of model instructions. The documentation warns that server caching can receive values unless cache:false is used; verified-field brokerage is not established.</dd>
+</dl><p>Other dashed rows: not established in the sources linked above.</p></details>
+<details class="feature-source" id="source-playwright"><summary>Playwright MCP <span>· 1 full, 3 partial</span></summary><p>Microsoft’s Playwright MCP server, including its optional verification tools. Generic CDP connectivity is not treated as a built-in bot solver.</p><p class="feature-source-links"><a href="https://github.com/microsoft/playwright-mcp/blob/50b004fb3d3ee17f9710f067ed1b6d59fd16e4a1/README.md" target="_blank" rel="noopener noreferrer">README, tools and security</a></p><dl>
+<dt>No screenshots required — Documented match</dt><dd>Structured accessibility snapshots are the default path and explicitly avoid requiring screenshots or a vision model.</dd>
+<dt>Verified action effects — Related capability with limits</dt><dd>Assertions and snapshots let the caller check effects; they do not automatically verify every application action.</dd>
+<dt>Verified task completion — Related capability with limits</dt><dd>Verification tools can assert page state when the caller chooses. No automatic task-level proof requirement is established.</dd>
+<dt>Credentials bound to verified fields — Related capability with limits</dt><dd>Secrets substitution and response redaction are documented conveniences, explicitly not a security boundary or verified-field broker.</dd>
+<dt>New API keys captured model-blind — Not established in reviewed sources</dt><dd>Runtime URL-token redaction is documented, but that does not establish model-blind capture of newly generated API keys into a vault.</dd>
+</dl><p>Other dashed rows: not established in the sources linked above.</p></details>
+<details class="feature-source" id="source-unbrowse"><summary>Unbrowse <span>· 6 full, 4 partial</span></summary><p>Published contract for the hosted, closed-source service. The public repository is its client and documentation. The vendor marks some acceptance checks open; this review does not independently validate the service.</p><p class="feature-source-links"><a href="https://github.com/unbrowse-ai/unbrowse/blob/41db2a37092aa704d65fc4a8027e1e3733c258d0/docs/how-it-works.md" target="_blank" rel="noopener noreferrer">How it works</a> · <a href="https://github.com/unbrowse-ai/unbrowse/blob/41db2a37092aa704d65fc4a8027e1e3733c258d0/docs/whitepaper/system-today.md" target="_blank" rel="noopener noreferrer">Current shipped scope</a> · <a href="https://github.com/unbrowse-ai/unbrowse/blob/41db2a37092aa704d65fc4a8027e1e3733c258d0/docs/whitepaper/credential-sovereignty.md" target="_blank" rel="noopener noreferrer">Vault and status</a></p><dl>
+<dt>Compiler engine — Documented match</dt><dd>Documents compilation of recorded network flows into typed, versioned capability packages.</dd>
+<dt>Compiled application operations — Documented match</dt><dd>Learned capabilities expose application-specific inputs and HTTP request chains as callable operations.</dd>
+<dt>Compilation without model calls — Not established in reviewed sources</dt><dd>The documented learn algorithm does not establish that every compilation path runs without model inference.</dd>
+<dt>No screenshots required — Documented match</dt><dd>Warm capabilities replay over HTTP without a browser; cold browser operation also offers text snapshots.</dd>
+<dt>Verified action effects — Related capability with limits</dt><dd>Packages declare guards and outcome checks, and uncertain writes are not resent. Verification of every individual effect is not established.</dd>
+<dt>Verified task completion — Documented match</dt><dd>The published run contract requires independent verification of the declared business outcome before succeeded is returned.</dd>
+<dt>Compiled knowledge reused across visits — Documented match</dt><dd>Persisted learned capabilities are reused on subsequent requests. Public-registry reliability is separately marked as an open acceptance check.</dd>
+<dt>Verified replay with protected-action stops — Related capability with limits</dt><dd>Verified outcomes, guards and no automatic retry of uncertain writes are documented; complete protected-action stops at every replay step are not established.</dd>
+<dt>Built-in bot-protection handling — Documented match</dt><dd>The service includes browser-earned clearance, Chrome-fingerprint transport retries and browser/render fallbacks. This does not promise bypass of every challenge.</dd>
+<dt>Challenge handling and isolated escalation — Related capability with limits</dt><dd>Waits out simple challenges and can request same-session verification. The full isolated-escalation contract is not established.</dd>
+<dt>Credentials bound to verified fields — Related capability with limits</dt><dd>Documents model-blind vault references and autofill. The reviewed shipped-scope sources do not establish the full verified-live-field release contract; autofill acceptance checks are marked open.</dd>
+</dl><p>Other dashed rows: not established in the sources linked above.</p></details>
+<details class="feature-source" id="source-control"><summary>Browser Control <span>· 1 full, 4 partial</span></summary><p>keon/browser-control, the Rust CDP CLI. This is a distinct project inspired by Browser Harness, not a renamed Browser Use agent.</p><p class="feature-source-links"><a href="https://github.com/keon/browser-control/blob/b352a1ac017113b25c82fac8b78ddedd597ddb74/README.md" target="_blank" rel="noopener noreferrer">README</a> · <a href="https://github.com/keon/browser-control/blob/b352a1ac017113b25c82fac8b78ddedd597ddb74/skills/interaction-skills/final-answer.md" target="_blank" rel="noopener noreferrer">Final-answer checks</a> · <a href="https://github.com/browser-use/browser-use/blob/b49a68e4060acb226da8f784194fef301c53a6d7/CLOUD.md" target="_blank" rel="noopener noreferrer">Optional Browser Use Cloud</a></p><dl>
+<dt>No screenshots required — Documented match</dt><dd>Text snapshots, element references and CDP inspection allow operation without screenshots.</dd>
+<dt>Verified action effects — Related capability with limits</dt><dd>The agent can inspect page state and check action results; automatic effect proof is not established.</dd>
+<dt>Verified task completion — Related capability with limits</dt><dd>The bundled final-answer skill requires evidence and constraint checks. These are agent instructions, not a runtime completion verifier.</dd>
+<dt>Compiled knowledge reused across visits — Not established in reviewed sources</dt><dd>Scripts and domain skills can be reused, but the tool does not document automatic application compilation.</dd>
+<dt>Built-in bot-protection handling — Related capability with limits</dt><dd>The CLI explicitly supports provisioning Browser Use and other cloud providers. Their stealth is external to the CLI.</dd>
+<dt>Challenge handling and isolated escalation — Related capability with limits</dt><dd>A separately provisioned Browser Use Cloud browser can provide CAPTCHA solving; the CLI does not establish isolated escalation.</dd>
+</dl><p>Other dashed rows: not established in the sources linked above.</p></details>
+</details>
 </section>
 
 <section class="sec" id="benchmarks">
@@ -1118,6 +1318,17 @@ window.addEventListener('load',mark);apply();sizeDemo()})();
 <script>
 /* Keep the emblem where it sat before the lede's opening sentence: lift it by exactly the height the new opening adds over the old one. */
 (function(){var l=document.querySelector('.hero .lede'),b=document.querySelector('.hero-brand');if(!l||!l.querySelector('.lede-lead')||!b)return;function fit(){if(innerWidth<761){b.style.marginBottom='';return}var c=l.cloneNode(true),cl=c.querySelector('.lede-lead');cl.textContent=cl.dataset.was;c.style.cssText='position:absolute;visibility:hidden;left:0;top:0;width:'+l.getBoundingClientRect().width+'px;margin:0';l.parentNode.appendChild(c);var d=l.getBoundingClientRect().height-c.getBoundingClientRect().height;c.remove();b.style.marginBottom=d>0?d+'px':''}fit();addEventListener('resize',fit);if(document.fonts)document.fonts.ready.then(fit)})();
+</script>
+<script>
+(function(){
+ var root=document.getElementById('compare'),picker=document.getElementById('feature-product');
+ if(!root||!picker)return;
+ var narrow=matchMedia('(max-width:1279px)');
+ function fit(){root.querySelector('.feature-group th').colSpan=narrow.matches?3:9}
+ picker.addEventListener('change',function(){root.querySelectorAll('[data-product]').forEach(function(cell){cell.classList.toggle('feature-selected',cell.dataset.product===picker.value)})});
+ if(narrow.addEventListener)narrow.addEventListener('change',fit);else narrow.addListener(fit);
+ fit();
+})();
 </script>
 </body>
 </html>
