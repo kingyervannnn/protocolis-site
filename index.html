@@ -1067,9 +1067,10 @@ body::before{
 <div class="mt-l op"><span class="nm">Stagehand</span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span></div>
 </div>
 <div class="mt-g"><div class="mt-o"><b>Playwright MCP</b><span>Microsoft · Playwright MCP 0.0.84 · Grok 4.6</span></div>
-<div class="mt-l ad"><span class="nm">Protocolis Adaptive</span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span></div>
-<div class="mt-l st"><span class="nm">Protocolis Standard</span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span></div>
-<div class="mt-l op"><span class="nm">Playwright MCP</span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span></div>
+<div class="mt-l ad"><span class="nm">Protocolis Adaptive</span><span><b>80/80</b></span><span><b>15.4 s</b><i class="x">4% less</i></span><span><b>$0.0112</b><i class="x">5.6×</i></span></div>
+<div class="mt-l st"><span class="nm">Protocolis Standard</span><span><b>80/80</b></span><span><b>25.2 s</b><i class="x worse">1.6× slower</i></span><span><b>$0.0241</b><i class="x">2.6×</i></span></div>
+<div class="mt-l op"><span class="nm">Playwright MCP</span><span><b>80/80</b></span><span><b>16.0 s</b></span><span><b>$0.0628</b></span></div>
+<p class="mt-n">20 public tasks × 4 rounds · 80 runs per arm · every attempt counted, no voids · each arm completed every task · 5 November 2026</p>
 </div>
 <div class="mt-g"><div class="mt-o"><b>Browser Harness</b><span>Browser Use · Browser Harness 0.1.13 · Grok 4.6</span></div>
 <div class="mt-l ad"><span class="nm">Protocolis Adaptive</span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span></div>
@@ -1109,7 +1110,7 @@ body::before{
 <h3 class="cx-h">Small model to frontier.</h3><div class="msz"><div class="ms"><b>Small model</b><span class="mdl">GLM-5.3-flash</span><span class="vs">vs Browser Use tools mode</span><dl><dt>Completed</dt><dd><span class="pend">measuring</span></dd><dt>Time</dt><dd><span class="pend">measuring</span></dd><dt>Cost</dt><dd><span class="pend">measuring</span></dd></dl></div><div class="ms"><b>Mid model</b><span class="mdl">Grok 4.6</span><span class="vs">vs the strongest opponent on Grok</span><dl><dt>Completed</dt><dd><span class="pend">measuring</span></dd><dt>Time</dt><dd><span class="pend">measuring</span></dd><dt>Cost</dt><dd><span class="pend">measuring</span></dd></dl></div><div class="ms"><b>Frontier model</b><span class="mdl">gpt-6.1-sol</span><span class="vs">vs Browser Use's own agent</span><dl><dt>Completed</dt><dd><span class="pend">measuring</span></dd><dt>Time</dt><dd><span class="pend">measuring</span></dd><dt>Cost</dt><dd><span class="pend">measuring</span></dd></dl></div></div>
 <details class="how"><summary>How we measured</summary><div class="how-b">
 <p><b>Same model, same tasks, same budget.</b> Every arm runs the same model on the same tasks, on live websites, arms rotating per task in one session. Protocolis Adaptive adds its small choice model, and its cost is counted.</p>
-<p><b>Task sets.</b> Short tasks: 20 public tasks, each run twice. Long tasks: 40 long open-web tasks. Model sizes: 39 development tasks on live websites and component demos.</p>
+<p><b>Task sets.</b> Short tasks: 20 public tasks, run in four rounds, 80 runs per arm. Long tasks: 40 long open-web tasks. Model sizes: 39 development tasks on live websites and component demos.</p>
 <p><b>Completion.</b> Short tasks are judged by checks on the finished page. Long tasks are judged blind by WebJudge from the screenshots, with a second judge on disputed tasks. Every attempt counts.</p>
 <p><b>Time and cost.</b> Time is a stopwatch from the task's arrival to the answer. Cost is the metered tokens at the provider's list prices, choice model included. Both are per completed task.</p>
 <p><b>Versions.</b> Browser Use 0.13.13 · Stagehand 3.7.3 · Playwright MCP 0.0.84 · Browser Harness 0.1.13. Protocolis on its current build, November 2026.</p>
