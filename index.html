@@ -1464,5 +1464,7 @@ slides.forEach(function(s){var vid=s.querySelector('video');if(!vid)return;vid.a
 new MutationObserver(function(){render();prog()}).observe(d,{childList:true,subtree:true,attributes:true,attributeFilter:['class']});
 render();prog()})();</script>
 <script>/*UNPIN-JS*/(function(){var sb=document.querySelector("#demo .demo-sidebar");if(!sb)return;var res=sb.querySelector(".demo-results"),bar=sb.querySelector(":scope > .cbar");if(!res||!bar)return;var h=res.querySelector("h2");res.insertBefore(bar,h?h.nextSibling:res.firstChild)})();</script>
-</body>
+<script>/*MT-TOGGLE*/document.querySelectorAll('.mt-tabs button').forEach(b=>b.addEventListener('click',()=>{
+document.querySelectorAll('.mt-tabs button').forEach(x=>{x.classList.toggle('on',x===b);x.setAttribute('aria-selected',x===b)});
+document.querySelectorAll('.mt[data-set]').forEach(t=>t.hidden=t.dataset.set!==b.dataset.set)}))</script></body>
 </html>
