@@ -362,6 +362,32 @@ a.chip.patent-status:hover,a.chip.patent-status:focus-visible{background:rgb(236
 #benchmarks .extra-stats{grid-template-columns:repeat(2,minmax(0,1fr));margin-block:2rem}
 @media(max-width:760px){.measured-summary .summary-stats,#benchmarks .extra-stats{grid-template-columns:minmax(0,1fr)}}
 
+
+/* Compact comparison: identical Browser Use ratings share one column. */
+#compare.compact-compare{padding-block:2.5rem}
+#compare.compact-compare h2{font-size:clamp(1.5rem,2.8vw,2.4rem)}
+.compact-compare .rail{margin-bottom:.6rem}
+.feature-intro{margin:.65rem 0 1rem;color:var(--fg-2);font-size:.9rem}
+.feature-matrix{width:100%;table-layout:fixed;border-collapse:collapse;font-size:.9rem;line-height:1.35}
+.feature-matrix .feature-name{width:60%}
+.feature-matrix th,.feature-matrix td{border-bottom:1px solid var(--rule);padding:.32rem .75rem}
+.feature-matrix th{text-align:left;font-weight:400}
+.feature-matrix td,.feature-matrix thead th:not(:first-child){text-align:center}
+.feature-matrix thead th{padding-block:.6rem;font-weight:600;color:var(--fg)}
+.feature-matrix small{display:block;font-size:.68rem;font-weight:400;color:var(--fg-2);margin-top:.15rem}
+.feature-matrix .feature-us{background:var(--accent-wash);color:var(--accent)}
+.feature-matrix .feature-group th{background:var(--bg-2);font-size:.72rem;letter-spacing:.06em;padding-block:.4rem;font-weight:600;color:var(--fg-2)}
+.feature-yes{color:var(--accent);font-size:1.1rem;font-weight:600;line-height:1}
+.feature-part{color:var(--fg-2);font-size:.8rem}.feature-none{color:var(--dim)}
+.feature-matrix tfoot th,.feature-matrix tfoot td{padding-block:.6rem;border-bottom:0}
+.feature-matrix tfoot strong{font-size:1.15rem;font-weight:600}
+.feature-key{display:flex;flex-wrap:wrap;gap:.3rem 1.25rem;font-size:.72rem;color:var(--fg-2);margin:.6rem 0}
+.feature-details{font-size:.85rem;color:var(--fg-2);line-height:1.6;margin-top:.65rem}
+.feature-details summary{cursor:pointer;color:var(--fg);width:fit-content}
+.feature-details p,.feature-details dl{margin-top:1rem}
+.feature-details dt{color:var(--fg);font-weight:600;margin-top:.8rem}.feature-details dd{margin:.15rem 0 0}
+@media(max-width:760px){.feature-matrix .feature-name{width:46%}.feature-matrix{font-size:.78rem}.feature-matrix th,.feature-matrix td{padding:.4rem .35rem}.feature-matrix thead th{font-size:.76rem}.feature-matrix small{font-size:.6rem}.feature-matrix tfoot strong{font-size:1rem}}
+
 /* acquisition */
 .two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(1.5rem,4vw,4rem);margin-top:2.25rem;align-items:start}
 .two p{color:var(--fg-2);font-size:1.05rem}
@@ -714,42 +740,39 @@ body::before{
   <p class="evidence-link"><a href="#benchmarks">Explore the detailed benchmarks and methodology <span aria-hidden="true">↓</span></a></p>
 </section>
 
-<section class="sec" id="compare">
-  <div class="head">
-    <div class="rail"><b>03</b>compare</div>
-    <h2>Feature for feature, it isn't close.</h2>
-    <p class="sub">Browser Use comes two ways: as its own agent, which reads a screenshot every step, or as a browser driver underneath OpenAI's browser tools, run by OpenAI's tool runner. Protocolis is one engine with its own operations, verification and credential broker. It costs less than either on every model we have measured, and does thirteen things neither mode does.</p>
-    <p class="sub">That combination depends on two companies' release cycles, and no one can acquire it whole. Protocolis is one codebase: the engine, the tool layer, the credential broker and the patent filing transfer together.</p>
-  </div>
-  <div>
-
-    <div class="vs-wrap">
-      <table class="vs">
-        <thead><tr><th scope="col">Capability</th><th scope="col" class="us">Protocolis</th><th scope="col">Browser Use · default agent</th><th scope="col">OpenAI browser tools + Browser Use driver</th></tr></thead>
-        <tbody>
-          <tr class="grp"><th scope="rowgroup">Compiler engine<span>Turns the application into operations an agent can call.</span></th><td class="us"><span class="gk"><span class="ok" aria-label="Yes"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><small>patent pending</small></span></td><td data-v="n">No compiler</td><td data-v="n">No compiler</td></tr>
-          <tr><th scope="row">Operations compiled from the application itself</th><td class="us" data-v="y"></td><td data-v="n">Generic browser actions</td><td data-v="n">OpenAI's generic browser tools</td></tr>
-          <tr><th scope="row">Application compiled without model calls</th><td class="us" data-v="y"></td><td data-v="n"></td><td data-v="n"></td></tr>
-          <tr><th scope="row">No screenshots needed by the model</th><td class="us" data-v="y"></td><td data-v="p">On by default</td><td data-v="p">Optional</td></tr>
-          <tr><th scope="row">Each action's effect checked against the application</th><td class="us" data-v="y"></td><td data-v="p">Typed-value check only</td><td data-v="p">Typed-value check only</td></tr>
-          <tr><th scope="row">Verified done: task completion proved from the application's own evidence</th><td class="us" data-v="y"></td><td data-v="n">No proof; optional model judge</td><td data-v="n">No proof; optional model judge</td></tr>
-          <tr><th scope="row">Warm compile: what one visit compiles is reused on the next</th><td class="us" data-v="y"></td><td data-v="n">Nothing compiled to reuse; each new task re-reads the site</td><td data-v="n">Nothing compiled to reuse; each new task re-reads the site</td></tr>
-          <tr><th scope="row">Replay checked live at every step, stopping before protected actions</th><td class="us" data-v="y"></td><td data-v="p">Rerun of saved history, with retries</td><td data-v="p">Rerun of saved history, with retries</td></tr>
-          <tr><th scope="row">Runs on sites behind modern bot protection, built in</th><td class="us" data-v="y"></td><td data-v="p">Not in the library; sold separately as a paid cloud browser</td><td data-v="p">Not in the library; sold separately as a paid cloud browser</td></tr>
-          <tr><th scope="row">Simple challenges handled automatically; complex challenges escalated in isolation</th><td class="us" data-v="y"></td><td data-v="p">Waits for its paid cloud proxy to solve it</td><td data-v="p">Waits for its paid cloud proxy to solve it</td></tr>
-          <tr class="last-in-grp"><th scope="row">Challenge lessons shared across sites; no site's history cuts an attempt short</th><td class="us" data-v="y"></td><td data-v="n">Not in the library</td><td data-v="n">Not in the library</td></tr>
-          <tr class="grp"><th scope="rowgroup">Model-blind credential broker<span>Passwords, API keys and passkeys are used without the model ever seeing them.</span></th><td class="us"><span class="gk"><span class="ok" aria-label="Yes"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><small>patent pending</small></span></td><td data-v="n">No broker; placeholders only</td><td data-v="n">No broker; placeholders only</td></tr>
-          <tr><th scope="row">Credentials released only to a verified field on the live page</th><td class="us" data-v="y"></td><td data-v="p">Placeholders, scoped by domain</td><td data-v="p">Placeholders, scoped by domain</td></tr>
-          <tr><th scope="row">New API keys captured without the model seeing them</th><td class="us" data-v="y"></td><td data-v="n"></td><td data-v="n"></td></tr>
-          <tr class="last-in-grp"><th scope="row">Passkeys</th><td class="us" data-v="y"></td><td data-v="n"></td><td data-v="n"></td></tr>
-        </tbody>
-        <tfoot><tr><th scope="row">Full support</th><td class="us">13 of 13</td><td>0 of 13<small>6 partial</small></td><td>0 of 13<small>6 partial</small></td></tr></tfoot>
-      </table>
-    </div>
-    <div class="legend"><span><span class="ok" style="width:1.2rem;height:1.2rem"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>full</span><span><span class="part"><i></i></span>partial</span><span><span class="no"><svg viewBox="0 0 24 24"><path d="M5 5l14 14M19 5L5 19"/></svg></span>none</span></div>
-
-    <p class="note">Browser Use 0.13.13's capabilities are taken from its published source code, as its own agent and as the driver under OpenAI's browser tools from the OpenAI SDK (the agent calls OpenAI's tools, OpenAI's tool runner runs the loop, and Browser Use only operates the browser).</p>
-  </div>
+<section class="sec compact-compare" id="compare">
+  <div class="rail"><b>03</b>compare</div>
+  <h2>Feature for feature, it isn't close.</h2>
+  <p class="feature-intro">One engine. Thirteen built-in capabilities.</p>
+  <table class="feature-matrix" aria-label="Protocolis and Browser Use capability comparison">
+    <colgroup><col class="feature-name"><col><col></colgroup>
+    <thead><tr><th scope="col">Capability</th><th scope="col" class="feature-us">Protocolis</th><th scope="col">Browser Use<small>Agent + OpenAI tools mode</small></th></tr></thead>
+    <tbody>
+<tr class="feature-group"><th colspan="3" scope="rowgroup">Compiler engine</th></tr>
+<tr><th scope="row">Compiled application operations</th><td class="feature-us"><span class="feature-yes" aria-label="Full support">✓</span></td><td><span class="feature-none" aria-label="No support">—</span></td></tr>
+<tr><th scope="row">Compilation without model calls</th><td class="feature-us"><span class="feature-yes" aria-label="Full support">✓</span></td><td><span class="feature-none" aria-label="No support">—</span></td></tr>
+<tr><th scope="row">No screenshots required</th><td class="feature-us"><span class="feature-yes" aria-label="Full support">✓</span></td><td><span class="feature-part">Partial</span></td></tr>
+<tr><th scope="row">Verified action effects</th><td class="feature-us"><span class="feature-yes" aria-label="Full support">✓</span></td><td><span class="feature-part">Partial</span></td></tr>
+<tr><th scope="row">Verified task completion</th><td class="feature-us"><span class="feature-yes" aria-label="Full support">✓</span></td><td><span class="feature-none" aria-label="No support">—</span></td></tr>
+<tr><th scope="row">Compiled knowledge reused across visits</th><td class="feature-us"><span class="feature-yes" aria-label="Full support">✓</span></td><td><span class="feature-none" aria-label="No support">—</span></td></tr>
+<tr><th scope="row">Verified replay with protected-action stops</th><td class="feature-us"><span class="feature-yes" aria-label="Full support">✓</span></td><td><span class="feature-part">Partial</span></td></tr>
+<tr><th scope="row">Built-in bot-protection handling</th><td class="feature-us"><span class="feature-yes" aria-label="Full support">✓</span></td><td><span class="feature-part">Partial</span></td></tr>
+<tr><th scope="row">Challenge handling and isolated escalation</th><td class="feature-us"><span class="feature-yes" aria-label="Full support">✓</span></td><td><span class="feature-part">Partial</span></td></tr>
+<tr><th scope="row">Challenge lessons shared across sites</th><td class="feature-us"><span class="feature-yes" aria-label="Full support">✓</span></td><td><span class="feature-none" aria-label="No support">—</span></td></tr>
+<tr class="feature-group"><th colspan="3" scope="rowgroup">Model-blind credential broker</th></tr>
+<tr><th scope="row">Credentials bound to verified fields</th><td class="feature-us"><span class="feature-yes" aria-label="Full support">✓</span></td><td><span class="feature-part">Partial</span></td></tr>
+<tr><th scope="row">New API keys captured model-blind</th><td class="feature-us"><span class="feature-yes" aria-label="Full support">✓</span></td><td><span class="feature-none" aria-label="No support">—</span></td></tr>
+<tr><th scope="row">Passkeys</th><td class="feature-us"><span class="feature-yes" aria-label="Full support">✓</span></td><td><span class="feature-none" aria-label="No support">—</span></td></tr>
+    </tbody>
+    <tfoot><tr><th scope="row">Full support</th><td class="feature-us"><strong>13 of 13</strong></td><td><strong>0 of 13</strong><small>6 partial in each mode</small></td></tr></tfoot>
+  </table>
+  <p class="feature-key">✓ Full support <span>Partial: related capability with limits</span> <span>— No support for the listed capability</span></p>
+  <details class="feature-details"><summary>Comparison details</summary>
+    <p>Both Browser Use modes receive the same rating on every listed capability. Their screenshot behavior differs: screenshots are on by default in the agent and optional in OpenAI tools mode. These ratings compare the full capability defined in each row, not whether a developer can build similar behavior around the tool.</p>
+    <dl><dt>Operations compiled from the application itself</dt><dd>Browser Use agent: Generic browser actions. OpenAI tools mode: OpenAI's generic browser tools.</dd><dt>Application compiled without model calls</dt><dd>No equivalent built-in capability listed in either reviewed mode.</dd><dt>No screenshots needed by the model</dt><dd>Browser Use agent: On by default. OpenAI tools mode: Optional.</dd><dt>Each action's effect checked against the application</dt><dd>Both Browser Use modes: Typed-value check only.</dd><dt>Verified done: task completion proved from the application's own evidence</dt><dd>Both Browser Use modes: No proof; optional model judge.</dd><dt>Warm compile: what one visit compiles is reused on the next</dt><dd>Both Browser Use modes: Nothing compiled to reuse; each new task re-reads the site.</dd><dt>Replay checked live at every step, stopping before protected actions</dt><dd>Both Browser Use modes: Rerun of saved history, with retries.</dd><dt>Runs on sites behind modern bot protection, built in</dt><dd>Both Browser Use modes: Not in the library; sold separately as a paid cloud browser.</dd><dt>Simple challenges handled automatically; complex challenges escalated in isolation</dt><dd>Both Browser Use modes: Waits for its paid cloud proxy to solve it.</dd><dt>Challenge lessons shared across sites; no site's history cuts an attempt short</dt><dd>Both Browser Use modes: Not in the library.</dd><dt>Credentials released only to a verified field on the live page</dt><dd>Both Browser Use modes: Placeholders, scoped by domain.</dd><dt>New API keys captured without the model seeing them</dt><dd>No equivalent built-in capability listed in either reviewed mode.</dd><dt>Passkeys</dt><dd>No equivalent built-in capability listed in either reviewed mode.</dd></dl>
+    <p>Browser Use 0.13.13's capabilities are taken from its published source code, as its own agent and as the driver under OpenAI's browser tools from the OpenAI SDK (the agent calls OpenAI's tools, OpenAI's tool runner runs the loop, and Browser Use only operates the browser).</p>
+    <p>Browser Use comes two ways: as its own agent, which reads a screenshot every step, or as a browser driver underneath OpenAI's browser tools, run by OpenAI's tool runner. Protocolis is one engine with its own operations, verification and credential broker. It costs less than either on every model we have measured, and does thirteen things neither mode does.</p><p>That combination depends on two companies' release cycles, and no one can acquire it whole. Protocolis is one codebase: the engine, the tool layer, the credential broker and the patent filing transfer together.</p>
+  </details>
 </section>
 
 <section class="sec" id="benchmarks">
