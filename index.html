@@ -430,7 +430,11 @@ a.chip.patent-status:hover,a.chip.patent-status:focus-visible{background:rgb(236
 .stages b{font-weight:600}
 .stages p{font-size:.98rem;margin-top:.2rem}
 
-/* contact */
+/* Contact details sit directly beneath the acquisition paragraph. */
+.acquisition-contact{margin-top:1.5rem}
+.acquisition-contact .contact-name{color:var(--fg);font-size:1.05rem;font-weight:600}
+.acquisition-contact .mail{margin-top:.45rem}
+.acquisition-contact .addr{font-size:clamp(1.15rem,2vw,1.65rem)}
 .mail{display:flex;gap:.75rem;flex-wrap:wrap;align-items:center;margin-top:2rem}
 .addr{font-family:var(--font-display);font-size:clamp(1.3rem,3vw,2.3rem);user-select:all;overflow-wrap:anywhere;letter-spacing:.02em}
 button{font-family:var(--font-mono);font-size:.75rem;letter-spacing:.16em;text-transform:uppercase;background:var(--accent);color:var(--accent-ink);border:0;padding:.75rem 1.3rem;cursor:pointer;font-weight:500}
@@ -561,7 +565,6 @@ body::before{
     <a href="#benchmarks">benchmarks</a>
     <a href="#acquisition">acquisition</a>
     <a href="platform/">platform</a>
-    <a href="#contact">contact</a>
   </nav>
 </header>
 
@@ -1120,26 +1123,21 @@ body::before{
   <div>
     <h2>Offered for outright acquisition.</h2>
     <div class="two">
+      <div class="acquisition-copy">
       <p>Protocolis is the work of a sole inventor. It is operational, patent pending and in use by its first paying customers, two trucking dispatch offices. The engine, the credential broker, the patent filings, the measurement record and the reproduction kit are offered together, with a transition period and, if the acquirer wants one, a continuing role.</p>
+        <div class="acquisition-contact" id="contact">
+          <p class="contact-name">Vahagn Boudakian, inventor.</p>
+          <div class="mail">
+            <span class="addr" id="addr">vahagn@protocolis.co</span>
+            <button type="button" id="copy" aria-label="Copy email address">Copy</button>
+          </div>
+        </div>
+      </div>
       <ol class="stages">
         <li><span class="num">I</span><div><b>Watch</b><p>A recorded demonstration and a live screen share.</p></div></li>
         <li><span class="num">II</span><div><b>Try</b><p>Under NDA, your engineers run their own agents and tasks on a hosted instance: the <a href="platform/">evaluation platform</a>.</p></div></li>
         <li><span class="num">III</span><div><b>Hold</b><p>At letter of intent, a time-limited build for inspection.</p></div></li>
       </ol>
-    </div>
-  </div>
-</section>
-
-<section class="sec" id="contact">
-  <div class="head">
-    <div class="rail"><b>05</b>contact</div>
-    <h2>Vahagn Boudakian, inventor.</h2>
-    <p class="sub">Write to start a conversation. The five-page executive summary is available on request.</p>
-  </div>
-  <div>
-    <div class="mail">
-      <span class="addr" id="addr">vahagn@protocolis.co</span>
-      <button type="button" id="copy" aria-label="Copy email address">Copy</button>
     </div>
   </div>
 </section>
