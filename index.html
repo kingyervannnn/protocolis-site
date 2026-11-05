@@ -314,6 +314,8 @@ a.chip.patent-status:hover,a.chip.patent-status:focus-visible{background:rgb(236
 
 
 /* Keep each video's results and controls together beside it. */
+#demo{overflow-anchor:none}
+#measured .head > .stats{grid-column:1/-1;margin-bottom:2rem}
 .demo-grid.demo-ready{display:block;margin-top:0}
 .demo-ready .carousel{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(0,1fr);gap:2rem;align-items:start}
 .demo-ready .carousel > .track{min-width:0;position:relative}
@@ -327,7 +329,15 @@ a.chip.patent-status:hover,a.chip.patent-status:focus-visible{background:rgb(236
 .demo-sidebar .cr span:not(:first-child){white-space:normal}
 .demo-sidebar .cr.ch{font-size:.59rem;letter-spacing:.04em}
 .demo-sidebar .cbar{display:flex;flex-direction:column;align-items:stretch;gap:1rem}
-.demo-sidebar > .cbar{margin-top:0;padding-top:0;border-top:0;margin-bottom:1.5rem}
+.demo-ready .carousel{column-gap:2rem;row-gap:1rem}
+.demo-sidebar{display:flex;flex-direction:column;align-self:stretch}
+.demo-sidebar > .cbar{margin-top:auto;padding-top:1rem;border-top:1px solid var(--rule);margin-bottom:0}
+.demo-results{padding-bottom:1rem}
+.demo-ready .carousel > .demo-method{grid-column:2;margin-top:0}
+.demo-ready .carousel > .track{align-self:stretch}
+.demo-ready .slide .frame{height:100%;min-height:0;aspect-ratio:auto;overflow:hidden}
+.demo-ready .frame video{position:absolute;inset:0;object-fit:contain}
+@media(max-width:1100px){.demo-ready .carousel > .demo-method{grid-column:1}.demo-ready .slide .frame{height:auto;aspect-ratio:16/9}}
 .demo-sidebar .ctiers[hidden]{display:flex;visibility:hidden}
 .demo-sidebar .cbar .cnav{margin:0;justify-content:space-between}
 .demo-sidebar .cdots{flex-wrap:wrap;justify-content:center}
@@ -466,18 +476,12 @@ body::before{
       <div class="m-adaptive"><dt>Protocolis Adaptive<span class="rec">Recommended</span></dt><dd><b>Faster than every product we’ve tested. Even cheaper than Standard.</b> No completion compromise, regardless of task complexity.<span class="mode-detail"><b>The default.</b> The engine decides, step by step and from its own evidence, how much model each step needs: a small choice model takes the routine steps, and the agent's model takes the rest.</span></dd></div>
       <div class="m-standard"><dt>Protocolis Standard</dt><dd><b>Faster and cheaper than every full-model agent mode we’ve tested.</b> No completion compromise. Only Protocolis Adaptive costs less.<span class="mode-detail"><b>The engine alone, and no compromise.</b> The agent's model makes every call, with no choice model underneath. On its own it completes as many tasks or more than every product we have measured it against, at lower cost in every comparison and in less time in most.</span></dd></div>
       </dl>
-      <div class="modes-why"><h3>The trade the others make</h3><p>Every fast agent buys its speed with completion: Browser Use ships its own agent, a flash mode, a tools mode and a hosted Ultrafast, and the faster they run the fewer tasks they finish. Protocolis runs in two modes and gives up nothing in either, measured against Browser Use, Browserbase's Stagehand and Microsoft's Playwright MCP on the same model and tasks.</p></div>
+      <div class="modes-why"><h3>The trade the others make</h3><p>Every fast agent buys its speed with completion: Browser Use ships its own agent, a flash mode, a tools mode and a hosted Ultrafast, and the faster they run the fewer tasks they finish. Protocolis runs in two modes and gives up nothing in either, measured against Browser Use, Browserbase's Stagehand and Microsoft's Playwright MCP on the same model and tasks. Earlier tests also covered Browser Control and Unbrowse.</p></div>
     </div>
   </div>
 </section>
 
-<section class="stats" aria-label="Headline results">
-  <div class="stat"><p class="lab">Completion</p><div class="n">54%<small>more tasks completed</small></div><div class="bars"><div class="bar us full"><span>Protocolis Standard</span><span class="track" style="--w:100%"><span class="fill" style="width:100%"></span><span class="val">71</span></span></div><div class="bar"><span>Browser Use</span><span class="track" style="--w:64.8%"><span class="fill" style="width:64.8%"></span><span class="val">46</span></span></div></div><p class="c">vs Browser Use's own agent · GLM-5.3-flash · 98 held-out tasks</p></div>
-  <div class="stat"><p class="lab">Speed</p><div class="n">3.4×<small>faster per completed task</small></div><div class="bars"><div class="bar us"><span>Protocolis Standard</span><span class="track" style="--w:29.7%"><span class="fill" style="width:29.7%"></span><span class="val">315 s</span></span></div><div class="bar full"><span>Browser Use</span><span class="track" style="--w:100%"><span class="fill" style="width:100%"></span><span class="val">1,061 s</span></span></div></div><p class="c">vs Browser Use's own agent · GLM-5.3-flash · 98 held-out tasks</p></div>
-  <div class="stat"><p class="lab">Cost</p><div class="n">2.2×<small>cheaper per completed task</small></div><div class="bars"><div class="bar us"><span>Protocolis Standard</span><span class="track" style="--w:46%"><span class="fill" style="width:46%"></span><span class="val">46%</span></span></div><div class="bar full"><span>Browser Use</span><span class="track" style="--w:100%"><span class="fill" style="width:100%"></span><span class="val">100%</span></span></div></div><p class="c">vs Browser Use's own agent · GLM-5.3-flash · 98 held-out tasks</p></div>
-  <div class="stat"><p class="lab">Frontier model</p><div class="n">32%<small>more tasks completed, 31% less time, 37% lower cost</small></div><div class="bars"><div class="bar us full"><span>Protocolis Standard</span><span class="track" style="--w:100%"><span class="fill" style="width:100%"></span><span class="val">25</span></span></div><div class="bar"><span>Browser Use</span><span class="track" style="--w:76%"><span class="fill" style="width:76%"></span><span class="val">19</span></span></div></div><p class="c">vs OpenAI browser tools on a Browser Use driver · Claude Opus 5.5 · 39 development tasks</p></div>
-  <div class="stat"><p class="lab">Vs ultrafast</p><div class="n">40%<small>less time per completed task, 3× fewer model calls, more tasks completed, no large model</small></div><div class="bars"><div class="bar us"><span>Protocolis Adaptive</span><span class="track" style="--w:60.2%"><span class="fill" style="width:60.2%"></span><span class="val">10.0 s</span></span></div><div class="bar full"><span>Jev</span><span class="track" style="--w:100%"><span class="fill" style="width:100%"></span><span class="val">16.6 s</span></span></div></div><p class="c">vs Jev Ultrafast · Browser Use's agent on the same choice model · 40 runs</p></div>
-</section>
+
 
 <section class="sec" id="demo">
   <div class="rail"><b>01</b>demonstration</div>
@@ -691,6 +695,13 @@ body::before{
 <section class="sec" id="measured">
   <div class="head">
     <div class="rail"><b>02</b>measured</div>
+<div class="stats" aria-label="Headline results">
+  <div class="stat"><p class="lab">Completion</p><div class="n">54%<small>more tasks completed</small></div><div class="bars"><div class="bar us full"><span>Protocolis Standard</span><span class="track" style="--w:100%"><span class="fill" style="width:100%"></span><span class="val">71</span></span></div><div class="bar"><span>Browser Use</span><span class="track" style="--w:64.8%"><span class="fill" style="width:64.8%"></span><span class="val">46</span></span></div></div><p class="c">vs Browser Use's own agent · GLM-5.3-flash · 98 held-out tasks</p></div>
+  <div class="stat"><p class="lab">Speed</p><div class="n">3.4×<small>faster per completed task</small></div><div class="bars"><div class="bar us"><span>Protocolis Standard</span><span class="track" style="--w:29.7%"><span class="fill" style="width:29.7%"></span><span class="val">315 s</span></span></div><div class="bar full"><span>Browser Use</span><span class="track" style="--w:100%"><span class="fill" style="width:100%"></span><span class="val">1,061 s</span></span></div></div><p class="c">vs Browser Use's own agent · GLM-5.3-flash · 98 held-out tasks</p></div>
+  <div class="stat"><p class="lab">Cost</p><div class="n">2.2×<small>cheaper per completed task</small></div><div class="bars"><div class="bar us"><span>Protocolis Standard</span><span class="track" style="--w:46%"><span class="fill" style="width:46%"></span><span class="val">46%</span></span></div><div class="bar full"><span>Browser Use</span><span class="track" style="--w:100%"><span class="fill" style="width:100%"></span><span class="val">100%</span></span></div></div><p class="c">vs Browser Use's own agent · GLM-5.3-flash · 98 held-out tasks</p></div>
+  <div class="stat"><p class="lab">Frontier model</p><div class="n">32%<small>more tasks completed, 31% less time, 37% lower cost</small></div><div class="bars"><div class="bar us full"><span>Protocolis Standard</span><span class="track" style="--w:100%"><span class="fill" style="width:100%"></span><span class="val">25</span></span></div><div class="bar"><span>Browser Use</span><span class="track" style="--w:76%"><span class="fill" style="width:76%"></span><span class="val">19</span></span></div></div><p class="c">vs OpenAI browser tools on a Browser Use driver · Claude Opus 5.5 · 39 development tasks</p></div>
+  <div class="stat"><p class="lab">Vs ultrafast</p><div class="n">40%<small>less time per completed task, 3× fewer model calls, more tasks completed, no large model</small></div><div class="bars"><div class="bar us"><span>Protocolis Adaptive</span><span class="track" style="--w:60.2%"><span class="fill" style="width:60.2%"></span><span class="val">10.0 s</span></span></div><div class="bar full"><span>Jev</span><span class="track" style="--w:100%"><span class="fill" style="width:100%"></span><span class="val">16.6 s</span></span></div></div><p class="c">vs Jev Ultrafast · Browser Use's agent on the same choice model · 40 runs</p></div>
+</div>
     <h2>Three models. Both ways to run Browser Use. Ahead or level in every cell.</h2>
     <p class="sub">Measured against Browser Use, the most widely used open-source browser agent and the standard reference for this category. Paired runs on live websites: the same model, the same tasks and the same budget on both sides. Completion is judged blind by WebJudge from the screenshots. Time is a stopwatch from the task's arrival to the answer. Cost is the metered tokens at the provider's list prices. Each cell names its task set.</p>
   </div>
@@ -1000,25 +1011,36 @@ body::before{
 var grid=root.querySelector('.demo-grid'),sidebar=document.createElement('div'),heading=root.querySelector('h2'),caption=document.createElement('div'),meta=document.createElement('p'),details=document.createElement('details'),summary=document.createElement('summary'),clipDetail=document.createElement('div'),currentSlide=null;
 sidebar.className='demo-sidebar';caption.className='demo-caption cap';caption.id='demo-active-caption';meta.className='demo-meta';details.className='demo-method';clipDetail.className='demo-clip-detail';summary.textContent='Recording details';details.appendChild(summary);details.appendChild(clipDetail);
 [].forEach.call(grid.querySelectorAll(':scope > .sub'),function(p){details.appendChild(p)});
-sidebar.appendChild(c.querySelector('.cbar'));sidebar.appendChild(heading);sidebar.appendChild(caption);sidebar.appendChild(meta);sidebar.appendChild(details);c.appendChild(sidebar);grid.classList.add('demo-ready');
+var results=document.createElement('div');results.className='demo-results';results.appendChild(heading);results.appendChild(caption);results.appendChild(meta);sidebar.appendChild(results);sidebar.appendChild(c.querySelector('.cbar'));c.appendChild(sidebar);c.appendChild(details);grid.classList.add('demo-ready');
 function showDetails(s){
  if(!s||s===currentSlide)return;currentSlide=s;details.open=false;
- var cap=s.querySelector('.cap'),v=s.querySelector('video');caption.innerHTML=cap?cap.innerHTML:'';
+ var group=s.dataset.opp||opp,cap=s.querySelector('.cap'),v=s.querySelector('video');caption.innerHTML=cap?cap.innerHTML:'';
  [].forEach.call(caption.querySelectorAll('.cnote'),function(n){if(n.textContent.indexOf('Replayed from the saved runs')===0)n.remove()});
  var notes=cap?[].map.call(cap.querySelectorAll('.cnote'),function(n){return n.textContent}).join(' '):'';
  clipDetail.textContent=notes;clipDetail.hidden=!notes;
  all.forEach(function(slide){var video=slide.querySelector('video');if(video)video.removeAttribute('aria-describedby')});if(v)v.setAttribute('aria-describedby',caption.id);
- if(opp==='broker'){
+ if(group==='broker'){
   heading.textContent='The broker at work.';
   meta.textContent=v&&/hermes/.test(v.getAttribute('src'))?'4× playback · Demo vault · Concept build':'48 s · Waits cut';
   if(cap){clipDetail.textContent=cap.textContent;clipDetail.hidden=false;var b=cap.querySelector('b');caption.textContent=b?b.textContent:cap.textContent}
  }else{
-  heading.textContent=opp==='dvg'?'Different models. Same task. Head to head.':'Same task. Same model. Head to head.';
+  heading.textContent=group==='dvg'?'Different models. Same task. Head to head.':'Same task. Same model. Head to head.';
   var rate=v?(/demo\.mp4/.test(v.getAttribute('src'))?1:(parseFloat(v.dataset.rate)||4)):1;
-  meta.textContent=(opp==='pwm'?'Saved-run replay':'Recorded run')+' · '+(rate===1?'Real-time playback':rate+'× playback')+' · Clocks show real time · Selected runs';
+  meta.textContent=(group==='pwm'?'Saved-run replay':'Recorded run')+' · '+(rate===1?'Real-time playback':rate+'× playback')+' · Clocks show real time · Selected runs';
  }
 }
 
+
+function sizeDemo(){
+ var selected=currentSlide,wasOpen=details.open,maxHeight=0;
+ results.style.minHeight='0';
+ all.forEach(function(slide){if(slide===soon)return;showDetails(slide);maxHeight=Math.max(maxHeight,results.getBoundingClientRect().height)});
+ results.style.minHeight=Math.ceil(maxHeight)+'px';
+ currentSlide=null;showDetails(selected||vis[0]);details.open=wasOpen;
+ t.style.minHeight=matchMedia('(min-width:1101px)').matches?Math.ceil(t.clientWidth*9/16)+'px':'';
+}
+var resizeDemoTimer;addEventListener('resize',function(){clearTimeout(resizeDemoTimer);resizeDemoTimer=setTimeout(sizeDemo,150)});
+if(document.fonts)document.fonts.ready.then(sizeDemo);
 all.forEach(function(s){var v=s.querySelector('video');if(!v||/demo\.mp4/.test(v.getAttribute('src')))return;var r=parseFloat(v.dataset.rate)||4;v.defaultPlaybackRate=r;v.playbackRate=r;v.addEventListener('play',function(){if(v.playbackRate===1)v.playbackRate=r});v.addEventListener('loadedmetadata',function(){v.playbackRate=r})});
 all.forEach(function(s){var v=s.querySelector('video'),fs=[].slice.call(s.querySelectorAll('.fin'));if(!v||!fs.length)return;var raf;function upd(){var t=v.currentTime;fs.forEach(function(f){f.classList.toggle('show',t>=parseFloat(f.dataset.at))})}function loop(){upd();if(!v.paused&&!v.ended)raf=requestAnimationFrame(loop)}v.addEventListener('play',function(){cancelAnimationFrame(raf);loop()});['timeupdate','seeked','pause','ended','loadedmetadata'].forEach(function(e){v.addEventListener(e,upd)})});
 function pauseAll(){all.forEach(function(s){var v=s.querySelector('video');if(v&&!v.paused)v.pause()})}
@@ -1036,7 +1058,7 @@ t.addEventListener('scroll',function(){clearTimeout(t._m);t._m=setTimeout(mark,8
 [].forEach.call(root.querySelectorAll('.ctiers button'),function(b){b.addEventListener('click',function(){tier=b.dataset.tier;apply()})});
 [].forEach.call(root.querySelectorAll('.ccx button'),function(b){b.addEventListener('click',function(){cx=b.dataset.cx;apply()})});
 if(all.some(function(s){return s.dataset.opp==='pwm'}))opp='pwm';else if(all.some(function(s){return s.dataset.opp==='dvg'}))opp='dvg';
-window.addEventListener('load',mark);apply()})();
+window.addEventListener('load',mark);apply();sizeDemo()})();
 </script>
 <script>
 /* Keep the emblem where it sat before the lede's opening sentence: lift it by exactly the height the new opening adds over the old one. */
