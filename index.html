@@ -148,6 +148,7 @@ a.chip.patent-status:hover,a.chip.patent-status:focus-visible{background:rgb(236
 .m dd span{color:var(--fg-2)}
 .note{font-family:var(--font-mono);font-size:.74rem;color:var(--fg-2);margin-top:2.25rem;max-width:62rem;line-height:1.7}
 .lead-note{font-family:var(--font-body,inherit);font-size:clamp(.95rem,1.1vw,1.05rem);color:var(--fg-2);margin-top:1rem}.lead-note b{color:var(--fg)}
+.modes{margin:1.25rem 0 0;max-width:62rem;display:grid;gap:.75rem}.modes>div{display:grid;grid-template-columns:7.5rem 1fr;gap:1rem;align-items:baseline}.modes dt{font-family:var(--font-mono);color:var(--accent);text-transform:uppercase;letter-spacing:.14em;font-size:.8rem}.modes dd{margin:0;color:var(--fg-2);font-size:clamp(.95rem,1.1vw,1.05rem);line-height:1.6}@media (max-width:760px){.modes>div{grid-template-columns:minmax(0,1fr);gap:.2rem}}
 .soon{font-family:var(--font-mono);font-size:.72rem;color:var(--fg-2);margin-top:1rem;display:flex;gap:.7rem;align-items:baseline;flex-wrap:wrap}.soon span{color:var(--accent);border:1px solid var(--accent);padding:.1rem .45rem;letter-spacing:.14em;text-transform:uppercase;font-size:.64rem}
 
 /* measured matrix */
@@ -702,7 +703,11 @@ body::before{
     <p class="note">Which Browser Use mode is the stronger opponent depends on the model: on the small model its tools mode completes more and runs faster than its own agent; on Grok and gpt-6.1-sol its own agent is the faster one. Protocolis is measured against both and is ahead or level against whichever is stronger on each metric. Held-out tasks are Online-Mind2Web tasks never used in development; development tasks are 39 live websites and component demos used across every round. Simple and complex are split by step count. Browser Use 0.13.10 as its own agent and 0.13.13 in both modes. Full results, build hashes and the reproduction kit are available under NDA.</p>
 
     <h3 class="cx-h">Speed without the trade.</h3>
-    <p class="note lead-note">Every fast agent on the market buys its speed with completion: Browser Use ships its own agent, a flash mode, a tools mode and a hosted Ultrafast, and the faster they run the fewer tasks they finish. Protocolis runs in two modes and gives up nothing in either. <b>Adaptive</b>, the default: the engine decides, step by step and from its own evidence, how much model each step needs, from none at all to the agent's own. <b>Standard</b>: the agent's model makes every call, for teams that want every step decided by their own model.</p>
+    <p class="note lead-note">Every fast agent on the market buys its speed with completion: Browser Use ships its own agent, a flash mode, a tools mode and a hosted Ultrafast, and the faster they run the fewer tasks they finish. Protocolis runs in two modes and gives up nothing in either.</p>
+    <dl class="modes">
+      <div><dt>Adaptive:</dt><dd>The default. The engine decides, step by step and from its own evidence, how much model each step needs, from none at all to the agent's own.</dd></div>
+      <div><dt>Standard:</dt><dd>The agent's model makes every call, for teams that want every step decided by their own model.</dd></div>
+    </dl>
     <p class="soon"><span>Coming</span>Adaptive's full per-step mode, measured against every ultrafast agent on the same tasks.</p>
     <h4 class="fb-h">Adaptive and Standard against Browser Use's fast and full modes.</h4>
     <div class="fb-wrap">
