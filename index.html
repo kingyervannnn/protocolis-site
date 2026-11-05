@@ -342,7 +342,8 @@ a.chip.patent-status:hover,a.chip.patent-status:focus-visible{background:rgb(236
 .demo-sidebar .cbar .cnav{margin:0;justify-content:space-between}
 .demo-sidebar .cdots{flex-wrap:wrap;justify-content:center}
 .demo-sidebar .cbar button{font-size:.68rem;padding:.4rem .55rem}
-.demo-sidebar .demo-meta{margin:.75rem 0 0;color:var(--fg-2);font-size:.76rem;line-height:1.5}
+.demo-sidebar .demo-meta{margin:.75rem 0 0;color:var(--fg);font-size:.76rem;font-weight:600;line-height:1.5}
+.demo-context{margin:.45rem 0 0;color:var(--fg-2);font-size:.8rem;line-height:1.5}
 .demo-method{margin-top:1rem;color:var(--fg-2);font-size:.82rem;line-height:1.6}
 .demo-method h3{font-family:var(--font-body);font-size:.85rem;font-weight:600;color:var(--fg);margin:0}
 .demo-method .sub{font-size:inherit;margin:.7rem 0 0;max-width:none}
@@ -391,14 +392,14 @@ a.chip.patent-status:hover,a.chip.patent-status:focus-visible{background:rgb(236
 
 /* Unheaded results strip between demonstration and capabilities. */
 #measured.measured-summary{padding-block:1.6rem}
-.result-strip{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.5rem}
+.result-strip{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1.5rem}
 .result-strip>div{display:flex;align-items:center;gap:1rem;min-width:0}
 .result-number{font-family:var(--font-display);font-size:clamp(2rem,3.4vw,3rem);font-weight:600;color:var(--accent);line-height:1.1;white-space:nowrap}
 .result-label{font-size:.9rem;color:var(--fg);line-height:1.4;max-width:10rem}
 .result-foot{display:flex;justify-content:space-between;align-items:baseline;gap:.5rem 1.5rem;flex-wrap:wrap;margin-top:1rem;font-size:.75rem;color:var(--fg-2)}
 .result-foot p{margin:0}.result-foot a{color:var(--accent);text-decoration:underline;text-underline-offset:.2em}
 @media(max-width:1000px){#benchmarks .extra-stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:760px){.result-strip{gap:1rem}.result-strip>div{flex-direction:column;align-items:flex-start;gap:.3rem}.result-label{font-size:.75rem}.result-foot{font-size:.7rem}#benchmarks .extra-stats{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:760px){.result-strip{grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}.result-strip>div{flex-direction:column;align-items:flex-start;gap:.3rem}.result-label{font-size:.75rem}.result-foot{font-size:.7rem}#benchmarks .extra-stats{grid-template-columns:minmax(0,1fr)}}
 
 /* acquisition */
 .two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(1.5rem,4vw,4rem);margin-top:2.25rem;align-items:start}
@@ -730,13 +731,13 @@ body::before{
           <div class="cnav"><button class="cprev" aria-label="Previous video">&larr;</button><span class="cdots"></span><button class="cnext" aria-label="Next video">&rarr;</button></div>
         </div>
       </div>
-    <p class="sub" data-opp="harness">Protocolis against Browser Harness, Browser Use's newest tool: the same coding agent, model and prompt in both, each driving a fresh headless Chrome on one Mac, recorded in real time and unedited, played here at 4× speed; the clocks on screen show real time. The simple task: find the week's top Show HN on Hacker News and report its title, points, comments and submitter. The complex race ran on Hugging Face and was judged by Browser Use's judge model. Simple-task answers checked against Hacker News's own API and by Browser Use's judge model. Selected runs, one per model. Lean is a single engine setting, settle waits off, with every step still checked. Browser Harness is designed to drive your own signed-in Chrome; this task needs no sign-in.</p>
-    <p class="sub" data-opp="agent" hidden>Protocolis against Browser Use's own agent, the open-source library that reads the page and picks one action per step: the same model on the same host, task and prompt in both, each driving a fresh headless Chrome on one Mac, recorded unedited and played here at 4× speed (the longest at 8×, noted in the caption); the clocks on screen show real time. Answers checked against a key written before either run or, on the live-site tasks, by Luna, Browser Use's own judge model. Selected runs, including ones Browser Use won. The last recording, a held-out task judged blind, is shown at 3.5×.</p>
-    <p class="sub" data-opp="tools" hidden>Protocolis against Browser Use driving OpenAI's browser tools: the agent's model picks from a fixed menu of actions and Browser Use carries them out. The same model on the same host, task and prompt in both, each driving a fresh headless Chrome on one Mac, recorded unedited and played here at 4× speed; the clocks on screen show real time. Answers checked against a key written before either run. Selected runs, including ones Browser Use won.</p>
-    <p class="sub" data-opp="pwm" hidden>Protocolis against Microsoft’s Playwright MCP 0.0.84, Grok 4.6 in every arm. Playwright MCP hands the model the page’s accessibility snapshot and a set of browser tools; Protocolis hands it compiled operations. Adaptive and Standard race side by side with Playwright MCP on the same task. These are replays of saved runs from one cloud worker, played here at 2× speed; the clocks on screen show real seconds. Selected runs. The pooled 120-run read is in the measured section below.</p>
-    <p class="sub" data-opp="dvg" hidden>David vs Goliath: Protocolis on a smaller, far cheaper model against Browser Use on a frontier model, on purpose. GLM-5.3-flash against Browser Use's own agent on GPT-6.1 Sol, and GPT-6 Luna against Browser Use tools mode on GPT-6 Astra. Same task and budget in both, each in a fresh headless Chrome on one Mac, recorded unedited and played at 4× (the longest at 8×); the clocks on screen show real time. Live-site answers judged by Luna, Browser Use's own judge model; the rest against a key written before either run. Selected runs, including one Browser Use won.</p>
-    <p class="sub" data-opp="jev" hidden>Protocolis with no large model against Browser Use's two ultrafast agents: the speed they sell, without the completion they give up. Recorded unedited and shown in real time, the clock running from the start signal to each arm's end. BU Ultrafast is Browser Use Cloud's hosted agent: their model, their servers, called through their public API, while Protocolis runs on one Mac. Jev Ultrafast is their open-source agent on the same small choice model as Protocolis, no large model in the loop, each in its own headless Chrome on one Mac. Answers checked against a key written before either run. Selected runs; the measured results are in the section below.</p>
-    <p class="sub" data-opp="broker" hidden>Not a race: the credential broker at work inside an agent. An agent can sign up, sign in and keep sessions open while passwords stay in the broker, generated and filled there, never shown to the model. Recorded in the Protocolis app, and in a concept build of Hermes Agent (upstream, not a Nous Research product) with Protocolis as its browser.</p>
+    <p class="sub" data-opp="harness">Same coding agent, model and prompt; fresh browsers on one Mac. Answers checked against site data or Browser Use’s judge.</p>
+    <p class="sub" data-opp="agent" hidden>Matched model, task and prompt; fresh browsers on one Mac. Answers checked against a prewritten key or Browser Use’s judge.</p>
+    <p class="sub" data-opp="tools" hidden>Matched model, task and prompt; fresh browsers on one Mac. Answers checked against prewritten keys.</p>
+    <p class="sub" data-opp="pwm" hidden>Grok 4.6 in every arm, on the same task and cloud worker. Answers checked against the final page and prewritten keys.</p>
+    <p class="sub" data-opp="dvg" hidden>A smaller Protocolis model against a frontier Browser Use model, with the same task and budget. Answers checked against prewritten keys or Browser Use’s judge.</p>
+    <p class="sub" data-opp="jev" hidden>Answers checked against prewritten keys.</p>
+    <p class="sub" data-opp="broker" hidden>Passwords stay in the broker and never reach the agent’s model.</p>
     </div>
   </div>
 </section>
@@ -746,8 +747,9 @@ body::before{
     <div><span class="result-number">54%</span><span class="result-label">more tasks completed</span></div>
     <div><span class="result-number">3.4×</span><span class="result-label">faster per completed task</span></div>
     <div><span class="result-number">2.2×</span><span class="result-label">cheaper per completed task</span></div>
+    <div><span class="result-number">40%</span><span class="result-label">faster than leading ultrafast</span></div>
   </div>
-  <div class="result-foot"><p>Protocolis Standard vs Browser Use’s own agent · GLM-5.3-flash · 98 held-out tasks</p><a href="#benchmarks">Detailed benchmarks <span aria-hidden="true">↓</span></a></div>
+  <div class="result-foot"><div><p>Standard vs Browser Use’s own agent · GLM-5.3-flash · 98 held-out tasks</p><p>Ultrafast: Adaptive vs Jev Ultrafast · 40 runs · 40% less time per completed task (10.0 s vs 16.6 s)</p></div><a href="#benchmarks">Detailed benchmarks <span aria-hidden="true">↓</span></a></div>
 </section>
 
 <section class="sec compact-compare" id="compare">
@@ -1063,28 +1065,34 @@ body::before{
 <script>
 (function(){var root=document.getElementById('demo');if(!root)return;var c=root.querySelector('.carousel'),t=c.querySelector('.track'),d=c.querySelector('.cdots'),all=[].slice.call(t.querySelectorAll('.slide')),soon=t.querySelector('.slide.soon'),opp='harness',tier='all',cx='all',vis=[];
 
-var grid=root.querySelector('.demo-grid'),sidebar=document.createElement('div'),heading=root.querySelector('h2'),caption=document.createElement('div'),meta=document.createElement('p'),details=document.createElement('div'),summary=document.createElement('h3'),clipDetail=document.createElement('div'),currentSlide=null;
-sidebar.className='demo-sidebar';caption.className='demo-caption cap';caption.id='demo-active-caption';meta.className='demo-meta';details.className='demo-method';clipDetail.className='demo-clip-detail';summary.textContent='Recording details';details.appendChild(summary);details.appendChild(clipDetail);
-[].forEach.call(grid.querySelectorAll(':scope > .sub'),function(p){details.appendChild(p)});
-var results=document.createElement('div');results.className='demo-results';results.appendChild(heading);results.appendChild(caption);results.appendChild(meta);sidebar.appendChild(results);sidebar.appendChild(c.querySelector('.cbar'));c.appendChild(sidebar);c.appendChild(details);grid.classList.add('demo-ready');
+var grid=root.querySelector('.demo-grid'),sidebar=document.createElement('div'),heading=root.querySelector('h2'),caption=document.createElement('div'),meta=document.createElement('p'),context=document.createElement('p'),contextByGroup={},currentSlide=null;
+sidebar.className='demo-sidebar';caption.className='demo-caption cap';caption.id='demo-active-caption';meta.className='demo-meta';context.className='demo-context';
+[].forEach.call(grid.querySelectorAll(':scope > .sub'),function(p){contextByGroup[p.dataset.opp]=p.textContent;p.remove()});
+var results=document.createElement('div');results.className='demo-results';results.appendChild(heading);results.appendChild(caption);results.appendChild(meta);results.appendChild(context);sidebar.appendChild(results);sidebar.appendChild(c.querySelector('.cbar'));c.appendChild(sidebar);grid.classList.add('demo-ready');
 function showDetails(s){
  if(!s||s===currentSlide)return;currentSlide=s;
  var group=s.dataset.opp||opp,cap=s.querySelector('.cap'),v=s.querySelector('video');caption.innerHTML=cap?cap.innerHTML:'';
- [].forEach.call(caption.querySelectorAll('.cnote'),function(n){if(n.textContent.indexOf('Replayed from the saved runs')===0)n.remove()});
- var notes=cap?[].map.call(cap.querySelectorAll('.cnote'),function(n){return n.textContent}).join(' '):'';
- clipDetail.textContent=notes;clipDetail.hidden=!notes;
+ [].forEach.call(caption.querySelectorAll('.cnote'),function(n){if(n.textContent.indexOf('Replayed from the saved runs')===0||n.textContent.trim()==='Same answer.')n.remove()});
+ context.textContent=contextByGroup[group]||'';
  all.forEach(function(slide){var video=slide.querySelector('video');if(video)video.removeAttribute('aria-describedby')});if(v)v.setAttribute('aria-describedby',caption.id);
  if(group==='broker'){
   heading.textContent='The broker at work.';
-  meta.textContent=v&&/hermes/.test(v.getAttribute('src'))?'4× playback · Demo vault · Concept build':'48 s · Waits cut';
-  if(cap){clipDetail.textContent=cap.textContent;clipDetail.hidden=false;var b=cap.querySelector('b');caption.textContent=b?b.textContent:cap.textContent}
+  var hermes=v&&/hermes/.test(v.getAttribute('src'));
+  meta.textContent=hermes?'4× playback · Demo vault · Concept build':'48 s · Waits cut';
+  if(hermes)context.textContent+=' Hermes concept build; not a Nous Research product.';
+  if(cap){var b=cap.querySelector('b');caption.textContent=b?b.textContent:cap.textContent}
  }else{
   heading.textContent=group==='dvg'?'Different models. Same task. Head to head.':'Same task. Same model. Head to head.';
   var rate=v?(/demo\.mp4/.test(v.getAttribute('src'))?1:(parseFloat(v.dataset.rate)||4)):1;
   meta.textContent=(group==='pwm'?'Saved-run replay':'Recorded run')+' · '+(rate===1?'Real-time playback':rate+'× playback')+' · Clocks show real time · Selected runs';
+  if(group==='pwm'&&cap&&/Auto/.test(cap.textContent))context.textContent+=' Auto in the video means Adaptive.';
+  if(group==='jev'){
+   var jev=cap&&/Jev/.test(cap.textContent);
+   context.textContent=(jev?'Same small choice model, no large model; fresh browsers on one Mac.':'Browser Use Cloud uses its own model and servers; Protocolis runs on one Mac.')+' '+context.textContent;
+   if(!jev)heading.textContent='Same task. Head to head.';
+  }
  }
 }
-
 
 function sizeDemo(){
  var selected=currentSlide,maxHeight=0;
@@ -1101,7 +1109,6 @@ all.forEach(function(s){var v=s.querySelector('video'),fs=[].slice.call(s.queryS
 function pauseAll(){all.forEach(function(s){var v=s.querySelector('video');if(v&&!v.paused)v.pause()})}
 function apply(){pauseAll();var noT=opp==='jev'||opp==='dvg'||opp==='broker'||opp==='pwm';if(noT)tier='all';var tr=root.querySelector('.ctiers');if(tr)tr.hidden=noT;var noC=opp==='broker';if(noC)cx='all';var cr=root.querySelector('.ccx');if(cr)cr.hidden=noC;vis=all.filter(function(s){return s!==soon&&s.dataset.opp===opp&&(tier==='all'||s.dataset.tier===tier)&&(cx==='all'||s.dataset.cx===cx)});all.forEach(function(s){s.hidden=vis.indexOf(s)<0});if(!vis.length){soon.hidden=false;vis=[soon]}
 d.innerHTML='';vis.forEach(function(_,i){var b=document.createElement('i');b.addEventListener('click',function(){go(i)});d.appendChild(b)});c.querySelector('.cnav').style.visibility=vis.length>1?'visible':'hidden';t.scrollLeft=0;
-[].forEach.call(root.querySelectorAll('.demo-method > .sub'),function(p){p.hidden=p.dataset.opp!==opp});
 [].forEach.call(root.querySelectorAll('.ctabs button'),function(b){b.classList.toggle('on',b.dataset.opp===opp)});[].forEach.call(root.querySelectorAll('.ctiers button'),function(b){b.className=b.dataset.tier===tier?'on':''});[].forEach.call(root.querySelectorAll('.ccx button'),function(b){b.className=b.dataset.cx===cx?'on':''});mark()}
 function idx(){var x=t.scrollLeft,b=0,bd=1e9;vis.forEach(function(s,i){var dd=Math.abs(s.offsetLeft-vis[0].offsetLeft-x);if(dd<bd){bd=dd;b=i}});return b}
 function mark(){var k=idx();showDetails(vis[k]);[].forEach.call(d.children,function(e,i){e.className=i===k?'on':''});vis.forEach(function(s,i){if(i!==k){var v=s.querySelector('video');if(v&&!v.paused)v.pause()}})}
