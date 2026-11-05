@@ -1136,10 +1136,10 @@ html:has(.access-dialog[open]){overflow:hidden}
 <div class="mt" data-set="short">
 <div class="mt-h"><span></span><span>Completed</span><span>Time<small>per completed task</small></span><span>Cost<small>per completed task</small></span></div>
 <div class="mt-g"><div class="mt-o"><b>Browser Use · own agent</b><span>Browser Use 0.13.13, its own planner · Grok 4.6</span></div>
-<div class="mt-l ad"><span class="nm">Protocolis Adaptive</span><span><b>40/40</b></span><span><b>23.4 s</b><i class="x">1.6×</i></span><span><span class="pend">measuring</span></span></div>
-<div class="mt-l st"><span class="nm">Protocolis Standard</span><span><b>40/40</b></span><span><b>31.5 s</b><i class="x">16% less</i></span><span><span class="pend">measuring</span></span></div>
-<div class="mt-l op"><span class="nm">Browser Use · own agent</span><span><b>40/40</b></span><span><b>37.7 s</b></span><span><span class="pend">measuring</span></span></div>
-<p class="mt-n">20 fresh public tasks, each run twice · 40 runs per arm · every attempt counted · every arm completed every task. Large-model tokens per completed task: Adaptive 11.3k, Standard 15.9k, Browser Use 56.8k.</p>
+<div class="mt-l ad"><span class="nm">Protocolis Adaptive</span><span><b>40/40</b></span><span><b>15.1 s</b><i class="x">2.5×</i></span><span><b>$0.0122</b><i class="x">10.3×</i></span></div>
+<div class="mt-l st"><span class="nm">Protocolis Standard</span><span><b>40/40</b></span><span><b>21.8 s</b><i class="x">1.7×</i></span><span><b>$0.0264</b><i class="x">4.8×</i></span></div>
+<div class="mt-l op"><span class="nm">Browser Use · own agent</span><span><b>40/40</b></span><span><b>37.4 s</b></span><span><b>$0.1259</b></span></div>
+<p class="mt-n">20 public tasks, each run twice · 40 complete task-rounds with all three arms in one window · Protocolis Standard given the same first look · page check against a gold answer · every attempt counted · current build, 5 November 2026. Adaptive finished first in 39 of 40 races, Standard in 35. Browser Use reports no cache split, so its input is priced uncached; priced as if all of it were cached, it would be $0.0357, still 2.9× Adaptive’s cost.</p>
 </div>
 <div class="mt-g"><div class="mt-o"><b>Browser Use · tools mode</b><span>OpenAI tool runner + Browser Use driver · Grok 4.6</span></div>
 <div class="mt-l ad"><span class="nm">Protocolis Adaptive</span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span></div>
