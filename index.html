@@ -254,9 +254,10 @@ a.chip.patent-status:hover,a.chip.patent-status:focus-visible{background:rgb(236
 }
 
 /* how */
-.how{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(1.5rem,3vw,3.5rem);margin-top:2.75rem}
-.how h3{font-family:var(--font-display);font-size:1.4rem;color:var(--accent);margin-bottom:.8rem;letter-spacing:.04em}
-.how p{color:var(--fg-2);max-width:30rem}
+.demo-process{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.65rem 1.5rem;margin:0 0 1.25rem;color:var(--fg-2);font-size:.82rem;line-height:1.5}
+.demo-process strong{color:var(--fg);font-weight:600}
+@media(max-width:760px){.demo-process{grid-template-columns:minmax(0,1fr);gap:.45rem;font-size:.78rem}.demo-process p{display:grid;grid-template-columns:4.5rem minmax(0,1fr);gap:.5rem}}
+
 
 /* demo */
 .carousel{margin-top:2.5rem}
@@ -445,7 +446,6 @@ footer{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;paddin
   .hero h1 .keep-together-desktop{white-space:nowrap}
   .sec h2{font-size:clamp(1.596rem,3.024vw,2.772rem)}
   .cx-h{font-size:clamp(1.092rem,1.848vw,1.512rem)}
-  .how h3{font-size:1.176rem}
 }
 
 @media (max-width:1100px){
@@ -459,7 +459,7 @@ footer{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;paddin
   .hero-brand{order:-1}
   .emblem{width:min(52vw,14rem)}
   .motto{max-width:calc(min(52vw,14rem) * .78)}
-  .how,.two{grid-template-columns:minmax(0,1fr)}
+  .two{grid-template-columns:minmax(0,1fr)}
   .top nav{display:none}
 }
 @media (max-width:520px){
@@ -511,9 +511,8 @@ body::before{
   <a class="brand" href="#" aria-label="Protocolis"><img src="glyph.svg" alt=""><b aria-hidden="true">rotocolis</b></a>
   <nav aria-label="Sections">
     <a href="#demo">demonstration</a>
-    <a href="#measured">measured</a>
     <a href="#compare">compare</a>
-    <a href="#how">how it works</a>
+    <a href="#benchmarks">benchmarks</a>
     <a href="#acquisition">acquisition</a>
     <a href="platform/">platform</a>
     <a href="#contact">contact</a>
@@ -555,6 +554,11 @@ body::before{
   <div class="rail"><b>01</b>demonstration</div>
   <div>
     <h2>Same task. Same model. Head to head.</h2>
+    <div class="demo-process" id="how" aria-label="How Protocolis works">
+      <p><strong>Compile.</strong> On first contact, with no site-specific setup.</p>
+      <p><strong>Operate.</strong> The agent calls operations; Protocolis handles the page.</p>
+      <p><strong>Verify.</strong> Checks each action and reports what remains unproven.</p>
+    </div>
     <div class="demo-grid">
     <div class="carousel" aria-roledescription="carousel">
         <div class="track" tabindex="0">
@@ -1134,21 +1138,8 @@ body::before{
   </div>
 </section>
 
-<section class="sec" id="how">
-  <div class="rail"><b>04</b>how it works</div>
-  <div>
-    <h2>Compile. Operate. Verify.</h2>
-    <div class="how">
-      <div><h3>Compile</h3><p>On first contact, Protocolis compiles the application into operations an agent can call. No adapter is written and no workflow is taught.</p></div>
-      <div><h3>Operate</h3><p>The agent calls typed operations: search, filter, fill, select, submit. It reasons about the task, not about pixels or page structure. Protocolis handles the realities of live sites on its own: consent dialogs, pop-ups, frames, and modern bot protection.</p></div>
-      <div><h3>Verify</h3><p>Every operation reports what was done and what remains unproven. Passwords and keys are handled by a credential broker and never enter the model's context.</p></div>
-    </div>
-    <p class="sub">Nothing is taken away from the agent: when no compiled operation fits, it can always drop to raw browser control. What raw control can’t do on its own is remember what it learned, verify what it did, or keep credentials out of the model.</p>
-  </div>
-</section>
-
 <section class="sec" id="acquisition">
-  <div class="rail"><b>05</b>acquisition</div>
+  <div class="rail"><b>04</b>acquisition</div>
   <div>
     <h2>Offered for outright acquisition.</h2>
     <div class="two">
@@ -1164,7 +1155,7 @@ body::before{
 
 <section class="sec" id="contact">
   <div class="head">
-    <div class="rail"><b>06</b>contact</div>
+    <div class="rail"><b>05</b>contact</div>
     <h2>Vahagn Boudakian, inventor.</h2>
     <p class="sub">Write to start a conversation. The five-page executive summary is available on request.</p>
   </div>
