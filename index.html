@@ -556,7 +556,29 @@ body::before{
  .msz{grid-template-columns:minmax(0,1fr)}
  .result-strip.three{grid-template-columns:repeat(3,minmax(0,1fr))}
 }
-/*END-MEASURED-CSS*/</style>
+/*END-MEASURED-CSS*//* Access requests */
+.mail .request-access{background:transparent;color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent);letter-spacing:.08em}
+.access-dialog{width:min(35rem,calc(100% - 2rem));max-height:calc(100dvh - 2rem);padding:clamp(1.25rem,4vw,2rem);border:1px solid var(--rule);border-top:2px solid var(--accent);border-radius:6px;background:var(--bg);color:var(--fg);overflow-y:auto}
+.access-dialog::backdrop{background:rgba(0,0,0,.75);backdrop-filter:blur(5px)}
+.access-head{display:flex;align-items:start;justify-content:space-between;gap:1rem}
+.access-head h2{font-family:var(--font-display);font-size:clamp(1.65rem,5vw,2.2rem);line-height:1.2}
+.access-close{flex:none;background:transparent;color:var(--fg-2);font:1.6rem/1 var(--font-body);padding:.2rem .4rem;letter-spacing:0}
+.access-intro{font-size:.95rem;color:var(--fg-2);margin-top:.8rem;line-height:1.5}
+.access-form{display:grid;gap:1rem;margin-top:1.5rem}
+.access-form label{display:grid;gap:.35rem;font-size:.9rem;font-weight:600}
+.access-form label span{font-size:.8rem;font-weight:400;color:var(--fg-2)}
+.access-form input,.access-form textarea{width:100%;min-width:0;border:1px solid var(--rule);border-radius:3px;background:var(--bg-2);color:var(--fg);padding:.65rem .75rem;font:1rem/1.4 var(--font-body)}
+.access-form input:focus,.access-form textarea:focus{outline:2px solid var(--accent);outline-offset:2px}
+.access-form textarea{resize:vertical;min-height:7rem}
+.access-form .access-submit{justify-self:start;letter-spacing:.08em}
+.access-form button:disabled{opacity:.6;cursor:wait}
+.access-status{font-size:.9rem;line-height:1.5;overflow-wrap:anywhere}
+.access-status:empty{display:none}
+.access-status[data-state="error"]{color:#f0b4a7}
+.access-status[data-state="success"]{color:var(--accent)}
+html:has(.access-dialog[open]){overflow:hidden}
+
+</style>
 </head>
 <body>
 
@@ -1133,6 +1155,7 @@ body::before{
           <div class="mail">
             <span class="addr" id="addr">vahagn@protocolis.co</span>
             <button type="button" id="copy" aria-label="Copy email address">Copy</button>
+            <button type="button" class="request-access" id="request-access" aria-haspopup="dialog">Request access</button>
           </div>
         </div>
       </div>
@@ -1144,6 +1167,26 @@ body::before{
     </div>
   </div>
 </section>
+
+<dialog class="access-dialog" id="access-dialog" aria-labelledby="access-title" aria-describedby="access-intro">
+  <div class="access-head">
+    <h2 id="access-title">Request access.</h2>
+    <button class="access-close" type="button" aria-label="Close request form">×</button>
+  </div>
+  <p class="access-intro" id="access-intro">Tell me what you’d like to evaluate. Your request goes directly to Vahagn Boudakian.</p>
+  <form class="access-form" id="access-form" action="https://api.web3forms.com/submit" method="post">
+    <input type="hidden" name="access_key" value="012c8012-e154-44b8-a9db-9953c1ecea01">
+    <input type="hidden" name="subject" value="Protocolis — new access request">
+    <input type="hidden" name="from_name" value="Protocolis website">
+    <input type="checkbox" name="botcheck" hidden tabindex="-1" aria-hidden="true">
+    <label for="access-name">Name<input id="access-name" name="name" autocomplete="name" maxlength="120" required></label>
+    <label for="access-email">Work email<input id="access-email" name="email" type="email" autocomplete="email" maxlength="254" required></label>
+    <label for="access-company">Company <span>Optional</span><input id="access-company" name="company" autocomplete="organization" maxlength="160"></label>
+    <label for="access-message">Message<textarea id="access-message" name="message" rows="4" maxlength="5000" placeholder="What would you like to try or discuss?" required></textarea></label>
+    <button class="access-submit" type="submit">Send request</button>
+    <p class="access-status" id="access-status" role="status" aria-live="polite"></p>
+  </form>
+</dialog>
 
 <footer>
   <span>protocolis<span class="cursor">_</span> · patents pending</span>
@@ -1297,6 +1340,44 @@ window.addEventListener('load',mark);apply();sizeDemo()})();
  if(narrow.addEventListener)narrow.addEventListener('change',fit);else narrow.addListener(fit);
  fit();
 })();
+</script>
+<script>
+(function(){
+  var dialog=document.getElementById('access-dialog');
+  var form=document.getElementById('access-form');
+  var status=document.getElementById('access-status');
+  var submit=form.querySelector('[type="submit"]');
+  var pending=false;
+  document.getElementById('request-access').addEventListener('click',function(){dialog.showModal()});
+  dialog.querySelector('.access-close').addEventListener('click',function(){dialog.close()});
+  dialog.addEventListener('click',function(event){
+    if(event.target!==dialog)return;
+    var box=dialog.getBoundingClientRect();
+    if(event.clientX<box.left||event.clientX>box.right||event.clientY<box.top||event.clientY>box.bottom)dialog.close();
+  });
+  form.addEventListener('submit',async function(event){
+    event.preventDefault();
+    if(pending||!form.reportValidity())return;
+    var data=Object.fromEntries(new FormData(form));
+    if(data.botcheck)return;
+    data.name=data.name.trim();data.message=data.message.trim();
+    if(!data.name||!data.message){status.dataset.state='error';status.textContent='Please enter your name and a message.';return}
+    pending=true;submit.disabled=true;submit.textContent='Sending…';
+    status.dataset.state='';status.textContent='';form.setAttribute('aria-busy','true');
+    var controller=new AbortController();var timer=setTimeout(function(){controller.abort()},20000);
+    try{
+      var response=await fetch(form.action,{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(data),signal:controller.signal});
+      var result=await response.json();
+      if(!response.ok||result.success!==true)throw new Error('submission_failed');
+      form.reset();status.dataset.state='success';status.textContent='Request sent. Thank you — I’ll reply to the email address you provided.';
+    }catch(error){
+      status.dataset.state='error';status.textContent='We couldn’t confirm delivery. Your message is still here. Please try again, or email vahagn@protocolis.co.';
+    }finally{
+      clearTimeout(timer);pending=false;submit.disabled=false;submit.textContent='Send request';form.removeAttribute('aria-busy');
+    }
+  });
+})();
+
 </script>
 </body>
 </html>
