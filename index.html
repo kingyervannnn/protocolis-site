@@ -253,11 +253,12 @@ a.chip.patent-status:hover,a.chip.patent-status:focus-visible{background:rgb(236
   .part,.no{align-items:flex-start}
 }
 
-/* how */
-.demo-process{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.65rem 1.5rem;margin:0 0 1.25rem;color:var(--fg-2);font-size:.82rem;line-height:1.5}
-.demo-process strong{color:var(--fg);font-weight:600}
-@media(max-width:760px){.demo-process{grid-template-columns:minmax(0,1fr);gap:.45rem;font-size:.78rem}.demo-process p{display:grid;grid-template-columns:4.5rem minmax(0,1fr);gap:.5rem}}
-
+/* A readable transition from the modes into their demonstration. */
+#modes{border-bottom:0;padding-bottom:1.25rem}
+.demo-process{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.5rem 2.5rem;padding-block:clamp(1.5rem,3vw,2.5rem) 1.25rem;color:var(--fg-2);font-size:1rem;line-height:1.6}
+.demo-process strong{display:block;font-family:var(--font-display);font-size:clamp(1.35rem,1.8vw,1.65rem);line-height:1.25;color:var(--accent);font-weight:500;letter-spacing:.02em;margin-bottom:.4rem}
+.demo-process p{max-width:30rem}
+@media(max-width:760px){.demo-process{grid-template-columns:minmax(0,1fr);gap:1.1rem;font-size:.95rem}.demo-process strong{font-size:1.3rem;margin-bottom:.2rem}}
 
 /* demo */
 .carousel{margin-top:2.5rem}
@@ -315,7 +316,7 @@ a.chip.patent-status:hover,a.chip.patent-status:focus-visible{background:rgb(236
 
 
 /* Keep each video's results and controls together beside it. */
-#demo{overflow-anchor:none;border-bottom:0;padding-bottom:1rem}
+#demo{overflow-anchor:none;border-bottom:0;padding-top:clamp(1rem,2vw,1.75rem);padding-bottom:1rem}
 #measured .head > .stats{grid-column:1/-1;margin-bottom:2rem}
 .demo-grid.demo-ready{display:block;margin-top:0}
 .demo-ready .carousel{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(0,1fr);gap:2rem;align-items:start}
@@ -550,15 +551,16 @@ body::before{
 
 
 
+<div class="demo-process" id="how" aria-label="How Protocolis works">
+  <p><strong>Compile.</strong> Compiles the live application on first contact, with no site-specific setup.</p>
+  <p><strong>Operate.</strong> The agent calls typed operations. Protocolis handles the page.</p>
+  <p><strong>Verify.</strong> Checks each action against the application and reports what remains unproven.</p>
+</div>
+
 <section class="sec" id="demo">
   <div class="rail"><b>01</b>demonstration</div>
   <div>
     <h2>Same task. Same model. Head to head.</h2>
-    <div class="demo-process" id="how" aria-label="How Protocolis works">
-      <p><strong>Compile.</strong> On first contact, with no site-specific setup.</p>
-      <p><strong>Operate.</strong> The agent calls operations; Protocolis handles the page.</p>
-      <p><strong>Verify.</strong> Checks each action and reports what remains unproven.</p>
-    </div>
     <div class="demo-grid">
     <div class="carousel" aria-roledescription="carousel">
         <div class="track" tabindex="0">
