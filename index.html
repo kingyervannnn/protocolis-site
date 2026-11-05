@@ -147,6 +147,8 @@ a.chip.patent-status:hover,a.chip.patent-status:focus-visible{background:rgb(236
 .m dd{margin:0;font-family:var(--font-mono);font-variant-numeric:tabular-nums;color:var(--accent);text-align:right}
 .m dd span{color:var(--fg-2)}
 .note{font-family:var(--font-mono);font-size:.74rem;color:var(--fg-2);margin-top:2.25rem;max-width:62rem;line-height:1.7}
+.lead-note{font-family:var(--font-body,inherit);font-size:clamp(.95rem,1.1vw,1.05rem);color:var(--fg-2);margin-top:1rem}.lead-note b{color:var(--fg)}
+.soon{font-family:var(--font-mono);font-size:.72rem;color:var(--fg-2);margin-top:1rem;display:flex;gap:.7rem;align-items:baseline;flex-wrap:wrap}.soon span{color:var(--accent);border:1px solid var(--accent);padding:.1rem .45rem;letter-spacing:.14em;text-transform:uppercase;font-size:.64rem}
 
 /* measured matrix */
 .mx-wrap{overflow-x:auto;margin-top:2.75rem}
@@ -425,7 +427,7 @@ body::before{
   <div class="stat"><p class="lab">Speed</p><div class="n">3.4×<small>faster per completed task</small></div><div class="bars"><div class="bar us"><span>Protocolis</span><span class="track" style="--w:29.7%"><span class="fill" style="width:29.7%"></span><span class="val">315 s</span></span></div><div class="bar full"><span>Browser Use</span><span class="track" style="--w:100%"><span class="fill" style="width:100%"></span><span class="val">1,061 s</span></span></div></div><p class="c">vs Browser Use's own agent · GLM-5.3-flash · 98 held-out tasks</p></div>
   <div class="stat"><p class="lab">Cost</p><div class="n">2.2×<small>cheaper per completed task</small></div><div class="bars"><div class="bar us"><span>Protocolis</span><span class="track" style="--w:46%"><span class="fill" style="width:46%"></span><span class="val">46%</span></span></div><div class="bar full"><span>Browser Use</span><span class="track" style="--w:100%"><span class="fill" style="width:100%"></span><span class="val">100%</span></span></div></div><p class="c">vs Browser Use's own agent · GLM-5.3-flash · 98 held-out tasks</p></div>
   <div class="stat"><p class="lab">Frontier model</p><div class="n">32%<small>more tasks completed, 31% less time, 37% lower cost</small></div><div class="bars"><div class="bar us full"><span>Protocolis</span><span class="track" style="--w:100%"><span class="fill" style="width:100%"></span><span class="val">25</span></span></div><div class="bar"><span>Browser Use</span><span class="track" style="--w:76%"><span class="fill" style="width:76%"></span><span class="val">19</span></span></div></div><p class="c">vs OpenAI browser tools on a Browser Use driver · Claude Opus 5.5 · 39 development tasks</p></div>
-  <div class="stat"><p class="lab">Ultrafast</p><div class="n">40%<small>less time per completed task, 3× fewer model calls, more tasks completed, no large model</small></div><div class="bars"><div class="bar us"><span>Protocolis</span><span class="track" style="--w:60.2%"><span class="fill" style="width:60.2%"></span><span class="val">10.0 s</span></span></div><div class="bar full"><span>Jev</span><span class="track" style="--w:100%"><span class="fill" style="width:100%"></span><span class="val">16.6 s</span></span></div></div><p class="c">vs Jev Ultrafast · Browser Use's agent on the same choice model · 40 runs</p></div>
+  <div class="stat"><p class="lab">Vs ultrafast</p><div class="n">40%<small>less time per completed task, 3× fewer model calls, more tasks completed, no large model</small></div><div class="bars"><div class="bar us"><span>Protocolis</span><span class="track" style="--w:60.2%"><span class="fill" style="width:60.2%"></span><span class="val">10.0 s</span></span></div><div class="bar full"><span>Jev</span><span class="track" style="--w:100%"><span class="fill" style="width:100%"></span><span class="val">16.6 s</span></span></div></div><p class="c">vs Jev Ultrafast · Browser Use's agent on the same choice model · 40 runs</p></div>
 </section>
 
 <section class="sec" id="demo">
@@ -549,15 +551,15 @@ body::before{
         </figure>
         <figure class="slide" data-cx="complex" data-opp="jev" data-tier="all">
           <div class="frame"><video controls preload="none" playsinline data-rate="1" src="media/race-ultra-bu-apollo.mp4" poster="media/race-ultra-bu-apollo.jpg"></video><div class="fin a" data-at="27.5"><span class="ck"><svg viewBox="0 0 16 16" width="11" height="11" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>BU Ultrafast<b>17.7 s</b></div><div class="fin b win" data-at="15.9"><span class="ck"><svg viewBox="0 0 16 16" width="11" height="11" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Protocolis<b>6.1 s</b></div></div>
-          <figcaption class="cap"><span class="cxt">Complex task</span><b>Against BU Ultrafast, Browser Use Cloud's hosted agent: Apollo 11 to Michael Collins to West Point's founding year.</b> Protocolis Ultrafast 6.1 s on one Mac; BU Ultrafast 17.7 s on Browser Use's own cloud, called through their API as their page shows. Both answers correct on this take. Over six runs BU Ultrafast once answered "Virginia Tech, 1872" and once skipped the links for a web search; Protocolis followed the links to 1802 every time. Shown in real time.</figcaption>
+          <figcaption class="cap"><span class="cxt">Complex task</span><b>Against BU Ultrafast, Browser Use Cloud's hosted agent: Apollo 11 to Michael Collins to West Point's founding year.</b> Protocolis, no large model, 6.1 s on one Mac; BU Ultrafast 17.7 s on Browser Use's own cloud, called through their API as their page shows. Both answers correct on this take. Over six runs BU Ultrafast once answered "Virginia Tech, 1872" and once skipped the links for a web search; Protocolis followed the links to 1802 every time. Shown in real time.</figcaption>
         </figure>
         <figure class="slide" data-cx="simple" data-opp="jev" data-tier="all">
           <div class="frame"><video controls preload="none" playsinline data-rate="1" src="media/race-ultra-vangogh.mp4" poster="media/race-ultra-vangogh.jpg"></video><div class="fin a" data-at="15.5"><span class="ck"><svg viewBox="0 0 16 16" width="11" height="11" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Jev Ultrafast<b>6.4 s</b></div><div class="fin b win" data-at="14.4"><span class="ck"><svg viewBox="0 0 16 16" width="11" height="11" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Protocolis<b>5.3 s</b></div></div>
-          <figcaption class="cap"><span class="cxt">Simple task</span><b>Wikipedia: Van Gogh to The Starry Night's dimensions.</b> Protocolis Ultrafast 5.3 s, 2 picker calls. Jev Ultrafast 6.4 s, 7 picker calls. Both answers correct. Shown in real time.</figcaption>
+          <figcaption class="cap"><span class="cxt">Simple task</span><b>Wikipedia: Van Gogh to The Starry Night's dimensions.</b> Protocolis, no large model, 5.3 s, 2 picker calls. Jev Ultrafast 6.4 s, 7 picker calls. Both answers correct. Shown in real time.</figcaption>
         </figure>
         <figure class="slide" data-cx="complex" data-opp="jev" data-tier="all">
           <div class="frame"><video controls preload="none" playsinline data-rate="1" src="media/race-ultra-apollo.mp4" poster="media/race-ultra-apollo.jpg"></video><div class="fin a no" data-at="32.7"><span class="ck"><svg viewBox="0 0 16 16" width="11" height="11" aria-hidden="true"><path d="M4.5 4.5l7 7M11.5 4.5l-7 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></span>Jev Ultrafast<b>stopped</b></div><div class="fin b win" data-at="13.7"><span class="ck"><svg viewBox="0 0 16 16" width="11" height="11" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Protocolis<b>5.6 s</b></div></div>
-          <figcaption class="cap"><span class="cxt">Complex task</span><b>Wikipedia: Apollo 11 to Michael Collins to West Point's founding year.</b> Two page hops, then a read. Protocolis Ultrafast 5.6 s, 3 picker calls, answer 1802. Jev Ultrafast stayed on Collins's page and stopped at its own 120-call budget after 24.6 s; a second take went the same way (Protocolis 6.2 s). Shown in real time.</figcaption>
+          <figcaption class="cap"><span class="cxt">Complex task</span><b>Wikipedia: Apollo 11 to Michael Collins to West Point's founding year.</b> Two page hops, then a read. Protocolis, no large model, 5.6 s, 3 picker calls, answer 1802. Jev Ultrafast stayed on Collins's page and stopped at its own 120-call budget after 24.6 s; a second take went the same way (Protocolis 6.2 s). Shown in real time.</figcaption>
         </figure>
         <figure class="slide" data-cx="simple" data-opp="tools" data-tier="weak">
           <div class="frame"><video controls preload="none" playsinline src="media/race-tools-phones.mp4" poster="media/race-tools-phones.jpg"></video><div class="fin a" data-at="52.0"><span class="ck"><svg viewBox="0 0 16 16" width="11" height="11" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Browser Use tools<b>44.8 s</b></div><div class="fin b win" data-at="30.1"><span class="ck"><svg viewBox="0 0 16 16" width="11" height="11" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Protocolis<b>22.8 s</b></div></div>
@@ -606,7 +608,7 @@ body::before{
         </div>
         <div class="cbar">
           <div class="ctabs" role="tablist" aria-label="Opponent">
-        <button data-opp="dvg">David vs Goliath</button><button data-opp="harness" class="on">Browser Harness</button><button data-opp="agent">Browser Use agent</button><button data-opp="tools">Browser Use tools mode</button><button data-opp="jev" class="hot">Ultrafast<span class="new">New</span></button><button data-opp="broker">Broker workflow</button>
+        <button data-opp="dvg">David vs Goliath</button><button data-opp="harness" class="on">Browser Harness</button><button data-opp="agent">Browser Use agent</button><button data-opp="tools">Browser Use tools mode</button><button data-opp="jev" class="hot">Ultrafast agents<span class="new">New</span></button><button data-opp="broker">Broker workflow</button>
       </div>
           <div class="ctiers" role="tablist" aria-label="Model tier">
         <button data-tier="all" class="on">All</button><button data-tier="frontier">Frontier</button><button data-tier="strong">Strong</button><button data-tier="weak">Weak</button>
@@ -621,7 +623,7 @@ body::before{
     <p class="sub" data-opp="agent" hidden>Protocolis against Browser Use's own agent, the open-source library that reads the page and picks one action per step: the same model on the same host, task and prompt in both, each driving a fresh headless Chrome on one Mac, recorded unedited and played here at 4× speed (the longest at 8×, noted in the caption); the clocks on screen show real time. Answers checked against a key written before either run or, on the live-site tasks, by Luna, Browser Use's own judge model. Selected runs, including ones Browser Use won. The last recording, a held-out task judged blind, is shown at 3.5×.</p>
     <p class="sub" data-opp="tools" hidden>Protocolis against Browser Use driving OpenAI's browser tools: the agent's model picks from a fixed menu of actions and Browser Use carries them out. The same model on the same host, task and prompt in both, each driving a fresh headless Chrome on one Mac, recorded unedited and played here at 4× speed; the clocks on screen show real time. Answers checked against a key written before either run. Selected runs, including ones Browser Use won.</p>
     <p class="sub" data-opp="dvg" hidden>David vs Goliath: Protocolis on a smaller, far cheaper model against Browser Use on a frontier model, on purpose. GLM-5.3-flash against Browser Use's own agent on GPT-6.1 Sol, and GPT-6 Luna against Browser Use tools mode on GPT-6 Astra. Same task and budget in both, each in a fresh headless Chrome on one Mac, recorded unedited and played at 4× (the longest at 8×); the clocks on screen show real time. Live-site answers judged by Luna, Browser Use's own judge model; the rest against a key written before either run. Selected runs, including one Browser Use won.</p>
-    <p class="sub" data-opp="jev" hidden>Protocolis Ultrafast against Browser Use's two Ultrafast agents, recorded unedited and shown in real time, the clock running from the start signal to each arm's end. BU Ultrafast is Browser Use Cloud's hosted agent: their model, their servers, called through their public API, while Protocolis runs on one Mac. Jev Ultrafast is their open-source agent on the same small choice model as Protocolis, no large model in the loop, each in its own headless Chrome on one Mac. Answers checked against a key written before either run. Selected runs; the measured results are in the section below.</p>
+    <p class="sub" data-opp="jev" hidden>Protocolis with no large model against Browser Use's two ultrafast agents: the speed they sell, without the completion they give up. Recorded unedited and shown in real time, the clock running from the start signal to each arm's end. BU Ultrafast is Browser Use Cloud's hosted agent: their model, their servers, called through their public API, while Protocolis runs on one Mac. Jev Ultrafast is their open-source agent on the same small choice model as Protocolis, no large model in the loop, each in its own headless Chrome on one Mac. Answers checked against a key written before either run. Selected runs; the measured results are in the section below.</p>
     <p class="sub" data-opp="broker" hidden>Not a race: the credential broker at work inside an agent. An agent can sign up, sign in and keep sessions open while passwords stay in the broker, generated and filled there, never shown to the model. Recorded in the Protocolis app, and in a concept build of Hermes Agent (upstream, not a Nous Research product) with Protocolis as its browser.</p>
     </div>
   </div>
@@ -699,7 +701,10 @@ body::before{
     </div>
     <p class="note">Which Browser Use mode is the stronger opponent depends on the model: on the small model its tools mode completes more and runs faster than its own agent; on Grok and gpt-6.1-sol its own agent is the faster one. Protocolis is measured against both and is ahead or level against whichever is stronger on each metric. Held-out tasks are Online-Mind2Web tasks never used in development; development tasks are 39 live websites and component demos used across every round. Simple and complex are split by step count. Browser Use 0.13.10 as its own agent and 0.13.13 in both modes. Full results, build hashes and the reproduction kit are available under NDA.</p>
 
-    <h3 class="cx-h">Standard and Adaptive: the engine with your model, and the engine deciding per step.</h3>
+    <h3 class="cx-h">Speed without the trade.</h3>
+    <p class="note lead-note">Every fast agent on the market buys its speed with completion: Browser Use ships its own agent, a flash mode, a tools mode and a hosted Ultrafast, and the faster they run the fewer tasks they finish. Protocolis runs in two modes and gives up nothing in either. <b>Adaptive</b>, the default: the engine decides, step by step and from its own evidence, how much model each step needs, from none at all to the agent's own. <b>Standard</b>: the agent's model makes every call, for teams that want every step decided by their own model.</p>
+    <p class="soon"><span>Coming</span>Adaptive's full per-step mode, measured against every ultrafast agent on the same tasks.</p>
+    <h4 class="fb-h">Adaptive and Standard against Browser Use's fast and full modes.</h4>
     <div class="fb-wrap">
     <div class="fb">
       <div class="fb-col"><b>Completed<small>of 40 runs</small></b>
@@ -724,23 +729,23 @@ body::before{
     <div class="mx-legend"><span><i class="us"></i>Protocolis Adaptive · APC + TypeSafe choice model + Grok 4.6</span><span><i class="us s"></i>Protocolis Standard · APC + Grok 4.6</span><span><i></i>Browser Use flash mode and agent · Grok 4.6</span><span>20 fresh public tasks × 2</span></div>
     </div>
     <p class="note">Adaptive: for each step, the engine's own evidence decides whether the model is needed at all. TypeSafe chooses from the compiled operations where it is sure, Protocolis executes and checks each step, the agent's model takes the rest, so a doubtful choice costs no completion. Against Standard, 26% less time and 29% fewer large-model tokens per completed task; against Browser Use's agent, 38% and 80% less; against its flash mode, 22% and 73% less. Every written answer was correct in every arm. On long open-ended tasks Adaptive runs level with Standard.</p>
-    <h4 class="fb-h">Adaptive, chooser alone (Ultrafast): no large model at all, the same 40 runs.</h4>
+    <h4 class="fb-h">Against the ultrafast agents: Adaptive with no large model at all, the same 40 runs.</h4>
     <div class="fb-wrap">
     <div class="fb">
       <div class="fb-col"><b>Completed<small>of 40 runs</small></b>
-      <div class="bar us"><span>Protocolis Ultrafast</span><span class="track" style="--w:72.5%"><span class="fill" style="width:72.5%"></span><span class="val">29</span></span></div>
+      <div class="bar us"><span>Protocolis, no large model</span><span class="track" style="--w:72.5%"><span class="fill" style="width:72.5%"></span><span class="val">29</span></span></div>
       <div class="bar"><span>Jev Ultrafast</span><span class="track" style="--w:70%"><span class="fill" style="width:70%"></span><span class="val">28</span></span></div>
       </div>
       <div class="fb-col"><b>Seconds<small>per completed task</small></b>
-      <div class="bar us"><span>Protocolis Ultrafast</span><span class="track" style="--w:60.2%"><span class="fill" style="width:60.2%"></span><span class="val">10.0</span></span></div>
+      <div class="bar us"><span>Protocolis, no large model</span><span class="track" style="--w:60.2%"><span class="fill" style="width:60.2%"></span><span class="val">10.0</span></span></div>
       <div class="bar full"><span>Jev Ultrafast</span><span class="track" style="--w:100%"><span class="fill" style="width:100%"></span><span class="val">16.6</span></span></div>
       </div>
       <div class="fb-col"><b>Choice-model calls<small>per completed task</small></b>
-      <div class="bar us"><span>Protocolis Ultrafast</span><span class="track" style="--w:33.3%"><span class="fill" style="width:33.3%"></span><span class="val">2.9</span></span></div>
+      <div class="bar us"><span>Protocolis, no large model</span><span class="track" style="--w:33.3%"><span class="fill" style="width:33.3%"></span><span class="val">2.9</span></span></div>
       <div class="bar full"><span>Jev Ultrafast</span><span class="track" style="--w:100%"><span class="fill" style="width:100%"></span><span class="val">8.7</span></span></div>
       </div>
     </div>
-    <div class="mx-legend"><span><i class="us"></i>Protocolis Ultrafast · APC + TypeSafe; every step checked</span><span><i></i>Jev Ultrafast · Browser Use's open-source agent on the same choice model</span></div>
+    <div class="mx-legend"><span><i class="us"></i>Protocolis, no large model · APC + TypeSafe; every step checked</span><span><i></i>Jev Ultrafast · Browser Use's open-source agent on the same choice model</span></div>
     </div>
     <p class="note">Same choice model, different substrate. Protocolis's misses were all declines to act when unsure; Jev's were 5 blocked, 2 declared done on the wrong page, 2 at its own caps and 2 stalled on a dialog. On the runs both completed, Protocolis was 26% faster than Jev; typical completed task 7.4 s Protocolis, 7.3 s Jev. In another run of the same tasks Jev took 10.0 s per completed task, so its figure swings with its loops; Protocolis's did not. One session per read, arms rotating per task; completion is the same final-page check for every arm plus the written answer against a gold where an arm writes one; every attempt counted.</p>
     <h3 class="cx-h">It holds against Stagehand and Playwright MCP.</h3>
@@ -775,19 +780,19 @@ body::before{
     <div class="fb-wrap">
     <div class="fb">
       <div class="fb-col"><b>Completed<small>of 120 runs</small></b>
-      <div class="bar us full"><span>Protocolis Ultrafast</span><span class="track" style="--w:100%"><span class="fill" style="width:100%"></span><span class="val">120</span></span></div>
+      <div class="bar us full"><span>Protocolis Adaptive</span><span class="track" style="--w:100%"><span class="fill" style="width:100%"></span><span class="val">120</span></span></div>
       <div class="bar full"><span>Playwright MCP</span><span class="track" style="--w:100%"><span class="fill" style="width:100%"></span><span class="val">120</span></span></div>
       </div>
       <div class="fb-col"><b>Cost<small>per completed task</small></b>
-      <div class="bar us"><span>Protocolis Ultrafast</span><span class="track" style="--w:13.6%"><span class="fill" style="width:13.6%"></span><span class="val">$0.011</span></span></div>
+      <div class="bar us"><span>Protocolis Adaptive</span><span class="track" style="--w:13.6%"><span class="fill" style="width:13.6%"></span><span class="val">$0.011</span></span></div>
       <div class="bar full"><span>Playwright MCP</span><span class="track" style="--w:100%"><span class="fill" style="width:100%"></span><span class="val">$0.081</span></span></div>
       </div>
       <div class="fb-col"><b>Model calls<small>per completed task</small></b>
-      <div class="bar us"><span>Protocolis Ultrafast</span><span class="track" style="--w:24.6%"><span class="fill" style="width:24.6%"></span><span class="val">1.4</span></span></div>
+      <div class="bar us"><span>Protocolis Adaptive</span><span class="track" style="--w:24.6%"><span class="fill" style="width:24.6%"></span><span class="val">1.4</span></span></div>
       <div class="bar full"><span>Playwright MCP</span><span class="track" style="--w:100%"><span class="fill" style="width:100%"></span><span class="val">5.6</span></span></div>
       </div>
     </div>
-    <div class="mx-legend"><span><i class="us"></i>Protocolis Ultrafast · APC + TypeSafe; Grok 4.6 takes over when unsure</span><span><i></i>Playwright MCP 0.0.84 · Microsoft's browser server, driven by Grok 4.6</span><span>20 public tasks × 6 rounds</span></div>
+    <div class="mx-legend"><span><i class="us"></i>Protocolis Adaptive · APC + TypeSafe; Grok 4.6 takes over when unsure</span><span><i></i>Playwright MCP 0.0.84 · Microsoft's browser server, driven by Grok 4.6</span><span>20 public tasks × 6 rounds</span></div>
     </div>
     <p class="note">Playwright MCP gives the agent's model the page's accessibility snapshot and a set of browser tools; Protocolis gives it compiled operations, and the choice model takes the steps it is sure of. Six rounds of the same 20 public tasks, 120 runs per side, pooled as registered before the runs; every attempt counted. Both completed every task; Protocolis took 8% less time per completed task, 15.1 s against 16.4 s, on a quarter of the model calls.</p>
   </div>
