@@ -504,6 +504,51 @@ body::before{
 @media (prefers-reduced-motion:reduce){body::before{filter:none}}
 
 .frame{container-type:inline-size}.fin{display:grid !important;grid-template-columns:auto auto;align-items:center;justify-items:center;column-gap:.55em;row-gap:.15em;padding:.7em 1.1em .6em !important;border-radius:14px !important;border-width:2px !important;background:rgba(9,11,13,.9) !important;font-size:clamp(.55rem,1.7cqw,.95rem) !important;bottom:12% !important}.fin .ck{width:1.4em !important;height:1.4em !important}.fin .ck svg{width:.9em;height:.9em}.fin b{grid-column:1/-1;font-size:2.4em;line-height:1.05;margin:0 !important;letter-spacing:.01em}.fin.p1,.fin.p2,.fin.p3{font-size:clamp(.5rem,1.45cqw,.85rem) !important;max-width:30cqw;white-space:normal !important;text-align:center;line-height:1.2}
+
+.draft-flag{position:fixed;top:0;left:0;right:0;z-index:999;background:#7a2b2b;color:#fff;font:600 .75rem var(--font-mono);letter-spacing:.12em;text-align:center;padding:.35rem}
+.mt-bar{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.8rem 1.5rem;margin-top:1.8rem}
+.mt-tabs{display:inline-flex;border:1px solid var(--rule);border-radius:999px;padding:3px}
+.mt-tabs button{all:unset;cursor:pointer;font:500 .72rem var(--font-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--fg-2);padding:.45rem 1rem;border-radius:999px}
+.mt-tabs button.on{background:var(--accent);color:var(--accent-ink)}
+.mt-key{display:flex;gap:1.2rem;flex-wrap:wrap;font:.7rem var(--font-mono);letter-spacing:.06em;color:var(--fg-2)}
+.mt-key .k::before{content:"";display:inline-block;width:.7rem;height:.7rem;border-radius:3px;margin-right:.45rem;vertical-align:-1px;background:rgba(236,232,223,.25)}
+.mt-key .k.ad::before{background:var(--accent)}.mt-key .k.st::before{background:#8fa3b8}
+.mt{margin-top:1rem;border-top:1px solid var(--fg-2)}
+.mt-h,.mt-l{display:grid;grid-template-columns:minmax(0,2.2fr) repeat(3,minmax(0,1fr));gap:0 1rem;align-items:center}
+.mt-h{font:500 .68rem var(--font-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--fg-2);padding:.8rem .9rem}
+.mt-h small{display:block;font-size:.85em;letter-spacing:.06em;text-transform:none;color:var(--dim);margin-top:.15rem}
+.mt-g{border-top:1px solid var(--rule);padding:.9rem 0 1rem}
+.mt-o{padding:0 .9rem .5rem}.mt-o b{font-weight:500;font-size:1.02rem}
+.mt-o span{display:block;font:.66rem var(--font-mono);letter-spacing:.05em;color:var(--dim);margin-top:.15rem}
+.mt-l{padding:.42rem .9rem;border-radius:8px;font:.86rem var(--font-mono);font-variant-numeric:tabular-nums;color:var(--fg-2)}
+.mt-l b{font-weight:500;color:var(--fg)}
+.mt-l .nm{font-family:var(--font-body);font-size:.9rem}
+.mt-l.ad{background:var(--accent-wash)}.mt-l.ad .nm,.mt-l.ad b{color:var(--accent)}
+.mt-l.st{background:rgba(127,147,168,.1);margin-top:3px}.mt-l.st .nm,.mt-l.st b{color:#b9c7d6}
+.mt-l.op{margin-top:3px}.mt-l.op .nm{color:var(--fg-2)}.mt-l.op b{color:var(--fg-2);font-weight:400}
+.mt-l .x{font-style:normal;font-size:.78em;margin-left:.5em;padding:.08em .45em;border-radius:5px;border:1px solid currentColor;opacity:.9}
+.pend{font:.64rem var(--font-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--dim);opacity:.85}
+.mt-status{font-family:var(--font-mono);font-size:.74rem;color:var(--fg-2);line-height:1.7;margin-top:1.6rem;max-width:62rem}
+.msz{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;margin-top:1.3rem}
+.ms{border:1px solid var(--rule);border-radius:12px;padding:1rem 1.1rem;background:var(--bg-2)}
+.ms>b{display:block;font:500 .7rem var(--font-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--fg-2)}
+.ms .mdl{display:block;font-size:1.05rem;margin-top:.3rem}.ms .vs{display:block;font-size:.8rem;color:var(--dim)}
+.ms dl{display:grid;grid-template-columns:auto 1fr;gap:.25rem .8rem;margin:.8rem 0 0;font:.8rem var(--font-mono)}
+.ms dt{color:var(--dim)}.ms dd{margin:0;text-align:right}
+.how{margin-top:3rem;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.how summary{cursor:pointer;list-style:none;padding:1rem 0;font:500 .74rem var(--font-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--fg-2)}
+.how summary::before{content:"+";display:inline-block;width:1.2rem;color:var(--accent)}.how[open] summary::before{content:"−"}
+.how-b{padding:0 0 1.2rem;max-width:62rem;font-size:.86rem;line-height:1.65;color:var(--fg-2)}.how-b b{color:var(--fg);font-weight:500}
+.result-strip.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media (max-width:700px){
+ .mt-h,.mt-l{grid-template-columns:minmax(0,1.25fr) repeat(3,minmax(0,1fr));gap:0 .45rem}
+ .mt-h{padding:.7rem .5rem;font-size:.58rem;letter-spacing:.08em}.mt-h small{display:none}
+ .mt-l{padding:.4rem .5rem;font-size:.74rem}.mt-l .nm{font-size:.76rem}
+ .mt-l .x{display:block;margin:.15rem 0 0;width:max-content}
+ .mt-o{padding:0 .5rem .45rem}
+ .msz{grid-template-columns:minmax(0,1fr)}
+ .result-strip.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
 </style>
 </head>
 <body>
@@ -996,147 +1041,77 @@ body::before{
 <section class="sec" id="benchmarks">
   <div class="head">
     <div class="rail"><b>03</b>detailed benchmarks</div>
-    <h2>Three models. Both ways to run Browser Use. Ahead or level in every cell.</h2>
-    <p class="sub">Measured against Browser Use, the most widely used open-source browser agent and the standard reference for this category. Paired runs on live websites: the same model, the same tasks and the same budget on both sides. Completion is judged blind by WebJudge from the screenshots. Time is a stopwatch from the task's arrival to the answer. Cost is the metered tokens at the provider's list prices. Each cell names its task set.</p>
+    <h2>Every leading agent stack. One chart.</h2>
+    <p class="sub">Protocolis Adaptive and Protocolis Standard against Browser Use, Stagehand, Playwright MCP and Browser Harness: the same model, the same tasks and the same budget on both sides, on live websites.</p>
   </div>
   <div>
-    <div class="mx-wrap">
-    <div class="mx">
-      <div class="mx-corner"></div>
-      <div class="mx-col"><b>Browser Use · own agent</b><span>Its planner, a screenshot every step</span></div>
-      <div class="mx-col"><b>OpenAI browser tools + Browser Use driver</b><span>OpenAI's tool runner; Browser Use operates the browser</span></div>
-
-      <div class="mx-row"><b>Small model</b><span>GLM-5.3-flash</span></div>
-      <div data-op="Browser Use · own agent" class="cell">
-        <div class="mb"><span class="k">Completed</span><span class="tr"><i class="us" style="width:72.4%"></i><i style="width:46.9%"></i></span><span class="v"><b>72%</b> vs 47%</span></div>
-        <div class="mb"><span class="k">Time</span><span class="tr"><i class="us" style="width:42%"></i><i style="width:100%"></i></span><span class="v"><b>58% less</b></span></div>
-        <div class="mb"><span class="k">Cost</span><span class="tr"><i class="us" style="width:38%"></i><i style="width:100%"></i></span><span class="v"><b>62% lower</b></span></div>
-        <p class="n">98 held-out tasks · 71 vs 46 completed · Browser Use 0.13.10</p>
-      </div>
-      <div data-op="OpenAI browser tools + Browser Use driver" class="cell">
-        <div class="mb"><span class="k">Completed</span><span class="tr"><i class="us" style="width:71.4%"></i><i style="width:62.9%"></i></span><span class="v"><b>71%</b> vs 63%</span></div>
-        <div class="mb"><span class="k">Time</span><span class="tr"><i class="us" style="width:98%"></i><i style="width:100%"></i></span><span class="v"><b>level</b></span></div>
-        <div class="mb"><span class="k">Cost</span><span class="tr"><i class="us" style="width:38%"></i><i style="width:100%"></i></span><span class="v"><b>62% lower</b></span></div>
-        <p class="n">39 development tasks · 25 vs 22 completed · Browser Use 0.13.13</p>
-      </div>
-
-      <div class="mx-row"><b>Mid model</b><span>Grok 4.6</span></div>
-      <div data-op="Browser Use · own agent" class="cell">
-        <div class="mb"><span class="k">Completed</span><span class="tr"><i class="us" style="width:75.8%"></i><i style="width:65.2%"></i></span><span class="v"><b>76%</b> vs 65%</span></div>
-        <div class="mb"><span class="k">Time</span><span class="tr"><i class="us" style="width:80%"></i><i style="width:100%"></i></span><span class="v"><b>20% less</b></span></div>
-        <div class="mb"><span class="k">Cost</span><span class="tr"><i class="us" style="width:59%"></i><i style="width:100%"></i></span><span class="v"><b>41% lower</b></span></div>
-        <p class="n">66 held-out tasks · 50 vs 43 completed · Browser Use 0.13.10</p>
-      </div>
-      <div data-op="OpenAI browser tools + Browser Use driver" class="cell">
-        <div class="mb"><span class="k">Completed</span><span class="tr"><i class="us" style="width:78.6%"></i><i style="width:50%"></i></span><span class="v"><b>79%</b> vs 50%</span></div>
-        <div class="mb"><span class="k">Time</span><span class="tr"><i class="us" style="width:67%"></i><i style="width:100%"></i></span><span class="v"><b>33% less</b></span></div>
-        <div class="mb"><span class="k">Cost</span><span class="tr"><i class="us" style="width:15%"></i><i style="width:100%"></i></span><span class="v"><b>85% lower</b></span></div>
-        <p class="n">16 development tasks · 11 vs 7 completed · Browser Use 0.13.13</p>
-      </div>
-
-      <div class="mx-row"><b>Frontier models</b><span>Claude Opus 5.5 · gpt-6.1-sol</span></div>
-      <div data-op="Browser Use · own agent" class="cell">
-        <div class="mb"><span class="k">Completed</span><span class="tr"><i class="us" style="width:73.5%"></i><i style="width:73.5%"></i></span><span class="v"><b>74%</b> vs 74%</span></div>
-        <div class="mb"><span class="k">Time</span><span class="tr"><i class="us" style="width:87%"></i><i style="width:100%"></i></span><span class="v"><b>13% less</b></span></div>
-        <div class="mb"><span class="k">Cost</span><span class="tr"><i class="us" style="width:14%"></i><i style="width:100%"></i></span><span class="v"><b>86% lower</b></span></div>
-        <p class="n">gpt-6.1-sol on both sides · 39 development tasks · 25 vs 25 completed · Browser Use 0.13.13</p>
-      </div>
-      <div data-op="OpenAI browser tools + Browser Use driver" class="cell">
-        <div class="mb"><span class="k">Completed</span><span class="tr"><i class="us" style="width:64.1%"></i><i style="width:48.7%"></i></span><span class="v"><b>64%</b> vs 49%</span></div>
-        <div class="mb"><span class="k">Time</span><span class="tr"><i class="us" style="width:69%"></i><i style="width:100%"></i></span><span class="v"><b>31% less</b></span></div>
-        <div class="mb"><span class="k">Cost</span><span class="tr"><i class="us" style="width:63%"></i><i style="width:100%"></i></span><span class="v"><b>37% lower</b></span></div>
-        <p class="n">Claude Opus 5.5 on both sides · 39 development tasks · 25 vs 19 completed · Browser Use 0.13.13 · held-out 100: 68 vs 61 completed, cost 13% lower · gpt-6.1-sol, same 39: 25 vs 24 completed, cost 62% lower</p>
-      </div>
-    </div>
-    </div>
-    <div class="mx-legend"><span><i class="us"></i>Protocolis Standard</span><span><i></i>Browser Use</span><span>time and cost bars: Protocolis Standard as a share of Browser Use's</span></div>
-
-    <h3 class="cx-h">It holds on the hard tasks.</h3>
-    <div class="cx-wrap">
-    <table class="cx">
-      <thead><tr><th scope="col">Completed</th><th scope="col">Simple tasks</th><th scope="col">Complex tasks</th></tr></thead>
-      <tbody>
-        <tr><th scope="row">GLM-5.3-flash vs Browser Use's own agent<span>held-out</span></th><td><b>88%</b> vs 50%</td><td><b>72%</b> vs 47%</td></tr>
-        <tr><th scope="row">Grok 4.6 vs Browser Use's own agent<span>held-out</span></th><td><b>94%</b> vs 89%</td><td><b>76%</b> vs 65%</td></tr>
-        <tr><th scope="row">Grok 4.6 vs OpenAI tools + Browser Use driver<span>16 development tasks</span></th><td><b>100%</b> vs 75%</td><td><b>50%</b> vs 17%</td></tr>
-        <tr><th scope="row">Claude Opus 5.5 vs OpenAI tools + Browser Use driver<span>six development rounds, 222 paired runs</span></th><td><b>85%</b> vs 75%</td><td><b>42%</b> vs 36%</td></tr>
-      </tbody>
-    </table>
-    </div>
-    <p class="note">Which Browser Use mode is the stronger opponent depends on the model: on the small model its tools mode completes more and runs faster than its own agent; on Grok and gpt-6.1-sol its own agent is the faster one. Protocolis is measured against both and is ahead or level against whichever is stronger on each metric. Held-out tasks are Online-Mind2Web tasks never used in development; development tasks are 39 live websites and component demos used across every round. Simple and complex are split by step count. Browser Use 0.13.10 as its own agent and 0.13.13 in both modes. Full results, build hashes and the reproduction kit are available under NDA.</p>
-
-    <h3 class="cx-h">Adaptive and Standard against Browser Use's fast and full modes.</h3>
-    <div class="fb-wrap">
-    <div class="fb">
-      <div class="fb-col"><b>Completed<small>of 40 runs</small></b>
-      <div class="bar us full"><span>Protocolis Adaptive</span><span class="track" style="--w:100%"><span class="fill" style="width:100%"></span><span class="val">40</span></span></div>
-      <div class="bar us s full"><span>Protocolis Standard</span><span class="track" style="--w:100%"><span class="fill" style="width:100%"></span><span class="val">40</span></span></div>
-      <div class="bar full"><span>Browser Use flash</span><span class="track" style="--w:100%"><span class="fill" style="width:100%"></span><span class="val">40</span></span></div>
-      <div class="bar full"><span>Browser Use agent</span><span class="track" style="--w:100%"><span class="fill" style="width:100%"></span><span class="val">40</span></span></div>
-      </div>
-      <div class="fb-col"><b>Seconds<small>per completed task</small></b>
-      <div class="bar us"><span>Protocolis Adaptive</span><span class="track" style="--w:62.1%"><span class="fill" style="width:62.1%"></span><span class="val">23.4</span></span></div>
-      <div class="bar us s"><span>Protocolis Standard</span><span class="track" style="--w:83.6%"><span class="fill" style="width:83.6%"></span><span class="val">31.5</span></span></div>
-      <div class="bar"><span>Browser Use flash</span><span class="track" style="--w:79.8%"><span class="fill" style="width:79.8%"></span><span class="val">30.1</span></span></div>
-      <div class="bar full"><span>Browser Use agent</span><span class="track" style="--w:100%"><span class="fill" style="width:100%"></span><span class="val">37.7</span></span></div>
-      </div>
-      <div class="fb-col"><b>Large-model tokens<small>per completed task</small></b>
-      <div class="bar us"><span>Protocolis Adaptive</span><span class="track" style="--w:19.9%"><span class="fill" style="width:19.9%"></span><span class="val">11.3k</span></span></div>
-      <div class="bar us s"><span>Protocolis Standard</span><span class="track" style="--w:28%"><span class="fill" style="width:28%"></span><span class="val">15.9k</span></span></div>
-      <div class="bar"><span>Browser Use flash</span><span class="track" style="--w:74.6%"><span class="fill" style="width:74.6%"></span><span class="val">42.4k</span></span></div>
-      <div class="bar full"><span>Browser Use agent</span><span class="track" style="--w:100%"><span class="fill" style="width:100%"></span><span class="val">56.8k</span></span></div>
-      </div>
-    </div>
-    <div class="mx-legend"><span><i class="us"></i>Protocolis Adaptive · APC + TypeSafe choice model + Grok 4.6</span><span><i class="us s"></i>Protocolis Standard · APC + Grok 4.6</span><span><i></i>Browser Use flash mode and agent · Grok 4.6</span><span>20 fresh public tasks × 2</span></div>
-    </div>
-    <p class="note">Adaptive: for each step, the engine's own evidence decides whether the model is needed at all. TypeSafe chooses from the compiled operations where it is sure, Protocolis executes and checks each step, the agent's model takes the rest, so a doubtful choice costs no completion. Against Standard, 26% less time and 29% fewer large-model tokens per completed task; against Browser Use's agent, 38% and 80% less; against its flash mode, 22% and 73% less. Every written answer was correct in every arm. On long open-ended tasks Adaptive runs level with Standard.</p>
-    <h3 class="cx-h">It holds against Stagehand and Playwright MCP.</h3>
-    <div class="pop">
-      <div><div class="n">11×<small>lower cost per completed long task than Stagehand</small></div><p class="c">$0.29 vs $3.23 · Grok 4.6 · 40 long tasks</p></div>
-      <div><div class="n">77%<small>more long tasks completed than Stagehand, in 48% less time</small></div><p class="c">23 vs 13 completed · 281 s vs 539 s</p></div>
-      <div><div class="n">7×<small>lower cost per completed task than Playwright MCP, every task completed</small></div><p class="c">$0.011 vs $0.081 · Grok 4.6 · 120 runs</p></div>
-    </div>
-    <h4 class="fb-h">Long open-web tasks: Protocolis against Stagehand.</h4>
-    <div class="fb-wrap">
-    <div class="fb">
-      <div class="fb-col"><b>Completed<small>of 40 runs</small></b>
-      <div class="bar us"><span>Protocolis Adaptive</span><span class="track" style="--w:57.5%"><span class="fill" style="width:57.5%"></span><span class="val">23</span></span></div>
-      <div class="bar us s"><span>Protocolis Standard</span><span class="track" style="--w:55%"><span class="fill" style="width:55%"></span><span class="val">22</span></span></div>
-      <div class="bar"><span>Stagehand</span><span class="track" style="--w:32.5%"><span class="fill" style="width:32.5%"></span><span class="val">13</span></span></div>
-      </div>
-      <div class="fb-col"><b>Seconds<small>per completed task</small></b>
-      <div class="bar us"><span>Protocolis Adaptive</span><span class="track" style="--w:52.1%"><span class="fill" style="width:52.1%"></span><span class="val">281</span></span></div>
-      <div class="bar us s"><span>Protocolis Standard</span><span class="track" style="--w:61.2%"><span class="fill" style="width:61.2%"></span><span class="val">330</span></span></div>
-      <div class="bar full"><span>Stagehand</span><span class="track" style="--w:100%"><span class="fill" style="width:100%"></span><span class="val">539</span></span></div>
-      </div>
-      <div class="fb-col"><b>Cost<small>per completed task</small></b>
-      <div class="bar us"><span>Protocolis Adaptive</span><span class="track" style="--w:9.0%"><span class="fill" style="width:9.0%"></span><span class="val">$0.29</span></span></div>
-      <div class="bar us s"><span>Protocolis Standard</span><span class="track" style="--w:9.9%"><span class="fill" style="width:9.9%"></span><span class="val">$0.32</span></span></div>
-      <div class="bar full"><span>Stagehand</span><span class="track" style="--w:100%"><span class="fill" style="width:100%"></span><span class="val">$3.23</span></span></div>
-      </div>
-    </div>
-    <div class="mx-legend"><span><i class="us"></i>Protocolis Adaptive · APC + TypeSafe choice model + Grok 4.6</span><span><i class="us s"></i>Protocolis Standard · APC + Grok 4.6</span><span><i></i>Stagehand 3.7.3 · its own agent on Grok 4.6</span><span>40 long open-web tasks</span></div>
-    </div>
-    <p class="note">Stagehand 3.7.3 runs its native agent, with Grok 4.6 for the agent and every internal call; Protocolis uses the same model. Each arm ran the same 40 long tasks on live websites, arms rotating per task in one session. Completion is judged blind by WebJudge from the screenshots, with a second judge on disputed tasks, and every attempt counts. Stagehand made 67 model calls per completed task; Protocolis Adaptive 23, Standard 22.</p>
-    <h4 class="fb-h">Public tasks: Protocolis against Playwright MCP.</h4>
-    <div class="fb-wrap">
-    <div class="fb">
-      <div class="fb-col"><b>Completed<small>of 120 runs</small></b>
-      <div class="bar us full"><span>Protocolis Adaptive</span><span class="track" style="--w:100%"><span class="fill" style="width:100%"></span><span class="val">120</span></span></div>
-      <div class="bar full"><span>Playwright MCP</span><span class="track" style="--w:100%"><span class="fill" style="width:100%"></span><span class="val">120</span></span></div>
-      </div>
-      <div class="fb-col"><b>Cost<small>per completed task</small></b>
-      <div class="bar us"><span>Protocolis Adaptive</span><span class="track" style="--w:13.6%"><span class="fill" style="width:13.6%"></span><span class="val">$0.011</span></span></div>
-      <div class="bar full"><span>Playwright MCP</span><span class="track" style="--w:100%"><span class="fill" style="width:100%"></span><span class="val">$0.081</span></span></div>
-      </div>
-      <div class="fb-col"><b>Model calls<small>per completed task</small></b>
-      <div class="bar us"><span>Protocolis Adaptive</span><span class="track" style="--w:24.6%"><span class="fill" style="width:24.6%"></span><span class="val">1.4</span></span></div>
-      <div class="bar full"><span>Playwright MCP</span><span class="track" style="--w:100%"><span class="fill" style="width:100%"></span><span class="val">5.6</span></span></div>
-      </div>
-    </div>
-    <div class="mx-legend"><span><i class="us"></i>Protocolis Adaptive · APC + TypeSafe; Grok 4.6 takes over when unsure</span><span><i></i>Playwright MCP 0.0.84 · Microsoft's browser server, driven by Grok 4.6</span><span>20 public tasks × 6 rounds</span></div>
-    </div>
-    <p class="note">Playwright MCP gives the agent's model the page's accessibility snapshot and a set of browser tools; Protocolis gives it compiled operations, and the choice model takes the steps it is sure of. Six rounds of the same 20 public tasks, 120 runs per side, pooled as registered before the runs; every attempt counted. Both completed every task; Protocolis took 8% less time per completed task, 15.1 s against 16.4 s, on a quarter of the model calls.</p>
+<div class="mt-bar"><div class="mt-tabs" role="tablist"><button class="on" data-set="short" role="tab" aria-selected="true">Short tasks</button><button data-set="long" role="tab" aria-selected="false">Long tasks</button></div><div class="mt-key"><span class="k ad">Protocolis Adaptive</span><span class="k st">Protocolis Standard</span><span class="k op">Opponent</span></div></div>
+<div class="mt" data-set="short">
+<div class="mt-h"><span></span><span>Completed</span><span>Time<small>per completed task</small></span><span>Cost<small>per completed task</small></span></div>
+<div class="mt-g"><div class="mt-o"><b>Browser Use · own agent</b><span>Browser Use 0.13.13, its own planner · Grok 4.6</span></div>
+<div class="mt-l ad"><span class="nm">Protocolis Adaptive</span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span></div>
+<div class="mt-l st"><span class="nm">Protocolis Standard</span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span></div>
+<div class="mt-l op"><span class="nm">Browser Use · own agent</span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span></div>
+</div>
+<div class="mt-g"><div class="mt-o"><b>Browser Use · tools mode</b><span>OpenAI tool runner + Browser Use driver · Grok 4.6</span></div>
+<div class="mt-l ad"><span class="nm">Protocolis Adaptive</span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span></div>
+<div class="mt-l st"><span class="nm">Protocolis Standard</span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span></div>
+<div class="mt-l op"><span class="nm">Browser Use · tools mode</span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span></div>
+</div>
+<div class="mt-g"><div class="mt-o"><b>Stagehand</b><span>Browserbase · Stagehand 3.7.3, native agent · Grok 4.6</span></div>
+<div class="mt-l ad"><span class="nm">Protocolis Adaptive</span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span></div>
+<div class="mt-l st"><span class="nm">Protocolis Standard</span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span></div>
+<div class="mt-l op"><span class="nm">Stagehand</span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span></div>
+</div>
+<div class="mt-g"><div class="mt-o"><b>Playwright MCP</b><span>Microsoft · Playwright MCP 0.0.84 · Grok 4.6</span></div>
+<div class="mt-l ad"><span class="nm">Protocolis Adaptive</span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span></div>
+<div class="mt-l st"><span class="nm">Protocolis Standard</span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span></div>
+<div class="mt-l op"><span class="nm">Playwright MCP</span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span></div>
+</div>
+<div class="mt-g"><div class="mt-o"><b>Browser Harness</b><span>Browser Use · Browser Harness 0.1.13 · Grok 4.6</span></div>
+<div class="mt-l ad"><span class="nm">Protocolis Adaptive</span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span></div>
+<div class="mt-l st"><span class="nm">Protocolis Standard</span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span></div>
+<div class="mt-l op"><span class="nm">Browser Harness</span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span></div>
+</div>
+</div>
+<div class="mt" data-set="long" hidden>
+<div class="mt-h"><span></span><span>Completed</span><span>Time<small>per completed task</small></span><span>Cost<small>per completed task</small></span></div>
+<div class="mt-g"><div class="mt-o"><b>Browser Use · own agent</b><span>Browser Use 0.13.13, its own planner · Grok 4.6</span></div>
+<div class="mt-l ad"><span class="nm">Protocolis Adaptive</span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span></div>
+<div class="mt-l st"><span class="nm">Protocolis Standard</span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span></div>
+<div class="mt-l op"><span class="nm">Browser Use · own agent</span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span></div>
+</div>
+<div class="mt-g"><div class="mt-o"><b>Browser Use · tools mode</b><span>OpenAI tool runner + Browser Use driver · Grok 4.6</span></div>
+<div class="mt-l ad"><span class="nm">Protocolis Adaptive</span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span></div>
+<div class="mt-l st"><span class="nm">Protocolis Standard</span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span></div>
+<div class="mt-l op"><span class="nm">Browser Use · tools mode</span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span></div>
+</div>
+<div class="mt-g"><div class="mt-o"><b>Stagehand</b><span>Browserbase · Stagehand 3.7.3, native agent · Grok 4.6</span></div>
+<div class="mt-l ad"><span class="nm">Protocolis Adaptive</span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span></div>
+<div class="mt-l st"><span class="nm">Protocolis Standard</span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span></div>
+<div class="mt-l op"><span class="nm">Stagehand</span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span></div>
+</div>
+<div class="mt-g"><div class="mt-o"><b>Playwright MCP</b><span>Microsoft · Playwright MCP 0.0.84 · Grok 4.6</span></div>
+<div class="mt-l ad"><span class="nm">Protocolis Adaptive</span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span></div>
+<div class="mt-l st"><span class="nm">Protocolis Standard</span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span></div>
+<div class="mt-l op"><span class="nm">Playwright MCP</span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span></div>
+</div>
+<div class="mt-g"><div class="mt-o"><b>Browser Harness</b><span>Browser Use · Browser Harness 0.1.13 · Grok 4.6</span></div>
+<div class="mt-l ad"><span class="nm">Protocolis Adaptive</span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span></div>
+<div class="mt-l st"><span class="nm">Protocolis Standard</span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span></div>
+<div class="mt-l op"><span class="nm">Browser Harness</span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span></div>
+</div>
+</div>
+<p class="mt-status">Every arm is being re-measured on the November build; each figure goes up as its read is finished and checked. Cells marked <span class="pend">measuring</span> are still running. Updated 5 November 2026.</p>
+<h3 class="cx-h">Small model to frontier.</h3><div class="msz"><div class="ms"><b>Small model</b><span class="mdl">GLM-5.3-flash</span><span class="vs">vs Browser Use tools mode</span><dl><dt>Completed</dt><dd><span class="pend">—</span></dd><dt>Time</dt><dd><span class="pend">—</span></dd><dt>Cost</dt><dd><span class="pend">—</span></dd></dl></div><div class="ms"><b>Mid model</b><span class="mdl">Grok 4.6</span><span class="vs">vs the strongest opponent on Grok</span><dl><dt>Completed</dt><dd><span class="pend">—</span></dd><dt>Time</dt><dd><span class="pend">—</span></dd><dt>Cost</dt><dd><span class="pend">—</span></dd></dl></div><div class="ms"><b>Frontier model</b><span class="mdl">gpt-6.1-sol</span><span class="vs">vs Browser Use's own agent</span><dl><dt>Completed</dt><dd><span class="pend">—</span></dd><dt>Time</dt><dd><span class="pend">—</span></dd><dt>Cost</dt><dd><span class="pend">—</span></dd></dl></div></div>
+<details class="how"><summary>How we measured</summary><div class="how-b">
+<p><b>Same model, same tasks, same budget.</b> Every arm runs the same model on the same tasks, on live websites, arms rotating per task in one session. Protocolis Adaptive adds its small choice model, and its cost is counted.</p>
+<p><b>Task sets.</b> Short tasks: 20 public tasks, each run twice. Long tasks: 40 long open-web tasks. Model sizes: 39 development tasks on live websites and component demos.</p>
+<p><b>Completion.</b> Short tasks are judged by checks on the finished page. Long tasks are judged blind by WebJudge from the screenshots, with a second judge on disputed tasks. Every attempt counts.</p>
+<p><b>Time and cost.</b> Time is a stopwatch from the task's arrival to the answer. Cost is the metered tokens at the provider's list prices, choice model included. Both are per completed task.</p>
+<p><b>Versions.</b> Browser Use 0.13.13 · Stagehand 3.7.3 · Playwright MCP 0.0.84 · Browser Harness 0.1.13. Protocolis on its current build, November 2026.</p>
+<p>Full results, build hashes and the reproduction kit are available under NDA.</p>
+</div></details>
   </div>
 </section>
 
@@ -1323,5 +1298,7 @@ window.addEventListener('load',mark);apply();sizeDemo()})();
  fit();
 })();
 </script>
-</body>
+<script>document.querySelectorAll('.mt-tabs button').forEach(b=>b.addEventListener('click',()=>{
+document.querySelectorAll('.mt-tabs button').forEach(x=>{x.classList.toggle('on',x===b);x.setAttribute('aria-selected',x===b)});
+document.querySelectorAll('.mt[data-set]').forEach(t=>t.hidden=t.dataset.set!==b.dataset.set)}))</script></body>
 </html>
