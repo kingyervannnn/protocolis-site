@@ -629,7 +629,7 @@ html:has(.access-dialog[open]){overflow:hidden}
 /*ARCH*/.arch-sec{padding-block:clamp(2.5rem,5vw,4.5rem)}
 body .sec.arch-sec h2{font-family:var(--font-display);font-size:clamp(1.35rem,2.3vw,1.9rem);font-weight:400;line-height:1.2;letter-spacing:.02em}
 .arch-lede{color:var(--fg);font-size:1rem;line-height:1.6}
-.arch{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:1.5rem 2.25rem;margin-top:0;align-items:start}
+.arch{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:1.5rem 2.25rem;margin-top:0;align-items:start}
 .arch-box{border:1px solid var(--rule);padding:.75rem .9rem;position:relative}
 .arch-box>b{display:block;font-family:var(--font-display);font-size:1.05rem;letter-spacing:.04em;color:var(--fg);font-weight:500}
 .arch-box>span{display:block;color:var(--fg-2);font-size:.9rem;line-height:1.55;margin-top:.3rem}
@@ -640,10 +640,10 @@ body .sec.arch-sec h2{font-family:var(--font-display);font-size:clamp(1.35rem,2.
 .arch-cells i{display:block;font-style:normal;font-family:var(--font-mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:.4rem}
 .arch-link{position:relative;display:flex;justify-content:space-between;gap:1rem;padding:.35rem .9rem;font-family:var(--font-mono);font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
 .arch-link::before{content:"";position:absolute;left:50%;top:0;bottom:0;border-left:1px solid color-mix(in srgb,var(--accent) 55%,transparent)}
-.arch-vs{margin:0;padding:.2rem 0 .2rem 1.25rem;border-left:2px solid color-mix(in srgb,var(--accent) 70%,transparent);color:var(--fg-2);font-size:clamp(.92rem,1vw,1rem);line-height:1.65}
+.arch-vs{margin:0;padding:.2rem 1.25rem .2rem 0;border-right:2px solid color-mix(in srgb,var(--accent) 70%,transparent);color:var(--fg-2);font-size:clamp(.92rem,1vw,1rem);line-height:1.65}
 .arch-vs h3{font-family:var(--font-mono);font-size:.72rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:0 0 .55rem}
 .arch-vs p{margin:0 0 1.2rem}.arch-vs .arch-lede{margin-bottom:1.5rem}.arch-vs p:last-child{margin-bottom:0}
-@media(max-width:900px){.arch{grid-template-columns:minmax(0,1fr)}.arch-cells{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:900px){.arch{grid-template-columns:minmax(0,1fr)}.arch-cells{grid-template-columns:minmax(0,1fr)}.arch-vs{border-right:0;border-left:2px solid color-mix(in srgb,var(--accent) 70%,transparent);padding:.2rem 0 .2rem 1.25rem}}
 @media(max-width:760px){.arch-sec{padding-block:2.2rem}.arch-pp{position:static;display:block;margin-top:.2rem}.arch-box{padding:.75rem .85rem}.arch-link{padding-inline:.95rem}}
 .arch-vs h2{margin-bottom:1rem;color:var(--fg)}
 /*END-ARCH*/
@@ -691,32 +691,7 @@ body .sec.arch-sec h2{font-family:var(--font-display);font-size:clamp(1.35rem,2.
 
 
 
-<section class="sec arch-sec" id="how" aria-label="How Protocolis works">
-  <div class="arch">
-    <div class="arch-stack">
-      <div class="rail">how it works</div>
-      <div class="arch-box arch-agent"><b>Your agent</b><span>Any model, the one it already uses. It plans the task, calls operations by name and sees every result.</span></div>
-      <div class="arch-link" aria-hidden="true"><span>calls by name ↓</span><span>↑ evidence</span></div>
-      <div class="arch-box arch-engine"><b>Protocolis</b><em class="arch-pp">Patent pending</em>
-        <div class="arch-cells">
-          <div><i>Compile</i>Reads the live page and compiles it into typed operations. No model. First contact, any site.</div>
-          <div><i>Operate</i>Performs the real clicks and keys for each operation, and waits for the page to settle.</div>
-          <div><i>Verify</i>Reads the page after every act and returns what changed, or a refusal that names why. Checks that hold are kept; checks the evidence stops supporting are dropped.</div>
-        </div>
-      </div>
-      <div class="arch-link" aria-hidden="true"><span>real input ↓</span><span>↑ live page</span></div>
-      <div class="arch-box arch-site"><b>The website</b><span>In a real browser. No selectors, no adapters, no taught workflows.</span></div>
-    </div>
-    <aside class="arch-vs">
-      <h2>Solid state, not a spinning disk.</h2>
-    <p class="arch-lede">A disk seeks before every read. A screenshot agent works the same way: look at the screen, think, act, look again, with a model call at every turn. Protocolis compiles the site instead. On first contact, with no model, no recording and no setup, it turns a site it has never seen into named operations your agent calls directly. Every call lands, and every answer is read from the page.</p>
-      <h3>The screenshot loop</h3>
-      <p>Hand the tool a task. Its own model looks at a screenshot, decides, acts and looks again, until it stops. You wait for the answer, and the model inside the tool is the one driving.</p>
-      <h3>Solid state</h3>
-      <p>Your agent keeps the wheel. The site is compiled into operations once, by rules alone; the agent calls them and reads the evidence. No model in the compiler, so a site the engine has never seen takes no model call to compile.</p>
-    </aside>
-  </div>
-</section>
+
 
 <section class="sec" id="demo">
   <div class="rail"><b>01</b>demonstration</div>
@@ -955,6 +930,33 @@ body .sec.arch-sec h2{font-family:var(--font-display);font-size:clamp(1.35rem,2.
     <div><span class="result-number">40%</span><span class="result-label">faster than leading ultrafast</span></div>
   </div>
   <div class="result-foot"><div><p>Standard vs Browser Use’s own agent · GLM-5.3-flash · 98 held-out tasks</p><p>Ultrafast: Adaptive vs Jev Ultrafast · 40 runs · 40% less time per completed task (10.0 s vs 16.6 s)</p></div><a href="#benchmarks">Detailed benchmarks <span aria-hidden="true">↓</span></a></div>
+</section>
+
+<section class="sec arch-sec" id="how" aria-label="How Protocolis works">
+  <div class="arch">
+    <aside class="arch-vs">
+      <h2>Solid state, not a spinning disk.</h2>
+    <p class="arch-lede">A disk seeks before every read. A screenshot agent works the same way: look at the screen, think, act, look again, with a model call at every turn. Protocolis compiles the site instead. On first contact, with no model, no recording and no setup, it turns a site it has never seen into named operations your agent calls directly. Every call lands, and every answer is read from the page.</p>
+      <h3>The screenshot loop</h3>
+      <p>Hand the tool a task. Its own model looks at a screenshot, decides, acts and looks again, until it stops. You wait for the answer, and the model inside the tool is the one driving.</p>
+      <h3>Solid state</h3>
+      <p>Your agent keeps the wheel. The site is compiled into operations once, by rules alone; the agent calls them and reads the evidence. No model in the compiler, so a site the engine has never seen takes no model call to compile.</p>
+    </aside>
+    <div class="arch-stack">
+      <div class="rail">how it works</div>
+      <div class="arch-box arch-agent"><b>Your agent</b><span>Any model, the one it already uses. It plans the task, calls operations by name and sees every result.</span></div>
+      <div class="arch-link" aria-hidden="true"><span>calls by name ↓</span><span>↑ evidence</span></div>
+      <div class="arch-box arch-engine"><b>Protocolis</b><em class="arch-pp">Patent pending</em>
+        <div class="arch-cells">
+          <div><i>Compile</i>Reads the live page and compiles it into typed operations. No model. First contact, any site.</div>
+          <div><i>Operate</i>Performs the real clicks and keys for each operation, and waits for the page to settle.</div>
+          <div><i>Verify</i>Reads the page after every act and returns what changed, or a refusal that names why. Checks that hold are kept; checks the evidence stops supporting are dropped.</div>
+        </div>
+      </div>
+      <div class="arch-link" aria-hidden="true"><span>real input ↓</span><span>↑ live page</span></div>
+      <div class="arch-box arch-site"><b>The website</b><span>In a real browser. No selectors, no adapters, no taught workflows.</span></div>
+    </div>
+  </div>
 </section>
 
 <section class="sec compact-compare" id="compare">
