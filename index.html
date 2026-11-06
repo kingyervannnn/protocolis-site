@@ -552,6 +552,9 @@ body::before{
 }
 /* Access requests */
 .mail-actions{display:inline-flex;gap:.75rem;align-items:center;flex-wrap:wrap}
+.overview-download{display:inline-flex;align-items:center;gap:1rem;flex-wrap:wrap;margin-top:1.2rem;padding:.7rem 1rem;border:1px solid var(--rule);border-radius:3px;text-decoration:none;color:var(--fg);font:.75rem/1.4 var(--font-mono)}
+.overview-download span{color:var(--dim);font-size:.68rem}
+.overview-download:hover,.overview-download:focus-visible{border-color:var(--accent);color:var(--accent);outline:2px solid transparent;outline-offset:3px}
 
 .mail .request-access{background:transparent;color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent);letter-spacing:.08em}
 .access-dialog{width:min(35rem,calc(100% - 2rem));max-height:calc(100dvh - 2rem);padding:clamp(1.25rem,4vw,2rem);border:1px solid var(--rule);border-top:2px solid var(--accent);border-radius:6px;background:var(--bg);color:var(--fg);overflow-y:auto}
@@ -1315,6 +1318,7 @@ body .sec.arch-sec h2{font-family:var(--font-display);font-size:clamp(1.35rem,2.
             <span class="mail-actions"><button type="button" id="copy" aria-label="Copy email address">Copy</button>
             <button type="button" class="request-access" id="request-access" aria-haspopup="dialog">Request access</button></span>
           </div>
+          <a class="overview-download" href="protocolis-overview.pdf" download="Protocolis-Public-Overview.pdf">Download overview <span>1 page · PDF ↓</span></a>
         </div>
       </div>
       <ol class="stages">
