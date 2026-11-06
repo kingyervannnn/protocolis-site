@@ -646,7 +646,15 @@ body .sec.arch-sec h2{font-family:var(--font-display);font-size:clamp(1.35rem,2.
 @media(max-width:900px){.arch{grid-template-columns:minmax(0,1fr)}.arch-cells{grid-template-columns:minmax(0,1fr)}.arch-vs{border-right:0;border-left:2px solid color-mix(in srgb,var(--accent) 70%,transparent);padding:.2rem 0 .2rem 1.25rem}}
 @media(max-width:760px){.arch-sec{padding-block:2.2rem}.arch-pp{position:static;display:block;margin-top:.2rem}.arch-box{padding:.75rem .85rem}.arch-link{padding-inline:.95rem}}
 .arch-vs h2{margin-bottom:1rem;color:var(--fg)}
+.arch-comparison{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0}
+.arch-comparison-item:first-child{padding-right:1.25rem}
+.arch-comparison-item+ .arch-comparison-item{padding-left:1.25rem;border-left:1px solid var(--rule)}
+.arch-comparison p{margin:0}
+@media(max-width:600px){.arch-comparison{grid-template-columns:minmax(0,1fr);gap:1.2rem}.arch-comparison-item:first-child{padding-right:0}.arch-comparison-item+ .arch-comparison-item{padding-left:0;border-left:0;padding-top:1.2rem;border-top:1px solid var(--rule)}}
 /*END-ARCH*/
+/* Quiet full-width bands distinguish the demonstrations and capability comparison. */
+#demo,#measured,#compare{position:relative;isolation:isolate}
+#demo::before,#measured::before,#compare::before{content:"";position:absolute;z-index:-1;pointer-events:none;top:0;bottom:0;left:calc(-1 * max(var(--gut),env(safe-area-inset-left,0px)));right:calc(-1 * max(var(--gut),env(safe-area-inset-right,0px)));background:var(--bg-2)}
 </style>
 </head>
 <body>
@@ -939,10 +947,16 @@ body .sec.arch-sec h2{font-family:var(--font-display);font-size:clamp(1.35rem,2.
     <aside class="arch-vs">
       <h2>Solid state, not a spinning disk.</h2>
     <p class="arch-lede">A disk seeks before every read. A screenshot agent works the same way: look at the screen, think, act, look again, with a model call at every turn. Protocolis compiles the site instead. On first contact, with no model, no recording and no setup, it turns a site it has never seen into named operations your agent calls directly. Every call lands, and every answer is read from the page.</p>
+      <div class="arch-comparison">
+        <div class="arch-comparison-item">
       <h3>The screenshot loop</h3>
       <p>Hand the tool a task. Its own model looks at a screenshot, decides, acts and looks again, until it stops. You wait for the answer, and the model inside the tool is the one driving.</p>
+        </div>
+        <div class="arch-comparison-item">
       <h3>Solid state</h3>
       <p>Your agent keeps the wheel. The site is compiled into operations once, by rules alone; the agent calls them and reads the evidence. No model in the compiler, so a site the engine has never seen takes no model call to compile.</p>
+        </div>
+      </div>
     </aside>
     <div class="arch-stack">
       <div class="rail">how it works</div>
