@@ -16,7 +16,7 @@ body{margin:0;min-height:100svh;display:grid;grid-template-rows:auto 1fr auto;ba
 a{color:inherit}p,h1,h2{margin:0}a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 .top{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;padding-block:1.1rem;border-bottom:1px solid var(--rule)}
 .brand{display:flex;align-items:center;gap:.3rem;text-decoration:none}.brand img{height:2.6rem;width:auto;display:block}.brand b{font:600 1.25rem/1 var(--font-display);letter-spacing:.3em;text-transform:uppercase}
-.top nav{display:flex;gap:1.5rem;font:.75rem var(--font-mono);color:var(--fg-2)}.top nav a{text-decoration:none}.top nav a:hover,.top nav a[aria-current]{color:var(--accent)}
+.home-button{display:inline-flex;align-items:center;justify-content:center;gap:.65rem;flex:none;min-height:44px;padding:.75rem 1.25rem;border-radius:2px;background:var(--accent);color:var(--bg);font:500 .78rem/1.3 var(--font-mono);letter-spacing:.06em;text-decoration:none}.home-button:hover{background:#d7b176}.home-button .arrow{font-size:1.2rem;line-height:1}
 main{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:clamp(2.5rem,7vw,7rem);align-items:center;width:100%;max-width:1240px;margin-inline:auto;padding-block:clamp(1.5rem,5vh,3.5rem)}
 .motto{font:.72rem/1.5 var(--font-mono);letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem}
 h1{font:500 clamp(2.3rem,4.8vw,4.5rem)/1.12 var(--font-display);letter-spacing:.01em}h1 span{display:block}
@@ -32,7 +32,7 @@ h1{font:500 clamp(2.3rem,4.8vw,4.5rem)/1.12 var(--font-display);letter-spacing:.
 footer{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;border-top:1px solid var(--rule);padding-block:1rem max(1rem,env(safe-area-inset-bottom,0px));font:.7rem/1.5 var(--font-mono);color:var(--fg-2)}footer a{text-decoration:none}footer a:hover{color:var(--accent)}
 .cursor{animation:blink 1.1s steps(1) infinite}@keyframes blink{50%{opacity:0}}@media(prefers-reduced-motion:reduce){.cursor{animation:none}}
 @media(max-width:900px){
- .top{padding-block:.85rem}.brand img{height:2rem}.brand b{font-size:1rem}.top nav{gap:0}.top nav a:not(:first-child){display:none}
+ .top{padding-block:.85rem}.brand img{height:2rem}.brand b{font-size:1rem}.home-button{padding:.65rem 1rem;font-size:.72rem}
  main{grid-template-columns:minmax(0,1fr);align-content:center;gap:1.4rem;padding-block:1.4rem;max-width:34rem}
  .motto{font-size:.65rem;margin-bottom:.6rem}h1{font-size:clamp(1.8rem,6.8vw,2.8rem);line-height:1.12}h1 span{display:block}
  .lede{margin-top:.65rem;font-size:.95rem;line-height:1.5}.features{margin-top:.8rem;padding-top:.7rem;display:flex;gap:.45rem 1rem;flex-wrap:wrap;font-size:.75rem}.features .detail{display:none}
@@ -40,13 +40,13 @@ footer{display:flex;justify-content:space-between;align-items:center;gap:1rem;fl
  footer{font-size:.62rem;padding-block:.8rem;gap:.5rem}
 }
 @media(max-height:740px) and (min-width:901px){main{padding-block:1.25rem}h1{font-size:clamp(2.2rem,4vw,3.7rem)}.features{margin-top:1rem;padding-top:.8rem}.lede{margin-top:1rem}.box{padding:1rem 1.2rem}}
-@media(max-height:720px) and (max-width:900px){main{gap:.8rem;padding-block:.55rem}.features{margin-top:.65rem;padding-top:.55rem}.box{padding:.8rem 1rem}.lede{font-size:.88rem}.top{padding-block:.7rem}.hint{font-size:.72rem}}
+@media(max-height:720px) and (max-width:900px){main{gap:.8rem;padding-block:.55rem}.features{margin-top:.65rem;padding-top:.55rem}.box{padding:.8rem 1rem}.lede{font-size:.88rem}.top{padding-block:.4rem}.hint{font-size:.72rem}}
 </style>
 </head>
 <body>
 <header class="top">
   <a class="brand" href="../" aria-label="Protocolis home"><img src="../glyph.svg" alt=""><b aria-hidden="true">rotocolis</b></a>
-  <nav aria-label="Site"><a href="../">home</a><a href="../#acquisition">acquisition</a><a href="./" aria-current="page">platform</a></nav>
+  <a class="home-button" href="../" aria-label="Back to home"><span class="arrow" aria-hidden="true">←</span> Home</a>
 </header>
 <main aria-labelledby="platform-title">
   <section class="intro">
