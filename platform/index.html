@@ -9,128 +9,72 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
 <style>
-/* The main page's tokens and section layout, for one page. Basalt, marble, bronze. */
-:root{
-  --bg:#0f1114;
-  --fg:#ece8df;
-  --fg-2:#a7a297;
-  --rule:rgba(236,232,223,.13);
-  --accent:#c9a061;
-  --accent-ink:#0f1114;
-  --gut:clamp(16px,5vw,96px);
-  --font-display:"Cinzel",Georgia,serif;
-  --font-body:"Instrument Sans","Helvetica Neue",Arial,sans-serif;
-  --font-mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
-  color-scheme:dark;
-}
+:root{--bg:#0f1114;--panel:#15181d;--fg:#ece8df;--fg-2:#aaa59a;--rule:rgba(236,232,223,.13);--accent:#c9a061;--gut:clamp(20px,5vw,96px);--font-display:"Cinzel",Georgia,serif;--font-body:"Instrument Sans","Helvetica Neue",Arial,sans-serif;--font-mono:"JetBrains Mono",ui-monospace,Menlo,monospace;color-scheme:dark}
 *{box-sizing:border-box}
 html{background:var(--bg);-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size:17px;line-height:1.6;
-  padding-left:max(var(--gut),env(safe-area-inset-left,0px));padding-right:max(var(--gut),env(safe-area-inset-right,0px))}
-a{color:inherit}
-h1,h2,h3{margin:0;font-weight:500;text-wrap:balance}
-p{margin:0}
-.top{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;padding-block:1.1rem;border-bottom:1px solid var(--rule)}
-.brand{display:flex;align-items:center;gap:.3rem;text-decoration:none}
-.brand img{height:2.6rem;width:auto;display:block}
-.brand b{font-family:var(--font-display);font-weight:600;letter-spacing:.3em;font-size:1.25rem;text-transform:uppercase;line-height:1}
-.top nav{display:flex;gap:1.75rem;flex-wrap:wrap;font-family:var(--font-mono);font-size:.78rem;color:var(--fg-2)}
-.top nav a{text-decoration:none;letter-spacing:.05em}
-.top nav a:hover,.top nav a:focus-visible,.top nav a[aria-current]{color:var(--accent)}
-.hero{padding-block:clamp(2.5rem,5vw,4.5rem) clamp(3rem,6vw,5rem);border-bottom:1px solid var(--rule)}
-.motto{font-family:var(--font-mono);font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:1.6rem}
-.hero h1{font-family:var(--font-display);font-size:clamp(2.1rem,4.4vw,3.9rem);line-height:1.08;letter-spacing:.01em;max-width:58rem}
-.lede{font-size:clamp(1.05rem,1.3vw,1.25rem);color:var(--fg-2);margin-top:1.75rem;max-width:46rem}
-.actions{display:flex;gap:.75rem;flex-wrap:wrap;margin-top:2.25rem}
-.btn{display:inline-block;font-family:var(--font-mono);font-size:.75rem;letter-spacing:.16em;text-transform:uppercase;text-decoration:none;padding:.8rem 1.4rem;font-weight:500}
-.btn.primary{background:var(--accent);color:var(--accent-ink)}
-.btn.primary:hover{filter:brightness(1.1)}
-.btn.quiet{border:1px solid var(--rule);color:var(--fg)}
-.btn.quiet:hover{border-color:var(--accent);color:var(--accent)}
-a:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
-.sec{padding-block:clamp(3rem,6vw,5.5rem);border-bottom:1px solid var(--rule)}
-.rail{font-family:var(--font-mono);font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--fg-2);margin-bottom:1.1rem}
-.rail b{color:var(--accent);font-weight:500;margin-right:.6rem}
-.sec h2{font-family:var(--font-display);font-size:clamp(1.6rem,3vw,2.8rem);line-height:1.1;letter-spacing:.01em}
-.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:2rem clamp(2rem,5vw,5rem);margin-top:2.5rem}
-.grid h3{font-family:var(--font-display);font-size:1.15rem;letter-spacing:.02em;color:var(--fg)}
-.grid p{color:var(--fg-2);font-size:1.02rem;margin-top:.45rem}
-.stages{list-style:none;margin:2.5rem 0 0;padding:0;display:grid;gap:1.4rem;max-width:46rem}
-.stages li{display:grid;grid-template-columns:3rem 1fr;gap:1rem;align-items:baseline}
-.stages .num{font-family:var(--font-display);color:var(--accent);font-size:1.6rem}
-.stages b{font-weight:600}
-.stages p{color:var(--fg-2);font-size:.98rem;margin-top:.2rem}
-.note{font-family:var(--font-mono);font-size:.74rem;color:var(--fg-2);margin-top:2.25rem;max-width:58rem;line-height:1.7}
-.access{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;margin-top:2.25rem;max-width:58rem}
-.box{border:1px solid var(--rule);padding:1.3rem}
-.box label{display:block;font-family:var(--font-mono);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--fg-2);margin-bottom:.7rem}
-.box .row{display:flex;gap:.5rem}
-.box input{flex:1;min-width:0;background:transparent;border:1px solid var(--rule);color:var(--fg);font:inherit;font-size:1rem;padding:.7rem .8rem;border-radius:0}
-.box input:focus{outline:none;border-color:var(--accent)}
-.box button{border:0;cursor:pointer;white-space:nowrap}
-.hint{font-size:.88rem;color:var(--fg-2);margin-top:.7rem}
-.msg{font-size:.95rem;margin-top:1.75rem;padding:.7rem .9rem;border:1px solid var(--rule);max-width:58rem}
-.msg.ok{color:#9fc79a}.msg.bad{color:#e08a7a}
-@media (max-width:760px){.access{grid-template-columns:minmax(0,1fr)}}
-footer{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;padding-block:1.75rem 2.5rem;font-family:var(--font-mono);font-size:.75rem;color:var(--fg-2)}
-.cursor{animation:blink 1.1s steps(1) infinite}
-@keyframes blink{50%{opacity:0}}
-@media (prefers-reduced-motion:reduce){.cursor{animation:none}}
-@media (max-width:760px){.grid{grid-template-columns:minmax(0,1fr)}.top nav{gap:1.1rem}}
+body{margin:0;min-height:100svh;display:grid;grid-template-rows:auto 1fr auto;background:var(--bg);color:var(--fg);font:17px/1.6 var(--font-body);padding-inline:max(var(--gut),env(safe-area-inset-left,0px)) max(var(--gut),env(safe-area-inset-right,0px))}
+a{color:inherit}p,h1,h2{margin:0}a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.top{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;padding-block:1.1rem;border-bottom:1px solid var(--rule)}
+.brand{display:flex;align-items:center;gap:.3rem;text-decoration:none}.brand img{height:2.6rem;width:auto;display:block}.brand b{font:600 1.25rem/1 var(--font-display);letter-spacing:.3em;text-transform:uppercase}
+.top nav{display:flex;gap:1.5rem;font:.75rem var(--font-mono);color:var(--fg-2)}.top nav a{text-decoration:none}.top nav a:hover,.top nav a[aria-current]{color:var(--accent)}
+main{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:clamp(2.5rem,7vw,7rem);align-items:center;width:100%;max-width:1240px;margin-inline:auto;padding-block:clamp(1.5rem,5vh,3.5rem)}
+.motto{font:.72rem/1.5 var(--font-mono);letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem}
+h1{font:500 clamp(2.3rem,4.8vw,4.5rem)/1.12 var(--font-display);letter-spacing:.01em}h1 span{display:block}
+.lede{max-width:32rem;margin-top:1.3rem;font-size:clamp(1rem,1.25vw,1.15rem);color:var(--fg-2);line-height:1.6}
+.features{list-style:none;margin:1.75rem 0 0;padding:1.25rem 0 0;border-top:1px solid var(--rule);display:grid;gap:.65rem;font-size:.9rem;color:var(--fg-2)}.features b{font-weight:600;color:var(--fg)}.features .detail{margin-left:.2em}
+.access{min-width:0}.access-heading{font:500 1.35rem/1.3 var(--font-display);margin-bottom:1rem}
+.box{margin:0;background:var(--panel);border:1px solid var(--rule);padding:1.25rem 1.4rem}.box+.box{margin-top:.9rem}.box:first-of-type{border-top:2px solid var(--accent)}
+.box label{display:block;font:.7rem/1.5 var(--font-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--fg);margin-bottom:.65rem}.row{display:flex;gap:.5rem}
+.box input{flex:1;min-width:0;width:0;border:1px solid var(--rule);background:var(--bg);color:var(--fg);font:1rem/1.4 var(--font-body);padding:.7rem .8rem;border-radius:2px}.box input::placeholder{color:#8f8b83}.box input:focus{border-color:var(--accent)}
+.btn{border:0;border-radius:2px;cursor:pointer;white-space:nowrap;background:var(--accent);color:var(--bg);font:500 .72rem/1.4 var(--font-mono);letter-spacing:.08em;text-transform:uppercase;padding:.7rem 1rem}.btn:hover{background:#d7b176}
+.hint{font-size:.82rem;line-height:1.5;color:var(--fg-2);margin-top:.65rem}.privacy{font-size:.8rem;color:var(--fg-2);line-height:1.5;margin-top:.9rem}.privacy b{font-weight:500;color:var(--fg)}
+.msg{font-size:.88rem;line-height:1.5;margin-bottom:.9rem;padding:.7rem .85rem;border:1px solid var(--rule)}.msg.ok{color:#b3d4ac}.msg.bad{color:#f0ac9e}
+footer{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;border-top:1px solid var(--rule);padding-block:1rem max(1rem,env(safe-area-inset-bottom,0px));font:.7rem/1.5 var(--font-mono);color:var(--fg-2)}footer a{text-decoration:none}footer a:hover{color:var(--accent)}
+.cursor{animation:blink 1.1s steps(1) infinite}@keyframes blink{50%{opacity:0}}@media(prefers-reduced-motion:reduce){.cursor{animation:none}}
+@media(max-width:900px){
+ .top{padding-block:.85rem}.brand img{height:2rem}.brand b{font-size:1rem}.top nav{gap:0}.top nav a:not(:first-child){display:none}
+ main{grid-template-columns:minmax(0,1fr);align-content:center;gap:1.4rem;padding-block:1.4rem;max-width:34rem}
+ .motto{font-size:.65rem;margin-bottom:.6rem}h1{font-size:clamp(1.8rem,6.8vw,2.8rem);line-height:1.12}h1 span{display:block}
+ .lede{margin-top:.65rem;font-size:.95rem;line-height:1.5}.features{margin-top:.8rem;padding-top:.7rem;display:flex;gap:.45rem 1rem;flex-wrap:wrap;font-size:.75rem}.features .detail{display:none}
+ .access-heading{font-size:1.12rem;margin-bottom:.7rem}.box{padding:1rem}.box+.box{margin-top:.65rem}.box label{margin-bottom:.45rem}.box input{padding:.6rem .7rem}.btn{padding:.6rem .8rem}.hint{font-size:.75rem;margin-top:.5rem}.privacy{font-size:.75rem;margin-top:.7rem}
+ footer{font-size:.62rem;padding-block:.8rem;gap:.5rem}
+}
+@media(max-height:740px) and (min-width:901px){main{padding-block:1.25rem}h1{font-size:clamp(2.2rem,4vw,3.7rem)}.features{margin-top:1rem;padding-top:.8rem}.lede{margin-top:1rem}.box{padding:1rem 1.2rem}}
+@media(max-height:720px) and (max-width:900px){main{gap:.8rem;padding-block:.55rem}.features{margin-top:.65rem;padding-top:.55rem}.box{padding:.8rem 1rem}.lede{font-size:.88rem}.top{padding-block:.7rem}.hint{font-size:.72rem}}
 </style>
 </head>
 <body>
-
 <header class="top">
   <a class="brand" href="../" aria-label="Protocolis home"><img src="../glyph.svg" alt=""><b aria-hidden="true">rotocolis</b></a>
-  <nav aria-label="Site">
-    <a href="../">home</a>
-    <a href="../#acquisition">acquisition</a>
-    <a href="./" aria-current="page">platform</a>
-    <a href="../#contact">contact</a>
-  </nav>
+  <nav aria-label="Site"><a href="../">home</a><a href="../#acquisition">acquisition</a><a href="./" aria-current="page">platform</a></nav>
 </header>
-
-<section class="hero">
-  <p class="motto">Evaluation platform</p>
-  <h1>Try Protocolis with your own agents, on your own tasks.</h1>
-  <p class="lede">Enter your work email and we send you an access key. Your team gets its own hosted workspace: give the agent a task in chat, choose the model, and create keys to call Protocolis from your own terminal.</p>
-  <p class="msg" id="msg" hidden></p>
-  <div class="access">
+<main aria-labelledby="platform-title">
+  <section class="intro">
+    <p class="motto">Evaluation platform</p>
+    <h1 id="platform-title"><span>Your agents.</span><span>Your tasks.</span></h1>
+    <p class="lede">Try Protocolis in your team’s own workspace. Give the agent a task, choose your model, or connect from your terminal.</p>
+    <ul class="features" aria-label="Workspace capabilities">
+      <li><b>Hosted agent</b><span class="detail"> · Nothing to install.</span></li>
+      <li><b>Model choice</b><span class="detail"> · Bring your own provider key.</span></li>
+      <li><b>Developer keys</b><span class="detail"> · Run from your terminal, script or agent.</span></li>
+    </ul>
+  </section>
+  <section class="access" aria-labelledby="access-title">
+    <h2 class="access-heading" id="access-title">One company, one workspace.</h2>
+    <p class="msg" id="msg" role="status" aria-live="polite" hidden></p>
     <form class="box" method="post" action="https://app.protocolis.co/protocolis/request?from=site">
-      <label for="email">Work email</label>
-      <div class="row"><input id="email" name="email" type="email" autocomplete="email" required placeholder="you@company.com"><button class="btn primary">Send key</button></div>
-      <p class="hint">Colleagues at your company share one workspace.</p>
+      <label for="email">Get an access key</label>
+      <div class="row"><input id="email" name="email" type="email" autocomplete="email" aria-label="Work email" required placeholder="you@company.com"><button class="btn primary" type="submit">Send key</button></div>
+      <p class="hint">Use your work email. We’ll send your key to your inbox.</p>
     </form>
     <form class="box" method="post" action="https://app.protocolis.co/protocolis/enter?from=site">
-      <label for="key">Access key</label>
-      <div class="row"><input id="key" name="key" autocomplete="off" required placeholder="prk_…" spellcheck="false"><button class="btn primary">Enter</button></div>
-      <p class="hint">Already have a key? Enter it to open your workspace.</p>
+      <label for="key">Already have a key?</label>
+      <div class="row"><input id="key" name="key" type="password" autocomplete="off" required placeholder="Access key" spellcheck="false"><button class="btn primary" type="submit">Enter</button></div>
+      <p class="hint">Lost your key? Request a new one with the same email.</p>
     </form>
-  </div>
-</section>
-
-<section class="sec">
-  <div class="rail"><b>01</b>what your team receives</div>
-  <h2>One company, one workspace.</h2>
-  <div class="grid">
-    <div><h3>A hosted agent</h3><p>Give it a task in chat and watch it work. Nothing to install and no model key needed to start.</p></div>
-    <div><h3>Your choice of model</h3><p>Pick the model for each chat, or connect your own provider key in settings.</p></div>
-    <div><h3>Developer keys</h3><p>Create keys in your workspace and call Protocolis from your own terminal, script or agent. Revoke them at any time.</p></div>
-    <div><h3>Confidential by default</h3><p>No company sees another's name, chats or results.</p></div>
-  </div>
-</section>
-
-<section class="sec">
-  <div class="rail"><b>02</b>how access works</div>
-  <h2>A work email is all it takes.</h2>
-  <ol class="stages">
-    <li><span class="num">I</span><div><b>Request</b><p>Enter your work email above. Your access key arrives by email.</p></div></li>
-    <li><span class="num">II</span><div><b>Enter</b><p>Paste the key and your workspace opens. If you lose it, request a new one with the same address.</p></div></li>
-    <li><span class="num">III</span><div><b>Run</b><p>Run your own tasks. Access can be extended or ended on request.</p></div></li>
-  </ol>
-  <p class="note">The platform is for companies evaluating Protocolis. Questions: hello@protocolis.co.</p>
-</section>
+    <p class="privacy"><b>Confidential by default.</b> Your company’s chats and results stay in your workspace.</p>
+  </section>
+</main>
 <script>
 (() => {
   const q = new URLSearchParams(location.search), m = document.getElementById('msg');
@@ -142,11 +86,6 @@ footer{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;paddin
   if (hit) { m.className = 'msg ' + hit[0]; m.textContent = hit[1]; m.hidden = false; }
 })();
 </script>
-
-<footer>
-  <span>protocolis<span class="cursor">_</span> · patent pending</span>
-  <span>new york</span>
-</footer>
-
+<footer><span>protocolis<span class="cursor">_</span> · patent pending</span><a href="mailto:hello@protocolis.co">hello@protocolis.co</a></footer>
 </body>
 </html>
