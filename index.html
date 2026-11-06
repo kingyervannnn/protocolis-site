@@ -254,7 +254,7 @@ a.chip.patent-status:hover,a.chip.patent-status:focus-visible{background:rgb(236
 }
 
 /* A readable transition from the modes into their demonstration. */
-#modes{border-bottom:0;padding-bottom:1.25rem}
+#modes{border-bottom:0;padding-bottom:clamp(2.5rem,4vw,4rem)}
 .demo-process{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.5rem 2.5rem;padding-block:clamp(1.5rem,3vw,2.5rem) 1.25rem;color:var(--fg-2);font-size:1rem;line-height:1.6}
 .demo-process strong{display:block;font-family:var(--font-display);font-size:clamp(1.35rem,1.8vw,1.65rem);line-height:1.25;color:var(--accent);font-weight:500;letter-spacing:.02em;margin-bottom:.4rem}
 .demo-process p{max-width:30rem}
@@ -285,12 +285,7 @@ a.chip.patent-status:hover,a.chip.patent-status:focus-visible{background:rgb(236
 @media (max-width:900px){.cbar .cnav{margin:0 auto}}
 .cbar button{background:none;border:1px solid var(--rule);color:var(--fg-2);font-family:var(--font-mono);font-size:.74rem;letter-spacing:.06em;padding:.4rem .75rem;cursor:pointer}
 .ctabs button{color:var(--fg);font-size:.8rem}
-.cbar button.on{border-color:var(--accent);color:var(--accent)}
-.ctabs button.hot{position:relative;border-color:#3ccf7a;color:#7fe0a6;background:rgba(60,207,122,.08);box-shadow:0 0 0 0 rgba(60,207,122,.5);animation:hotpulse 2.4s ease-out infinite}
-.ctabs button.hot.on{background:var(--accent);color:var(--accent-ink);animation:none}
-.ctabs button.hot .new{position:absolute;top:-.55rem;right:-.45rem;background:#e5484d;color:#fff;font-size:.56rem;letter-spacing:.08em;text-transform:uppercase;padding:.08rem .32rem;border-radius:.5rem;line-height:1.2}
-@keyframes hotpulse{0%{box-shadow:0 0 0 0 rgba(60,207,122,.5)}70%{box-shadow:0 0 0 .55rem rgba(60,207,122,0)}100%{box-shadow:0 0 0 0 rgba(60,207,122,0)}}
-@media (prefers-reduced-motion:reduce){.ctabs button.hot{animation:none}}
+.cbar button.on{border-color:#896532;background:#896532;color:#fff}
 .cbar button:hover{border-color:var(--accent)}
 .slide.soon .ph{font-size:1rem;letter-spacing:.12em;text-transform:uppercase}
 .slide[hidden]{display:none}
@@ -323,7 +318,8 @@ a.chip.patent-status:hover,a.chip.patent-status:focus-visible{background:rgb(236
 .demo-ready .carousel > .track{min-width:0;position:relative}
 .demo-ready .slide > .cap{display:none}
 .demo-sidebar{min-width:0}
-#demo .demo-sidebar h2{font-size:clamp(1.4rem,2vw,2rem);line-height:1.2;margin:0 0 1rem}
+#demo .demo-sidebar h2{font-size:clamp(1.4rem,2vw,2rem);line-height:1.2;margin:0 0 1rem;height:2.4em}
+#demo .demo-sidebar h2 span{display:block;white-space:nowrap}
 .demo-caption.cap{margin:0}
 .demo-sidebar .cr{gap:.45rem;padding:.55rem .6rem}
 .demo-sidebar .cres{font-size:.74rem}
@@ -704,9 +700,8 @@ body .sec.arch-sec h2{font-family:var(--font-display);font-size:clamp(1.35rem,2.
 
 
 <section class="sec" id="demo">
-  <div class="rail"><b>01</b>demonstration</div>
   <div>
-    <h2>Same task. Same model. Head to head.</h2>
+    <h2><span>Same task.</span><span>Head to head.</span></h2>
     <div class="demo-grid">
     <div class="carousel" aria-roledescription="carousel">
         <div class="track" tabindex="0">
@@ -913,7 +908,7 @@ body .sec.arch-sec h2{font-family:var(--font-display);font-size:clamp(1.35rem,2.
         </div>
         <div class="cbar">
           <div class="ctabs" role="tablist" aria-label="Opponent">
-        <button data-opp="jev" class="hot">Ultrafast agents<span class="new">New</span></button><button data-opp="pwm" class="hot">Stagehand + Playwright MCP<span class="new">New</span></button><button data-opp="dvg">David vs Goliath</button><button data-opp="harness" class="on">Browser Harness</button><button data-opp="agent">Browser Use agent</button><button data-opp="tools">Browser Use tools mode</button><button data-opp="broker">Broker workflow</button>
+        <button data-opp="jev">Ultrafast agents</button><button data-opp="pwm">Stagehand + Playwright MCP</button><button data-opp="dvg">David vs Goliath</button><button data-opp="harness" class="on">Browser Harness</button><button data-opp="agent">Browser Use agent</button><button data-opp="tools">Browser Use tools mode</button><button data-opp="broker">Broker workflow</button>
       </div>
           <div class="ctiers" role="tablist" aria-label="Model tier">
         <button data-tier="all" class="on">All</button><button data-tier="frontier">Frontier</button><button data-tier="strong">Strong</button><button data-tier="weak">Weak</button>
@@ -1447,20 +1442,19 @@ function showDetails(s){
  context.textContent=contextByGroup[group]||'';
  all.forEach(function(slide){var video=slide.querySelector('video');if(video)video.removeAttribute('aria-describedby')});if(v)v.setAttribute('aria-describedby',caption.id);
  if(group==='broker'){
-  heading.textContent='The broker at work.';
+  heading.innerHTML='<span>The broker</span><span>at work.</span>';
   var hermes=v&&/hermes/.test(v.getAttribute('src'));
   meta.textContent=hermes?'4× playback · Demo vault · Concept build':'48 s · Waits cut';
   if(hermes)context.textContent+=' Hermes concept build; not a Nous Research product.';
   if(cap){var b=cap.querySelector('b');caption.textContent=b?b.textContent:cap.textContent}
  }else{
-  heading.textContent=group==='dvg'?'Different models. Same task. Head to head.':'Same task. Same model. Head to head.';
+  heading.innerHTML=group==='dvg'?'<span>Different models.</span><span>Head to head.</span>':'<span>Same task.</span><span>Head to head.</span>';
   var rate=v?(/demo\.mp4/.test(v.getAttribute('src'))?1:(parseFloat(v.dataset.rate)||4)):1;
   meta.textContent=(group==='pwm'?'Saved-run replay':'Recorded run')+' · '+(rate===1?'Real-time playback':rate+'× playback')+' · Clocks show real time · Selected runs';
   if(group==='pwm'&&cap&&/Auto/.test(cap.textContent))context.textContent+=' Auto in the video means Adaptive.';
   if(group==='jev'){
    var jev=cap&&/Jev/.test(cap.textContent);
    context.textContent=(jev?'Same small choice model, no large model; fresh browsers on one Mac.':'Browser Use Cloud uses its own model and servers; Protocolis runs on one Mac.')+' '+context.textContent;
-   if(!jev)heading.textContent='Same task. Head to head.';
   }
  }
 }
