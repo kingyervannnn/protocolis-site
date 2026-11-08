@@ -2,93 +2,13 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Protocolis · Evaluation platform</title>
-<meta name="description" content="The Protocolis evaluation platform: enter your work email for an access key, then run your own tasks on a hosted workspace.">
-<link rel="icon" type="image/svg+xml" href="../glyph.svg">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
-<style>
-:root{--bg:#0f1114;--panel:#15181d;--fg:#ece8df;--fg-2:#aaa59a;--rule:rgba(236,232,223,.13);--accent:#c9a061;--gut:clamp(20px,5vw,96px);--font-display:"Cinzel",Georgia,serif;--font-body:"Instrument Sans","Helvetica Neue",Arial,sans-serif;--font-mono:"JetBrains Mono",ui-monospace,Menlo,monospace;color-scheme:dark}
-*{box-sizing:border-box}
-html{background:var(--bg);-webkit-text-size-adjust:100%}
-body{margin:0;min-height:100svh;display:grid;grid-template-rows:auto 1fr auto;background:var(--bg);color:var(--fg);font:17px/1.6 var(--font-body);padding-inline:max(var(--gut),env(safe-area-inset-left,0px)) max(var(--gut),env(safe-area-inset-right,0px))}
-/* Same 72px grid as the homepage, at half strength and without motion. */
-body{isolation:isolate}
-body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background-image:linear-gradient(rgba(201,160,97,.0375) 1px,transparent 1px),linear-gradient(90deg,rgba(201,160,97,.0375) 1px,transparent 1px);background-size:72px 72px;background-position:center center;-webkit-mask-image:radial-gradient(ellipse at 50% 38%,#000 20%,transparent 80%);mask-image:radial-gradient(ellipse at 50% 38%,#000 20%,transparent 80%)}
-a{color:inherit}p,h1,h2{margin:0}a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
-.top{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;padding-block:1.1rem;border-bottom:1px solid var(--rule)}
-.brand{display:flex;align-items:center;gap:.3rem;text-decoration:none}.brand img{height:2.6rem;width:auto;display:block}.brand b{font:600 1.25rem/1 var(--font-display);letter-spacing:.3em;text-transform:uppercase}
-.home-button{display:inline-flex;align-items:center;justify-content:center;gap:.65rem;flex:none;min-height:44px;padding:.75rem 1.25rem;border-radius:2px;background:var(--accent);color:var(--bg);font:500 .78rem/1.3 var(--font-mono);letter-spacing:.06em;text-decoration:none}.home-button:hover{background:#d7b176}.home-button .arrow{font-size:1.2rem;line-height:1}
-main{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:clamp(2.5rem,7vw,7rem);align-items:center;width:100%;max-width:1240px;margin-inline:auto;padding-block:clamp(1.5rem,5vh,3.5rem)}
-.motto{font:.72rem/1.5 var(--font-mono);letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem}
-h1{font:500 clamp(2.3rem,4.8vw,4.5rem)/1.12 var(--font-display);letter-spacing:.01em}h1 span{display:block}
-.lede{max-width:32rem;margin-top:1.3rem;font-size:clamp(1rem,1.25vw,1.15rem);color:var(--fg-2);line-height:1.6}
-.features{list-style:none;margin:1.75rem 0 0;padding:1.25rem 0 0;border-top:1px solid var(--rule);display:grid;gap:.65rem;font-size:.9rem;color:var(--fg-2)}.features b{font-weight:600;color:var(--fg)}.features .detail{margin-left:.2em}
-.access{min-width:0}.access-heading{font:500 1.35rem/1.3 var(--font-display);margin-bottom:1rem}
-.box{margin:0;background:var(--panel);border:1px solid var(--rule);padding:1.25rem 1.4rem}.box+.box{margin-top:.9rem}.box:first-of-type{border-top:2px solid var(--accent)}
-.box label{display:block;font:.7rem/1.5 var(--font-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--fg);margin-bottom:.65rem}.row{display:flex;gap:.5rem}
-.box input{flex:1;min-width:0;width:0;border:1px solid var(--rule);background:var(--bg);color:var(--fg);font:1rem/1.4 var(--font-body);padding:.7rem .8rem;border-radius:2px}.box input::placeholder{color:#8f8b83}.box input:focus{border-color:var(--accent)}
-.btn{border:0;border-radius:2px;cursor:pointer;white-space:nowrap;background:var(--accent);color:var(--bg);font:500 .72rem/1.4 var(--font-mono);letter-spacing:.08em;text-transform:uppercase;padding:.7rem 1rem}.btn:hover{background:#d7b176}
-.hint{font-size:.82rem;line-height:1.5;color:var(--fg-2);margin-top:.65rem}.privacy{font-size:.8rem;color:var(--fg-2);line-height:1.5;margin-top:.9rem}.privacy b{font-weight:500;color:var(--fg)}
-.msg{font-size:.88rem;line-height:1.5;margin-bottom:.9rem;padding:.7rem .85rem;border:1px solid var(--rule)}.msg.ok{color:#b3d4ac}.msg.bad{color:#f0ac9e}
-footer{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;border-top:1px solid var(--rule);padding-block:1rem max(1rem,env(safe-area-inset-bottom,0px));font:.7rem/1.5 var(--font-mono);color:var(--fg-2)}footer a{text-decoration:none}footer a:hover{color:var(--accent)}
-.cursor{animation:blink 1.1s steps(1) infinite}@keyframes blink{50%{opacity:0}}@media(prefers-reduced-motion:reduce){.cursor{animation:none}}
-@media(max-width:900px){
- .top{padding-block:.85rem}.brand img{height:2rem}.brand b{font-size:1rem}.home-button{padding:.65rem 1rem;font-size:.72rem}
- main{grid-template-columns:minmax(0,1fr);align-content:center;gap:1.4rem;padding-block:1.4rem;max-width:34rem}
- .motto{font-size:.65rem;margin-bottom:.6rem}h1{font-size:clamp(1.8rem,6.8vw,2.8rem);line-height:1.12}h1 span{display:block}
- .lede{margin-top:.65rem;font-size:.95rem;line-height:1.5}.features{margin-top:.8rem;padding-top:.7rem;display:flex;gap:.45rem 1rem;flex-wrap:wrap;font-size:.75rem}.features .detail{display:none}
- .access-heading{font-size:1.12rem;margin-bottom:.7rem}.box{padding:1rem}.box+.box{margin-top:.65rem}.box label{margin-bottom:.45rem}.box input{padding:.6rem .7rem}.btn{padding:.6rem .8rem}.hint{font-size:.75rem;margin-top:.5rem}.privacy{font-size:.75rem;margin-top:.7rem}
- footer{font-size:.62rem;padding-block:.8rem;gap:.5rem}
-}
-@media(max-height:740px) and (min-width:901px){main{padding-block:1.25rem}h1{font-size:clamp(2.2rem,4vw,3.7rem)}.features{margin-top:1rem;padding-top:.8rem}.lede{margin-top:1rem}.box{padding:1rem 1.2rem}}
-@media(max-height:720px) and (max-width:900px){main{gap:.8rem;padding-block:.55rem}.features{margin-top:.65rem;padding-top:.55rem}.box{padding:.8rem 1rem}.lede{font-size:.88rem}.top{padding-block:.4rem}.hint{font-size:.72rem}}
-</style>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="refresh" content="0;url=https://app.protocolis.co/">
+<meta name="robots" content="noindex,follow">
+<link rel="canonical" href="https://app.protocolis.co/">
+<title>Protocolis · Platform</title>
+<script>location.replace('https://app.protocolis.co/' + location.search + location.hash);</script>
+<style>html{color-scheme:dark;background:#0f1114;color:#ece8df;font:16px/1.5 Arial,sans-serif}body{display:grid;place-items:center;min-height:90vh;margin:0}a{color:#c9a061}</style>
 </head>
-<body>
-<header class="top">
-  <a class="brand" href="../" aria-label="Protocolis home"><img src="../glyph.svg" alt=""><b aria-hidden="true">rotocolis</b></a>
-  <a class="home-button" href="../" aria-label="Back to home"><span class="arrow" aria-hidden="true">←</span> Home</a>
-</header>
-<main aria-labelledby="platform-title">
-  <section class="intro">
-    <p class="motto">Evaluation platform</p>
-    <h1 id="platform-title"><span>Your agents.</span><span>Your tasks.</span></h1>
-    <p class="lede">Try Protocolis in your team’s own workspace. Give the agent a task, choose your model, or connect from your terminal.</p>
-    <ul class="features" aria-label="Workspace capabilities">
-      <li><b>Hosted agent</b><span class="detail"> · Nothing to install.</span></li>
-      <li><b>Model choice</b><span class="detail"> · Bring your own provider key.</span></li>
-      <li><b>Developer keys</b><span class="detail"> · Run from your terminal, script or agent.</span></li>
-    </ul>
-  </section>
-  <section class="access" aria-labelledby="access-title">
-    <h2 class="access-heading" id="access-title">One company, one workspace.</h2>
-    <p class="msg" id="msg" role="status" aria-live="polite" hidden></p>
-    <form class="box" method="post" action="https://app.protocolis.co/protocolis/request?from=site">
-      <label for="email">Get an access key</label>
-      <div class="row"><input id="email" name="email" type="email" autocomplete="email" aria-label="Work email" required placeholder="you@company.com"><button class="btn primary" type="submit">Send key</button></div>
-      <p class="hint">Use your work email. We’ll send your key to your inbox.</p>
-    </form>
-    <form class="box" method="post" action="https://app.protocolis.co/protocolis/enter?from=site">
-      <label for="key">Already have a key?</label>
-      <div class="row"><input id="key" name="key" type="password" autocomplete="off" required placeholder="Access key" spellcheck="false"><button class="btn primary" type="submit">Enter</button></div>
-      <p class="hint">Lost your key? Request a new one with the same email.</p>
-    </form>
-    <p class="privacy"><b>Confidential by default.</b> Your company’s chats and results stay in your workspace.</p>
-  </section>
-</main>
-<script>
-(() => {
-  const q = new URLSearchParams(location.search), m = document.getElementById('msg');
-  const text = { sent: ['ok', 'Check your inbox for your access key.'], key: ['bad', 'That key is not valid. Request a new one with your work email.'],
-    work: ['bad', 'Please use your work email address.'], email: ['bad', 'Enter a valid work email address.'],
-    slow: ['bad', 'Too many attempts. Please try again later.'], send: ['bad', 'We could not send the email. Please try again shortly.'],
-    closed: ['bad', 'Key requests open soon. Write to hello@protocolis.co for access.'] };
-  const hit = q.get('sent') ? text.sent : text[q.get('error')];
-  if (hit) { m.className = 'msg ' + hit[0]; m.textContent = hit[1]; m.hidden = false; }
-})();
-</script>
-<footer><span>protocolis<span class="cursor">_</span> · patent pending</span><a href="mailto:hello@protocolis.co">hello@protocolis.co</a></footer>
-</body>
+<body><a href="https://app.protocolis.co/">Open the Protocolis platform →</a></body>
 </html>

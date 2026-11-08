@@ -367,25 +367,12 @@ a.chip.patent-status:hover,a.chip.patent-status:focus-visible{background:rgb(236
 #demo .demo-caption{min-height:0;overflow:auto;flex:1;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:var(--dim) transparent}
 #demo .demo-caption .cr.ct{font-size:.82rem;line-height:1.4}
 #demo .demo-caption .cr.ct>span:first-child,#demo .demo-task>span{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;min-width:0;min-height:2.8em;max-height:2.8em;overflow:hidden;white-space:normal;overflow-wrap:break-word}
-#demo .demo-results>.demo-context{flex:none;margin:.65rem 0 0;font-size:.76rem;line-height:1.5}
-#demo .demo-results>.demo-context:empty{display:none}
+#demo .demo-caption .demo-meta{margin:.7rem 0 .4rem;color:var(--fg);font-size:.75rem;line-height:1.5;font-weight:600}
+#demo .demo-caption .cnote,#demo .demo-caption .demo-context{margin:.4rem 0 0;color:var(--fg-2);font-size:.78rem;line-height:1.5}
+#demo .demo-caption p:empty{display:none}
 #demo .demo-task{font-size:.82rem;line-height:1.4;font-weight:600;padding:.7rem .6rem;background:var(--bg-2)}
-.frame .details-toggle{position:absolute;right:.75rem;top:1.2rem;z-index:8;min-height:36px;padding:.45rem .65rem;border:1px solid rgba(236,232,223,.35);border-radius:3px;background:rgba(15,17,20,.86);color:var(--fg);font:.65rem/1.3 var(--font-mono);letter-spacing:.04em;cursor:pointer}
-.frame .details-toggle:hover,.frame .details-toggle:focus-visible{border-color:var(--accent);color:var(--accent);outline-offset:3px}
-.frame .video-details{position:absolute;inset:0;z-index:5;background:rgba(15,17,20,.96);pointer-events:none}
-.frame .video-details[hidden]{display:none}
-.frame .video-details-body{position:absolute;inset:4.4rem 1.25rem 3.4rem;overflow:auto;pointer-events:auto;overscroll-behavior:contain;scrollbar-width:thin;font:.8rem/1.6 var(--font-body);color:var(--fg-2)}
-.frame .video-details-body:focus-visible{outline:1px solid var(--accent);outline-offset:3px}
-.frame .video-details-body .demo-overlay-task{font-size:.9rem;line-height:1.45;font-weight:600;color:var(--fg);margin:0 0 .65rem}
-.frame .video-details-body .demo-meta{font-size:.78rem;color:var(--fg);font-weight:600;margin:0 0 .65rem;line-height:1.5}
-.frame .video-details-body .cnote{font-size:inherit;line-height:inherit;margin:0 0 .65rem}
-.frame .video-details-body .demo-context{font-size:inherit;line-height:inherit;margin:0}
-.frame .video-details-body p:empty{display:none}
-.frame.details-open .vplay{z-index:7;top:2.6rem;width:3rem;height:3rem;opacity:1;pointer-events:auto;box-shadow:none}
-.frame.details-open .vplay svg{width:1.25rem;height:1.25rem;margin-left:.15rem}
-.frame.details-open .varr{visibility:hidden}
 @media(max-width:1100px){#demo .demo-sidebar{height:clamp(24rem,70vh,30rem)}}
-@media(max-width:600px){.frame .details-toggle{top:.9rem;right:.5rem;font-size:.6rem;min-height:32px;padding:.35rem .5rem}.frame .video-details-body{inset:3.7rem .85rem 2.7rem;font-size:.75rem}.frame.details-open .vplay{top:2rem;width:2.4rem;height:2.4rem}}
+
 
 /* A short results summary precedes capabilities; the full evidence follows. */
 .measured-summary .summary-stats{grid-template-columns:repeat(3,minmax(0,1fr));margin-top:1.5rem}
@@ -701,7 +688,7 @@ body .sec.arch-sec h2{font-family:var(--font-display);font-size:clamp(1.35rem,2.
     <a href="#how">engine</a>
     <a href="#compare">comparisons</a>
     <a href="#benchmarks">benchmarks</a>
-    <a class="nav-cta" href="platform/">platform</a>
+    <a class="nav-cta" href="https://app.protocolis.co/">platform</a>
   </nav>
 </header>
 
@@ -1359,7 +1346,7 @@ body .sec.arch-sec h2{font-family:var(--font-display);font-size:clamp(1.35rem,2.
       </div>
       <ol class="stages">
         <li><span class="num">I</span><div><b>Watch</b><p>A recorded demonstration and a live screen share.</p></div></li>
-        <li><span class="num">II</span><div><b>Try</b><p>Your engineers run their own agents and tasks on a hosted instance: the <a href="platform/">evaluation platform</a>.</p></div></li>
+        <li><span class="num">II</span><div><b>Try</b><p>Your engineers run their own agents and tasks on a hosted instance: the <a href="https://app.protocolis.co/">evaluation platform</a>.</p></div></li>
         <li><span class="num">III</span><div><b>Hold</b><p>At letter of intent, a time-limited build for inspection.</p></div></li>
       </ol>
     </div>
@@ -1474,26 +1461,11 @@ body .sec.arch-sec h2{font-family:var(--font-display);font-size:clamp(1.35rem,2.
 var grid=root.querySelector('.demo-grid'),sidebar=document.createElement('div'),heading=root.querySelector('h2'),caption=document.createElement('div'),meta=document.createElement('p'),context=document.createElement('p'),contextByGroup={},currentSlide=null;
 sidebar.className='demo-sidebar';caption.className='demo-caption cap';caption.id='demo-active-caption';meta.className='demo-meta';context.className='demo-context';
 [].forEach.call(grid.querySelectorAll(':scope > .sub'),function(p){contextByGroup[p.dataset.opp]=p.textContent;p.remove()});
-var results=document.createElement('div');results.className='demo-results';results.appendChild(heading);results.appendChild(c.querySelector('.cbar'));results.appendChild(caption);results.appendChild(context);sidebar.appendChild(results);c.appendChild(sidebar);grid.classList.add('demo-ready');
-function ensureDetails(slide){
- var frame=slide.querySelector('.frame'),panel=frame.querySelector('.video-details');if(panel)return panel;
- var video=frame.querySelector('video'),button=document.createElement('button'),body=document.createElement('div');
- panel=document.createElement('section');panel.className='video-details';panel.id='recording-details-'+all.indexOf(slide);panel.hidden=true;panel.setAttribute('aria-label','Recording details');
- body.className='video-details-body';body.tabIndex=0;body.setAttribute('aria-label','Recording description');panel.appendChild(body);
- button.type='button';button.className='details-toggle';button.textContent='Details';button.setAttribute('aria-expanded','false');button.setAttribute('aria-controls',panel.id);button.setAttribute('aria-label','Show recording details');
- var resume=false;
- function close(play){if(panel.hidden)return;panel.hidden=true;frame.classList.remove('details-open');button.textContent='Details';button.setAttribute('aria-expanded','false');button.setAttribute('aria-label','Show recording details');if(play&&resume&&video&&!video.ended){var p=video.play();if(p&&p.catch)p.catch(function(){})}}
- frame.closeDetails=function(){close(false)};
- button.addEventListener('click',function(e){e.preventDefault();e.stopPropagation();if(!panel.hidden){close(true);return}resume=video&&!video.paused&&!video.ended;if(video)video.pause();frame.classList.add('details-open');panel.hidden=false;button.textContent='Close details';button.setAttribute('aria-expanded','true');button.setAttribute('aria-label','Close recording details')});
- frame.addEventListener('keydown',function(e){if(e.key==='Escape'&&!panel.hidden){e.preventDefault();close(true);button.focus()}});
- frame.addEventListener('click',function(e){if(e.target.closest&&e.target.closest('.vplay'))close(false)},true);
- if(video)video.addEventListener('play',function(){close(false)});
- frame.appendChild(panel);frame.appendChild(button);return panel;
-}
+var results=document.createElement('div');results.className='demo-results';results.appendChild(heading);results.appendChild(c.querySelector('.cbar'));results.appendChild(caption);sidebar.appendChild(results);c.appendChild(sidebar);grid.classList.add('demo-ready');
 function showDetails(s){
  if(!s||s===currentSlide)return;currentSlide=s;
  var group=s.dataset.opp||opp,cap=s.querySelector('.cap'),v=s.querySelector('video');caption.innerHTML=cap?cap.innerHTML:'';
- var overlay=ensureDetails(s),body=overlay.querySelector('.video-details-body');body.textContent='';[].forEach.call(caption.querySelectorAll('.cnote'),function(n){if(n.textContent.indexOf('Replayed from the saved runs')===0||n.textContent.trim()==='Same answer.')n.remove();else body.appendChild(n)});
+ var notes=document.createElement('div');notes.className='demo-notes';[].forEach.call(caption.querySelectorAll('.cnote'),function(n){if(n.textContent.indexOf('Replayed from the saved runs')===0||n.textContent.trim()==='Same answer.')n.remove();else notes.appendChild(n)});
  context.textContent=contextByGroup[group]||'';
  all.forEach(function(slide){var video=slide.querySelector('video');if(video)video.removeAttribute('aria-describedby')});if(v)v.setAttribute('aria-describedby',caption.id);
  if(group==='broker'){
@@ -1501,7 +1473,7 @@ function showDetails(s){
   var hermes=v&&/hermes/.test(v.getAttribute('src'));
   meta.textContent=hermes?'4× playback · Demo vault · Concept build':'48 s · Waits cut';
   if(hermes)context.textContent+=' Hermes concept build; not a Nous Research product.';
-  if(cap){var b=cap.querySelector('b'),task=document.createElement('div');task.className='demo-task';var label=document.createElement('span');label.textContent=b?b.textContent:cap.textContent;task.appendChild(label);caption.textContent='';caption.appendChild(task);var copy=cap.cloneNode(true);[].forEach.call(copy.querySelectorAll('b,.cxt'),function(n){n.remove()});if(copy.textContent.trim()){var p=document.createElement('p');p.className='cnote';p.textContent=copy.textContent.trim();body.appendChild(p)}}
+  if(cap){var b=cap.querySelector('b'),task=document.createElement('div');task.className='demo-task';var label=document.createElement('span');label.textContent=b?b.textContent:cap.textContent;task.appendChild(label);caption.textContent='';caption.appendChild(task);var copy=cap.cloneNode(true);[].forEach.call(copy.querySelectorAll('b,.cxt'),function(n){n.remove()});if(copy.textContent.trim()){var p=document.createElement('p');p.className='cnote';p.textContent=copy.textContent.trim();notes.appendChild(p)}}
  }else{
   heading.innerHTML=group==='dvg'?'<span>Different models.</span><span>Head to head.</span>':'<span>Same task.</span><span>Head to head.</span>';
   var rate=v?(/demo\.mp4/.test(v.getAttribute('src'))?1:(parseFloat(v.dataset.rate)||4)):1;
@@ -1512,8 +1484,8 @@ function showDetails(s){
    context.textContent=(jev?'Same small choice model, no large model; fresh browsers on one Mac.':'Browser Use Cloud uses its own model and servers; Protocolis runs on one Mac.')+' '+context.textContent;
   }
  }
- body.insertBefore(meta.cloneNode(true),body.firstChild);
- var task=caption.querySelector('.cr.ct>span:first-child,.demo-task');if(task){task.title=task.textContent.trim();var full=document.createElement('p');full.className='demo-overlay-task';full.textContent=task.textContent;body.insertBefore(full,body.firstChild)}
+ caption.appendChild(meta);caption.appendChild(notes);caption.appendChild(context);
+ var task=caption.querySelector('.cr.ct>span:first-child,.demo-task');if(task)task.title=task.textContent.trim();
 }
 
 function sizeDemo(){root.style.setProperty('--demo-frame-height',t.getBoundingClientRect().height+'px')}
@@ -1521,7 +1493,7 @@ var resizeDemoTimer;addEventListener('resize',function(){clearTimeout(resizeDemo
 if(document.fonts)document.fonts.ready.then(sizeDemo);
 all.forEach(function(s){var v=s.querySelector('video');if(!v||/demo\.mp4/.test(v.getAttribute('src')))return;var r=parseFloat(v.dataset.rate)||4;v.defaultPlaybackRate=r;v.playbackRate=r;v.addEventListener('play',function(){if(v.playbackRate===1)v.playbackRate=r});v.addEventListener('loadedmetadata',function(){v.playbackRate=r})});
 all.forEach(function(s){var v=s.querySelector('video'),fs=[].slice.call(s.querySelectorAll('.fin'));if(!v||!fs.length)return;var raf;function upd(){var t=v.currentTime;fs.forEach(function(f){f.classList.toggle('show',t>=parseFloat(f.dataset.at))})}function loop(){upd();if(!v.paused&&!v.ended)raf=requestAnimationFrame(loop)}v.addEventListener('play',function(){cancelAnimationFrame(raf);loop()});['timeupdate','seeked','pause','ended','loadedmetadata'].forEach(function(e){v.addEventListener(e,upd)})});
-function pauseAll(){all.forEach(function(s){var f=s.querySelector('.frame'),v=s.querySelector('video');if(f&&f.closeDetails)f.closeDetails();if(v&&!v.paused)v.pause()})}
+function pauseAll(){all.forEach(function(s){var v=s.querySelector('video');if(v&&!v.paused)v.pause()})}
 function apply(){pauseAll();var noT=opp==='jev'||opp==='dvg'||opp==='broker'||opp==='pwm';if(noT)tier='all';var tr=root.querySelector('.ctiers');if(tr)tr.hidden=noT;var noC=opp==='broker';if(noC)cx='all';var cr=root.querySelector('.ccx');if(cr)cr.hidden=noC;vis=all.filter(function(s){return s!==soon&&s.dataset.opp===opp&&(tier==='all'||s.dataset.tier===tier)&&(cx==='all'||s.dataset.cx===cx)});all.forEach(function(s){s.hidden=vis.indexOf(s)<0});if(!vis.length){soon.hidden=false;vis=[soon]}
 d.innerHTML='';vis.forEach(function(_,i){var b=document.createElement('i');b.addEventListener('click',function(){go(i)});d.appendChild(b)});c.querySelector('.cnav').style.visibility=vis.length>1?'visible':'hidden';t.scrollLeft=0;
 [].forEach.call(root.querySelectorAll('.ctabs button'),function(b){b.classList.toggle('on',b.dataset.opp===opp)});[].forEach.call(root.querySelectorAll('.ctiers button'),function(b){b.className=b.dataset.tier===tier?'on':''});[].forEach.call(root.querySelectorAll('.ccx button'),function(b){b.className=b.dataset.cx===cx?'on':''});mark()}
@@ -1628,7 +1600,7 @@ var touched=0;['pointerdown','keydown'].forEach(function(ev){v.addEventListener(
 v.addEventListener('play',function(){f.classList.add('playing');f.classList.remove('ended');b.innerHTML=PLAY;b.setAttribute('aria-label','Play the race')});
 v.addEventListener('pause',function(){f.classList.remove('playing');if(!ours&&Date.now()-touched<1500&&current()===v&&!v.ended)userStopped=true});
 v.addEventListener('ended',function(){f.classList.remove('playing');f.classList.add('ended');b.innerHTML=AGAIN;b.setAttribute('aria-label','Watch the race again')})});
-function sync(){var v=current();slides.forEach(function(s){var x=s.querySelector('video');if(x&&x!==v)quiet(x)});if(inView&&!userStopped&&v&&v.paused&&!v.ended&&!v.closest('.frame').classList.contains('details-open'))play(v);if(!inView)quiet(v)}
+function sync(){var v=current();slides.forEach(function(s){var x=s.querySelector('video');if(x&&x!==v)quiet(x)});if(inView&&!userStopped&&v&&v.paused&&!v.ended)play(v);if(!inView)quiet(v)}
 function check(){var r=t.getBoundingClientRect(),vh=window.innerHeight||document.documentElement.clientHeight,seen=Math.max(0,Math.min(vh,r.bottom)-Math.max(0,r.top)),nv=r.height>0&&(seen/r.height>=0.55||seen>=vh*0.6);if(nv!==inView){inView=nv;sync()}}var ck;function soon(){if(ck)return;ck=setTimeout(function(){ck=0;check()},90)}addEventListener('scroll',soon,{passive:true});addEventListener('resize',soon);addEventListener('load',check);setTimeout(check,600);setTimeout(check,1800);check();
 var tm;new MutationObserver(function(){clearTimeout(tm);tm=setTimeout(sync,350)}).observe(d,{childList:true,subtree:true,attributes:true,attributeFilter:['class']});
 [].forEach.call(root.querySelectorAll('.ctabs button'),function(b){b.addEventListener('click',function(){userStopped=false})});
