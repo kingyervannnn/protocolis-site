@@ -339,10 +339,11 @@ a.chip.patent-status:hover,a.chip.patent-status:focus-visible{background:rgb(236
 .demo-sidebar > .cbar{margin-top:auto;padding-top:1rem;border-top:1px solid var(--rule);margin-bottom:0}
 .demo-results{padding-bottom:1rem}
 .demo-ready .carousel > .demo-method{grid-column:1/-1;margin-top:0;padding-top:1rem;border-top:1px solid var(--rule)}
-.demo-ready .carousel > .track{align-self:stretch}
-.demo-ready .slide .frame{height:100%;min-height:0;aspect-ratio:auto;overflow:hidden}
+.demo-ready .carousel > .track{align-self:start;aspect-ratio:16/9;min-height:0;overflow-y:hidden}
+.demo-ready .slide{height:100%;min-height:0}
+.demo-ready .slide .frame{height:100%;min-height:0;aspect-ratio:16/9;overflow:hidden}
 .demo-ready .frame video{position:absolute;inset:0;object-fit:contain}
-@media(max-width:1100px){.demo-ready .carousel > .demo-method{grid-column:1}.demo-ready .slide .frame{height:auto;aspect-ratio:16/9}}
+@media(max-width:1100px){.demo-ready .carousel > .demo-method{grid-column:1}}
 .demo-sidebar .ctiers[hidden]{display:flex;visibility:hidden}
 .demo-sidebar .cbar .cnav{margin:0;justify-content:space-between}
 .demo-sidebar .cdots{flex-wrap:wrap;justify-content:center}
@@ -1476,7 +1477,7 @@ function sizeDemo(){
  all.forEach(function(slide){if(slide===soon)return;showDetails(slide);maxHeight=Math.max(maxHeight,results.getBoundingClientRect().height)});
  results.style.minHeight=Math.ceil(maxHeight)+'px';
  currentSlide=null;showDetails(selected||vis[0]);
- t.style.minHeight=matchMedia('(min-width:1101px)').matches?Math.ceil(t.clientWidth*9/16)+'px':'';
+
 }
 var resizeDemoTimer;addEventListener('resize',function(){clearTimeout(resizeDemoTimer);resizeDemoTimer=setTimeout(sizeDemo,150)});
 if(document.fonts)document.fonts.ready.then(sizeDemo);
