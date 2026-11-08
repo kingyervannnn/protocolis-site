@@ -692,6 +692,27 @@ body .sec.arch-sec h2{font-family:var(--font-display);font-size:clamp(1.35rem,2.
 /* Quiet full-width bands distinguish the demonstrations and capability comparison. */
 #demo,#measured,#compare{position:relative;isolation:isolate}
 #demo::before,#measured::before,#compare::before{content:"";position:absolute;z-index:-1;pointer-events:none;top:0;bottom:0;left:calc(-1 * max(var(--gut),env(safe-area-inset-left,0px)));right:calc(-1 * max(var(--gut),env(safe-area-inset-right,0px)));background:var(--bg-2)}
+/* Persistent comparison explanations, shared across mouse, touch and keyboard. */
+#compare .feature-tip-trigger{appearance:none;background:transparent;border:0;border-radius:2px;color:inherit;font:inherit;letter-spacing:inherit;text-transform:none;text-align:inherit;line-height:inherit;margin:0;padding:0;cursor:help}
+#compare .feature-label-wrap{display:flex;align-items:baseline}
+#compare .feature-definition-trigger{min-width:0;flex:1;text-align:left;text-decoration:underline dotted rgba(236,232,223,.3);text-underline-offset:.2em;text-decoration-thickness:1px}
+#compare .feature-rating-trigger{display:inline-flex;align-items:center;justify-content:center;min-width:1.5rem;padding-inline:.15rem}
+#compare .feature-patent-trigger{color:var(--accent);font-weight:700;margin-right:.35rem}
+#compare .feature-tip-trigger:hover,#compare .feature-tip-trigger[aria-expanded="true"]{color:var(--accent)}
+#compare .feature-tip-trigger:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.feature-popover{position:fixed;z-index:1000;width:min(25rem,calc(100vw - 24px));max-height:min(26rem,calc(100dvh - 24px));overflow:auto;overscroll-behavior:contain;padding:1rem 1.1rem;border:1px solid rgba(201,160,97,.55);border-radius:5px;background:#1b1f25;color:var(--fg);box-shadow:0 16px 48px rgba(0,0,0,.5);font-family:var(--font-body);scrollbar-width:thin}
+.feature-popover[hidden]{display:none}
+.feature-popover:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.feature-popover-head{display:flex;align-items:start;justify-content:space-between;gap:1rem;margin-bottom:.65rem}
+.feature-popover-kicker{font:.65rem/1.5 var(--font-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:.35rem}
+.feature-popover h3{font:600 .98rem/1.35 var(--font-body);margin:0;text-wrap:initial}
+.feature-popover p{font:.86rem/1.6 var(--font-body);color:var(--fg-2);margin:0}
+.feature-popover .feature-popover-hint{font:.65rem/1.5 var(--font-mono);color:var(--dim);margin-top:.85rem;padding-top:.65rem;border-top:1px solid var(--rule)}
+.feature-popover-close{flex:none;display:grid;place-items:center;width:1.8rem;height:1.8rem;min-width:1.8rem;background:transparent;border:0;border-radius:2px;padding:0;color:var(--fg-2);font:1.3rem/1 var(--font-body);cursor:pointer}
+.feature-popover-close:hover{color:var(--accent)}
+.feature-popover-close:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+@media(max-width:600px){.feature-popover{padding:.9rem 1rem}.feature-popover-close{width:2rem;height:2rem;min-width:2rem}}
+
 </style>
 </head>
 <body>
@@ -1640,5 +1661,67 @@ var tm;new MutationObserver(function(){clearTimeout(tm);tm=setTimeout(sync,350)}
 [].forEach.call(root.querySelectorAll('.ctabs button'),function(b){b.addEventListener('click',function(){userStopped=false})});
 t.addEventListener('click',function(e){if(e.target.closest&&e.target.closest('.varr,.vbar i'))userStopped=false},true);
 })();</script>
+<script>
+(function(){
+ var root=document.getElementById('compare');if(!root)return;
+ var panel=document.createElement('div');panel.className='feature-popover';panel.id='feature-popover';panel.hidden=true;panel.tabIndex=-1;panel.setAttribute('role','dialog');panel.setAttribute('aria-modal','false');panel.setAttribute('aria-labelledby','feature-popover-title');panel.setAttribute('aria-describedby','feature-popover-copy');
+ panel.innerHTML='<div class="feature-popover-head"><div><div class="feature-popover-kicker"></div><h3 id="feature-popover-title"></h3></div><button class="feature-popover-close" type="button" aria-label="Close comparison detail">×</button></div><p id="feature-popover-copy"></p><p class="feature-popover-hint"></p>';
+ document.body.appendChild(panel);
+ var active=null,pinned=false,openTimer=0,closeTimer=0,positionFrame=0,suppressFocus=false,suppressHoverUntil=0;
+ var kicker=panel.querySelector('.feature-popover-kicker'),title=panel.querySelector('h3'),copy=panel.querySelector('#feature-popover-copy'),hint=panel.querySelector('.feature-popover-hint');
+ function clean(text){return text.replace(/\s+/g,' ').trim()}
+ function rowName(el){var row=el.closest('tr'),head=row&&row.querySelector('th[scope="row"]');if(!head)return 'Comparison detail';var clone=head.cloneNode(true);clone.querySelectorAll('.fstar').forEach(function(s){s.remove()});return clean(clone.textContent)}
+ function productName(el){var key=el.dataset.product,head=key&&root.querySelector('thead th[data-product="'+key+'"]');return head?clean([].map.call(head.childNodes,function(n){return n.textContent}).join(' ')):'Capability definition'}
+ // Read the existing explanations verbatim and keep the native table semantics.
+ [].slice.call(root.querySelectorAll('.feature-matrix [title]')).reverse().forEach(function(el){
+  var explanation=el.getAttribute('title');if(!explanation)return;
+  var star=el.classList.contains('fstar'),rating=el.tagName==='TD',button=document.createElement('button');button.type='button';button.className='feature-tip-trigger '+(star?'feature-patent-trigger fstar':rating?'feature-rating-trigger':'feature-definition-trigger');
+  button.dataset.featureTip=explanation;button.dataset.tipHeading=star?'Patent status':rowName(el);button.dataset.tipKicker=star?'Protocolis':productName(el);
+  button.setAttribute('aria-haspopup','dialog');button.setAttribute('aria-expanded','false');button.setAttribute('aria-controls',panel.id);
+  if(star){button.textContent=el.textContent;button.setAttribute('aria-label','Patent pending');el.replaceWith(button)}else{
+   var label=rating?el.querySelector('[aria-label]'):null;
+   button.setAttribute('aria-label',rating?button.dataset.tipKicker+': '+button.dataset.tipHeading+'. '+(label?label.getAttribute('aria-label'):clean(el.textContent))+'. More information.':'Explain '+button.dataset.tipHeading);
+   [].slice.call(el.childNodes).forEach(function(n){if(n.nodeType!==1||!n.classList.contains('feature-tip-trigger'))button.appendChild(n)});el.appendChild(button);el.removeAttribute('title');if(!rating){var wrap=document.createElement('span');wrap.className='feature-label-wrap';[].slice.call(el.childNodes).forEach(function(n){wrap.appendChild(n)});el.appendChild(wrap)}
+  }
+ });
+ function clearTimers(){clearTimeout(openTimer);clearTimeout(closeTimer)}
+ function position(){
+  positionFrame=0;if(!active||panel.hidden)return;
+  if(!active.getClientRects().length){close(false);return}
+  var r=active.getBoundingClientRect(),vw=document.documentElement.clientWidth,vh=innerHeight;
+  if(r.bottom<0||r.top>vh||r.right<0||r.left>vw){close(false);return}
+  var box=panel.getBoundingClientRect(),x=Math.max(12,Math.min(vw-box.width-12,r.left+r.width/2-box.width/2)),y=r.bottom+10;
+  if(y+box.height>vh-12)y=r.top-box.height-10;
+  y=Math.max(12,Math.min(vh-box.height-12,y));panel.style.left=Math.round(x)+'px';panel.style.top=Math.round(y)+'px';
+ }
+ function schedulePosition(){if(active&&!positionFrame)positionFrame=requestAnimationFrame(position)}
+ function close(restore){
+  clearTimers();if(!active)return;var previous=active;previous.setAttribute('aria-expanded','false');previous.removeAttribute('aria-describedby');active=null;pinned=false;panel.hidden=true;if(restore&&previous.getClientRects().length){suppressFocus=true;previous.focus({preventScroll:true});suppressFocus=false;}
+ }
+ function dismiss(restore){suppressHoverUntil=performance.now()+450;close(restore)}
+ function open(button,keep){
+  clearTimers();if(active&&active!==button){active.setAttribute('aria-expanded','false');active.removeAttribute('aria-describedby')}
+  active=button;pinned=!!keep;kicker.textContent=button.dataset.tipKicker;title.textContent=button.dataset.tipHeading;copy.textContent=button.dataset.featureTip;hint.textContent=pinned?'Press Esc or click outside to close.':'Click to keep this explanation open.';
+  button.setAttribute('aria-expanded','true');button.setAttribute('aria-describedby','feature-popover-copy');panel.hidden=false;position();
+ }
+ function delayedClose(){
+  clearTimeout(closeTimer);closeTimer=setTimeout(function(){if(!pinned&&!panel.matches(':hover')&&(!active||!active.matches(':hover')&&document.activeElement!==active)&&!panel.contains(document.activeElement))close(false)},250);
+ }
+ root.addEventListener('pointerover',function(e){var b=e.target.closest('.feature-tip-trigger');if(!b||e.pointerType==='touch'||pinned||performance.now()<suppressHoverUntil)return;clearTimers();openTimer=setTimeout(function(){open(b,false)},140)});
+ root.addEventListener('pointerout',function(e){var b=e.target.closest('.feature-tip-trigger');if(!b||b.contains(e.relatedTarget))return;clearTimeout(openTimer);delayedClose()});
+ panel.addEventListener('pointerenter',function(){clearTimers()});panel.addEventListener('pointerleave',delayedClose);
+ root.addEventListener('focusin',function(e){if(suppressFocus)return;var b=e.target.closest('.feature-tip-trigger');if(b&&(!pinned||active!==b))open(b,false)});
+ root.addEventListener('focusout',delayedClose);
+ root.addEventListener('click',function(e){var b=e.target.closest('.feature-tip-trigger');if(!b)return;e.preventDefault();if(active===b&&pinned){dismiss(false);return}open(b,true);if(e.detail===0)panel.focus({preventScroll:true})});
+ root.addEventListener('keydown',function(e){var b=e.target.closest('.feature-tip-trigger');if(b&&e.key==='ArrowDown'){e.preventDefault();open(b,true);panel.focus({preventScroll:true})}});
+ panel.querySelector('button').addEventListener('click',function(e){dismiss(e.detail===0)});
+ panel.addEventListener('focusout',function(){setTimeout(function(){if(active&&!panel.contains(document.activeElement)&&document.activeElement!==active)close(false)},0)});
+ document.addEventListener('pointerdown',function(e){if(active&&!panel.contains(e.target)&&!active.contains(e.target))close(false)});
+ document.addEventListener('keydown',function(e){if(e.key==='Escape'&&active){e.preventDefault();dismiss(true)}});
+ root.addEventListener('change',function(){close(false)});
+ addEventListener('scroll',schedulePosition,true);addEventListener('resize',schedulePosition);
+})();
+
+</script>
 </body>
 </html>
