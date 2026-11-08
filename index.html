@@ -366,7 +366,9 @@ a.chip.patent-status:hover,a.chip.patent-status:focus-visible{background:rgb(236
 #demo .demo-results>h2,#demo .demo-results>.cbar{flex:none}
 #demo .demo-caption{min-height:0;overflow:auto;flex:1;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:var(--dim) transparent}
 #demo .demo-caption .cr.ct{font-size:.82rem;line-height:1.4}
-#demo .demo-caption .cr.ct>span:first-child,#demo .demo-task{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;overflow-wrap:normal}
+#demo .demo-caption .cr.ct>span:first-child,#demo .demo-task>span{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;min-width:0;min-height:2.8em;max-height:2.8em;overflow:hidden;white-space:normal;overflow-wrap:break-word}
+#demo .demo-results>.demo-context{flex:none;margin:.65rem 0 0;font-size:.76rem;line-height:1.5}
+#demo .demo-results>.demo-context:empty{display:none}
 #demo .demo-task{font-size:.82rem;line-height:1.4;font-weight:600;padding:.7rem .6rem;background:var(--bg-2)}
 .frame .details-toggle{position:absolute;right:.75rem;top:1.2rem;z-index:8;min-height:36px;padding:.45rem .65rem;border:1px solid rgba(236,232,223,.35);border-radius:3px;background:rgba(15,17,20,.86);color:var(--fg);font:.65rem/1.3 var(--font-mono);letter-spacing:.04em;cursor:pointer}
 .frame .details-toggle:hover,.frame .details-toggle:focus-visible{border-color:var(--accent);color:var(--accent);outline-offset:3px}
@@ -1472,7 +1474,7 @@ body .sec.arch-sec h2{font-family:var(--font-display);font-size:clamp(1.35rem,2.
 var grid=root.querySelector('.demo-grid'),sidebar=document.createElement('div'),heading=root.querySelector('h2'),caption=document.createElement('div'),meta=document.createElement('p'),context=document.createElement('p'),contextByGroup={},currentSlide=null;
 sidebar.className='demo-sidebar';caption.className='demo-caption cap';caption.id='demo-active-caption';meta.className='demo-meta';context.className='demo-context';
 [].forEach.call(grid.querySelectorAll(':scope > .sub'),function(p){contextByGroup[p.dataset.opp]=p.textContent;p.remove()});
-var results=document.createElement('div');results.className='demo-results';results.appendChild(heading);results.appendChild(c.querySelector('.cbar'));results.appendChild(caption);sidebar.appendChild(results);c.appendChild(sidebar);grid.classList.add('demo-ready');
+var results=document.createElement('div');results.className='demo-results';results.appendChild(heading);results.appendChild(c.querySelector('.cbar'));results.appendChild(caption);results.appendChild(context);sidebar.appendChild(results);c.appendChild(sidebar);grid.classList.add('demo-ready');
 function ensureDetails(slide){
  var frame=slide.querySelector('.frame'),panel=frame.querySelector('.video-details');if(panel)return panel;
  var video=frame.querySelector('video'),button=document.createElement('button'),body=document.createElement('div');
@@ -1499,7 +1501,7 @@ function showDetails(s){
   var hermes=v&&/hermes/.test(v.getAttribute('src'));
   meta.textContent=hermes?'4× playback · Demo vault · Concept build':'48 s · Waits cut';
   if(hermes)context.textContent+=' Hermes concept build; not a Nous Research product.';
-  if(cap){var b=cap.querySelector('b'),task=document.createElement('div');task.className='demo-task';task.textContent=b?b.textContent:cap.textContent;caption.textContent='';caption.appendChild(task);var copy=cap.cloneNode(true);[].forEach.call(copy.querySelectorAll('b,.cxt'),function(n){n.remove()});if(copy.textContent.trim()){var p=document.createElement('p');p.className='cnote';p.textContent=copy.textContent.trim();body.appendChild(p)}}
+  if(cap){var b=cap.querySelector('b'),task=document.createElement('div');task.className='demo-task';var label=document.createElement('span');label.textContent=b?b.textContent:cap.textContent;task.appendChild(label);caption.textContent='';caption.appendChild(task);var copy=cap.cloneNode(true);[].forEach.call(copy.querySelectorAll('b,.cxt'),function(n){n.remove()});if(copy.textContent.trim()){var p=document.createElement('p');p.className='cnote';p.textContent=copy.textContent.trim();body.appendChild(p)}}
  }else{
   heading.innerHTML=group==='dvg'?'<span>Different models.</span><span>Head to head.</span>':'<span>Same task.</span><span>Head to head.</span>';
   var rate=v?(/demo\.mp4/.test(v.getAttribute('src'))?1:(parseFloat(v.dataset.rate)||4)):1;
@@ -1510,7 +1512,7 @@ function showDetails(s){
    context.textContent=(jev?'Same small choice model, no large model; fresh browsers on one Mac.':'Browser Use Cloud uses its own model and servers; Protocolis runs on one Mac.')+' '+context.textContent;
   }
  }
- body.insertBefore(meta.cloneNode(true),body.firstChild);body.appendChild(context.cloneNode(true));
+ body.insertBefore(meta.cloneNode(true),body.firstChild);
  var task=caption.querySelector('.cr.ct>span:first-child,.demo-task');if(task){task.title=task.textContent.trim();var full=document.createElement('p');full.className='demo-overlay-task';full.textContent=task.textContent;body.insertBefore(full,body.firstChild)}
 }
 
