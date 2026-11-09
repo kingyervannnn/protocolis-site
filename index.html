@@ -1638,6 +1638,10 @@ window.addEventListener('load',mark);apply();sizeDemo()})();
 (function(){var l=document.querySelector('.hero .lede'),b=document.querySelector('.hero-brand');if(!l||!l.querySelector('.lede-lead')||!b)return;function fit(){if(innerWidth<761){b.style.marginBottom='';return}var c=l.cloneNode(true),cl=c.querySelector('.lede-lead');cl.textContent=cl.dataset.was;c.style.cssText='position:absolute;visibility:hidden;left:0;top:0;width:'+l.getBoundingClientRect().width+'px;margin:0';l.parentNode.appendChild(c);var d=l.getBoundingClientRect().height-c.getBoundingClientRect().height;c.remove();b.style.marginBottom=d>0?d+'px':''}fit();addEventListener('resize',fit);if(document.fonts)document.fonts.ready.then(fit)})();
 </script>
 <script>
+/* When the headline wraps to five rows the column grows and the bottom-aligned emblem sits low: lift the emblem (not the motto) by a third of a headline row. */
+(function(){var h=document.querySelector('.hero h1'),e=document.querySelector('.hero .emblem');if(!h||!e)return;function fit(){e.style.transform='';if(innerWidth<761)return;var lh=parseFloat(getComputedStyle(h).lineHeight);if(h.getBoundingClientRect().height/lh>=4.5)e.style.transform='translateY('+(-0.33*lh).toFixed(1)+'px)'}fit();addEventListener('resize',fit);if(document.fonts)document.fonts.ready.then(fit)})();
+</script>
+<script>
 (function(){
  var root=document.getElementById('compare'),picker=document.getElementById('feature-product');
  if(!root||!picker)return;
