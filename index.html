@@ -727,6 +727,7 @@ body .sec.arch-sec h2{font-family:var(--font-display);font-size:clamp(1.35rem,2.
 .feature-popover-close:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 @media(max-width:600px){.feature-popover{padding:.9rem 1rem}.feature-popover-close{width:2rem;height:2rem;min-width:2rem}}
 
+/*RANGE*/.range-sec{padding-block:clamp(2.75rem,5vw,4.5rem)}.range-lede{color:var(--fg-2);font-size:clamp(.95rem,1.1vw,1.05rem);line-height:1.65;max-width:62rem;margin-top:1rem}.range-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin-top:1.6rem}@media (max-width:760px){.range-grid{grid-template-columns:1fr}}.range-panel{margin:0;padding:1.1rem 1.2rem 1rem;background:var(--bg-2);border-radius:4px}.range-panel figcaption{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;margin-bottom:.6rem}.range-panel figcaption b{font-family:var(--font-display);font-weight:500;font-size:1.05rem;letter-spacing:.03em;color:var(--fg)}.range-panel figcaption span{font-family:var(--font-mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--fg-2)}.range-panel svg{display:block;width:100%;height:auto}.range-axis{display:flex;justify-content:space-between;font-family:var(--font-mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);margin-top:.5rem}.range-key{display:flex;gap:1.5rem;flex-wrap:wrap;margin-top:1.1rem;font-family:var(--font-mono);font-size:.72rem;color:var(--fg-2)}.range-key .k::before{content:'';display:inline-block;width:1.4rem;height:0;border-top:2.5px solid var(--dim);vertical-align:middle;margin-right:.5rem}.range-key .k.us::before{border-color:var(--accent)}.range-note{font-family:var(--font-mono);font-size:.74rem;color:var(--fg-2);line-height:1.7;margin-top:1.1rem;max-width:62rem}.range-lbl{font-family:var(--font-mono);font-size:10.5px;fill:var(--dim);letter-spacing:.04em}.range-us{stroke:var(--accent);stroke-width:2.8;fill:none;stroke-linecap:round}.range-op{stroke:var(--dim);stroke-width:1.6;fill:none;stroke-linecap:round;opacity:.85}.range-op.d{stroke-dasharray:5 5}.range-gl{stroke:var(--rule);stroke-width:1}.range-ylab{font-family:var(--font-mono);font-size:9.5px;fill:var(--dim);letter-spacing:.1em}
 </style>
 </head>
 <body>
@@ -775,6 +776,46 @@ body .sec.arch-sec h2{font-family:var(--font-display);font-size:clamp(1.35rem,2.
 
 
 
+
+<section class="sec range-sec" id="range">
+  <div>
+    <div class="rail">one engine</div>
+    <h2>One engine. Any model. Any task length.</h2>
+    <p class="range-lede">Every screenshot stack holds in one corner and falls away in the others: a tools mode for small models, an agent for frontier ones, a fast mode for short tasks. That is why Browser Use ships six ways to run the same agent. One compiled layer holds across the range, and the model above it can be whatever the budget allows.</p>
+    <div class="range-grid">
+      <figure class="range-panel">
+        <figcaption><b>Across models</b><span>tasks completed</span></figcaption>
+        <svg viewBox="0 0 400 210" role="img" aria-label="Protocolis completion stays high from small models to frontier models; a screenshot agent rises only at the frontier and a tools mode falls away there.">
+          <line class="range-gl" x1="22" y1="30" x2="22" y2="190"/><line class="range-gl" x1="22" y1="190" x2="382" y2="190"/>
+          <line class="range-gl" x1="22" y1="70" x2="382" y2="70" stroke-dasharray="2 6"/><line class="range-gl" x1="22" y1="130" x2="382" y2="130" stroke-dasharray="2 6"/>
+          <text class="range-ylab" x="18" y="34" text-anchor="end">ALL</text>
+          <path class="range-op" d="M22,170 C140,160 250,95 382,60"/>
+          <path class="range-op d" d="M22,96 C140,100 260,130 382,162"/>
+          <path class="range-us" d="M22,42 C140,40 260,38 382,36"/>
+          <text class="range-lbl" x="378" y="54" text-anchor="end">their agent</text>
+          <text class="range-lbl" x="378" y="178" text-anchor="end">their tools mode</text>
+        </svg>
+        <div class="range-axis"><span>small model</span><span>frontier model</span></div>
+      </figure>
+      <figure class="range-panel">
+        <figcaption><b>Across task length</b><span>tasks completed</span></figcaption>
+        <svg viewBox="0 0 400 210" role="img" aria-label="Protocolis completion holds from short tasks to long tasks; a fast mode falls off steeply and a full agent declines.">
+          <line class="range-gl" x1="22" y1="30" x2="22" y2="190"/><line class="range-gl" x1="22" y1="190" x2="382" y2="190"/>
+          <line class="range-gl" x1="22" y1="70" x2="382" y2="70" stroke-dasharray="2 6"/><line class="range-gl" x1="22" y1="130" x2="382" y2="130" stroke-dasharray="2 6"/>
+          <text class="range-ylab" x="18" y="34" text-anchor="end">ALL</text>
+          <path class="range-op" d="M22,64 C140,82 260,112 382,130"/>
+          <path class="range-op d" d="M22,52 C120,66 220,140 382,182"/>
+          <path class="range-us" d="M22,40 C140,42 260,52 382,62"/>
+          <text class="range-lbl" x="378" y="124" text-anchor="end">their full agent</text>
+          <text class="range-lbl" x="378" y="198" text-anchor="end">their fast mode</text>
+        </svg>
+        <div class="range-axis"><span>short task</span><span>long task</span></div>
+      </figure>
+    </div>
+    <div class="range-key"><span class="k us">Protocolis, one engine, either mode</span><span class="k op">a product per corner</span></div>
+    <p class="range-note">The pattern, drawn without figures. Every arm is being re-measured on the current build; this chart takes its points from those cells as they land, and the detailed benchmarks below carry every figure.</p>
+  </div>
+</section>
 
 <section class="sec" id="demo">
   <div>
