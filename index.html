@@ -571,6 +571,8 @@ body::before{
 .mt-h{font:500 .68rem var(--font-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--fg-2);padding:.8rem .9rem}
 .mt-h small{display:block;font-size:.85em;letter-spacing:.06em;text-transform:none;color:var(--dim);margin-top:.15rem}
 .mt-g{border-top:1px solid var(--rule);padding:.9rem 0 1rem}
+.mt-sub{font:500 .68rem var(--font-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--fg-2);padding:1.4rem .9rem .5rem;border-top:1px solid var(--rule)}
+.mt-sub small{display:block;font-size:.85em;letter-spacing:.06em;text-transform:none;color:var(--dim);margin-top:.15rem}
 .mt-o{padding:0 .9rem .5rem}.mt-o b{font-weight:500;font-size:1.02rem}
 .mt-o span{display:block;font:.66rem var(--font-mono);letter-spacing:.05em;color:var(--dim);margin-top:.15rem}
 .mt-l{padding:.42rem .9rem;border-radius:8px;font:.86rem var(--font-mono);font-variant-numeric:tabular-nums;color:var(--fg-2)}
@@ -1352,6 +1354,11 @@ body .sec.arch-sec h2{font-family:var(--font-display);font-size:clamp(1.35rem,2.
 <div class="mt-bar"><div class="mt-tabs" role="tablist"><button class="on" data-set="short" role="tab" aria-selected="true">Short tasks</button><button data-set="long" role="tab" aria-selected="false">Long tasks</button></div><div class="mt-key"><span class="k ad">Protocolis Adaptive</span><span class="k st">Protocolis Standard</span><span class="k op">Opponent</span></div></div>
 <div class="mt" data-set="short">
 <div class="mt-h"><span></span><span>Completed</span><span>Time<small>per completed task</small></span><span>Cost<small>per completed task</small></span></div>
+<div class="mt-g"><div class="mt-o"><b>Browser Harness</b><span>Browser Use · Browser Harness 0.1.13 · Grok 4.6</span></div>
+<div class="mt-l ad"><span class="nm">Protocolis Adaptive</span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span></div>
+<div class="mt-l st"><span class="nm">Protocolis Standard</span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span></div>
+<div class="mt-l op"><span class="nm">Browser Harness</span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span></div>
+</div>
 <div class="mt-g"><div class="mt-o"><b>Browser Use · own agent</b><span>Browser Use 0.13.13, its own planner · Grok 4.6</span><span class="mt-brief">20 public tasks · 40 task-rounds</span><details class="mt-details"><summary aria-label="Methodology for Browser Use · own agent">i</summary><div class="mt-detail-copy">20 public tasks, each run twice · 40 complete task-rounds with all three arms in one window · Protocolis Standard given the same first look · page check against a gold answer · every attempt counted · current build, 5 November 2026. Adaptive finished first in 39 of 40 races, Standard in 35. Browser Use reports no cache split, so its input is priced uncached; priced as if all of it were cached, it would be $0.0357, still 2.9× Adaptive’s cost.</div></details></div>
 <div class="mt-l ad"><span class="nm">Protocolis Adaptive</span><span><b>40/40</b></span><span><b>15.1 s</b><i class="x">2.5×</i></span><span><b>$0.0122</b><i class="x">10.3×</i></span></div>
 <div class="mt-l st"><span class="nm">Protocolis Standard</span><span><b>40/40</b></span><span><b>21.8 s</b><i class="x">1.7×</i></span><span><b>$0.0264</b><i class="x">4.8×</i></span></div>
@@ -1362,11 +1369,6 @@ body .sec.arch-sec h2{font-family:var(--font-display);font-size:clamp(1.35rem,2.
 <div class="mt-l ad"><span class="nm">Protocolis Adaptive</span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span></div>
 <div class="mt-l st"><span class="nm">Protocolis Standard</span><span><b>11/16</b></span><span><b>33% less</b></span><span><b>85% lower</b></span></div>
 <div class="mt-l op"><span class="nm">Browser Use · tools mode</span><span><b>7/16</b></span><span><span class="base">baseline</span></span><span><span class="base">baseline</span></span></div>
-
-</div>
-<div class="mt-g"><div class="mt-o"><b>Jev Ultrafast</b><span>Browser Use’s fastest agent · the same small choice model in both arms, no large model</span><span class="mt-brief">20 public tasks · 40 runs per arm</span><details class="mt-details"><summary aria-label="Methodology for Jev Ultrafast">i</summary><div class="mt-detail-copy">20 public tasks, each run twice · 40 runs per arm · one session, arms rotating per task · same final-page check for every arm, every attempt counted. Choice-model calls per completed task: Protocolis 2.9, Jev 8.7. Jev’s own time swings between runs of the same tasks; Protocolis’s did not. Jev Ultrafast runs only a small model, so it is matched against Adaptive. On the same 40 tasks, in a separate read, Protocolis Standard completed all 40.</div></details></div>
-<div class="mt-l ad"><span class="nm">Protocolis Adaptive</span><span><b>29/40</b></span><span><b>10.0 s</b><i class="x">1.7×</i></span><span><span class="pend">measuring</span></span></div>
-<div class="mt-l op"><span class="nm">Jev Ultrafast</span><span><b>28/40</b></span><span><b>16.6 s</b></span><span><span class="pend">measuring</span></span></div>
 
 </div>
 <div class="mt-g"><div class="mt-o"><b>Stagehand</b><span>Browserbase · Stagehand 3.7.3, native agent · Grok 4.6</span><span class="mt-brief">31 complete task-rounds</span><details class="mt-details"><summary aria-label="Methodology for Stagehand">i</summary><div class="mt-detail-copy">31 complete task-rounds of set C with all four arms in one window · Protocolis Standard given the same first look as the rivals · page check against a gold answer · every attempt counted · current build, 5 November 2026. Adaptive finished first on 27 of 31 tasks, Standard on 25.</div></details></div>
@@ -1381,14 +1383,20 @@ body .sec.arch-sec h2{font-family:var(--font-display);font-size:clamp(1.35rem,2.
 <div class="mt-l op"><span class="nm">Playwright MCP</span><span><b>31/31</b></span><span><b>19.0 s</b></span><span><b>$0.0698</b></span></div>
 
 </div>
+<div class="mt-sub">Ultrafast agents<small>A small choice model, matched against Protocolis Adaptive</small></div>
+<div class="mt-g"><div class="mt-o"><b>Jev Ultrafast</b><span>Browser Use’s fastest agent · the same small choice model in both arms, no large model</span><span class="mt-brief">20 public tasks · 40 runs per arm</span><details class="mt-details"><summary aria-label="Methodology for Jev Ultrafast">i</summary><div class="mt-detail-copy">20 public tasks, each run twice · 40 runs per arm · one session, arms rotating per task · same final-page check for every arm, every attempt counted. Choice-model calls per completed task: Protocolis 2.9, Jev 8.7. Jev’s own time swings between runs of the same tasks; Protocolis’s did not. Jev Ultrafast runs only a small model, so it is matched against Adaptive. On the same 40 tasks, in a separate read, Protocolis Standard completed all 40.</div></details></div>
+<div class="mt-l ad"><span class="nm">Protocolis Adaptive</span><span><b>29/40</b></span><span><b>10.0 s</b><i class="x">1.7×</i></span><span><span class="pend">measuring</span></span></div>
+<div class="mt-l op"><span class="nm">Jev Ultrafast</span><span><b>28/40</b></span><span><b>16.6 s</b></span><span><span class="pend">measuring</span></span></div>
+
+</div>
+</div>
+<div class="mt" data-set="long" hidden>
+<div class="mt-h"><span></span><span>Completed</span><span>Time<small>per completed task</small></span><span>Cost<small>per completed task</small></span></div>
 <div class="mt-g"><div class="mt-o"><b>Browser Harness</b><span>Browser Use · Browser Harness 0.1.13 · Grok 4.6</span></div>
 <div class="mt-l ad"><span class="nm">Protocolis Adaptive</span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span></div>
 <div class="mt-l st"><span class="nm">Protocolis Standard</span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span></div>
 <div class="mt-l op"><span class="nm">Browser Harness</span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span></div>
 </div>
-</div>
-<div class="mt" data-set="long" hidden>
-<div class="mt-h"><span></span><span>Completed</span><span>Time<small>per completed task</small></span><span>Cost<small>per completed task</small></span></div>
 <div class="mt-g"><div class="mt-o"><b>Browser Use · own agent</b><span>Browser Use 0.13.13, its own planner · Grok 4.6</span></div>
 <div class="mt-l ad"><span class="nm">Protocolis Adaptive</span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span></div>
 <div class="mt-l st"><span class="nm">Protocolis Standard</span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span></div>
@@ -1398,10 +1406,6 @@ body .sec.arch-sec h2{font-family:var(--font-display);font-size:clamp(1.35rem,2.
 <div class="mt-l ad"><span class="nm">Protocolis Adaptive</span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span></div>
 <div class="mt-l st"><span class="nm">Protocolis Standard</span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span></div>
 <div class="mt-l op"><span class="nm">Browser Use · tools mode</span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span></div>
-</div>
-<div class="mt-g"><div class="mt-o"><b>Jev Ultrafast</b><span>Browser Use’s fastest agent · the same small choice model in both arms, no large model</span></div>
-<div class="mt-l ad"><span class="nm">Protocolis Adaptive</span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span></div>
-<div class="mt-l op"><span class="nm">Jev Ultrafast</span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span></div>
 </div>
 <div class="mt-g"><div class="mt-o"><b>Stagehand</b><span>Browserbase · Stagehand 3.7.3, native agent · Grok 4.6</span><span class="mt-brief">40 long open-web tasks</span><details class="mt-details"><summary aria-label="Methodology for Stagehand">i</summary><div class="mt-detail-copy">40 long open-web tasks · arms rotated per task in one session · judged blind by WebJudge from the screenshots, second judge on disputed tasks · every attempt counted. Model calls per completed task: Adaptive 23, Standard 22, Stagehand 67.</div></details></div>
 <div class="mt-l ad"><span class="nm">Protocolis Adaptive</span><span><b>23/40</b></span><span><b>281 s</b><i class="x">1.9×</i></span><span><b>$0.29</b><i class="x">11.1×</i></span></div>
@@ -1414,10 +1418,10 @@ body .sec.arch-sec h2{font-family:var(--font-display);font-size:clamp(1.35rem,2.
 <div class="mt-l st"><span class="nm">Protocolis Standard</span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span></div>
 <div class="mt-l op"><span class="nm">Playwright MCP</span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span></div>
 </div>
-<div class="mt-g"><div class="mt-o"><b>Browser Harness</b><span>Browser Use · Browser Harness 0.1.13 · Grok 4.6</span></div>
+<div class="mt-sub">Ultrafast agents<small>A small choice model, matched against Protocolis Adaptive</small></div>
+<div class="mt-g"><div class="mt-o"><b>Jev Ultrafast</b><span>Browser Use’s fastest agent · the same small choice model in both arms, no large model</span></div>
 <div class="mt-l ad"><span class="nm">Protocolis Adaptive</span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span></div>
-<div class="mt-l st"><span class="nm">Protocolis Standard</span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span></div>
-<div class="mt-l op"><span class="nm">Browser Harness</span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span></div>
+<div class="mt-l op"><span class="nm">Jev Ultrafast</span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span><span><span class="pend">measuring</span></span></div>
 </div>
 </div>
 <p class="mt-status">Each row names the round it comes from. Every arm is being re-measured on the current build; cells marked <span class="pend">measuring</span> are running now. Cells marked <span class="pend">measuring</span> are still running. Updated 5 November 2026.</p>
