@@ -1,0 +1,87 @@
+{
+  "id": "long",
+  "label": "Long",
+  "taskSet": "LONG-MX20",
+  "taskCount": 20,
+  "status": "withheld",
+  "judge": "WebJudge; second judge on disputed tasks",
+  "clock": "FINAL: same-host tool-ready to verified answer",
+  "rows": [
+    {
+      "id": "protocolis-adaptive",
+      "contender": "Protocolis Adaptive",
+      "mode": "Adaptive",
+      "category": "agent",
+      "records": []
+    },
+    {
+      "id": "protocolis-standard",
+      "contender": "Protocolis Standard",
+      "mode": "Standard",
+      "category": "agent",
+      "records": []
+    },
+    {
+      "id": "protocolis-lean",
+      "contender": "Protocolis Lean",
+      "mode": "Lean",
+      "category": "agent",
+      "records": []
+    },
+    {
+      "id": "browser-use-own-agent",
+      "contender": "Browser Use · own agent",
+      "mode": "own agent",
+      "category": "agent",
+      "records": []
+    },
+    {
+      "id": "browser-use-tools-mode",
+      "contender": "Browser Use · tools mode",
+      "mode": "tools",
+      "category": "tools mode",
+      "records": []
+    },
+    {
+      "id": "browser-use-ultrafast",
+      "contender": "Browser Use Ultrafast",
+      "mode": "ultrafast",
+      "category": "agent",
+      "records": []
+    },
+    {
+      "id": "jev-ultrafast",
+      "contender": "Jev Ultrafast",
+      "mode": "ultrafast",
+      "category": "agent",
+      "records": []
+    },
+    {
+      "id": "browser-harness",
+      "contender": "Browser Harness",
+      "mode": "default",
+      "category": "harness",
+      "records": []
+    },
+    {
+      "id": "stagehand",
+      "contender": "Stagehand",
+      "mode": "default",
+      "category": "framework",
+      "records": []
+    },
+    {
+      "id": "playwright-mcp",
+      "contender": "Playwright MCP",
+      "mode": "default",
+      "category": "MCP",
+      "records": []
+    }
+  ],
+  "current_window": null,
+  "anchor_window": null,
+  "ratio_anchor": "browser-use-own-agent",
+  "schemaVersion": 2,
+  "comparable_within_hours": 72,
+  "windows": {}
+}

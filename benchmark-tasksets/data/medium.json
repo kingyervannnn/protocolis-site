@@ -1,0 +1,564 @@
+{
+  "id": "medium",
+  "label": "Medium",
+  "taskSet": "BLOCK2-DE-40",
+  "taskCount": 40,
+  "status": "historical",
+  "judge": "Recorded strict block-2 oracle; capture-failed rows excluded",
+  "clock": "FINAL: same-host tool-ready to verified answer",
+  "rows": [
+    {
+      "id": "protocolis-adaptive",
+      "contender": "Protocolis Adaptive",
+      "mode": "Adaptive",
+      "category": "agent",
+      "records": [],
+      "reuse_plan": {
+        "glm": {
+          "status": "rerun-next-bulk",
+          "reason": "Our arms are re-measured on each settled candidate.",
+          "source_windows": [],
+          "figures_state": "awaiting-rerun",
+          "judging": "see-source-record",
+          "model_policy": "actual model per record"
+        },
+        "grok": {
+          "status": "rerun-next-bulk",
+          "reason": "Our arms are re-measured on each settled candidate.",
+          "source_windows": [],
+          "figures_state": "awaiting-rerun",
+          "judging": "see-source-record",
+          "model_policy": "actual model per record"
+        },
+        "opus": {
+          "status": "rerun-next-bulk",
+          "reason": "Our arms are re-measured on each settled candidate.",
+          "source_windows": [],
+          "figures_state": "awaiting-rerun",
+          "judging": "see-source-record",
+          "model_policy": "actual model per record"
+        }
+      }
+    },
+    {
+      "id": "protocolis-standard",
+      "contender": "Protocolis Standard",
+      "mode": "Standard",
+      "category": "agent",
+      "records": [],
+      "reuse_plan": {
+        "glm": {
+          "status": "rerun-next-bulk",
+          "reason": "Our arms are re-measured on each settled candidate.",
+          "source_windows": [],
+          "figures_state": "awaiting-rerun",
+          "judging": "see-source-record",
+          "model_policy": "actual model per record"
+        },
+        "grok": {
+          "status": "rerun-next-bulk",
+          "reason": "Our arms are re-measured on each settled candidate.",
+          "source_windows": [],
+          "figures_state": "awaiting-rerun",
+          "judging": "see-source-record",
+          "model_policy": "actual model per record"
+        },
+        "opus": {
+          "status": "rerun-next-bulk",
+          "reason": "Our arms are re-measured on each settled candidate.",
+          "source_windows": [],
+          "figures_state": "awaiting-rerun",
+          "judging": "see-source-record",
+          "model_policy": "actual model per record"
+        }
+      }
+    },
+    {
+      "id": "protocolis-lean",
+      "contender": "Protocolis Lean",
+      "mode": "Lean",
+      "category": "agent",
+      "records": [],
+      "reuse_plan": {
+        "glm": {
+          "status": "rerun-next-bulk",
+          "reason": "Our arms are re-measured on each settled candidate.",
+          "source_windows": [],
+          "figures_state": "awaiting-rerun",
+          "judging": "see-source-record",
+          "model_policy": "actual model per record"
+        },
+        "grok": {
+          "status": "rerun-next-bulk",
+          "reason": "Our arms are re-measured on each settled candidate.",
+          "source_windows": [],
+          "figures_state": "awaiting-rerun",
+          "judging": "see-source-record",
+          "model_policy": "actual model per record"
+        },
+        "opus": {
+          "status": "rerun-next-bulk",
+          "reason": "Our arms are re-measured on each settled candidate.",
+          "source_windows": [],
+          "figures_state": "awaiting-rerun",
+          "judging": "see-source-record",
+          "model_policy": "actual model per record"
+        }
+      }
+    },
+    {
+      "id": "browser-use-own-agent",
+      "contender": "Browser Use · own agent",
+      "mode": "own agent",
+      "category": "agent",
+      "records": [
+        {
+          "id": "medium-reuse-browser-use-own-agent-bud",
+          "tier": "grok",
+          "contender": "Browser Use · own agent",
+          "mode": "own agent",
+          "category": "agent",
+          "model": "x-ai/grok-4.6",
+          "task_set_id": "BLOCK2-DE-40",
+          "judge_id": "strict oracle (status completed, client terminal verified, common body.innerText page check, gold answer, not wrong_done, not void); capture-failed rows excluded (block-2 rule)",
+          "window_id": "BUD-B2_DE (c1)",
+          "date": "2026-11-09",
+          "worker": "w4",
+          "source_run": "BUD-B2_DE (c1)",
+          "clock": "rival self-reported",
+          "completion": "37/40",
+          "finalTime": null,
+          "reportedTime": "27.6 s",
+          "cost": null,
+          "tokens": null,
+          "comparisonEligible": false,
+          "measured_at": {
+            "first": "2026-11-09T15:14:24Z",
+            "last": "2026-11-09T15:37:13Z"
+          },
+          "version": "Browser Use 0.13.13",
+          "worker_class": "w4",
+          "capture_excluded": 0,
+          "void": 0,
+          "methodology": "40 D/E medium tasks (BLOCK2-DE-40); strict oracle scoring as recorded 9 Nov (BLOCK2-TRIAGE-DECISIONS v2: url check strict, mirror annotation only, task-32 bot wall stays a failure); mean over strict-completed rows (the site statistic).",
+          "source_tier": "grok",
+          "sourceRunResolution": "Recorded measurement window"
+        }
+      ],
+      "reuse_plan": {
+        "glm": {
+          "status": "rerun-next-bulk",
+          "reason": "No canonical result supplied for this tier; run in next bulk.",
+          "source_windows": [],
+          "figures_state": "awaiting-rerun",
+          "judging": "see-source-record",
+          "model_policy": "actual model per record"
+        },
+        "grok": {
+          "status": "reuse",
+          "reason": "Supplied canonical D/E results; S1 primary, S1C separately selectable, BUD independent. Comparisons disabled pending complete metadata.",
+          "source_windows": [
+            "BUD-B2_DE (c1)"
+          ],
+          "figures_state": "retained",
+          "judging": "see-source-record",
+          "model_policy": "actual model per record"
+        },
+        "opus": {
+          "status": "rerun-next-bulk",
+          "reason": "No canonical result supplied for this tier; run in next bulk.",
+          "source_windows": [],
+          "figures_state": "awaiting-rerun",
+          "judging": "see-source-record",
+          "model_policy": "actual model per record"
+        }
+      }
+    },
+    {
+      "id": "browser-use-tools-mode",
+      "contender": "Browser Use · tools mode",
+      "mode": "tools",
+      "category": "tools mode",
+      "records": [],
+      "reuse_plan": {
+        "glm": {
+          "status": "rerun-next-bulk",
+          "reason": "No canonical result supplied for this tier; run in next bulk.",
+          "source_windows": [],
+          "figures_state": "awaiting-rerun",
+          "judging": "see-source-record",
+          "model_policy": "actual model per record"
+        },
+        "grok": {
+          "status": "rerun-next-bulk",
+          "reason": "No canonical result supplied for this tier; run in next bulk.",
+          "source_windows": [],
+          "figures_state": "awaiting-rerun",
+          "judging": "see-source-record",
+          "model_policy": "actual model per record"
+        },
+        "opus": {
+          "status": "rerun-next-bulk",
+          "reason": "No canonical result supplied for this tier; run in next bulk.",
+          "source_windows": [],
+          "figures_state": "awaiting-rerun",
+          "judging": "see-source-record",
+          "model_policy": "actual model per record"
+        }
+      }
+    },
+    {
+      "id": "browser-use-ultrafast",
+      "contender": "Browser Use Ultrafast",
+      "mode": "ultrafast",
+      "category": "agent",
+      "records": [
+        {
+          "id": "medium-reuse-browser-use-ultrafast-s1",
+          "tier": "all",
+          "contender": "Browser Use Ultrafast",
+          "mode": "ultrafast",
+          "category": "agent",
+          "model": "Hosted service; model not reported",
+          "task_set_id": "BLOCK2-DE-40",
+          "judge_id": "strict oracle (status completed, client terminal verified, common body.innerText page check, gold answer, not wrong_done, not void); capture-failed rows excluded (block-2 rule)",
+          "window_id": "S1-B2_DE (c1,c2,c3,c4,c5)",
+          "date": null,
+          "worker": "w2 + w4",
+          "source_run": "S1-B2_DE (c1,c2,c3,c4,c5)",
+          "clock": "whole-call",
+          "completion": "78/79",
+          "finalTime": null,
+          "reportedTime": "8.3 s",
+          "cost": "$0.0020",
+          "tokens": null,
+          "comparisonEligible": false,
+          "measured_at": {
+            "first": "2026-11-09T08:45:06Z",
+            "last": "2026-11-09T10:12:42Z",
+            "basis": "window-level: first/last attempt of the interleaved arms in the same cells (this contender records no per-row timestamp)"
+          },
+          "version": null,
+          "worker_class": "w2 + w4",
+          "capture_excluded": 1,
+          "void": 0,
+          "methodology": "40 D/E medium tasks (BLOCK2-DE-40); strict oracle scoring as recorded 9 Nov (BLOCK2-TRIAGE-DECISIONS v2: url check strict, mirror annotation only, task-32 bot wall stays a failure); mean over strict-completed rows (the site statistic).",
+          "sourceRunResolution": "Recorded measurement window"
+        },
+        {
+          "id": "medium-reuse-browser-use-ultrafast-s1c",
+          "tier": "all",
+          "contender": "Browser Use Ultrafast",
+          "mode": "ultrafast",
+          "category": "agent",
+          "model": "Hosted service; model not reported",
+          "task_set_id": "BLOCK2-DE-40",
+          "judge_id": "strict oracle (status completed, client terminal verified, common body.innerText page check, gold answer, not wrong_done, not void); capture-failed rows excluded (block-2 rule)",
+          "window_id": "S1C-B2_DE (c1,c2,c3,c4,c5,c6)",
+          "date": null,
+          "worker": "w2 + w4",
+          "source_run": "S1C-B2_DE (c1,c2,c3,c4,c5,c6)",
+          "clock": "whole-call",
+          "completion": "38/38",
+          "finalTime": null,
+          "reportedTime": "9.7 s",
+          "cost": "$0.0022",
+          "tokens": null,
+          "comparisonEligible": false,
+          "measured_at": {
+            "first": "2026-11-09T15:18:56Z",
+            "last": "2026-11-09T16:34:02Z",
+            "basis": "window-level: first/last attempt of the interleaved arms in the same cells (this contender records no per-row timestamp)"
+          },
+          "version": null,
+          "worker_class": "w2 + w4",
+          "capture_excluded": 3,
+          "void": 0,
+          "methodology": "40 D/E medium tasks (BLOCK2-DE-40); strict oracle scoring as recorded 9 Nov (BLOCK2-TRIAGE-DECISIONS v2: url check strict, mirror annotation only, task-32 bot wall stays a failure); mean over strict-completed rows (the site statistic).",
+          "sourceRunResolution": "Recorded measurement window"
+        }
+      ],
+      "reuse_plan": {
+        "glm": {
+          "status": "reuse",
+          "reason": "Model-independent hosted service: reuse the same canonical D/E result under every tier toggle; S1 primary, S1C separate.",
+          "source_windows": [
+            "S1-B2_DE (c1,c2,c3,c4,c5)",
+            "S1C-B2_DE (c1,c2,c3,c4,c5,c6)"
+          ],
+          "figures_state": "retained",
+          "judging": "see-source-record",
+          "model_policy": "One fixed hosted service result, not a measurement of the selected large model."
+        },
+        "grok": {
+          "status": "reuse",
+          "reason": "Model-independent hosted service: reuse the same canonical D/E result under every tier toggle; S1 primary, S1C separate.",
+          "source_windows": [
+            "S1-B2_DE (c1,c2,c3,c4,c5)",
+            "S1C-B2_DE (c1,c2,c3,c4,c5,c6)"
+          ],
+          "figures_state": "retained",
+          "judging": "see-source-record",
+          "model_policy": "One fixed hosted service result, not a measurement of the selected large model."
+        },
+        "opus": {
+          "status": "reuse",
+          "reason": "Model-independent hosted service: reuse the same canonical D/E result under every tier toggle; S1 primary, S1C separate.",
+          "source_windows": [
+            "S1-B2_DE (c1,c2,c3,c4,c5)",
+            "S1C-B2_DE (c1,c2,c3,c4,c5,c6)"
+          ],
+          "figures_state": "retained",
+          "judging": "see-source-record",
+          "model_policy": "One fixed hosted service result, not a measurement of the selected large model."
+        }
+      }
+    },
+    {
+      "id": "jev-ultrafast",
+      "contender": "Jev Ultrafast",
+      "mode": "ultrafast",
+      "category": "agent",
+      "records": [],
+      "reuse_plan": {
+        "glm": {
+          "status": "rerun-next-bulk",
+          "reason": "No canonical result supplied for this tier; run in next bulk.",
+          "source_windows": [],
+          "figures_state": "awaiting-rerun",
+          "judging": "see-source-record",
+          "model_policy": "actual model per record"
+        },
+        "grok": {
+          "status": "rerun-next-bulk",
+          "reason": "No canonical result supplied for this tier; run in next bulk.",
+          "source_windows": [],
+          "figures_state": "awaiting-rerun",
+          "judging": "see-source-record",
+          "model_policy": "actual model per record"
+        },
+        "opus": {
+          "status": "rerun-next-bulk",
+          "reason": "No canonical result supplied for this tier; run in next bulk.",
+          "source_windows": [],
+          "figures_state": "awaiting-rerun",
+          "judging": "see-source-record",
+          "model_policy": "actual model per record"
+        }
+      }
+    },
+    {
+      "id": "browser-harness",
+      "contender": "Browser Harness",
+      "mode": "default",
+      "category": "harness",
+      "records": [],
+      "reuse_plan": {
+        "glm": {
+          "status": "rerun-next-bulk",
+          "reason": "No canonical result supplied for this tier; run in next bulk.",
+          "source_windows": [],
+          "figures_state": "awaiting-rerun",
+          "judging": "see-source-record",
+          "model_policy": "actual model per record"
+        },
+        "grok": {
+          "status": "rerun-next-bulk",
+          "reason": "No canonical result supplied for this tier; run in next bulk.",
+          "source_windows": [],
+          "figures_state": "awaiting-rerun",
+          "judging": "see-source-record",
+          "model_policy": "actual model per record"
+        },
+        "opus": {
+          "status": "rerun-next-bulk",
+          "reason": "No canonical result supplied for this tier; run in next bulk.",
+          "source_windows": [],
+          "figures_state": "awaiting-rerun",
+          "judging": "see-source-record",
+          "model_policy": "actual model per record"
+        }
+      }
+    },
+    {
+      "id": "stagehand",
+      "contender": "Stagehand",
+      "mode": "default",
+      "category": "framework",
+      "records": [],
+      "reuse_plan": {
+        "glm": {
+          "status": "rerun-next-bulk",
+          "reason": "No canonical result supplied for this tier; run in next bulk.",
+          "source_windows": [],
+          "figures_state": "awaiting-rerun",
+          "judging": "see-source-record",
+          "model_policy": "actual model per record"
+        },
+        "grok": {
+          "status": "rerun-next-bulk",
+          "reason": "No canonical result supplied for this tier; run in next bulk.",
+          "source_windows": [],
+          "figures_state": "awaiting-rerun",
+          "judging": "see-source-record",
+          "model_policy": "actual model per record"
+        },
+        "opus": {
+          "status": "rerun-next-bulk",
+          "reason": "No canonical result supplied for this tier; run in next bulk.",
+          "source_windows": [],
+          "figures_state": "awaiting-rerun",
+          "judging": "see-source-record",
+          "model_policy": "actual model per record"
+        }
+      }
+    },
+    {
+      "id": "playwright-mcp",
+      "contender": "Playwright MCP",
+      "mode": "default",
+      "category": "MCP",
+      "records": [
+        {
+          "id": "medium-reuse-playwright-mcp-s1",
+          "tier": "grok",
+          "contender": "Playwright MCP",
+          "mode": "MCP",
+          "category": "MCP",
+          "model": "x-ai/grok-4.6",
+          "task_set_id": "BLOCK2-DE-40",
+          "judge_id": "strict oracle (status completed, client terminal verified, common body.innerText page check, gold answer, not wrong_done, not void); capture-failed rows excluded (block-2 rule)",
+          "window_id": "S1-B2_DE (c1,c2,c3,c4,c5)",
+          "date": "2026-11-09",
+          "worker": "w2 + w4",
+          "source_run": "S1-B2_DE (c1,c2,c3,c4,c5)",
+          "clock": "FINAL",
+          "completion": "78/80",
+          "finalTime": "10.2 s",
+          "reportedTime": "10.2 s",
+          "cost": null,
+          "tokens": null,
+          "comparisonEligible": false,
+          "measured_at": {
+            "first": "2026-11-09T08:45:08Z",
+            "last": "2026-11-09T10:10:19Z"
+          },
+          "version": "@playwright/mcp 0.0.84",
+          "worker_class": "w2 + w4",
+          "capture_excluded": 0,
+          "void": 0,
+          "methodology": "40 D/E medium tasks (BLOCK2-DE-40); strict oracle scoring as recorded 9 Nov (BLOCK2-TRIAGE-DECISIONS v2: url check strict, mirror annotation only, task-32 bot wall stays a failure); mean over strict-completed rows (the site statistic).",
+          "source_tier": "grok",
+          "sourceRunResolution": "Recorded measurement window"
+        },
+        {
+          "id": "medium-reuse-playwright-mcp-s1c",
+          "tier": "grok",
+          "contender": "Playwright MCP",
+          "mode": "MCP",
+          "category": "MCP",
+          "model": "x-ai/grok-4.6",
+          "task_set_id": "BLOCK2-DE-40",
+          "judge_id": "strict oracle (status completed, client terminal verified, common body.innerText page check, gold answer, not wrong_done, not void); capture-failed rows excluded (block-2 rule)",
+          "window_id": "S1C-B2_DE (c1,c2,c3,c4,c5,c6)",
+          "date": "2026-11-09",
+          "worker": "w2 + w4",
+          "source_run": "S1C-B2_DE (c1,c2,c3,c4,c5,c6)",
+          "clock": "FINAL",
+          "completion": "38/41",
+          "finalTime": "10.4 s",
+          "reportedTime": "10.4 s",
+          "cost": null,
+          "tokens": null,
+          "comparisonEligible": false,
+          "measured_at": {
+            "first": "2026-11-09T15:20:06Z",
+            "last": "2026-11-09T16:28:41Z"
+          },
+          "version": "@playwright/mcp 0.0.84",
+          "worker_class": "w2 + w4",
+          "capture_excluded": 1,
+          "void": 0,
+          "methodology": "40 D/E medium tasks (BLOCK2-DE-40); strict oracle scoring as recorded 9 Nov (BLOCK2-TRIAGE-DECISIONS v2: url check strict, mirror annotation only, task-32 bot wall stays a failure); mean over strict-completed rows (the site statistic).",
+          "source_tier": "grok",
+          "sourceRunResolution": "Recorded measurement window"
+        }
+      ],
+      "reuse_plan": {
+        "glm": {
+          "status": "rerun-next-bulk",
+          "reason": "No canonical result supplied for this tier; run in next bulk.",
+          "source_windows": [],
+          "figures_state": "awaiting-rerun",
+          "judging": "see-source-record",
+          "model_policy": "actual model per record"
+        },
+        "grok": {
+          "status": "reuse",
+          "reason": "Supplied canonical D/E results; S1 primary, S1C separately selectable, BUD independent. Comparisons disabled pending complete metadata.",
+          "source_windows": [
+            "S1-B2_DE (c1,c2,c3,c4,c5)",
+            "S1C-B2_DE (c1,c2,c3,c4,c5,c6)"
+          ],
+          "figures_state": "retained",
+          "judging": "see-source-record",
+          "model_policy": "actual model per record"
+        },
+        "opus": {
+          "status": "rerun-next-bulk",
+          "reason": "No canonical result supplied for this tier; run in next bulk.",
+          "source_windows": [],
+          "figures_state": "awaiting-rerun",
+          "judging": "see-source-record",
+          "model_policy": "actual model per record"
+        }
+      }
+    }
+  ],
+  "current_window": null,
+  "anchor_window": null,
+  "ratio_anchor": "browser-use-own-agent",
+  "schemaVersion": 2,
+  "comparable_within_hours": 72,
+  "windows": {
+    "BUD-B2_DE (c1)": {
+      "measured_at": null,
+      "measured_range": {
+        "first": "2026-11-09T15:14:24Z",
+        "last": "2026-11-09T15:37:13Z"
+      },
+      "worker_class": "w4",
+      "contender_versions": {
+        "browser-use-own-agent": "Browser Use 0.13.13"
+      },
+      "metadata_status": "range retained; precise comparison timestamp and worker class certification pending"
+    },
+    "S1-B2_DE (c1,c2,c3,c4,c5)": {
+      "measured_at": null,
+      "measured_range": {
+        "first": "2026-11-09T08:45:06Z",
+        "last": "2026-11-09T10:12:42Z"
+      },
+      "worker_class": "w2 + w4",
+      "contender_versions": {
+        "playwright-mcp": "@playwright/mcp 0.0.84",
+        "browser-use-ultrafast": null
+      },
+      "metadata_status": "range retained; precise comparison timestamp and worker class certification pending"
+    },
+    "S1C-B2_DE (c1,c2,c3,c4,c5,c6)": {
+      "measured_at": null,
+      "measured_range": {
+        "first": "2026-11-09T15:18:56Z",
+        "last": "2026-11-09T16:34:02Z"
+      },
+      "worker_class": "w2 + w4",
+      "contender_versions": {
+        "playwright-mcp": "@playwright/mcp 0.0.84",
+        "browser-use-ultrafast": null
+      },
+      "metadata_status": "range retained; precise comparison timestamp and worker class certification pending"
+    }
+  },
+  "aggregation_note": "Completion uses the recorded strict block-2 rule; capture-failed rows are excluded. Time is the mean over strict-completed rows. Rival clocks remain distinct; missing cost and tokens are not estimated."
+}
