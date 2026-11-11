@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<link rel="stylesheet" href="benchmark-tasksets/benchmarks.css?v=aac5e5a99c5b">
+<link rel="stylesheet" href="benchmark-tasksets/benchmarks.css?v=7445fe7f5b25">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Protocolis: solid-state browsing for AI agents</title>
@@ -721,9 +721,13 @@ body .sec.arch-sec h2{font-family:var(--font-display);font-size:clamp(1.35rem,2.
 .arch-comparison p{margin:0}
 @media(max-width:600px){.arch-comparison{grid-template-columns:minmax(0,1fr);gap:1.2rem}.arch-comparison-item:first-child{padding-right:0}.arch-comparison-item+ .arch-comparison-item{padding-left:0;border-left:0;padding-top:1.2rem;border-top:1px solid var(--rule)}}
 /*END-ARCH*/
-/* Quiet full-width bands distinguish the demonstrations and capability comparison. */
-#demo,#measured,#compare{position:relative;isolation:isolate}
-#demo::before,#measured::before,#compare::before{content:"";position:absolute;z-index:-1;pointer-events:none;top:0;bottom:0;left:calc(-1 * max(var(--gut),env(safe-area-inset-left,0px)));right:calc(-1 * max(var(--gut),env(safe-area-inset-right,0px)));background:var(--bg-2)}
+/* "One engine. Any model." reads as the second half of the modes section: no rule, no separate label, tighter join. */
+#modes{border-bottom:0;padding-bottom:1.25rem}#range{padding-top:1.75rem}#range .rail{display:none}
+/* "The trade the others make" already says what the graphs show: keep the graphs, key and note; the heading stays for screen readers only. */
+#range h2{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}#range .range-lede{display:none}#range .range-grid{margin-top:0}
+/* Quiet full-width bands alternate down the page: the demonstration with its headline figures, how it works, and the acquisition offer. */
+#demo,#measured,#how,#acquisition{position:relative;isolation:isolate}
+#demo::before,#measured::before,#how::before,#acquisition::before{content:"";position:absolute;z-index:-1;pointer-events:none;top:0;bottom:0;left:calc(-1 * max(var(--gut),env(safe-area-inset-left,0px)));right:calc(-1 * max(var(--gut),env(safe-area-inset-right,0px)));background:var(--bg-2)}
 /* Persistent comparison explanations, shared across mouse, touch and keyboard. */
 #compare .feature-tip-trigger{appearance:none;background:transparent;border:0;border-radius:2px;color:inherit;font:inherit;letter-spacing:inherit;text-transform:none;text-align:inherit;line-height:inherit;margin:0;padding:0;cursor:help}
 #compare .feature-label-wrap{display:flex;align-items:baseline}
@@ -754,9 +758,9 @@ body .sec.arch-sec h2{font-family:var(--font-display);font-size:clamp(1.35rem,2.
   <a class="brand" href="#" aria-label="Protocolis"><img src="glyph.svg" alt=""><b aria-hidden="true">rotocolis</b></a>
   <nav aria-label="Sections">
     <a href="#demo">demonstration</a>
+    <a href="#benchmarks">benchmarks</a>
     <a href="#how">engine</a>
     <a href="#compare">comparisons</a>
-    <a href="#benchmarks">benchmarks</a>
     <a class="nav-cta" href="https://app.protocolis.co/">platform</a>
   </nav>
 </header>
@@ -790,10 +794,6 @@ body .sec.arch-sec h2{font-family:var(--font-display);font-size:clamp(1.35rem,2.
     </div>
   </div>
 </section>
-
-
-
-
 
 <section class="sec range-sec" id="range">
   <div>
@@ -1073,6 +1073,8 @@ body .sec.arch-sec h2{font-family:var(--font-display);font-size:clamp(1.35rem,2.
   <div class="result-foot"><div><p>Standard vs Browser Use’s own agent · GLM-5.3-flash · 98 held-out tasks</p><p>Ultrafast: Adaptive (lean) vs Jev Ultrafast · same 40 runs, matched clock · 40/40 vs 26/40 completed · Jev 4.2 s vs 8.8 s per completed task</p></div><a href="#benchmarks">Detailed benchmarks <span aria-hidden="true">↓</span></a></div>
 </section>
 
+<section class="sec" id="benchmarks"><div class="head ts-head"><div class="rail"><b>02</b>detailed benchmarks</div><h2 class="ts-sr">Every leading agent stack. One chart.</h2><div class="ts-headside"><div class="ts-controls"><div class="ts-tiers" aria-label="Model tier"><button type="button" data-tier="glm" aria-pressed="false">Small</button><button type="button" data-tier="grok" aria-pressed="true">Strong</button><button type="button" data-tier="opus" aria-pressed="false">Frontier</button></div><div class="ts-tabs" aria-label="Task set"><button type="button" data-taskset="short" aria-pressed="true">Short<small>20 tasks</small></button><button type="button" data-taskset="medium" aria-pressed="false">Medium<small>40 tasks</small></button><button type="button" data-taskset="long" aria-pressed="false">Long<small>20 tasks</small></button></div></div></div></div><div id="taskset-benchmarks"><div id="ts-content" aria-live="polite">Loading benchmark records…</div><noscript>Enable JavaScript to select a task set and view its run records.</noscript></div></section>
+
 <section class="sec arch-sec" id="how" aria-label="How Protocolis works">
   <div class="arch">
     <aside class="arch-vs">
@@ -1107,7 +1109,7 @@ body .sec.arch-sec h2{font-family:var(--font-display);font-size:clamp(1.35rem,2.
 </section>
 
 <section class="sec compact-compare" id="compare">
-  <div class="rail"><b>02</b>compare</div>
+  <div class="rail"><b>03</b>compare</div>
   <h2>Feature for feature, it isn't close.</h2>
   <p class="feature-intro">Sixteen capabilities, compared product by product.</p>
 <div class="feature-picker"><label for="feature-product">Compare Protocolis with</label><select id="feature-product"><option value="bu-agent">Browser Use · own agent</option><option value="bu-openai">Browser Use · OpenAI tools</option><option value="harness">Browser Harness</option><option value="stagehand">Stagehand</option><option value="playwright">Playwright MCP</option><option value="unbrowse">Unbrowse</option><option value="control">Browser Control</option></select></div>
@@ -1345,8 +1347,6 @@ body .sec.arch-sec h2{font-family:var(--font-display);font-size:clamp(1.35rem,2.
 </dl><p>Other dashed rows: not established in the sources linked above.</p></details>
 </details>
 </section>
-
-<section class="sec" id="benchmarks"><div class="head ts-head"><div class="rail"><b>03</b>detailed benchmarks</div><h2 class="ts-sr">Every leading agent stack. One chart.</h2><div class="ts-headside"><div class="ts-controls"><div class="ts-tiers" aria-label="Model tier"><button type="button" data-tier="glm" aria-pressed="false">Small</button><button type="button" data-tier="grok" aria-pressed="true">Strong</button><button type="button" data-tier="opus" aria-pressed="false">Frontier</button></div><div class="ts-tabs" aria-label="Task set"><button type="button" data-taskset="short" aria-pressed="true">Short<small>20 tasks</small></button><button type="button" data-taskset="medium" aria-pressed="false">Medium<small>40 tasks</small></button><button type="button" data-taskset="long" aria-pressed="false">Long<small>20 tasks</small></button></div></div></div></div><div id="taskset-benchmarks"><div id="ts-content" aria-live="polite">Loading benchmark records…</div><noscript>Enable JavaScript to select a task set and view its run records.</noscript></div></section>
 
 <section class="sec" id="acquisition">
   <div class="rail"><b>04</b>acquisition</div>
@@ -1712,7 +1712,7 @@ t.addEventListener('click',function(e){if(e.target.closest&&e.target.closest('.v
 
 </script>
 <script src="benchmark-tasksets/selection.js?v=6f6fe47ee0d5"></script>
-<script src="benchmark-tasksets/benchmarks.js?v=0b9b453fa496"></script>
+<script src="benchmark-tasksets/benchmarks.js?v=b67851b1e88c"></script>
 </body>
 </html>
 
