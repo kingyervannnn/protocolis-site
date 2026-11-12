@@ -1087,6 +1087,36 @@
       "category": "agent",
       "records": [
         {
+          "id": "published-069",
+          "contender": "Protocolis Lean",
+          "mode": "Lean",
+          "category": "agent",
+          "tier": "all",
+          "model": "TypeSafe System One (choice model only)",
+          "completion": "45/60",
+          "finalTime": "6.6 s",
+          "reportedTime": "6.6 s",
+          "medianTime": "6.3 s",
+          "cost": "$0.0004",
+          "tokens": "12.9k",
+          "clock": "FINAL",
+          "date": "2026-11-12",
+          "worker": "w4",
+          "sourceRunResolution": "Recorded measurement window",
+          "comparisonEligible": false,
+          "window_id": "FAST",
+          "task_set_id": "BLOCK1-SETC-20",
+          "judge_id": "page-gold",
+          "source_run": "FAST-B1_SETC (c1-c4), arm OU",
+          "version": "Ultrafast Lean, build d4111a258 (the drive the 0.10.0 Lean mode selects)",
+          "worker_class": null,
+          "measured_at": {
+            "first": "2026-11-12T08:49:10Z",
+            "last": "2026-11-12T09:59:27Z"
+          },
+          "methodology": "Lean = Ultrafast Lean (build d4111a258), the drive the 0.10.0 Lean mode selects: the fixed choice-model drive, no big model, no hand-back. Its answers are NOT verified on the page: completion here is the page check only · the same 20 public tasks (set C), each run three times (60 runs), in the fast-tier window with the other Ultrafast systems, worker 4, 12 November 2026 · time from tool-ready to the end of the drive (FINAL), mean per completed task, median beside · cost per completed task: the choice model (TypeSafe System One) at $0.042 per million input tokens as TypeSafe reports them; tokens per completed task: the choice model's tokens, the only model this mode calls · to be replaced by a measurement of the 0.10.0 candidate's own Lean mode."
+        },
+        {
           "id": "published-049",
           "contender": "Protocolis Lean",
           "mode": "Lean",
@@ -1108,10 +1138,10 @@
           "task_set_id": "BLOCK1-SETC-20",
           "judge_id": "page-gold",
           "source_run": "LNC-B",
-          "version": null,
+          "version": " (Adaptive Lean, retired in 0.10.0)",
           "worker_class": null,
           "measured_at": null,
-          "methodology": "Methodology20 public tasks, each run twice · 40 runs per arm · same final-page check for every arm, every attempt counted · Browser Use Ultra Fast is its hosted service called through its public API (9–10 November 2026), so its time is the whole call, request to answer; Protocolis time runs from tool-ready to the answer (10 November 2026), so the two times are not on the same clock.Matched clock: Protocolis from tool-ready to the answer; Jev on its own clock, from before it opens the start page to its return · 20 public tasks, each run twice · 40 runs per arm · one session and worker · same final-page check for every arm, every attempt counted · cell LNC-B, 10 November 2026. Jev 0.1.13 with the same TypeSafe choice model and the Grok 4.20 non-reasoning helper. Browser Use Ultra Fast: the hosted service called through its public API (cell FRZ, 9–10 November 2026), so its time is the whole call, request to answer."
+          "methodology": "RETIRED MODE: Adaptive Lean, retired in 0.10.0 (not the current Lean) · Methodology20 public tasks, each run twice · 40 runs per arm · same final-page check for every arm, every attempt counted · Browser Use Ultra Fast is its hosted service called through its public API (9–10 November 2026), so its time is the whole call, request to answer; Protocolis time runs from tool-ready to the answer (10 November 2026), so the two times are not on the same clock.Matched clock: Protocolis from tool-ready to the answer; Jev on its own clock, from before it opens the start page to its return · 20 public tasks, each run twice · 40 runs per arm · one session and worker · same final-page check for every arm, every attempt counted · cell LNC-B, 10 November 2026. Jev 0.1.13 with the same TypeSafe choice model and the Grok 4.20 non-reasoning helper. Browser Use Ultra Fast: the hosted service called through its public API (cell FRZ, 9–10 November 2026), so its time is the whole call, request to answer."
         }
       ],
       "reuse_plan": {
