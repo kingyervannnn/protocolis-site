@@ -14,6 +14,10 @@ function closeInfo(){root.querySelectorAll('.ts-info-button[aria-expanded=true]'
 function normalize(s){return (s||'').toLowerCase().replace(/^.*\//,'').replace(/[^a-z0-9]/g,'');}
 function numeric(s){if(typeof s!=='string'||!/^[\d$.,]+\s*(?:s|k)?$/.test(s))return null;const n=parseFloat(s.replace(/[$,]/g,''));return Number.isFinite(n)?n*(s.endsWith('k')?1000:1):null;}
 const num=x=>x>=10?Math.round(x):Number(x.toFixed(1)),pct=x=>Math.round(100*x)+'%',delta=(big,small,good,explain)=>({big,small,good,explain});
+// Completion is shown as a rate (right / counted, the counted runs after the row's stated void rules) with the count beside it.
+// One decimal always; only a full row shows 100%. A row short of full never displays 100% (99.95%+ shows 99.9%).
+function rate(s){const m=/^(\d+)\/(\d+)$/.exec(String(s??''));if(!m||+m[2]===0)return null;const n=+m[1],d=+m[2];let t=(Math.round(1000*n/d)/10).toFixed(1);if(n===d)t='100';else if(t==='100.0')t='99.9';return{n,d,text:t+'%'};}
+const rateText=s=>{const x=rate(s);return x?`${x.text} (${x.n} of ${x.d})`:String(s??'');};
 // Compares a contender record r with our reference record ref; returns a big figure and a small caption.
 // side 'row': it sits on the contender's row and describes the contender's number.
 // side 'ours': it sits on our reference row and describes our number against the focused contender.
@@ -22,7 +26,7 @@ function compare(ref,r,index,set,side){
  const ours=side==='ours';
  if(index===0){
   const a=/^(\d+)\/(\d+)$/.exec(ref.completion),b=/^(\d+)\/(\d+)$/.exec(r.completion);if(!a||!b||+a[2]===0||+b[2]===0)return null;
-  const pp=100*(a[1]/a[2]-b[1]/b[2]),n=Number(Math.abs(pp).toFixed(1)),good=pp>=0,explain=`${ref.contender}: ${ref.completion}; ${r.contender}: ${r.completion}. Percentage-point difference in completion rate.`;
+  const pp=100*(a[1]/a[2]-b[1]/b[2]),n=Number(Math.abs(pp).toFixed(1)),good=pp>=0,explain=`${ref.contender}: ${rateText(ref.completion)}; ${r.contender}: ${rateText(r.completion)}. Percentage-point difference in completion rate.`;
   if(Math.abs(pp)<.05)return delta('','same rate',true,explain);
   return ours?delta((pp>0?'+':'−')+n+' pp','completion',good,explain):delta(n+' pp',pp>0?'lower':'higher',good,explain);
  }
@@ -78,9 +82,12 @@ function render(){
  const isRef=v.refRow&&row.id===v.refRow.id,isFocus=!!v.focused&&row.id===v.focused.row.id,comparable=v.rivals.some(x=>x.row.id===row.id);
  const action=isRef?'':ownHere?'ref':comparable?'focus':'';
  const options=rr.length>1?`<label>Measurement window<select aria-label="Run record for ${esc(row.contender)}" data-record-key="${esc(key)}">${rr.map(x=>`<option value="${esc(x.id)}"${r.id===x.id?' selected':''}>${esc(x.window_id||'Awaiting measurement')} · ${esc(x.model)}</option>`).join('')}</select></label>`:'';
- const note=r?`<p><b>${esc(row.contender)}</b> · ${esc(row.category)}<br>${esc(r.model)}</p>${options}<p>Date: ${esc(r.date||'not recorded')} · Worker: ${esc(r.worker||'not recorded')}<br>Window: ${esc(r.window_id||'not recorded')}<br>Clock: ${esc(r.clock)}</p><p>${esc(r.methodology||r.original?.methodology||'')}</p>`:'<p>Awaiting a measurement on this task set and model tier.</p>';
+ const note=r?`<p><b>${esc(row.contender)}</b> · ${esc(row.category)}<br>${esc(r.model)}</p>${r.completionNote?`<p>Completed ${esc(rateText(r.completion))}: ${esc(r.completionNote)}</p>`:''}${options}<p>Date: ${esc(r.date||'not recorded')} · Worker: ${esc(r.worker||'not recorded')}<br>Window: ${esc(r.window_id||'not recorded')}<br>Clock: ${esc(r.clock)}</p><p>${esc(r.methodology||r.original?.methodology||'')}</p>`:'<p>Awaiting a measurement on this task set and model tier.</p>';
  const values=r?[r.completion,r.reportedTime,r.cost,r.tokens]:['measuring','measuring','measuring','measuring'];
- const cellList=values.map((val,i)=>{const b=isRef?badge(v.focused?compare(r,v.focused.rec,i,set,'ours'):summarize(r,v.rivals,i,set),'ours'):badge(compare(v.ref,r,i,set,'row'),'row',ownHere);return `<td data-label="${['Completed','Mean time','Cost','Tokens'][i]}"><span class="ts-cell${b?' ts-pair':''}"><span class="ts-value">${esc(val??'not reported')}</span>${b}</span></td>`;});
+ const cellList=values.map((val,i)=>{const b=isRef?badge(v.focused?compare(r,v.focused.rec,i,set,'ours'):summarize(r,v.rivals,i,set),'ours'):badge(compare(v.ref,r,i,set,'row'),'row',ownHere);const cr=i===0?rate(val):null,cn=cr&&r.completionNote;
+ // The count stays in the row itself (never only in a tooltip); a row whose denominator is short because of a void carries its note.
+ const shown=cr?`${esc(cr.text)}<small class="ts-count${cn?' ts-count-note':''}"${cn?` title="${esc(r.completionNote)}"`:''}>${cr.n} of ${cr.d}${cn?'<span aria-hidden="true">*</span><span class="ts-sr"> (${esc(r.completionNote)})</span>':''}</small>`:esc(val??'not reported');
+ return `<td data-label="${['Completed','Mean time','Cost','Tokens'][i]}"><span class="ts-cell${b?' ts-pair':''}"><span class="ts-value${cr?' ts-rate':''}">${shown}</span>${b}</span></td>`;});
  // Median per completed task on the same clock and rows as the mean (record.medianTime); no comparison badge, so the mean stays the compared figure.
  cellList.splice(2,0,`<td data-label="Median time"><span class="ts-cell"><span class="ts-value">${esc(r?(r.medianTime||'—'):'measuring')}</span></span></td>`);
  const cells=cellList.join('');
