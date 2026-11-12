@@ -44,7 +44,12 @@
           "medianTime": "7.1 s",
           "cost": "$0.0012",
           "tokens": "6.0k",
-          "version": "candidate 26ac96a0b"
+          "version": "candidate 26ac96a0b",
+          "wire_reasoning": "low (engine auto)",
+          "wire_reasoning_evidence": "MEDGLM GA (gear3): wire_shapes / Mac meter effort low on 80 GLM calls, medium 1.",
+          "reasoning_set_by": "engine",
+          "driven_by": "own agent (Agent Mode)",
+          "driven_by_detail": "Protocolis in agent mode: apc drive --mode auto (Adaptive) or --mode standard (Standard); the engine's own loop (kit arms gear3 / gear3x1 = Adaptive, gear3std / gear3x1std = Standard)."
         },
         {
           "tier": "opus",
@@ -78,7 +83,12 @@
           "tokens": "4.3k",
           "version": "candidate 26ac96a0b",
           "capture_excluded": 0,
-          "completionNote": "1 run left out of the count (80 planned): a SITE FAILURE. lua.org dropped the connection mid-run and the run ended on the browser's network-error page (the engine does not record the browser's error code; the error page itself means a browser-level network failure, not an HTTP answer or a block page). The same rule left out Playwright MCP's run on that task minutes later."
+          "completionNote": "1 run left out of the count (80 planned): a SITE FAILURE. lua.org dropped the connection mid-run and the run ended on the browser's network-error page (the engine does not record the browser's error code; the error page itself means a browser-level network failure, not an HTTP answer or a block page). The same rule left out Playwright MCP's run on that task minutes later.",
+          "wire_reasoning": "low (engine auto)",
+          "wire_reasoning_evidence": "MEDSOL FA (gear3): relay_usage.calls[].effort_declared low on 51/51 Sol calls (8664 -> 8649 -> Mac 8650).",
+          "reasoning_set_by": "engine",
+          "driven_by": "own agent (Agent Mode)",
+          "driven_by_detail": "Protocolis in agent mode: apc drive --mode auto (Adaptive) or --mode standard (Standard); the engine's own loop (kit arms gear3 / gear3x1 = Adaptive, gear3std / gear3x1std = Standard)."
         },
         {
           "id": "published-056",
@@ -112,7 +122,12 @@
           "methodology": "Medium view: the 40 D/E tasks (BLOCK2-DE-40), each run twice · the candidate build (commit 26ac96a0b) in Adaptive and Standard, rotating per task in one window, worker 4, 12 November 2026 · Grok 4.6 on every arm · host graphics off · strict task-oracle scoring with the medium rules (task 32's wall stays a failure; one capture-failed row per arm left out) · every attempt counted · time from tool-ready to the verified answer: mean per completed task, median beside · cost per completed task: Grok on the xAI route as billed, plus the writer calls as billed (OpenRouter), plus our chooser (TypeSafe System One) at $0.042 per million input tokens as TypeSafe reports them; tokens per completed task: the big model and the writer (Adaptive's chooser adds about 15.5k small-model tokens per completed task, priced in the cost) · site failures are left out of the count for every system: a run that ends on the browser's own network-error page after the task's own site dropped the connection (rule stated 12 Nov after these rows were seen; disclosed).",
           "source_tier": "grok",
           "sourceRunResolution": "Recorded measurement window",
-          "completionNote": "1 run left out of the count (80 planned): lua.org refused every connection to the worker (site outage, voided under the site-outage rule); its rerun is on file and not spliced into this row."
+          "completionNote": "1 run left out of the count (80 planned): lua.org refused every connection to the worker (site outage, voided under the site-outage rule); its rerun is on file and not spliced into this row.",
+          "wire_reasoning": "low (engine auto)",
+          "wire_reasoning_evidence": "MED2 MA (gear3x1): grok_calls[].wire_effort low on 84/84 Grok calls.",
+          "reasoning_set_by": "engine",
+          "driven_by": "own agent (Agent Mode)",
+          "driven_by_detail": "Protocolis in agent mode: apc drive --mode auto (Adaptive) or --mode standard (Standard); the engine's own loop (kit arms gear3 / gear3x1 = Adaptive, gear3std / gear3x1std = Standard)."
         }
       ],
       "reuse_plan": {
@@ -140,7 +155,8 @@
           "judging": "see-source-record",
           "model_policy": "actual model per record"
         }
-      }
+      },
+      "group": "agents"
     },
     {
       "id": "protocolis-standard",
@@ -180,7 +196,12 @@
           "tokens": "6.7k",
           "version": "composite: candidate 26ac96a0b + the 0.10.0 candidate 7dd2959ba",
           "capture_excluded": 0,
-          "compositeLabel": "COMPOSITE row: 80 runs = 78 from candidate 26ac96a0b (MEDSOL, 12 Nov) + 2 from the 0.10.0 candidate 7dd2959ba (the new-tab task rerun once, every rep counted); rivals untouched"
+          "compositeLabel": "COMPOSITE row: 80 runs = 78 from candidate 26ac96a0b (MEDSOL, 12 Nov) + 2 from the 0.10.0 candidate 7dd2959ba (the new-tab task rerun once, every rep counted); rivals untouched",
+          "wire_reasoning": "low (engine auto)",
+          "wire_reasoning_evidence": "MEDSOL FS low on 184/184 Sol calls + MEDSOLP FS low on 4/4.",
+          "reasoning_set_by": "engine",
+          "driven_by": "own agent (Agent Mode)",
+          "driven_by_detail": "Protocolis in agent mode: apc drive --mode auto (Adaptive) or --mode standard (Standard); the engine's own loop (kit arms gear3 / gear3x1 = Adaptive, gear3std / gear3x1std = Standard)."
         },
         {
           "id": "published-064",
@@ -215,7 +236,12 @@
           "source_tier": "grok",
           "sourceRunResolution": "Recorded measurement window",
           "completionNote": "1 run left out of the count (80 planned): lua.org refused every connection (site outage); that run was voided and rerun once, and the rerun also failed at the connection (net::ERR_CONNECTION_CLOSED, net::ERR_TIMED_OUT) and ended on the browser's network-error page, so it is a SITE FAILURE and left out.",
-          "compositeLabel": "COMPOSITE row: 80 runs = 77 from candidate 26ac96a0b (MED2, 12 Nov) + 1 from 26ac96a0b (the lua.org outage rerun, MED2RR) + 2 from the 0.10.0 candidate 7dd2959ba (the new-tab task rerun once, every rep counted); rivals untouched"
+          "compositeLabel": "COMPOSITE row: 80 runs = 77 from candidate 26ac96a0b (MED2, 12 Nov) + 1 from 26ac96a0b (the lua.org outage rerun, MED2RR) + 2 from the 0.10.0 candidate 7dd2959ba (the new-tab task rerun once, every rep counted); rivals untouched",
+          "wire_reasoning": "low (engine auto)",
+          "wire_reasoning_evidence": "MED2 MS low on 274 calls, medium 1; MED2RR MS low 8/8; MEDP MS low 4/4.",
+          "reasoning_set_by": "engine",
+          "driven_by": "own agent (Agent Mode)",
+          "driven_by_detail": "Protocolis in agent mode: apc drive --mode auto (Adaptive) or --mode standard (Standard); the engine's own loop (kit arms gear3 / gear3x1 = Adaptive, gear3std / gear3x1std = Standard)."
         },
         {
           "tier": "glm",
@@ -248,7 +274,12 @@
           "medianTime": "10.4 s",
           "cost": "$0.0009",
           "tokens": "11.3k",
-          "version": "candidate 26ac96a0b"
+          "version": "candidate 26ac96a0b",
+          "wire_reasoning": "low (engine auto)",
+          "wire_reasoning_evidence": "MEDGLM GS: effort low on 297 GLM calls, medium 1.",
+          "reasoning_set_by": "engine",
+          "driven_by": "own agent (Agent Mode)",
+          "driven_by_detail": "Protocolis in agent mode: apc drive --mode auto (Adaptive) or --mode standard (Standard); the engine's own loop (kit arms gear3 / gear3x1 = Adaptive, gear3std / gear3x1std = Standard)."
         },
         {
           "tier": "opus",
@@ -281,7 +312,12 @@
           "cost": "$0.0152",
           "tokens": "6.8k",
           "version": "candidate 26ac96a0b",
-          "capture_excluded": 0
+          "capture_excluded": 0,
+          "wire_reasoning": "low (engine auto)",
+          "wire_reasoning_evidence": "MEDSOL FS: relay effort_declared low on 184/184 Sol calls.",
+          "reasoning_set_by": "engine",
+          "driven_by": "own agent (Agent Mode)",
+          "driven_by_detail": "Protocolis in agent mode: apc drive --mode auto (Adaptive) or --mode standard (Standard); the engine's own loop (kit arms gear3 / gear3x1 = Adaptive, gear3std / gear3x1std = Standard)."
         },
         {
           "id": "published-057",
@@ -315,7 +351,12 @@
           "methodology": "Medium view: the 40 D/E tasks (BLOCK2-DE-40), each run twice · the candidate build (commit 26ac96a0b) in Adaptive and Standard, rotating per task in one window, worker 4, 12 November 2026 · Grok 4.6 on every arm · host graphics off · strict task-oracle scoring with the medium rules (task 32's wall stays a failure; one capture-failed row per arm left out) · every attempt counted · time from tool-ready to the verified answer: mean per completed task, median beside · cost per completed task: Grok on the xAI route as billed, plus the writer calls as billed (OpenRouter), plus our chooser (TypeSafe System One) at $0.042 per million input tokens as TypeSafe reports them; tokens per completed task: the big model and the writer (Adaptive's chooser adds about 15.5k small-model tokens per completed task, priced in the cost).",
           "source_tier": "grok",
           "sourceRunResolution": "Recorded measurement window",
-          "completionNote": "1 run left out of the count (80 planned): the task site (lua.org) refused every connection to the worker for about 8 minutes, so the page never loaded and could not be captured. It is being rerun under the site-outage rule, which applies to every system."
+          "completionNote": "1 run left out of the count (80 planned): the task site (lua.org) refused every connection to the worker for about 8 minutes, so the page never loaded and could not be captured. It is being rerun under the site-outage rule, which applies to every system.",
+          "wire_reasoning": "low (engine auto)",
+          "wire_reasoning_evidence": "MED2 MS: grok_calls wire_effort low on 274 calls, medium 1.",
+          "reasoning_set_by": "engine",
+          "driven_by": "own agent (Agent Mode)",
+          "driven_by_detail": "Protocolis in agent mode: apc drive --mode auto (Adaptive) or --mode standard (Standard); the engine's own loop (kit arms gear3 / gear3x1 = Adaptive, gear3std / gear3x1std = Standard)."
         }
       ],
       "reuse_plan": {
@@ -343,7 +384,8 @@
           "judging": "see-source-record",
           "model_policy": "actual model per record"
         }
-      }
+      },
+      "group": "agents"
     },
     {
       "id": "protocolis-lean",
@@ -376,7 +418,8 @@
           "judging": "see-source-record",
           "model_policy": "actual model per record"
         }
-      }
+      },
+      "group": "fast"
     },
     {
       "id": "browser-use-own-agent",
@@ -415,7 +458,12 @@
           "void": 0,
           "methodology": "40 D/E medium tasks (BLOCK2-DE-40); strict oracle scoring as recorded 9 Nov (BLOCK2-TRIAGE-DECISIONS v2: url check strict, mirror annotation only, task-32 bot wall stays a failure); mean over strict-completed rows (the site statistic).",
           "source_tier": "grok",
-          "sourceRunResolution": "Recorded measurement window"
+          "sourceRunResolution": "Recorded measurement window",
+          "wire_reasoning": "provider default",
+          "wire_reasoning_evidence": "BUD bua: harness record reasoning_effort provider_default on 40/40 rows; xAI route W4 8663 -> 8648 (model map only). Per-call log on W4, not read.",
+          "reasoning_set_by": "product",
+          "driven_by": "own agent",
+          "driven_by_detail": "Browser Use 0.13.13 Agent.run() (kit fast/bu_run.py): its own planner and loop. The kit sets max_steps 40, a 300 s wall, use_vision on, use_judge off, and a first navigate action to the start URL."
         }
       ],
       "reuse_plan": {
@@ -445,7 +493,8 @@
           "judging": "see-source-record",
           "model_policy": "actual model per record"
         }
-      }
+      },
+      "group": "agents"
     },
     {
       "id": "browser-use-tools-mode",
@@ -478,7 +527,8 @@
           "judging": "see-source-record",
           "model_policy": "actual model per record"
         }
-      }
+      },
+      "group": "tools"
     },
     {
       "id": "browser-use-ultrafast",
@@ -518,7 +568,12 @@
           "void": 0,
           "methodology": "40 D/E medium tasks (BLOCK2-DE-40); strict oracle scoring as recorded 9 Nov (BLOCK2-TRIAGE-DECISIONS v2: url check strict, mirror annotation only, task-32 bot wall stays a failure); mean over strict-completed rows (the site statistic).",
           "sourceRunResolution": "Recorded measurement window",
-          "completionNote": "1 run left out of the count (80 planned): its closing page could not be captured (block-2 capture rule)."
+          "completionNote": "1 run left out of the count (80 planned): its closing page could not be captured (block-2 capture rule).",
+          "wire_reasoning": "not observable (hosted)",
+          "wire_reasoning_evidence": "Hosted service, model and request fields not reported (rival buu).",
+          "reasoning_set_by": "not observable",
+          "driven_by": "hosted service",
+          "driven_by_detail": "Browser Use Cloud bu-ultrafast through its public API; its loop and model are not observable."
         },
         {
           "id": "medium-reuse-browser-use-ultrafast-s1c",
@@ -551,7 +606,12 @@
           "capture_excluded": 3,
           "void": 0,
           "methodology": "40 D/E medium tasks (BLOCK2-DE-40); strict oracle scoring as recorded 9 Nov (BLOCK2-TRIAGE-DECISIONS v2: url check strict, mirror annotation only, task-32 bot wall stays a failure); mean over strict-completed rows (the site statistic).",
-          "sourceRunResolution": "Recorded measurement window"
+          "sourceRunResolution": "Recorded measurement window",
+          "wire_reasoning": "not observable (hosted)",
+          "wire_reasoning_evidence": "Hosted service, model and request fields not reported (rival buu).",
+          "reasoning_set_by": "not observable",
+          "driven_by": "hosted service",
+          "driven_by_detail": "Browser Use Cloud bu-ultrafast through its public API; its loop and model are not observable."
         }
       ],
       "reuse_plan": {
@@ -588,7 +648,8 @@
           "judging": "see-source-record",
           "model_policy": "One fixed hosted service result, not a measurement of the selected large model."
         }
-      }
+      },
+      "group": "fast"
     },
     {
       "id": "jev-ultrafast",
@@ -621,7 +682,8 @@
           "judging": "see-source-record",
           "model_policy": "actual model per record"
         }
-      }
+      },
+      "group": "fast"
     },
     {
       "id": "browser-harness",
@@ -654,7 +716,8 @@
           "judging": "see-source-record",
           "model_policy": "actual model per record"
         }
-      }
+      },
+      "group": "tools"
     },
     {
       "id": "stagehand",
@@ -687,7 +750,8 @@
           "judging": "see-source-record",
           "model_policy": "actual model per record"
         }
-      }
+      },
+      "group": "agents"
     },
     {
       "id": "playwright-mcp",
@@ -726,7 +790,12 @@
           "medianTime": "8.1 s",
           "cost": "$0.0023",
           "tokens": "39.1k",
-          "version": null
+          "version": null,
+          "wire_reasoning": "low, set by our harness",
+          "wire_reasoning_evidence": "MEDGLM GP (pwml): Mac meter OPEN effort low on 380/380 GLM calls; BINDING: 'Playwright MCP (GP) on the same 8662 relay, effort low'.",
+          "reasoning_set_by": "our harness (effort field)",
+          "driven_by": "outside agent (our kit loop)",
+          "driven_by_detail": "Playwright MCP 0.0.84 tools driven by the kit's stock loop fast/baselines/pwm_run.mjs (kit arm pwml): chat loop, tool_choice auto, at most 500 steps, 300 s wall."
         },
         {
           "tier": "opus",
@@ -760,7 +829,12 @@
           "tokens": "17.0k",
           "version": null,
           "capture_excluded": 1,
-          "completionNote": "1 run left out of the count (80 planned): a SITE FAILURE. lua.org returned an empty response and timed out mid-run (net::ERR_EMPTY_RESPONSE, net::ERR_TIMED_OUT) and the run ended on the browser's network-error page. The same rule left out our Adaptive run on that task minutes earlier."
+          "completionNote": "1 run left out of the count (80 planned): a SITE FAILURE. lua.org returned an empty response and timed out mid-run (net::ERR_EMPTY_RESPONSE, net::ERR_TIMED_OUT) and the run ended on the browser's network-error page. The same rule left out our Adaptive run on that task minutes earlier.",
+          "wire_reasoning": "low, set by our harness",
+          "wire_reasoning_evidence": "MEDSOL FP (pwml): relay effort_declared low on 349/349 Sol calls.",
+          "reasoning_set_by": "our harness (effort field)",
+          "driven_by": "outside agent (our kit loop)",
+          "driven_by_detail": "Playwright MCP 0.0.84 tools driven by the kit's stock loop fast/baselines/pwm_run.mjs (kit arm pwml): chat loop, tool_choice auto, at most 500 steps, 300 s wall."
         },
         {
           "id": "medium-reuse-playwright-mcp-s1",
@@ -793,7 +867,12 @@
           "void": 0,
           "methodology": "40 D/E medium tasks (BLOCK2-DE-40); strict oracle scoring as recorded 9 Nov (BLOCK2-TRIAGE-DECISIONS v2: url check strict, mirror annotation only, task-32 bot wall stays a failure); mean over strict-completed rows (the site statistic).",
           "source_tier": "grok",
-          "sourceRunResolution": "Recorded measurement window"
+          "sourceRunResolution": "Recorded measurement window",
+          "wire_reasoning": "low, set by our harness",
+          "wire_reasoning_evidence": "Stage 1 block 2 pwml: Mac meter OPEN effort low on 375/375 Grok calls.",
+          "reasoning_set_by": "our harness (effort field)",
+          "driven_by": "outside agent (our kit loop)",
+          "driven_by_detail": "Playwright MCP 0.0.84 tools driven by the kit's stock loop fast/baselines/pwm_run.mjs (kit arm pwml): chat loop, tool_choice auto, at most 500 steps, 300 s wall."
         },
         {
           "id": "medium-reuse-playwright-mcp-s1c",
@@ -826,7 +905,12 @@
           "void": 0,
           "methodology": "40 D/E medium tasks (BLOCK2-DE-40); strict oracle scoring as recorded 9 Nov (BLOCK2-TRIAGE-DECISIONS v2: url check strict, mirror annotation only, task-32 bot wall stays a failure); mean over strict-completed rows (the site statistic).",
           "source_tier": "grok",
-          "sourceRunResolution": "Recorded measurement window"
+          "sourceRunResolution": "Recorded measurement window",
+          "wire_reasoning": "low, set by our harness",
+          "wire_reasoning_evidence": "S1C pwml: Mac meter OPEN effort low on 192/192 Grok calls.",
+          "reasoning_set_by": "our harness (effort field)",
+          "driven_by": "outside agent (our kit loop)",
+          "driven_by_detail": "Playwright MCP 0.0.84 tools driven by the kit's stock loop fast/baselines/pwm_run.mjs (kit arm pwml): chat loop, tool_choice auto, at most 500 steps, 300 s wall."
         }
       ],
       "reuse_plan": {
@@ -857,7 +941,26 @@
           "judging": "see-source-record",
           "model_policy": "actual model per record"
         }
-      }
+      },
+      "group": "tools"
+    },
+    {
+      "id": "protocolis-adaptive-outside",
+      "contender": "Protocolis Adaptive · outside agent",
+      "mode": "Adaptive",
+      "category": "outside agent",
+      "group": "tools",
+      "empty_label": "not run yet",
+      "records": []
+    },
+    {
+      "id": "protocolis-standard-outside",
+      "contender": "Protocolis Standard · outside agent",
+      "mode": "Standard",
+      "category": "outside agent",
+      "group": "tools",
+      "empty_label": "not run yet",
+      "records": []
     }
   ],
   "current_window": null,
@@ -905,5 +1008,17 @@
       "metadata_status": "range retained; precise comparison timestamp and worker class certification pending"
     }
   },
-  "aggregation_note": "Completion uses the recorded strict block-2 rule; capture-failed rows are excluded. Time is the mean over strict-completed rows. Rival clocks remain distinct; missing cost and tokens are not estimated."
+  "aggregation_note": "Completion uses the recorded strict block-2 rule; capture-failed rows are excluded. Time is the mean over strict-completed rows. Rival clocks remain distinct; missing cost and tokens are not estimated.",
+  "groups": [
+    {
+      "id": "tools",
+      "label": "Tools",
+      "question": "I have my own agent. Which browser tool do I give it?"
+    },
+    {
+      "id": "agents",
+      "label": "Agents",
+      "question": "I hand over a task and get an answer."
+    }
+  ]
 }

@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<link rel="stylesheet" href="benchmark-tasksets/benchmarks.css?v=61ecf433a94e">
+<link rel="stylesheet" href="benchmark-tasksets/benchmarks.css?v=834230f7079f">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Protocolis: solid-state browsing for AI agents</title>
@@ -795,45 +795,23 @@ body .sec.arch-sec h2{font-family:var(--font-display);font-size:clamp(1.35rem,2.
   </div>
 </section>
 
-<section class="sec range-sec" id="range">
-  <div>
-    <div class="rail">one engine</div>
-    <h2>One engine. Any model. Any task length.</h2>
-    <p class="range-lede">Every screenshot stack holds in one corner and falls away in the others: a tools mode for small models, an agent for frontier ones, a fast mode for short tasks. That is why Browser Use ships six ways to run the same agent. One compiled layer holds across the range, and the model above it can be whatever the budget allows.</p>
-    <div class="range-grid">
-      <figure class="range-panel">
-        <figcaption><b>Across models</b><span>tasks completed</span></figcaption>
-        <svg viewBox="0 0 400 210" role="img" aria-label="Protocolis completion stays high from small models to frontier models; a screenshot agent rises only at the frontier and a tools mode falls away there.">
-          <line class="range-gl" x1="22" y1="30" x2="22" y2="190"/><line class="range-gl" x1="22" y1="190" x2="382" y2="190"/>
-          <line class="range-gl" x1="22" y1="70" x2="382" y2="70" stroke-dasharray="2 6"/><line class="range-gl" x1="22" y1="130" x2="382" y2="130" stroke-dasharray="2 6"/>
-          <text class="range-ylab" x="18" y="34" text-anchor="end">ALL</text>
-          <path class="range-op" d="M22,170 C140,160 250,95 382,60"/>
-          <path class="range-op d" d="M22,96 C140,100 260,130 382,162"/>
-          <path class="range-us" d="M22,42 C140,40 260,38 382,36"/>
-          <text class="range-lbl" x="378" y="54" text-anchor="end">their agent</text>
-          <text class="range-lbl" x="378" y="178" text-anchor="end">their tools mode</text>
-        </svg>
-        <div class="range-axis"><span>small model</span><span>frontier model</span></div>
-      </figure>
-      <figure class="range-panel">
-        <figcaption><b>Across task length</b><span>tasks completed</span></figcaption>
-        <svg viewBox="0 0 400 210" role="img" aria-label="Protocolis completion holds from short tasks to long tasks; a fast mode falls off steeply and a full agent declines.">
-          <line class="range-gl" x1="22" y1="30" x2="22" y2="190"/><line class="range-gl" x1="22" y1="190" x2="382" y2="190"/>
-          <line class="range-gl" x1="22" y1="70" x2="382" y2="70" stroke-dasharray="2 6"/><line class="range-gl" x1="22" y1="130" x2="382" y2="130" stroke-dasharray="2 6"/>
-          <text class="range-ylab" x="18" y="34" text-anchor="end">ALL</text>
-          <path class="range-op" d="M22,64 C140,82 260,112 382,130"/>
-          <path class="range-op d" d="M22,52 C120,66 220,140 382,182"/>
-          <path class="range-us" d="M22,40 C140,42 260,52 382,62"/>
-          <text class="range-lbl" x="378" y="124" text-anchor="end">their full agent</text>
-          <text class="range-lbl" x="378" y="198" text-anchor="end">their fast mode</text>
-        </svg>
-        <div class="range-axis"><span>short task</span><span>long task</span></div>
-      </figure>
-    </div>
-    <div class="range-key"><span class="k us">Protocolis, one engine, either mode</span><span class="k op">a product per corner</span></div>
-    <p class="range-note">The pattern, drawn without figures. Every arm is being re-measured on the current build; this chart takes its points from those cells as they land, and the detailed benchmarks below carry every figure.</p>
-  </div>
-</section>
+<section class="sec range-sec" id="range"><div>
+<div class="rail">one engine</div>
+<h2>One engine. Any model. Any task length.</h2>
+<p class="range-lede">Every screenshot stack holds in one corner and falls away in the others: a tools mode for small models, an agent for frontier ones, a fast mode for short tasks. That is why Browser Use ships six ways to run the same agent. One compiled layer holds across the range, and the model above it can be whatever the budget allows.</p>
+<div class="ts-controls range-layers" aria-label="Chart layer"><div class="ts-tabs"><button type="button" data-layer="completion" aria-pressed="true">Completed</button><button type="button" data-layer="speed" aria-pressed="false">Speed</button><button type="button" data-layer="cost" aria-pressed="false">Cost</button></div></div>
+<div class="range-grid">
+<figure class="range-panel"><figcaption><b>Across models</b><span data-range-unit>tasks completed</span></figcaption>
+<div class="ts-controls range-pick" aria-label="Task set for this panel"><div class="ts-tabs"><button type="button" data-rtask="short" aria-pressed="true">Short</button><button type="button" data-rtask="medium" aria-pressed="false">Medium</button><button type="button" data-rtask="long" aria-pressed="false">Long</button></div></div>
+<div class="range-plot" id="range-models"></div></figure>
+<figure class="range-panel"><figcaption><b>Across task length</b><span data-range-unit>tasks completed</span></figcaption>
+<div class="ts-controls range-pick" aria-label="Model tier for this panel"><div class="ts-tabs"><button type="button" data-rtier="glm" aria-pressed="false">Small</button><button type="button" data-rtier="grok" aria-pressed="true">Strong</button><button type="button" data-rtier="opus" aria-pressed="false">Frontier</button></div></div>
+<div class="range-plot" id="range-length"></div></figure>
+</div>
+<div class="range-key"><span class="k us">Protocolis Adaptive</span><span class="k st">Protocolis Standard</span><span class="k op">every other system · point at a mark for its name</span></div>
+<p class="range-note">Each point is a row from the detailed benchmarks below; a system with no figure in a cell has no point there. Pick a rival in the tables and its line is drawn bright here. Long tasks are being re-measured.</p>
+</div></section>
+<div id="range-tip" hidden></div>
 
 <section class="sec" id="demo">
   <div>
@@ -1712,7 +1690,8 @@ t.addEventListener('click',function(e){if(e.target.closest&&e.target.closest('.v
 
 </script>
 <script src="benchmark-tasksets/selection.js?v=6f6fe47ee0d5"></script>
-<script src="benchmark-tasksets/benchmarks.js?v=ebce1eb6d2a2"></script>
+<script src="benchmark-tasksets/benchmarks.js?v=69fc5c64f0a7"></script>
+<script src="benchmark-tasksets/range.js?v=408f77237a5f"></script>
 </body>
 </html>
 

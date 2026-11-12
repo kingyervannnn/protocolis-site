@@ -41,7 +41,12 @@
             "last": "2026-11-12T09:59:27Z"
           },
           "methodology": "Ultrafast view (small choice model): the same 20 public tasks (set C), each run three times (60 runs per system) · the six fast-tier systems rotating per task in one window, worker 4, 12 November 2026 · Grok 4.6 for our arms, each rival as it ships · page check against a gold answer · every attempt counted · each system timed on the clock the site uses for it: ours from tool-ready to the verified answer (FINAL), Browser Use Ultrafast whole call, Jev its own clock · mean per completed task, median beside · Protocolis Adaptive on the candidate build (commit 26ac96a0b), host graphics off · cost per completed task: Grok as billed plus the writer as billed (OpenRouter +5.5% fee) plus our chooser (TypeSafe System One) at $0.042 per million input tokens as TypeSafe reports them; tokens per completed task: the big model and the writer (the chooser adds about 15.8k small-model tokens per completed task, priced in the cost).",
-          "medianTime": "8.2 s"
+          "medianTime": "8.2 s",
+          "wire_reasoning": "low (engine auto)",
+          "wire_reasoning_evidence": "FAST arm CA (gear3x1): grok_calls[].wire_effort = low on 31/31 Grok calls in 60 rows (top-level reasoning_effort, X1 xAI route 8663 -> 8648).",
+          "reasoning_set_by": "engine",
+          "driven_by": "own agent (Agent Mode)",
+          "driven_by_detail": "Protocolis in agent mode: apc drive --mode auto (Adaptive) or --mode standard (Standard); the engine's own loop (kit arms gear3 / gear3x1 = Adaptive, gear3std / gear3x1std = Standard)."
         },
         {
           "id": "published-053",
@@ -68,7 +73,12 @@
           "version": "candidate 27a41c7de",
           "worker_class": null,
           "measured_at": "2026-11-12T00:20:00Z",
-          "methodology": "Frontier view: the same 20 public tasks (set C), each run twice (40 runs per arm) · the candidate build (commit 27a41c7de) in Adaptive and Standard and Playwright MCP 0.0.84, rotating per task in one window, worker 4, 11 November 2026 · GPT-6.1 Sol on every arm (through OpenRouter, served by OpenAI), effort low · page check against a gold answer · every attempt counted · time from tool-ready to the verified answer, mean per completed task · cost per completed task at list price including the OpenRouter fee; tokens per completed task, all roles."
+          "methodology": "Frontier view: the same 20 public tasks (set C), each run twice (40 runs per arm) · the candidate build (commit 27a41c7de) in Adaptive and Standard and Playwright MCP 0.0.84, rotating per task in one window, worker 4, 11 November 2026 · GPT-6.1 Sol on every arm (through OpenRouter, served by OpenAI), effort low · page check against a gold answer · every attempt counted · time from tool-ready to the verified answer, mean per completed task · cost per completed task at list price including the OpenRouter fee; tokens per completed task, all roles.",
+          "wire_reasoning": "low (engine auto)",
+          "wire_reasoning_evidence": "FRT arm FA (gear3): relay_usage.calls[].effort_declared = low on 20/20 Sol calls (W4 8664 -> 8649 -> Mac 8650, no body default; PREREGISTRATION-FRT-AMENDMENT-1).",
+          "reasoning_set_by": "engine",
+          "driven_by": "own agent (Agent Mode)",
+          "driven_by_detail": "Protocolis in agent mode: apc drive --mode auto (Adaptive) or --mode standard (Standard); the engine's own loop (kit arms gear3 / gear3x1 = Adaptive, gear3std / gear3x1std = Standard)."
         },
         {
           "id": "published-051",
@@ -95,7 +105,12 @@
           "version": "candidate 9f89f071d",
           "worker_class": null,
           "measured_at": "2026-11-11T22:18:00Z",
-          "methodology": "Small view: the same 20 public tasks (set C), each run three times (60 runs) · the candidate build in Adaptive and Standard rotating per task in one window, workers 1 and 2, 11 November 2026 · GLM-5.3-flash · page check against a gold answer · every attempt counted · time from tool-ready to the verified answer, mean per completed task · cost per completed task: every OpenRouter-billed call as billed plus OpenRouter's 5.5% fee, plus our chooser (TypeSafe System One) at $0.042 per million input tokens as TypeSafe reports them · tokens per completed task: the big model and the writer (Adaptive's chooser adds about 16.0k small-model tokens per completed task, priced in the cost)."
+          "methodology": "Small view: the same 20 public tasks (set C), each run three times (60 runs) · the candidate build in Adaptive and Standard rotating per task in one window, workers 1 and 2, 11 November 2026 · GLM-5.3-flash · page check against a gold answer · every attempt counted · time from tool-ready to the verified answer, mean per completed task · cost per completed task: every OpenRouter-billed call as billed plus OpenRouter's 5.5% fee, plus our chooser (TypeSafe System One) at $0.042 per million input tokens as TypeSafe reports them · tokens per completed task: the big model and the writer (Adaptive's chooser adds about 16.0k small-model tokens per completed task, priced in the cost).",
+          "wire_reasoning": "low (engine auto)",
+          "wire_reasoning_evidence": "CLS2 arm CA (gear3): wire_shapes[].reasoning.effort = low on 28/28 GLM calls; Mac meter OPEN effort low 28/28.",
+          "reasoning_set_by": "engine",
+          "driven_by": "own agent (Agent Mode)",
+          "driven_by_detail": "Protocolis in agent mode: apc drive --mode auto (Adaptive) or --mode standard (Standard); the engine's own loop (kit arms gear3 / gear3x1 = Adaptive, gear3std / gear3x1std = Standard)."
         },
         {
           "id": "published-050",
@@ -122,7 +137,12 @@
           "version": "candidate 9f89f071d",
           "worker_class": null,
           "measured_at": "2026-11-11T21:24:00Z",
-          "methodology": "Strong view: the same 20 public tasks (set C), each run twice (40 runs) · the current candidate build in Adaptive beside released 0.9.0 and the old Lean, all arms rotating per task in one window, worker 4, 11 November 2026 · Grok 4.6 in every Protocolis arm · page check against a gold answer · every attempt counted · time from tool-ready to the verified answer, mean per completed task · cost per completed task: Grok as billed (xAI route) plus the writer as billed (OpenRouter, +5.5% fee) plus our chooser (TypeSafe System One) at $0.042 per million input tokens as TypeSafe reports them; tokens per completed task: the big model and the writer (the chooser's own small-model tokens are priced in the cost)."
+          "methodology": "Strong view: the same 20 public tasks (set C), each run twice (40 runs) · the current candidate build in Adaptive beside released 0.9.0 and the old Lean, all arms rotating per task in one window, worker 4, 11 November 2026 · Grok 4.6 in every Protocolis arm · page check against a gold answer · every attempt counted · time from tool-ready to the verified answer, mean per completed task · cost per completed task: Grok as billed (xAI route) plus the writer as billed (OpenRouter, +5.5% fee) plus our chooser (TypeSafe System One) at $0.042 per million input tokens as TypeSafe reports them; tokens per completed task: the big model and the writer (the chooser's own small-model tokens are priced in the cost).",
+          "wire_reasoning": "low (engine auto)",
+          "wire_reasoning_evidence": "BULKR arm AF (gear3x1): grok_calls[].wire_effort = low on 21/21 Grok calls (X1 xAI route).",
+          "reasoning_set_by": "engine",
+          "driven_by": "own agent (Agent Mode)",
+          "driven_by_detail": "Protocolis in agent mode: apc drive --mode auto (Adaptive) or --mode standard (Standard); the engine's own loop (kit arms gear3 / gear3x1 = Adaptive, gear3std / gear3x1std = Standard)."
         },
         {
           "id": "published-001",
@@ -149,7 +169,12 @@
           "version": null,
           "worker_class": null,
           "measured_at": null,
-          "methodology": "Strong view: the same 20 public tasks (set C) · Browser Harness 20 runs in its own window, worker 4 · Protocolis from the 40-run window of the Playwright MCP row · the same model in every arm · page check against a gold answer · every attempt counted. Small and frontier views: the same 20 public tasks, frozen build, 9 November 2026 · Protocolis 40 runs per arm on GLM-5.3-flash, 20 on Opus 4.6 · Browser Harness 20 runs per model in its own window, worker 4 (Playwright MCP 40 on GLM-5.3-flash) · rival times are their own task clocks · cells not run on a model say so. Protocolis Standard on Opus 4.6: 38 runs from a separate frozen-build window (worker 2)."
+          "methodology": "Strong view: the same 20 public tasks (set C) · Browser Harness 20 runs in its own window, worker 4 · Protocolis from the 40-run window of the Playwright MCP row · the same model in every arm · page check against a gold answer · every attempt counted. Small and frontier views: the same 20 public tasks, frozen build, 9 November 2026 · Protocolis 40 runs per arm on GLM-5.3-flash, 20 on Opus 4.6 · Browser Harness 20 runs per model in its own window, worker 4 (Playwright MCP 40 on GLM-5.3-flash) · rival times are their own task clocks · cells not run on a model say so. Protocolis Standard on Opus 4.6: 38 runs from a separate frozen-build window (worker 2).",
+          "wire_reasoning": "low (engine auto)",
+          "wire_reasoning_evidence": "Stage 1 block 1 (RUN-S1-B1_SETC c1-c5) arm gear3: Mac meter OPEN effort low on 57/57 Grok calls (OpenRouter 8662).",
+          "reasoning_set_by": "engine",
+          "driven_by": "own agent (Agent Mode)",
+          "driven_by_detail": "Protocolis in agent mode: apc drive --mode auto (Adaptive) or --mode standard (Standard); the engine's own loop (kit arms gear3 / gear3x1 = Adaptive, gear3std / gear3x1std = Standard)."
         },
         {
           "id": "published-004",
@@ -175,7 +200,12 @@
           "version": null,
           "worker_class": null,
           "measured_at": null,
-          "methodology": "Strong view: the same 20 public tasks (set C) · Browser Harness 20 runs in its own window, worker 4 · Protocolis from the 40-run window of the Playwright MCP row · the same model in every arm · page check against a gold answer · every attempt counted. Small and frontier views: the same 20 public tasks, frozen build, 9 November 2026 · Protocolis 40 runs per arm on GLM-5.3-flash, 20 on Opus 4.6 · Browser Harness 20 runs per model in its own window, worker 4 (Playwright MCP 40 on GLM-5.3-flash) · rival times are their own task clocks · cells not run on a model say so. Protocolis Standard on Opus 4.6: 38 runs from a separate frozen-build window (worker 2)."
+          "methodology": "Strong view: the same 20 public tasks (set C) · Browser Harness 20 runs in its own window, worker 4 · Protocolis from the 40-run window of the Playwright MCP row · the same model in every arm · page check against a gold answer · every attempt counted. Small and frontier views: the same 20 public tasks, frozen build, 9 November 2026 · Protocolis 40 runs per arm on GLM-5.3-flash, 20 on Opus 4.6 · Browser Harness 20 runs per model in its own window, worker 4 (Playwright MCP 40 on GLM-5.3-flash) · rival times are their own task clocks · cells not run on a model say so. Protocolis Standard on Opus 4.6: 38 runs from a separate frozen-build window (worker 2).",
+          "wire_reasoning": "low (engine auto)",
+          "wire_reasoning_evidence": "CLASS gear3: Mac meter OPEN effort low on 61 GLM calls, medium on 2 (the engine's router raised them).",
+          "reasoning_set_by": "engine",
+          "driven_by": "own agent (Agent Mode)",
+          "driven_by_detail": "Protocolis in agent mode: apc drive --mode auto (Adaptive) or --mode standard (Standard); the engine's own loop (kit arms gear3 / gear3x1 = Adaptive, gear3std / gear3x1std = Standard)."
         },
         {
           "id": "published-007",
@@ -202,7 +232,12 @@
           "version": null,
           "worker_class": null,
           "measured_at": null,
-          "methodology": "Strong view: the same 20 public tasks (set C) · Browser Harness 20 runs in its own window, worker 4 · Protocolis from the 40-run window of the Playwright MCP row · the same model in every arm · page check against a gold answer · every attempt counted. Small and frontier views: the same 20 public tasks, frozen build, 9 November 2026 · Protocolis 40 runs per arm on GLM-5.3-flash, 20 on Opus 4.6 · Browser Harness 20 runs per model in its own window, worker 4 (Playwright MCP 40 on GLM-5.3-flash) · rival times are their own task clocks · cells not run on a model say so. Protocolis Standard on Opus 4.6: 38 runs from a separate frozen-build window (worker 2)."
+          "methodology": "Strong view: the same 20 public tasks (set C) · Browser Harness 20 runs in its own window, worker 4 · Protocolis from the 40-run window of the Playwright MCP row · the same model in every arm · page check against a gold answer · every attempt counted. Small and frontier views: the same 20 public tasks, frozen build, 9 November 2026 · Protocolis 40 runs per arm on GLM-5.3-flash, 20 on Opus 4.6 · Browser Harness 20 runs per model in its own window, worker 4 (Playwright MCP 40 on GLM-5.3-flash) · rival times are their own task clocks · cells not run on a model say so. Protocolis Standard on Opus 4.6: 38 runs from a separate frozen-build window (worker 2).",
+          "wire_reasoning": "low (engine auto)",
+          "wire_reasoning_evidence": "CLASS gear3 (Opus anchor): Mac meter OPEN effort low on 32/32 Opus 4.6 calls.",
+          "reasoning_set_by": "engine",
+          "driven_by": "own agent (Agent Mode)",
+          "driven_by_detail": "Protocolis in agent mode: apc drive --mode auto (Adaptive) or --mode standard (Standard); the engine's own loop (kit arms gear3 / gear3x1 = Adaptive, gear3std / gear3x1std = Standard)."
         },
         {
           "id": "published-010",
@@ -229,7 +264,12 @@
           "version": null,
           "worker_class": null,
           "measured_at": null,
-          "methodology": "20 public tasks (set C), each run twice · 40 task-rounds with all arms rotating per task in one window · the same model, Grok 4.6, in every arm · page check against a gold answer · every attempt counted · Protocolis time from tool-ready to the verified answer, startup excluded; Browser Use’s time is its own reported task clock · cost is the billed provider cost per completed task · frozen build, 9 November 2026. Small and frontier views: the same 20 public tasks, frozen build, 9 November 2026 · Protocolis 40 runs per arm on GLM-5.3-flash, 20 on Opus 4.6 · Browser Use · own agent 20 runs per model in its own window, worker 4 (Playwright MCP 40 on GLM-5.3-flash) · rival times are their own task clocks · cells not run on a model say so. Frontier view for this product: GPT-6.1 Sol (OpenAI) in every arm, 20 public tasks, one window, frozen build, 9 November 2026."
+          "methodology": "20 public tasks (set C), each run twice · 40 task-rounds with all arms rotating per task in one window · the same model, Grok 4.6, in every arm · page check against a gold answer · every attempt counted · Protocolis time from tool-ready to the verified answer, startup excluded; Browser Use’s time is its own reported task clock · cost is the billed provider cost per completed task · frozen build, 9 November 2026. Small and frontier views: the same 20 public tasks, frozen build, 9 November 2026 · Protocolis 40 runs per arm on GLM-5.3-flash, 20 on Opus 4.6 · Browser Use · own agent 20 runs per model in its own window, worker 4 (Playwright MCP 40 on GLM-5.3-flash) · rival times are their own task clocks · cells not run on a model say so. Frontier view for this product: GPT-6.1 Sol (OpenAI) in every arm, 20 public tasks, one window, frozen build, 9 November 2026.",
+          "wire_reasoning": "low (engine auto)",
+          "wire_reasoning_evidence": "S2 gear3: Mac meter OPEN effort low on 51/51 Grok calls (OpenRouter 8662).",
+          "reasoning_set_by": "engine",
+          "driven_by": "own agent (Agent Mode)",
+          "driven_by_detail": "Protocolis in agent mode: apc drive --mode auto (Adaptive) or --mode standard (Standard); the engine's own loop (kit arms gear3 / gear3x1 = Adaptive, gear3std / gear3x1std = Standard)."
         },
         {
           "id": "published-013",
@@ -255,7 +295,12 @@
           "version": null,
           "worker_class": null,
           "measured_at": null,
-          "methodology": "20 public tasks (set C), each run twice · 40 task-rounds with all arms rotating per task in one window · the same model, Grok 4.6, in every arm · page check against a gold answer · every attempt counted · Protocolis time from tool-ready to the verified answer, startup excluded; Browser Use’s time is its own reported task clock · cost is the billed provider cost per completed task · frozen build, 9 November 2026. Small and frontier views: the same 20 public tasks, frozen build, 9 November 2026 · Protocolis 40 runs per arm on GLM-5.3-flash, 20 on Opus 4.6 · Browser Use · own agent 20 runs per model in its own window, worker 4 (Playwright MCP 40 on GLM-5.3-flash) · rival times are their own task clocks · cells not run on a model say so. Frontier view for this product: GPT-6.1 Sol (OpenAI) in every arm, 20 public tasks, one window, frozen build, 9 November 2026."
+          "methodology": "20 public tasks (set C), each run twice · 40 task-rounds with all arms rotating per task in one window · the same model, Grok 4.6, in every arm · page check against a gold answer · every attempt counted · Protocolis time from tool-ready to the verified answer, startup excluded; Browser Use’s time is its own reported task clock · cost is the billed provider cost per completed task · frozen build, 9 November 2026. Small and frontier views: the same 20 public tasks, frozen build, 9 November 2026 · Protocolis 40 runs per arm on GLM-5.3-flash, 20 on Opus 4.6 · Browser Use · own agent 20 runs per model in its own window, worker 4 (Playwright MCP 40 on GLM-5.3-flash) · rival times are their own task clocks · cells not run on a model say so. Frontier view for this product: GPT-6.1 Sol (OpenAI) in every arm, 20 public tasks, one window, frozen build, 9 November 2026.",
+          "wire_reasoning": "low (engine auto)",
+          "wire_reasoning_evidence": "CLASS gear3: Mac meter OPEN effort low on 61 GLM calls, medium on 2 (the engine's router raised them).",
+          "reasoning_set_by": "engine",
+          "driven_by": "own agent (Agent Mode)",
+          "driven_by_detail": "Protocolis in agent mode: apc drive --mode auto (Adaptive) or --mode standard (Standard); the engine's own loop (kit arms gear3 / gear3x1 = Adaptive, gear3std / gear3x1std = Standard)."
         },
         {
           "id": "published-016",
@@ -282,7 +327,12 @@
           "version": null,
           "worker_class": null,
           "measured_at": null,
-          "methodology": "20 public tasks (set C), each run twice · 40 task-rounds with all arms rotating per task in one window · the same model, Grok 4.6, in every arm · page check against a gold answer · every attempt counted · Protocolis time from tool-ready to the verified answer, startup excluded; Browser Use’s time is its own reported task clock · cost is the billed provider cost per completed task · frozen build, 9 November 2026. Small and frontier views: the same 20 public tasks, frozen build, 9 November 2026 · Protocolis 40 runs per arm on GLM-5.3-flash, 20 on Opus 4.6 · Browser Use · own agent 20 runs per model in its own window, worker 4 (Playwright MCP 40 on GLM-5.3-flash) · rival times are their own task clocks · cells not run on a model say so. Frontier view for this product: GPT-6.1 Sol (OpenAI) in every arm, 20 public tasks, one window, frozen build, 9 November 2026."
+          "methodology": "20 public tasks (set C), each run twice · 40 task-rounds with all arms rotating per task in one window · the same model, Grok 4.6, in every arm · page check against a gold answer · every attempt counted · Protocolis time from tool-ready to the verified answer, startup excluded; Browser Use’s time is its own reported task clock · cost is the billed provider cost per completed task · frozen build, 9 November 2026. Small and frontier views: the same 20 public tasks, frozen build, 9 November 2026 · Protocolis 40 runs per arm on GLM-5.3-flash, 20 on Opus 4.6 · Browser Use · own agent 20 runs per model in its own window, worker 4 (Playwright MCP 40 on GLM-5.3-flash) · rival times are their own task clocks · cells not run on a model say so. Frontier view for this product: GPT-6.1 Sol (OpenAI) in every arm, 20 public tasks, one window, frozen build, 9 November 2026.",
+          "wire_reasoning": "low (engine auto)",
+          "wire_reasoning_evidence": "S2S gear3: engine receipt native_receipt.effort = low (effortSource router) on the 11 rows that called Sol; the S2S route was W1 8664 relay -> 8649 OpenAI Responses bridge started with --default-reasoning-effort low (stage2s-w1/route/openai_forwarder_responses.py; GATE-S2S/FIRST-ROWS-AUDIT.json: 'default effort low'), which adds effort low to every call that carries none. The S2S relay recorded no per-call effort field.",
+          "reasoning_set_by": "engine",
+          "driven_by": "own agent (Agent Mode)",
+          "driven_by_detail": "Protocolis in agent mode: apc drive --mode auto (Adaptive) or --mode standard (Standard); the engine's own loop (kit arms gear3 / gear3x1 = Adaptive, gear3std / gear3x1std = Standard)."
         },
         {
           "id": "published-019",
@@ -309,7 +359,12 @@
           "version": null,
           "worker_class": null,
           "measured_at": null,
-          "methodology": "20 public tasks (set C) · Protocolis arms run each task twice (40 runs), Browser Use tools mode once (20 runs, its own window) · Browser Use 0.13.13 driven by a tool-calling agent · the same model, Grok 4.6, in every arm · page check against a gold answer · every attempt counted · time from tool-ready to the verified answer; Browser Use’s browser start is inside its time · cost is the billed provider cost per completed task · frozen build, 9 November 2026. Small and frontier views: the same 20 public tasks, frozen build, 9 November 2026 · Protocolis 40 runs per arm on GLM-5.3-flash, 20 on Opus 4.6 · Browser Use · tools mode 20 runs per model in its own window, worker 4 (Playwright MCP 40 on GLM-5.3-flash) · rival times are their own task clocks · cells not run on a model say so. Protocolis Standard on Opus 4.6: 38 runs from a separate frozen-build window (worker 2)."
+          "methodology": "20 public tasks (set C) · Protocolis arms run each task twice (40 runs), Browser Use tools mode once (20 runs, its own window) · Browser Use 0.13.13 driven by a tool-calling agent · the same model, Grok 4.6, in every arm · page check against a gold answer · every attempt counted · time from tool-ready to the verified answer; Browser Use’s browser start is inside its time · cost is the billed provider cost per completed task · frozen build, 9 November 2026. Small and frontier views: the same 20 public tasks, frozen build, 9 November 2026 · Protocolis 40 runs per arm on GLM-5.3-flash, 20 on Opus 4.6 · Browser Use · tools mode 20 runs per model in its own window, worker 4 (Playwright MCP 40 on GLM-5.3-flash) · rival times are their own task clocks · cells not run on a model say so. Protocolis Standard on Opus 4.6: 38 runs from a separate frozen-build window (worker 2).",
+          "wire_reasoning": "low (engine auto)",
+          "wire_reasoning_evidence": "Stage 1 block 1 (RUN-S1-B1_SETC c1-c5) arm gear3: Mac meter OPEN effort low on 57/57 Grok calls (OpenRouter 8662).",
+          "reasoning_set_by": "engine",
+          "driven_by": "own agent (Agent Mode)",
+          "driven_by_detail": "Protocolis in agent mode: apc drive --mode auto (Adaptive) or --mode standard (Standard); the engine's own loop (kit arms gear3 / gear3x1 = Adaptive, gear3std / gear3x1std = Standard)."
         },
         {
           "id": "published-022",
@@ -335,7 +390,12 @@
           "version": null,
           "worker_class": null,
           "measured_at": null,
-          "methodology": "20 public tasks (set C) · Protocolis arms run each task twice (40 runs), Browser Use tools mode once (20 runs, its own window) · Browser Use 0.13.13 driven by a tool-calling agent · the same model, Grok 4.6, in every arm · page check against a gold answer · every attempt counted · time from tool-ready to the verified answer; Browser Use’s browser start is inside its time · cost is the billed provider cost per completed task · frozen build, 9 November 2026. Small and frontier views: the same 20 public tasks, frozen build, 9 November 2026 · Protocolis 40 runs per arm on GLM-5.3-flash, 20 on Opus 4.6 · Browser Use · tools mode 20 runs per model in its own window, worker 4 (Playwright MCP 40 on GLM-5.3-flash) · rival times are their own task clocks · cells not run on a model say so. Protocolis Standard on Opus 4.6: 38 runs from a separate frozen-build window (worker 2)."
+          "methodology": "20 public tasks (set C) · Protocolis arms run each task twice (40 runs), Browser Use tools mode once (20 runs, its own window) · Browser Use 0.13.13 driven by a tool-calling agent · the same model, Grok 4.6, in every arm · page check against a gold answer · every attempt counted · time from tool-ready to the verified answer; Browser Use’s browser start is inside its time · cost is the billed provider cost per completed task · frozen build, 9 November 2026. Small and frontier views: the same 20 public tasks, frozen build, 9 November 2026 · Protocolis 40 runs per arm on GLM-5.3-flash, 20 on Opus 4.6 · Browser Use · tools mode 20 runs per model in its own window, worker 4 (Playwright MCP 40 on GLM-5.3-flash) · rival times are their own task clocks · cells not run on a model say so. Protocolis Standard on Opus 4.6: 38 runs from a separate frozen-build window (worker 2).",
+          "wire_reasoning": "low (engine auto)",
+          "wire_reasoning_evidence": "CLASS gear3: Mac meter OPEN effort low on 61 GLM calls, medium on 2 (the engine's router raised them).",
+          "reasoning_set_by": "engine",
+          "driven_by": "own agent (Agent Mode)",
+          "driven_by_detail": "Protocolis in agent mode: apc drive --mode auto (Adaptive) or --mode standard (Standard); the engine's own loop (kit arms gear3 / gear3x1 = Adaptive, gear3std / gear3x1std = Standard)."
         },
         {
           "id": "published-025",
@@ -362,7 +422,12 @@
           "version": null,
           "worker_class": null,
           "measured_at": null,
-          "methodology": "20 public tasks (set C) · Protocolis arms run each task twice (40 runs), Browser Use tools mode once (20 runs, its own window) · Browser Use 0.13.13 driven by a tool-calling agent · the same model, Grok 4.6, in every arm · page check against a gold answer · every attempt counted · time from tool-ready to the verified answer; Browser Use’s browser start is inside its time · cost is the billed provider cost per completed task · frozen build, 9 November 2026. Small and frontier views: the same 20 public tasks, frozen build, 9 November 2026 · Protocolis 40 runs per arm on GLM-5.3-flash, 20 on Opus 4.6 · Browser Use · tools mode 20 runs per model in its own window, worker 4 (Playwright MCP 40 on GLM-5.3-flash) · rival times are their own task clocks · cells not run on a model say so. Protocolis Standard on Opus 4.6: 38 runs from a separate frozen-build window (worker 2)."
+          "methodology": "20 public tasks (set C) · Protocolis arms run each task twice (40 runs), Browser Use tools mode once (20 runs, its own window) · Browser Use 0.13.13 driven by a tool-calling agent · the same model, Grok 4.6, in every arm · page check against a gold answer · every attempt counted · time from tool-ready to the verified answer; Browser Use’s browser start is inside its time · cost is the billed provider cost per completed task · frozen build, 9 November 2026. Small and frontier views: the same 20 public tasks, frozen build, 9 November 2026 · Protocolis 40 runs per arm on GLM-5.3-flash, 20 on Opus 4.6 · Browser Use · tools mode 20 runs per model in its own window, worker 4 (Playwright MCP 40 on GLM-5.3-flash) · rival times are their own task clocks · cells not run on a model say so. Protocolis Standard on Opus 4.6: 38 runs from a separate frozen-build window (worker 2).",
+          "wire_reasoning": "low (engine auto)",
+          "wire_reasoning_evidence": "CLASS gear3 (Opus anchor): Mac meter OPEN effort low on 32/32 Opus 4.6 calls.",
+          "reasoning_set_by": "engine",
+          "driven_by": "own agent (Agent Mode)",
+          "driven_by_detail": "Protocolis in agent mode: apc drive --mode auto (Adaptive) or --mode standard (Standard); the engine's own loop (kit arms gear3 / gear3x1 = Adaptive, gear3std / gear3x1std = Standard)."
         },
         {
           "id": "published-028",
@@ -389,7 +454,12 @@
           "version": null,
           "worker_class": null,
           "measured_at": null,
-          "methodology": "20 public tasks (set C), each run twice · 40 task-rounds with all arms rotating per task in one window · the same model, Grok 4.6, in every arm · page check against a gold answer · every attempt counted · Protocolis time from tool-ready to the verified answer, startup excluded; Stagehand’s time is its own reported task clock (its start-up and first navigation included, browser launch not) · two Stagehand attempts reported no clock, so its time can only be higher · cost is the billed provider cost per completed task · frozen build, 9 November 2026. Small and frontier views: the same 20 public tasks, frozen build, 9 November 2026 · Protocolis 40 runs per arm on GLM-5.3-flash, 20 on Opus 4.6 · Stagehand 20 runs per model in its own window, worker 4 (Playwright MCP 40 on GLM-5.3-flash) · rival times are their own task clocks · cells not run on a model say so. Frontier view for this product: GPT-6.1 Sol (OpenAI) in every arm, 20 public tasks, one window, frozen build, 9 November 2026."
+          "methodology": "20 public tasks (set C), each run twice · 40 task-rounds with all arms rotating per task in one window · the same model, Grok 4.6, in every arm · page check against a gold answer · every attempt counted · Protocolis time from tool-ready to the verified answer, startup excluded; Stagehand’s time is its own reported task clock (its start-up and first navigation included, browser launch not) · two Stagehand attempts reported no clock, so its time can only be higher · cost is the billed provider cost per completed task · frozen build, 9 November 2026. Small and frontier views: the same 20 public tasks, frozen build, 9 November 2026 · Protocolis 40 runs per arm on GLM-5.3-flash, 20 on Opus 4.6 · Stagehand 20 runs per model in its own window, worker 4 (Playwright MCP 40 on GLM-5.3-flash) · rival times are their own task clocks · cells not run on a model say so. Frontier view for this product: GPT-6.1 Sol (OpenAI) in every arm, 20 public tasks, one window, frozen build, 9 November 2026.",
+          "wire_reasoning": "low (engine auto)",
+          "wire_reasoning_evidence": "S2 gear3: Mac meter OPEN effort low on 51/51 Grok calls (OpenRouter 8662).",
+          "reasoning_set_by": "engine",
+          "driven_by": "own agent (Agent Mode)",
+          "driven_by_detail": "Protocolis in agent mode: apc drive --mode auto (Adaptive) or --mode standard (Standard); the engine's own loop (kit arms gear3 / gear3x1 = Adaptive, gear3std / gear3x1std = Standard)."
         },
         {
           "id": "published-031",
@@ -415,7 +485,12 @@
           "version": null,
           "worker_class": null,
           "measured_at": null,
-          "methodology": "20 public tasks (set C), each run twice · 40 task-rounds with all arms rotating per task in one window · the same model, Grok 4.6, in every arm · page check against a gold answer · every attempt counted · Protocolis time from tool-ready to the verified answer, startup excluded; Stagehand’s time is its own reported task clock (its start-up and first navigation included, browser launch not) · two Stagehand attempts reported no clock, so its time can only be higher · cost is the billed provider cost per completed task · frozen build, 9 November 2026. Small and frontier views: the same 20 public tasks, frozen build, 9 November 2026 · Protocolis 40 runs per arm on GLM-5.3-flash, 20 on Opus 4.6 · Stagehand 20 runs per model in its own window, worker 4 (Playwright MCP 40 on GLM-5.3-flash) · rival times are their own task clocks · cells not run on a model say so. Frontier view for this product: GPT-6.1 Sol (OpenAI) in every arm, 20 public tasks, one window, frozen build, 9 November 2026."
+          "methodology": "20 public tasks (set C), each run twice · 40 task-rounds with all arms rotating per task in one window · the same model, Grok 4.6, in every arm · page check against a gold answer · every attempt counted · Protocolis time from tool-ready to the verified answer, startup excluded; Stagehand’s time is its own reported task clock (its start-up and first navigation included, browser launch not) · two Stagehand attempts reported no clock, so its time can only be higher · cost is the billed provider cost per completed task · frozen build, 9 November 2026. Small and frontier views: the same 20 public tasks, frozen build, 9 November 2026 · Protocolis 40 runs per arm on GLM-5.3-flash, 20 on Opus 4.6 · Stagehand 20 runs per model in its own window, worker 4 (Playwright MCP 40 on GLM-5.3-flash) · rival times are their own task clocks · cells not run on a model say so. Frontier view for this product: GPT-6.1 Sol (OpenAI) in every arm, 20 public tasks, one window, frozen build, 9 November 2026.",
+          "wire_reasoning": null,
+          "wire_reasoning_evidence": "No run on this cell: nothing to disclose.",
+          "reasoning_set_by": null,
+          "driven_by": null,
+          "driven_by_detail": null
         },
         {
           "id": "published-034",
@@ -442,7 +517,12 @@
           "version": null,
           "worker_class": null,
           "measured_at": null,
-          "methodology": "20 public tasks (set C), each run twice · 40 task-rounds with all arms rotating per task in one window · the same model, Grok 4.6, in every arm · page check against a gold answer · every attempt counted · Protocolis time from tool-ready to the verified answer, startup excluded; Stagehand’s time is its own reported task clock (its start-up and first navigation included, browser launch not) · two Stagehand attempts reported no clock, so its time can only be higher · cost is the billed provider cost per completed task · frozen build, 9 November 2026. Small and frontier views: the same 20 public tasks, frozen build, 9 November 2026 · Protocolis 40 runs per arm on GLM-5.3-flash, 20 on Opus 4.6 · Stagehand 20 runs per model in its own window, worker 4 (Playwright MCP 40 on GLM-5.3-flash) · rival times are their own task clocks · cells not run on a model say so. Frontier view for this product: GPT-6.1 Sol (OpenAI) in every arm, 20 public tasks, one window, frozen build, 9 November 2026."
+          "methodology": "20 public tasks (set C), each run twice · 40 task-rounds with all arms rotating per task in one window · the same model, Grok 4.6, in every arm · page check against a gold answer · every attempt counted · Protocolis time from tool-ready to the verified answer, startup excluded; Stagehand’s time is its own reported task clock (its start-up and first navigation included, browser launch not) · two Stagehand attempts reported no clock, so its time can only be higher · cost is the billed provider cost per completed task · frozen build, 9 November 2026. Small and frontier views: the same 20 public tasks, frozen build, 9 November 2026 · Protocolis 40 runs per arm on GLM-5.3-flash, 20 on Opus 4.6 · Stagehand 20 runs per model in its own window, worker 4 (Playwright MCP 40 on GLM-5.3-flash) · rival times are their own task clocks · cells not run on a model say so. Frontier view for this product: GPT-6.1 Sol (OpenAI) in every arm, 20 public tasks, one window, frozen build, 9 November 2026.",
+          "wire_reasoning": "low (engine auto)",
+          "wire_reasoning_evidence": "S2S gear3: engine receipt native_receipt.effort = low (effortSource router) on the 11 rows that called Sol; the S2S route was W1 8664 relay -> 8649 OpenAI Responses bridge started with --default-reasoning-effort low (stage2s-w1/route/openai_forwarder_responses.py; GATE-S2S/FIRST-ROWS-AUDIT.json: 'default effort low'), which adds effort low to every call that carries none. The S2S relay recorded no per-call effort field.",
+          "reasoning_set_by": "engine",
+          "driven_by": "own agent (Agent Mode)",
+          "driven_by_detail": "Protocolis in agent mode: apc drive --mode auto (Adaptive) or --mode standard (Standard); the engine's own loop (kit arms gear3 / gear3x1 = Adaptive, gear3std / gear3x1std = Standard)."
         },
         {
           "id": "published-037",
@@ -469,7 +549,12 @@
           "version": null,
           "worker_class": null,
           "measured_at": null,
-          "methodology": "20 public tasks (set C), each run twice · all three arms rotating per task in one window · the same model, Grok 4.6, in every arm · page check against a gold answer · every attempt counted · time from tool-ready to the verified answer, startup excluded · frozen build, 9 November 2026. Small and frontier views: the same 20 public tasks, frozen build, 9 November 2026 · Protocolis 40 runs per arm on GLM-5.3-flash, 20 on Opus 4.6 · Playwright MCP 20 runs per model in the same window as Protocolis (Playwright MCP 40 on GLM-5.3-flash) · rival times are their own task clocks · cells not run on a model say so. Protocolis Standard on Opus 4.6: 38 runs from a separate frozen-build window (worker 2)."
+          "methodology": "20 public tasks (set C), each run twice · all three arms rotating per task in one window · the same model, Grok 4.6, in every arm · page check against a gold answer · every attempt counted · time from tool-ready to the verified answer, startup excluded · frozen build, 9 November 2026. Small and frontier views: the same 20 public tasks, frozen build, 9 November 2026 · Protocolis 40 runs per arm on GLM-5.3-flash, 20 on Opus 4.6 · Playwright MCP 20 runs per model in the same window as Protocolis (Playwright MCP 40 on GLM-5.3-flash) · rival times are their own task clocks · cells not run on a model say so. Protocolis Standard on Opus 4.6: 38 runs from a separate frozen-build window (worker 2).",
+          "wire_reasoning": "low (engine auto)",
+          "wire_reasoning_evidence": "Stage 1 block 1 (RUN-S1-B1_SETC c1-c5) arm gear3: Mac meter OPEN effort low on 57/57 Grok calls (OpenRouter 8662).",
+          "reasoning_set_by": "engine",
+          "driven_by": "own agent (Agent Mode)",
+          "driven_by_detail": "Protocolis in agent mode: apc drive --mode auto (Adaptive) or --mode standard (Standard); the engine's own loop (kit arms gear3 / gear3x1 = Adaptive, gear3std / gear3x1std = Standard)."
         },
         {
           "id": "published-040",
@@ -495,7 +580,12 @@
           "version": null,
           "worker_class": null,
           "measured_at": null,
-          "methodology": "20 public tasks (set C), each run twice · all three arms rotating per task in one window · the same model, Grok 4.6, in every arm · page check against a gold answer · every attempt counted · time from tool-ready to the verified answer, startup excluded · frozen build, 9 November 2026. Small and frontier views: the same 20 public tasks, frozen build, 9 November 2026 · Protocolis 40 runs per arm on GLM-5.3-flash, 20 on Opus 4.6 · Playwright MCP 20 runs per model in the same window as Protocolis (Playwright MCP 40 on GLM-5.3-flash) · rival times are their own task clocks · cells not run on a model say so. Protocolis Standard on Opus 4.6: 38 runs from a separate frozen-build window (worker 2)."
+          "methodology": "20 public tasks (set C), each run twice · all three arms rotating per task in one window · the same model, Grok 4.6, in every arm · page check against a gold answer · every attempt counted · time from tool-ready to the verified answer, startup excluded · frozen build, 9 November 2026. Small and frontier views: the same 20 public tasks, frozen build, 9 November 2026 · Protocolis 40 runs per arm on GLM-5.3-flash, 20 on Opus 4.6 · Playwright MCP 20 runs per model in the same window as Protocolis (Playwright MCP 40 on GLM-5.3-flash) · rival times are their own task clocks · cells not run on a model say so. Protocolis Standard on Opus 4.6: 38 runs from a separate frozen-build window (worker 2).",
+          "wire_reasoning": "low (engine auto)",
+          "wire_reasoning_evidence": "CLASS gear3: Mac meter OPEN effort low on 61 GLM calls, medium on 2 (the engine's router raised them).",
+          "reasoning_set_by": "engine",
+          "driven_by": "own agent (Agent Mode)",
+          "driven_by_detail": "Protocolis in agent mode: apc drive --mode auto (Adaptive) or --mode standard (Standard); the engine's own loop (kit arms gear3 / gear3x1 = Adaptive, gear3std / gear3x1std = Standard)."
         },
         {
           "id": "published-043",
@@ -522,7 +612,12 @@
           "version": null,
           "worker_class": null,
           "measured_at": null,
-          "methodology": "20 public tasks (set C), each run twice · all three arms rotating per task in one window · the same model, Grok 4.6, in every arm · page check against a gold answer · every attempt counted · time from tool-ready to the verified answer, startup excluded · frozen build, 9 November 2026. Small and frontier views: the same 20 public tasks, frozen build, 9 November 2026 · Protocolis 40 runs per arm on GLM-5.3-flash, 20 on Opus 4.6 · Playwright MCP 20 runs per model in the same window as Protocolis (Playwright MCP 40 on GLM-5.3-flash) · rival times are their own task clocks · cells not run on a model say so. Protocolis Standard on Opus 4.6: 38 runs from a separate frozen-build window (worker 2)."
+          "methodology": "20 public tasks (set C), each run twice · all three arms rotating per task in one window · the same model, Grok 4.6, in every arm · page check against a gold answer · every attempt counted · time from tool-ready to the verified answer, startup excluded · frozen build, 9 November 2026. Small and frontier views: the same 20 public tasks, frozen build, 9 November 2026 · Protocolis 40 runs per arm on GLM-5.3-flash, 20 on Opus 4.6 · Playwright MCP 20 runs per model in the same window as Protocolis (Playwright MCP 40 on GLM-5.3-flash) · rival times are their own task clocks · cells not run on a model say so. Protocolis Standard on Opus 4.6: 38 runs from a separate frozen-build window (worker 2).",
+          "wire_reasoning": "low (engine auto)",
+          "wire_reasoning_evidence": "CLASS gear3 (Opus anchor): Mac meter OPEN effort low on 32/32 Opus 4.6 calls.",
+          "reasoning_set_by": "engine",
+          "driven_by": "own agent (Agent Mode)",
+          "driven_by_detail": "Protocolis in agent mode: apc drive --mode auto (Adaptive) or --mode standard (Standard); the engine's own loop (kit arms gear3 / gear3x1 = Adaptive, gear3std / gear3x1std = Standard)."
         },
         {
           "id": "published-048",
@@ -548,7 +643,12 @@
           "version": null,
           "worker_class": null,
           "measured_at": null,
-          "methodology": "Methodology20 public tasks, each run twice · 40 runs per arm · same final-page check for every arm, every attempt counted · Browser Use Ultra Fast is its hosted service called through its public API (9–10 November 2026), so its time is the whole call, request to answer; Protocolis time runs from tool-ready to the answer (10 November 2026), so the two times are not on the same clock.Matched clock: Protocolis from tool-ready to the answer; Jev on its own clock, from before it opens the start page to its return · 20 public tasks, each run twice · 40 runs per arm · one session and worker · same final-page check for every arm, every attempt counted · cell LNC-B, 10 November 2026. Jev 0.1.13 with the same TypeSafe choice model and the Grok 4.20 non-reasoning helper. Browser Use Ultra Fast: the hosted service called through its public API (cell FRZ, 9–10 November 2026), so its time is the whole call, request to answer."
+          "methodology": "Methodology20 public tasks, each run twice · 40 runs per arm · same final-page check for every arm, every attempt counted · Browser Use Ultra Fast is its hosted service called through its public API (9–10 November 2026), so its time is the whole call, request to answer; Protocolis time runs from tool-ready to the answer (10 November 2026), so the two times are not on the same clock.Matched clock: Protocolis from tool-ready to the answer; Jev on its own clock, from before it opens the start page to its return · 20 public tasks, each run twice · 40 runs per arm · one session and worker · same final-page check for every arm, every attempt counted · cell LNC-B, 10 November 2026. Jev 0.1.13 with the same TypeSafe choice model and the Grok 4.20 non-reasoning helper. Browser Use Ultra Fast: the hosted service called through its public API (cell FRZ, 9–10 November 2026), so its time is the whole call, request to answer.",
+          "wire_reasoning": null,
+          "wire_reasoning_evidence": "No run on this cell: nothing to disclose.",
+          "reasoning_set_by": null,
+          "driven_by": null,
+          "driven_by_detail": null
         }
       ],
       "reuse_plan": {
@@ -584,7 +684,8 @@
           "judging": "see-source-record",
           "model_policy": "actual model per record"
         }
-      }
+      },
+      "group": "agents"
     },
     {
       "id": "protocolis-standard",
@@ -617,7 +718,12 @@
           "version": "candidate 9f89f071d",
           "worker_class": null,
           "measured_at": "2026-11-11T22:18:00Z",
-          "methodology": "Small view: the same 20 public tasks (set C), each run three times (60 runs) · the candidate build in Adaptive and Standard rotating per task in one window, workers 1 and 2, 11 November 2026 · GLM-5.3-flash · page check against a gold answer · every attempt counted · time from tool-ready to the verified answer, mean per completed task · cost per completed task: every OpenRouter-billed call as billed plus OpenRouter's 5.5% fee, plus our chooser (TypeSafe System One) at $0.042 per million input tokens as TypeSafe reports them · tokens per completed task: the big model and the writer (Adaptive's chooser adds about 16.0k small-model tokens per completed task, priced in the cost)."
+          "methodology": "Small view: the same 20 public tasks (set C), each run three times (60 runs) · the candidate build in Adaptive and Standard rotating per task in one window, workers 1 and 2, 11 November 2026 · GLM-5.3-flash · page check against a gold answer · every attempt counted · time from tool-ready to the verified answer, mean per completed task · cost per completed task: every OpenRouter-billed call as billed plus OpenRouter's 5.5% fee, plus our chooser (TypeSafe System One) at $0.042 per million input tokens as TypeSafe reports them · tokens per completed task: the big model and the writer (Adaptive's chooser adds about 16.0k small-model tokens per completed task, priced in the cost).",
+          "wire_reasoning": "low (engine auto)",
+          "wire_reasoning_evidence": "CLS2 arm CS (gear3std): wire_shapes[].reasoning.effort = low on 195/195 GLM calls; Mac meter low 195/195.",
+          "reasoning_set_by": "engine",
+          "driven_by": "own agent (Agent Mode)",
+          "driven_by_detail": "Protocolis in agent mode: apc drive --mode auto (Adaptive) or --mode standard (Standard); the engine's own loop (kit arms gear3 / gear3x1 = Adaptive, gear3std / gear3x1std = Standard)."
         },
         {
           "id": "published-054",
@@ -644,7 +750,12 @@
           "version": "candidate 27a41c7de",
           "worker_class": null,
           "measured_at": "2026-11-12T00:20:00Z",
-          "methodology": "Frontier view: the same 20 public tasks (set C), each run twice (40 runs per arm) · the candidate build (commit 27a41c7de) in Adaptive and Standard and Playwright MCP 0.0.84, rotating per task in one window, worker 4, 11 November 2026 · GPT-6.1 Sol on every arm (through OpenRouter, served by OpenAI), effort low · page check against a gold answer · every attempt counted · time from tool-ready to the verified answer, mean per completed task · cost per completed task at list price including the OpenRouter fee; tokens per completed task, all roles."
+          "methodology": "Frontier view: the same 20 public tasks (set C), each run twice (40 runs per arm) · the candidate build (commit 27a41c7de) in Adaptive and Standard and Playwright MCP 0.0.84, rotating per task in one window, worker 4, 11 November 2026 · GPT-6.1 Sol on every arm (through OpenRouter, served by OpenAI), effort low · page check against a gold answer · every attempt counted · time from tool-ready to the verified answer, mean per completed task · cost per completed task at list price including the OpenRouter fee; tokens per completed task, all roles.",
+          "wire_reasoning": "low (engine auto)",
+          "wire_reasoning_evidence": "FRT arm FS (gear3std): relay_usage.calls[].effort_declared = low on 101/101 Sol calls.",
+          "reasoning_set_by": "engine",
+          "driven_by": "own agent (Agent Mode)",
+          "driven_by_detail": "Protocolis in agent mode: apc drive --mode auto (Adaptive) or --mode standard (Standard); the engine's own loop (kit arms gear3 / gear3x1 = Adaptive, gear3std / gear3x1std = Standard)."
         },
         {
           "id": "published-002",
@@ -671,7 +782,12 @@
           "version": null,
           "worker_class": null,
           "measured_at": null,
-          "methodology": "Strong view: the same 20 public tasks (set C) · Browser Harness 20 runs in its own window, worker 4 · Protocolis from the 40-run window of the Playwright MCP row · the same model in every arm · page check against a gold answer · every attempt counted. Small and frontier views: the same 20 public tasks, frozen build, 9 November 2026 · Protocolis 40 runs per arm on GLM-5.3-flash, 20 on Opus 4.6 · Browser Harness 20 runs per model in its own window, worker 4 (Playwright MCP 40 on GLM-5.3-flash) · rival times are their own task clocks · cells not run on a model say so. Protocolis Standard on Opus 4.6: 38 runs from a separate frozen-build window (worker 2)."
+          "methodology": "Strong view: the same 20 public tasks (set C) · Browser Harness 20 runs in its own window, worker 4 · Protocolis from the 40-run window of the Playwright MCP row · the same model in every arm · page check against a gold answer · every attempt counted. Small and frontier views: the same 20 public tasks, frozen build, 9 November 2026 · Protocolis 40 runs per arm on GLM-5.3-flash, 20 on Opus 4.6 · Browser Harness 20 runs per model in its own window, worker 4 (Playwright MCP 40 on GLM-5.3-flash) · rival times are their own task clocks · cells not run on a model say so. Protocolis Standard on Opus 4.6: 38 runs from a separate frozen-build window (worker 2).",
+          "wire_reasoning": "low (engine auto)",
+          "wire_reasoning_evidence": "Stage 1 block 1 gear3std: Mac meter OPEN effort low on 144/144 Grok calls.",
+          "reasoning_set_by": "engine",
+          "driven_by": "own agent (Agent Mode)",
+          "driven_by_detail": "Protocolis in agent mode: apc drive --mode auto (Adaptive) or --mode standard (Standard); the engine's own loop (kit arms gear3 / gear3x1 = Adaptive, gear3std / gear3x1std = Standard)."
         },
         {
           "id": "published-005",
@@ -697,7 +813,12 @@
           "version": null,
           "worker_class": null,
           "measured_at": null,
-          "methodology": "Strong view: the same 20 public tasks (set C) · Browser Harness 20 runs in its own window, worker 4 · Protocolis from the 40-run window of the Playwright MCP row · the same model in every arm · page check against a gold answer · every attempt counted. Small and frontier views: the same 20 public tasks, frozen build, 9 November 2026 · Protocolis 40 runs per arm on GLM-5.3-flash, 20 on Opus 4.6 · Browser Harness 20 runs per model in its own window, worker 4 (Playwright MCP 40 on GLM-5.3-flash) · rival times are their own task clocks · cells not run on a model say so. Protocolis Standard on Opus 4.6: 38 runs from a separate frozen-build window (worker 2)."
+          "methodology": "Strong view: the same 20 public tasks (set C) · Browser Harness 20 runs in its own window, worker 4 · Protocolis from the 40-run window of the Playwright MCP row · the same model in every arm · page check against a gold answer · every attempt counted. Small and frontier views: the same 20 public tasks, frozen build, 9 November 2026 · Protocolis 40 runs per arm on GLM-5.3-flash, 20 on Opus 4.6 · Browser Harness 20 runs per model in its own window, worker 4 (Playwright MCP 40 on GLM-5.3-flash) · rival times are their own task clocks · cells not run on a model say so. Protocolis Standard on Opus 4.6: 38 runs from a separate frozen-build window (worker 2).",
+          "wire_reasoning": "low (engine auto)",
+          "wire_reasoning_evidence": "CLASS gear3std: Mac meter OPEN effort low on 166 GLM calls, medium 2, high 1 (router-raised).",
+          "reasoning_set_by": "engine",
+          "driven_by": "own agent (Agent Mode)",
+          "driven_by_detail": "Protocolis in agent mode: apc drive --mode auto (Adaptive) or --mode standard (Standard); the engine's own loop (kit arms gear3 / gear3x1 = Adaptive, gear3std / gear3x1std = Standard)."
         },
         {
           "id": "published-008",
@@ -724,7 +845,12 @@
           "version": null,
           "worker_class": null,
           "measured_at": null,
-          "methodology": "Strong view: the same 20 public tasks (set C) · Browser Harness 20 runs in its own window, worker 4 · Protocolis from the 40-run window of the Playwright MCP row · the same model in every arm · page check against a gold answer · every attempt counted. Small and frontier views: the same 20 public tasks, frozen build, 9 November 2026 · Protocolis 40 runs per arm on GLM-5.3-flash, 20 on Opus 4.6 · Browser Harness 20 runs per model in its own window, worker 4 (Playwright MCP 40 on GLM-5.3-flash) · rival times are their own task clocks · cells not run on a model say so. Protocolis Standard on Opus 4.6: 38 runs from a separate frozen-build window (worker 2)."
+          "methodology": "Strong view: the same 20 public tasks (set C) · Browser Harness 20 runs in its own window, worker 4 · Protocolis from the 40-run window of the Playwright MCP row · the same model in every arm · page check against a gold answer · every attempt counted. Small and frontier views: the same 20 public tasks, frozen build, 9 November 2026 · Protocolis 40 runs per arm on GLM-5.3-flash, 20 on Opus 4.6 · Browser Harness 20 runs per model in its own window, worker 4 (Playwright MCP 40 on GLM-5.3-flash) · rival times are their own task clocks · cells not run on a model say so. Protocolis Standard on Opus 4.6: 38 runs from a separate frozen-build window (worker 2).",
+          "wire_reasoning": "low (engine auto)",
+          "wire_reasoning_evidence": "S1B gear3std: Mac meter OPEN effort low on 145/145 Opus 4.6 calls.",
+          "reasoning_set_by": "engine",
+          "driven_by": "own agent (Agent Mode)",
+          "driven_by_detail": "Protocolis in agent mode: apc drive --mode auto (Adaptive) or --mode standard (Standard); the engine's own loop (kit arms gear3 / gear3x1 = Adaptive, gear3std / gear3x1std = Standard)."
         },
         {
           "id": "published-011",
@@ -751,7 +877,12 @@
           "version": null,
           "worker_class": null,
           "measured_at": null,
-          "methodology": "20 public tasks (set C), each run twice · 40 task-rounds with all arms rotating per task in one window · the same model, Grok 4.6, in every arm · page check against a gold answer · every attempt counted · Protocolis time from tool-ready to the verified answer, startup excluded; Browser Use’s time is its own reported task clock · cost is the billed provider cost per completed task · frozen build, 9 November 2026. Small and frontier views: the same 20 public tasks, frozen build, 9 November 2026 · Protocolis 40 runs per arm on GLM-5.3-flash, 20 on Opus 4.6 · Browser Use · own agent 20 runs per model in its own window, worker 4 (Playwright MCP 40 on GLM-5.3-flash) · rival times are their own task clocks · cells not run on a model say so. Frontier view for this product: GPT-6.1 Sol (OpenAI) in every arm, 20 public tasks, one window, frozen build, 9 November 2026."
+          "methodology": "20 public tasks (set C), each run twice · 40 task-rounds with all arms rotating per task in one window · the same model, Grok 4.6, in every arm · page check against a gold answer · every attempt counted · Protocolis time from tool-ready to the verified answer, startup excluded; Browser Use’s time is its own reported task clock · cost is the billed provider cost per completed task · frozen build, 9 November 2026. Small and frontier views: the same 20 public tasks, frozen build, 9 November 2026 · Protocolis 40 runs per arm on GLM-5.3-flash, 20 on Opus 4.6 · Browser Use · own agent 20 runs per model in its own window, worker 4 (Playwright MCP 40 on GLM-5.3-flash) · rival times are their own task clocks · cells not run on a model say so. Frontier view for this product: GPT-6.1 Sol (OpenAI) in every arm, 20 public tasks, one window, frozen build, 9 November 2026.",
+          "wire_reasoning": "low (engine auto)",
+          "wire_reasoning_evidence": "S2 gear3std: Mac meter OPEN effort low on 182/182 Grok calls.",
+          "reasoning_set_by": "engine",
+          "driven_by": "own agent (Agent Mode)",
+          "driven_by_detail": "Protocolis in agent mode: apc drive --mode auto (Adaptive) or --mode standard (Standard); the engine's own loop (kit arms gear3 / gear3x1 = Adaptive, gear3std / gear3x1std = Standard)."
         },
         {
           "id": "published-014",
@@ -777,7 +908,12 @@
           "version": null,
           "worker_class": null,
           "measured_at": null,
-          "methodology": "20 public tasks (set C), each run twice · 40 task-rounds with all arms rotating per task in one window · the same model, Grok 4.6, in every arm · page check against a gold answer · every attempt counted · Protocolis time from tool-ready to the verified answer, startup excluded; Browser Use’s time is its own reported task clock · cost is the billed provider cost per completed task · frozen build, 9 November 2026. Small and frontier views: the same 20 public tasks, frozen build, 9 November 2026 · Protocolis 40 runs per arm on GLM-5.3-flash, 20 on Opus 4.6 · Browser Use · own agent 20 runs per model in its own window, worker 4 (Playwright MCP 40 on GLM-5.3-flash) · rival times are their own task clocks · cells not run on a model say so. Frontier view for this product: GPT-6.1 Sol (OpenAI) in every arm, 20 public tasks, one window, frozen build, 9 November 2026."
+          "methodology": "20 public tasks (set C), each run twice · 40 task-rounds with all arms rotating per task in one window · the same model, Grok 4.6, in every arm · page check against a gold answer · every attempt counted · Protocolis time from tool-ready to the verified answer, startup excluded; Browser Use’s time is its own reported task clock · cost is the billed provider cost per completed task · frozen build, 9 November 2026. Small and frontier views: the same 20 public tasks, frozen build, 9 November 2026 · Protocolis 40 runs per arm on GLM-5.3-flash, 20 on Opus 4.6 · Browser Use · own agent 20 runs per model in its own window, worker 4 (Playwright MCP 40 on GLM-5.3-flash) · rival times are their own task clocks · cells not run on a model say so. Frontier view for this product: GPT-6.1 Sol (OpenAI) in every arm, 20 public tasks, one window, frozen build, 9 November 2026.",
+          "wire_reasoning": "low (engine auto)",
+          "wire_reasoning_evidence": "CLASS gear3std: Mac meter OPEN effort low on 166 GLM calls, medium 2, high 1 (router-raised).",
+          "reasoning_set_by": "engine",
+          "driven_by": "own agent (Agent Mode)",
+          "driven_by_detail": "Protocolis in agent mode: apc drive --mode auto (Adaptive) or --mode standard (Standard); the engine's own loop (kit arms gear3 / gear3x1 = Adaptive, gear3std / gear3x1std = Standard)."
         },
         {
           "id": "published-017",
@@ -803,7 +939,12 @@
           "version": null,
           "worker_class": null,
           "measured_at": null,
-          "methodology": "20 public tasks (set C), each run twice · 40 task-rounds with all arms rotating per task in one window · the same model, Grok 4.6, in every arm · page check against a gold answer · every attempt counted · Protocolis time from tool-ready to the verified answer, startup excluded; Browser Use’s time is its own reported task clock · cost is the billed provider cost per completed task · frozen build, 9 November 2026. Small and frontier views: the same 20 public tasks, frozen build, 9 November 2026 · Protocolis 40 runs per arm on GLM-5.3-flash, 20 on Opus 4.6 · Browser Use · own agent 20 runs per model in its own window, worker 4 (Playwright MCP 40 on GLM-5.3-flash) · rival times are their own task clocks · cells not run on a model say so. Frontier view for this product: GPT-6.1 Sol (OpenAI) in every arm, 20 public tasks, one window, frozen build, 9 November 2026."
+          "methodology": "20 public tasks (set C), each run twice · 40 task-rounds with all arms rotating per task in one window · the same model, Grok 4.6, in every arm · page check against a gold answer · every attempt counted · Protocolis time from tool-ready to the verified answer, startup excluded; Browser Use’s time is its own reported task clock · cost is the billed provider cost per completed task · frozen build, 9 November 2026. Small and frontier views: the same 20 public tasks, frozen build, 9 November 2026 · Protocolis 40 runs per arm on GLM-5.3-flash, 20 on Opus 4.6 · Browser Use · own agent 20 runs per model in its own window, worker 4 (Playwright MCP 40 on GLM-5.3-flash) · rival times are their own task clocks · cells not run on a model say so. Frontier view for this product: GPT-6.1 Sol (OpenAI) in every arm, 20 public tasks, one window, frozen build, 9 November 2026.",
+          "wire_reasoning": "low (engine auto)",
+          "wire_reasoning_evidence": "S2S gear3std: native_receipt.effort = low (router) on 20/20 rows; the S2S route was W1 8664 relay -> 8649 OpenAI Responses bridge started with --default-reasoning-effort low (stage2s-w1/route/openai_forwarder_responses.py; GATE-S2S/FIRST-ROWS-AUDIT.json: 'default effort low'), which adds effort low to every call that carries none. The S2S relay recorded no per-call effort field.",
+          "reasoning_set_by": "engine",
+          "driven_by": "own agent (Agent Mode)",
+          "driven_by_detail": "Protocolis in agent mode: apc drive --mode auto (Adaptive) or --mode standard (Standard); the engine's own loop (kit arms gear3 / gear3x1 = Adaptive, gear3std / gear3x1std = Standard)."
         },
         {
           "id": "published-020",
@@ -830,7 +971,12 @@
           "version": null,
           "worker_class": null,
           "measured_at": null,
-          "methodology": "20 public tasks (set C) · Protocolis arms run each task twice (40 runs), Browser Use tools mode once (20 runs, its own window) · Browser Use 0.13.13 driven by a tool-calling agent · the same model, Grok 4.6, in every arm · page check against a gold answer · every attempt counted · time from tool-ready to the verified answer; Browser Use’s browser start is inside its time · cost is the billed provider cost per completed task · frozen build, 9 November 2026. Small and frontier views: the same 20 public tasks, frozen build, 9 November 2026 · Protocolis 40 runs per arm on GLM-5.3-flash, 20 on Opus 4.6 · Browser Use · tools mode 20 runs per model in its own window, worker 4 (Playwright MCP 40 on GLM-5.3-flash) · rival times are their own task clocks · cells not run on a model say so. Protocolis Standard on Opus 4.6: 38 runs from a separate frozen-build window (worker 2)."
+          "methodology": "20 public tasks (set C) · Protocolis arms run each task twice (40 runs), Browser Use tools mode once (20 runs, its own window) · Browser Use 0.13.13 driven by a tool-calling agent · the same model, Grok 4.6, in every arm · page check against a gold answer · every attempt counted · time from tool-ready to the verified answer; Browser Use’s browser start is inside its time · cost is the billed provider cost per completed task · frozen build, 9 November 2026. Small and frontier views: the same 20 public tasks, frozen build, 9 November 2026 · Protocolis 40 runs per arm on GLM-5.3-flash, 20 on Opus 4.6 · Browser Use · tools mode 20 runs per model in its own window, worker 4 (Playwright MCP 40 on GLM-5.3-flash) · rival times are their own task clocks · cells not run on a model say so. Protocolis Standard on Opus 4.6: 38 runs from a separate frozen-build window (worker 2).",
+          "wire_reasoning": "low (engine auto)",
+          "wire_reasoning_evidence": "Stage 1 block 1 gear3std: Mac meter OPEN effort low on 144/144 Grok calls.",
+          "reasoning_set_by": "engine",
+          "driven_by": "own agent (Agent Mode)",
+          "driven_by_detail": "Protocolis in agent mode: apc drive --mode auto (Adaptive) or --mode standard (Standard); the engine's own loop (kit arms gear3 / gear3x1 = Adaptive, gear3std / gear3x1std = Standard)."
         },
         {
           "id": "published-023",
@@ -856,7 +1002,12 @@
           "version": null,
           "worker_class": null,
           "measured_at": null,
-          "methodology": "20 public tasks (set C) · Protocolis arms run each task twice (40 runs), Browser Use tools mode once (20 runs, its own window) · Browser Use 0.13.13 driven by a tool-calling agent · the same model, Grok 4.6, in every arm · page check against a gold answer · every attempt counted · time from tool-ready to the verified answer; Browser Use’s browser start is inside its time · cost is the billed provider cost per completed task · frozen build, 9 November 2026. Small and frontier views: the same 20 public tasks, frozen build, 9 November 2026 · Protocolis 40 runs per arm on GLM-5.3-flash, 20 on Opus 4.6 · Browser Use · tools mode 20 runs per model in its own window, worker 4 (Playwright MCP 40 on GLM-5.3-flash) · rival times are their own task clocks · cells not run on a model say so. Protocolis Standard on Opus 4.6: 38 runs from a separate frozen-build window (worker 2)."
+          "methodology": "20 public tasks (set C) · Protocolis arms run each task twice (40 runs), Browser Use tools mode once (20 runs, its own window) · Browser Use 0.13.13 driven by a tool-calling agent · the same model, Grok 4.6, in every arm · page check against a gold answer · every attempt counted · time from tool-ready to the verified answer; Browser Use’s browser start is inside its time · cost is the billed provider cost per completed task · frozen build, 9 November 2026. Small and frontier views: the same 20 public tasks, frozen build, 9 November 2026 · Protocolis 40 runs per arm on GLM-5.3-flash, 20 on Opus 4.6 · Browser Use · tools mode 20 runs per model in its own window, worker 4 (Playwright MCP 40 on GLM-5.3-flash) · rival times are their own task clocks · cells not run on a model say so. Protocolis Standard on Opus 4.6: 38 runs from a separate frozen-build window (worker 2).",
+          "wire_reasoning": "low (engine auto)",
+          "wire_reasoning_evidence": "CLASS gear3std: Mac meter OPEN effort low on 166 GLM calls, medium 2, high 1 (router-raised).",
+          "reasoning_set_by": "engine",
+          "driven_by": "own agent (Agent Mode)",
+          "driven_by_detail": "Protocolis in agent mode: apc drive --mode auto (Adaptive) or --mode standard (Standard); the engine's own loop (kit arms gear3 / gear3x1 = Adaptive, gear3std / gear3x1std = Standard)."
         },
         {
           "id": "published-026",
@@ -883,7 +1034,12 @@
           "version": null,
           "worker_class": null,
           "measured_at": null,
-          "methodology": "20 public tasks (set C) · Protocolis arms run each task twice (40 runs), Browser Use tools mode once (20 runs, its own window) · Browser Use 0.13.13 driven by a tool-calling agent · the same model, Grok 4.6, in every arm · page check against a gold answer · every attempt counted · time from tool-ready to the verified answer; Browser Use’s browser start is inside its time · cost is the billed provider cost per completed task · frozen build, 9 November 2026. Small and frontier views: the same 20 public tasks, frozen build, 9 November 2026 · Protocolis 40 runs per arm on GLM-5.3-flash, 20 on Opus 4.6 · Browser Use · tools mode 20 runs per model in its own window, worker 4 (Playwright MCP 40 on GLM-5.3-flash) · rival times are their own task clocks · cells not run on a model say so. Protocolis Standard on Opus 4.6: 38 runs from a separate frozen-build window (worker 2)."
+          "methodology": "20 public tasks (set C) · Protocolis arms run each task twice (40 runs), Browser Use tools mode once (20 runs, its own window) · Browser Use 0.13.13 driven by a tool-calling agent · the same model, Grok 4.6, in every arm · page check against a gold answer · every attempt counted · time from tool-ready to the verified answer; Browser Use’s browser start is inside its time · cost is the billed provider cost per completed task · frozen build, 9 November 2026. Small and frontier views: the same 20 public tasks, frozen build, 9 November 2026 · Protocolis 40 runs per arm on GLM-5.3-flash, 20 on Opus 4.6 · Browser Use · tools mode 20 runs per model in its own window, worker 4 (Playwright MCP 40 on GLM-5.3-flash) · rival times are their own task clocks · cells not run on a model say so. Protocolis Standard on Opus 4.6: 38 runs from a separate frozen-build window (worker 2).",
+          "wire_reasoning": "low (engine auto)",
+          "wire_reasoning_evidence": "S1B gear3std: Mac meter OPEN effort low on 145/145 Opus 4.6 calls.",
+          "reasoning_set_by": "engine",
+          "driven_by": "own agent (Agent Mode)",
+          "driven_by_detail": "Protocolis in agent mode: apc drive --mode auto (Adaptive) or --mode standard (Standard); the engine's own loop (kit arms gear3 / gear3x1 = Adaptive, gear3std / gear3x1std = Standard)."
         },
         {
           "id": "published-029",
@@ -910,7 +1066,12 @@
           "version": null,
           "worker_class": null,
           "measured_at": null,
-          "methodology": "20 public tasks (set C), each run twice · 40 task-rounds with all arms rotating per task in one window · the same model, Grok 4.6, in every arm · page check against a gold answer · every attempt counted · Protocolis time from tool-ready to the verified answer, startup excluded; Stagehand’s time is its own reported task clock (its start-up and first navigation included, browser launch not) · two Stagehand attempts reported no clock, so its time can only be higher · cost is the billed provider cost per completed task · frozen build, 9 November 2026. Small and frontier views: the same 20 public tasks, frozen build, 9 November 2026 · Protocolis 40 runs per arm on GLM-5.3-flash, 20 on Opus 4.6 · Stagehand 20 runs per model in its own window, worker 4 (Playwright MCP 40 on GLM-5.3-flash) · rival times are their own task clocks · cells not run on a model say so. Frontier view for this product: GPT-6.1 Sol (OpenAI) in every arm, 20 public tasks, one window, frozen build, 9 November 2026."
+          "methodology": "20 public tasks (set C), each run twice · 40 task-rounds with all arms rotating per task in one window · the same model, Grok 4.6, in every arm · page check against a gold answer · every attempt counted · Protocolis time from tool-ready to the verified answer, startup excluded; Stagehand’s time is its own reported task clock (its start-up and first navigation included, browser launch not) · two Stagehand attempts reported no clock, so its time can only be higher · cost is the billed provider cost per completed task · frozen build, 9 November 2026. Small and frontier views: the same 20 public tasks, frozen build, 9 November 2026 · Protocolis 40 runs per arm on GLM-5.3-flash, 20 on Opus 4.6 · Stagehand 20 runs per model in its own window, worker 4 (Playwright MCP 40 on GLM-5.3-flash) · rival times are their own task clocks · cells not run on a model say so. Frontier view for this product: GPT-6.1 Sol (OpenAI) in every arm, 20 public tasks, one window, frozen build, 9 November 2026.",
+          "wire_reasoning": "low (engine auto)",
+          "wire_reasoning_evidence": "S2 gear3std: Mac meter OPEN effort low on 182/182 Grok calls.",
+          "reasoning_set_by": "engine",
+          "driven_by": "own agent (Agent Mode)",
+          "driven_by_detail": "Protocolis in agent mode: apc drive --mode auto (Adaptive) or --mode standard (Standard); the engine's own loop (kit arms gear3 / gear3x1 = Adaptive, gear3std / gear3x1std = Standard)."
         },
         {
           "id": "published-032",
@@ -936,7 +1097,12 @@
           "version": null,
           "worker_class": null,
           "measured_at": null,
-          "methodology": "20 public tasks (set C), each run twice · 40 task-rounds with all arms rotating per task in one window · the same model, Grok 4.6, in every arm · page check against a gold answer · every attempt counted · Protocolis time from tool-ready to the verified answer, startup excluded; Stagehand’s time is its own reported task clock (its start-up and first navigation included, browser launch not) · two Stagehand attempts reported no clock, so its time can only be higher · cost is the billed provider cost per completed task · frozen build, 9 November 2026. Small and frontier views: the same 20 public tasks, frozen build, 9 November 2026 · Protocolis 40 runs per arm on GLM-5.3-flash, 20 on Opus 4.6 · Stagehand 20 runs per model in its own window, worker 4 (Playwright MCP 40 on GLM-5.3-flash) · rival times are their own task clocks · cells not run on a model say so. Frontier view for this product: GPT-6.1 Sol (OpenAI) in every arm, 20 public tasks, one window, frozen build, 9 November 2026."
+          "methodology": "20 public tasks (set C), each run twice · 40 task-rounds with all arms rotating per task in one window · the same model, Grok 4.6, in every arm · page check against a gold answer · every attempt counted · Protocolis time from tool-ready to the verified answer, startup excluded; Stagehand’s time is its own reported task clock (its start-up and first navigation included, browser launch not) · two Stagehand attempts reported no clock, so its time can only be higher · cost is the billed provider cost per completed task · frozen build, 9 November 2026. Small and frontier views: the same 20 public tasks, frozen build, 9 November 2026 · Protocolis 40 runs per arm on GLM-5.3-flash, 20 on Opus 4.6 · Stagehand 20 runs per model in its own window, worker 4 (Playwright MCP 40 on GLM-5.3-flash) · rival times are their own task clocks · cells not run on a model say so. Frontier view for this product: GPT-6.1 Sol (OpenAI) in every arm, 20 public tasks, one window, frozen build, 9 November 2026.",
+          "wire_reasoning": null,
+          "wire_reasoning_evidence": "No run on this cell: nothing to disclose.",
+          "reasoning_set_by": null,
+          "driven_by": null,
+          "driven_by_detail": null
         },
         {
           "id": "published-035",
@@ -962,7 +1128,12 @@
           "version": null,
           "worker_class": null,
           "measured_at": null,
-          "methodology": "20 public tasks (set C), each run twice · 40 task-rounds with all arms rotating per task in one window · the same model, Grok 4.6, in every arm · page check against a gold answer · every attempt counted · Protocolis time from tool-ready to the verified answer, startup excluded; Stagehand’s time is its own reported task clock (its start-up and first navigation included, browser launch not) · two Stagehand attempts reported no clock, so its time can only be higher · cost is the billed provider cost per completed task · frozen build, 9 November 2026. Small and frontier views: the same 20 public tasks, frozen build, 9 November 2026 · Protocolis 40 runs per arm on GLM-5.3-flash, 20 on Opus 4.6 · Stagehand 20 runs per model in its own window, worker 4 (Playwright MCP 40 on GLM-5.3-flash) · rival times are their own task clocks · cells not run on a model say so. Frontier view for this product: GPT-6.1 Sol (OpenAI) in every arm, 20 public tasks, one window, frozen build, 9 November 2026."
+          "methodology": "20 public tasks (set C), each run twice · 40 task-rounds with all arms rotating per task in one window · the same model, Grok 4.6, in every arm · page check against a gold answer · every attempt counted · Protocolis time from tool-ready to the verified answer, startup excluded; Stagehand’s time is its own reported task clock (its start-up and first navigation included, browser launch not) · two Stagehand attempts reported no clock, so its time can only be higher · cost is the billed provider cost per completed task · frozen build, 9 November 2026. Small and frontier views: the same 20 public tasks, frozen build, 9 November 2026 · Protocolis 40 runs per arm on GLM-5.3-flash, 20 on Opus 4.6 · Stagehand 20 runs per model in its own window, worker 4 (Playwright MCP 40 on GLM-5.3-flash) · rival times are their own task clocks · cells not run on a model say so. Frontier view for this product: GPT-6.1 Sol (OpenAI) in every arm, 20 public tasks, one window, frozen build, 9 November 2026.",
+          "wire_reasoning": "low (engine auto)",
+          "wire_reasoning_evidence": "S2S gear3std: native_receipt.effort = low (router) on 20/20 rows; the S2S route was W1 8664 relay -> 8649 OpenAI Responses bridge started with --default-reasoning-effort low (stage2s-w1/route/openai_forwarder_responses.py; GATE-S2S/FIRST-ROWS-AUDIT.json: 'default effort low'), which adds effort low to every call that carries none. The S2S relay recorded no per-call effort field.",
+          "reasoning_set_by": "engine",
+          "driven_by": "own agent (Agent Mode)",
+          "driven_by_detail": "Protocolis in agent mode: apc drive --mode auto (Adaptive) or --mode standard (Standard); the engine's own loop (kit arms gear3 / gear3x1 = Adaptive, gear3std / gear3x1std = Standard)."
         },
         {
           "id": "published-038",
@@ -989,7 +1160,12 @@
           "version": null,
           "worker_class": null,
           "measured_at": null,
-          "methodology": "20 public tasks (set C), each run twice · all three arms rotating per task in one window · the same model, Grok 4.6, in every arm · page check against a gold answer · every attempt counted · time from tool-ready to the verified answer, startup excluded · frozen build, 9 November 2026. Small and frontier views: the same 20 public tasks, frozen build, 9 November 2026 · Protocolis 40 runs per arm on GLM-5.3-flash, 20 on Opus 4.6 · Playwright MCP 20 runs per model in the same window as Protocolis (Playwright MCP 40 on GLM-5.3-flash) · rival times are their own task clocks · cells not run on a model say so. Protocolis Standard on Opus 4.6: 38 runs from a separate frozen-build window (worker 2)."
+          "methodology": "20 public tasks (set C), each run twice · all three arms rotating per task in one window · the same model, Grok 4.6, in every arm · page check against a gold answer · every attempt counted · time from tool-ready to the verified answer, startup excluded · frozen build, 9 November 2026. Small and frontier views: the same 20 public tasks, frozen build, 9 November 2026 · Protocolis 40 runs per arm on GLM-5.3-flash, 20 on Opus 4.6 · Playwright MCP 20 runs per model in the same window as Protocolis (Playwright MCP 40 on GLM-5.3-flash) · rival times are their own task clocks · cells not run on a model say so. Protocolis Standard on Opus 4.6: 38 runs from a separate frozen-build window (worker 2).",
+          "wire_reasoning": "low (engine auto)",
+          "wire_reasoning_evidence": "Stage 1 block 1 gear3std: Mac meter OPEN effort low on 144/144 Grok calls.",
+          "reasoning_set_by": "engine",
+          "driven_by": "own agent (Agent Mode)",
+          "driven_by_detail": "Protocolis in agent mode: apc drive --mode auto (Adaptive) or --mode standard (Standard); the engine's own loop (kit arms gear3 / gear3x1 = Adaptive, gear3std / gear3x1std = Standard)."
         },
         {
           "id": "published-041",
@@ -1015,7 +1191,12 @@
           "version": null,
           "worker_class": null,
           "measured_at": null,
-          "methodology": "20 public tasks (set C), each run twice · all three arms rotating per task in one window · the same model, Grok 4.6, in every arm · page check against a gold answer · every attempt counted · time from tool-ready to the verified answer, startup excluded · frozen build, 9 November 2026. Small and frontier views: the same 20 public tasks, frozen build, 9 November 2026 · Protocolis 40 runs per arm on GLM-5.3-flash, 20 on Opus 4.6 · Playwright MCP 20 runs per model in the same window as Protocolis (Playwright MCP 40 on GLM-5.3-flash) · rival times are their own task clocks · cells not run on a model say so. Protocolis Standard on Opus 4.6: 38 runs from a separate frozen-build window (worker 2)."
+          "methodology": "20 public tasks (set C), each run twice · all three arms rotating per task in one window · the same model, Grok 4.6, in every arm · page check against a gold answer · every attempt counted · time from tool-ready to the verified answer, startup excluded · frozen build, 9 November 2026. Small and frontier views: the same 20 public tasks, frozen build, 9 November 2026 · Protocolis 40 runs per arm on GLM-5.3-flash, 20 on Opus 4.6 · Playwright MCP 20 runs per model in the same window as Protocolis (Playwright MCP 40 on GLM-5.3-flash) · rival times are their own task clocks · cells not run on a model say so. Protocolis Standard on Opus 4.6: 38 runs from a separate frozen-build window (worker 2).",
+          "wire_reasoning": "low (engine auto)",
+          "wire_reasoning_evidence": "CLASS gear3std: Mac meter OPEN effort low on 166 GLM calls, medium 2, high 1 (router-raised).",
+          "reasoning_set_by": "engine",
+          "driven_by": "own agent (Agent Mode)",
+          "driven_by_detail": "Protocolis in agent mode: apc drive --mode auto (Adaptive) or --mode standard (Standard); the engine's own loop (kit arms gear3 / gear3x1 = Adaptive, gear3std / gear3x1std = Standard)."
         },
         {
           "id": "published-044",
@@ -1042,7 +1223,12 @@
           "version": null,
           "worker_class": null,
           "measured_at": null,
-          "methodology": "20 public tasks (set C), each run twice · all three arms rotating per task in one window · the same model, Grok 4.6, in every arm · page check against a gold answer · every attempt counted · time from tool-ready to the verified answer, startup excluded · frozen build, 9 November 2026. Small and frontier views: the same 20 public tasks, frozen build, 9 November 2026 · Protocolis 40 runs per arm on GLM-5.3-flash, 20 on Opus 4.6 · Playwright MCP 20 runs per model in the same window as Protocolis (Playwright MCP 40 on GLM-5.3-flash) · rival times are their own task clocks · cells not run on a model say so. Protocolis Standard on Opus 4.6: 38 runs from a separate frozen-build window (worker 2)."
+          "methodology": "20 public tasks (set C), each run twice · all three arms rotating per task in one window · the same model, Grok 4.6, in every arm · page check against a gold answer · every attempt counted · time from tool-ready to the verified answer, startup excluded · frozen build, 9 November 2026. Small and frontier views: the same 20 public tasks, frozen build, 9 November 2026 · Protocolis 40 runs per arm on GLM-5.3-flash, 20 on Opus 4.6 · Playwright MCP 20 runs per model in the same window as Protocolis (Playwright MCP 40 on GLM-5.3-flash) · rival times are their own task clocks · cells not run on a model say so. Protocolis Standard on Opus 4.6: 38 runs from a separate frozen-build window (worker 2).",
+          "wire_reasoning": "low (engine auto)",
+          "wire_reasoning_evidence": "S1B gear3std: Mac meter OPEN effort low on 145/145 Opus 4.6 calls.",
+          "reasoning_set_by": "engine",
+          "driven_by": "own agent (Agent Mode)",
+          "driven_by_detail": "Protocolis in agent mode: apc drive --mode auto (Adaptive) or --mode standard (Standard); the engine's own loop (kit arms gear3 / gear3x1 = Adaptive, gear3std / gear3x1std = Standard)."
         }
       ],
       "reuse_plan": {
@@ -1078,7 +1264,8 @@
           "judging": "see-source-record",
           "model_policy": "actual model per record"
         }
-      }
+      },
+      "group": "agents"
     },
     {
       "id": "protocolis-lean",
@@ -1114,7 +1301,12 @@
             "first": "2026-11-12T11:12:28Z",
             "last": "2026-11-12T11:42:38Z"
           },
-          "methodology": "Lean = the 0.10.0 candidate's own Lean mode (commit 913df8c3d, apc drive --mode lean). Who drives: the engine's fixed choice-model drive (no agent, no big model, no hand-back), so there is no reasoning level to set. Its answers are NOT verified on the page: completion here is the page check only. It returned an answer on 24 of the 60 runs, and all 24 matched the gold answer; on the other 36 it stopped without one (low confidence, refusal or a repeated step), and 20 of those still pass the page check · the same 20 public tasks (set C), each run three times (60 runs), worker 4, 12 November 2026, in its own window (not the fast-tier window the other Ultrafast systems ran in) · time from tool-ready to the end of the drive (FINAL), mean per completed task, median beside · cost per completed task: the choice model (TypeSafe System One) at $0.042 per million input tokens as TypeSafe reports them, plus its calls the drive did not count, priced at their request size (an upper bound); tokens per completed task: the choice model's tokens, the only model this mode calls."
+          "methodology": "Lean = the 0.10.0 candidate's own Lean mode (commit 913df8c3d, apc drive --mode lean). Who drives: the engine's fixed choice-model drive (no agent, no big model, no hand-back), so there is no reasoning level to set. Its answers are NOT verified on the page: completion here is the page check only. It returned an answer on 24 of the 60 runs, and all 24 matched the gold answer; on the other 36 it stopped without one (low confidence, refusal or a repeated step), and 20 of those still pass the page check · the same 20 public tasks (set C), each run three times (60 runs), worker 4, 12 November 2026, in its own window (not the fast-tier window the other Ultrafast systems ran in) · time from tool-ready to the end of the drive (FINAL), mean per completed task, median beside · cost per completed task: the choice model (TypeSafe System One) at $0.042 per million input tokens as TypeSafe reports them, plus its calls the drive did not count, priced at their request size (an upper bound); tokens per completed task: the choice model's tokens, the only model this mode calls.",
+          "wire_reasoning": "none (no reasoning model called)",
+          "reasoning_set_by": "none sent (no reasoning model)",
+          "wire_reasoning_evidence": "LEAN10 BINDING/prereg: Lean calls only the TypeSafe chooser (jev-1.14.0 via the Mac proxy 8792); any native/frontier relay call voids the row.",
+          "driven_by": "fixed choice drive (no agent)",
+          "driven_by_detail": "The 0.10.0 candidate's Lean mode (apc drive --mode lean): the engine's fixed choice-model drive; no agent, no big model, no hand-back."
         },
         {
           "id": "published-049",
@@ -1141,7 +1333,12 @@
           "version": " (Adaptive Lean, retired in 0.10.0)",
           "worker_class": null,
           "measured_at": null,
-          "methodology": "RETIRED MODE: Adaptive Lean, retired in 0.10.0 (not the current Lean) · Methodology20 public tasks, each run twice · 40 runs per arm · same final-page check for every arm, every attempt counted · Browser Use Ultra Fast is its hosted service called through its public API (9–10 November 2026), so its time is the whole call, request to answer; Protocolis time runs from tool-ready to the answer (10 November 2026), so the two times are not on the same clock.Matched clock: Protocolis from tool-ready to the answer; Jev on its own clock, from before it opens the start page to its return · 20 public tasks, each run twice · 40 runs per arm · one session and worker · same final-page check for every arm, every attempt counted · cell LNC-B, 10 November 2026. Jev 0.1.13 with the same TypeSafe choice model and the Grok 4.20 non-reasoning helper. Browser Use Ultra Fast: the hosted service called through its public API (cell FRZ, 9–10 November 2026), so its time is the whole call, request to answer."
+          "methodology": "RETIRED MODE: Adaptive Lean, retired in 0.10.0 (not the current Lean) · Methodology20 public tasks, each run twice · 40 runs per arm · same final-page check for every arm, every attempt counted · Browser Use Ultra Fast is its hosted service called through its public API (9–10 November 2026), so its time is the whole call, request to answer; Protocolis time runs from tool-ready to the answer (10 November 2026), so the two times are not on the same clock.Matched clock: Protocolis from tool-ready to the answer; Jev on its own clock, from before it opens the start page to its return · 20 public tasks, each run twice · 40 runs per arm · one session and worker · same final-page check for every arm, every attempt counted · cell LNC-B, 10 November 2026. Jev 0.1.13 with the same TypeSafe choice model and the Grok 4.20 non-reasoning helper. Browser Use Ultra Fast: the hosted service called through its public API (cell FRZ, 9–10 November 2026), so its time is the whole call, request to answer.",
+          "wire_reasoning": "low declared; non-reasoning model served",
+          "reasoning_set_by": "engine",
+          "wire_reasoning_evidence": "LNC-B gear3lean: native_receipt.effort low on the 20 rows with a hand-back; the hand-back model x-ai/grok-4.20 is mapped by our 8648 forwarder to grok-4.20-0309-non-reasoning (BINDING route).",
+          "driven_by": "own agent (retired Adaptive Lean)",
+          "driven_by_detail": "Adaptive Lean (52bed7835, retired in 0.10.0): lower gears, then the engine's hand-back to x-ai/grok-4.20."
         }
       ],
       "reuse_plan": {
@@ -1175,7 +1372,8 @@
           "judging": "see-source-record",
           "model_policy": "actual model per record"
         }
-      }
+      },
+      "group": "fast"
     },
     {
       "id": "browser-use-own-agent",
@@ -1208,7 +1406,12 @@
           "version": null,
           "worker_class": null,
           "measured_at": null,
-          "methodology": "20 public tasks (set C), each run twice · 40 task-rounds with all arms rotating per task in one window · the same model, Grok 4.6, in every arm · page check against a gold answer · every attempt counted · Protocolis time from tool-ready to the verified answer, startup excluded; Browser Use’s time is its own reported task clock · cost is the billed provider cost per completed task · frozen build, 9 November 2026. Small and frontier views: the same 20 public tasks, frozen build, 9 November 2026 · Protocolis 40 runs per arm on GLM-5.3-flash, 20 on Opus 4.6 · Browser Use · own agent 20 runs per model in its own window, worker 4 (Playwright MCP 40 on GLM-5.3-flash) · rival times are their own task clocks · cells not run on a model say so. Frontier view for this product: GPT-6.1 Sol (OpenAI) in every arm, 20 public tasks, one window, frozen build, 9 November 2026."
+          "methodology": "20 public tasks (set C), each run twice · 40 task-rounds with all arms rotating per task in one window · the same model, Grok 4.6, in every arm · page check against a gold answer · every attempt counted · Protocolis time from tool-ready to the verified answer, startup excluded; Browser Use’s time is its own reported task clock · cost is the billed provider cost per completed task · frozen build, 9 November 2026. Small and frontier views: the same 20 public tasks, frozen build, 9 November 2026 · Protocolis 40 runs per arm on GLM-5.3-flash, 20 on Opus 4.6 · Browser Use · own agent 20 runs per model in its own window, worker 4 (Playwright MCP 40 on GLM-5.3-flash) · rival times are their own task clocks · cells not run on a model say so. Frontier view for this product: GPT-6.1 Sol (OpenAI) in every arm, 20 public tasks, one window, frozen build, 9 November 2026.",
+          "wire_reasoning": "provider default",
+          "wire_reasoning_evidence": "S2 bua: Mac meter OPEN effort none on 195/195 Grok calls (8662 -> 8650 plain forwarder); harness record reasoning_effort provider_default.",
+          "reasoning_set_by": "product",
+          "driven_by": "own agent",
+          "driven_by_detail": "Browser Use 0.13.13 Agent.run() (kit fast/bu_run.py): its own planner and loop. The kit sets max_steps 40, a 300 s wall, use_vision on, use_judge off, and a first navigate action to the start URL."
         },
         {
           "id": "published-015",
@@ -1234,7 +1437,12 @@
           "version": null,
           "worker_class": null,
           "measured_at": null,
-          "methodology": "20 public tasks (set C), each run twice · 40 task-rounds with all arms rotating per task in one window · the same model, Grok 4.6, in every arm · page check against a gold answer · every attempt counted · Protocolis time from tool-ready to the verified answer, startup excluded; Browser Use’s time is its own reported task clock · cost is the billed provider cost per completed task · frozen build, 9 November 2026. Small and frontier views: the same 20 public tasks, frozen build, 9 November 2026 · Protocolis 40 runs per arm on GLM-5.3-flash, 20 on Opus 4.6 · Browser Use · own agent 20 runs per model in its own window, worker 4 (Playwright MCP 40 on GLM-5.3-flash) · rival times are their own task clocks · cells not run on a model say so. Frontier view for this product: GPT-6.1 Sol (OpenAI) in every arm, 20 public tasks, one window, frozen build, 9 November 2026."
+          "methodology": "20 public tasks (set C), each run twice · 40 task-rounds with all arms rotating per task in one window · the same model, Grok 4.6, in every arm · page check against a gold answer · every attempt counted · Protocolis time from tool-ready to the verified answer, startup excluded; Browser Use’s time is its own reported task clock · cost is the billed provider cost per completed task · frozen build, 9 November 2026. Small and frontier views: the same 20 public tasks, frozen build, 9 November 2026 · Protocolis 40 runs per arm on GLM-5.3-flash, 20 on Opus 4.6 · Browser Use · own agent 20 runs per model in its own window, worker 4 (Playwright MCP 40 on GLM-5.3-flash) · rival times are their own task clocks · cells not run on a model say so. Frontier view for this product: GPT-6.1 Sol (OpenAI) in every arm, 20 public tasks, one window, frozen build, 9 November 2026.",
+          "wire_reasoning": "provider default",
+          "wire_reasoning_evidence": "BUG bua: Mac meter OPEN effort none on 75/75 GLM calls.",
+          "reasoning_set_by": "product",
+          "driven_by": "own agent",
+          "driven_by_detail": "Browser Use 0.13.13 Agent.run() (kit fast/bu_run.py): its own planner and loop. The kit sets max_steps 40, a 300 s wall, use_vision on, use_judge off, and a first navigate action to the start URL."
         },
         {
           "id": "published-018",
@@ -1260,7 +1468,12 @@
           "version": null,
           "worker_class": null,
           "measured_at": null,
-          "methodology": "20 public tasks (set C), each run twice · 40 task-rounds with all arms rotating per task in one window · the same model, Grok 4.6, in every arm · page check against a gold answer · every attempt counted · Protocolis time from tool-ready to the verified answer, startup excluded; Browser Use’s time is its own reported task clock · cost is the billed provider cost per completed task · frozen build, 9 November 2026. Small and frontier views: the same 20 public tasks, frozen build, 9 November 2026 · Protocolis 40 runs per arm on GLM-5.3-flash, 20 on Opus 4.6 · Browser Use · own agent 20 runs per model in its own window, worker 4 (Playwright MCP 40 on GLM-5.3-flash) · rival times are their own task clocks · cells not run on a model say so. Frontier view for this product: GPT-6.1 Sol (OpenAI) in every arm, 20 public tasks, one window, frozen build, 9 November 2026."
+          "methodology": "20 public tasks (set C), each run twice · 40 task-rounds with all arms rotating per task in one window · the same model, Grok 4.6, in every arm · page check against a gold answer · every attempt counted · Protocolis time from tool-ready to the verified answer, startup excluded; Browser Use’s time is its own reported task clock · cost is the billed provider cost per completed task · frozen build, 9 November 2026. Small and frontier views: the same 20 public tasks, frozen build, 9 November 2026 · Protocolis 40 runs per arm on GLM-5.3-flash, 20 on Opus 4.6 · Browser Use · own agent 20 runs per model in its own window, worker 4 (Playwright MCP 40 on GLM-5.3-flash) · rival times are their own task clocks · cells not run on a model say so. Frontier view for this product: GPT-6.1 Sol (OpenAI) in every arm, 20 public tasks, one window, frozen build, 9 November 2026.",
+          "wire_reasoning": "low, added by our route",
+          "wire_reasoning_evidence": "S2S bua: Browser Use sent no effort (harness record provider_default; it sends no reasoning_effort for openai/gpt-6.1-sol, LAUNCH-PLAN-W1 item 2); the S2S route was W1 8664 relay -> 8649 OpenAI Responses bridge started with --default-reasoning-effort low (stage2s-w1/route/openai_forwarder_responses.py; GATE-S2S/FIRST-ROWS-AUDIT.json: 'default effort low'), which adds effort low to every call that carries none. The S2S relay recorded no per-call effort field.",
+          "reasoning_set_by": "our route (default added)",
+          "driven_by": "own agent",
+          "driven_by_detail": "Browser Use 0.13.13 Agent.run() (kit fast/bu_run.py): its own planner and loop. The kit sets max_steps 40, a 300 s wall, use_vision on, use_judge off, and a first navigate action to the start URL."
         }
       ],
       "reuse_plan": {
@@ -1294,7 +1507,8 @@
           "judging": "see-source-record",
           "model_policy": "actual model per record"
         }
-      }
+      },
+      "group": "agents"
     },
     {
       "id": "browser-use-tools-mode",
@@ -1327,7 +1541,12 @@
           "version": null,
           "worker_class": null,
           "measured_at": null,
-          "methodology": "20 public tasks (set C) · Protocolis arms run each task twice (40 runs), Browser Use tools mode once (20 runs, its own window) · Browser Use 0.13.13 driven by a tool-calling agent · the same model, Grok 4.6, in every arm · page check against a gold answer · every attempt counted · time from tool-ready to the verified answer; Browser Use’s browser start is inside its time · cost is the billed provider cost per completed task · frozen build, 9 November 2026. Small and frontier views: the same 20 public tasks, frozen build, 9 November 2026 · Protocolis 40 runs per arm on GLM-5.3-flash, 20 on Opus 4.6 · Browser Use · tools mode 20 runs per model in its own window, worker 4 (Playwright MCP 40 on GLM-5.3-flash) · rival times are their own task clocks · cells not run on a model say so. Protocolis Standard on Opus 4.6: 38 runs from a separate frozen-build window (worker 2)."
+          "methodology": "20 public tasks (set C) · Protocolis arms run each task twice (40 runs), Browser Use tools mode once (20 runs, its own window) · Browser Use 0.13.13 driven by a tool-calling agent · the same model, Grok 4.6, in every arm · page check against a gold answer · every attempt counted · time from tool-ready to the verified answer; Browser Use’s browser start is inside its time · cost is the billed provider cost per completed task · frozen build, 9 November 2026. Small and frontier views: the same 20 public tasks, frozen build, 9 November 2026 · Protocolis 40 runs per arm on GLM-5.3-flash, 20 on Opus 4.6 · Browser Use · tools mode 20 runs per model in its own window, worker 4 (Playwright MCP 40 on GLM-5.3-flash) · rival times are their own task clocks · cells not run on a model say so. Protocolis Standard on Opus 4.6: 38 runs from a separate frozen-build window (worker 2).",
+          "wire_reasoning": "provider default",
+          "wire_reasoning_evidence": "BUX but: harness record reasoning_effort provider_default on 20/20 rows (glm_agent sends no field when --reasoning-effort is unset); xAI route W4 8663 -> 8648 (model map only). The per-call log is on W4 (/home/apc/xai-route/requests-xai.jsonl), not read.",
+          "reasoning_set_by": "product",
+          "driven_by": "outside agent (our kit loop)",
+          "driven_by_detail": "Browser Use 0.13.13 OpenAI toolset driven by the kit's tool-calling agent glm/glm_agent.py: at most 500 turns, 300 s outer wall."
         },
         {
           "id": "published-024",
@@ -1353,7 +1572,12 @@
           "version": null,
           "worker_class": null,
           "measured_at": null,
-          "methodology": "20 public tasks (set C) · Protocolis arms run each task twice (40 runs), Browser Use tools mode once (20 runs, its own window) · Browser Use 0.13.13 driven by a tool-calling agent · the same model, Grok 4.6, in every arm · page check against a gold answer · every attempt counted · time from tool-ready to the verified answer; Browser Use’s browser start is inside its time · cost is the billed provider cost per completed task · frozen build, 9 November 2026. Small and frontier views: the same 20 public tasks, frozen build, 9 November 2026 · Protocolis 40 runs per arm on GLM-5.3-flash, 20 on Opus 4.6 · Browser Use · tools mode 20 runs per model in its own window, worker 4 (Playwright MCP 40 on GLM-5.3-flash) · rival times are their own task clocks · cells not run on a model say so. Protocolis Standard on Opus 4.6: 38 runs from a separate frozen-build window (worker 2)."
+          "methodology": "20 public tasks (set C) · Protocolis arms run each task twice (40 runs), Browser Use tools mode once (20 runs, its own window) · Browser Use 0.13.13 driven by a tool-calling agent · the same model, Grok 4.6, in every arm · page check against a gold answer · every attempt counted · time from tool-ready to the verified answer; Browser Use’s browser start is inside its time · cost is the billed provider cost per completed task · frozen build, 9 November 2026. Small and frontier views: the same 20 public tasks, frozen build, 9 November 2026 · Protocolis 40 runs per arm on GLM-5.3-flash, 20 on Opus 4.6 · Browser Use · tools mode 20 runs per model in its own window, worker 4 (Playwright MCP 40 on GLM-5.3-flash) · rival times are their own task clocks · cells not run on a model say so. Protocolis Standard on Opus 4.6: 38 runs from a separate frozen-build window (worker 2).",
+          "wire_reasoning": "provider default",
+          "wire_reasoning_evidence": "The record names no window (worker W4, 19 of 20). The ledger's only Browser Use tools-mode GLM run is BUG (arm but): Mac meter OPEN effort none on 150/150 calls. Source inferred, not stated on the record.",
+          "reasoning_set_by": "product",
+          "driven_by": "outside agent (our kit loop)",
+          "driven_by_detail": "Browser Use 0.13.13 OpenAI toolset driven by the kit's tool-calling agent glm/glm_agent.py: at most 500 turns, 300 s outer wall."
         },
         {
           "id": "published-027",
@@ -1380,7 +1604,12 @@
           "version": null,
           "worker_class": null,
           "measured_at": null,
-          "methodology": "20 public tasks (set C) · Protocolis arms run each task twice (40 runs), Browser Use tools mode once (20 runs, its own window) · Browser Use 0.13.13 driven by a tool-calling agent · the same model, Grok 4.6, in every arm · page check against a gold answer · every attempt counted · time from tool-ready to the verified answer; Browser Use’s browser start is inside its time · cost is the billed provider cost per completed task · frozen build, 9 November 2026. Small and frontier views: the same 20 public tasks, frozen build, 9 November 2026 · Protocolis 40 runs per arm on GLM-5.3-flash, 20 on Opus 4.6 · Browser Use · tools mode 20 runs per model in its own window, worker 4 (Playwright MCP 40 on GLM-5.3-flash) · rival times are their own task clocks · cells not run on a model say so. Protocolis Standard on Opus 4.6: 38 runs from a separate frozen-build window (worker 2)."
+          "methodology": "20 public tasks (set C) · Protocolis arms run each task twice (40 runs), Browser Use tools mode once (20 runs, its own window) · Browser Use 0.13.13 driven by a tool-calling agent · the same model, Grok 4.6, in every arm · page check against a gold answer · every attempt counted · time from tool-ready to the verified answer; Browser Use’s browser start is inside its time · cost is the billed provider cost per completed task · frozen build, 9 November 2026. Small and frontier views: the same 20 public tasks, frozen build, 9 November 2026 · Protocolis 40 runs per arm on GLM-5.3-flash, 20 on Opus 4.6 · Browser Use · tools mode 20 runs per model in its own window, worker 4 (Playwright MCP 40 on GLM-5.3-flash) · rival times are their own task clocks · cells not run on a model say so. Protocolis Standard on Opus 4.6: 38 runs from a separate frozen-build window (worker 2).",
+          "wire_reasoning": "provider default",
+          "wire_reasoning_evidence": "BUOT but: Mac meter OPEN effort none on 197/197 Opus 4.6 calls.",
+          "reasoning_set_by": "product",
+          "driven_by": "outside agent (our kit loop)",
+          "driven_by_detail": "Browser Use 0.13.13 OpenAI toolset driven by the kit's tool-calling agent glm/glm_agent.py: at most 500 turns, 300 s outer wall."
         }
       ],
       "reuse_plan": {
@@ -1412,7 +1641,8 @@
           "judging": "see-source-record",
           "model_policy": "actual model per record"
         }
-      }
+      },
+      "group": "tools"
     },
     {
       "id": "browser-use-ultrafast",
@@ -1448,7 +1678,12 @@
             "last": "2026-11-12T09:59:27Z"
           },
           "methodology": "Ultrafast view (small choice model): the same 20 public tasks (set C), each run three times (60 runs per system) · the six fast-tier systems rotating per task in one window, worker 4, 12 November 2026 · Grok 4.6 for our arms, each rival as it ships · page check against a gold answer · every attempt counted · each system timed on the clock the site uses for it: ours from tool-ready to the verified answer (FINAL), Browser Use Ultrafast whole call, Jev its own clock · mean per completed task, median beside · Browser Use Ultrafast is a hosted service (model not reported), timed over the whole call · cost per completed task: what the hosted service actually charged (its billed cost per task); tokens: not shown, because the hosted service's model calls cannot be observed and its self-reported token counts cannot be verified.",
-          "medianTime": "7.9 s"
+          "medianTime": "7.9 s",
+          "wire_reasoning": "not observable (hosted)",
+          "wire_reasoning_evidence": "FAST: hosted service, model and request fields not reported (rival buu).",
+          "reasoning_set_by": "not observable",
+          "driven_by": "hosted service",
+          "driven_by_detail": "Browser Use Cloud bu-ultrafast through its public API; its loop and model are not observable."
         },
         {
           "id": "published-046",
@@ -1474,7 +1709,12 @@
           "version": null,
           "worker_class": null,
           "measured_at": null,
-          "methodology": "Methodology20 public tasks, each run twice · 40 runs per arm · same final-page check for every arm, every attempt counted · Browser Use Ultra Fast is its hosted service called through its public API (9–10 November 2026), so its time is the whole call, request to answer; Protocolis time runs from tool-ready to the answer (10 November 2026), so the two times are not on the same clock.Matched clock: Protocolis from tool-ready to the answer; Jev on its own clock, from before it opens the start page to its return · 20 public tasks, each run twice · 40 runs per arm · one session and worker · same final-page check for every arm, every attempt counted · cell LNC-B, 10 November 2026. Jev 0.1.13 with the same TypeSafe choice model and the Grok 4.20 non-reasoning helper. Browser Use Ultra Fast: the hosted service called through its public API (cell FRZ, 9–10 November 2026), so its time is the whole call, request to answer."
+          "methodology": "Methodology20 public tasks, each run twice · 40 runs per arm · same final-page check for every arm, every attempt counted · Browser Use Ultra Fast is its hosted service called through its public API (9–10 November 2026), so its time is the whole call, request to answer; Protocolis time runs from tool-ready to the answer (10 November 2026), so the two times are not on the same clock.Matched clock: Protocolis from tool-ready to the answer; Jev on its own clock, from before it opens the start page to its return · 20 public tasks, each run twice · 40 runs per arm · one session and worker · same final-page check for every arm, every attempt counted · cell LNC-B, 10 November 2026. Jev 0.1.13 with the same TypeSafe choice model and the Grok 4.20 non-reasoning helper. Browser Use Ultra Fast: the hosted service called through its public API (cell FRZ, 9–10 November 2026), so its time is the whole call, request to answer.",
+          "wire_reasoning": "not observable (hosted)",
+          "wire_reasoning_evidence": "FRZ: hosted service, model and request fields not reported (rival buu).",
+          "reasoning_set_by": "not observable",
+          "driven_by": "hosted service",
+          "driven_by_detail": "Browser Use Cloud bu-ultrafast through its public API; its loop and model are not observable."
         }
       ],
       "reuse_plan": {
@@ -1508,7 +1748,8 @@
           "judging": "see-source-record",
           "model_policy": "fixed service/helper model; not three different models"
         }
-      }
+      },
+      "group": "fast"
     },
     {
       "id": "jev-ultrafast",
@@ -1544,7 +1785,12 @@
             "first": "2026-11-12T08:49:10Z",
             "last": "2026-11-12T09:59:27Z"
           },
-          "methodology": "Ultrafast view (small choice model): the same 20 public tasks (set C), each run three times (60 runs per system) · the six fast-tier systems rotating per task in one window, worker 4, 12 November 2026 · Grok 4.6 for our arms, each rival as it ships · page check against a gold answer · every attempt counted · each system timed on the clock the site uses for it: ours from tool-ready to the verified answer (FINAL), Browser Use Ultrafast whole call, Jev its own clock · mean per completed task, median beside · Jev Ultrafast on its own clock (done_ms), judged on the page (Jev returns no answer text) · cost and tokens: Jev's own choice-model calls are not metered per token, so they are not estimated."
+          "methodology": "Ultrafast view (small choice model): the same 20 public tasks (set C), each run three times (60 runs per system) · the six fast-tier systems rotating per task in one window, worker 4, 12 November 2026 · Grok 4.6 for our arms, each rival as it ships · page check against a gold answer · every attempt counted · each system timed on the clock the site uses for it: ours from tool-ready to the verified answer (FINAL), Browser Use Ultrafast whole call, Jev its own clock · mean per completed task, median beside · Jev Ultrafast on its own clock (done_ms), judged on the page (Jev returns no answer text) · cost and tokens: Jev's own choice-model calls are not metered per token, so they are not estimated.",
+          "wire_reasoning": "none sent; non-reasoning helper chosen by our kit",
+          "wire_reasoning_evidence": "FAST JU: grok_calls[].wire_effort none on 48/48 helper calls, reported model grok-4.20-0309-non-reasoning (our 8648 forwarder maps x-ai/grok-4.20 to it); jev_helper_note: shipped helper inception/mercury-2.5 retired by the kit.",
+          "reasoning_set_by": "our harness (model choice)",
+          "driven_by": "own agent",
+          "driven_by_detail": "Jev Ultrafast's own loop with the TypeSafe chooser. Our kit replaced its shipped text helper (inception/mercury-2.5) with Grok 4.20 non-reasoning."
         },
         {
           "id": "published-047",
@@ -1571,7 +1817,12 @@
           "version": null,
           "worker_class": null,
           "measured_at": null,
-          "methodology": "Methodology20 public tasks, each run twice · 40 runs per arm · same final-page check for every arm, every attempt counted · Browser Use Ultra Fast is its hosted service called through its public API (9–10 November 2026), so its time is the whole call, request to answer; Protocolis time runs from tool-ready to the answer (10 November 2026), so the two times are not on the same clock.Matched clock: Protocolis from tool-ready to the answer; Jev on its own clock, from before it opens the start page to its return · 20 public tasks, each run twice · 40 runs per arm · one session and worker · same final-page check for every arm, every attempt counted · cell LNC-B, 10 November 2026. Jev 0.1.13 with the same TypeSafe choice model and the Grok 4.20 non-reasoning helper. Browser Use Ultra Fast: the hosted service called through its public API (cell FRZ, 9–10 November 2026), so its time is the whole call, request to answer."
+          "methodology": "Methodology20 public tasks, each run twice · 40 runs per arm · same final-page check for every arm, every attempt counted · Browser Use Ultra Fast is its hosted service called through its public API (9–10 November 2026), so its time is the whole call, request to answer; Protocolis time runs from tool-ready to the answer (10 November 2026), so the two times are not on the same clock.Matched clock: Protocolis from tool-ready to the answer; Jev on its own clock, from before it opens the start page to its return · 20 public tasks, each run twice · 40 runs per arm · one session and worker · same final-page check for every arm, every attempt counted · cell LNC-B, 10 November 2026. Jev 0.1.13 with the same TypeSafe choice model and the Grok 4.20 non-reasoning helper. Browser Use Ultra Fast: the hosted service called through its public API (cell FRZ, 9–10 November 2026), so its time is the whole call, request to answer.",
+          "wire_reasoning": "none sent; non-reasoning helper chosen by our kit",
+          "wire_reasoning_evidence": "LNC-B jev: jev_helper_note 'helper Grok 4.20 non-reasoning (x-ai/grok-4.20 -> grok-4.20-0309-non-reasoning, reasoning off)'; per-call effort not in result.json.",
+          "reasoning_set_by": "our harness (model choice)",
+          "driven_by": "own agent",
+          "driven_by_detail": "Jev Ultrafast's own loop with the TypeSafe chooser. Our kit replaced its shipped text helper (inception/mercury-2.5) with Grok 4.20 non-reasoning."
         }
       ],
       "reuse_plan": {
@@ -1605,7 +1856,8 @@
           "judging": "see-source-record",
           "model_policy": "fixed service/helper model; not three different models"
         }
-      }
+      },
+      "group": "fast"
     },
     {
       "id": "browser-harness",
@@ -1637,7 +1889,12 @@
           "version": null,
           "worker_class": null,
           "measured_at": null,
-          "methodology": "Strong view: the same 20 public tasks (set C) · Browser Harness 20 runs in its own window, worker 4 · Protocolis from the 40-run window of the Playwright MCP row · the same model in every arm · page check against a gold answer · every attempt counted. Small and frontier views: the same 20 public tasks, frozen build, 9 November 2026 · Protocolis 40 runs per arm on GLM-5.3-flash, 20 on Opus 4.6 · Browser Harness 20 runs per model in its own window, worker 4 (Playwright MCP 40 on GLM-5.3-flash) · rival times are their own task clocks · cells not run on a model say so. Protocolis Standard on Opus 4.6: 38 runs from a separate frozen-build window (worker 2)."
+          "methodology": "Strong view: the same 20 public tasks (set C) · Browser Harness 20 runs in its own window, worker 4 · Protocolis from the 40-run window of the Playwright MCP row · the same model in every arm · page check against a gold answer · every attempt counted. Small and frontier views: the same 20 public tasks, frozen build, 9 November 2026 · Protocolis 40 runs per arm on GLM-5.3-flash, 20 on Opus 4.6 · Browser Harness 20 runs per model in its own window, worker 4 (Playwright MCP 40 on GLM-5.3-flash) · rival times are their own task clocks · cells not run on a model say so. Protocolis Standard on Opus 4.6: 38 runs from a separate frozen-build window (worker 2).",
+          "wire_reasoning": "provider default",
+          "wire_reasoning_evidence": "BHX bh: harness record reasoning_effort provider_default on 20/20 rows (glm_agent sends no field); xAI route W4 8663 -> 8648. Per-call log on W4, not read.",
+          "reasoning_set_by": "product",
+          "driven_by": "outside agent (our kit loop)",
+          "driven_by_detail": "Browser Harness 0.1.13 driven by the kit's tool-calling agent glm/glm_agent.py (Bash + Read tools, BH's SKILL.md appended to the prompt; the kit's bh_runtime does BH's first goto_url): at most 500 turns, 300 s wall."
         },
         {
           "id": "published-006",
@@ -1663,7 +1920,12 @@
           "version": null,
           "worker_class": null,
           "measured_at": null,
-          "methodology": "Strong view: the same 20 public tasks (set C) · Browser Harness 20 runs in its own window, worker 4 · Protocolis from the 40-run window of the Playwright MCP row · the same model in every arm · page check against a gold answer · every attempt counted. Small and frontier views: the same 20 public tasks, frozen build, 9 November 2026 · Protocolis 40 runs per arm on GLM-5.3-flash, 20 on Opus 4.6 · Browser Harness 20 runs per model in its own window, worker 4 (Playwright MCP 40 on GLM-5.3-flash) · rival times are their own task clocks · cells not run on a model say so. Protocolis Standard on Opus 4.6: 38 runs from a separate frozen-build window (worker 2)."
+          "methodology": "Strong view: the same 20 public tasks (set C) · Browser Harness 20 runs in its own window, worker 4 · Protocolis from the 40-run window of the Playwright MCP row · the same model in every arm · page check against a gold answer · every attempt counted. Small and frontier views: the same 20 public tasks, frozen build, 9 November 2026 · Protocolis 40 runs per arm on GLM-5.3-flash, 20 on Opus 4.6 · Browser Harness 20 runs per model in its own window, worker 4 (Playwright MCP 40 on GLM-5.3-flash) · rival times are their own task clocks · cells not run on a model say so. Protocolis Standard on Opus 4.6: 38 runs from a separate frozen-build window (worker 2).",
+          "wire_reasoning": "provider default",
+          "wire_reasoning_evidence": "BHG bh: Mac meter OPEN effort none on 272/272 GLM calls.",
+          "reasoning_set_by": "product",
+          "driven_by": "outside agent (our kit loop)",
+          "driven_by_detail": "Browser Harness 0.1.13 driven by the kit's tool-calling agent glm/glm_agent.py (Bash + Read tools, BH's SKILL.md appended to the prompt; the kit's bh_runtime does BH's first goto_url): at most 500 turns, 300 s wall."
         },
         {
           "id": "published-009",
@@ -1690,7 +1952,12 @@
           "version": null,
           "worker_class": null,
           "measured_at": null,
-          "methodology": "Strong view: the same 20 public tasks (set C) · Browser Harness 20 runs in its own window, worker 4 · Protocolis from the 40-run window of the Playwright MCP row · the same model in every arm · page check against a gold answer · every attempt counted. Small and frontier views: the same 20 public tasks, frozen build, 9 November 2026 · Protocolis 40 runs per arm on GLM-5.3-flash, 20 on Opus 4.6 · Browser Harness 20 runs per model in its own window, worker 4 (Playwright MCP 40 on GLM-5.3-flash) · rival times are their own task clocks · cells not run on a model say so. Protocolis Standard on Opus 4.6: 38 runs from a separate frozen-build window (worker 2)."
+          "methodology": "Strong view: the same 20 public tasks (set C) · Browser Harness 20 runs in its own window, worker 4 · Protocolis from the 40-run window of the Playwright MCP row · the same model in every arm · page check against a gold answer · every attempt counted. Small and frontier views: the same 20 public tasks, frozen build, 9 November 2026 · Protocolis 40 runs per arm on GLM-5.3-flash, 20 on Opus 4.6 · Browser Harness 20 runs per model in its own window, worker 4 (Playwright MCP 40 on GLM-5.3-flash) · rival times are their own task clocks · cells not run on a model say so. Protocolis Standard on Opus 4.6: 38 runs from a separate frozen-build window (worker 2).",
+          "wire_reasoning": "provider default",
+          "wire_reasoning_evidence": "BHO bh: Mac meter OPEN effort none on 232/232 Opus 4.6 calls.",
+          "reasoning_set_by": "product",
+          "driven_by": "outside agent (our kit loop)",
+          "driven_by_detail": "Browser Harness 0.1.13 driven by the kit's tool-calling agent glm/glm_agent.py (Bash + Read tools, BH's SKILL.md appended to the prompt; the kit's bh_runtime does BH's first goto_url): at most 500 turns, 300 s wall."
         }
       ],
       "reuse_plan": {
@@ -1724,7 +1991,8 @@
           "judging": "see-source-record",
           "model_policy": "actual model per record"
         }
-      }
+      },
+      "group": "tools"
     },
     {
       "id": "stagehand",
@@ -1757,7 +2025,12 @@
           "version": null,
           "worker_class": null,
           "measured_at": null,
-          "methodology": "20 public tasks (set C), each run twice · 40 task-rounds with all arms rotating per task in one window · the same model, Grok 4.6, in every arm · page check against a gold answer · every attempt counted · Protocolis time from tool-ready to the verified answer, startup excluded; Stagehand’s time is its own reported task clock (its start-up and first navigation included, browser launch not) · two Stagehand attempts reported no clock, so its time can only be higher · cost is the billed provider cost per completed task · frozen build, 9 November 2026. Small and frontier views: the same 20 public tasks, frozen build, 9 November 2026 · Protocolis 40 runs per arm on GLM-5.3-flash, 20 on Opus 4.6 · Stagehand 20 runs per model in its own window, worker 4 (Playwright MCP 40 on GLM-5.3-flash) · rival times are their own task clocks · cells not run on a model say so. Frontier view for this product: GPT-6.1 Sol (OpenAI) in every arm, 20 public tasks, one window, frozen build, 9 November 2026."
+          "methodology": "20 public tasks (set C), each run twice · 40 task-rounds with all arms rotating per task in one window · the same model, Grok 4.6, in every arm · page check against a gold answer · every attempt counted · Protocolis time from tool-ready to the verified answer, startup excluded; Stagehand’s time is its own reported task clock (its start-up and first navigation included, browser launch not) · two Stagehand attempts reported no clock, so its time can only be higher · cost is the billed provider cost per completed task · frozen build, 9 November 2026. Small and frontier views: the same 20 public tasks, frozen build, 9 November 2026 · Protocolis 40 runs per arm on GLM-5.3-flash, 20 on Opus 4.6 · Stagehand 20 runs per model in its own window, worker 4 (Playwright MCP 40 on GLM-5.3-flash) · rival times are their own task clocks · cells not run on a model say so. Frontier view for this product: GPT-6.1 Sol (OpenAI) in every arm, 20 public tasks, one window, frozen build, 9 November 2026.",
+          "wire_reasoning": "provider default",
+          "wire_reasoning_evidence": "S2 sh: Mac meter OPEN effort none on 394/394 Grok calls (8662 -> 8650 plain forwarder).",
+          "reasoning_set_by": "product",
+          "driven_by": "own agent",
+          "driven_by_detail": "Stagehand 3.7.3 stagehand.agent().execute() in its default DOM mode (kit fast/baselines/sh_run.mjs). The kit sets maxSteps 40 and a 300 s wall, opens the start URL first (page.goto), and points the model at our relay (openai/<id>, openaiEndpointFormat chat). Its fetch wrapper only meters; no other loop drives it."
         },
         {
           "id": "published-033",
@@ -1783,7 +2056,12 @@
           "version": null,
           "worker_class": null,
           "measured_at": null,
-          "methodology": "20 public tasks (set C), each run twice · 40 task-rounds with all arms rotating per task in one window · the same model, Grok 4.6, in every arm · page check against a gold answer · every attempt counted · Protocolis time from tool-ready to the verified answer, startup excluded; Stagehand’s time is its own reported task clock (its start-up and first navigation included, browser launch not) · two Stagehand attempts reported no clock, so its time can only be higher · cost is the billed provider cost per completed task · frozen build, 9 November 2026. Small and frontier views: the same 20 public tasks, frozen build, 9 November 2026 · Protocolis 40 runs per arm on GLM-5.3-flash, 20 on Opus 4.6 · Stagehand 20 runs per model in its own window, worker 4 (Playwright MCP 40 on GLM-5.3-flash) · rival times are their own task clocks · cells not run on a model say so. Frontier view for this product: GPT-6.1 Sol (OpenAI) in every arm, 20 public tasks, one window, frozen build, 9 November 2026."
+          "methodology": "20 public tasks (set C), each run twice · 40 task-rounds with all arms rotating per task in one window · the same model, Grok 4.6, in every arm · page check against a gold answer · every attempt counted · Protocolis time from tool-ready to the verified answer, startup excluded; Stagehand’s time is its own reported task clock (its start-up and first navigation included, browser launch not) · two Stagehand attempts reported no clock, so its time can only be higher · cost is the billed provider cost per completed task · frozen build, 9 November 2026. Small and frontier views: the same 20 public tasks, frozen build, 9 November 2026 · Protocolis 40 runs per arm on GLM-5.3-flash, 20 on Opus 4.6 · Stagehand 20 runs per model in its own window, worker 4 (Playwright MCP 40 on GLM-5.3-flash) · rival times are their own task clocks · cells not run on a model say so. Frontier view for this product: GPT-6.1 Sol (OpenAI) in every arm, 20 public tasks, one window, frozen build, 9 November 2026.",
+          "wire_reasoning": null,
+          "wire_reasoning_evidence": "No run on this cell: nothing to disclose.",
+          "reasoning_set_by": null,
+          "driven_by": null,
+          "driven_by_detail": null
         },
         {
           "id": "published-036",
@@ -1809,7 +2087,12 @@
           "version": null,
           "worker_class": null,
           "measured_at": null,
-          "methodology": "20 public tasks (set C), each run twice · 40 task-rounds with all arms rotating per task in one window · the same model, Grok 4.6, in every arm · page check against a gold answer · every attempt counted · Protocolis time from tool-ready to the verified answer, startup excluded; Stagehand’s time is its own reported task clock (its start-up and first navigation included, browser launch not) · two Stagehand attempts reported no clock, so its time can only be higher · cost is the billed provider cost per completed task · frozen build, 9 November 2026. Small and frontier views: the same 20 public tasks, frozen build, 9 November 2026 · Protocolis 40 runs per arm on GLM-5.3-flash, 20 on Opus 4.6 · Stagehand 20 runs per model in its own window, worker 4 (Playwright MCP 40 on GLM-5.3-flash) · rival times are their own task clocks · cells not run on a model say so. Frontier view for this product: GPT-6.1 Sol (OpenAI) in every arm, 20 public tasks, one window, frozen build, 9 November 2026."
+          "methodology": "20 public tasks (set C), each run twice · 40 task-rounds with all arms rotating per task in one window · the same model, Grok 4.6, in every arm · page check against a gold answer · every attempt counted · Protocolis time from tool-ready to the verified answer, startup excluded; Stagehand’s time is its own reported task clock (its start-up and first navigation included, browser launch not) · two Stagehand attempts reported no clock, so its time can only be higher · cost is the billed provider cost per completed task · frozen build, 9 November 2026. Small and frontier views: the same 20 public tasks, frozen build, 9 November 2026 · Protocolis 40 runs per arm on GLM-5.3-flash, 20 on Opus 4.6 · Stagehand 20 runs per model in its own window, worker 4 (Playwright MCP 40 on GLM-5.3-flash) · rival times are their own task clocks · cells not run on a model say so. Frontier view for this product: GPT-6.1 Sol (OpenAI) in every arm, 20 public tasks, one window, frozen build, 9 November 2026.",
+          "wire_reasoning": "low, added by our route",
+          "wire_reasoning_evidence": "S2S sh: Stagehand sent no effort (AI SDK treats openai/gpt-6.1-sol as non-reasoning, LAUNCH-PLAN-W1 item 3; harness record provider_default); the S2S route was W1 8664 relay -> 8649 OpenAI Responses bridge started with --default-reasoning-effort low (stage2s-w1/route/openai_forwarder_responses.py; GATE-S2S/FIRST-ROWS-AUDIT.json: 'default effort low'), which adds effort low to every call that carries none. The S2S relay recorded no per-call effort field.",
+          "reasoning_set_by": "our route (default added)",
+          "driven_by": "own agent",
+          "driven_by_detail": "Stagehand 3.7.3 stagehand.agent().execute() in its default DOM mode (kit fast/baselines/sh_run.mjs). The kit sets maxSteps 40 and a 300 s wall, opens the start URL first (page.goto), and points the model at our relay (openai/<id>, openaiEndpointFormat chat). Its fetch wrapper only meters; no other loop drives it."
         }
       ],
       "reuse_plan": {
@@ -1841,7 +2124,8 @@
           "judging": "see-source-record",
           "model_policy": "actual model per record"
         }
-      }
+      },
+      "group": "agents"
     },
     {
       "id": "playwright-mcp",
@@ -1874,7 +2158,12 @@
           "version": null,
           "worker_class": null,
           "measured_at": "2026-11-12T00:20:00Z",
-          "methodology": "Frontier view: the same 20 public tasks (set C), each run twice (40 runs per arm) · the candidate build (commit 27a41c7de) in Adaptive and Standard and Playwright MCP 0.0.84, rotating per task in one window, worker 4, 11 November 2026 · GPT-6.1 Sol on every arm (through OpenRouter, served by OpenAI), effort low · page check against a gold answer · every attempt counted · time from tool-ready to the verified answer, mean per completed task · cost per completed task at list price including the OpenRouter fee; tokens per completed task, all roles."
+          "methodology": "Frontier view: the same 20 public tasks (set C), each run twice (40 runs per arm) · the candidate build (commit 27a41c7de) in Adaptive and Standard and Playwright MCP 0.0.84, rotating per task in one window, worker 4, 11 November 2026 · GPT-6.1 Sol on every arm (through OpenRouter, served by OpenAI), effort low · page check against a gold answer · every attempt counted · time from tool-ready to the verified answer, mean per completed task · cost per completed task at list price including the OpenRouter fee; tokens per completed task, all roles.",
+          "wire_reasoning": "low, set by our harness",
+          "wire_reasoning_evidence": "FRT FP (pwml): relay_usage.calls[].effort_declared low on 196/196 Sol calls; PREREGISTRATION-FRT arm FP effort low; the kit sets PWM_REASONING_EFFORT=low and pwm_run.mjs adds reasoning_effort.",
+          "reasoning_set_by": "our harness (effort field)",
+          "driven_by": "outside agent (our kit loop)",
+          "driven_by_detail": "Playwright MCP 0.0.84 tools driven by the kit's stock loop fast/baselines/pwm_run.mjs (kit arm pwml): chat loop, tool_choice auto, at most 500 steps, 300 s wall."
         },
         {
           "id": "published-039",
@@ -1901,7 +2190,12 @@
           "version": null,
           "worker_class": null,
           "measured_at": null,
-          "methodology": "20 public tasks (set C), each run twice · all three arms rotating per task in one window · the same model, Grok 4.6, in every arm · page check against a gold answer · every attempt counted · time from tool-ready to the verified answer, startup excluded · frozen build, 9 November 2026. Small and frontier views: the same 20 public tasks, frozen build, 9 November 2026 · Protocolis 40 runs per arm on GLM-5.3-flash, 20 on Opus 4.6 · Playwright MCP 20 runs per model in the same window as Protocolis (Playwright MCP 40 on GLM-5.3-flash) · rival times are their own task clocks · cells not run on a model say so. Protocolis Standard on Opus 4.6: 38 runs from a separate frozen-build window (worker 2)."
+          "methodology": "20 public tasks (set C), each run twice · all three arms rotating per task in one window · the same model, Grok 4.6, in every arm · page check against a gold answer · every attempt counted · time from tool-ready to the verified answer, startup excluded · frozen build, 9 November 2026. Small and frontier views: the same 20 public tasks, frozen build, 9 November 2026 · Protocolis 40 runs per arm on GLM-5.3-flash, 20 on Opus 4.6 · Playwright MCP 20 runs per model in the same window as Protocolis (Playwright MCP 40 on GLM-5.3-flash) · rival times are their own task clocks · cells not run on a model say so. Protocolis Standard on Opus 4.6: 38 runs from a separate frozen-build window (worker 2).",
+          "wire_reasoning": "low, set by our harness",
+          "wire_reasoning_evidence": "Stage 1 block 1 pwml: Mac meter OPEN effort low on 217/217 Grok calls (RIVG-KIT-PLAN confirms block-1 = RUN-S1-B1_SETC).",
+          "reasoning_set_by": "our harness (effort field)",
+          "driven_by": "outside agent (our kit loop)",
+          "driven_by_detail": "Playwright MCP 0.0.84 tools driven by the kit's stock loop fast/baselines/pwm_run.mjs (kit arm pwml): chat loop, tool_choice auto, at most 500 steps, 300 s wall."
         },
         {
           "id": "published-042",
@@ -1927,7 +2221,12 @@
           "version": null,
           "worker_class": null,
           "measured_at": null,
-          "methodology": "20 public tasks (set C), each run twice · all three arms rotating per task in one window · the same model, Grok 4.6, in every arm · page check against a gold answer · every attempt counted · time from tool-ready to the verified answer, startup excluded · frozen build, 9 November 2026. Small and frontier views: the same 20 public tasks, frozen build, 9 November 2026 · Protocolis 40 runs per arm on GLM-5.3-flash, 20 on Opus 4.6 · Playwright MCP 20 runs per model in the same window as Protocolis (Playwright MCP 40 on GLM-5.3-flash) · rival times are their own task clocks · cells not run on a model say so. Protocolis Standard on Opus 4.6: 38 runs from a separate frozen-build window (worker 2)."
+          "methodology": "20 public tasks (set C), each run twice · all three arms rotating per task in one window · the same model, Grok 4.6, in every arm · page check against a gold answer · every attempt counted · time from tool-ready to the verified answer, startup excluded · frozen build, 9 November 2026. Small and frontier views: the same 20 public tasks, frozen build, 9 November 2026 · Protocolis 40 runs per arm on GLM-5.3-flash, 20 on Opus 4.6 · Playwright MCP 20 runs per model in the same window as Protocolis (Playwright MCP 40 on GLM-5.3-flash) · rival times are their own task clocks · cells not run on a model say so. Protocolis Standard on Opus 4.6: 38 runs from a separate frozen-build window (worker 2).",
+          "wire_reasoning": "low, set by our harness",
+          "wire_reasoning_evidence": "CLASS pwml: Mac meter OPEN effort low on 270/270 GLM calls.",
+          "reasoning_set_by": "our harness (effort field)",
+          "driven_by": "outside agent (our kit loop)",
+          "driven_by_detail": "Playwright MCP 0.0.84 tools driven by the kit's stock loop fast/baselines/pwm_run.mjs (kit arm pwml): chat loop, tool_choice auto, at most 500 steps, 300 s wall."
         },
         {
           "id": "published-045",
@@ -1953,7 +2252,12 @@
           "version": null,
           "worker_class": null,
           "measured_at": null,
-          "methodology": "20 public tasks (set C), each run twice · all three arms rotating per task in one window · the same model, Grok 4.6, in every arm · page check against a gold answer · every attempt counted · time from tool-ready to the verified answer, startup excluded · frozen build, 9 November 2026. Small and frontier views: the same 20 public tasks, frozen build, 9 November 2026 · Protocolis 40 runs per arm on GLM-5.3-flash, 20 on Opus 4.6 · Playwright MCP 20 runs per model in the same window as Protocolis (Playwright MCP 40 on GLM-5.3-flash) · rival times are their own task clocks · cells not run on a model say so. Protocolis Standard on Opus 4.6: 38 runs from a separate frozen-build window (worker 2)."
+          "methodology": "20 public tasks (set C), each run twice · all three arms rotating per task in one window · the same model, Grok 4.6, in every arm · page check against a gold answer · every attempt counted · time from tool-ready to the verified answer, startup excluded · frozen build, 9 November 2026. Small and frontier views: the same 20 public tasks, frozen build, 9 November 2026 · Protocolis 40 runs per arm on GLM-5.3-flash, 20 on Opus 4.6 · Playwright MCP 20 runs per model in the same window as Protocolis (Playwright MCP 40 on GLM-5.3-flash) · rival times are their own task clocks · cells not run on a model say so. Protocolis Standard on Opus 4.6: 38 runs from a separate frozen-build window (worker 2).",
+          "wire_reasoning": "low, set by our harness",
+          "wire_reasoning_evidence": "CLASS pwml: Mac meter OPEN effort low on 115/115 Opus 4.6 calls.",
+          "reasoning_set_by": "our harness (effort field)",
+          "driven_by": "outside agent (our kit loop)",
+          "driven_by_detail": "Playwright MCP 0.0.84 tools driven by the kit's stock loop fast/baselines/pwm_run.mjs (kit arm pwml): chat loop, tool_choice auto, at most 500 steps, 300 s wall."
         }
       ],
       "reuse_plan": {
@@ -1987,7 +2291,26 @@
           "judging": "see-source-record",
           "model_policy": "actual model per record"
         }
-      }
+      },
+      "group": "tools"
+    },
+    {
+      "id": "protocolis-adaptive-outside",
+      "contender": "Protocolis Adaptive · outside agent",
+      "mode": "Adaptive",
+      "category": "outside agent",
+      "group": "tools",
+      "empty_label": "not run yet",
+      "records": []
+    },
+    {
+      "id": "protocolis-standard-outside",
+      "contender": "Protocolis Standard · outside agent",
+      "mode": "Standard",
+      "category": "outside agent",
+      "group": "tools",
+      "empty_label": "not run yet",
+      "records": []
     }
   ],
   "current_window": null,
@@ -1995,5 +2318,17 @@
   "ratio_anchor": "browser-use-own-agent",
   "schemaVersion": 2,
   "comparable_within_hours": 72,
-  "windows": {}
+  "windows": {},
+  "groups": [
+    {
+      "id": "tools",
+      "label": "Tools",
+      "question": "I have my own agent. Which browser tool do I give it?"
+    },
+    {
+      "id": "agents",
+      "label": "Agents",
+      "question": "I hand over a task and get an answer."
+    }
+  ]
 }

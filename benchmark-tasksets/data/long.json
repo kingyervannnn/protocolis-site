@@ -12,69 +12,97 @@
       "contender": "Protocolis Adaptive",
       "mode": "Adaptive",
       "category": "agent",
-      "records": []
+      "records": [],
+      "group": "agents"
     },
     {
       "id": "protocolis-standard",
       "contender": "Protocolis Standard",
       "mode": "Standard",
       "category": "agent",
-      "records": []
+      "records": [],
+      "group": "agents"
     },
     {
       "id": "protocolis-lean",
       "contender": "Protocolis Lean",
       "mode": "Lean",
       "category": "agent",
-      "records": []
+      "records": [],
+      "group": "fast"
     },
     {
       "id": "browser-use-own-agent",
       "contender": "Browser Use · own agent",
       "mode": "own agent",
       "category": "agent",
-      "records": []
+      "records": [],
+      "group": "agents"
     },
     {
       "id": "browser-use-tools-mode",
       "contender": "Browser Use · tools mode",
       "mode": "tools",
       "category": "tools mode",
-      "records": []
+      "records": [],
+      "group": "tools"
     },
     {
       "id": "browser-use-ultrafast",
       "contender": "Browser Use Ultrafast",
       "mode": "ultrafast",
       "category": "agent",
-      "records": []
+      "records": [],
+      "group": "fast"
     },
     {
       "id": "jev-ultrafast",
       "contender": "Jev Ultrafast",
       "mode": "ultrafast",
       "category": "agent",
-      "records": []
+      "records": [],
+      "group": "fast"
     },
     {
       "id": "browser-harness",
       "contender": "Browser Harness",
       "mode": "default",
       "category": "harness",
-      "records": []
+      "records": [],
+      "group": "tools"
     },
     {
       "id": "stagehand",
       "contender": "Stagehand",
       "mode": "default",
       "category": "framework",
-      "records": []
+      "records": [],
+      "group": "agents"
     },
     {
       "id": "playwright-mcp",
       "contender": "Playwright MCP",
       "mode": "default",
       "category": "MCP",
+      "records": [],
+      "group": "tools"
+    },
+    {
+      "id": "protocolis-adaptive-outside",
+      "contender": "Protocolis Adaptive · outside agent",
+      "mode": "Adaptive",
+      "category": "outside agent",
+      "group": "tools",
+      "empty_label": "not run yet",
+      "records": []
+    },
+    {
+      "id": "protocolis-standard-outside",
+      "contender": "Protocolis Standard · outside agent",
+      "mode": "Standard",
+      "category": "outside agent",
+      "group": "tools",
+      "empty_label": "not run yet",
       "records": []
     }
   ],
@@ -83,5 +111,17 @@
   "ratio_anchor": "browser-use-own-agent",
   "schemaVersion": 2,
   "comparable_within_hours": 72,
-  "windows": {}
+  "windows": {},
+  "groups": [
+    {
+      "id": "tools",
+      "label": "Tools",
+      "question": "I have my own agent. Which browser tool do I give it?"
+    },
+    {
+      "id": "agents",
+      "label": "Agents",
+      "question": "I hand over a task and get an answer."
+    }
+  ]
 }

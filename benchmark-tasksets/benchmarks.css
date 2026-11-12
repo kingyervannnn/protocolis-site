@@ -12,3 +12,17 @@
 @media(max-width:700px){.ts-controls{gap:.5rem}.ts-controls button{font-size:.62rem;padding:.4rem .7rem}.ts-col-more{width:1.6rem}.ts-table thead th{padding:.5rem .25rem;font-size:.49rem;letter-spacing:0}.ts-table thead small{display:none}.ts-divider-label{left:.25rem}.ts-table .ts-divider th small{display:inline;font-size:.45rem}.ts-table thead .ts-th-note{display:block;font-size:.5rem}.ts-th-note span{display:none}.ts-table tbody th,.ts-table td{padding:.4rem .25rem}.ts-name{font-size:.7rem}.ts-value{font-size:.63rem;overflow-wrap:anywhere}.ts-meta{font-size:.45rem}.ts-vs{font-size:.47rem;white-space:normal}.ts-delta{margin-top:.2rem;white-space:normal}.ts-delta b{font-size:.8rem}.ts-ours b{font-size:.9rem}.ts-delta small{display:block;margin:.1rem 0 0;font-size:.45rem}.ts-reference-label{display:block;margin:.1rem 0 0}.ts-info-button{width:1.15rem;height:1.15rem}}
 /* Completion as a rate: the percentage is the figure, the count sits under it in smaller, dimmer type (always visible). */
 .ts-rate{white-space:nowrap}.ts-count{display:block;font-size:.66em;line-height:1.3;letter-spacing:0;color:var(--dim);margin-top:.1rem;white-space:nowrap}.ts-count-note{text-decoration:underline dotted;text-underline-offset:.15em;cursor:help}
+.ts-table.ts-group{margin-top:0}
+.ts-flag{color:#d3917c}
+.ts-controls.range-layers{justify-content:flex-start;margin-top:1.4rem}
+.ts-controls.range-pick{justify-content:flex-start;margin:0 0 .7rem}
+.ts-controls.range-pick button{font-size:.6rem;padding:.3rem .75rem;letter-spacing:.1em}
+.range-plot svg{display:block;width:100%;height:auto}
+.range-key .k.st::before{border-color:#8fa3b8}
+.range-st{stroke:#8fa3b8;stroke-width:2.2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.range-hi{stroke:var(--fg);stroke-width:2.2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.range-us,.range-op{stroke-linejoin:round}
+.range-pt{cursor:pointer}
+.range-pt:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+#range-tip{position:fixed;z-index:1000;max-width:17rem;padding:.6rem .75rem;background:var(--bg-2);border:1px solid var(--rule);border-radius:8px;box-shadow:0 12px 35px #0009;font:.68rem/1.5 var(--font-mono);color:var(--fg-2);pointer-events:none}
+#range-tip b{display:block;color:var(--fg);font-weight:500}
