@@ -63,21 +63,22 @@
           },
           "worker_class": "w4",
           "void": 0,
-          "methodology": "Medium view: the 40 D/E tasks (BLOCK2-DE-40), each run twice · the candidate build (commit 26ac96a0b) in Adaptive and Standard and Playwright MCP 0.0.84, rotating per task in one window, worker 4, 12 November 2026 · GPT-6.1 Sol on every arm through OpenRouter (provider OpenAI), effort low · host graphics off · strict task-oracle scoring with the medium rules (task 32's wall stays a failure; capture-failed rows left out) · every attempt counted · time from tool-ready to the verified answer: mean per completed task, median beside · cost per completed task: Sol at list price on every input token plus OpenRouter's 5.5% fee, plus the writer calls as billed, plus our chooser (TypeSafe System One) at $0.042 per million input tokens as TypeSafe reports them; tokens per completed task: the big model and the writer (Adaptive's chooser adds about 15.6k small-model tokens per completed task, priced in the cost; Standard's chooser use is negligible).",
+          "methodology": "Medium view: the 40 D/E tasks (BLOCK2-DE-40), each run twice · the candidate build (commit 26ac96a0b) in Adaptive and Standard and Playwright MCP 0.0.84, rotating per task in one window, worker 4, 12 November 2026 · GPT-6.1 Sol on every arm through OpenRouter (provider OpenAI), effort low · host graphics off · strict task-oracle scoring with the medium rules (task 32's wall stays a failure; capture-failed rows left out) · every attempt counted · time from tool-ready to the verified answer: mean per completed task, median beside · cost per completed task: Sol at list price on every input token plus OpenRouter's 5.5% fee, plus the writer calls as billed, plus our chooser (TypeSafe System One) at $0.042 per million input tokens as TypeSafe reports them; tokens per completed task: the big model and the writer (Adaptive's chooser adds about 15.6k small-model tokens per completed task, priced in the cost; Standard's chooser use is negligible) · site failures are left out of the count for every system: a run that ends on the browser's own network-error page after the task's own site dropped the connection (rule stated 12 Nov after these rows were seen; disclosed).",
           "source_tier": "opus",
           "sourceRunResolution": "Recorded measurement window",
           "id": "published-058",
           "contender": "Protocolis Adaptive",
           "mode": "Adaptive",
           "category": "agent",
-          "completion": "77/80",
+          "completion": "77/79",
           "finalTime": "6.9 s",
           "reportedTime": "6.9 s",
           "medianTime": "6.9 s",
           "cost": "$0.0066",
           "tokens": "4.3k",
           "version": "candidate 26ac96a0b",
-          "capture_excluded": 0
+          "capture_excluded": 0,
+          "completionNote": "1 run left out of the count (80 planned): a SITE FAILURE. lua.org dropped the connection mid-run and the run ended on the browser's network-error page (the engine does not record the browser's error code; the error page itself means a browser-level network failure, not an HTTP answer or a block page). The same rule left out Playwright MCP's run on that task minutes later."
         },
         {
           "id": "published-056",
@@ -97,8 +98,8 @@
           "finalTime": "8.2 s",
           "reportedTime": "8.2 s",
           "medianTime": "6.9 s",
-          "cost": "$0.0065",
-          "tokens": "5.9k",
+          "cost": "$0.0063",
+          "tokens": "5.7k",
           "comparisonEligible": false,
           "measured_at": {
             "first": "2026-11-12T06:23:37Z",
@@ -108,10 +109,10 @@
           "worker_class": "w4",
           "capture_excluded": 1,
           "void": 0,
-          "methodology": "Medium view: the 40 D/E tasks (BLOCK2-DE-40), each run twice · the candidate build (commit 26ac96a0b) in Adaptive and Standard, rotating per task in one window, worker 4, 12 November 2026 · Grok 4.6 on every arm · host graphics off · strict task-oracle scoring with the medium rules (task 32's wall stays a failure; one capture-failed row per arm left out) · every attempt counted · time from tool-ready to the verified answer: mean per completed task, median beside · cost per completed task: Grok on the xAI route as billed, plus the writer calls as billed (OpenRouter), plus our chooser (TypeSafe System One) at $0.042 per million input tokens as TypeSafe reports them; tokens per completed task: the big model and the writer (Adaptive's chooser adds about 15.5k small-model tokens per completed task, priced in the cost).",
+          "methodology": "Medium view: the 40 D/E tasks (BLOCK2-DE-40), each run twice · the candidate build (commit 26ac96a0b) in Adaptive and Standard, rotating per task in one window, worker 4, 12 November 2026 · Grok 4.6 on every arm · host graphics off · strict task-oracle scoring with the medium rules (task 32's wall stays a failure; one capture-failed row per arm left out) · every attempt counted · time from tool-ready to the verified answer: mean per completed task, median beside · cost per completed task: Grok on the xAI route as billed, plus the writer calls as billed (OpenRouter), plus our chooser (TypeSafe System One) at $0.042 per million input tokens as TypeSafe reports them; tokens per completed task: the big model and the writer (Adaptive's chooser adds about 15.5k small-model tokens per completed task, priced in the cost) · site failures are left out of the count for every system: a run that ends on the browser's own network-error page after the task's own site dropped the connection (rule stated 12 Nov after these rows were seen; disclosed).",
           "source_tier": "grok",
           "sourceRunResolution": "Recorded measurement window",
-          "completionNote": "1 run left out of the count (80 planned): the task site (lua.org) refused every connection to the worker for about 8 minutes, so the page never loaded and could not be captured. It is being rerun under the site-outage rule, which applies to every system."
+          "completionNote": "1 run left out of the count (80 planned): lua.org refused every connection to the worker (site outage, voided under the site-outage rule); its rerun is on file and not spliced into this row."
         }
       ],
       "reuse_plan": {
@@ -199,8 +200,8 @@
           "finalTime": "11.1 s",
           "reportedTime": "11.1 s",
           "medianTime": "8.4 s",
-          "cost": "$0.0137",
-          "tokens": "11.8k",
+          "cost": "$0.0133",
+          "tokens": "11.6k",
           "comparisonEligible": false,
           "measured_at": {
             "first": "2026-11-12T06:23:37Z",
@@ -210,10 +211,10 @@
           "worker_class": "w4",
           "capture_excluded": 1,
           "void": 0,
-          "methodology": "Medium view: the 40 D/E tasks (BLOCK2-DE-40), each run twice · COMPOSITE row: 77 runs from candidate 26ac96a0b (MED2), 1 rerun on 26ac96a0b after a lua.org outage, and the new-tab task rerun once on the 0.10.0 candidate 7dd2959ba (2 runs, every rep counted; the rule was written after the original rows were seen) · the candidate build (commit 26ac96a0b) in Adaptive and Standard, rotating per task in one window, worker 4, 12 November 2026 · Grok 4.6 on every arm · host graphics off · strict task-oracle scoring with the medium rules (task 32's wall stays a failure; one capture-failed row per arm left out) · every attempt counted · time from tool-ready to the verified answer: mean per completed task, median beside · cost per completed task: Grok on the xAI route as billed, plus the writer calls as billed (OpenRouter), plus our chooser (TypeSafe System One) at $0.042 per million input tokens as TypeSafe reports them; tokens per completed task: the big model and the writer (Adaptive's chooser adds about 15.5k small-model tokens per completed task, priced in the cost).",
+          "methodology": "Medium view: the 40 D/E tasks (BLOCK2-DE-40), each run twice · COMPOSITE row: 77 runs from candidate 26ac96a0b (MED2), 1 rerun on 26ac96a0b after a lua.org outage, and the new-tab task rerun once on the 0.10.0 candidate 7dd2959ba (2 runs, every rep counted; the rule was written after the original rows were seen) · the candidate build (commit 26ac96a0b) in Adaptive and Standard, rotating per task in one window, worker 4, 12 November 2026 · Grok 4.6 on every arm · host graphics off · strict task-oracle scoring with the medium rules (task 32's wall stays a failure; one capture-failed row per arm left out) · every attempt counted · time from tool-ready to the verified answer: mean per completed task, median beside · cost per completed task: Grok on the xAI route as billed, plus the writer calls as billed (OpenRouter), plus our chooser (TypeSafe System One) at $0.042 per million input tokens as TypeSafe reports them; tokens per completed task: the big model and the writer (Adaptive's chooser adds about 15.5k small-model tokens per completed task, priced in the cost) · site failures are left out of the count for every system: a run that ends on the browser's own network-error page after the task's own site dropped the connection (rule stated 12 Nov after these rows were seen; disclosed).",
           "source_tier": "grok",
           "sourceRunResolution": "Recorded measurement window",
-          "completionNote": "1 run left out of the count (80 planned): lua.org refused every connection to the worker (site outage); that run was voided under the site-outage rule and rerun once, the rerun hit the same outage and answered with no page to capture, so the capture rule leaves it out.",
+          "completionNote": "1 run left out of the count (80 planned): lua.org refused every connection (site outage); that run was voided and rerun once, and the rerun also failed at the connection (net::ERR_CONNECTION_CLOSED, net::ERR_TIMED_OUT) and ended on the browser's network-error page, so it is a SITE FAILURE and left out.",
           "compositeLabel": "COMPOSITE row: 80 runs = 77 from candidate 26ac96a0b (MED2, 12 Nov) + 1 from 26ac96a0b (the lua.org outage rerun, MED2RR) + 2 from the 0.10.0 candidate 7dd2959ba (the new-tab task rerun once, every rep counted); rivals untouched"
         },
         {
@@ -744,7 +745,7 @@
           },
           "worker_class": "w4",
           "void": 0,
-          "methodology": "Medium view: the 40 D/E tasks (BLOCK2-DE-40), each run twice · the candidate build (commit 26ac96a0b) in Adaptive and Standard and Playwright MCP 0.0.84, rotating per task in one window, worker 4, 12 November 2026 · GPT-6.1 Sol on every arm through OpenRouter (provider OpenAI), effort low · host graphics off · strict task-oracle scoring with the medium rules (task 32's wall stays a failure; capture-failed rows left out) · every attempt counted · time from tool-ready to the verified answer: mean per completed task, median beside · cost per completed task: Sol at list price on every input token plus OpenRouter's 5.5% fee, plus the writer calls as billed, plus our chooser (TypeSafe System One) at $0.042 per million input tokens as TypeSafe reports them; tokens per completed task: the big model and the writer (Adaptive's chooser adds about 15.6k small-model tokens per completed task, priced in the cost; Standard's chooser use is negligible).",
+          "methodology": "Medium view: the 40 D/E tasks (BLOCK2-DE-40), each run twice · the candidate build (commit 26ac96a0b) in Adaptive and Standard and Playwright MCP 0.0.84, rotating per task in one window, worker 4, 12 November 2026 · GPT-6.1 Sol on every arm through OpenRouter (provider OpenAI), effort low · host graphics off · strict task-oracle scoring with the medium rules (task 32's wall stays a failure; capture-failed rows left out) · every attempt counted · time from tool-ready to the verified answer: mean per completed task, median beside · cost per completed task: Sol at list price on every input token plus OpenRouter's 5.5% fee, plus the writer calls as billed, plus our chooser (TypeSafe System One) at $0.042 per million input tokens as TypeSafe reports them; tokens per completed task: the big model and the writer (Adaptive's chooser adds about 15.6k small-model tokens per completed task, priced in the cost; Standard's chooser use is negligible) · site failures are left out of the count for every system: a run that ends on the browser's own network-error page after the task's own site dropped the connection (rule stated 12 Nov after these rows were seen; disclosed).",
           "source_tier": "opus",
           "sourceRunResolution": "Recorded measurement window",
           "id": "published-060",
@@ -755,11 +756,11 @@
           "finalTime": "11.8 s",
           "reportedTime": "11.8 s",
           "medianTime": "10.9 s",
-          "cost": "$0.0378",
-          "tokens": "17.5k",
+          "cost": "$0.0366",
+          "tokens": "17.0k",
           "version": null,
           "capture_excluded": 1,
-          "completionNote": "1 run left out of the count (80 planned): its closing page could not be captured (block-2 capture rule)."
+          "completionNote": "1 run left out of the count (80 planned): a SITE FAILURE. lua.org returned an empty response and timed out mid-run (net::ERR_EMPTY_RESPONSE, net::ERR_TIMED_OUT) and the run ended on the browser's network-error page. The same rule left out our Adaptive run on that task minutes earlier."
         },
         {
           "id": "medium-reuse-playwright-mcp-s1",
