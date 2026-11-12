@@ -12,7 +12,41 @@
       "contender": "Protocolis Adaptive",
       "mode": "Adaptive",
       "category": "agent",
-      "records": [],
+      "records": [
+        {
+          "id": "published-056",
+          "tier": "grok",
+          "contender": "Protocolis Adaptive",
+          "mode": "Adaptive",
+          "category": "agent",
+          "model": "Grok 4.6",
+          "task_set_id": "BLOCK2-DE-40",
+          "judge_id": "strict oracle (status completed, client terminal verified, common body.innerText page check, gold answer, not wrong_done, not void); capture-failed rows excluded (block-2 rule)",
+          "window_id": "MED2",
+          "date": "2026-11-12",
+          "worker": "w4",
+          "source_run": "MED2-B2_DE (c1,c2,c3,c4)",
+          "clock": "FINAL",
+          "completion": "77/79",
+          "finalTime": "8.2 s",
+          "reportedTime": "8.2 s",
+          "medianTime": "6.9 s",
+          "cost": "measuring",
+          "tokens": "5.9k",
+          "comparisonEligible": false,
+          "measured_at": {
+            "first": "2026-11-12T06:23:37Z",
+            "last": "2026-11-12T07:07:43Z"
+          },
+          "version": "candidate 26ac96a0b",
+          "worker_class": "w4",
+          "capture_excluded": 1,
+          "void": 0,
+          "methodology": "Medium view: the 40 D/E tasks (BLOCK2-DE-40), each run twice · the candidate build (commit 26ac96a0b) in Adaptive and Standard, rotating per task in one window, worker 4, 12 November 2026 · Grok 4.6 on every arm · host graphics off · strict task-oracle scoring with the medium rules (task 32's wall stays a failure; one capture-failed row per arm left out) · every attempt counted · time from tool-ready to the verified answer: mean per completed task, median beside · cost is being re-measured (the chooser's calls are not yet priced); tokens per completed task, all roles.",
+          "source_tier": "grok",
+          "sourceRunResolution": "Recorded measurement window"
+        }
+      ],
       "reuse_plan": {
         "glm": {
           "status": "rerun-next-bulk",
@@ -45,7 +79,41 @@
       "contender": "Protocolis Standard",
       "mode": "Standard",
       "category": "agent",
-      "records": [],
+      "records": [
+        {
+          "id": "published-057",
+          "tier": "grok",
+          "contender": "Protocolis Standard",
+          "mode": "Standard",
+          "category": "agent",
+          "model": "Grok 4.6",
+          "task_set_id": "BLOCK2-DE-40",
+          "judge_id": "strict oracle (status completed, client terminal verified, common body.innerText page check, gold answer, not wrong_done, not void); capture-failed rows excluded (block-2 rule)",
+          "window_id": "MED2",
+          "date": "2026-11-12",
+          "worker": "w4",
+          "source_run": "MED2-B2_DE (c1,c2,c3,c4)",
+          "clock": "FINAL",
+          "completion": "76/79",
+          "finalTime": "11.2 s",
+          "reportedTime": "11.2 s",
+          "medianTime": "8.4 s",
+          "cost": "measuring",
+          "tokens": "12.0k",
+          "comparisonEligible": false,
+          "measured_at": {
+            "first": "2026-11-12T06:23:37Z",
+            "last": "2026-11-12T07:07:43Z"
+          },
+          "version": "candidate 26ac96a0b",
+          "worker_class": "w4",
+          "capture_excluded": 1,
+          "void": 0,
+          "methodology": "Medium view: the 40 D/E tasks (BLOCK2-DE-40), each run twice · the candidate build (commit 26ac96a0b) in Adaptive and Standard, rotating per task in one window, worker 4, 12 November 2026 · Grok 4.6 on every arm · host graphics off · strict task-oracle scoring with the medium rules (task 32's wall stays a failure; one capture-failed row per arm left out) · every attempt counted · time from tool-ready to the verified answer: mean per completed task, median beside · cost is being re-measured (the chooser's calls are not yet priced); tokens per completed task, all roles.",
+          "source_tier": "grok",
+          "sourceRunResolution": "Recorded measurement window"
+        }
+      ],
       "reuse_plan": {
         "glm": {
           "status": "rerun-next-bulk",
