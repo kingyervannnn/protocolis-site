@@ -31,4 +31,4 @@
 @media(min-width:701px){.ts-table thead small.ts-th-note,.ts-table .ts-divider th small{font-size:.74rem;letter-spacing:0}.ts-table thead small.ts-th-note span{font-size:.62rem}}
 /*LABEL-OUTLINE*/.ts-divider-label{border:1px solid rgba(236,232,223,.42);border-radius:3px;padding:.2rem .7rem}.ts-label-th{position:relative}.ts-table.ts-labelled{border-top:0}.ts-table.ts-labelled .ts-divider-label{top:100%}.ts-table.ts-labelled tbody tr:first-child td{padding-top:1rem}.ts-table thead .ts-divider-label small{display:inline;margin:0}.ts-divider-label .ts-th-meta{color:var(--dim);font-size:.62rem;text-transform:none;letter-spacing:0}
 @media(max-width:700px){.ts-divider-label{padding:.15rem .45rem}.ts-divider-label .ts-th-meta{display:none}}
-/*LABEL-SAME*/@media(min-width:701px){.ts-table thead .ts-divider-label small{font-size:.74rem;letter-spacing:0}}
+/*LABEL-SAME*/@media(min-width:701px){.ts-table thead .ts-divider-label small{font-size:.74rem;letter-spacing:0}}.ts-table thead .ts-divider-label small{color:#d6d1c4}
