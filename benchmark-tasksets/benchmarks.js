@@ -86,7 +86,7 @@ function render(){
  const values=r?[r.completion,r.reportedTime,r.cost,r.tokens]:['measuring','measuring','measuring','measuring'];
  const cellList=values.map((val,i)=>{const b=isRef?badge(v.focused?compare(r,v.focused.rec,i,set,'ours'):summarize(r,v.rivals,i,set),'ours'):badge(compare(v.ref,r,i,set,'row'),'row',ownHere);const cr=i===0?rate(val):null,cn=cr&&r.completionNote;
  // The count stays in the row itself (never only in a tooltip); a row whose denominator is short because of a void carries its note.
- const shown=cr?`${esc(cr.text)}<small class="ts-count${cn?' ts-count-note':''}"${cn?` title="${esc(r.completionNote)}"`:''}>${cr.n} of ${cr.d}${cn?'<span aria-hidden="true">*</span><span class="ts-sr"> (${esc(r.completionNote)})</span>':''}</small>`:esc(val??'not reported');
+ const shown=cr?`${esc(cr.text)}<small class="ts-count${cn?' ts-count-note':''}"${cn?` title="${esc(r.completionNote)}"`:''}>${cr.n} of ${cr.d}${cn?`<span aria-hidden="true">*</span><span class="ts-sr"> (${esc(r.completionNote)})</span>`:''}</small>`:esc(val??'not reported');
  return `<td data-label="${['Completed','Mean time','Cost','Tokens'][i]}"><span class="ts-cell${b?' ts-pair':''}"><span class="ts-value${cr?' ts-rate':''}">${shown}</span>${b}</span></td>`;});
  // Median per completed task on the same clock and rows as the mean (record.medianTime); no comparison badge, so the mean stays the compared figure.
  cellList.splice(2,0,`<td data-label="Median time"><span class="ts-cell"><span class="ts-value">${esc(r?(r.medianTime||'—'):'measuring')}</span></span></td>`);
