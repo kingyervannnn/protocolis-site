@@ -1401,7 +1401,7 @@
           "finalTime": null,
           "reportedTime": "8.7 s",
           "cost": "$0.0024",
-          "tokens": "not reported",
+          "tokens": "not verifiable",
           "clock": "whole-call",
           "date": "2026-11-12",
           "worker": "w4 (hosted)",
@@ -1417,7 +1417,7 @@
             "first": "2026-11-12T08:49:10Z",
             "last": "2026-11-12T09:59:27Z"
           },
-          "methodology": "Ultrafast view (small choice model): the same 20 public tasks (set C), each run three times (60 runs per system) · the six fast-tier systems rotating per task in one window, worker 4, 12 November 2026 · Grok 4.6 for our arms, each rival as it ships · page check against a gold answer · every attempt counted · each system timed on the clock the site uses for it: ours from tool-ready to the verified answer (FINAL), Browser Use Ultrafast whole call, Jev its own clock · mean per completed task, median beside · Browser Use Ultrafast is a hosted service (model not reported), timed over the whole call · cost per completed task as the hosted service billed it; tokens are not reported by the service.",
+          "methodology": "Ultrafast view (small choice model): the same 20 public tasks (set C), each run three times (60 runs per system) · the six fast-tier systems rotating per task in one window, worker 4, 12 November 2026 · Grok 4.6 for our arms, each rival as it ships · page check against a gold answer · every attempt counted · each system timed on the clock the site uses for it: ours from tool-ready to the verified answer (FINAL), Browser Use Ultrafast whole call, Jev its own clock · mean per completed task, median beside · Browser Use Ultrafast is a hosted service (model not reported), timed over the whole call · cost per completed task: what the hosted service actually charged (its billed cost per task); tokens: not shown, because the hosted service's model calls cannot be observed and its self-reported token counts cannot be verified.",
           "medianTime": "7.9 s"
         },
         {
