@@ -44,7 +44,8 @@
           "void": 0,
           "methodology": "Medium view: the 40 D/E tasks (BLOCK2-DE-40), each run twice · the candidate build (commit 26ac96a0b) in Adaptive and Standard, rotating per task in one window, worker 4, 12 November 2026 · Grok 4.6 on every arm · host graphics off · strict task-oracle scoring with the medium rules (task 32's wall stays a failure; one capture-failed row per arm left out) · every attempt counted · time from tool-ready to the verified answer: mean per completed task, median beside · cost is being re-measured (the chooser's calls are not yet priced); tokens per completed task, all roles.",
           "source_tier": "grok",
-          "sourceRunResolution": "Recorded measurement window"
+          "sourceRunResolution": "Recorded measurement window",
+          "completionNote": "1 run left out of the count (80 planned): the task site (lua.org) refused every connection to the worker for about 8 minutes, so the page never loaded and could not be captured. It is being rerun under the site-outage rule, which applies to every system."
         }
       ],
       "reuse_plan": {
@@ -111,7 +112,8 @@
           "void": 0,
           "methodology": "Medium view: the 40 D/E tasks (BLOCK2-DE-40), each run twice · the candidate build (commit 26ac96a0b) in Adaptive and Standard, rotating per task in one window, worker 4, 12 November 2026 · Grok 4.6 on every arm · host graphics off · strict task-oracle scoring with the medium rules (task 32's wall stays a failure; one capture-failed row per arm left out) · every attempt counted · time from tool-ready to the verified answer: mean per completed task, median beside · cost is being re-measured (the chooser's calls are not yet priced); tokens per completed task, all roles.",
           "source_tier": "grok",
-          "sourceRunResolution": "Recorded measurement window"
+          "sourceRunResolution": "Recorded measurement window",
+          "completionNote": "1 run left out of the count (80 planned): the task site (lua.org) refused every connection to the worker for about 8 minutes, so the page never loaded and could not be captured. It is being rerun under the site-outage rule, which applies to every system."
         }
       ],
       "reuse_plan": {
@@ -313,7 +315,8 @@
           "capture_excluded": 1,
           "void": 0,
           "methodology": "40 D/E medium tasks (BLOCK2-DE-40); strict oracle scoring as recorded 9 Nov (BLOCK2-TRIAGE-DECISIONS v2: url check strict, mirror annotation only, task-32 bot wall stays a failure); mean over strict-completed rows (the site statistic).",
-          "sourceRunResolution": "Recorded measurement window"
+          "sourceRunResolution": "Recorded measurement window",
+          "completionNote": "1 run left out of the count (80 planned): its closing page could not be captured (block-2 capture rule)."
         },
         {
           "id": "medium-reuse-browser-use-ultrafast-s1c",
