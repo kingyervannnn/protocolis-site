@@ -27,5 +27,5 @@
 #range-tip{position:fixed;z-index:1000;max-width:17rem;padding:.6rem .75rem;background:var(--bg-2);border:1px solid var(--rule);border-radius:8px;box-shadow:0 12px 35px #0009;font:.68rem/1.5 var(--font-mono);color:var(--fg-2);pointer-events:none}
 #range-tip b{display:block;color:var(--fg);font-weight:500}
 
-/*NOTE-PILL*/.ts-table thead small.ts-th-note,.ts-table .ts-divider th small{background:#2b2f36;color:#f4f1ea;padding:.2rem .55rem;border-radius:3px}.ts-table thead small.ts-th-note{display:block;width:fit-content}.ts-table .ts-divider th small{margin-left:.3rem;padding:.1rem .5rem}
-@media(min-width:701px){.ts-table thead small.ts-th-note,.ts-table .ts-divider th small{font-size:.68rem;letter-spacing:.02em}}
+/*NOTE-LEGIBLE*/.ts-table thead th:first-child{color:var(--fg)}.ts-table thead small.ts-th-note{color:#d6d1c4;margin-top:.3rem;line-height:1.35}.ts-table thead small.ts-th-note span{color:var(--dim)}.ts-table .ts-divider th small{color:#d6d1c4}
+@media(min-width:701px){.ts-table thead small.ts-th-note,.ts-table .ts-divider th small{font-size:.74rem;letter-spacing:0}.ts-table thead small.ts-th-note span{font-size:.62rem}}
