@@ -108,8 +108,8 @@
           "finalTime": "8.2 s",
           "reportedTime": "8.2 s",
           "medianTime": "7.6 s",
-          "cost": "measuring",
-          "tokens": "measuring",
+          "cost": "$0.0041",
+          "tokens": "4.5k",
           "clock": "FINAL",
           "date": "2026-11-11",
           "worker": "w4",
@@ -122,7 +122,7 @@
           "version": "candidate 9f89f071d",
           "worker_class": null,
           "measured_at": "2026-11-11T21:24:00Z",
-          "methodology": "Strong view: the same 20 public tasks (set C), each run twice (40 runs) · the current candidate build in Adaptive beside released 0.9.0 and the old Lean, all arms rotating per task in one window, worker 4, 11 November 2026 · Grok 4.6 in every Protocolis arm · page check against a gold answer · every attempt counted · time from tool-ready to the verified answer, mean per completed task · cost and tokens are being re-measured (the chooser's calls are not yet priced)."
+          "methodology": "Strong view: the same 20 public tasks (set C), each run twice (40 runs) · the current candidate build in Adaptive beside released 0.9.0 and the old Lean, all arms rotating per task in one window, worker 4, 11 November 2026 · Grok 4.6 in every Protocolis arm · page check against a gold answer · every attempt counted · time from tool-ready to the verified answer, mean per completed task · cost per completed task: Grok as billed (xAI route) plus the writer as billed (OpenRouter, +5.5% fee) plus our chooser (TypeSafe System One) at $0.042 per million input tokens as TypeSafe reports them; tokens per completed task: the big model and the writer (the chooser's own small-model tokens are priced in the cost)."
         },
         {
           "id": "published-001",
