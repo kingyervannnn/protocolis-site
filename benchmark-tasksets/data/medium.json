@@ -97,7 +97,7 @@
           "finalTime": "8.2 s",
           "reportedTime": "8.2 s",
           "medianTime": "6.9 s",
-          "cost": "measuring",
+          "cost": "$0.0065",
           "tokens": "5.9k",
           "comparisonEligible": false,
           "measured_at": {
@@ -108,7 +108,7 @@
           "worker_class": "w4",
           "capture_excluded": 1,
           "void": 0,
-          "methodology": "Medium view: the 40 D/E tasks (BLOCK2-DE-40), each run twice · the candidate build (commit 26ac96a0b) in Adaptive and Standard, rotating per task in one window, worker 4, 12 November 2026 · Grok 4.6 on every arm · host graphics off · strict task-oracle scoring with the medium rules (task 32's wall stays a failure; one capture-failed row per arm left out) · every attempt counted · time from tool-ready to the verified answer: mean per completed task, median beside · cost is being re-measured (the chooser's calls are not yet priced); tokens per completed task, all roles.",
+          "methodology": "Medium view: the 40 D/E tasks (BLOCK2-DE-40), each run twice · the candidate build (commit 26ac96a0b) in Adaptive and Standard, rotating per task in one window, worker 4, 12 November 2026 · Grok 4.6 on every arm · host graphics off · strict task-oracle scoring with the medium rules (task 32's wall stays a failure; one capture-failed row per arm left out) · every attempt counted · time from tool-ready to the verified answer: mean per completed task, median beside · cost per completed task: Grok on the xAI route as billed, plus the writer calls as billed (OpenRouter), plus our chooser (TypeSafe System One) at $0.042 per million input tokens as TypeSafe reports them; tokens per completed task: the big model and the writer (Adaptive's chooser adds about 15.5k small-model tokens per completed task, priced in the cost).",
           "source_tier": "grok",
           "sourceRunResolution": "Recorded measurement window",
           "completionNote": "1 run left out of the count (80 planned): the task site (lua.org) refused every connection to the worker for about 8 minutes, so the page never loaded and could not be captured. It is being rerun under the site-outage rule, which applies to every system."
@@ -231,7 +231,7 @@
           "finalTime": "11.2 s",
           "reportedTime": "11.2 s",
           "medianTime": "8.4 s",
-          "cost": "measuring",
+          "cost": "$0.0138",
           "tokens": "12.0k",
           "comparisonEligible": false,
           "measured_at": {
@@ -242,7 +242,7 @@
           "worker_class": "w4",
           "capture_excluded": 1,
           "void": 0,
-          "methodology": "Medium view: the 40 D/E tasks (BLOCK2-DE-40), each run twice · the candidate build (commit 26ac96a0b) in Adaptive and Standard, rotating per task in one window, worker 4, 12 November 2026 · Grok 4.6 on every arm · host graphics off · strict task-oracle scoring with the medium rules (task 32's wall stays a failure; one capture-failed row per arm left out) · every attempt counted · time from tool-ready to the verified answer: mean per completed task, median beside · cost is being re-measured (the chooser's calls are not yet priced); tokens per completed task, all roles.",
+          "methodology": "Medium view: the 40 D/E tasks (BLOCK2-DE-40), each run twice · the candidate build (commit 26ac96a0b) in Adaptive and Standard, rotating per task in one window, worker 4, 12 November 2026 · Grok 4.6 on every arm · host graphics off · strict task-oracle scoring with the medium rules (task 32's wall stays a failure; one capture-failed row per arm left out) · every attempt counted · time from tool-ready to the verified answer: mean per completed task, median beside · cost per completed task: Grok on the xAI route as billed, plus the writer calls as billed (OpenRouter), plus our chooser (TypeSafe System One) at $0.042 per million input tokens as TypeSafe reports them; tokens per completed task: the big model and the writer (Adaptive's chooser adds about 15.5k small-model tokens per completed task, priced in the cost).",
           "source_tier": "grok",
           "sourceRunResolution": "Recorded measurement window",
           "completionNote": "1 run left out of the count (80 planned): the task site (lua.org) refused every connection to the worker for about 8 minutes, so the page never loaded and could not be captured. It is being rerun under the site-outage rule, which applies to every system."
