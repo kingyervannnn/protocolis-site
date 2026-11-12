@@ -2,16 +2,17 @@
 'use strict';
 const root=document.querySelector('#benchmarks')||document.querySelector('#taskset-benchmarks'),content=root.querySelector('#ts-content'),base=new URL('.',document.currentScript.src);
 const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-// Two comparison groups, one per table. ref: our row the others are compared with; own: our rows that can become the reference;
+// Comparison groups, one per table. 'tools' is used only in a cell where one of our outside-agent rows has a figure;
+// until then the Tools table stays in 'main' with the Agents table, exactly as before. ref: our row the others are compared with; own: our rows that can become the reference;
 // focus: the one rival being compared, null for the all-rivals summary (the default; never remembered across visits).
-const G={main:{ref:'protocolis-adaptive',own:['protocolis-adaptive','protocolis-standard','protocolis-adaptive-outside','protocolis-standard-outside'],focus:null},ultra:{ref:'protocolis-lean',own:['protocolis-lean','protocolis-adaptive'],focus:null}};
-// The main table is shown in two groups, by the buyer's question. One comparison group spans both.
+const G={main:{ref:'protocolis-adaptive',own:['protocolis-adaptive','protocolis-standard','protocolis-adaptive-outside','protocolis-standard-outside'],focus:null},tools:{ref:'protocolis-adaptive-outside',own:['protocolis-adaptive-outside','protocolis-standard-outside'],focus:null},ultra:{ref:'protocolis-lean',own:['protocolis-lean','protocolis-adaptive'],focus:null}};
+// The main table is shown in two groups, by the buyer's question.
 const GROUP={tools:["protocolis-standard-outside", "protocolis-adaptive-outside", "playwright-mcp", "browser-use-tools-mode", "browser-harness"],agents:["protocolis-adaptive", "protocolis-standard", "browser-use-own-agent", "stagehand"]};
 let task='short',tier='grok',sets;const selected=new Map();let infoId=0;
 try{sets=Object.fromEntries(await Promise.all(['short','medium','long'].map(async k=>{const r=await fetch(new URL('data/'+k+'.json',base));if(!r.ok)throw Error();return[k,await r.json()]})));}catch(e){content.textContent='Benchmark data could not load. Please reload.';return;}
 window.__SETS__=sets;document.dispatchEvent(new Event('ts-sets'));
-try{const v=JSON.parse(localStorage.getItem('pc-taskset-draft')||'{}');if(sets[v.task])task=v.task;if(['glm','grok','opus'].includes(v.tier))tier=v.tier;if(G.main.own.includes(v.reference))G.main.ref=v.reference;if(G.ultra.own.includes(v.ultraReference))G.ultra.ref=v.ultraReference;}catch(e){}
-function save(){try{localStorage.setItem('pc-taskset-draft',JSON.stringify({task,tier,reference:G.main.ref,ultraReference:G.ultra.ref}));}catch(e){}}
+try{const v=JSON.parse(localStorage.getItem('pc-taskset-draft')||'{}');if(sets[v.task])task=v.task;if(['glm','grok','opus'].includes(v.tier))tier=v.tier;if(G.main.own.includes(v.reference))G.main.ref=v.reference;if(G.ultra.own.includes(v.ultraReference))G.ultra.ref=v.ultraReference;if(G.tools.own.includes(v.toolsReference))G.tools.ref=v.toolsReference;}catch(e){}
+function save(){try{localStorage.setItem('pc-taskset-draft',JSON.stringify({task,tier,reference:G.main.ref,ultraReference:G.ultra.ref,toolsReference:G.tools.ref}));}catch(e){}}
 function info(label,body){const id='ts-info-'+(++infoId);return `<span class="ts-info"><button type="button" class="ts-info-button" aria-label="${esc(label)}" aria-expanded="false" aria-controls="${id}">i</button><span class="ts-popover" id="${id}" role="region" aria-label="${esc(label)}" hidden>${body}</span></span>`;}
 function closeInfo(){root.querySelectorAll('.ts-info-button[aria-expanded=true]').forEach(b=>{b.setAttribute('aria-expanded','false');document.getElementById(b.getAttribute('aria-controls')).hidden=true;});}
 function normalize(s){return (s||'').toLowerCase().replace(/^.*\//,'').replace(/[^a-z0-9]/g,'');}
@@ -73,7 +74,7 @@ function render(){
  const main=set.rows.filter(r=>!['protocolis-lean','browser-use-ultrafast','jev-ultrafast'].includes(r.id));const ultra=['protocolis-adaptive','protocolis-lean','browser-use-ultrafast','jev-ultrafast'].map(id=>set.rows.find(r=>r.id===id)).filter(Boolean);
  // Each table is its own comparison group: our reference row, the rivals with a figure comparable to it, and the focused rival (if any).
  function prepare(rows,key){
-  const g=G[key],u=key==='ultra',refRow=rows.find(r=>r.id===g.ref)||rows.find(r=>g.own.includes(r.id)),ref=refRow&&choice(refRow,u);
+  const g=G[key],u=key==='ultra',has=key==='tools'?r=>!!choice(r,u):()=>true,refRow=rows.find(r=>r.id===g.ref&&has(r))||rows.find(r=>g.own.includes(r.id)&&has(r)),ref=refRow&&choice(refRow,u);
   const rivals=rows.filter(r=>!g.own.includes(r.id)).map(row=>({row,rec:choice(row,u)})).filter(x=>[0,1,2,3].some(i=>compare(ref,x.rec,i,set,'ours')));
   return {key,u,g,refRow,ref,rivals,focused:rivals.find(x=>x.row.id===g.focus)};
  }
@@ -100,11 +101,11 @@ function render(){
  const rowLabel=action==='ref'?`Make ${row.contender} the reference`:action==='focus'?`Compare ${row.contender} with ${short}`:'';
  return `<tr data-contender="${esc(row.id)}" data-section="${v.key}"${action?` data-action="${action}" tabindex="0" aria-label="${esc(rowLabel)}" title="${esc(action==='ref'?'Click to make this the reference':isFocus?'Click again to compare with all rivals':'Click to compare')}"`:''}${isFocus?' aria-current="true"':''} class="${isRef?'ts-selected ':''}${isFocus?'ts-focus ':''}${own?'ts-own ':''}${row.id.startsWith('protocolis-standard')?'ts-standard':''}${row.id==='protocolis-lean'?'ts-lean':''}"><th scope="row"><span class="ts-name">${esc(row.contender)}${tag}</span><span class="ts-meta">${esc(row.category)}${r&&r.model!=='not measured'?' · '+esc(shortModel(r.model)):''}${r&&r.wire_reasoning?` · <span class="${/^our /.test(r.reasoning_set_by||'')?'ts-flag':''}">reasoning ${esc(r.wire_reasoning)}</span>`:''}</span>${sub}</th>${cells}<td class="ts-more-cell">${info(row.contender+' measurement details',note)}</td></tr>`;
  }).join('')}</tbody></table>`;}
- const vm=prepare(main,'main'),pick=ids=>ids.map(id=>main.find(r=>r.id===id)).filter(Boolean);
- content.innerHTML=table(pick(GROUP.tools),vm,{label:'Tools',q:'I have my own agent. Which browser tool do I give it?'})+table(pick(GROUP.agents),vm,{label:'Agents',q:'I hand over a task and get an answer.',divider:true})+table(ultra,prepare(ultra,'ultra'));
+ const pick=ids=>ids.map(id=>main.find(r=>r.id===id)).filter(Boolean),toolRows=pick(GROUP.tools),agentRows=pick(GROUP.agents),split=toolRows.some(r=>G.tools.own.includes(r.id)&&choice(r,false)),vm=prepare(split?agentRows:main,'main'),vt=split?prepare(toolRows,'tools'):vm;
+ content.innerHTML=table(toolRows,vt,{label:'Tools',q:'I have my own agent. Which browser tool do I give it?'})+table(agentRows,vm,{label:'Agents',q:'I hand over a task and get an answer.',divider:true})+table(ultra,prepare(ultra,'ultra'));
 }
 function act(tr){const sec=tr.dataset.section,g=G[sec],id=tr.dataset.contender;if(!g)return;if(tr.dataset.action==='ref')g.ref=id;else if(tr.dataset.action==='focus')g.focus=g.focus===id&&tr.classList.contains('ts-focus')?null:id;else return;render();save();const again=root.querySelector(`tr[data-section=${sec}][data-contender="${CSS.escape(id)}"]`);if(again&&document.activeElement===document.body)again.focus({preventScroll:true});}
-function unfocus(){if(G.main.focus===null&&G.ultra.focus===null)return false;G.main.focus=G.ultra.focus=null;render();return true;}
+function unfocus(){if(G.main.focus===null&&G.ultra.focus===null&&G.tools.focus===null)return false;G.main.focus=G.ultra.focus=G.tools.focus=null;render();return true;}
 root.addEventListener('click',e=>{
  const b=e.target.closest('button');
  if(b){

@@ -109,7 +109,7 @@
   // The rival picked in the tables below is the one drawn bright here.
   const table = doc.getElementById('ts-content');
   if (table && win.MutationObserver) new win.MutationObserver(() => {
-    const f = table.querySelector('tr.ts-focus[data-section="main"]'), id = f ? f.dataset.contender : null;
+    const f = table.querySelector('tr.ts-focus[data-section="main"],tr.ts-focus[data-section="tools"]'), id = f ? f.dataset.contender : null;
     if (id !== state.focus) { state.focus = id; render(); }
   }).observe(table, { childList: true });
   render();
