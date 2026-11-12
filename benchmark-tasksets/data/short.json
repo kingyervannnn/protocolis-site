@@ -51,8 +51,8 @@
           "finalTime": "9.4 s",
           "reportedTime": "9.4 s",
           "medianTime": "8.6 s",
-          "cost": "measuring",
-          "tokens": "measuring",
+          "cost": "$0.0010",
+          "tokens": "3.5k",
           "clock": "FINAL",
           "date": "2026-11-11",
           "worker": "w1 + w2",
@@ -65,7 +65,7 @@
           "version": "candidate 9f89f071d",
           "worker_class": null,
           "measured_at": "2026-11-11T22:18:00Z",
-          "methodology": "Small view: the same 20 public tasks (set C), each run three times (60 runs) · the candidate build in Adaptive and Standard rotating per task in one window, workers 1 and 2, 11 November 2026 · GLM-5.3-flash · page check against a gold answer · every attempt counted · time from tool-ready to the verified answer, mean per completed task · cost and tokens are being re-measured (the chooser's calls are not yet priced)."
+          "methodology": "Small view: the same 20 public tasks (set C), each run three times (60 runs) · the candidate build in Adaptive and Standard rotating per task in one window, workers 1 and 2, 11 November 2026 · GLM-5.3-flash · page check against a gold answer · every attempt counted · time from tool-ready to the verified answer, mean per completed task · cost per completed task: every OpenRouter-billed call as billed plus OpenRouter's 5.5% fee, plus our chooser (TypeSafe System One) at $0.042 per million input tokens as TypeSafe reports them · tokens per completed task: the big model and the writer (Adaptive's chooser adds about 16.0k small-model tokens per completed task, priced in the cost)."
         },
         {
           "id": "published-050",
@@ -573,8 +573,8 @@
           "finalTime": "15.4 s",
           "reportedTime": "15.4 s",
           "medianTime": "11.1 s",
-          "cost": "measuring",
-          "tokens": "measuring",
+          "cost": "$0.0008",
+          "tokens": "9.3k",
           "clock": "FINAL",
           "date": "2026-11-11",
           "worker": "w1 + w2",
@@ -587,7 +587,7 @@
           "version": "candidate 9f89f071d",
           "worker_class": null,
           "measured_at": "2026-11-11T22:18:00Z",
-          "methodology": "Small view: the same 20 public tasks (set C), each run three times (60 runs) · the candidate build in Adaptive and Standard rotating per task in one window, workers 1 and 2, 11 November 2026 · GLM-5.3-flash · page check against a gold answer · every attempt counted · time from tool-ready to the verified answer, mean per completed task · cost and tokens are being re-measured (the chooser's calls are not yet priced)."
+          "methodology": "Small view: the same 20 public tasks (set C), each run three times (60 runs) · the candidate build in Adaptive and Standard rotating per task in one window, workers 1 and 2, 11 November 2026 · GLM-5.3-flash · page check against a gold answer · every attempt counted · time from tool-ready to the verified answer, mean per completed task · cost per completed task: every OpenRouter-billed call as billed plus OpenRouter's 5.5% fee, plus our chooser (TypeSafe System One) at $0.042 per million input tokens as TypeSafe reports them · tokens per completed task: the big model and the writer (Adaptive's chooser adds about 16.0k small-model tokens per completed task, priced in the cost)."
         },
         {
           "id": "published-054",
