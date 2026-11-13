@@ -82,6 +82,42 @@
             "first": "2026-11-13T16:04:59Z",
             "last": "2026-11-13T17:16:49Z"
           }
+        },
+        {
+          "tier": "grok",
+          "model": "Grok 4.6",
+          "task_set_id": "LONG-MX20",
+          "judge_id": "WebJudge strict column, one judge: gpt-5.6-luna (medium) on the Codex route, the upstream Online-Mind2Web prompts; the judge sees the action history and screenshots, never the answer; no second judge",
+          "window_id": "LONR",
+          "date": "2026-11-13",
+          "worker": "benchmark worker (class A)",
+          "clock": "FINAL",
+          "comparisonEligible": false,
+          "measured_at": {
+            "first": "2026-11-13T08:07:31Z",
+            "last": "2026-11-13T10:14:56Z"
+          },
+          "worker_class": "class A",
+          "completionNote": "19 of 20 tasks counted",
+          "methodology": "Long view: the 20 long tasks (LONG-MX20), each run once · Protocolis Adaptive on the release 0.10.0, its own agent (Agent Mode on): the lower gears, then the engine agent (its own 48-call limit) · host graphics off · the nine Strong-tier systems on every task in one window, one class A worker, 13 November 2026 · Grok 4.6 on a flat-rate account; cost shown is the list-price equivalent, the reasoning the engine chooses (auto; no value set by us) · strict WebJudge scoring by one judge (Luna, gpt-5.6-luna medium; no second judge), the judge never sees the answer · Amazon rule (pre-registered): wv-Amazon--17, wv-Amazon--11 ended on Amazon’s block page, so every system’s run of it is left out and replaced (wv-Google_Map--4, wv-Allrecipes--18) · every attempt counted · 900 s wall · time from tool-ready to the verified answer, mean per completed task, median beside · cost per completed task: no per-call bill on the flat-rate account: the xAI list-price equivalent of every Grok call (xAI’s reported cost), no fee, plus our writer calls as billed (OpenRouter, plus its 5.5% fee); the chooser (TypeSafe) calls report no tokens and are not priced · tokens per completed task.",
+          "sourceRunResolution": "Recorded measurement window",
+          "id": "published-long-aa",
+          "contender": "Protocolis Adaptive",
+          "mode": "Adaptive",
+          "category": "agent",
+          "completion": "9/19",
+          "finalTime": "95.3 s",
+          "reportedTime": "95.3 s",
+          "medianTime": "65.2 s",
+          "cost": "$0.1089",
+          "tokens": "382.5k",
+          "version": "release 0.10.0",
+          "wire_reasoning": "none on 103/191 calls, low on 66/191 calls, high on 13/191 calls, medium on 9/191 calls (engine auto)",
+          "reasoning_set_by": "engine",
+          "driven_by": "own agent",
+          "driven_by_detail": "Protocolis Adaptive with its own agent (Agent Mode on): it tries a fast path first and hands over to the full agent when needed; reasoning set by the engine per call; up to 48 agent steps and a 900 s wall; build: release 0.10.0. The test kit ran the engine with its challenge handling switched off (APC_GATE_MODE=passive); the product ships with it on.",
+          "tokensQualifier": "at least",
+          "tokensNote": "Our chooser’s calls carry no token count in this window, so the figure is a lower bound."
         }
       ],
       "group": "agents"
@@ -161,6 +197,42 @@
             "first": "2026-11-13T16:04:59Z",
             "last": "2026-11-13T17:16:49Z"
           }
+        },
+        {
+          "tier": "grok",
+          "model": "Grok 4.6",
+          "task_set_id": "LONG-MX20",
+          "judge_id": "WebJudge strict column, one judge: gpt-5.6-luna (medium) on the Codex route, the upstream Online-Mind2Web prompts; the judge sees the action history and screenshots, never the answer; no second judge",
+          "window_id": "LONR",
+          "date": "2026-11-13",
+          "worker": "benchmark worker (class A)",
+          "clock": "FINAL",
+          "comparisonEligible": false,
+          "measured_at": {
+            "first": "2026-11-13T08:06:38Z",
+            "last": "2026-11-13T10:10:57Z"
+          },
+          "worker_class": "class A",
+          "completionNote": "19 of 20 tasks counted",
+          "methodology": "Long view: the 20 long tasks (LONG-MX20), each run once · Protocolis Standard on the release 0.10.0, its own agent (Agent Mode on; its own 48-call limit) · host graphics off · the nine Strong-tier systems on every task in one window, one class A worker, 13 November 2026 · Grok 4.6 on a flat-rate account; cost shown is the list-price equivalent, the reasoning the engine chooses (auto; no value set by us) · strict WebJudge scoring by one judge (Luna, gpt-5.6-luna medium; no second judge), the judge never sees the answer · Amazon rule (pre-registered): wv-Amazon--17, wv-Amazon--11 ended on Amazon’s block page, so every system’s run of it is left out and replaced (wv-Google_Map--4, wv-Allrecipes--18) · every attempt counted · 900 s wall · time from tool-ready to the verified answer, mean per completed task, median beside · cost per completed task: no per-call bill on the flat-rate account: the xAI list-price equivalent of every Grok call (xAI’s reported cost), no fee, plus our writer calls as billed (OpenRouter, plus its 5.5% fee); the chooser (TypeSafe) calls report no tokens and are not priced · tokens per completed task.",
+          "sourceRunResolution": "Recorded measurement window",
+          "id": "published-long-as",
+          "contender": "Protocolis Standard",
+          "mode": "Standard",
+          "category": "agent",
+          "completion": "12/19",
+          "finalTime": "79.3 s",
+          "reportedTime": "79.3 s",
+          "medianTime": "45.9 s",
+          "cost": "$0.0956",
+          "tokens": "299.2k",
+          "version": "release 0.10.0",
+          "wire_reasoning": "none on 171/256 calls, low on 85/256 calls (engine auto)",
+          "reasoning_set_by": "engine",
+          "driven_by": "own agent",
+          "driven_by_detail": "Protocolis Standard with its own agent (Agent Mode on): the full agent drives the whole task; reasoning set by the engine per call; up to 48 agent steps and a 900 s wall; build: release 0.10.0. The test kit ran the engine with its challenge handling switched off (APC_GATE_MODE=passive); the product ships with it on.",
+          "tokensQualifier": "at least",
+          "tokensNote": "Our chooser’s calls carry no token count in this window, so the figure is a lower bound."
         }
       ],
       "group": "agents"
@@ -750,6 +822,42 @@
             "first": "2026-11-13T16:04:59Z",
             "last": "2026-11-13T17:16:49Z"
           }
+        },
+        {
+          "tier": "grok",
+          "model": "Grok 4.6",
+          "task_set_id": "LONG-MX20",
+          "judge_id": "WebJudge strict column, one judge: gpt-5.6-luna (medium) on the Codex route, the upstream Online-Mind2Web prompts; the judge sees the action history and screenshots, never the answer; no second judge",
+          "window_id": "LONR",
+          "date": "2026-11-13",
+          "worker": "benchmark worker (class A)",
+          "clock": "FINAL",
+          "comparisonEligible": false,
+          "measured_at": {
+            "first": "2026-11-13T08:06:22Z",
+            "last": "2026-11-13T10:18:19Z"
+          },
+          "worker_class": "class A",
+          "completionNote": "19 of 20 tasks counted",
+          "methodology": "Long view: the 20 long tasks (LONG-MX20), each run once · Protocolis Adaptive on the release 0.10.0: the lower gears, then our kit’s outside agent after a hand-back (Agent Mode off), at most 500 turns · host graphics off · the nine Strong-tier systems on every task in one window, one class A worker, 13 November 2026 · Grok 4.6 on a flat-rate account; cost shown is the list-price equivalent, no reasoning value set by us · strict WebJudge scoring by one judge (Luna, gpt-5.6-luna medium; no second judge), the judge never sees the answer · Amazon rule (pre-registered): wv-Amazon--17, wv-Amazon--11 ended on Amazon’s block page, so every system’s run of it is left out and replaced (wv-Google_Map--4, wv-Allrecipes--18) · every attempt counted · 900 s wall · time from tool-ready to the verified answer, mean per completed task, median beside · cost per completed task: no per-call bill on the flat-rate account: the xAI list-price equivalent of every Grok call (xAI’s reported cost), no fee, plus our writer calls as billed (OpenRouter, plus its 5.5% fee); the chooser (TypeSafe) calls report no tokens and are not priced · tokens per completed task.",
+          "sourceRunResolution": "Recorded measurement window",
+          "id": "published-long-xa",
+          "contender": "Protocolis Adaptive · outside agent",
+          "mode": "Adaptive",
+          "category": "outside agent",
+          "completion": "11/19",
+          "finalTime": "119.5 s",
+          "reportedTime": "119.5 s",
+          "medianTime": "66.4 s",
+          "cost": "$0.0971",
+          "tokens": "337.6k",
+          "version": "release 0.10.0",
+          "wire_reasoning": "provider default",
+          "reasoning_set_by": "none sent by our loop (provider default)",
+          "driven_by": "outside agent drives, Agent Mode off",
+          "driven_by_detail": "Protocolis Adaptive driven by an outside agent (Agent Mode off): the test kit’s own tool-calling loop sends page commands; Adaptive tries a fast path first and hands back when needed; the outside agent sends no reasoning setting (provider default); a 900 s wall; build: release 0.10.0. The test kit ran the engine with its challenge handling switched off (APC_GATE_MODE=passive); the product ships with it on.",
+          "tokensQualifier": "at least",
+          "tokensNote": "Our chooser’s calls carry no token count in this window, so the figure is a lower bound."
         }
       ]
     },
@@ -831,6 +939,42 @@
             "first": "2026-11-13T16:04:59Z",
             "last": "2026-11-13T17:16:49Z"
           }
+        },
+        {
+          "tier": "grok",
+          "model": "Grok 4.6",
+          "task_set_id": "LONG-MX20",
+          "judge_id": "WebJudge strict column, one judge: gpt-5.6-luna (medium) on the Codex route, the upstream Online-Mind2Web prompts; the judge sees the action history and screenshots, never the answer; no second judge",
+          "window_id": "LONR",
+          "date": "2026-11-13",
+          "worker": "benchmark worker (class A)",
+          "clock": "FINAL",
+          "comparisonEligible": false,
+          "measured_at": {
+            "first": "2026-11-13T08:07:40Z",
+            "last": "2026-11-13T10:14:36Z"
+          },
+          "worker_class": "class A",
+          "completionNote": "19 of 20 tasks counted",
+          "methodology": "Long view: the 20 long tasks (LONG-MX20), each run once · Protocolis Standard on the release 0.10.0 driven by our kit’s outside agent with page commands (Agent Mode off), at most 500 turns · host graphics off · the nine Strong-tier systems on every task in one window, one class A worker, 13 November 2026 · Grok 4.6 on a flat-rate account; cost shown is the list-price equivalent, no reasoning value set by us · strict WebJudge scoring by one judge (Luna, gpt-5.6-luna medium; no second judge), the judge never sees the answer · Amazon rule (pre-registered): wv-Amazon--17, wv-Amazon--11 ended on Amazon’s block page, so every system’s run of it is left out and replaced (wv-Google_Map--4, wv-Allrecipes--18) · every attempt counted · 900 s wall · time from tool-ready to the verified answer, mean per completed task, median beside · cost per completed task: no per-call bill on the flat-rate account: the xAI list-price equivalent of every Grok call (xAI’s reported cost), no fee · tokens per completed task.",
+          "sourceRunResolution": "Recorded measurement window",
+          "id": "published-long-xs",
+          "contender": "Protocolis Standard · outside agent",
+          "mode": "Standard",
+          "category": "outside agent",
+          "completion": "10/19",
+          "finalTime": "120.7 s",
+          "reportedTime": "120.7 s",
+          "medianTime": "96.5 s",
+          "cost": "$0.1172",
+          "tokens": "378.9k",
+          "version": "release 0.10.0",
+          "wire_reasoning": "provider default",
+          "reasoning_set_by": "none sent by our loop (provider default)",
+          "driven_by": "outside agent drives, Agent Mode off",
+          "driven_by_detail": "Protocolis Standard driven by an outside agent (Agent Mode off): the test kit’s own tool-calling loop sends page commands; the outside agent sends no reasoning setting (provider default); a 900 s wall; build: release 0.10.0. The test kit ran the engine with its challenge handling switched off (APC_GATE_MODE=passive); the product ships with it on.",
+          "tokensQualifier": "at least",
+          "tokensNote": "Our chooser’s calls carry no token count in this window, so the figure is a lower bound."
         }
       ]
     }
