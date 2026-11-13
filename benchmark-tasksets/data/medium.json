@@ -50,7 +50,7 @@
           "wire_reasoning": "low (engine auto)",
           "reasoning_set_by": "engine",
           "driven_by": "own agent (Agent Mode)",
-          "driven_by_detail": "Protocolis Adaptive with its own agent (Agent Mode on): it tries a fast path first and hands over to the full agent when needed; reasoning set by the engine per call; up to 48 agent steps and a 300 s wall; build: a 0.10.0 release candidate."
+          "driven_by_detail": "Protocolis Adaptive with its own agent (Agent Mode on): it tries a fast path first and hands over to the full agent when needed; reasoning set by the engine per call; up to 48 agent steps and a 300 s wall; build: a 0.10.0 release candidate. The test kit ran the engine with its challenge handling switched off (APC_GATE_MODE=passive); the product ships with it on."
         },
         {
           "tier": "opus",
@@ -90,7 +90,7 @@
           "wire_reasoning": "low (engine auto)",
           "reasoning_set_by": "engine",
           "driven_by": "own agent (Agent Mode)",
-          "driven_by_detail": "Protocolis Adaptive with its own agent (Agent Mode on): it tries a fast path first and hands over to the full agent when needed; reasoning set by the engine per call; up to 48 agent steps and a 900 s wall; build: release 0.10.0."
+          "driven_by_detail": "Protocolis Adaptive with its own agent (Agent Mode on): it tries a fast path first and hands over to the full agent when needed; reasoning set by the engine per call; up to 48 agent steps and a 900 s wall; build: release 0.10.0. The test kit ran the engine with its challenge handling switched off (APC_GATE_MODE=passive); the product ships with it on."
         },
         {
           "id": "published-056",
@@ -126,11 +126,11 @@
           "methodology": "Medium view: the 40 D/E tasks (BLOCK2-DE-40), each run twice · a 0.10.0 release candidate in Adaptive and Standard, rotating per task in one window, the class A worker, 12 November 2026 · Grok 4.6 on every arm · host graphics off · strict task-oracle scoring with the medium rules (task 32's wall stays a failure; one capture-failed row per arm left out) · every attempt counted · time from tool-ready to the verified answer: mean per completed task, median beside · cost per completed task: Grok on the xAI route as billed, plus the writer calls as billed (OpenRouter), plus our chooser (TypeSafe System One) at $0.042 per million input tokens as TypeSafe reports them; tokens per completed task: every model call, our chooser's included (its tokens from the engine's own count) · site failures are left out of the count for every system: a run that ends on the browser's own network-error page after the task's own site dropped the connection (rule stated 12 Nov after these rows were seen; disclosed).",
           "source_tier": "grok",
           "sourceRunResolution": "Recorded measurement window",
-          "completionNote": "1 run left out of the count (80 planned): lua.org refused every connection to the worker (site outage, voided under the site-outage rule); its rerun is on file and not spliced into this row.",
+          "completionNote": "1 run left out of the count (80 planned): lua.org refused every connection to the worker (site outage, voided under the site-outage rule); its rerun is on file and not spliced into this row. 2 of the counted runs were lost on one task (ietf-rfc2324-418-phrase, both reps): the site showed a Cloudflare verification page, and the test kit’s setting above kept the engine from acting on it.",
           "wire_reasoning": "low (engine auto)",
           "reasoning_set_by": "engine",
           "driven_by": "own agent (Agent Mode)",
-          "driven_by_detail": "Protocolis Adaptive with its own agent (Agent Mode on): it tries a fast path first and hands over to the full agent when needed; reasoning set by the engine per call; up to 48 agent steps and a 300 s wall; build: a 0.10.0 release candidate."
+          "driven_by_detail": "Protocolis Adaptive with its own agent (Agent Mode on): it tries a fast path first and hands over to the full agent when needed; reasoning set by the engine per call; up to 48 agent steps and a 300 s wall; build: a 0.10.0 release candidate. The test kit ran the engine with its challenge handling switched off (APC_GATE_MODE=passive); the product ships with it on."
         }
       ],
       "reuse_plan": {
@@ -204,7 +204,7 @@
           "wire_reasoning": "provider default",
           "reasoning_set_by": "our product's own agent-effort setting (default), not the engine's automatic choice",
           "driven_by": "own agent (Agent Mode)",
-          "driven_by_detail": "Protocolis Standard with its own agent (Agent Mode on): the full agent drives the whole task; reasoning left at the product's default setting, so none is sent and the model provider's default applies; up to 48 agent steps and a 900 s wall; build: release 0.10.0."
+          "driven_by_detail": "Protocolis Standard with its own agent (Agent Mode on): the full agent drives the whole task; reasoning left at the product's default setting, so none is sent and the model provider's default applies; up to 48 agent steps and a 900 s wall; build: release 0.10.0. The test kit ran the engine with its challenge handling switched off (APC_GATE_MODE=passive); the product ships with it on."
         },
         {
           "id": "published-077",
@@ -241,7 +241,8 @@
           "wire_reasoning": "low (engine auto)",
           "reasoning_set_by": "engine",
           "driven_by": "own agent (Agent Mode)",
-          "driven_by_detail": "Protocolis Standard with its own agent (Agent Mode on): the full agent drives the whole task; reasoning set by the engine per call; up to 48 agent steps and a 900 s wall; build: release 0.10.0."
+          "driven_by_detail": "Protocolis Standard with its own agent (Agent Mode on): the full agent drives the whole task; reasoning set by the engine per call; up to 48 agent steps and a 900 s wall; build: release 0.10.0. The test kit ran the engine with its challenge handling switched off (APC_GATE_MODE=passive); the product ships with it on.",
+          "completionNote": "2 of the counted runs were lost on one task (ietf-rfc2324-418-phrase, both reps): the site showed a Cloudflare verification page, and the test kit’s setting above kept the engine from acting on it."
         },
         {
           "tier": "glm",
@@ -280,7 +281,7 @@
           "wire_reasoning": "low (engine auto)",
           "reasoning_set_by": "engine",
           "driven_by": "own agent (Agent Mode)",
-          "driven_by_detail": "Protocolis Standard with its own agent (Agent Mode on): the full agent drives the whole task; reasoning set by the engine per call; up to 48 agent steps and a 300 s wall; build: a 0.10.0 release candidate."
+          "driven_by_detail": "Protocolis Standard with its own agent (Agent Mode on): the full agent drives the whole task; reasoning set by the engine per call; up to 48 agent steps and a 300 s wall; build: a 0.10.0 release candidate. The test kit ran the engine with its challenge handling switched off (APC_GATE_MODE=passive); the product ships with it on."
         },
         {
           "tier": "opus",
@@ -319,7 +320,8 @@
           "wire_reasoning": "low (engine auto)",
           "reasoning_set_by": "engine",
           "driven_by": "own agent (Agent Mode)",
-          "driven_by_detail": "Protocolis Standard with its own agent (Agent Mode on): the full agent drives the whole task; reasoning set by the engine per call; up to 48 agent steps and a 300 s wall; build: a 0.10.0 release candidate."
+          "driven_by_detail": "Protocolis Standard with its own agent (Agent Mode on): the full agent drives the whole task; reasoning set by the engine per call; up to 48 agent steps and a 300 s wall; build: a 0.10.0 release candidate. The test kit ran the engine with its challenge handling switched off (APC_GATE_MODE=passive); the product ships with it on.",
+          "completionNote": "2 of the counted runs were lost on one task (ietf-rfc2324-418-phrase, both reps): the site showed a Cloudflare verification page, and the test kit’s setting above kept the engine from acting on it."
         },
         {
           "id": "published-057",
@@ -355,11 +357,11 @@
           "methodology": "Medium view: the 40 D/E tasks (BLOCK2-DE-40), each run twice · a 0.10.0 release candidate in Adaptive and Standard, rotating per task in one window, the class A worker, 12 November 2026 · Grok 4.6 on every arm · host graphics off · strict task-oracle scoring with the medium rules (task 32's wall stays a failure; one capture-failed row per arm left out) · every attempt counted · time from tool-ready to the verified answer: mean per completed task, median beside · cost per completed task: Grok on the xAI route as billed, plus the writer calls as billed (OpenRouter), plus our chooser (TypeSafe System One) at $0.042 per million input tokens as TypeSafe reports them; tokens per completed task: every model call, our chooser's included (its tokens from the engine's own count).",
           "source_tier": "grok",
           "sourceRunResolution": "Recorded measurement window",
-          "completionNote": "1 run left out of the count (80 planned): the task site (lua.org) refused every connection to the worker for about 8 minutes, so the page never loaded and could not be captured. It is being rerun under the site-outage rule, which applies to every system. Cost and tokens recomputed on the row's own 79 counted runs; the earlier figure included site-outage run 54290, which the completion leaves out.",
+          "completionNote": "1 run left out of the count (80 planned): the task site (lua.org) refused every connection to the worker for about 8 minutes, so the page never loaded and could not be captured. It is being rerun under the site-outage rule, which applies to every system. Cost and tokens recomputed on the row's own 79 counted runs; the earlier figure included site-outage run 54290, which the completion leaves out. 2 of the counted runs were lost on one task (ietf-rfc2324-418-phrase, both reps): the site showed a Cloudflare verification page, and the test kit’s setting above kept the engine from acting on it.",
           "wire_reasoning": "low (engine auto)",
           "reasoning_set_by": "engine",
           "driven_by": "own agent (Agent Mode)",
-          "driven_by_detail": "Protocolis Standard with its own agent (Agent Mode on): the full agent drives the whole task; reasoning set by the engine per call; up to 48 agent steps and a 300 s wall; build: a 0.10.0 release candidate."
+          "driven_by_detail": "Protocolis Standard with its own agent (Agent Mode on): the full agent drives the whole task; reasoning set by the engine per call; up to 48 agent steps and a 300 s wall; build: a 0.10.0 release candidate. The test kit ran the engine with its challenge handling switched off (APC_GATE_MODE=passive); the product ships with it on."
         }
       ],
       "reuse_plan": {

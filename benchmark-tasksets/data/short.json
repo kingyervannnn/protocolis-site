@@ -47,7 +47,7 @@
           "wire_reasoning": "low (engine auto)",
           "reasoning_set_by": "engine",
           "driven_by": "own agent (Agent Mode)",
-          "driven_by_detail": "Protocolis Adaptive with its own agent (Agent Mode on): it tries a fast path first and hands over to the full agent when needed; reasoning set by the engine per call; up to 48 agent steps and a 300 s wall; build: a 0.10.0 release candidate."
+          "driven_by_detail": "Protocolis Adaptive with its own agent (Agent Mode on): it tries a fast path first and hands over to the full agent when needed; reasoning set by the engine per call; up to 48 agent steps and a 300 s wall; build: a 0.10.0 release candidate. The test kit ran the engine with its challenge handling switched off (APC_GATE_MODE=passive); the product ships with it on."
         },
         {
           "id": "published-091",
@@ -80,7 +80,7 @@
           "wire_reasoning": "low (engine auto)",
           "reasoning_set_by": "engine",
           "driven_by": "own agent (Agent Mode)",
-          "driven_by_detail": "Protocolis Adaptive with its own agent (Agent Mode on): it tries a fast path first and hands over to the full agent when needed; reasoning set by the engine per call; up to 48 agent steps and a 900 s wall; build: release 0.10.0."
+          "driven_by_detail": "Protocolis Adaptive with its own agent (Agent Mode on): it tries a fast path first and hands over to the full agent when needed; reasoning set by the engine per call; up to 48 agent steps and a 900 s wall; build: release 0.10.0. The test kit ran the engine with its challenge handling switched off (APC_GATE_MODE=passive); the product ships with it on."
         },
         {
           "id": "published-051",
@@ -113,7 +113,7 @@
           "wire_reasoning": "low (engine auto)",
           "reasoning_set_by": "engine",
           "driven_by": "own agent (Agent Mode)",
-          "driven_by_detail": "Protocolis Adaptive with its own agent (Agent Mode on): it tries a fast path first and hands over to the full agent when needed; reasoning set by the engine per call; up to 48 agent steps and a 300 s wall; build: a 0.10.0 release candidate."
+          "driven_by_detail": "Protocolis Adaptive with its own agent (Agent Mode on): it tries a fast path first and hands over to the full agent when needed; reasoning set by the engine per call; up to 48 agent steps and a 300 s wall; build: a 0.10.0 release candidate. The test kit ran the engine with its challenge handling switched off (APC_GATE_MODE=passive); the product ships with it on."
         },
         {
           "id": "published-050",
@@ -146,7 +146,7 @@
           "wire_reasoning": "low (engine auto)",
           "reasoning_set_by": "engine",
           "driven_by": "own agent (Agent Mode)",
-          "driven_by_detail": "Protocolis Adaptive with its own agent (Agent Mode on): it tries a fast path first and hands over to the full agent when needed; reasoning set by the engine per call; up to 48 agent steps and a 300 s wall; build: a 0.10.0 release candidate."
+          "driven_by_detail": "Protocolis Adaptive with its own agent (Agent Mode on): it tries a fast path first and hands over to the full agent when needed; reasoning set by the engine per call; up to 48 agent steps and a 300 s wall; build: a 0.10.0 release candidate. The test kit ran the engine with its challenge handling switched off (APC_GATE_MODE=passive); the product ships with it on."
         },
         {
           "id": "published-001",
@@ -180,7 +180,7 @@
           "wire_reasoning": "low (engine auto)",
           "reasoning_set_by": "engine",
           "driven_by": "own agent (Agent Mode)",
-          "driven_by_detail": "Protocolis Adaptive with its own agent (Agent Mode on): it tries a fast path first and hands over to the full agent when needed; reasoning set by the engine per call; up to 48 agent steps and a 300 s wall; build: a 0.8.5 pre-release build (9 November 2026)."
+          "driven_by_detail": "Protocolis Adaptive with its own agent (Agent Mode on): it tries a fast path first and hands over to the full agent when needed; reasoning set by the engine per call; up to 48 agent steps and a 300 s wall; build: a 0.8.5 pre-release build (9 November 2026). The test kit ran the engine with its challenge handling switched off (APC_GATE_MODE=passive); the product ships with it on."
         },
         {
           "id": "published-004",
@@ -213,7 +213,7 @@
           "wire_reasoning": "low (engine auto)",
           "reasoning_set_by": "engine",
           "driven_by": "own agent (Agent Mode)",
-          "driven_by_detail": "Protocolis Adaptive with its own agent (Agent Mode on): it tries a fast path first and hands over to the full agent when needed; reasoning set by the engine per call; up to 48 agent steps and a 300 s wall; build: a 0.8.5 pre-release build (9 November 2026)."
+          "driven_by_detail": "Protocolis Adaptive with its own agent (Agent Mode on): it tries a fast path first and hands over to the full agent when needed; reasoning set by the engine per call; up to 48 agent steps and a 300 s wall; build: a 0.8.5 pre-release build (9 November 2026). The test kit ran the engine with its challenge handling switched off (APC_GATE_MODE=passive); the product ships with it on."
         },
         {
           "id": "published-007",
@@ -247,7 +247,7 @@
           "wire_reasoning": "low (engine auto)",
           "reasoning_set_by": "engine",
           "driven_by": "own agent (Agent Mode)",
-          "driven_by_detail": "Protocolis Adaptive with its own agent (Agent Mode on): it tries a fast path first and hands over to the full agent when needed; reasoning set by the engine per call; up to 48 agent steps and a 300 s wall; build: a 0.8.5 pre-release build (9 November 2026)."
+          "driven_by_detail": "Protocolis Adaptive with its own agent (Agent Mode on): it tries a fast path first and hands over to the full agent when needed; reasoning set by the engine per call; up to 48 agent steps and a 300 s wall; build: a 0.8.5 pre-release build (9 November 2026). The test kit ran the engine with its challenge handling switched off (APC_GATE_MODE=passive); the product ships with it on."
         },
         {
           "id": "published-010",
@@ -281,7 +281,7 @@
           "wire_reasoning": "low (engine auto)",
           "reasoning_set_by": "engine",
           "driven_by": "own agent (Agent Mode)",
-          "driven_by_detail": "Protocolis Adaptive with its own agent (Agent Mode on): it tries a fast path first and hands over to the full agent when needed; reasoning set by the engine per call; up to 48 agent steps and a 300 s wall; build: a 0.8.5 pre-release build (9 November 2026)."
+          "driven_by_detail": "Protocolis Adaptive with its own agent (Agent Mode on): it tries a fast path first and hands over to the full agent when needed; reasoning set by the engine per call; up to 48 agent steps and a 300 s wall; build: a 0.8.5 pre-release build (9 November 2026). The test kit ran the engine with its challenge handling switched off (APC_GATE_MODE=passive); the product ships with it on."
         },
         {
           "id": "published-013",
@@ -314,7 +314,7 @@
           "wire_reasoning": "low (engine auto)",
           "reasoning_set_by": "engine",
           "driven_by": "own agent (Agent Mode)",
-          "driven_by_detail": "Protocolis Adaptive with its own agent (Agent Mode on): it tries a fast path first and hands over to the full agent when needed; reasoning set by the engine per call; up to 48 agent steps and a 300 s wall; build: a 0.8.5 pre-release build (9 November 2026)."
+          "driven_by_detail": "Protocolis Adaptive with its own agent (Agent Mode on): it tries a fast path first and hands over to the full agent when needed; reasoning set by the engine per call; up to 48 agent steps and a 300 s wall; build: a 0.8.5 pre-release build (9 November 2026). The test kit ran the engine with its challenge handling switched off (APC_GATE_MODE=passive); the product ships with it on."
         },
         {
           "id": "published-016",
@@ -348,7 +348,7 @@
           "wire_reasoning": "low (engine auto)",
           "reasoning_set_by": "engine",
           "driven_by": "own agent (Agent Mode)",
-          "driven_by_detail": "Protocolis Adaptive with its own agent (Agent Mode on): it tries a fast path first and hands over to the full agent when needed; reasoning set by the engine per call; up to 48 agent steps and a 300 s wall; build: a 0.8.5 pre-release build (9 November 2026)."
+          "driven_by_detail": "Protocolis Adaptive with its own agent (Agent Mode on): it tries a fast path first and hands over to the full agent when needed; reasoning set by the engine per call; up to 48 agent steps and a 300 s wall; build: a 0.8.5 pre-release build (9 November 2026). The test kit ran the engine with its challenge handling switched off (APC_GATE_MODE=passive); the product ships with it on."
         },
         {
           "id": "published-019",
@@ -382,7 +382,7 @@
           "wire_reasoning": "low (engine auto)",
           "reasoning_set_by": "engine",
           "driven_by": "own agent (Agent Mode)",
-          "driven_by_detail": "Protocolis Adaptive with its own agent (Agent Mode on): it tries a fast path first and hands over to the full agent when needed; reasoning set by the engine per call; up to 48 agent steps and a 300 s wall; build: a 0.8.5 pre-release build (9 November 2026)."
+          "driven_by_detail": "Protocolis Adaptive with its own agent (Agent Mode on): it tries a fast path first and hands over to the full agent when needed; reasoning set by the engine per call; up to 48 agent steps and a 300 s wall; build: a 0.8.5 pre-release build (9 November 2026). The test kit ran the engine with its challenge handling switched off (APC_GATE_MODE=passive); the product ships with it on."
         },
         {
           "id": "published-022",
@@ -415,7 +415,7 @@
           "wire_reasoning": "low (engine auto)",
           "reasoning_set_by": "engine",
           "driven_by": "own agent (Agent Mode)",
-          "driven_by_detail": "Protocolis Adaptive with its own agent (Agent Mode on): it tries a fast path first and hands over to the full agent when needed; reasoning set by the engine per call; up to 48 agent steps and a 300 s wall; build: a 0.8.5 pre-release build (9 November 2026)."
+          "driven_by_detail": "Protocolis Adaptive with its own agent (Agent Mode on): it tries a fast path first and hands over to the full agent when needed; reasoning set by the engine per call; up to 48 agent steps and a 300 s wall; build: a 0.8.5 pre-release build (9 November 2026). The test kit ran the engine with its challenge handling switched off (APC_GATE_MODE=passive); the product ships with it on."
         },
         {
           "id": "published-025",
@@ -449,7 +449,7 @@
           "wire_reasoning": "low (engine auto)",
           "reasoning_set_by": "engine",
           "driven_by": "own agent (Agent Mode)",
-          "driven_by_detail": "Protocolis Adaptive with its own agent (Agent Mode on): it tries a fast path first and hands over to the full agent when needed; reasoning set by the engine per call; up to 48 agent steps and a 300 s wall; build: a 0.8.5 pre-release build (9 November 2026)."
+          "driven_by_detail": "Protocolis Adaptive with its own agent (Agent Mode on): it tries a fast path first and hands over to the full agent when needed; reasoning set by the engine per call; up to 48 agent steps and a 300 s wall; build: a 0.8.5 pre-release build (9 November 2026). The test kit ran the engine with its challenge handling switched off (APC_GATE_MODE=passive); the product ships with it on."
         },
         {
           "id": "published-028",
@@ -483,7 +483,7 @@
           "wire_reasoning": "low (engine auto)",
           "reasoning_set_by": "engine",
           "driven_by": "own agent (Agent Mode)",
-          "driven_by_detail": "Protocolis Adaptive with its own agent (Agent Mode on): it tries a fast path first and hands over to the full agent when needed; reasoning set by the engine per call; up to 48 agent steps and a 300 s wall; build: a 0.8.5 pre-release build (9 November 2026)."
+          "driven_by_detail": "Protocolis Adaptive with its own agent (Agent Mode on): it tries a fast path first and hands over to the full agent when needed; reasoning set by the engine per call; up to 48 agent steps and a 300 s wall; build: a 0.8.5 pre-release build (9 November 2026). The test kit ran the engine with its challenge handling switched off (APC_GATE_MODE=passive); the product ships with it on."
         },
         {
           "id": "published-031",
@@ -546,7 +546,7 @@
           "wire_reasoning": "low (engine auto)",
           "reasoning_set_by": "engine",
           "driven_by": "own agent (Agent Mode)",
-          "driven_by_detail": "Protocolis Adaptive with its own agent (Agent Mode on): it tries a fast path first and hands over to the full agent when needed; reasoning set by the engine per call; up to 48 agent steps and a 300 s wall; build: a 0.8.5 pre-release build (9 November 2026)."
+          "driven_by_detail": "Protocolis Adaptive with its own agent (Agent Mode on): it tries a fast path first and hands over to the full agent when needed; reasoning set by the engine per call; up to 48 agent steps and a 300 s wall; build: a 0.8.5 pre-release build (9 November 2026). The test kit ran the engine with its challenge handling switched off (APC_GATE_MODE=passive); the product ships with it on."
         },
         {
           "id": "published-037",
@@ -580,7 +580,7 @@
           "wire_reasoning": "low (engine auto)",
           "reasoning_set_by": "engine",
           "driven_by": "own agent (Agent Mode)",
-          "driven_by_detail": "Protocolis Adaptive with its own agent (Agent Mode on): it tries a fast path first and hands over to the full agent when needed; reasoning set by the engine per call; up to 48 agent steps and a 300 s wall; build: a 0.8.5 pre-release build (9 November 2026)."
+          "driven_by_detail": "Protocolis Adaptive with its own agent (Agent Mode on): it tries a fast path first and hands over to the full agent when needed; reasoning set by the engine per call; up to 48 agent steps and a 300 s wall; build: a 0.8.5 pre-release build (9 November 2026). The test kit ran the engine with its challenge handling switched off (APC_GATE_MODE=passive); the product ships with it on."
         },
         {
           "id": "published-040",
@@ -613,7 +613,7 @@
           "wire_reasoning": "low (engine auto)",
           "reasoning_set_by": "engine",
           "driven_by": "own agent (Agent Mode)",
-          "driven_by_detail": "Protocolis Adaptive with its own agent (Agent Mode on): it tries a fast path first and hands over to the full agent when needed; reasoning set by the engine per call; up to 48 agent steps and a 300 s wall; build: a 0.8.5 pre-release build (9 November 2026)."
+          "driven_by_detail": "Protocolis Adaptive with its own agent (Agent Mode on): it tries a fast path first and hands over to the full agent when needed; reasoning set by the engine per call; up to 48 agent steps and a 300 s wall; build: a 0.8.5 pre-release build (9 November 2026). The test kit ran the engine with its challenge handling switched off (APC_GATE_MODE=passive); the product ships with it on."
         },
         {
           "id": "published-043",
@@ -647,7 +647,7 @@
           "wire_reasoning": "low (engine auto)",
           "reasoning_set_by": "engine",
           "driven_by": "own agent (Agent Mode)",
-          "driven_by_detail": "Protocolis Adaptive with its own agent (Agent Mode on): it tries a fast path first and hands over to the full agent when needed; reasoning set by the engine per call; up to 48 agent steps and a 300 s wall; build: a 0.8.5 pre-release build (9 November 2026)."
+          "driven_by_detail": "Protocolis Adaptive with its own agent (Agent Mode on): it tries a fast path first and hands over to the full agent when needed; reasoning set by the engine per call; up to 48 agent steps and a 300 s wall; build: a 0.8.5 pre-release build (9 November 2026). The test kit ran the engine with its challenge handling switched off (APC_GATE_MODE=passive); the product ships with it on."
         },
         {
           "id": "published-048",
@@ -752,7 +752,7 @@
           "wire_reasoning": "low (engine auto)",
           "reasoning_set_by": "engine",
           "driven_by": "own agent (Agent Mode)",
-          "driven_by_detail": "Protocolis Standard with its own agent (Agent Mode on): the full agent drives the whole task; reasoning set by the engine per call; up to 48 agent steps and a 300 s wall; build: a 0.10.0 release candidate."
+          "driven_by_detail": "Protocolis Standard with its own agent (Agent Mode on): the full agent drives the whole task; reasoning set by the engine per call; up to 48 agent steps and a 300 s wall; build: a 0.10.0 release candidate. The test kit ran the engine with its challenge handling switched off (APC_GATE_MODE=passive); the product ships with it on."
         },
         {
           "id": "published-074",
@@ -785,7 +785,7 @@
           "wire_reasoning": "provider default",
           "reasoning_set_by": "our product's own agent-effort setting (default), not the engine's automatic choice",
           "driven_by": "own agent (Agent Mode)",
-          "driven_by_detail": "Protocolis Standard with its own agent (Agent Mode on): the full agent drives the whole task; reasoning left at the product's default setting, so none is sent and the model provider's default applies; up to 48 agent steps and a 900 s wall; build: release 0.10.0."
+          "driven_by_detail": "Protocolis Standard with its own agent (Agent Mode on): the full agent drives the whole task; reasoning left at the product's default setting, so none is sent and the model provider's default applies; up to 48 agent steps and a 900 s wall; build: release 0.10.0. The test kit ran the engine with its challenge handling switched off (APC_GATE_MODE=passive); the product ships with it on."
         },
         {
           "id": "published-002",
@@ -816,7 +816,7 @@
           "wire_reasoning": "low (engine auto)",
           "reasoning_set_by": "engine",
           "driven_by": "own agent (Agent Mode)",
-          "driven_by_detail": "Protocolis Standard with its own agent (Agent Mode on): the full agent drives the whole task; reasoning set by the engine per call; up to 48 agent steps and a 300 s wall; build: a 0.8.5 pre-release build (9 November 2026)."
+          "driven_by_detail": "Protocolis Standard with its own agent (Agent Mode on): the full agent drives the whole task; reasoning set by the engine per call; up to 48 agent steps and a 300 s wall; build: a 0.8.5 pre-release build (9 November 2026). The test kit ran the engine with its challenge handling switched off (APC_GATE_MODE=passive); the product ships with it on."
         },
         {
           "id": "published-005",
@@ -846,7 +846,7 @@
           "wire_reasoning": "low (engine auto)",
           "reasoning_set_by": "engine",
           "driven_by": "own agent (Agent Mode)",
-          "driven_by_detail": "Protocolis Standard with its own agent (Agent Mode on): the full agent drives the whole task; reasoning set by the engine per call; up to 48 agent steps and a 300 s wall; build: a 0.8.5 pre-release build (9 November 2026)."
+          "driven_by_detail": "Protocolis Standard with its own agent (Agent Mode on): the full agent drives the whole task; reasoning set by the engine per call; up to 48 agent steps and a 300 s wall; build: a 0.8.5 pre-release build (9 November 2026). The test kit ran the engine with its challenge handling switched off (APC_GATE_MODE=passive); the product ships with it on."
         },
         {
           "id": "published-008",
@@ -877,7 +877,7 @@
           "wire_reasoning": "low (engine auto)",
           "reasoning_set_by": "engine",
           "driven_by": "own agent (Agent Mode)",
-          "driven_by_detail": "Protocolis Standard with its own agent (Agent Mode on): the full agent drives the whole task; reasoning set by the engine per call; up to 48 agent steps and a 300 s wall; build: a 0.8.5 pre-release build (9 November 2026)."
+          "driven_by_detail": "Protocolis Standard with its own agent (Agent Mode on): the full agent drives the whole task; reasoning set by the engine per call; up to 48 agent steps and a 300 s wall; build: a 0.8.5 pre-release build (9 November 2026). The test kit ran the engine with its challenge handling switched off (APC_GATE_MODE=passive); the product ships with it on."
         },
         {
           "id": "published-011",
@@ -908,7 +908,7 @@
           "wire_reasoning": "low (engine auto)",
           "reasoning_set_by": "engine",
           "driven_by": "own agent (Agent Mode)",
-          "driven_by_detail": "Protocolis Standard with its own agent (Agent Mode on): the full agent drives the whole task; reasoning set by the engine per call; up to 48 agent steps and a 300 s wall; build: a 0.8.5 pre-release build (9 November 2026)."
+          "driven_by_detail": "Protocolis Standard with its own agent (Agent Mode on): the full agent drives the whole task; reasoning set by the engine per call; up to 48 agent steps and a 300 s wall; build: a 0.8.5 pre-release build (9 November 2026). The test kit ran the engine with its challenge handling switched off (APC_GATE_MODE=passive); the product ships with it on."
         },
         {
           "id": "published-014",
@@ -938,7 +938,7 @@
           "wire_reasoning": "low (engine auto)",
           "reasoning_set_by": "engine",
           "driven_by": "own agent (Agent Mode)",
-          "driven_by_detail": "Protocolis Standard with its own agent (Agent Mode on): the full agent drives the whole task; reasoning set by the engine per call; up to 48 agent steps and a 300 s wall; build: a 0.8.5 pre-release build (9 November 2026)."
+          "driven_by_detail": "Protocolis Standard with its own agent (Agent Mode on): the full agent drives the whole task; reasoning set by the engine per call; up to 48 agent steps and a 300 s wall; build: a 0.8.5 pre-release build (9 November 2026). The test kit ran the engine with its challenge handling switched off (APC_GATE_MODE=passive); the product ships with it on."
         },
         {
           "id": "published-017",
@@ -968,7 +968,7 @@
           "wire_reasoning": "low (engine auto)",
           "reasoning_set_by": "engine",
           "driven_by": "own agent (Agent Mode)",
-          "driven_by_detail": "Protocolis Standard with its own agent (Agent Mode on): the full agent drives the whole task; reasoning set by the engine per call; up to 48 agent steps and a 300 s wall; build: a 0.8.5 pre-release build (9 November 2026)."
+          "driven_by_detail": "Protocolis Standard with its own agent (Agent Mode on): the full agent drives the whole task; reasoning set by the engine per call; up to 48 agent steps and a 300 s wall; build: a 0.8.5 pre-release build (9 November 2026). The test kit ran the engine with its challenge handling switched off (APC_GATE_MODE=passive); the product ships with it on."
         },
         {
           "id": "published-020",
@@ -999,7 +999,7 @@
           "wire_reasoning": "low (engine auto)",
           "reasoning_set_by": "engine",
           "driven_by": "own agent (Agent Mode)",
-          "driven_by_detail": "Protocolis Standard with its own agent (Agent Mode on): the full agent drives the whole task; reasoning set by the engine per call; up to 48 agent steps and a 300 s wall; build: a 0.8.5 pre-release build (9 November 2026)."
+          "driven_by_detail": "Protocolis Standard with its own agent (Agent Mode on): the full agent drives the whole task; reasoning set by the engine per call; up to 48 agent steps and a 300 s wall; build: a 0.8.5 pre-release build (9 November 2026). The test kit ran the engine with its challenge handling switched off (APC_GATE_MODE=passive); the product ships with it on."
         },
         {
           "id": "published-023",
@@ -1029,7 +1029,7 @@
           "wire_reasoning": "low (engine auto)",
           "reasoning_set_by": "engine",
           "driven_by": "own agent (Agent Mode)",
-          "driven_by_detail": "Protocolis Standard with its own agent (Agent Mode on): the full agent drives the whole task; reasoning set by the engine per call; up to 48 agent steps and a 300 s wall; build: a 0.8.5 pre-release build (9 November 2026)."
+          "driven_by_detail": "Protocolis Standard with its own agent (Agent Mode on): the full agent drives the whole task; reasoning set by the engine per call; up to 48 agent steps and a 300 s wall; build: a 0.8.5 pre-release build (9 November 2026). The test kit ran the engine with its challenge handling switched off (APC_GATE_MODE=passive); the product ships with it on."
         },
         {
           "id": "published-026",
@@ -1060,7 +1060,7 @@
           "wire_reasoning": "low (engine auto)",
           "reasoning_set_by": "engine",
           "driven_by": "own agent (Agent Mode)",
-          "driven_by_detail": "Protocolis Standard with its own agent (Agent Mode on): the full agent drives the whole task; reasoning set by the engine per call; up to 48 agent steps and a 300 s wall; build: a 0.8.5 pre-release build (9 November 2026)."
+          "driven_by_detail": "Protocolis Standard with its own agent (Agent Mode on): the full agent drives the whole task; reasoning set by the engine per call; up to 48 agent steps and a 300 s wall; build: a 0.8.5 pre-release build (9 November 2026). The test kit ran the engine with its challenge handling switched off (APC_GATE_MODE=passive); the product ships with it on."
         },
         {
           "id": "published-029",
@@ -1091,7 +1091,7 @@
           "wire_reasoning": "low (engine auto)",
           "reasoning_set_by": "engine",
           "driven_by": "own agent (Agent Mode)",
-          "driven_by_detail": "Protocolis Standard with its own agent (Agent Mode on): the full agent drives the whole task; reasoning set by the engine per call; up to 48 agent steps and a 300 s wall; build: a 0.8.5 pre-release build (9 November 2026)."
+          "driven_by_detail": "Protocolis Standard with its own agent (Agent Mode on): the full agent drives the whole task; reasoning set by the engine per call; up to 48 agent steps and a 300 s wall; build: a 0.8.5 pre-release build (9 November 2026). The test kit ran the engine with its challenge handling switched off (APC_GATE_MODE=passive); the product ships with it on."
         },
         {
           "id": "published-032",
@@ -1150,7 +1150,7 @@
           "wire_reasoning": "low (engine auto)",
           "reasoning_set_by": "engine",
           "driven_by": "own agent (Agent Mode)",
-          "driven_by_detail": "Protocolis Standard with its own agent (Agent Mode on): the full agent drives the whole task; reasoning set by the engine per call; up to 48 agent steps and a 300 s wall; build: a 0.8.5 pre-release build (9 November 2026)."
+          "driven_by_detail": "Protocolis Standard with its own agent (Agent Mode on): the full agent drives the whole task; reasoning set by the engine per call; up to 48 agent steps and a 300 s wall; build: a 0.8.5 pre-release build (9 November 2026). The test kit ran the engine with its challenge handling switched off (APC_GATE_MODE=passive); the product ships with it on."
         },
         {
           "id": "published-038",
@@ -1181,7 +1181,7 @@
           "wire_reasoning": "low (engine auto)",
           "reasoning_set_by": "engine",
           "driven_by": "own agent (Agent Mode)",
-          "driven_by_detail": "Protocolis Standard with its own agent (Agent Mode on): the full agent drives the whole task; reasoning set by the engine per call; up to 48 agent steps and a 300 s wall; build: a 0.8.5 pre-release build (9 November 2026)."
+          "driven_by_detail": "Protocolis Standard with its own agent (Agent Mode on): the full agent drives the whole task; reasoning set by the engine per call; up to 48 agent steps and a 300 s wall; build: a 0.8.5 pre-release build (9 November 2026). The test kit ran the engine with its challenge handling switched off (APC_GATE_MODE=passive); the product ships with it on."
         },
         {
           "id": "published-041",
@@ -1211,7 +1211,7 @@
           "wire_reasoning": "low (engine auto)",
           "reasoning_set_by": "engine",
           "driven_by": "own agent (Agent Mode)",
-          "driven_by_detail": "Protocolis Standard with its own agent (Agent Mode on): the full agent drives the whole task; reasoning set by the engine per call; up to 48 agent steps and a 300 s wall; build: a 0.8.5 pre-release build (9 November 2026)."
+          "driven_by_detail": "Protocolis Standard with its own agent (Agent Mode on): the full agent drives the whole task; reasoning set by the engine per call; up to 48 agent steps and a 300 s wall; build: a 0.8.5 pre-release build (9 November 2026). The test kit ran the engine with its challenge handling switched off (APC_GATE_MODE=passive); the product ships with it on."
         },
         {
           "id": "published-044",
@@ -1242,7 +1242,7 @@
           "wire_reasoning": "low (engine auto)",
           "reasoning_set_by": "engine",
           "driven_by": "own agent (Agent Mode)",
-          "driven_by_detail": "Protocolis Standard with its own agent (Agent Mode on): the full agent drives the whole task; reasoning set by the engine per call; up to 48 agent steps and a 300 s wall; build: a 0.8.5 pre-release build (9 November 2026)."
+          "driven_by_detail": "Protocolis Standard with its own agent (Agent Mode on): the full agent drives the whole task; reasoning set by the engine per call; up to 48 agent steps and a 300 s wall; build: a 0.8.5 pre-release build (9 November 2026). The test kit ran the engine with its challenge handling switched off (APC_GATE_MODE=passive); the product ships with it on."
         }
       ],
       "reuse_plan": {
@@ -1321,7 +1321,7 @@
           "wire_reasoning": "none (no reasoning model called)",
           "reasoning_set_by": "none sent (no reasoning model)",
           "driven_by": "fixed choice drive (no agent)",
-          "driven_by_detail": "Protocolis Lean: a fast drive by a small choice model alone, with no agent and no large model, so there is no reasoning to set; it does not check its answer on the page; a 300 s wall; build: a 0.10.0 release candidate."
+          "driven_by_detail": "Protocolis Lean: a fast drive by a small choice model alone, with no agent and no large model, so there is no reasoning to set; it does not check its answer on the page; a 300 s wall; build: a 0.10.0 release candidate. The test kit ran the engine with its challenge handling switched off (APC_GATE_MODE=passive); the product ships with it on."
         },
         {
           "id": "published-049",
@@ -1355,7 +1355,7 @@
           "wire_reasoning": "low declared; non-reasoning model served",
           "reasoning_set_by": "engine",
           "driven_by": "own agent (retired Adaptive Lean)",
-          "driven_by_detail": "Protocolis Adaptive Lean (retired in 0.10.0): a fast path by a small choice model first, then a hand-over to a non-reasoning helper model; low reasoning was requested and the helper model does not reason; a 300 s wall; build: based on release 0.8.5."
+          "driven_by_detail": "Protocolis Adaptive Lean (retired in 0.10.0): a fast path by a small choice model first, then a hand-over to a non-reasoning helper model; low reasoning was requested and the helper model does not reason; a 300 s wall; build: based on release 0.8.5. The test kit ran the engine with its challenge handling switched off (APC_GATE_MODE=passive); the product ships with it on."
         }
       ],
       "reuse_plan": {
