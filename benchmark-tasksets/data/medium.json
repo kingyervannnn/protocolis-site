@@ -628,7 +628,7 @@
           "wire_reasoning_evidence": "FDX BT (but): relay OPEN records (W2 8679, w6 8681): client effort none, relay level none, nothing injected, no reasoning_effort / reasoning.effort sent on 233/233 Sol calls in 40 non-void rows (W2 8679 / w6 8681 -> Mac 8650, no body default)",
           "reasoning_set_by": "product",
           "driven_by": "outside agent (our kit loop)",
-          "driven_by_detail": "Browser Use 0.13.13 OpenAI toolset driven by the kit's tool-calling agent glm/glm_agent.py: no reasoning field sent; at most 500 turns, 900 s outer wall. bin/bu allowed at most 500 browser calls; the kit's agent sent max_tokens 8000 per model call; each toolset call was capped at 150 s (the client waits 200 s) and each Bash call at 120 s. The call and token limits were not reached (at most 16 turns per run; every run ended on a final reply)."
+          "driven_by_detail": "Browser Use 0.13.13 OpenAI toolset driven by the kit's tool-calling agent glm/glm_agent.py: no reasoning field sent; at most 500 turns, 900 s outer wall. bin/bu allowed at most 500 browser calls; the kit's agent sent max_tokens 8000 per model call; each toolset call was capped at 150 s (the client waits 200 s) and each Bash call at 120 s. The call and token limits were not reached (at most 16 turns per run; every run ended on a final reply). The kit gave the model Browser Use's 18 default toolset members plus six it does not offer by default (hover_at, set_checked, click_at, drag_path, hold_keys, run_script), and the kit's agent cannot view images, so screenshots the toolset writes were not shown to the model."
         },
         {
           "tier": "grok",
@@ -666,7 +666,7 @@
           "wire_reasoning_evidence": "MRGD BT: relay OPEN effort none on 589/589 Grok calls (W4 8684 relay_lonx_sub.py -> 8676 -> Mac 8645 Hermes proxy; no hop adds a reasoning field).",
           "reasoning_set_by": "product",
           "driven_by": "outside agent (our kit loop)",
-          "driven_by_detail": "Browser Use 0.13.13 OpenAI toolset driven by the kit's tool-calling agent glm/glm_agent.py: at most 500 turns (the kit agent's), bin/bu at most 500 browser calls, 900 s outer wall; Browser Use's own browser settings at their defaults; the kit's headless Chrome profile (viewport 1400x773, one user agent for every arm). The kit's agent sent max_tokens 8000 per model call; each toolset call was capped at 150 s (the client waits 200 s) and each Bash call at 120 s."
+          "driven_by_detail": "Browser Use 0.13.13 OpenAI toolset driven by the kit's tool-calling agent glm/glm_agent.py: at most 500 turns (the kit agent's), bin/bu at most 500 browser calls, 900 s outer wall; Browser Use's own browser settings at their defaults; the kit's headless Chrome profile (viewport 1400x773, one user agent for every arm). The kit's agent sent max_tokens 8000 per model call; each toolset call was capped at 150 s (the client waits 200 s) and each Bash call at 120 s. The kit gave the model Browser Use's 18 default toolset members plus six it does not offer by default (hover_at, set_checked, click_at, drag_path, hold_keys, run_script), and the kit's agent cannot view images, so screenshots the toolset writes were not shown to the model."
         },
         {
           "category": "tools mode",
@@ -952,7 +952,7 @@
           "wire_reasoning_evidence": "FDX BH (bh): relay OPEN records (W2 8679, w6 8681): client effort none, relay level none, nothing injected, no reasoning_effort / reasoning.effort sent on 174/174 Sol calls in 40 non-void rows (W2 8679 / w6 8681 -> Mac 8650, no body default)",
           "reasoning_set_by": "product",
           "driven_by": "outside agent (our kit loop)",
-          "driven_by_detail": "Browser Harness 0.1.13 driven by the kit's tool-calling agent glm/glm_agent.py (Bash + Read tools, BH's SKILL.md appended to the prompt; the kit's bh_runtime does BH's first goto_url): no reasoning field sent; at most 500 turns, 900 s wall. bin/bh allowed at most 500 browser calls; the kit's agent sent max_tokens 8000 per model call; each Bash call was capped at 120 s and each BH CLI call at 200 s. The call and token limits were not reached (at most 13 turns per run; every run ended on a final reply)."
+          "driven_by_detail": "Browser Harness 0.1.13 driven by the kit's tool-calling agent glm/glm_agent.py (Bash + Read tools, BH's SKILL.md appended to the prompt; the kit's bh_runtime does BH's first goto_url): no reasoning field sent; at most 500 turns, 900 s wall. bin/bh allowed at most 500 browser calls; the kit's agent sent max_tokens 8000 per model call; each Bash call was capped at 120 s and each BH CLI call at 200 s. The call and token limits were not reached (at most 13 turns per run; every run ended on a final reply). The kit's agent cannot view images, so Browser Harness screenshots were not shown to the model."
         },
         {
           "tier": "grok",
@@ -991,7 +991,7 @@
           "wire_reasoning_evidence": "MRGD BH: relay OPEN effort none on 942/942 Grok calls (W4 8684 relay_lonx_sub.py -> 8676 -> Mac 8645 Hermes proxy; no hop adds a reasoning field).",
           "reasoning_set_by": "product",
           "driven_by": "outside agent (our kit loop)",
-          "driven_by_detail": "Browser Harness 0.1.13 driven by the kit's tool-calling agent glm/glm_agent.py (Bash + Read tools, BH's SKILL.md appended to the prompt; the kit's bh_runtime does BH's first goto_url): at most 500 turns (the kit agent's), bin/bh at most 500 browser calls and 120 s per Bash call, 900 s wall. The kit's agent sent max_tokens 8000 per model call; each BH CLI call was capped at 200 s."
+          "driven_by_detail": "Browser Harness 0.1.13 driven by the kit's tool-calling agent glm/glm_agent.py (Bash + Read tools, BH's SKILL.md appended to the prompt; the kit's bh_runtime does BH's first goto_url): at most 500 turns (the kit agent's), bin/bh at most 500 browser calls and 120 s per Bash call, 900 s wall. The kit's agent sent max_tokens 8000 per model call; each BH CLI call was capped at 200 s. The kit's agent cannot view images, so Browser Harness screenshots were not shown to the model."
         },
         {
           "category": "harness",
