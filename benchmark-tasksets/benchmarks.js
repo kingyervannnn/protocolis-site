@@ -17,6 +17,8 @@ function info(label,body){const id='ts-info-'+(++infoId);return `<span class="ts
 function closeInfo(){root.querySelectorAll('.ts-info-button[aria-expanded=true]').forEach(b=>{b.setAttribute('aria-expanded','false');document.getElementById(b.getAttribute('aria-controls')).hidden=true;});}
 function normalize(s){return (s||'').toLowerCase().replace(/^.*\//,'').replace(/[^a-z0-9]/g,'');}
 function numeric(s){if(typeof s!=='string'||!/^[\d$.,]+\s*(?:s|k)?$/.test(s))return null;const n=parseFloat(s.replace(/[$,]/g,''));return Number.isFinite(n)?n*(s.endsWith('k')?1000:1):null;}
+function tokenText(r){return r&&numeric(r.tokens)!==null?(r.tokensQualifier==='at least'?'at least ':'')+r.tokens:'not measured';}
+function tokenBounds(ref,r){const ours=[ref,r].some(x=>/^Protocolis(?:\s|$)/.test(x?.contender||''));return {a:ours&&ref?.tokensQualifier==='at least',b:ours&&r?.tokensQualifier==='at least'};}
 const num=x=>x>=10?Math.round(x):Number(x.toFixed(1)),pct=x=>Math.round(100*x)+'%',delta=(big,small,good,explain)=>({big,small,good,explain});
 // Completion is shown as a rate (right / counted, the counted runs after the row's stated void rules) with the count beside it.
 // One decimal always; only a full row shows 100%. A row short of full never displays 100% (99.95%+ shows 99.9%).
@@ -35,10 +37,16 @@ function compare(ref,r,index,set,side){
   return ours?delta((pp>0?'+':'−')+n+' pp','completion',good,explain):delta(n+' pp',pp>0?'lower':'higher',good,explain);
  }
  const field=['','reportedTime','cost','tokens'][index],a=numeric(ref[field]),b=numeric(r[field]);if(a===null||b===null||a<=0||b<=0)return null;
+ const bounds=index===3?tokenBounds(ref,r):{a:false,b:false};if(bounds.a&&bounds.b)return null;
  const ratio=b/a,good=ratio>=1,qualified=index!==1||BenchmarkSelection.timeRatio(ref,r,set)!==null;
  const note=index===1&&!qualified?' Reported times only: the two runs are not on a qualified matching clock and window, so this is not a paired speed claim.':'';
- const explain=`${ref.contender}: ${ref[field]}; ${r.contender}: ${r[field]}.${note} ${ref.window_id||'Unspecified window'} versus ${r.window_id||'unspecified window'}.`;
- if(Math.abs(ratio-1)<.02)return delta('','≈ same',true,explain);
+ const explain=`${ref.contender}: ${index===3?tokenText(ref):ref[field]}; ${r.contender}: ${index===3?tokenText(r):r[field]}.${note} ${ref.window_id||'Unspecified window'} versus ${r.window_id||'unspecified window'}.`;
+ if(Math.abs(ratio-1)<.02)return bounds.a||bounds.b?null:delta('','≈ same',true,explain);
+ if(bounds.a||bounds.b){
+  const upper=good?bounds.a:bounds.b,prefix=upper?'up to ':'at least ';
+  if(ours)return delta(prefix+(good?pct(1-1/ratio):pct(1/ratio-1)),good?'less':'more',good,explain);
+  return good?delta(prefix+(ratio>=2?num(ratio)+'×':pct(ratio-1)),ratio>=2?'the tokens':'more',good,explain):delta(prefix+pct(1-ratio),'less',good,explain);
+ }
  const x=num(good?ratio:1/ratio)+'×';
  if(index===1)return ours?delta(x,good?(qualified?'faster':'less time'):(qualified?'slower':'more time'),good,explain):delta(x,good?(qualified?'slower':'the time'):(qualified?'faster':'less time'),good,explain);
  if(ours)return good?delta(pct(1-1/ratio),'less',good,explain):delta(pct(1/ratio-1),'more',good,explain);
@@ -46,6 +54,9 @@ function compare(ref,r,index,set,side){
 }
 // Our reference row against every rival at once: a range when we lead or tie them all (floor and ceiling both shown), a count when any rival is ahead.
 function summarize(ref,rivals,index,set){
+ const tokenPairs=index===3?rivals.filter(x=>x.rec&&numeric(x.rec.tokens)>0&&normalize(ref?.model)===normalize(x.rec.model)):[];
+ const bounds=tokenPairs.map(x=>tokenBounds(ref,x.rec));
+ if(bounds.some(x=>x.a||x.b)&&tokenPairs.some(x=>!compare(ref,x.rec,index,set,'ours')))return null;
  const items=rivals.map(x=>({...x,c:compare(ref,x.rec,index,set,'ours')})).filter(x=>x.c);if(!items.length)return null;if(items.length===1)return items[0].c;
  const n=items.length,explain='Versus each rival measured here: '+items.map(x=>`${x.row.contender} ${(x.c.big+' '+x.c.small).trim()}`).join('; ')+'.';
  if(index===0){
@@ -57,7 +68,9 @@ function summarize(ref,rivals,index,set){
  const field=['','reportedTime','cost','tokens'][index],v=items.map(x=>numeric(x.rec[field])/numeric(ref[field])),wins=v.filter(r=>r>=1.02).length,losses=v.filter(r=>r<=.98).length,hi=Math.max(...v),lo=wins<n?1:Math.min(...v);
  const saved=r=>Math.round(100*(1-1/r));
  if(losses)return null; // a rival leads on this metric: no summary claim on our row (the per-rival view shows it)
- if(!wins)return delta('','≈ same',true,explain);
+ if(!wins)return bounds.some(x=>x.a||x.b)?null:delta('','≈ same',true,explain);
+ if(bounds.some(x=>x.a))return delta('up to '+saved(hi)+'%','less',true,explain);
+ if(bounds.some(x=>x.b))return delta('at least '+saved(lo)+'%','less',true,explain);
  if(index===1){const word=items.every(x=>BenchmarkSelection.timeRatio(ref,x.rec,set)!==null)?'faster':'less time';return delta(num(lo)===num(hi)?num(hi)+'×':`${num(lo)}–${num(hi)}×`,word,true,explain);}
  return delta(saved(lo)===saved(hi)?saved(hi)+'%':`${saved(lo)}–${saved(hi)}%`,'less',true,explain);
 }
@@ -86,15 +99,16 @@ function render(){
  const isRef=v.refRow&&row.id===v.refRow.id,isFocus=!!v.focused&&row.id===v.focused.row.id,comparable=v.rivals.some(x=>x.row.id===row.id);
  const action=isRef?'':ownHere?(r?'ref':''):comparable?'focus':'';
  const options=rr.length>1?`<label>Measurement window<select aria-label="Run record for ${esc(row.contender)}" data-record-key="${esc(key)}">${rr.map(x=>`<option value="${esc(x.id)}"${r.id===x.id?' selected':''}>${esc(x.window_id||'Awaiting measurement')} · ${esc(x.model)}</option>`).join('')}</select></label>`:'';
- const requestSize=r&&Number.isSafeInteger(r.maxRequestTokens)&&r.maxRequestTokens>=0?`largest single request: ${r.maxRequestTokens.toLocaleString('en-US')} tokens`:'';
+ const requestSize=r&&Number.isSafeInteger(r.maxRequestTokens)&&r.maxRequestTokens>=0?`largest single request: ${r.maxRequestQualifier==='at least'?'at least ':''}${r.maxRequestTokens.toLocaleString('en-US')} tokens`:'';
  const requestNote=r&&typeof r.maxRequestNote==='string'?r.maxRequestNote.trim():'';
  const requestDetails=requestSize||requestNote?`<p class="ts-request-note">${esc(requestSize)}${requestSize&&requestNote?'<br>':''}${esc(requestNote)}</p>`:'';
+ const tokensDetails=r&&typeof r.tokensNote==='string'&&r.tokensNote.trim()?`<p class="ts-tokens-note">${esc(r.tokensNote.trim())}</p>`:'';
  const settingsDetails=r&&typeof r.driven_by_detail==='string'&&r.driven_by_detail.trim()?`<p class="ts-settings-note">Settings: ${esc(r.driven_by_detail)}</p>`:'';
- const note=r?`<p><b>${esc(row.contender)}</b> · ${esc(row.category)}<br>${esc(r.model)}</p>${r.completionNote?`<p>Completed ${esc(rateText(r.completion))}: ${esc(r.completionNote)}</p>`:''}${options}${requestDetails}<p>Driven by: ${esc(r.driven_by||'not recorded')}<br>Reasoning on the wire: ${esc(r.wire_reasoning||'not recorded')}${r.reasoning_set_by?' · set by: '+esc(r.reasoning_set_by):''}</p>${settingsDetails}<p>Date: ${esc(r.date||'not recorded')} · Worker: ${esc(r.worker||'not recorded')}<br>Window: ${esc(r.window_id||'not recorded')}<br>Clock: ${esc(r.clock)}</p><p>${esc(r.methodology||r.original?.methodology||'')}</p>`:'<p>Awaiting a measurement on this task set and model tier.</p>';
+ const note=r?`<p><b>${esc(row.contender)}</b> · ${esc(row.category)}<br>${esc(r.model)}</p>${r.completionNote?`<p>Completed ${esc(rateText(r.completion))}: ${esc(r.completionNote)}</p>`:''}${options}${requestDetails}${tokensDetails}<p>Driven by: ${esc(r.driven_by||'not recorded')}<br>Reasoning on the wire: ${esc(r.wire_reasoning||'not recorded')}${r.reasoning_set_by?' · set by: '+esc(r.reasoning_set_by):''}</p>${settingsDetails}<p>Date: ${esc(r.date||'not recorded')} · Worker: ${esc(r.worker||'not recorded')}<br>Window: ${esc(r.window_id||'not recorded')}<br>Clock: ${esc(r.clock)}</p><p>${esc(r.methodology||r.original?.methodology||'')}</p>`:'<p>Awaiting a measurement on this task set and model tier.</p>';
  const values=r?[r.completion,r.reportedTime,r.cost,r.tokens]:Array(4).fill(set.status!=='withheld'&&(row.empty_label||row.pending)||'measuring');
  const cellList=values.map((val,i)=>{const b=isRef?badge(v.focused?compare(r,v.focused.rec,i,set,'ours'):summarize(r,v.rivals,i,set),'ours'):badge(compare(v.ref,r,i,set,'row'),'row',ownHere);const cr=i===0?rate(val):null,cn=cr&&r.completionNote;
  // The count stays in the row itself (never only in a tooltip); a row whose denominator is short because of a void carries its note.
- const shown=cr?`${esc(cr.text)}<small class="ts-count${cn?' ts-count-note':''}"${cn?` title="${esc(r.completionNote)}"`:''}>${cr.n} of ${cr.d}${cn?`<span aria-hidden="true">*</span><span class="ts-sr"> (${esc(r.completionNote)})</span>`:''}</small>`:esc(i===3?(r&&numeric(r.tokens)!==null?r.tokens:'not measured'):(val??'not reported'));
+ const shown=cr?`${esc(cr.text)}<small class="ts-count${cn?' ts-count-note':''}"${cn?` title="${esc(r.completionNote)}"`:''}>${cr.n} of ${cr.d}${cn?`<span aria-hidden="true">*</span><span class="ts-sr"> (${esc(r.completionNote)})</span>`:''}</small>`:esc(i===3?tokenText(r):(val??'not reported'));
  const fig=b||cr||numeric(val)!==null;
  return `<td data-label="${['Completed','Mean time','Cost','Tokens'][i]}"><span class="ts-cell${fig?' ts-pair':''}"><span class="ts-value${cr?' ts-rate':''}">${shown}</span>${b}</span></td>`;});
  // Median per completed task on the same clock and rows as the mean (record.medianTime); no comparison badge, so the mean stays the compared figure.

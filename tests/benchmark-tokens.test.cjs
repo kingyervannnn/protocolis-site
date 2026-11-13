@@ -42,7 +42,7 @@ function checkRow(tr,set,tier){
  assert.equal(cost.nextElementSibling,tokens,'tokens immediately follow cost');
  assert.equal(cost.querySelector('.ts-value').tagName,tokens.querySelector('.ts-value').tagName);
  const raw=r?.tokens;
- const expected=typeof raw==='string'&&/^[\d$.,]+\s*(?:s|k)?$/.test(raw)?raw:'not measured';
+ const expected=typeof raw==='string'&&/^[\d$.,]+\s*(?:s|k)?$/.test(raw)?(r.tokensQualifier==='at least'?'at least ':'')+raw:'not measured';
  assert.equal(tokens.querySelector('.ts-value').textContent,expected,`${set.id}/${tier}/${row.id}`);
  assert.equal(tokens.querySelector('.ts-value').className,cost.querySelector('.ts-value').className,'equal metric weight');
  const settings=tr.querySelector('.ts-settings-note');
@@ -163,5 +163,69 @@ test('optional note can stand alone; zero stays measured only when explicitly su
    assert.equal(tr.querySelector('[data-label="Tokens"] .ts-value').textContent,'0');
    assert.doesNotMatch(tr.querySelector('.ts-request-note').textContent,/largest single request/);
   }
+ }finally{dom.window.close();}
+});
+
+function lowerBoundFixture(ours=true,rivals=false){
+ const sets=fixture();
+ for(const set of Object.values(sets))for(const row of set.rows)for(const r of row.records){
+  const own=row.id.startsWith('protocolis-');r.tokens=own?'10k':'100k';
+  if(own?ours:rivals)r.tokensQualifier='at least';
+  r.maxRequestQualifier='at least';r.tokensNote='Measured lower bound <img src=x onerror=alert(1)> & omitted calls';
+ }
+ return sets;
+}
+test('optional lower-bound values and notes render escaped; focused and aggregate savings say up to without a range floor',async()=>{
+ const sets=lowerBoundFixture(),dom=await page(sets);try{
+  for(const task of Object.keys(sets))for(const tier of tiers){
+   const rows=view(dom.window,task,tier);
+   for(const tr of rows){
+    checkRow(tr,sets[task],tier);
+    assert.match(tr.querySelector('.ts-request-note').textContent,/largest single request: at least 1,234,567 tokens/);
+    const note=tr.querySelector('.ts-tokens-note');assert.equal(note.children.length,0);assert.match(note.textContent,/<img src=x/);
+    const badge=tr.querySelector('[data-label="Tokens"] .ts-delta');
+    if(badge){assert.match(badge.textContent,/up to 90%.*less|up to 10×.*the tokens/);assert.doesNotMatch(badge.textContent,/≈ same|–/);}
+   }
+   const rival=rows.find(tr=>tr.dataset.action==='focus');assert.ok(rival);rival.click();
+   const focused=[...dom.window.document.querySelectorAll('[data-label="Tokens"] .ts-ours')];
+   assert.ok(focused.some(el=>/up to 90%.*less/.test(el.textContent)));
+  }
+ }finally{dom.window.close();}
+});
+test('both lower bounds suppress comparisons; rival-only lower bounds say at least',async()=>{
+ for(const [ours,rivals] of [[true,true],[false,true]]){
+  const dom=await page(lowerBoundFixture(ours,rivals));try{
+   const rows=view(dom.window,'short','glm');
+   if(ours)assert.equal(dom.window.document.querySelectorAll('[data-label="Tokens"] .ts-delta').length,0);
+   else {const badges=[...dom.window.document.querySelectorAll('[data-label="Tokens"] .ts-ours')];assert.ok(badges.length);for(const b of badges)assert.match(b.textContent,/at least 90%.*less/);}
+  }finally{dom.window.close();}
+ }
+});
+test('invalid token values remain unmeasured with a qualifier; blank notes are absent',async()=>{
+ const sets=lowerBoundFixture();for(const set of Object.values(sets))for(const row of set.rows)for(const r of row.records){r.tokens='at least 19.8k';r.tokensNote='   ';r.maxRequestTokens=null;delete r.maxRequestNote;}
+ const dom=await page(sets);try{for(const tr of view(dom.window,'short','glm')){
+  assert.equal(tr.querySelector('[data-label="Tokens"] .ts-value').textContent,'not measured');assert.equal(tr.querySelector('.ts-tokens-note'),null);assert.equal(tr.querySelector('.ts-request-note'),null);
+ }}finally{dom.window.close();}
+});
+test('bound direction remains conservative when our total exceeds the rival, and approximate equality is suppressed',async()=>{
+ const source=script.replace('window.__SETS__=sets;', 'window.__testCompare=compare;window.__SETS__=sets;');
+ const dom=await page(data,source);try{
+  const compare=dom.window.__testCompare;
+  const a={id:'a',model:'same',contender:'Protocolis Adaptive',tokens:'100k',tokensQualifier:'at least'};
+  const b={id:'b',model:'same',contender:'Rival',tokens:'10k'};
+  assert.equal(compare(a,b,3,{},'ours').big,'at least 900%');assert.equal(compare(a,b,3,{},'ours').small,'more');
+  assert.equal(compare(a,b,3,{},'row').big,'at least 90%');assert.equal(compare(a,b,3,{},'row').small,'less');
+  assert.equal(compare(a,{...b,tokens:'100k'},3,{},'ours'),null);
+  const exact={...a,contender:'Rival A'};assert.equal(compare(exact,b,3,{},'ours').big,'900%','rival versus rival remains unchanged');
+ }finally{dom.window.close();}
+});
+
+test('an unresolved near-equal lower bound cannot be dropped to claim a positive all-rivals floor',async()=>{
+ const source=script.replace('window.__SETS__=sets;', 'window.__testSummarize=summarize;window.__SETS__=sets;');
+ const dom=await page(data,source);try{
+  const ref={id:'a',model:'same',contender:'Protocolis Adaptive',tokens:'10k'};
+  const rivals=[{row:{contender:'Rival A'},rec:{id:'b',model:'same',contender:'Rival A',tokens:'100k',tokensQualifier:'at least'}},
+   {row:{contender:'Rival B'},rec:{id:'c',model:'same',contender:'Rival B',tokens:'10k',tokensQualifier:'at least'}}];
+  assert.equal(dom.window.__testSummarize(ref,rivals,3,{}),null);
  }finally{dom.window.close();}
 });
