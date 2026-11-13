@@ -340,7 +340,7 @@ a.chip.patent-status:hover,a.chip.patent-status:focus-visible{background:rgb(236
 .demo-ready .carousel > .track{min-width:0;position:relative}
 .demo-ready .slide > .cap{display:none}
 .demo-sidebar{min-width:0}
-#demo .demo-sidebar h2{font-size:clamp(1.4rem,2vw,2rem);line-height:1.2;margin:0 0 1rem;height:2.4em}
+#demo .demo-sidebar h2{font-size:clamp(1.4rem,2vw,2rem);line-height:1.2;margin:0 0 1rem;height:1.2em}
 #demo .demo-sidebar h2 span{display:block;white-space:nowrap}
 .demo-caption.cap{margin:0}
 .demo-sidebar .cr{gap:.45rem;padding:.55rem .6rem}
@@ -379,7 +379,12 @@ a.chip.patent-status:hover,a.chip.patent-status:focus-visible{background:rgb(236
 #demo .demo-sidebar{height:var(--demo-frame-height);min-height:0;align-self:start}
 #demo .demo-results{display:flex;flex-direction:column;min-height:0;height:100%}
 #demo .demo-results>h2,#demo .demo-results>.cbar{flex:none}
-#demo .demo-caption{min-height:0;overflow:auto;flex:1;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:var(--dim) transparent}
+#demo .demo-caption{min-height:0;overflow:hidden;flex:1;display:flex;flex-direction:column}
+#demo .demo-caption>.cres,#demo .demo-caption>.demo-task{flex:none}
+/*DEMO-TEXT*/#demo .demo-text{flex:1;min-height:0;overflow-y:hidden;scrollbar-width:none;overscroll-behavior:auto;outline:none}
+#demo .demo-text::-webkit-scrollbar{display:none}
+#demo .demo-text.is-active{overflow-y:auto}
+#demo .demo-text.more{-webkit-mask-image:linear-gradient(#000 calc(100% - 1.6rem),transparent);mask-image:linear-gradient(#000 calc(100% - 1.6rem),transparent)}
 #demo .demo-caption .cr.ct{font-size:.82rem;line-height:1.4}
 #demo .demo-caption .cr.ct>span:first-child,#demo .demo-task>span{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;min-width:0;min-height:2.8em;max-height:2.8em;overflow:hidden;white-space:normal;overflow-wrap:break-word}
 #demo .demo-caption .demo-meta{margin:.7rem 0 .4rem;color:var(--fg);font-size:.75rem;line-height:1.5;font-weight:600}
@@ -815,7 +820,7 @@ body .sec.arch-sec h2{font-family:var(--font-display);font-size:clamp(1.35rem,2.
 
 <section class="sec" id="demo">
   <div>
-    <h2><span>Same task.</span><span>Head to head.</span></h2>
+    <h2><span>Head to head.</span></h2>
     <div class="demo-grid">
     <div class="carousel" aria-roledescription="carousel">
         <div class="track" tabindex="0">
@@ -1461,6 +1466,16 @@ var grid=root.querySelector('.demo-grid'),sidebar=document.createElement('div'),
 sidebar.className='demo-sidebar';caption.className='demo-caption cap';caption.id='demo-active-caption';meta.className='demo-meta';context.className='demo-context';
 [].forEach.call(grid.querySelectorAll(':scope > .sub'),function(p){contextByGroup[p.dataset.opp]=p.textContent;p.remove()});
 var results=document.createElement('div');results.className='demo-results';results.appendChild(heading);results.appendChild(c.querySelector('.cbar'));results.appendChild(caption);sidebar.appendChild(results);c.appendChild(sidebar);grid.classList.add('demo-ready');
+var activeText=null;
+function textOn(el){if(activeText&&activeText!==el)textOff();activeText=el;el.classList.add('is-active')}
+function textOff(blur){if(!activeText)return;var el=activeText;activeText=null;el.classList.remove('is-active');if(blur&&el.contains(document.activeElement))el.blur()}
+function textFade(){var el=caption.querySelector('.demo-text');if(!el)return;el.classList.toggle('more',el.scrollHeight>el.clientHeight+2&&el.scrollTop+el.clientHeight<el.scrollHeight-2)}
+caption.addEventListener('pointerdown',function(e){var el=e.target.closest&&e.target.closest('.demo-text');if(el)textOn(el)});
+caption.addEventListener('focusin',function(e){var el=e.target.closest&&e.target.closest('.demo-text');if(el)textOn(el)});
+caption.addEventListener('focusout',function(e){if(activeText&&!(e.relatedTarget&&activeText.contains(e.relatedTarget)))textOff()});
+caption.addEventListener('mouseout',function(e){if(activeText&&activeText.contains(e.target)&&!(e.relatedTarget&&activeText.contains(e.relatedTarget)))textOff(true)});
+document.addEventListener('pointerdown',function(e){if(activeText&&!(e.target.closest&&e.target.closest('.demo-text')))textOff(true)});
+caption.addEventListener('scroll',textFade,true);
 function ensureDetails(slide){
  var frame=slide.querySelector('.frame'),panel=frame.querySelector('.video-details');if(panel)return panel;
  var video=frame.querySelector('video'),button=document.createElement('button'),body=document.createElement('div');
@@ -1477,19 +1492,19 @@ function ensureDetails(slide){
  frame.appendChild(panel);frame.appendChild(button);return panel;
 }
 function showDetails(s){
- if(!s||s===currentSlide)return;currentSlide=s;
+ if(!s||s===currentSlide)return;currentSlide=s;textOff(true);
  var group=s.dataset.opp||opp,cap=s.querySelector('.cap'),v=s.querySelector('video');caption.innerHTML=cap?cap.innerHTML:'';
  var notes=document.createElement('div');notes.className='demo-notes';[].forEach.call(caption.querySelectorAll('.cnote'),function(n){if(n.textContent.indexOf('Replayed from the saved runs')===0||n.textContent.trim()==='Same answer.')n.remove();else notes.appendChild(n)});
  context.textContent=contextByGroup[group]||'';
  all.forEach(function(slide){var video=slide.querySelector('video');if(video)video.removeAttribute('aria-describedby')});if(v)v.setAttribute('aria-describedby',caption.id);
  if(group==='broker'){
-  heading.innerHTML='<span>The broker</span><span>at work.</span>';
+  heading.innerHTML='<span>The broker at work.</span>';
   var hermes=v&&/hermes/.test(v.getAttribute('src'));
   meta.textContent=hermes?'4× playback · Demo vault · Concept build':'48 s · Waits cut';
   if(hermes)context.textContent+=' Hermes concept build; not a Nous Research product.';
   if(cap){var b=cap.querySelector('b'),task=document.createElement('div');task.className='demo-task';var label=document.createElement('span');label.textContent=b?b.textContent:cap.textContent;task.appendChild(label);caption.textContent='';caption.appendChild(task);var copy=cap.cloneNode(true);[].forEach.call(copy.querySelectorAll('b,.cxt'),function(n){n.remove()});if(copy.textContent.trim()){var p=document.createElement('p');p.className='cnote';p.textContent=copy.textContent.trim();notes.appendChild(p)}}
  }else{
-  heading.innerHTML=group==='dvg'?'<span>Different models.</span><span>Head to head.</span>':'<span>Same task.</span><span>Head to head.</span>';
+  heading.innerHTML='<span>Head to head.</span>';
   var rate=v?(/demo\.mp4/.test(v.getAttribute('src'))?1:(parseFloat(v.dataset.rate)||4)):1;
   meta.textContent=(group==='pwm'?'Saved-run replay':'Recorded run')+' · '+(rate===1?'Real-time playback':rate+'× playback')+' · Clocks show real time · Selected runs';
   if(group==='pwm'&&cap&&/Auto/.test(cap.textContent))context.textContent+=' Auto in the video means Adaptive.';
@@ -1501,10 +1516,12 @@ function showDetails(s){
  var overlay=ensureDetails(s),body=overlay.querySelector('.video-details-body');body.textContent='';
  if(compactDetails.matches){body.appendChild(meta.cloneNode(true));body.appendChild(notes)}else{caption.appendChild(meta);caption.appendChild(notes)}
  caption.appendChild(context);
+ var textBox=document.createElement('div');textBox.className='demo-text';textBox.tabIndex=0;textBox.setAttribute('role','region');textBox.setAttribute('aria-label','Recording description');
+ [].slice.call(caption.children).forEach(function(n){if(!n.classList.contains('cres')&&!n.classList.contains('demo-task'))textBox.appendChild(n)});caption.appendChild(textBox);textFade();
  var task=caption.querySelector('.cr.ct>span:first-child,.demo-task');if(task){task.title=task.textContent.trim();if(compactDetails.matches){var full=document.createElement('p');full.className='demo-overlay-task';full.textContent=task.textContent;body.insertBefore(full,body.firstChild);body.appendChild(context.cloneNode(true))}}
 }
 
-function sizeDemo(){root.style.setProperty('--demo-frame-height',t.getBoundingClientRect().height+'px')}
+function sizeDemo(){root.style.setProperty('--demo-frame-height',t.getBoundingClientRect().height+'px');textFade()}
 compactDetails.addEventListener('change',function(){var selected=currentSlide;if(!compactDetails.matches)all.forEach(function(slide){var f=slide.querySelector('.frame');if(f&&f.closeDetails)f.closeDetails(slide===selected)});currentSlide=null;showDetails(selected||vis[0]);sizeDemo()});
 var resizeDemoTimer;addEventListener('resize',function(){clearTimeout(resizeDemoTimer);resizeDemoTimer=setTimeout(sizeDemo,150)});
 if(document.fonts)document.fonts.ready.then(sizeDemo);
