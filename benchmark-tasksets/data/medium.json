@@ -946,7 +946,7 @@
           "tokens": "17.0k",
           "version": null,
           "capture_excluded": 1,
-          "completionNote": "1 run left out of the count (80 planned): a SITE FAILURE. lua.org returned an empty response and timed out mid-run (net::ERR_EMPTY_RESPONSE, net::ERR_TIMED_OUT) and the run ended on the browser's network-error page. The same rule left out our Adaptive run on that task minutes earlier.",
+          "completionNote": "1 run left out of the count (80 planned): a SITE FAILURE. lua.org returned an empty response and timed out mid-run (net::ERR_EMPTY_RESPONSE, net::ERR_TIMED_OUT) and the run ended on the browser's network-error page. The same rule left out our Adaptive run on that task minutes earlier. Its two misses (ietf-rfc2324-418-phrase, both reps) are that site's Cloudflare challenge as served to worker 4; counted as failures, as for every system (walled runs stay failures).",
           "wire_reasoning": "low, set by our harness",
           "wire_reasoning_evidence": "MEDSOL FP (pwml): relay effort_declared low on 349/349 Sol calls.",
           "reasoning_set_by": "our harness (effort field)",
