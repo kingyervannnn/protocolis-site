@@ -628,7 +628,7 @@
           "wire_reasoning_evidence": "FDX BT (but): relay OPEN records (W2 8679, w6 8681): client effort none, relay level none, nothing injected, no reasoning_effort / reasoning.effort sent on 233/233 Sol calls in 40 non-void rows (W2 8679 / w6 8681 -> Mac 8650, no body default)",
           "reasoning_set_by": "product",
           "driven_by": "outside agent (our kit loop)",
-          "driven_by_detail": "Browser Use 0.13.13 OpenAI toolset driven by the kit's tool-calling agent glm/glm_agent.py: no reasoning field sent; at most 500 turns, 900 s outer wall."
+          "driven_by_detail": "Browser Use 0.13.13 OpenAI toolset driven by the kit's tool-calling agent glm/glm_agent.py: no reasoning field sent; at most 500 turns, 900 s outer wall. bin/bu allowed at most 500 browser calls; the kit's agent sent max_tokens 8000 per model call; each toolset call was capped at 150 s (the client waits 200 s) and each Bash call at 120 s. The call and token limits were not reached (at most 16 turns per run; every run ended on a final reply)."
         },
         {
           "tier": "grok",
@@ -666,7 +666,7 @@
           "wire_reasoning_evidence": "MRGD BT: relay OPEN effort none on 589/589 Grok calls (W4 8684 relay_lonx_sub.py -> 8676 -> Mac 8645 Hermes proxy; no hop adds a reasoning field).",
           "reasoning_set_by": "product",
           "driven_by": "outside agent (our kit loop)",
-          "driven_by_detail": "Browser Use 0.13.13 OpenAI toolset driven by the kit's tool-calling agent glm/glm_agent.py: at most 500 turns (the kit agent's), bin/bu at most 500 browser calls, 900 s outer wall; Browser Use's own browser settings at their defaults; the kit's headless Chrome profile (viewport 1400x773, one user agent for every arm)."
+          "driven_by_detail": "Browser Use 0.13.13 OpenAI toolset driven by the kit's tool-calling agent glm/glm_agent.py: at most 500 turns (the kit agent's), bin/bu at most 500 browser calls, 900 s outer wall; Browser Use's own browser settings at their defaults; the kit's headless Chrome profile (viewport 1400x773, one user agent for every arm). The kit's agent sent max_tokens 8000 per model call; each toolset call was capped at 150 s (the client waits 200 s) and each Bash call at 120 s."
         },
         {
           "category": "tools mode",
@@ -685,7 +685,7 @@
           },
           "date": "2026-11-13",
           "driven_by": "outside agent (our kit loop)",
-          "driven_by_detail": "Browser Use 0.13.13 OpenAI toolset (its default members) driven by the kit's tool-calling agent glm/glm_agent.py: no reasoning field sent; at most 500 turns, 120 s per Bash call, no image input, 900 s outer wall. Our harness (environment, kept and disclosed): each toolset call capped at 150 s, the client waits 200 s; the worker's Chrome 156 binary, a Mac Chrome 148 user agent, a 1400x773 window. Harness side channels off (disclosed): Browser Use telemetry and cloud sync off (ANONYMIZED_TELEMETRY=false, BROWSER_USE_CLOUD_SYNC=false).",
+          "driven_by_detail": "Browser Use 0.13.13 OpenAI toolset (its default members) driven by the kit's tool-calling agent glm/glm_agent.py: no reasoning field sent; at most 500 turns, 120 s per Bash call, no image input, 900 s outer wall. Our harness (environment, kept and disclosed): each toolset call capped at 150 s, the client waits 200 s; the worker's Chrome 156 binary, a Mac Chrome 148 user agent, a 1400x773 window. Harness side channels off (disclosed): Browser Use telemetry and cloud sync off (ANONYMIZED_TELEMETRY=false, BROWSER_USE_CLOUD_SYNC=false). bin/bu allowed at most 500 browser calls and the kit's agent sent max_tokens 8000 per model call; neither limit was reached (at most 31 model calls per run; no call needed the 16000-token retry).",
           "finalTime": "23.3 s",
           "group": "tools",
           "id": "published-087",
@@ -797,7 +797,7 @@
           "wire_reasoning_evidence": "Hosted service, model and request fields not reported (rival buu).",
           "reasoning_set_by": "not observable",
           "driven_by": "hosted service",
-          "driven_by_detail": "Browser Use Cloud bu-ultrafast through its public API; its loop and model are not observable."
+          "driven_by_detail": "Browser Use Cloud bu-ultrafast through its public API; its loop and model are not observable. The kit called the hosted service with max_cost_usd 0.5, where the SDK's default budget is 25 USD, under a 300 s wall; neither limit was reached (highest cost per run $0.0092, longest call 54 s)."
         },
         {
           "id": "medium-reuse-browser-use-ultrafast-s1c",
@@ -835,7 +835,7 @@
           "wire_reasoning_evidence": "Hosted service, model and request fields not reported (rival buu).",
           "reasoning_set_by": "not observable",
           "driven_by": "hosted service",
-          "driven_by_detail": "Browser Use Cloud bu-ultrafast through its public API; its loop and model are not observable."
+          "driven_by_detail": "Browser Use Cloud bu-ultrafast through its public API; its loop and model are not observable. The kit called the hosted service with max_cost_usd 0.5, where the SDK's default budget is 25 USD, under a 300 s wall; neither limit was reached (highest cost per run $0.0121, longest call 54 s)."
         }
       ],
       "reuse_plan": {
@@ -952,7 +952,7 @@
           "wire_reasoning_evidence": "FDX BH (bh): relay OPEN records (W2 8679, w6 8681): client effort none, relay level none, nothing injected, no reasoning_effort / reasoning.effort sent on 174/174 Sol calls in 40 non-void rows (W2 8679 / w6 8681 -> Mac 8650, no body default)",
           "reasoning_set_by": "product",
           "driven_by": "outside agent (our kit loop)",
-          "driven_by_detail": "Browser Harness 0.1.13 driven by the kit's tool-calling agent glm/glm_agent.py (Bash + Read tools, BH's SKILL.md appended to the prompt; the kit's bh_runtime does BH's first goto_url): no reasoning field sent; at most 500 turns, 900 s wall."
+          "driven_by_detail": "Browser Harness 0.1.13 driven by the kit's tool-calling agent glm/glm_agent.py (Bash + Read tools, BH's SKILL.md appended to the prompt; the kit's bh_runtime does BH's first goto_url): no reasoning field sent; at most 500 turns, 900 s wall. bin/bh allowed at most 500 browser calls; the kit's agent sent max_tokens 8000 per model call; each Bash call was capped at 120 s and each BH CLI call at 200 s. The call and token limits were not reached (at most 13 turns per run; every run ended on a final reply)."
         },
         {
           "tier": "grok",
@@ -991,7 +991,7 @@
           "wire_reasoning_evidence": "MRGD BH: relay OPEN effort none on 942/942 Grok calls (W4 8684 relay_lonx_sub.py -> 8676 -> Mac 8645 Hermes proxy; no hop adds a reasoning field).",
           "reasoning_set_by": "product",
           "driven_by": "outside agent (our kit loop)",
-          "driven_by_detail": "Browser Harness 0.1.13 driven by the kit's tool-calling agent glm/glm_agent.py (Bash + Read tools, BH's SKILL.md appended to the prompt; the kit's bh_runtime does BH's first goto_url): at most 500 turns (the kit agent's), bin/bh at most 500 browser calls and 120 s per Bash call, 900 s wall."
+          "driven_by_detail": "Browser Harness 0.1.13 driven by the kit's tool-calling agent glm/glm_agent.py (Bash + Read tools, BH's SKILL.md appended to the prompt; the kit's bh_runtime does BH's first goto_url): at most 500 turns (the kit agent's), bin/bh at most 500 browser calls and 120 s per Bash call, 900 s wall. The kit's agent sent max_tokens 8000 per model call; each BH CLI call was capped at 200 s."
         },
         {
           "category": "harness",
@@ -1010,7 +1010,7 @@
           },
           "date": "2026-11-13",
           "driven_by": "outside agent (our kit loop)",
-          "driven_by_detail": "Browser Harness 0.1.13 driven by the kit's tool-calling agent glm/glm_agent.py (Bash + Read tools, BH's SKILL.md appended to the prompt; the kit's bh_runtime does BH's first goto_url): no reasoning field sent; at most 500 turns, 120 s per Bash call, no image input, 900 s wall. Our harness (environment, kept and disclosed): each BH CLI call capped at 200 s; the worker's Chrome 156 binary, a Mac Chrome 148 user agent, a 1400x773 window; BU_NAME is BH's own default. Harness side channels off (disclosed): Browser Harness telemetry, recording and update check off (BH_TELEMETRY=0, BH_RECORD=0, BH_UPDATE_CHECK=0).",
+          "driven_by_detail": "Browser Harness 0.1.13 driven by the kit's tool-calling agent glm/glm_agent.py (Bash + Read tools, BH's SKILL.md appended to the prompt; the kit's bh_runtime does BH's first goto_url): no reasoning field sent; at most 500 turns, 120 s per Bash call, no image input, 900 s wall. Our harness (environment, kept and disclosed): each BH CLI call capped at 200 s; the worker's Chrome 156 binary, a Mac Chrome 148 user agent, a 1400x773 window; BU_NAME is BH's own default. Harness side channels off (disclosed): Browser Harness telemetry, recording and update check off (BH_TELEMETRY=0, BH_RECORD=0, BH_UPDATE_CHECK=0). bin/bh allowed at most 500 browser calls and the kit's agent sent max_tokens 8000 per model call; neither limit was reached (at most 28 turns per run; no call needed the 16000-token retry).",
           "finalTime": "44.7 s",
           "group": "tools",
           "id": "published-088",
@@ -1281,7 +1281,7 @@
           "wire_reasoning_evidence": "MEDGLM GP (pwml): Mac meter OPEN effort low on 380/380 GLM calls; BINDING: 'Playwright MCP (GP) on the same 8662 relay, effort low'.",
           "reasoning_set_by": "our harness (effort field)",
           "driven_by": "outside agent (our kit loop)",
-          "driven_by_detail": "Playwright MCP 0.0.84 tools driven by the kit's stock loop fast/baselines/pwm_run.mjs (kit arm pwml): chat loop, tool_choice auto, at most 500 steps, 300 s wall."
+          "driven_by_detail": "Playwright MCP 0.0.84 tools driven by the kit's stock loop fast/baselines/pwm_run.mjs (kit arm pwml): chat loop, tool_choice auto, at most 500 steps, 300 s wall. The loop also sends max_tokens 8000 per model call (16000 on an empty cut); no call needed the retry."
         },
         {
           "tier": "opus",
@@ -1320,7 +1320,7 @@
           "wire_reasoning_evidence": "MEDSOL FP (pwml): relay effort_declared low on 349/349 Sol calls.",
           "reasoning_set_by": "our harness (effort field)",
           "driven_by": "outside agent (our kit loop)",
-          "driven_by_detail": "Playwright MCP 0.0.84 tools driven by the kit's stock loop fast/baselines/pwm_run.mjs (kit arm pwml): chat loop, tool_choice auto, at most 500 steps, 300 s wall."
+          "driven_by_detail": "Playwright MCP 0.0.84 tools driven by the kit's stock loop fast/baselines/pwm_run.mjs (kit arm pwml): chat loop, tool_choice auto, at most 500 steps, 300 s wall. The loop also sends max_tokens 8000 per model call (16000 on an empty cut)."
         },
         {
           "id": "medium-reuse-playwright-mcp-s1",
@@ -1358,7 +1358,7 @@
           "wire_reasoning_evidence": "Stage 1 block 2 pwml: Mac meter OPEN effort low on 375/375 Grok calls.",
           "reasoning_set_by": "our harness (effort field)",
           "driven_by": "outside agent (our kit loop)",
-          "driven_by_detail": "Playwright MCP 0.0.84 tools driven by the kit's stock loop fast/baselines/pwm_run.mjs (kit arm pwml): chat loop, tool_choice auto, at most 500 steps, 300 s wall."
+          "driven_by_detail": "Playwright MCP 0.0.84 tools driven by the kit's stock loop fast/baselines/pwm_run.mjs (kit arm pwml): chat loop, tool_choice auto, at most 500 steps, 300 s wall. The loop also sends max_tokens 8000 per model call (16000 on an empty cut); no call needed the retry."
         },
         {
           "id": "medium-reuse-playwright-mcp-s1c",
@@ -1396,7 +1396,7 @@
           "wire_reasoning_evidence": "S1C pwml: Mac meter OPEN effort low on 192/192 Grok calls.",
           "reasoning_set_by": "our harness (effort field)",
           "driven_by": "outside agent (our kit loop)",
-          "driven_by_detail": "Playwright MCP 0.0.84 tools driven by the kit's stock loop fast/baselines/pwm_run.mjs (kit arm pwml): chat loop, tool_choice auto, at most 500 steps, 300 s wall."
+          "driven_by_detail": "Playwright MCP 0.0.84 tools driven by the kit's stock loop fast/baselines/pwm_run.mjs (kit arm pwml): chat loop, tool_choice auto, at most 500 steps, 300 s wall. The loop also sends max_tokens 8000 per model call (16000 on an empty cut); no call needed the retry."
         }
       ],
       "reuse_plan": {
