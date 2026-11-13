@@ -47,6 +47,41 @@
           "driven_by_detail": "Protocolis Adaptive with its own agent (Agent Mode on): it tries a fast path first and hands over to the full agent when needed; reasoning set by the engine per call; up to 48 agent steps and a 900 s wall; build: release 0.10.0. The test kit ran the engine with its challenge handling switched off (APC_GATE_MODE=passive); the product ships with it on.",
           "tokensQualifier": "at least",
           "tokensNote": "Our chooser’s calls carry no token count in this window, so the figure is a lower bound."
+        },
+        {
+          "id": "published-long-frontier-aua",
+          "tier": "opus",
+          "model": "GPT-6.1 Sol",
+          "task_set_id": "LONG-MX20",
+          "window_id": "FRONTIER-LONG",
+          "judge_id": "WebJudge strict column, one judge: gpt-5.6-luna (medium) on the Codex route, the upstream Online-Mind2Web prompts; the judge sees the action history and screenshots, never the answer; no second judge",
+          "clock": "FINAL",
+          "comparisonEligible": false,
+          "contender": "Protocolis Adaptive",
+          "mode": "Adaptive",
+          "category": "agent",
+          "completion": "10/18",
+          "finalTime": "39.6 s",
+          "reportedTime": "39.6 s",
+          "medianTime": "29.6 s",
+          "cost": "$0.0507",
+          "tokens": "77.9k",
+          "version": "release 0.10.0",
+          "sourceRunResolution": "Recorded measurement window",
+          "methodology": "Frontier long view: the 18 long tasks every system ran (LONG-MX20 without its two Amazon tasks: Amazon refused AI agents, so under the pre-registered rule both are left out for every system), each run once · GPT-6.1 Sol through OpenRouter: the rivals and our outside-agent rows send no reasoning field (provider default), our own-agent rows let the engine set reasoning per call · ours and the rivals ran in two windows on 13 November, on class B workers · 900 s wall; a $2.00 budget per run (a run over it counts as a failure, its spend kept; no run reached it) · WebJudge after the run (one judge, Luna; no second judge), strict column (the judge never sees the answer) · time per completed task on the clock the site uses for the system, mean (median beside) · cost per completed task: every model call as billed (OpenRouter +5.5% fee); our chooser (TypeSafe System One) is not priced · tokens per completed task: every metered model call.",
+          "wire_reasoning": "engine auto (set per call)",
+          "reasoning_set_by": "engine",
+          "driven_by": "own agent (Agent Mode)",
+          "driven_by_detail": "Protocolis Adaptive with its own agent (Agent Mode on): it tries a fast path first and hands over to the full agent when needed; reasoning set by the engine per call; up to 48 agent steps and a 900 s wall; build: release 0.10.0. The engine ran as it ships, with its challenge handling on.",
+          "tokensQualifier": "at least",
+          "tokensNote": "Our chooser’s calls carry no token count in this window, so the figure is a lower bound.",
+          "date": "2026-11-13",
+          "worker": "2 benchmark workers (class B)",
+          "worker_class": "class B",
+          "measured_at": {
+            "first": "2026-11-13T16:04:59Z",
+            "last": "2026-11-13T17:16:49Z"
+          }
         }
       ],
       "group": "agents"
@@ -91,6 +126,41 @@
           "driven_by_detail": "Protocolis Standard with its own agent (Agent Mode on): the full agent drives the whole task; reasoning set by the engine per call; up to 48 agent steps and a 900 s wall; build: release 0.10.0. The test kit ran the engine with its challenge handling switched off (APC_GATE_MODE=passive); the product ships with it on.",
           "tokensQualifier": "at least",
           "tokensNote": "Our chooser’s calls carry no token count in this window, so the figure is a lower bound."
+        },
+        {
+          "id": "published-long-frontier-aus",
+          "tier": "opus",
+          "model": "GPT-6.1 Sol",
+          "task_set_id": "LONG-MX20",
+          "window_id": "FRONTIER-LONG",
+          "judge_id": "WebJudge strict column, one judge: gpt-5.6-luna (medium) on the Codex route, the upstream Online-Mind2Web prompts; the judge sees the action history and screenshots, never the answer; no second judge",
+          "clock": "FINAL",
+          "comparisonEligible": false,
+          "contender": "Protocolis Standard",
+          "mode": "Standard",
+          "category": "agent",
+          "completion": "9/18",
+          "finalTime": "36.1 s",
+          "reportedTime": "36.1 s",
+          "medianTime": "29.0 s",
+          "cost": "$0.0673",
+          "tokens": "104.3k",
+          "version": "release 0.10.0",
+          "sourceRunResolution": "Recorded measurement window",
+          "methodology": "Frontier long view: the 18 long tasks every system ran (LONG-MX20 without its two Amazon tasks: Amazon refused AI agents, so under the pre-registered rule both are left out for every system), each run once · GPT-6.1 Sol through OpenRouter: the rivals and our outside-agent rows send no reasoning field (provider default), our own-agent rows let the engine set reasoning per call · ours and the rivals ran in two windows on 13 November, on class B workers · 900 s wall; a $2.00 budget per run (a run over it counts as a failure, its spend kept; no run reached it) · WebJudge after the run (one judge, Luna; no second judge), strict column (the judge never sees the answer) · time per completed task on the clock the site uses for the system, mean (median beside) · cost per completed task: every model call as billed (OpenRouter +5.5% fee); our chooser (TypeSafe System One) is not priced · tokens per completed task: every metered model call.",
+          "wire_reasoning": "engine auto (set per call)",
+          "reasoning_set_by": "engine",
+          "driven_by": "own agent (Agent Mode)",
+          "driven_by_detail": "Protocolis Standard with its own agent (Agent Mode on): the full agent drives the whole task; reasoning set by the engine per call; up to 48 agent steps and a 900 s wall; build: release 0.10.0. The engine ran as it ships, with its challenge handling on.",
+          "tokensQualifier": "at least",
+          "tokensNote": "Our chooser’s calls carry no token count in this window, so the figure is a lower bound.",
+          "date": "2026-11-13",
+          "worker": "2 benchmark workers (class B)",
+          "worker_class": "class B",
+          "measured_at": {
+            "first": "2026-11-13T16:04:59Z",
+            "last": "2026-11-13T17:16:49Z"
+          }
         }
       ],
       "group": "agents"
@@ -144,6 +214,39 @@
           "driven_by_detail": "Browser Use 0.13.13 Agent.run() as shipped: max_steps 500 (its default), use_judge on, temperature 0.2, every other setting at the installed default; frequency_penalty not sent (Grok 4.6 refuses it, HTTP 400); 900 s wall",
           "tokensQualifier": "at least",
           "tokensNote": "The model calls of the 2 runs that reached the 900 s wall could not be read, so the figure is a lower bound."
+        },
+        {
+          "id": "published-long-frontier-ba",
+          "tier": "opus",
+          "model": "GPT-6.1 Sol",
+          "task_set_id": "LONG-MX20",
+          "window_id": "FRONTIER-LONG",
+          "judge_id": "WebJudge strict column, one judge: gpt-5.6-luna (medium) on the Codex route, the upstream Online-Mind2Web prompts; the judge sees the action history and screenshots, never the answer; no second judge",
+          "clock": "rival self-reported",
+          "comparisonEligible": false,
+          "contender": "Browser Use · own agent",
+          "mode": "own agent",
+          "category": "agent",
+          "completion": "10/18",
+          "finalTime": null,
+          "reportedTime": "106.6 s",
+          "medianTime": "87.2 s",
+          "cost": "$0.5728",
+          "tokens": "354.5k",
+          "version": "Browser Use 0.13.13 (own agent)",
+          "sourceRunResolution": "Recorded measurement window",
+          "methodology": "Frontier long view: the 18 long tasks every system ran (LONG-MX20 without its two Amazon tasks: Amazon refused AI agents, so under the pre-registered rule both are left out for every system), each run once · GPT-6.1 Sol through OpenRouter: the rivals and our outside-agent rows send no reasoning field (provider default), our own-agent rows let the engine set reasoning per call · ours and the rivals ran in two windows on 13 November, on class B workers · 900 s wall; a $2.00 budget per run (a run over it counts as a failure, its spend kept; no run reached it) · WebJudge after the run (one judge, Luna; no second judge), strict column (the judge never sees the answer) · time per completed task on the clock the site uses for the system, mean (median beside) · cost per completed task: every model call as billed (OpenRouter +5.5% fee); our chooser (TypeSafe System One) is not priced · tokens per completed task: every metered model call.",
+          "wire_reasoning": "provider default",
+          "reasoning_set_by": "product",
+          "driven_by": "own agent",
+          "driven_by_detail": "Browser Use 0.13.13 Agent.run() (kit fast/bu_run.py), as shipped: its own planner, loop and defaults (step limit 500 = the product's default Agent.run max_steps; use_judge and use_vision on, temperature 0.2, frequency_penalty 0.3: its defaults). The harness adds a 900 s wall and a first navigate action to the start URL.",
+          "date": "2026-11-13",
+          "worker": "2 benchmark workers (class B)",
+          "worker_class": "class B",
+          "measured_at": {
+            "first": "2026-11-13T12:56:43Z",
+            "last": "2026-11-13T14:38:06Z"
+          }
         }
       ],
       "group": "agents"
@@ -220,6 +323,39 @@
           "reasoning_set_by": "product",
           "driven_by": "outside agent (our kit loop)",
           "driven_by_detail": "Browser Use 0.13.13 OpenAI toolset (its default members) driven by the kit's tool-calling agent glm/glm_agent.py: no reasoning field sent; at most 500 turns, 120 s per Bash call, no image input, 900 s outer wall. Our harness (environment, kept and disclosed): each toolset call capped at 150 s, the client waits 200 s; the worker's Chrome 156 binary, a Mac Chrome 148 user agent, a 1400x773 window. Harness side channels off (disclosed): Browser Use telemetry and cloud sync off (ANONYMIZED_TELEMETRY=false, BROWSER_USE_CLOUD_SYNC=false)."
+        },
+        {
+          "id": "published-long-frontier-bt",
+          "tier": "opus",
+          "model": "GPT-6.1 Sol",
+          "task_set_id": "LONG-MX20",
+          "window_id": "FRONTIER-LONG",
+          "judge_id": "WebJudge strict column, one judge: gpt-5.6-luna (medium) on the Codex route, the upstream Online-Mind2Web prompts; the judge sees the action history and screenshots, never the answer; no second judge",
+          "clock": "rival self-reported",
+          "comparisonEligible": false,
+          "contender": "Browser Use · tools mode",
+          "mode": "tools",
+          "category": "tools mode",
+          "completion": "4/18",
+          "finalTime": null,
+          "reportedTime": "31.7 s",
+          "medianTime": "30.7 s",
+          "cost": "$0.2825",
+          "tokens": "498.4k",
+          "version": "Browser Use 0.13.13 (tools mode)",
+          "sourceRunResolution": "Recorded measurement window",
+          "methodology": "Frontier long view: the 18 long tasks every system ran (LONG-MX20 without its two Amazon tasks: Amazon refused AI agents, so under the pre-registered rule both are left out for every system), each run once · GPT-6.1 Sol through OpenRouter: the rivals and our outside-agent rows send no reasoning field (provider default), our own-agent rows let the engine set reasoning per call · ours and the rivals ran in two windows on 13 November, on class B workers · 900 s wall; a $2.00 budget per run (a run over it counts as a failure, its spend kept; no run reached it) · WebJudge after the run (one judge, Luna; no second judge), strict column (the judge never sees the answer) · time per completed task on the clock the site uses for the system, mean (median beside) · cost per completed task: every model call as billed (OpenRouter +5.5% fee); our chooser (TypeSafe System One) is not priced · tokens per completed task: every metered model call.",
+          "wire_reasoning": "provider default",
+          "reasoning_set_by": "product",
+          "driven_by": "outside agent (our kit loop)",
+          "driven_by_detail": "Browser Use 0.13.13 OpenAI toolset driven by the kit's tool-calling agent glm/glm_agent.py: no reasoning field sent; at most 500 turns, 900 s outer wall. bin/bu allowed at most 500 browser calls; the kit's agent sent max_tokens 8000 per model call; each toolset call was capped at 150 s (the client waits 200 s) and each Bash call at 120 s. The call and token limits were not reached (at most 16 turns per run; every run ended on a final reply). The kit gave the model Browser Use's 18 default toolset members plus six it does not offer by default (hover_at, set_checked, click_at, drag_path, hold_keys, run_script), and the kit's agent cannot view images, so screenshots the toolset writes were not shown to the model.",
+          "date": "2026-11-13",
+          "worker": "2 benchmark workers (class B)",
+          "worker_class": "class B",
+          "measured_at": {
+            "first": "2026-11-13T12:56:43Z",
+            "last": "2026-11-13T14:38:06Z"
+          }
         }
       ],
       "group": "tools"
@@ -313,6 +449,39 @@
           "driven_by": "outside agent (our kit loop)",
           "driven_by_detail": "Browser Harness 0.1.13 driven by the kit's tool-calling agent glm/glm_agent.py (Bash + Read tools, BH's SKILL.md appended to the prompt; the kit's bh_runtime does BH's first goto_url): no reasoning field sent; at most 500 turns, 120 s per Bash call, no image input, 900 s wall. Our harness (environment, kept and disclosed): each BH CLI call capped at 200 s; the worker's Chrome 156 binary, a Mac Chrome 148 user agent, a 1400x773 window; BU_NAME is BH's own default. Harness side channels off (disclosed): Browser Harness telemetry, recording and update check off (BH_TELEMETRY=0, BH_RECORD=0, BH_UPDATE_CHECK=0).",
           "completionNote": "1 run left out of the count: its record was lost to a fault on our test machine (the result fetch failed during a CPU storm)."
+        },
+        {
+          "id": "published-long-frontier-bh",
+          "tier": "opus",
+          "model": "GPT-6.1 Sol",
+          "task_set_id": "LONG-MX20",
+          "window_id": "FRONTIER-LONG",
+          "judge_id": "WebJudge strict column, one judge: gpt-5.6-luna (medium) on the Codex route, the upstream Online-Mind2Web prompts; the judge sees the action history and screenshots, never the answer; no second judge",
+          "clock": "rival self-reported",
+          "comparisonEligible": false,
+          "contender": "Browser Harness",
+          "mode": "default",
+          "category": "harness",
+          "completion": "2/18",
+          "finalTime": null,
+          "reportedTime": "23.9 s",
+          "medianTime": "23.9 s",
+          "cost": "$0.4715",
+          "tokens": "609.6k",
+          "version": "Browser Harness 0.1.13",
+          "sourceRunResolution": "Recorded measurement window",
+          "methodology": "Frontier long view: the 18 long tasks every system ran (LONG-MX20 without its two Amazon tasks: Amazon refused AI agents, so under the pre-registered rule both are left out for every system), each run once · GPT-6.1 Sol through OpenRouter: the rivals and our outside-agent rows send no reasoning field (provider default), our own-agent rows let the engine set reasoning per call · ours and the rivals ran in two windows on 13 November, on class B workers · 900 s wall; a $2.00 budget per run (a run over it counts as a failure, its spend kept; no run reached it) · WebJudge after the run (one judge, Luna; no second judge), strict column (the judge never sees the answer) · time per completed task on the clock the site uses for the system, mean (median beside) · cost per completed task: every model call as billed (OpenRouter +5.5% fee); our chooser (TypeSafe System One) is not priced · tokens per completed task: every metered model call.",
+          "wire_reasoning": "provider default",
+          "reasoning_set_by": "product",
+          "driven_by": "outside agent (our kit loop)",
+          "driven_by_detail": "Browser Harness 0.1.13 driven by the kit's tool-calling agent glm/glm_agent.py (Bash + Read tools, BH's SKILL.md appended to the prompt; the kit's bh_runtime does BH's first goto_url): no reasoning field sent; at most 500 turns, 900 s wall. bin/bh allowed at most 500 browser calls; the kit's agent sent max_tokens 8000 per model call; each Bash call was capped at 120 s and each BH CLI call at 200 s. The call and token limits were not reached (at most 13 turns per run; every run ended on a final reply). The kit's agent cannot view images, so Browser Harness screenshots were not shown to the model.",
+          "date": "2026-11-13",
+          "worker": "2 benchmark workers (class B)",
+          "worker_class": "class B",
+          "measured_at": {
+            "first": "2026-11-13T12:56:43Z",
+            "last": "2026-11-13T14:38:06Z"
+          }
         }
       ],
       "group": "tools"
@@ -467,6 +636,39 @@
           "driven_by": "outside agent (our kit loop)",
           "driven_by_detail": "Playwright MCP 0.0.84 driven by the kit's stock tool-calling loop (fast/baselines/pwm_run.mjs, empty system prompt): no reasoning field sent (PWM_REASONING_EFFORT unset and stripped, LONX AMENDMENT-2's PD); at most 500 turns, 900 s wall. Our harness (environment, kept and disclosed): the worker's Chrome 156 binary (headless, 1280x900 window, a Mac Chrome 148 user agent) through CDP.",
           "completionNote": "2 runs left out of the count: 1 lost its record to a fault on our test machine (CPU storm) and 1 hit our model account’s credit limit."
+        },
+        {
+          "id": "published-long-frontier-pd",
+          "tier": "opus",
+          "model": "GPT-6.1 Sol",
+          "task_set_id": "LONG-MX20",
+          "window_id": "FRONTIER-LONG",
+          "judge_id": "WebJudge strict column, one judge: gpt-5.6-luna (medium) on the Codex route, the upstream Online-Mind2Web prompts; the judge sees the action history and screenshots, never the answer; no second judge",
+          "clock": "FINAL",
+          "comparisonEligible": false,
+          "contender": "Playwright MCP",
+          "mode": "default",
+          "category": "MCP",
+          "completion": "2/18",
+          "finalTime": "68.1 s",
+          "reportedTime": "68.1 s",
+          "medianTime": "68.1 s",
+          "cost": "$0.4898",
+          "tokens": "983.5k",
+          "version": "@playwright/mcp 0.0.84",
+          "sourceRunResolution": "Recorded measurement window",
+          "methodology": "Frontier long view: the 18 long tasks every system ran (LONG-MX20 without its two Amazon tasks: Amazon refused AI agents, so under the pre-registered rule both are left out for every system), each run once · GPT-6.1 Sol through OpenRouter: the rivals and our outside-agent rows send no reasoning field (provider default), our own-agent rows let the engine set reasoning per call · ours and the rivals ran in two windows on 13 November, on class B workers · 900 s wall; a $2.00 budget per run (a run over it counts as a failure, its spend kept; no run reached it) · WebJudge after the run (one judge, Luna; no second judge), strict column (the judge never sees the answer) · time per completed task on the clock the site uses for the system, mean (median beside) · cost per completed task: every model call as billed (OpenRouter +5.5% fee); our chooser (TypeSafe System One) is not priced · tokens per completed task: every metered model call.",
+          "wire_reasoning": "provider default",
+          "reasoning_set_by": "product",
+          "driven_by": "outside agent (our kit loop)",
+          "driven_by_detail": "Playwright MCP 0.0.84 tools driven by the kit's stock loop fast/baselines/pwm_run.mjs (kit arm pwml): chat loop, tool_choice auto, at most 500 steps, 900 s wall. The loop also sends max_tokens 8000 per model call (16000 on an empty cut).",
+          "date": "2026-11-13",
+          "worker": "2 benchmark workers (class B)",
+          "worker_class": "class B",
+          "measured_at": {
+            "first": "2026-11-13T12:56:43Z",
+            "last": "2026-11-13T14:38:06Z"
+          }
         }
       ],
       "group": "tools"
@@ -513,6 +715,41 @@
           "driven_by_detail": "Protocolis Adaptive driven by an outside agent (Agent Mode off): the test kit’s own tool-calling loop sends page commands; Adaptive tries a fast path first and hands back when needed; the outside agent sends no reasoning setting (provider default); a 900 s wall; build: release 0.10.0. The test kit ran the engine with its challenge handling switched off (APC_GATE_MODE=passive); the product ships with it on.",
           "tokensQualifier": "at least",
           "tokensNote": "Our chooser’s calls carry no token count in this window, so the figure is a lower bound."
+        },
+        {
+          "id": "published-long-frontier-fxa",
+          "tier": "opus",
+          "model": "GPT-6.1 Sol",
+          "task_set_id": "LONG-MX20",
+          "window_id": "FRONTIER-LONG",
+          "judge_id": "WebJudge strict column, one judge: gpt-5.6-luna (medium) on the Codex route, the upstream Online-Mind2Web prompts; the judge sees the action history and screenshots, never the answer; no second judge",
+          "clock": "FINAL",
+          "comparisonEligible": false,
+          "contender": "Protocolis Adaptive · outside agent",
+          "mode": "Adaptive",
+          "category": "outside agent",
+          "completion": "11/18",
+          "finalTime": "71.0 s",
+          "reportedTime": "71.0 s",
+          "medianTime": "48.9 s",
+          "cost": "$0.0611",
+          "tokens": "98.7k",
+          "version": "release 0.10.0",
+          "sourceRunResolution": "Recorded measurement window",
+          "methodology": "Frontier long view: the 18 long tasks every system ran (LONG-MX20 without its two Amazon tasks: Amazon refused AI agents, so under the pre-registered rule both are left out for every system), each run once · GPT-6.1 Sol through OpenRouter: the rivals and our outside-agent rows send no reasoning field (provider default), our own-agent rows let the engine set reasoning per call · ours and the rivals ran in two windows on 13 November, on class B workers · 900 s wall; a $2.00 budget per run (a run over it counts as a failure, its spend kept; no run reached it) · WebJudge after the run (one judge, Luna; no second judge), strict column (the judge never sees the answer) · time per completed task on the clock the site uses for the system, mean (median beside) · cost per completed task: every model call as billed (OpenRouter +5.5% fee); our chooser (TypeSafe System One) is not priced · tokens per completed task: every metered model call.",
+          "wire_reasoning": "provider default",
+          "reasoning_set_by": "provider",
+          "driven_by": "outside agent (our kit loop)",
+          "driven_by_detail": "Protocolis Adaptive driven by an outside agent (Agent Mode off): the test kit’s own tool-calling loop sends page commands; Adaptive tries a fast path first and hands back when needed; the outside agent sends no reasoning setting (provider default); at most 500 turns and a 900 s wall; build: release 0.10.0. The engine ran as it ships, with its challenge handling on.",
+          "tokensQualifier": "at least",
+          "tokensNote": "Our chooser’s calls carry no token count in this window, so the figure is a lower bound.",
+          "date": "2026-11-13",
+          "worker": "2 benchmark workers (class B)",
+          "worker_class": "class B",
+          "measured_at": {
+            "first": "2026-11-13T16:04:59Z",
+            "last": "2026-11-13T17:16:49Z"
+          }
         }
       ]
     },
@@ -559,6 +796,41 @@
           "tokensQualifier": "at least",
           "tokensNote": "Our chooser’s calls carry no token count in this window, so the figure is a lower bound.",
           "completionNote": "4 runs left out of the count: 3 lost their records to a fault on our test machine (the result fetch failed during a CPU storm) and 1 hit our model account’s credit limit; their reruns are pending."
+        },
+        {
+          "id": "published-long-frontier-fxs",
+          "tier": "opus",
+          "model": "GPT-6.1 Sol",
+          "task_set_id": "LONG-MX20",
+          "window_id": "FRONTIER-LONG",
+          "judge_id": "WebJudge strict column, one judge: gpt-5.6-luna (medium) on the Codex route, the upstream Online-Mind2Web prompts; the judge sees the action history and screenshots, never the answer; no second judge",
+          "clock": "FINAL",
+          "comparisonEligible": false,
+          "contender": "Protocolis Standard · outside agent",
+          "mode": "Standard",
+          "category": "outside agent",
+          "completion": "9/18",
+          "finalTime": "57.4 s",
+          "reportedTime": "57.4 s",
+          "medianTime": "51.5 s",
+          "cost": "$0.0854",
+          "tokens": "122.8k",
+          "version": "release 0.10.0",
+          "sourceRunResolution": "Recorded measurement window",
+          "methodology": "Frontier long view: the 18 long tasks every system ran (LONG-MX20 without its two Amazon tasks: Amazon refused AI agents, so under the pre-registered rule both are left out for every system), each run once · GPT-6.1 Sol through OpenRouter: the rivals and our outside-agent rows send no reasoning field (provider default), our own-agent rows let the engine set reasoning per call · ours and the rivals ran in two windows on 13 November, on class B workers · 900 s wall; a $2.00 budget per run (a run over it counts as a failure, its spend kept; no run reached it) · WebJudge after the run (one judge, Luna; no second judge), strict column (the judge never sees the answer) · time per completed task on the clock the site uses for the system, mean (median beside) · cost per completed task: every model call as billed (OpenRouter +5.5% fee); our chooser (TypeSafe System One) is not priced · tokens per completed task: every metered model call.",
+          "wire_reasoning": "provider default",
+          "reasoning_set_by": "provider",
+          "driven_by": "outside agent (our kit loop)",
+          "driven_by_detail": "Protocolis Standard driven by an outside agent (Agent Mode off): the test kit’s own tool-calling loop sends page commands; the outside agent sends no reasoning setting (provider default); at most 500 turns and a 900 s wall; build: release 0.10.0. The engine ran as it ships, with its challenge handling on.",
+          "tokensQualifier": "at least",
+          "tokensNote": "Our chooser’s calls carry no token count in this window, so the figure is a lower bound.",
+          "date": "2026-11-13",
+          "worker": "2 benchmark workers (class B)",
+          "worker_class": "class B",
+          "measured_at": {
+            "first": "2026-11-13T16:04:59Z",
+            "last": "2026-11-13T17:16:49Z"
+          }
         }
       ]
     }
