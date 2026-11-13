@@ -1410,7 +1410,7 @@
           "wire_reasoning": "provider default",
           "reasoning_set_by": "product",
           "driven_by": "own agent",
-          "driven_by_detail": "Browser Use 0.13.13 Agent.run() (kit fast/bu_run.py): its own planner and loop; the kit sets the model and opens the start URL. Reasoning: none sent by the product or by us (model default), every call read on our meter. The kit set temperature and frequency_penalty to None (not sent), where Browser Use ships 0.2 and 0.3.",
+          "driven_by_detail": "Browser Use 0.13.13 Agent.run() (kit fast/bu_run.py): its own planner and loop; the kit sets the model and opens the start URL. Reasoning: none sent by the product or by us (model default), every call read on our meter. The kit set temperature and frequency_penalty to None (not sent), where Browser Use ships 0.2 and 0.3. The kit also turned Browser Use's judge off and capped the run at 40 steps under a 300 s wall; neither limit was reached (at most 15 model calls, longest run 261 s).",
           "completionNote": "1 of the 60 planned runs was not run: the window’s last cell stopped on a worker clean-up fault before its final task, so the count is of 59 (that run is neither completed nor failed)."
         },
         {
