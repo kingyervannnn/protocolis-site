@@ -84,7 +84,7 @@ test('all nine published views use the site selection and show tokens beside cos
     assert.equal(w.document.querySelectorAll('.ts-table select').length,0);
    }
    const method=w.document.querySelector('.ts-more-head .ts-popover').textContent;
-   assert.match(method,/mean input \+ output tokens.*completed runs/);assert.match(method,/Largest single request counts input tokens only/);
+   assert.match(method,/A token figure marked “at least” is a lower bound/);assert.match(method,/Largest single request counts input tokens only/);
   }
  }finally{dom.window.close();}
 });
