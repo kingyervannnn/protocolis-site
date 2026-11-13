@@ -1443,7 +1443,7 @@
           "wire_reasoning_evidence": "S2 bua: Mac meter OPEN effort none on 195/195 Grok calls (8662 -> 8650 plain forwarder); harness record reasoning_effort provider_default.",
           "reasoning_set_by": "product",
           "driven_by": "own agent",
-          "driven_by_detail": "Browser Use 0.13.13 Agent.run() (kit fast/bu_run.py): its own planner and loop. The kit sets max_steps 40, a 300 s wall, use_vision on, use_judge off, and a first navigate action to the start URL."
+          "driven_by_detail": "Browser Use 0.13.13 Agent.run() (kit fast/bu_run.py): its own planner and loop. The kit sets max_steps 40, a 300 s wall, use_vision on, use_judge off, and a first navigate action to the start URL. The kit set temperature and frequency_penalty to None (not sent), where Browser Use ships 0.2 and 0.3; neither the 40-step cap nor the 300 s wall was reached (at most 10 model calls, longest run 149 s)."
         },
         {
           "id": "published-015",
@@ -1474,7 +1474,7 @@
           "wire_reasoning_evidence": "BUG bua: Mac meter OPEN effort none on 75/75 GLM calls.",
           "reasoning_set_by": "product",
           "driven_by": "own agent",
-          "driven_by_detail": "Browser Use 0.13.13 Agent.run() (kit fast/bu_run.py): its own planner and loop. The kit sets max_steps 40, a 300 s wall, use_vision on, use_judge off, and a first navigate action to the start URL."
+          "driven_by_detail": "Browser Use 0.13.13 Agent.run() (kit fast/bu_run.py): its own planner and loop. The kit sets max_steps 40, a 300 s wall, use_vision on, use_judge off, and a first navigate action to the start URL. The kit set temperature and frequency_penalty to None (not sent), where Browser Use ships 0.2 and 0.3; neither the 40-step cap nor the 300 s wall was reached (at most 13 model calls, longest run 209 s)."
         },
         {
           "id": "published-018",
@@ -1505,7 +1505,7 @@
           "wire_reasoning_evidence": "S2S bua: Browser Use sent no effort (harness record provider_default; it sends no reasoning_effort for openai/gpt-6.1-sol, LAUNCH-PLAN-W1 item 2); the S2S route was W1 8664 relay -> 8649 OpenAI Responses bridge started with --default-reasoning-effort low (stage2s-w1/route/openai_forwarder_responses.py; GATE-S2S/FIRST-ROWS-AUDIT.json: 'default effort low'), which adds effort low to every call that carries none. The S2S relay recorded no per-call effort field.",
           "reasoning_set_by": "our route (default added)",
           "driven_by": "own agent",
-          "driven_by_detail": "Browser Use 0.13.13 Agent.run() (kit fast/bu_run.py): its own planner and loop. The kit sets max_steps 40, a 300 s wall, use_vision on, use_judge off, and a first navigate action to the start URL."
+          "driven_by_detail": "Browser Use 0.13.13 Agent.run() (kit fast/bu_run.py): its own planner and loop. The kit sets max_steps 40, a 300 s wall, use_vision on, use_judge off, and a first navigate action to the start URL. The kit set temperature and frequency_penalty to None (not sent), where Browser Use ships 0.2 and 0.3; neither the 40-step cap nor the 300 s wall was reached (at most 6 model calls, longest run 48 s)."
         }
       ],
       "reuse_plan": {
@@ -1577,7 +1577,7 @@
           "wire_reasoning": "provider default",
           "reasoning_set_by": "product",
           "driven_by": "outside agent (our kit loop)",
-          "driven_by_detail": "Browser Use 0.13.13 OpenAI toolset driven by the kit’s tool-calling agent glm/glm_agent.py at the model default (no reasoning field), every call read on our meter. The kit's agent ran at most 500 turns, with bin/bu allowing at most 500 browser calls, under a 300 s outer wall; it sent max_tokens 8000 per model call; each toolset call was capped at 150 s (the client waits 200 s) and each Bash call at 120 s. Neither the turn, call, token nor time limit was reached (at most 19 model calls per run, no call needed the 16000-token retry, longest run 124 s).",
+          "driven_by_detail": "Browser Use 0.13.13 OpenAI toolset driven by the kit’s tool-calling agent glm/glm_agent.py at the model default (no reasoning field), every call read on our meter. The kit's agent ran at most 500 turns, with bin/bu allowing at most 500 browser calls, under a 300 s outer wall; it sent max_tokens 8000 per model call; each toolset call was capped at 150 s (the client waits 200 s) and each Bash call at 120 s. Neither the turn, call, token nor time limit was reached (at most 19 model calls per run, no call needed the 16000-token retry, longest run 124 s). The kit gave the model Browser Use's 18 default toolset members plus six it does not offer by default (hover_at, set_checked, click_at, drag_path, hold_keys, run_script), and the kit's agent cannot view images, so screenshots the toolset writes were not shown to the model.",
           "completionNote": "1 of the 60 planned runs was not run: the window’s last cell stopped on a worker clean-up fault before its final task, so the count is of 59 (that run is neither completed nor failed)."
         },
         {
@@ -1610,7 +1610,7 @@
           "wire_reasoning_evidence": "BUX but: harness record reasoning_effort provider_default on 20/20 rows (glm_agent sends no field when --reasoning-effort is unset); xAI route W4 8663 -> 8648 (model map only). The per-call log is on W4 (/home/apc/xai-route/requests-xai.jsonl), not read.",
           "reasoning_set_by": "product",
           "driven_by": "outside agent (our kit loop)",
-          "driven_by_detail": "Browser Use 0.13.13 OpenAI toolset driven by the kit's tool-calling agent glm/glm_agent.py: at most 500 turns, 300 s outer wall. bin/bu allowed at most 500 browser calls; the kit's agent sent max_tokens 8000 per model call; each toolset call was capped at 150 s (the client waits 200 s) and each Bash call at 120 s."
+          "driven_by_detail": "Browser Use 0.13.13 OpenAI toolset driven by the kit's tool-calling agent glm/glm_agent.py: at most 500 turns, 300 s outer wall. bin/bu allowed at most 500 browser calls; the kit's agent sent max_tokens 8000 per model call; each toolset call was capped at 150 s (the client waits 200 s) and each Bash call at 120 s. The kit gave the model Browser Use's 18 default toolset members plus six it does not offer by default (hover_at, set_checked, click_at, drag_path, hold_keys, run_script), and the kit's agent cannot view images, so screenshots the toolset writes were not shown to the model."
         },
         {
           "id": "published-024",
@@ -1641,7 +1641,7 @@
           "wire_reasoning_evidence": "The record names no window (worker W4, 19 of 20). The ledger's only Browser Use tools-mode GLM run is BUG (arm but): Mac meter OPEN effort none on 150/150 calls. Source inferred, not stated on the record.",
           "reasoning_set_by": "product",
           "driven_by": "outside agent (our kit loop)",
-          "driven_by_detail": "Browser Use 0.13.13 OpenAI toolset driven by the kit's tool-calling agent glm/glm_agent.py: at most 500 turns, 300 s outer wall. bin/bu allowed at most 500 browser calls; the kit's agent sent max_tokens 8000 per model call; each toolset call was capped at 150 s (the client waits 200 s) and each Bash call at 120 s. The call and token limits were not reached (at most 16 model calls per run; no call needed the 16000-token retry)."
+          "driven_by_detail": "Browser Use 0.13.13 OpenAI toolset driven by the kit's tool-calling agent glm/glm_agent.py: at most 500 turns, 300 s outer wall. bin/bu allowed at most 500 browser calls; the kit's agent sent max_tokens 8000 per model call; each toolset call was capped at 150 s (the client waits 200 s) and each Bash call at 120 s. The call and token limits were not reached (at most 16 model calls per run; no call needed the 16000-token retry). The kit gave the model Browser Use's 18 default toolset members plus six it does not offer by default (hover_at, set_checked, click_at, drag_path, hold_keys, run_script), and the kit's agent cannot view images, so screenshots the toolset writes were not shown to the model."
         },
         {
           "id": "published-027",
@@ -1673,7 +1673,7 @@
           "wire_reasoning_evidence": "BUOT but: Mac meter OPEN effort none on 197/197 Opus 4.6 calls.",
           "reasoning_set_by": "product",
           "driven_by": "outside agent (our kit loop)",
-          "driven_by_detail": "Browser Use 0.13.13 OpenAI toolset driven by the kit's tool-calling agent glm/glm_agent.py: at most 500 turns, 300 s outer wall. bin/bu allowed at most 500 browser calls; the kit's agent sent max_tokens 8000 per model call; each toolset call was capped at 150 s (the client waits 200 s) and each Bash call at 120 s. The call and token limits were not reached (at most 10 model calls per run; no call needed the 16000-token retry)."
+          "driven_by_detail": "Browser Use 0.13.13 OpenAI toolset driven by the kit's tool-calling agent glm/glm_agent.py: at most 500 turns, 300 s outer wall. bin/bu allowed at most 500 browser calls; the kit's agent sent max_tokens 8000 per model call; each toolset call was capped at 150 s (the client waits 200 s) and each Bash call at 120 s. The call and token limits were not reached (at most 10 model calls per run; no call needed the 16000-token retry). The kit gave the model Browser Use's 18 default toolset members plus six it does not offer by default (hover_at, set_checked, click_at, drag_path, hold_keys, run_script), and the kit's agent cannot view images, so screenshots the toolset writes were not shown to the model."
         }
       ],
       "reuse_plan": {
@@ -1958,7 +1958,7 @@
           "wire_reasoning": "provider default",
           "reasoning_set_by": "product",
           "driven_by": "outside agent (our kit loop)",
-          "driven_by_detail": "Browser Harness 0.1.13 driven by the kit’s tool-calling agent glm/glm_agent.py at the model default (no reasoning field), every call read on our meter.",
+          "driven_by_detail": "Browser Harness 0.1.13 driven by the kit’s tool-calling agent glm/glm_agent.py at the model default (no reasoning field), every call read on our meter. Browser Harness was driven by the kit's agent with at most 500 turns, bin/bh allowing at most 500 browser calls, under a 300 s wall; max_tokens 8000 per model call; each Bash call capped at 120 s and each BH CLI call at 200 s; the agent cannot view images. 4 of the 59 runs ended at the 300 s wall and count as failures; the turn and call limits were not reached (at most 25 model calls per run).",
           "completionNote": "1 of the 60 planned runs was not run: the window’s last cell stopped on a worker clean-up fault before its final task, so the count is of 59 (that run is neither completed nor failed)."
         },
         {
@@ -1990,7 +1990,7 @@
           "wire_reasoning_evidence": "BHX bh: harness record reasoning_effort provider_default on 20/20 rows (glm_agent sends no field); xAI route W4 8663 -> 8648. Per-call log on W4, not read.",
           "reasoning_set_by": "product",
           "driven_by": "outside agent (our kit loop)",
-          "driven_by_detail": "Browser Harness 0.1.13 driven by the kit's tool-calling agent glm/glm_agent.py (Bash + Read tools, BH's SKILL.md appended to the prompt; the kit's bh_runtime does BH's first goto_url): at most 500 turns, 300 s wall. bin/bh allowed at most 500 browser calls; the kit's agent sent max_tokens 8000 per model call; each Bash call was capped at 120 s and each BH CLI call at 200 s."
+          "driven_by_detail": "Browser Harness 0.1.13 driven by the kit's tool-calling agent glm/glm_agent.py (Bash + Read tools, BH's SKILL.md appended to the prompt; the kit's bh_runtime does BH's first goto_url): at most 500 turns, 300 s wall. bin/bh allowed at most 500 browser calls; the kit's agent sent max_tokens 8000 per model call; each Bash call was capped at 120 s and each BH CLI call at 200 s. The kit's agent cannot view images, so Browser Harness screenshots were not shown to the model."
         },
         {
           "id": "published-006",
@@ -2021,7 +2021,7 @@
           "wire_reasoning_evidence": "BHG bh: Mac meter OPEN effort none on 272/272 GLM calls.",
           "reasoning_set_by": "product",
           "driven_by": "outside agent (our kit loop)",
-          "driven_by_detail": "Browser Harness 0.1.13 driven by the kit's tool-calling agent glm/glm_agent.py (Bash + Read tools, BH's SKILL.md appended to the prompt; the kit's bh_runtime does BH's first goto_url): at most 500 turns, 300 s wall. bin/bh allowed at most 500 browser calls; the kit's agent sent max_tokens 8000 per model call; each Bash call was capped at 120 s and each BH CLI call at 200 s. The call and token limits were not reached (at most 34 model calls per run; no call needed the 16000-token retry)."
+          "driven_by_detail": "Browser Harness 0.1.13 driven by the kit's tool-calling agent glm/glm_agent.py (Bash + Read tools, BH's SKILL.md appended to the prompt; the kit's bh_runtime does BH's first goto_url): at most 500 turns, 300 s wall. bin/bh allowed at most 500 browser calls; the kit's agent sent max_tokens 8000 per model call; each Bash call was capped at 120 s and each BH CLI call at 200 s. The call and token limits were not reached (at most 34 model calls per run; no call needed the 16000-token retry). The kit's agent cannot view images, so Browser Harness screenshots were not shown to the model."
         },
         {
           "id": "published-009",
@@ -2053,7 +2053,7 @@
           "wire_reasoning_evidence": "BHO bh: Mac meter OPEN effort none on 232/232 Opus 4.6 calls.",
           "reasoning_set_by": "product",
           "driven_by": "outside agent (our kit loop)",
-          "driven_by_detail": "Browser Harness 0.1.13 driven by the kit's tool-calling agent glm/glm_agent.py (Bash + Read tools, BH's SKILL.md appended to the prompt; the kit's bh_runtime does BH's first goto_url): at most 500 turns, 300 s wall. bin/bh allowed at most 500 browser calls; the kit's agent sent max_tokens 8000 per model call; each Bash call was capped at 120 s and each BH CLI call at 200 s. The call and token limits were not reached (at most 19 model calls per run; no call needed the 16000-token retry)."
+          "driven_by_detail": "Browser Harness 0.1.13 driven by the kit's tool-calling agent glm/glm_agent.py (Bash + Read tools, BH's SKILL.md appended to the prompt; the kit's bh_runtime does BH's first goto_url): at most 500 turns, 300 s wall. bin/bh allowed at most 500 browser calls; the kit's agent sent max_tokens 8000 per model call; each Bash call was capped at 120 s and each BH CLI call at 200 s. The call and token limits were not reached (at most 19 model calls per run; no call needed the 16000-token retry). The kit's agent cannot view images, so Browser Harness screenshots were not shown to the model."
         }
       ],
       "reuse_plan": {
@@ -2125,7 +2125,7 @@
           "wire_reasoning": "provider default",
           "reasoning_set_by": "product",
           "driven_by": "own agent",
-          "driven_by_detail": "Stagehand 3.7.3 stagehand.agent().execute() in its default DOM mode (kit fast/baselines/sh_run.mjs); the kit opens the start URL and points the model at our metered route. Reasoning: none sent by the product or by us (model default), every call read on our meter.",
+          "driven_by_detail": "Stagehand 3.7.3 stagehand.agent().execute() in its default DOM mode (kit fast/baselines/sh_run.mjs); the kit opens the start URL and points the model at our metered route. Reasoning: none sent by the product or by us (model default), every call read on our meter. The kit set maxSteps 40, where Stagehand 3.7.3 ships 20, and a 300 s wall, and pointed the model at our relay in Chat Completions format (openaiEndpointFormat chat). 4 of the 59 runs ended at the 300 s wall and count as failures; no completed run used more than 18 model calls, so the step setting did not decide any result.",
           "completionNote": "1 of the 60 planned runs was not run: the window’s last cell stopped on a worker clean-up fault before its final task, so the count is of 59 (that run is neither completed nor failed)."
         },
         {
@@ -2220,7 +2220,7 @@
           "wire_reasoning_evidence": "S2S sh: Stagehand sent no effort (AI SDK treats openai/gpt-6.1-sol as non-reasoning, LAUNCH-PLAN-W1 item 3; harness record provider_default); the S2S route was W1 8664 relay -> 8649 OpenAI Responses bridge started with --default-reasoning-effort low (stage2s-w1/route/openai_forwarder_responses.py; GATE-S2S/FIRST-ROWS-AUDIT.json: 'default effort low'), which adds effort low to every call that carries none. The S2S relay recorded no per-call effort field.",
           "reasoning_set_by": "our route (default added)",
           "driven_by": "own agent",
-          "driven_by_detail": "Stagehand 3.7.3 stagehand.agent().execute() in its default DOM mode (kit fast/baselines/sh_run.mjs). The kit sets maxSteps 40 and a 300 s wall, opens the start URL first (page.goto), and points the model at our relay (openai/<id>, openaiEndpointFormat chat). Its fetch wrapper only meters; no other loop drives it."
+          "driven_by_detail": "Stagehand 3.7.3 stagehand.agent().execute() in its default DOM mode (kit fast/baselines/sh_run.mjs). The kit sets maxSteps 40 and a 300 s wall, opens the start URL first (page.goto), and points the model at our relay (openai/<id>, openaiEndpointFormat chat). Its fetch wrapper only meters; no other loop drives it. Stagehand 3.7.3 ships maxSteps 20; one completed run made 22 model calls, so the shipped limit might have stopped it."
         }
       ],
       "reuse_plan": {
