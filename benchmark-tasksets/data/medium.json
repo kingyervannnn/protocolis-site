@@ -1423,44 +1423,7 @@
       "category": "outside agent",
       "group": "tools",
       "empty_label": "not run yet",
-      "records": [
-        {
-          "id": "published-093",
-          "tier": "grok",
-          "contender": "Protocolis Adaptive · outside agent",
-          "mode": "Adaptive",
-          "category": "outside agent",
-          "model": "Grok 4.6",
-          "task_set_id": "BLOCK2-DE-40",
-          "judge_id": "strict oracle (status completed, client terminal verified, common body.innerText page check, gold answer, not wrong_done, not void); capture-failed rows excluded (block-2 rule)",
-          "window_id": "SMT",
-          "date": "2026-11-13",
-          "worker": "benchmark worker (class A)",
-          "clock": "FINAL",
-          "completion": "76/80",
-          "finalTime": "10.0 s",
-          "reportedTime": "10.0 s",
-          "medianTime": "6.9 s",
-          "cost": "$0.0033",
-          "tokens": "7.5k",
-          "comparisonEligible": false,
-          "measured_at": {
-            "first": "2026-11-13T15:27:43Z",
-            "last": "2026-11-13T17:08:31Z"
-          },
-          "worker_class": "class A",
-          "capture_excluded": 0,
-          "void": 0,
-          "methodology": "Medium view: the 40 D/E tasks (BLOCK2-DE-40), each run twice · release 0.10.0 driven by an outside agent (the test kit’s own tool-calling loop, Agent Mode off), Standard and Adaptive rotating per task in one window, the class A worker, 13 November 2026 · Grok 4.6 on a flat-rate account; cost shown is the list-price equivalent · the engine as it ships: challenge handling on, host graphics at the product default, arrival motion off (as in the cloud product) · strict task-oracle scoring with the medium rules (task 32’s wall stays a failure; capture-failed rows left out; none here) · every attempt counted · 900 s wall; no run passed 300 s, so the 300 s reading is identical · time from tool-ready to the verified answer: mean per completed task, median beside · cost per completed task: Grok at xAI’s list price for the tokens used (a list-price equivalent, not a bill), plus the writer calls as billed (OpenRouter); our chooser (TypeSafe System One) is not priced · tokens per completed task: every metered model call.",
-          "wire_reasoning": "provider default",
-          "reasoning_set_by": "provider",
-          "driven_by": "outside agent (our kit loop)",
-          "driven_by_detail": "Protocolis Adaptive driven by an outside agent (Agent Mode off): the test kit’s own tool-calling loop sends page commands; Adaptive tries a fast path first and hands back when needed; the outside agent sends no reasoning setting (provider default); at most 500 turns and a 900 s wall; build: release 0.10.0. The engine ran as it ships, with its challenge handling on.",
-          "version": "release 0.10.0",
-          "tokensQualifier": "at least",
-          "tokensNote": "Our chooser’s calls carry no token count in this window, so the figure is a lower bound."
-        }
-      ]
+      "records": []
     },
     {
       "id": "protocolis-standard-outside",
@@ -1469,42 +1432,7 @@
       "category": "outside agent",
       "group": "tools",
       "empty_label": "not run yet",
-      "records": [
-        {
-          "id": "published-092",
-          "tier": "grok",
-          "contender": "Protocolis Standard · outside agent",
-          "mode": "Standard",
-          "category": "outside agent",
-          "model": "Grok 4.6",
-          "task_set_id": "BLOCK2-DE-40",
-          "judge_id": "strict oracle (status completed, client terminal verified, common body.innerText page check, gold answer, not wrong_done, not void); capture-failed rows excluded (block-2 rule)",
-          "window_id": "SMT",
-          "date": "2026-11-13",
-          "worker": "benchmark worker (class A)",
-          "clock": "FINAL",
-          "completion": "75/80",
-          "finalTime": "21.7 s",
-          "reportedTime": "21.7 s",
-          "medianTime": "19.3 s",
-          "cost": "$0.0116",
-          "tokens": "24.3k",
-          "comparisonEligible": false,
-          "measured_at": {
-            "first": "2026-11-13T15:27:43Z",
-            "last": "2026-11-13T17:08:31Z"
-          },
-          "worker_class": "class A",
-          "capture_excluded": 0,
-          "void": 0,
-          "methodology": "Medium view: the 40 D/E tasks (BLOCK2-DE-40), each run twice · release 0.10.0 driven by an outside agent (the test kit’s own tool-calling loop, Agent Mode off), Standard and Adaptive rotating per task in one window, the class A worker, 13 November 2026 · Grok 4.6 on a flat-rate account; cost shown is the list-price equivalent · the engine as it ships: challenge handling on, host graphics at the product default, arrival motion off (as in the cloud product) · strict task-oracle scoring with the medium rules (task 32’s wall stays a failure; capture-failed rows left out; none here) · every attempt counted · 900 s wall; no run passed 300 s, so the 300 s reading is identical · time from tool-ready to the verified answer: mean per completed task, median beside · cost per completed task: Grok at xAI’s list price for the tokens used (a list-price equivalent, not a bill), plus the writer calls as billed (OpenRouter); our chooser (TypeSafe System One) is not priced · tokens per completed task: every metered model call.",
-          "wire_reasoning": "provider default",
-          "reasoning_set_by": "provider",
-          "driven_by": "outside agent (our kit loop)",
-          "driven_by_detail": "Protocolis Standard driven by an outside agent (Agent Mode off): the test kit’s own tool-calling loop sends page commands; the outside agent sends no reasoning setting (provider default); at most 500 turns and a 900 s wall; build: release 0.10.0. The engine ran as it ships, with its challenge handling on.",
-          "version": "release 0.10.0"
-        }
-      ]
+      "records": []
     }
   ],
   "current_window": null,
