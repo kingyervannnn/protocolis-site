@@ -81,9 +81,17 @@
 
   const tip = doc.getElementById('range-tip');
   const css = (el, n) => win.getComputedStyle(el).getPropertyValue(n).trim();
-  function show(node, html) {
+  function show(node, html, away) {
     tip.innerHTML = html; tip.hidden = false;
     const box = node.getBoundingClientRect(), w = tip.offsetWidth, h = tip.offsetHeight;
+    if (away) {
+      // A chart point's depth line and time label run up and to the right, so its details open below and to the left of it,
+      // moving right or up only where the screen edge leaves no room.
+      const cx = box.left + box.width / 2, cy = box.top + box.height / 2, l = cx - w - 12, t = cy + 12;
+      tip.style.left = Math.max(8, Math.min(l >= 8 ? l : cx + 12, win.innerWidth - w - 8)) + 'px';
+      tip.style.top = Math.max(8, t + h <= win.innerHeight - 8 ? t : cy - h - 12) + 'px';
+      return;
+    }
     tip.style.left = Math.max(8, Math.min(box.left + box.width / 2 - w / 2, win.innerWidth - w - 8)) + 'px';
     tip.style.top = (box.top - h - 10 < 8 ? box.bottom + 10 : box.top - h - 10) + 'px';
   }
@@ -161,7 +169,7 @@
     host.addEventListener('click', e => { const b = e.target.closest('[data-flen]'); if (b) { state.task = b.dataset.flen; hide(); drawScatter(); } });
     const pt = e => e.target.closest && e.target.closest('.fc-pt');
     const lit = i => plot.querySelectorAll('.fc-z').forEach(g => g.classList.toggle('on', g.dataset.z === i));
-    const on = p => { show(p, details(all[+p.dataset.i])); lit(p.dataset.i); }, off = () => { hide(); lit(null); };
+    const on = p => { show(p, details(all[+p.dataset.i]), true); lit(p.dataset.i); }, off = () => { hide(); lit(null); };
     plot.addEventListener('mouseover', e => { const p = pt(e); if (p) on(p); });
     plot.addEventListener('mouseout', e => { if (pt(e)) off(); });
     plot.addEventListener('focusin', e => { const p = pt(e); if (p) on(p); });
