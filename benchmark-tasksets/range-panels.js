@@ -32,7 +32,14 @@
     const m = /^(\d+)\/(\d+)$/.exec(rec.completion); const p = 100 * m[1] / m[2];
     return (m[1] === m[2] ? '100' : (Math.round(p * 10) / 10).toFixed(1)) + '% (' + m[1] + ' of ' + m[2] + ')';
   }
-  const X0 = 46, X1 = 388, Y0 = 22, Y1 = 176;
+  // Geometry is set per draw from the panel's real width, so one SVG unit is one CSS pixel: lines and labels keep their size
+  // however wide the panel is (a fixed 400-unit canvas stretched to page width blew them up ~3x). Defaults are the old 400x210.
+  let W = 400, H = 210, X0 = 46, X1 = 388, Y0 = 22, Y1 = 176, YL = 198;
+  function geom(w) {
+    W = Math.max(280, Math.round(w || 400)); const small = W < 520;
+    H = Math.round(Math.min(360, Math.max(230, W * 0.3)));
+    X0 = small ? 50 : 62; X1 = W - (small ? 10 : 18); Y0 = 14; Y1 = H - 34; YL = H - 10;
+  }
   function scale(layer, vals) {
     if (layer === 'completion') {
       const lo = Math.min(80, Math.floor(Math.min(...vals) / 5) * 5), step = 100 - lo > 30 ? 10 : 5, ticks = [];
@@ -58,7 +65,7 @@
     cats.forEach((c, i) => {
       const withheld = panel === 'length' ? (sets[c[0]] || {}).status === 'withheld' : (sets[state.task] || {}).status === 'withheld';
       if (withheld) out += `<rect x="${(X0 + band * i + 3).toFixed(1)}" y="${Y0}" width="${(band - 6).toFixed(1)}" height="${Y1 - Y0}" fill="rgba(236,232,223,.035)"/><text class="range-lbl" x="${xc(i).toFixed(1)}" y="${(Y0 + Y1) / 2}" text-anchor="middle">being re-measured</text>`;
-      out += `<text class="range-lbl" x="${xc(i).toFixed(1)}" y="198" text-anchor="middle">${c[1]}</text>`;
+      out += `<text class="range-lbl" x="${xc(i).toFixed(1)}" y="${YL}" text-anchor="middle">${c[1]}</text>`;
     });
     if (!vals.length) return { svg: out + `<text class="range-lbl" x="${X0 + 8}" y="${Y0 + 14}">No figure on record for this view.</text>`, points: 0 };
     const sc = scale(layer, vals);
@@ -66,13 +73,13 @@
     const order = series.slice().sort((a, b) => ['op', 'st', 'us', 'hi'].indexOf(kind(a.id)) - ['op', 'st', 'us', 'hi'].indexOf(kind(b.id)));
     let points = 0, marks = '';
     order.forEach(s => {
-      const k = kind(s.id), dx = (s.k - (MAIN.length - 1) / 2) * 4.6;
+      const k = kind(s.id), dx = (s.k - (MAIN.length - 1) / 2) * Math.min(7, Math.max(4.6, (X1 - X0) / 140));
       const pos = s.pts.filter(Boolean).map(p => ({ x: xc(p.i) + dx, y: sc.y(p.v), p }));
       if (pos.length > 1) out += `<path class="range-${k}" d="${pos.map((q, n) => (n ? 'L' : 'M') + q.x.toFixed(1) + ',' + q.y.toFixed(1)).join(' ')}"/>`;
       pos.forEach(q => {
         const rec = q.p.x.rec, own = layer === 'speed' && rec.clock && rec.clock !== 'FINAL';
         const tip = [q.p.x.row.contender, q.p.cat + ': ' + shown(layer, rec) + (own ? ' (its own clock)' : ''), rec.model].map(esc).join('|');
-        marks += `<circle class="range-pt" tabindex="0" data-tip="${tip}" cx="${q.x.toFixed(1)}" cy="${q.y.toFixed(1)}" r="${k === 'op' ? 3.2 : 3.9}" fill="${own ? 'var(--bg-2)' : FILL[k]}" stroke="${own ? FILL[k] : 'var(--bg-2)'}" stroke-width="1.6"/>`;
+        marks += `<circle class="range-pt" tabindex="0" data-tip="${tip}" cx="${q.x.toFixed(1)}" cy="${q.y.toFixed(1)}" r="${k === 'op' ? 2.8 : 3.5}" fill="${own ? 'var(--bg-2)' : FILL[k]}" stroke="${own ? FILL[k] : 'var(--bg-2)'}" stroke-width="1.5"/>`;
         points++;
       });
     });
@@ -83,7 +90,7 @@
   const host = doc.getElementById('range'), tip = doc.getElementById('range-tip');
   function render() {
     for (const [id, panel, label] of [['range-models', 'models', 'Across models'], ['range-length', 'length', 'Across task length']])
-      doc.getElementById(id).innerHTML = `<svg viewBox="0 0 400 210" role="img" aria-label="${label}: ${UNIT[state.layer]}">${build(panel).svg}</svg>`;
+      { const el = doc.getElementById(id); geom(el.clientWidth); el.innerHTML = `<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="${label}: ${UNIT[state.layer]}">${build(panel).svg}</svg>`; }
     host.querySelectorAll('[data-range-unit]').forEach(n => { n.textContent = UNIT[state.layer] + (state.layer === 'completion' ? '' : ' · lower is better'); });
     host.querySelectorAll('[data-layer]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.layer === state.layer)));
     host.querySelectorAll('[data-rtask]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.rtask === state.task)));
@@ -112,5 +119,9 @@
     const f = table.querySelector('tr.ts-focus[data-section="main"],tr.ts-focus[data-section="tools"]'), id = f ? f.dataset.contender : null;
     if (id !== state.focus) { state.focus = id; render(); }
   }).observe(table, { childList: true });
+  // Redraw when a panel's width changes (the Range view starts hidden at width 0; window resizes).
+  if (win.ResizeObserver) { const seen = new Map(), ro = new win.ResizeObserver(es => {
+    if (es.some(e => { const w = Math.round(e.contentRect.width), c = w > 0 && w !== seen.get(e.target); seen.set(e.target, w); return c; })) render(); });
+    ['range-models', 'range-length'].forEach(id => { const el = doc.getElementById(id); if (el) ro.observe(el); }); }
   render();
 });
