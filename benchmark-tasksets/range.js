@@ -113,7 +113,12 @@
     const col = { ad: css(host, '--ad'), st: css(host, '--st') }, riv = css(host, "--riv"), acc = css(host, "--accent");
     let s = `<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="Tasks completed against cost per completed task, with time per completed task as depth, ${esc(label(TASKS, state.task))} tasks"><!--defs-->`;
     if (!pts.length) { plot.innerHTML = s + `<text x="${m.l}" y="${m.t + 16}" fill="${dim}" font-size="12">No figure on record for this view.</text></svg>`; return; }
-    const lo = Math.floor(Math.log10(Math.min(...pts.map(p => p.cost)))), hi = Math.max(lo + 1, Math.ceil(Math.log10(Math.max(...pts.map(p => p.cost)))));
+    // The cost axis (log) runs from the 1-2-5 value just below the cheapest point to the one just above the dearest, so no decade sits
+    // empty; its lines are those two ends and every power of ten between them.
+    const nice = (v, up) => { const e = Math.floor(Math.log10(v)), c = [1, 2, 5, 10].map(k => k * Math.pow(10, e)); return up ? c.find(k => k >= v * (1 - 1e-9)) : c.filter(k => k <= v * (1 + 1e-9)).pop(); };
+    const cmin = Math.min(...pts.map(p => p.cost)), cmax = Math.max(...pts.map(p => p.cost)), lo = Math.log10(nice(cmin / 1.25)), hi = Math.max(lo + 0.5, Math.log10(nice(cmax * 1.25, true)));
+    const xt = [Math.pow(10, lo)]; for (let e = Math.ceil(lo + 1e-9); e < hi - 1e-9; e++) xt.push(Math.pow(10, e)); xt.push(Math.pow(10, hi));
+    const money = v => '$' + +v.toPrecision(v >= 1 ? 2 : 1);
     // The y-axis fits the tab's results (a dot chart needs no zero baseline): even steps, half a step of room below the lowest point.
     const rs = pts.map(p => 100 * p.rate), rmin = Math.min(...rs), rmax = Math.max(...rs), step = [2, 5, 10, 20, 25].find(k => Math.max(rmax - rmin, 10) / k <= 6) || 25;
     const y0 = Math.max(0, Math.floor((rmin - step / 2) / step) * step), y1 = Math.min(100, Math.ceil((rmax + step / 2) / step) * step);
@@ -132,7 +137,7 @@
       defs += `<radialGradient id="${id}" cx=".36" cy=".32" r=".78"><stop offset="0" stop-color="${mix(k, '#ffffff', hl)}"/><stop offset=".5" stop-color="${k}"/><stop offset="1" stop-color="${mix(k, '#000000', .5)}"/></radialGradient>`; } return sph[key]; };
     // The box behind the chart: its top and right faces, shaded apart (lit from above), carry the front grid's lines back to the far face,
     // with a rule at each round time; then its edges; then the time ticks and labels along the floor's right edge.
-    const ys = [], xs = []; for (let t = y0; t <= y1; t += step) ys.push(Y(t / 100)); for (let e = lo; e <= hi; e++) xs.push(X(Math.pow(10, e)));
+    const ys = [], xs = []; for (let t = y0; t <= y1; t += step) ys.push(Y(t / 100)); xt.forEach(v => xs.push(X(v)));
     const zk = TK.filter(k => k >= zlo && k <= zhi), L = (a, b) => `<polyline points="${a} ${b}"/>`;
     s += `<polygon points="${P(xL, yT, 0)} ${P(xR, yT, 0)} ${P(xR, yT, 1)} ${P(xL, yT, 1)}" fill="${fg}" fill-opacity=".045"/>` +
       `<polygon points="${P(xR, yT, 0)} ${P(xR, yB, 0)} ${P(xR, yB, 1)} ${P(xR, yT, 1)}" fill="${fg}" fill-opacity=".022"/>` +
@@ -142,9 +147,14 @@
       [[xL, yT], [xR, yT], [xR, yB]].map(([x, y]) => L(P(x, y, 0), P(x, y, 1))).join('') +
       zk.map(k => L(P(xR, yB, Z(k)), P(xR + 4, yB, Z(k)))).join('') + '</g>' +
       [zlo, zmid, zhi].filter(Boolean).map(k => `<text x="${(xR + Z(k) * dx + 7).toFixed(1)}" y="${(yB - Z(k) * dy + 3.5).toFixed(1)}" fill="${dim}" font-family="var(--font-mono)" font-size="${small ? 9.5 : 10}">${tf(k)}</text>`).join('');
-    if (!small) s += `<text x="${m.l + 8}" y="${m.t + 16}" fill="${acc}" font-family="var(--font-mono)" font-size="10.5" letter-spacing="1.2">↖ MORE DONE, FOR LESS</text>`;
+    // The direction label takes the first clear corner, top left then bottom left, and is left out when points cover both.
+    const marks = pts.flatMap(c => { const x = X(c.cost), y = Y(c.rate), f = c.time != null ? Z(c.time) : 0; return [[x, y], [x + f * dx, y - f * dy]]; });
+    const spot = [m.t + 16, yB - 8].find(by => !marks.some(([x, y]) => x > m.l - 2 && x < m.l + 176 && y > by - 22 && y < by + 10));
+    if (!small && spot) s += `<text x="${m.l + 8}" y="${spot}" fill="${acc}" font-family="var(--font-mono)" font-size="10.5" letter-spacing="1.2">↖ MORE DONE, FOR LESS</text>`;
     for (let t = y0; t <= y1; t += step) { const v = t / 100; s += `<line x1="${m.l}" x2="${m.l + iw}" y1="${Y(v)}" y2="${Y(v)}" stroke="${rule}"/><text x="${m.l - 7}" y="${Y(v) + 4}" fill="${dim}" font-family="var(--font-mono)" font-size="10.5" text-anchor="end">${t}%</text>`; }
-    for (let e = lo; e <= hi; e++) { const v = Math.pow(10, e), x = X(v); s += `<line x1="${x}" x2="${x}" y1="${m.t}" y2="${m.t + ih}" stroke="${rule}"/><text x="${x}" y="${m.t + ih + 17}" fill="${dim}" font-family="var(--font-mono)" font-size="10.5" text-anchor="middle">$${v >= 1 ? v : v.toFixed(-e)}</text>`; }
+    // an end's label gives way when it would crowd a power of ten's
+    xt.forEach((v, i) => { const x = X(v), end = i === 0 || i === xt.length - 1, show = !end || !xt.some((u, j) => j > 0 && j < xt.length - 1 && Math.abs(X(u) - x) < 40);
+      s += `<line x1="${x}" x2="${x}" y1="${m.t}" y2="${m.t + ih}" stroke="${rule}"/>` + (show ? `<text x="${x}" y="${m.t + ih + 17}" fill="${dim}" font-family="var(--font-mono)" font-size="10.5" text-anchor="middle">${money(v)}</text>` : ''); });
     s += `<text x="${m.l + iw / 2}" y="${H - 5}" fill="${fg2}" font-family="var(--font-mono)" font-size="11" text-anchor="middle">${small ? 'cost per completed task (log)' : 'cost per completed task (log scale) · less is better'}</text>` +
       `<text transform="translate(12 ${m.t + ih / 2}) rotate(-90)" fill="${fg2}" font-family="var(--font-mono)" font-size="11" text-anchor="middle">tasks completed</text>`;
     // rivals first, then ours on top; the rival picked in the tables below is drawn bright
