@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<link rel="stylesheet" href="benchmark-tasksets/benchmarks.css?v=c352119ce2f4">
+<link rel="stylesheet" href="benchmark-tasksets/benchmarks.css?v=aa52965f168b">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Protocolis: solid-state browsing for AI agents</title>
@@ -804,14 +804,14 @@ body .sec.arch-sec h2{font-family:var(--font-display);font-size:clamp(1.35rem,2.
 <div class="rail">one engine</div>
 <h2>One engine. Any model. Any task length.</h2>
 <p class="range-lede">Every screenshot stack holds in one corner and falls away in the others: a tools mode for small models, an agent for frontier ones, a fast mode for short tasks. That is why Browser Use ships six ways to run the same agent. One compiled layer holds across the range, and the model above it can be whatever the budget allows.</p>
-<figure class="range-panel fc-fig"><figcaption><b>More done, for less</b><span>tasks completed · cost per completed task</span></figcaption>
+<figure class="range-panel fc-fig"><figcaption><b>More done, for less</b><span>tasks completed · cost per completed task · time as depth</span></figcaption>
 <div class="fc-ctl"><div class="ts-controls" aria-label="Task length"><div class="ts-tabs"><button type="button" data-flen="short" aria-pressed="false">Short</button><button type="button" data-flen="medium" aria-pressed="false">Medium</button><button type="button" data-flen="long" aria-pressed="true">Long</button></div></div>
-<div class="fc-legend"><span><i class="ad"></i>Protocolis Adaptive</span><span><i class="st"></i>Protocolis Standard</span><span><i class="ring"></i>ours, driven by an outside agent</span><span><i class="riv"></i>every other system · point at a mark</span></div></div>
+<div class="fc-legend"><span><i class="ad"></i>Protocolis Adaptive</span><span><i class="st"></i>Protocolis Standard</span><span><i class="ring"></i>ours, driven by an outside agent</span><span><i class="riv"></i>every other system · point at a mark</span><span><i class="z"></i>faint line back: time per completed task, further back is slower</span></div></div>
 <div class="fc-plot" id="range-plot"></div>
 <details class="fc-table"><summary>Show as a table</summary><div class="fc-scroll"><table id="range-table"></table></div></details>
 </figure>
 <p class="fc-say" id="range-say"></p>
-<p class="range-note">Each point is one system at one model size (Small, Strong, Frontier), taken from the detailed benchmarks below. Up is more tasks completed; left is less money per completed task, and failed runs count against it. <span id="range-runs"></span> Pick a rival in the tables and its point is drawn bright here.</p>
+<p class="range-note">Each point is one system at one model size (Small, Strong, Frontier), taken from the detailed benchmarks below. Up is more tasks completed; left is less money per completed task, and failed runs count against it. Depth is time per completed task: the further back a point's faint line runs, the slower it is. <span id="range-runs"></span> Pick a rival in the tables and its point is drawn bright here.</p>
 </div></section>
 <div id="range-tip" hidden></div>
 
@@ -1705,7 +1705,7 @@ t.addEventListener('click',function(e){if(e.target.closest&&e.target.closest('.v
 </script>
 <script src="benchmark-tasksets/selection.js?v=6f6fe47ee0d5"></script>
 <script src="benchmark-tasksets/benchmarks.js?v=eba9f0e5d0ad"></script>
-<script src="benchmark-tasksets/range.js?v=3ef87f2ae374"></script>
+<script src="benchmark-tasksets/range.js?v=bce7fc878e8a"></script>
 </body>
 </html>
 

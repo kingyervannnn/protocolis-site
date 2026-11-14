@@ -1,7 +1,7 @@
 // Two charts from the benchmark rows. They read the same data files and the same record selection as the tables,
 // so a chart and a table can never disagree, and a new result shows in both at once.
 //  - #range: "More done, for less": tasks completed against cost per completed task, one point per system and model size,
-//    for one task length (opens on Long). Time per completed task is in each point's details.
+//    for one task length (opens on Long). Time per completed task is a faint third axis (depth) and in each point's details.
 //  - #bench-grid: "Where each system holds up": every system across model size and task length, shaded by tasks completed.
 (function (root, factory) {
   if (typeof module === 'object' && module.exports) module.exports = factory;
@@ -94,31 +94,55 @@
   const host = doc.getElementById('range'), plot = doc.getElementById('range-plot');
   const state = { task: 'long', focus: null };
   function drawScatter() {
-    const W = Math.max(300, Math.round(plot.clientWidth || 640)), H = Math.round(Math.min(430, Math.max(280, W * 0.56)));
-    const small = W < 520, m = { l: small ? 40 : 52, r: 14, t: 14, b: 42 }, iw = W - m.l - m.r, ih = H - m.t - m.b;
+    const W = Math.max(300, Math.round(plot.clientWidth || 640)), small = W < 520;
+    // Speed is the third dimension, drawn faint behind the 2D chart (an oblique view): the depth axis recedes up and to the right,
+    // and each point's faint line runs back to its time per completed task, so further back is slower. The front face is unchanged.
+    const D = small ? 44 : Math.round(Math.min(124, Math.max(56, W * 0.1))), dx = D * Math.cos(Math.PI * 32 / 180), dy = D * Math.sin(Math.PI * 32 / 180);
+    const H = Math.round(Math.min(430, Math.max(280, W * 0.56)) + dy);
+    const m = { l: small ? 40 : 52, r: Math.round(dx) + (small ? 42 : 46), t: Math.round(14 + dy), b: 42 }, iw = W - m.l - m.r, ih = H - m.t - m.b;
     const cells = all.filter(c => c.task === state.task), pts = cells.filter(c => c.cost != null);
     const fg = css(host, '--fg'), fg2 = css(host, '--fg-2'), dim = css(host, '--dim'), rule = css(host, '--rule'), bg2 = css(host, '--bg-2');
     const col = { ad: css(host, '--ad'), st: css(host, '--st') }, riv = css(host, "--riv"), acc = css(host, "--accent");
-    let s = `<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="Tasks completed against cost per completed task, ${esc(label(TASKS, state.task))} tasks">`;
+    let s = `<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="Tasks completed against cost per completed task, with time per completed task as depth, ${esc(label(TASKS, state.task))} tasks">`;
     if (!pts.length) { plot.innerHTML = s + `<text x="${m.l}" y="${m.t + 16}" fill="${dim}" font-size="12">No figure on record for this view.</text></svg>`; return; }
     const lo = Math.floor(Math.log10(Math.min(...pts.map(p => p.cost)))), hi = Math.max(lo + 1, Math.ceil(Math.log10(Math.max(...pts.map(p => p.cost)))));
     // The y-axis fits the tab's results (a dot chart needs no zero baseline): even steps, half a step of room below the lowest point.
     const rs = pts.map(p => 100 * p.rate), rmin = Math.min(...rs), rmax = Math.max(...rs), step = [2, 5, 10, 20, 25].find(k => Math.max(rmax - rmin, 10) / k <= 6) || 25;
     const y0 = Math.max(0, Math.floor((rmin - step / 2) / step) * step), y1 = Math.min(100, Math.ceil((rmax + step / 2) / step) * step);
     const X = v => m.l + (Math.log10(v) - lo) / (hi - lo) * iw, top = y1 + (y1 === 100 ? step * 0.3 : 0), Y = v => m.t + (top - 100 * v) / (top - y0) * ih;
-    s += `<text x="${m.l + 8}" y="${m.t + 16}" fill="${acc}" font-family="var(--font-mono)" font-size="10.5" letter-spacing="1.2">↖ MORE DONE, FOR LESS</text>`;
+    // The depth scale is logarithmic like cost and fits the tab: from the round time at or below the fastest point to the one at or above the slowest.
+    const TK = [5, 10, 20, 30, 60, 120, 300, 600, 1200, 3600], tt = pts.map(p => p.time).filter(t => t != null);
+    const tmin = tt.length ? Math.min(...tt) : 10, tmax = tt.length ? Math.max(...tt) : 20;
+    const zlo = TK.filter(k => k <= tmin).pop() || 1, zhi = Math.max(TK.find(k => k >= tmax) || 7200, zlo * 2);
+    const Z = t => (Math.log(t) - Math.log(zlo)) / (Math.log(zhi) - Math.log(zlo)), zmid = TK.filter(k => Z(k) > .25 && Z(k) < .75).sort((a, b) => Math.abs(Z(a) - .5) - Math.abs(Z(b) - .5))[0];
+    const tf = t => t < 60 ? t + ' s' : t / 60 + ' min', xL = m.l, xR = m.l + iw, yT = m.t, yB = m.t + ih, P = (x, y, f) => `${(x + f * dx).toFixed(1)},${(y - f * dy).toFixed(1)}`;
+    // The faint box: the back face's top and right edges, the three receding edges you can see, a dashed rule at the middle time, ticks along the floor's right edge.
+    s += `<g stroke="${rule}" fill="none"><polyline points="${P(xL, yT, 1)} ${P(xR, yT, 1)} ${P(xR, yB, 1)}"/>` +
+      [[xL, yT], [xR, yT], [xR, yB]].map(([x, y]) => `<polyline points="${P(x, y, 0)} ${P(x, y, 1)}"/>`).join('') +
+      (zmid ? `<polyline stroke-dasharray="2 3" points="${P(xL, yT, Z(zmid))} ${P(xR, yT, Z(zmid))} ${P(xR, yB, Z(zmid))}"/>` : '') +
+      TK.filter(k => k >= zlo && k <= zhi).map(k => `<polyline points="${P(xR, yB, Z(k))} ${P(xR + 4, yB, Z(k))}"/>`).join('') + '</g>' +
+      [zlo, zmid, zhi].filter(Boolean).map(k => `<text x="${(xR + Z(k) * dx + 7).toFixed(1)}" y="${(yB - Z(k) * dy + 3.5).toFixed(1)}" fill="${dim}" font-family="var(--font-mono)" font-size="${small ? 9.5 : 10}">${tf(k)}</text>`).join('');
+    if (!small) s += `<text x="${m.l + 8}" y="${m.t + 16}" fill="${acc}" font-family="var(--font-mono)" font-size="10.5" letter-spacing="1.2">↖ MORE DONE, FOR LESS</text>`;
     for (let t = y0; t <= y1; t += step) { const v = t / 100; s += `<line x1="${m.l}" x2="${m.l + iw}" y1="${Y(v)}" y2="${Y(v)}" stroke="${rule}"/><text x="${m.l - 7}" y="${Y(v) + 4}" fill="${dim}" font-family="var(--font-mono)" font-size="10.5" text-anchor="end">${t}%</text>`; }
     for (let e = lo; e <= hi; e++) { const v = Math.pow(10, e), x = X(v); s += `<line x1="${x}" x2="${x}" y1="${m.t}" y2="${m.t + ih}" stroke="${rule}"/><text x="${x}" y="${m.t + ih + 17}" fill="${dim}" font-family="var(--font-mono)" font-size="10.5" text-anchor="middle">$${v >= 1 ? v : v.toFixed(-e)}</text>`; }
     s += `<text x="${m.l + iw / 2}" y="${H - 5}" fill="${fg2}" font-family="var(--font-mono)" font-size="11" text-anchor="middle">${small ? 'cost per completed task (log)' : 'cost per completed task (log scale) · less is better'}</text>` +
       `<text transform="translate(12 ${m.t + ih / 2}) rotate(-90)" fill="${fg2}" font-family="var(--font-mono)" font-size="11" text-anchor="middle">tasks completed</text>`;
     // rivals first, then ours on top; the rival picked in the tables below is drawn bright
     const order = pts.slice().sort((a, b) => (sys(a.id).mode ? 1 : 0) - (sys(b.id).mode ? 1 : 0) || (a.id === state.focus) - (b.id === state.focus));
+    // Each point's faint line back to its time, all under the full marks; pointing at a point lights its line and names its time.
+    for (const c of order) if (c.time != null) {
+      const o = sys(c.id), k = !o.mode ? (c.id === state.focus ? fg : riv) : col[o.mode], x = X(c.cost), y = Y(c.rate), f = Z(c.time);
+      const gx = (x + f * dx).toFixed(1), gy = (y - f * dy).toFixed(1);
+      s += `<g class="fc-z" data-z="${all.indexOf(c)}"><line x1="${x.toFixed(1)}" y1="${y.toFixed(1)}" x2="${gx}" y2="${gy}" stroke="${k}" stroke-width="1.5"/>` +
+        (o.drive === 'outside' ? `<circle cx="${gx}" cy="${gy}" r="2.8" fill="${bg2}" stroke="${k}" stroke-width="1.5"/>` : `<circle cx="${gx}" cy="${gy}" r="3" fill="${k}"/>`) +
+        `<text x="${(+gx + 6).toFixed(1)}" y="${(+gy - 5).toFixed(1)}" fill="${fg}" font-family="var(--font-mono)" font-size="10.5" paint-order="stroke" stroke="${bg2}" stroke-width="3">${esc(c.rec.reportedTime)}</text></g>`;
+    }
     for (const c of order) {
       const x = X(c.cost).toFixed(1), y = Y(c.rate).toFixed(1), o = sys(c.id), i = all.indexOf(c);
       const mark = !o.mode ? `<circle cx="${x}" cy="${y}" r="5.5" fill="${c.id === state.focus ? fg : riv}" stroke="${bg2}" stroke-width="2"/>`
         : o.drive === 'own' ? `<circle cx="${x}" cy="${y}" r="7" fill="${col[o.mode]}" stroke="${bg2}" stroke-width="2"/>`
         : `<circle cx="${x}" cy="${y}" r="6" fill="${bg2}" stroke="${col[o.mode]}" stroke-width="2.5"/>`;
-      s += `<g class="fc-pt" tabindex="0" data-i="${i}" aria-label="${esc(o.name + ', ' + o.sub + ', ' + label(TIERS, c.tier) + ' model: ' + c.right + ' of ' + c.of + ' completed, ' + (c.rec.cost || '') + ' per completed task')}"><circle cx="${x}" cy="${y}" r="14" fill="transparent"/>${mark}</g>`;
+      s += `<g class="fc-pt" tabindex="0" data-i="${i}" aria-label="${esc(o.name + ', ' + o.sub + ', ' + label(TIERS, c.tier) + ' model: ' + c.right + ' of ' + c.of + ' completed, ' + (c.rec.cost || '') + ' and ' + (c.rec.reportedTime || 'unreported time') + ' per completed task')}"><circle cx="${x}" cy="${y}" r="14" fill="transparent"/>${mark}</g>`;
     }
     plot.innerHTML = s + '</svg>';
     const rows = cells.slice().sort((a, b) => b.rate - a.rate || (a.cost ?? 1e9) - (b.cost ?? 1e9));
@@ -136,11 +160,13 @@
       : `Where a rival is faster per task, it finished fewer tasks at a higher cost per finished task: <b>${f.good} of ${f.n}</b> cells. <a href="#benchmarks">See every cell</a>.`;
     host.addEventListener('click', e => { const b = e.target.closest('[data-flen]'); if (b) { state.task = b.dataset.flen; hide(); drawScatter(); } });
     const pt = e => e.target.closest && e.target.closest('.fc-pt');
-    plot.addEventListener('mouseover', e => { const p = pt(e); if (p) show(p, details(all[+p.dataset.i])); });
-    plot.addEventListener('mouseout', e => { if (pt(e)) hide(); });
-    plot.addEventListener('focusin', e => { const p = pt(e); if (p) show(p, details(all[+p.dataset.i])); });
-    plot.addEventListener('focusout', hide);
-    plot.addEventListener('click', e => { const p = pt(e); if (p) show(p, details(all[+p.dataset.i])); });
+    const lit = i => plot.querySelectorAll('.fc-z').forEach(g => g.classList.toggle('on', g.dataset.z === i));
+    const on = p => { show(p, details(all[+p.dataset.i])); lit(p.dataset.i); }, off = () => { hide(); lit(null); };
+    plot.addEventListener('mouseover', e => { const p = pt(e); if (p) on(p); });
+    plot.addEventListener('mouseout', e => { if (pt(e)) off(); });
+    plot.addEventListener('focusin', e => { const p = pt(e); if (p) on(p); });
+    plot.addEventListener('focusout', off);
+    plot.addEventListener('click', e => { const p = pt(e); if (p) on(p); });
     // The rival picked in the tables below is the one drawn bright here.
     const table = doc.getElementById('ts-content');
     if (table && win.MutationObserver) new win.MutationObserver(() => {
