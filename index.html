@@ -1731,8 +1731,9 @@ t.addEventListener('click',function(e){if(e.target.closest&&e.target.closest('.v
 function set(v,fromGrid){s.setAttribute('data-bview',v);bs.forEach(function(b){b.setAttribute('aria-pressed',b.dataset.bview===v?'true':'false')});if(fromGrid&&s.getBoundingClientRect().top<0)scrollTo({top:s.getBoundingClientRect().top+scrollY-16,behavior:'smooth'})}
 bs.forEach(function(b){b.addEventListener('click',function(){set(b.dataset.bview,false)})});
 var g=document.getElementById('bench-grid');if(g){g.addEventListener('click',function(e){if(e.target.closest&&e.target.closest('td.c'))set('tables',true)},true);g.addEventListener('keydown',function(e){if((e.key==='Enter'||e.key===' ')&&e.target.closest&&e.target.closest('td.c'))set('tables',true)},true)}})();</script>
-<script src="benchmark-tasksets/range-panels.js?v=ffcf3a0d3c9d"></script>
+<script src="benchmark-tasksets/range-panels.js?v=bd1ab16b747b"></script>
 <script>(function(){var b=document.querySelectorAll("[data-rview-btn]"),v=document.querySelectorAll("[data-rview]");b.forEach(function(x){x.addEventListener("click",function(){var w=x.getAttribute("data-rview-btn");b.forEach(function(y){y.setAttribute("aria-pressed",String(y===x))});v.forEach(function(p){p.hidden=p.getAttribute("data-rview")!==w})})})})();</script>
+<style>/*RANGE-TIGHT*/#range .range-us{stroke-width:2}#range .range-st,#range .range-hi{stroke-width:1.5}#range .range-op{stroke-width:1.1;opacity:.75}#range .range-lbl{font-size:10px;letter-spacing:.14em;text-transform:uppercase}#range .range-ylab{font-size:10px;letter-spacing:.06em}#range .range-plot svg{height:auto;max-width:100%}</style>
 </body>
 </html>
 
