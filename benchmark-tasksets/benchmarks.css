@@ -55,3 +55,48 @@
  .ts-table .ts-reference-label{display:inline;margin-left:.45rem}.ts-table .ts-vs{font-size:.55rem}
  .ts-table.ts-labelled tbody tr:first-child td{padding-top:.4rem}
 }
+
+/* Front-page chart ("More done, for less") and the grid above the tables ("Where each system holds up").
+   Colours: Adaptive and Standard are a validated pair on the dark surface; rivals are one neutral; the grid is one hue, light for more. */
+#range,.gr{--ad:#b8863a;--st:#4a8fe0;--riv:#6f6c66;--wash:rgba(201,160,97,.07);--heat-lo:#1c1f25;--heat-hi:#efe4c8;--ink-dark:#14161a;--ink-light:#ece8df}
+.fc-fig{margin-top:1.6rem}
+.fc-ctl{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.8rem 1.5rem;margin-bottom:.4rem}
+.fc-legend{display:flex;flex-wrap:wrap;gap:.35rem 1.1rem;font-family:var(--font-mono);font-size:.7rem;color:var(--fg-2)}
+.fc-legend i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:.45rem;vertical-align:-1px}
+.fc-legend i.ad{background:var(--ad)}.fc-legend i.st{background:var(--st)}.fc-legend i.riv{background:var(--riv)}
+.fc-legend i.ring{box-shadow:inset 0 0 0 2px var(--fg-2)}
+.fc-plot{min-height:280px}
+.fc-plot svg{display:block;max-width:100%;height:auto}
+.fc-pt{cursor:pointer;outline:none}
+.fc-pt:focus-visible circle:last-child{stroke:var(--fg);stroke-width:2.5}
+.fc-table summary{font-family:var(--font-mono);font-size:.7rem;letter-spacing:.06em;color:var(--fg-2);cursor:pointer;margin-top:.7rem}
+.fc-scroll,.gr-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.fc-table table{width:100%;min-width:520px;border-collapse:collapse;margin-top:.6rem;font-family:var(--font-mono);font-size:.72rem;color:var(--fg-2)}
+.fc-table th,.fc-table td{text-align:left;padding:.4rem .5rem;border-bottom:1px solid var(--rule);white-space:nowrap}
+.fc-table th{color:var(--dim);font-weight:400}
+.fc-say{margin-top:1.1rem;max-width:62rem;font-size:clamp(.95rem,1.1vw,1.05rem);line-height:1.6;color:var(--fg)}
+.fc-say b{color:var(--accent);font-weight:600}
+.fc-say a{color:var(--fg-2);text-decoration:underline;text-underline-offset:3px}
+.gr{margin:1.4rem 0 1.8rem;padding:1.1rem 1.2rem 1rem;background:var(--bg-2);border-radius:4px}
+.gr figcaption{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:.3rem 1rem;margin-bottom:.7rem}
+.gr figcaption b{font-family:var(--font-display);font-weight:500;font-size:1.05rem;letter-spacing:.03em;color:var(--fg)}
+.gr figcaption span{font-family:var(--font-mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--fg-2)}
+.gr table{width:100%;min-width:760px;border-collapse:separate;border-spacing:2px;font-family:var(--font-mono);font-size:.74rem}
+.gr th,.gr td{padding:.42rem .35rem;text-align:center;font-weight:400}
+.gr thead th{color:var(--fg-2);font-size:.68rem}
+.gr thead th.len{color:var(--fg);letter-spacing:.08em;text-transform:uppercase}
+.gr th.sys{position:sticky;left:0;z-index:1;background:var(--bg-2);text-align:left;white-space:nowrap;font-family:var(--font-body);font-size:.82rem;color:var(--fg)}
+.gr th.sys small{display:block;margin-left:1.05rem;font-family:var(--font-mono);font-size:.64rem;color:var(--dim)}
+.gr tr.grp th{text-align:left;padding-top:.9rem;font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
+.gr td.c{border-radius:3px;cursor:pointer;font-variant-numeric:tabular-nums;outline:none}
+.gr td.c:focus-visible{box-shadow:0 0 0 2px var(--fg)}
+.gr td.c sup{font-size:.62em;margin-left:1px}
+.gr td.none{color:var(--dim);border:1px dashed var(--rule);border-radius:3px}
+.gr .gap{width:6px;padding:0}
+.gr td.sum{color:var(--fg-2)}
+.gr .sw{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:.55rem;vertical-align:0}
+.gr .sw.ad{background:var(--ad)}.gr .sw.st{background:var(--st)}.gr .sw.riv{background:var(--riv)}
+.gr .sw.ring{background:transparent}.gr .sw.ring.ad{box-shadow:inset 0 0 0 2px var(--ad)}.gr .sw.ring.st{box-shadow:inset 0 0 0 2px var(--st)}
+.gr-note{margin-top:.8rem;font-family:var(--font-mono);font-size:.7rem;line-height:1.7;color:var(--fg-2);max-width:62rem}
+.gr-note b{color:var(--fg);font-weight:500}
+@media (max-width:600px){.gr{padding:.9rem .7rem .8rem}.fc-legend{font-size:.66rem}.fc-fig figcaption,.gr figcaption{flex-direction:column;align-items:flex-start;gap:.3rem}}

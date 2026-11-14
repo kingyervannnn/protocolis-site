@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<link rel="stylesheet" href="benchmark-tasksets/benchmarks.css?v=982fedfb8abb">
+<link rel="stylesheet" href="benchmark-tasksets/benchmarks.css?v=c352119ce2f4">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Protocolis: solid-state browsing for AI agents</title>
@@ -804,17 +804,14 @@ body .sec.arch-sec h2{font-family:var(--font-display);font-size:clamp(1.35rem,2.
 <div class="rail">one engine</div>
 <h2>One engine. Any model. Any task length.</h2>
 <p class="range-lede">Every screenshot stack holds in one corner and falls away in the others: a tools mode for small models, an agent for frontier ones, a fast mode for short tasks. That is why Browser Use ships six ways to run the same agent. One compiled layer holds across the range, and the model above it can be whatever the budget allows.</p>
-<div class="ts-controls range-layers" aria-label="Chart layer"><div class="ts-tabs"><button type="button" data-layer="completion" aria-pressed="true">Completed</button><button type="button" data-layer="speed" aria-pressed="false">Speed</button><button type="button" data-layer="cost" aria-pressed="false">Cost</button></div></div>
-<div class="range-grid">
-<figure class="range-panel"><figcaption><b>Across models</b><span data-range-unit>tasks completed</span></figcaption>
-<div class="ts-controls range-pick" aria-label="Task set for this panel"><div class="ts-tabs"><button type="button" data-rtask="short" aria-pressed="true">Short</button><button type="button" data-rtask="medium" aria-pressed="false">Medium</button><button type="button" data-rtask="long" aria-pressed="false">Long</button></div></div>
-<div class="range-plot" id="range-models"></div></figure>
-<figure class="range-panel"><figcaption><b>Across task length</b><span data-range-unit>tasks completed</span></figcaption>
-<div class="ts-controls range-pick" aria-label="Model tier for this panel"><div class="ts-tabs"><button type="button" data-rtier="glm" aria-pressed="false">Small</button><button type="button" data-rtier="grok" aria-pressed="true">Strong</button><button type="button" data-rtier="opus" aria-pressed="false">Frontier</button></div></div>
-<div class="range-plot" id="range-length"></div></figure>
-</div>
-<div class="range-key"><span class="k us">Protocolis Adaptive</span><span class="k st">Protocolis Standard</span><span class="k op">every other system · point at a mark for its name</span></div>
-<p class="range-note">Each point is a row from the detailed benchmarks below; a system with no figure in a cell has no point there. Pick a rival in the tables and its line is drawn bright here. Long tasks are being re-measured.</p>
+<figure class="range-panel fc-fig"><figcaption><b>More done, for less</b><span>tasks completed · cost per completed task</span></figcaption>
+<div class="fc-ctl"><div class="ts-controls" aria-label="Task length"><div class="ts-tabs"><button type="button" data-flen="short" aria-pressed="false">Short</button><button type="button" data-flen="medium" aria-pressed="false">Medium</button><button type="button" data-flen="long" aria-pressed="true">Long</button></div></div>
+<div class="fc-legend"><span><i class="ad"></i>Protocolis Adaptive</span><span><i class="st"></i>Protocolis Standard</span><span><i class="ring"></i>ours, driven by an outside agent</span><span><i class="riv"></i>every other system · point at a mark</span></div></div>
+<div class="fc-plot" id="range-plot"></div>
+<details class="fc-table"><summary>Show as a table</summary><div class="fc-scroll"><table id="range-table"></table></div></details>
+</figure>
+<p class="fc-say" id="range-say"></p>
+<p class="range-note">Each point is one system at one model size (Small, Strong, Frontier), taken from the detailed benchmarks below. Up is more tasks completed; left is less money per completed task, and failed runs count against it. <span id="range-runs"></span> Pick a rival in the tables and its point is drawn bright here.</p>
 </div></section>
 <div id="range-tip" hidden></div>
 
@@ -1056,7 +1053,7 @@ body .sec.arch-sec h2{font-family:var(--font-display);font-size:clamp(1.35rem,2.
   <div class="result-foot"><div><p>Standard vs Browser Use’s own agent · GLM-5.3-flash · 98 held-out tasks</p><p>Ultrafast: Adaptive (lean) vs Jev Ultrafast · same 40 runs, matched clock · 40/40 vs 26/40 completed · Jev 4.2 s vs 8.8 s per completed task</p></div><a href="#benchmarks">Detailed benchmarks <span aria-hidden="true">↓</span></a></div>
 </section>
 
-<section class="sec" id="benchmarks"><div class="head ts-head"><div class="rail"><b>02</b>detailed benchmarks</div><h2 class="ts-sr">Every leading agent stack. One chart.</h2><div class="ts-headside"><div class="ts-controls"><div class="ts-tiers" aria-label="Model tier"><button type="button" data-tier="glm" aria-pressed="false">Small</button><button type="button" data-tier="grok" aria-pressed="true">Strong</button><button type="button" data-tier="opus" aria-pressed="false">Frontier</button></div><div class="ts-tabs" aria-label="Task set"><button type="button" data-taskset="short" aria-pressed="true">Short<small>20 tasks</small></button><button type="button" data-taskset="medium" aria-pressed="false">Medium<small>40 tasks</small></button><button type="button" data-taskset="long" aria-pressed="false">Long<small>20 tasks</small></button></div></div></div></div><div id="taskset-benchmarks"><div id="ts-content" aria-live="polite">Loading benchmark records…</div><noscript>Enable JavaScript to select a task set and view its run records.</noscript></div></section>
+<section class="sec" id="benchmarks"><div class="head ts-head"><div class="rail"><b>02</b>detailed benchmarks</div><h2 class="ts-sr">Every leading agent stack. One chart.</h2><div class="ts-headside"><div class="ts-controls"><div class="ts-tiers" aria-label="Model tier"><button type="button" data-tier="glm" aria-pressed="false">Small</button><button type="button" data-tier="grok" aria-pressed="true">Strong</button><button type="button" data-tier="opus" aria-pressed="false">Frontier</button></div><div class="ts-tabs" aria-label="Task set"><button type="button" data-taskset="short" aria-pressed="true">Short<small>20 tasks</small></button><button type="button" data-taskset="medium" aria-pressed="false">Medium<small>40 tasks</small></button><button type="button" data-taskset="long" aria-pressed="false">Long<small>20 tasks</small></button></div></div></div></div><figure class="gr" id="bench-grid"><figcaption><b>Where each system holds up</b><span>tasks completed · every model size and task length</span></figcaption><div class="gr-scroll"><table id="bench-grid-table" aria-label="Tasks completed by system, task length and model size"></table></div><p class="gr-note">Each cell is the share of tasks completed, brighter for more; a dash means not measured. <b>Lowest</b> is a system's weakest measured cell; <b>Cells</b> is how many of the nine it was measured in. † the test kit ran with challenge handling off. Point at a cell for its numbers; pick it to open that cell in the tables below.</p></figure><div id="taskset-benchmarks"><div id="ts-content" aria-live="polite">Loading benchmark records…</div><noscript>Enable JavaScript to select a task set and view its run records.</noscript></div></section>
 
 <section class="sec arch-sec" id="how" aria-label="How Protocolis works">
   <div class="arch">
@@ -1708,7 +1705,7 @@ t.addEventListener('click',function(e){if(e.target.closest&&e.target.closest('.v
 </script>
 <script src="benchmark-tasksets/selection.js?v=6f6fe47ee0d5"></script>
 <script src="benchmark-tasksets/benchmarks.js?v=eba9f0e5d0ad"></script>
-<script src="benchmark-tasksets/range.js?v=408f77237a5f"></script>
+<script src="benchmark-tasksets/range.js?v=93726c9d13e0"></script>
 </body>
 </html>
 

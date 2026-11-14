@@ -1,116 +1,192 @@
-// Range charts: real points from the benchmark rows, three layers (completed, speed, cost), two panels
-// (across models, across task length). Reads the same data files and the same record selection as the tables.
+// Two charts from the benchmark rows. They read the same data files and the same record selection as the tables,
+// so a chart and a table can never disagree, and a new result shows in both at once.
+//  - #range: "More done, for less": tasks completed against cost per completed task, one point per system and model size,
+//    for one task length (opens on Long). Time per completed task is in each point's details.
+//  - #bench-grid: "Where each system holds up": every system across model size and task length, shaded by tasks completed.
 (function (root, factory) {
   if (typeof module === 'object' && module.exports) module.exports = factory;
   else {
-    // On the site the tables' script loads the data files and announces them; the draft page carries them inline.
+    // On the site the tables' script loads the data files and announces them.
     const go = () => factory(root.__SETS__, root.BenchmarkSelection, root.document, root);
     if (root.__SETS__) go(); else root.document.addEventListener('ts-sets', go, { once: true });
   }
 })(typeof window === 'object' ? window : globalThis, function (sets, S, doc, win) {
   'use strict';
-  const MAIN = ['playwright-mcp', 'browser-use-tools-mode', 'browser-harness', 'browser-use-own-agent', 'stagehand', 'protocolis-standard', 'protocolis-adaptive'];
+  // The systems, in the tables' order and groups (Tools first, then Agents).
+  const SYS = [
+    { id: 'protocolis-adaptive-outside', name: 'Protocolis Adaptive', sub: 'outside agent', grp: 'tools', mode: 'ad', drive: 'outside' },
+    { id: 'protocolis-standard-outside', name: 'Protocolis Standard', sub: 'outside agent', grp: 'tools', mode: 'st', drive: 'outside' },
+    { id: 'playwright-mcp', name: 'Playwright MCP', sub: 'MCP server', grp: 'tools' },
+    { id: 'browser-use-tools-mode', name: 'Browser Use', sub: 'tools mode', grp: 'tools' },
+    { id: 'browser-harness', name: 'Browser Harness', sub: 'harness', grp: 'tools' },
+    { id: 'protocolis-adaptive', name: 'Protocolis Adaptive', sub: 'own agent', grp: 'agents', mode: 'ad', drive: 'own' },
+    { id: 'protocolis-standard', name: 'Protocolis Standard', sub: 'own agent', grp: 'agents', mode: 'st', drive: 'own' },
+    { id: 'browser-use-own-agent', name: 'Browser Use', sub: 'own agent', grp: 'agents' },
+    { id: 'stagehand', name: 'Stagehand', sub: 'framework', grp: 'agents' },
+  ];
+  const GROUPS = [['tools', 'Tools · I have an agent: which browser tool do I give it?'], ['agents', 'Agents · I hand over a task and get an answer']];
   const TIERS = [['glm', 'Small'], ['grok', 'Strong'], ['opus', 'Frontier']], TASKS = [['short', 'Short'], ['medium', 'Medium'], ['long', 'Long']];
-  const UNIT = { completion: 'tasks completed', speed: 'seconds per completed task', cost: 'cost per completed task' };
-  const state = { layer: 'completion', task: 'short', tier: 'grok', focus: null };
+  const sys = id => SYS.find(s => s.id === id);
+  const label = (list, k) => (list.find(x => x[0] === k) || [k, k])[1];
   const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  const num = s => { const m = /^\$?(\d+(?:\.\d+)?)(?: s)?$/.exec(typeof s === 'string' ? s.trim() : ''); return m && +m[1] > 0 ? +m[1] : null; };
+  const pct1 = v => (Math.round(v * 1000) / 10).toFixed(1) + '%';
 
-  // The record the tables show for this system, task set and tier (first of the site's own selection).
-  function record(task, tier, id) {
+  // One cell: the record the tables show for this system, task set and tier (first of the site's own selection).
+  function cell(task, tier, id) {
     const set = sets[task]; if (!set || set.status === 'withheld') return null;
     const row = set.rows.find(r => r.id === id); if (!row) return null;
     let rr = S.recordsFor(set, row, tier); if (id === 'protocolis-adaptive') rr = rr.filter(x => x.tier !== 'all');
-    return rr[0] ? { row, rec: rr[0] } : null;
+    const rec = rr[0], m = rec && /^(\d+)\/(\d+)$/.exec(rec.completion || ''); if (!m || !+m[2]) return null;
+    const right = +m[1], of = +m[2];
+    return { id, task, tier, rec, right, of, rate: right / of, rpt: Math.max(1, Math.round(of / (set.taskCount || of))),
+      time: num(rec.reportedTime), cost: num(rec.cost), passive: /APC_GATE_MODE=passive/.test(rec.driven_by_detail || '') };
   }
-  function value(layer, rec) {
-    if (layer === 'completion') { const m = /^(\d+)\/(\d+)$/.exec(rec.completion || ''); return m && +m[2] ? 100 * m[1] / m[2] : null; }
-    const s = layer === 'speed' ? rec.reportedTime : rec.cost; if (typeof s !== 'string') return null;
-    const m = /^\$?(\d+(?:\.\d+)?)(?: s)?$/.exec(s); return m && +m[1] > 0 ? +m[1] : null;
+  const all = [];
+  for (const [task] of TASKS) for (const [tier] of TIERS) for (const s of SYS) { const c = cell(task, tier, s.id); if (c) all.push(c); }
+  const get = (task, tier, id) => all.find(c => c.task === task && c.tier === tier && c.id === id) || null;
+  // Ours against the best rival in the same group, same task length and model size. A tie uses the tables' rule:
+  // under 0.05 percentage points apart is the same rate.
+  for (const c of all) {
+    if (!sys(c.id).mode) continue;
+    const riv = all.filter(r => !sys(r.id).mode && sys(r.id).grp === sys(c.id).grp && r.task === c.task && r.tier === c.tier);
+    if (!riv.length) continue;
+    const best = Math.max(...riv.map(r => r.rate)), pp = 100 * (c.rate - best);
+    c.vs = Math.abs(pp) < 0.05 ? 'tie' : pp > 0 ? 'lead' : 'behind';
+    c.vsNames = riv.filter(r => Math.abs(100 * (r.rate - best)) < 0.05).map(r => sys(r.id).name + ' (' + sys(r.id).sub + ')');
   }
-  function shown(layer, rec) {
-    if (layer !== 'completion') return layer === 'speed' ? rec.reportedTime : rec.cost;
-    const m = /^(\d+)\/(\d+)$/.exec(rec.completion); const p = 100 * m[1] / m[2];
-    return (m[1] === m[2] ? '100' : (Math.round(p * 10) / 10).toFixed(1)) + '% (' + m[1] + ' of ' + m[2] + ')';
+  function details(c) {
+    const s = sys(c.id), runs = c.rpt === 1 ? 'one run per task' : c.rpt + ' runs per task';
+    const vs = c.vs === 'tie' ? 'Same completion as ' + c.vsNames.join(', ') : c.vs === 'behind' ? 'Behind ' + c.vsNames.join(', ') : c.vs === 'lead' ? 'Ahead of every rival in its group here' : '';
+    const own = c.rec.clock && c.rec.clock !== 'FINAL' ? ' (its own clock)' : '';
+    return `<b>${esc(s.name)} · ${esc(s.sub)}</b>${esc(label(TASKS, c.task))} tasks · ${esc(label(TIERS, c.tier))} model (${esc(c.rec.model)})<br>` +
+      `${c.right} of ${c.of} completed (${pct1(c.rate)})<br>${esc(c.rec.reportedTime || 'time not reported')} per completed task${own} · ${esc(c.rec.cost || 'cost not reported')} each<br>` +
+      `${c.of} runs counted · ${runs}${vs ? '<br>' + esc(vs) : ''}${c.passive ? '<br>† the test kit ran with challenge handling off' : ''}`;
   }
-  const X0 = 46, X1 = 388, Y0 = 22, Y1 = 176;
-  function scale(layer, vals) {
-    if (layer === 'completion') {
-      const lo = Math.min(80, Math.floor(Math.min(...vals) / 5) * 5), step = 100 - lo > 30 ? 10 : 5, ticks = [];
-      for (let v = lo; v <= 100; v += step) ticks.push(v);
-      return { y: v => Y0 + (100 - v) / (100 - lo) * (Y1 - Y0), ticks, text: v => v + '%' };
+  // The faster-rival summary under the chart: every cell where a rival in the same group posts a faster time per completed task than ours.
+  function fasterRivals() {
+    let n = 0, good = 0;
+    for (const [task] of TASKS) for (const [tier] of TIERS) for (const drive of ['own', 'outside']) {
+      const ours = SYS.filter(s => s.drive === drive).map(s => get(task, tier, s.id)).filter(c => c && c.time != null);
+      if (!ours.length) continue;
+      const us = ours.reduce((a, b) => a.time <= b.time ? a : b), grp = sys(us.id).grp;
+      for (const r of SYS.filter(s => !s.mode && s.grp === grp).map(s => get(task, tier, s.id))) {
+        if (!r || r.time == null || r.time >= us.time) continue;
+        n++; if (us.rate > r.rate && us.cost != null && r.cost != null && us.cost < r.cost) good++;
+      }
     }
-    const lo = Math.min(...vals) / 1.6, hi = Math.max(...vals) * 1.6, L = Math.log10(lo), H = Math.log10(hi), ticks = [];
-    for (let k = Math.floor(L) - 1; k <= Math.ceil(H); k++) for (const m of [1, 3]) { const v = +(m * Math.pow(10, k)).toPrecision(1); if (v >= lo && v <= hi) ticks.push(v); }
-    return { y: v => Y1 - (Math.log10(v) - L) / (H - L) * (Y1 - Y0), ticks,
-      text: v => layer === 'speed' ? v + ' s' : '$' + (v >= 0.1 ? v.toFixed(2) : String(v)) };
+    return { n, good };
   }
-  function kind(id) { return id === 'protocolis-adaptive' ? 'us' : id === 'protocolis-standard' ? 'st' : id === state.focus ? 'hi' : 'op'; }
-  const FILL = { us: 'var(--accent)', st: '#8fa3b8', hi: 'var(--fg)', op: 'var(--dim)' };
+  if (!doc) return { cell, all, details, fasterRivals };
 
-  // panel: 'models' (x = tier, for the chosen task set) or 'length' (x = task set, for the chosen tier)
-  function build(panel) {
-    const cats = panel === 'models' ? TIERS : TASKS, layer = state.layer;
-    const get = (id, c) => panel === 'models' ? record(state.task, c, id) : record(c, state.tier, id);
-    const series = MAIN.map((id, k) => ({ id, k, pts: cats.map((c, i) => { const x = get(id, c[0]), v = x && value(layer, x.rec); return v == null ? null : { i, v, x, cat: c[1] }; }) }));
-    const vals = series.flatMap(s => s.pts.filter(Boolean).map(p => p.v));
-    const xc = i => X0 + (X1 - X0) * (i + .5) / cats.length, band = (X1 - X0) / cats.length;
-    let out = `<line class="range-gl" x1="${X0}" y1="${Y0}" x2="${X0}" y2="${Y1}"/><line class="range-gl" x1="${X0}" y1="${Y1}" x2="${X1}" y2="${Y1}"/>`;
-    cats.forEach((c, i) => {
-      const withheld = panel === 'length' ? (sets[c[0]] || {}).status === 'withheld' : (sets[state.task] || {}).status === 'withheld';
-      if (withheld) out += `<rect x="${(X0 + band * i + 3).toFixed(1)}" y="${Y0}" width="${(band - 6).toFixed(1)}" height="${Y1 - Y0}" fill="rgba(236,232,223,.035)"/><text class="range-lbl" x="${xc(i).toFixed(1)}" y="${(Y0 + Y1) / 2}" text-anchor="middle">being re-measured</text>`;
-      out += `<text class="range-lbl" x="${xc(i).toFixed(1)}" y="198" text-anchor="middle">${c[1]}</text>`;
-    });
-    if (!vals.length) return { svg: out + `<text class="range-lbl" x="${X0 + 8}" y="${Y0 + 14}">No figure on record for this view.</text>`, points: 0 };
-    const sc = scale(layer, vals);
-    sc.ticks.forEach(t => { const y = sc.y(t).toFixed(1); out += `<line class="range-gl" x1="${X0}" y1="${y}" x2="${X1}" y2="${y}" stroke-dasharray="2 6"/><text class="range-ylab" x="${X0 - 5}" y="${(+y + 3).toFixed(1)}" text-anchor="end">${sc.text(t)}</text>`; });
-    const order = series.slice().sort((a, b) => ['op', 'st', 'us', 'hi'].indexOf(kind(a.id)) - ['op', 'st', 'us', 'hi'].indexOf(kind(b.id)));
-    let points = 0, marks = '';
-    order.forEach(s => {
-      const k = kind(s.id), dx = (s.k - (MAIN.length - 1) / 2) * 4.6;
-      const pos = s.pts.filter(Boolean).map(p => ({ x: xc(p.i) + dx, y: sc.y(p.v), p }));
-      if (pos.length > 1) out += `<path class="range-${k}" d="${pos.map((q, n) => (n ? 'L' : 'M') + q.x.toFixed(1) + ',' + q.y.toFixed(1)).join(' ')}"/>`;
-      pos.forEach(q => {
-        const rec = q.p.x.rec, own = layer === 'speed' && rec.clock && rec.clock !== 'FINAL';
-        const tip = [q.p.x.row.contender, q.p.cat + ': ' + shown(layer, rec) + (own ? ' (its own clock)' : ''), rec.model].map(esc).join('|');
-        marks += `<circle class="range-pt" tabindex="0" data-tip="${tip}" cx="${q.x.toFixed(1)}" cy="${q.y.toFixed(1)}" r="${k === 'op' ? 3.2 : 3.9}" fill="${own ? 'var(--bg-2)' : FILL[k]}" stroke="${own ? FILL[k] : 'var(--bg-2)'}" stroke-width="1.6"/>`;
-        points++;
-      });
-    });
-    return { svg: out + marks, points };
-  }
-  if (!doc) return { state, build, record, value };
-
-  const host = doc.getElementById('range'), tip = doc.getElementById('range-tip');
-  function render() {
-    for (const [id, panel, label] of [['range-models', 'models', 'Across models'], ['range-length', 'length', 'Across task length']])
-      doc.getElementById(id).innerHTML = `<svg viewBox="0 0 400 210" role="img" aria-label="${label}: ${UNIT[state.layer]}">${build(panel).svg}</svg>`;
-    host.querySelectorAll('[data-range-unit]').forEach(n => { n.textContent = UNIT[state.layer] + (state.layer === 'completion' ? '' : ' · lower is better'); });
-    host.querySelectorAll('[data-layer]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.layer === state.layer)));
-    host.querySelectorAll('[data-rtask]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.rtask === state.task)));
-    host.querySelectorAll('[data-rtier]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.rtier === state.tier)));
-  }
-  function show(node) {
-    const [name, line, model] = node.dataset.tip.split('|'); tip.innerHTML = `<b>${name}</b>${line}<br>${model}`; tip.hidden = false;
+  const tip = doc.getElementById('range-tip');
+  const css = (el, n) => win.getComputedStyle(el).getPropertyValue(n).trim();
+  function show(node, html) {
+    tip.innerHTML = html; tip.hidden = false;
     const box = node.getBoundingClientRect(), w = tip.offsetWidth, h = tip.offsetHeight;
     tip.style.left = Math.max(8, Math.min(box.left + box.width / 2 - w / 2, win.innerWidth - w - 8)) + 'px';
     tip.style.top = (box.top - h - 10 < 8 ? box.bottom + 10 : box.top - h - 10) + 'px';
   }
-  const hide = () => { tip.hidden = true; };
-  host.addEventListener('click', e => {
-    const b = e.target.closest('button'); if (!b) { const p = e.target.closest('.range-pt'); if (p) show(p); return; }
-    if (b.dataset.layer) state.layer = b.dataset.layer; else if (b.dataset.rtask) state.task = b.dataset.rtask; else if (b.dataset.rtier) state.tier = b.dataset.rtier; else return;
-    hide(); render();
-  });
-  host.addEventListener('mouseover', e => { const p = e.target.closest('.range-pt'); if (p) show(p); });
-  host.addEventListener('mouseout', e => { if (e.target.closest('.range-pt')) hide(); });
-  host.addEventListener('focusin', e => { const p = e.target.closest('.range-pt'); if (p) show(p); });
-  host.addEventListener('focusout', hide);
+  const hide = () => { if (tip) tip.hidden = true; };
   win.addEventListener('scroll', hide, { passive: true });
-  // The rival picked in the tables below is the one drawn bright here.
-  const table = doc.getElementById('ts-content');
-  if (table && win.MutationObserver) new win.MutationObserver(() => {
-    const f = table.querySelector('tr.ts-focus[data-section="main"],tr.ts-focus[data-section="tools"]'), id = f ? f.dataset.contender : null;
-    if (id !== state.focus) { state.focus = id; render(); }
-  }).observe(table, { childList: true });
-  render();
+
+  /* ---------- "More done, for less" ---------- */
+  const host = doc.getElementById('range'), plot = doc.getElementById('range-plot');
+  const state = { task: 'long', focus: null };
+  function drawScatter() {
+    const W = Math.max(300, Math.round(plot.clientWidth || 640)), H = Math.round(Math.min(430, Math.max(280, W * 0.56)));
+    const small = W < 520, m = { l: small ? 40 : 52, r: 14, t: 14, b: 42 }, iw = W - m.l - m.r, ih = H - m.t - m.b;
+    const cells = all.filter(c => c.task === state.task), pts = cells.filter(c => c.cost != null);
+    const fg = css(host, '--fg'), fg2 = css(host, '--fg-2'), dim = css(host, '--dim'), rule = css(host, '--rule'), bg2 = css(host, '--bg-2');
+    const col = { ad: css(host, '--ad'), st: css(host, '--st') }, riv = css(host, "--riv"), acc = css(host, "--accent");
+    let s = `<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="Tasks completed against cost per completed task, ${esc(label(TASKS, state.task))} tasks">`;
+    if (!pts.length) { plot.innerHTML = s + `<text x="${m.l}" y="${m.t + 16}" fill="${dim}" font-size="12">No figure on record for this view.</text></svg>`; return; }
+    const lo = Math.floor(Math.log10(Math.min(...pts.map(p => p.cost)))), hi = Math.max(lo + 1, Math.ceil(Math.log10(Math.max(...pts.map(p => p.cost)))));
+    const X = v => m.l + (Math.log10(v) - lo) / (hi - lo) * iw, Y = v => m.t + (1 - v) * ih;
+    s += `<text x="${m.l + 8}" y="${m.t + 16}" fill="${acc}" font-family="var(--font-mono)" font-size="10.5" letter-spacing="1.2">↖ MORE DONE, FOR LESS</text>`;
+    for (const v of [0, .25, .5, .75, 1]) s += `<line x1="${m.l}" x2="${m.l + iw}" y1="${Y(v)}" y2="${Y(v)}" stroke="${rule}"/><text x="${m.l - 7}" y="${Y(v) + 4}" fill="${dim}" font-family="var(--font-mono)" font-size="10.5" text-anchor="end">${v * 100}%</text>`;
+    for (let e = lo; e <= hi; e++) { const v = Math.pow(10, e), x = X(v); s += `<line x1="${x}" x2="${x}" y1="${m.t}" y2="${m.t + ih}" stroke="${rule}"/><text x="${x}" y="${m.t + ih + 17}" fill="${dim}" font-family="var(--font-mono)" font-size="10.5" text-anchor="middle">$${v >= 1 ? v : v.toFixed(-e)}</text>`; }
+    s += `<text x="${m.l + iw / 2}" y="${H - 5}" fill="${fg2}" font-family="var(--font-mono)" font-size="11" text-anchor="middle">${small ? 'cost per completed task (log)' : 'cost per completed task (log scale) · less is better'}</text>` +
+      `<text transform="translate(12 ${m.t + ih / 2}) rotate(-90)" fill="${fg2}" font-family="var(--font-mono)" font-size="11" text-anchor="middle">tasks completed</text>`;
+    // rivals first, then ours on top; the rival picked in the tables below is drawn bright
+    const order = pts.slice().sort((a, b) => (sys(a.id).mode ? 1 : 0) - (sys(b.id).mode ? 1 : 0) || (a.id === state.focus) - (b.id === state.focus));
+    for (const c of order) {
+      const x = X(c.cost).toFixed(1), y = Y(c.rate).toFixed(1), o = sys(c.id), i = all.indexOf(c);
+      const mark = !o.mode ? `<circle cx="${x}" cy="${y}" r="5.5" fill="${c.id === state.focus ? fg : riv}" stroke="${bg2}" stroke-width="2"/>`
+        : o.drive === 'own' ? `<circle cx="${x}" cy="${y}" r="7" fill="${col[o.mode]}" stroke="${bg2}" stroke-width="2"/>`
+        : `<circle cx="${x}" cy="${y}" r="6" fill="${bg2}" stroke="${col[o.mode]}" stroke-width="2.5"/>`;
+      s += `<g class="fc-pt" tabindex="0" data-i="${i}" aria-label="${esc(o.name + ', ' + o.sub + ', ' + label(TIERS, c.tier) + ' model: ' + c.right + ' of ' + c.of + ' completed, ' + (c.rec.cost || '') + ' per completed task')}"><circle cx="${x}" cy="${y}" r="14" fill="transparent"/>${mark}</g>`;
+    }
+    plot.innerHTML = s + '</svg>';
+    const rows = cells.slice().sort((a, b) => b.rate - a.rate || (a.cost ?? 1e9) - (b.cost ?? 1e9));
+    doc.getElementById('range-table').innerHTML = '<thead><tr><th>System</th><th>Model size</th><th>Completed</th><th>Cost per completed task</th><th>Time per completed task</th></tr></thead><tbody>' +
+      rows.map(c => `<tr><td>${esc(sys(c.id).name)} · ${esc(sys(c.id).sub)}${c.passive ? ' †' : ''}</td><td>${esc(label(TIERS, c.tier))}</td><td>${c.right} of ${c.of} (${pct1(c.rate)})</td><td>${esc(c.rec.cost || 'not reported')}</td><td>${esc(c.rec.reportedTime || 'not reported')}</td></tr>`).join('') + '</tbody>';
+    const rpts = [...new Set(cells.map(c => c.rpt))], runs = cells.map(c => c.of);
+    doc.getElementById('range-runs').textContent = rpts.length === 1 && rpts[0] === 1
+      ? `${label(TASKS, state.task)} tasks are one run per task (${Math.min(...runs)} to ${Math.max(...runs)} runs per point), so each is accurate to about ±20 percentage points.`
+      : `${label(TASKS, state.task)} tasks: ${rpts.sort().join(' to ')} runs per task; each point's details give its count.`;
+    host.querySelectorAll('[data-flen]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.flen === state.task)));
+  }
+  if (host && plot) {
+    const f = fasterRivals(), say = doc.getElementById('range-say');
+    if (say) say.innerHTML = !f.n ? 'No rival is faster per completed task than ours in any measured cell.'
+      : `Where a rival is faster per task, it finished fewer tasks at a higher cost per finished task: <b>${f.good} of ${f.n}</b> cells. <a href="#benchmarks">See every cell</a>.`;
+    host.addEventListener('click', e => { const b = e.target.closest('[data-flen]'); if (b) { state.task = b.dataset.flen; hide(); drawScatter(); } });
+    const pt = e => e.target.closest && e.target.closest('.fc-pt');
+    plot.addEventListener('mouseover', e => { const p = pt(e); if (p) show(p, details(all[+p.dataset.i])); });
+    plot.addEventListener('mouseout', e => { if (pt(e)) hide(); });
+    plot.addEventListener('focusin', e => { const p = pt(e); if (p) show(p, details(all[+p.dataset.i])); });
+    plot.addEventListener('focusout', hide);
+    plot.addEventListener('click', e => { const p = pt(e); if (p) show(p, details(all[+p.dataset.i])); });
+    // The rival picked in the tables below is the one drawn bright here.
+    const table = doc.getElementById('ts-content');
+    if (table && win.MutationObserver) new win.MutationObserver(() => {
+      const f = table.querySelector('tr.ts-focus[data-section="main"],tr.ts-focus[data-section="tools"]'), id = f ? f.dataset.contender : null;
+      if (id !== state.focus) { state.focus = id; drawScatter(); }
+    }).observe(table, { childList: true });
+    let w = 0, raf = 0;
+    if (win.ResizeObserver) new win.ResizeObserver(() => { const n = plot.clientWidth; if (n && n !== w) { w = n; cancelAnimationFrame(raf); raf = requestAnimationFrame(drawScatter); } }).observe(plot);
+    drawScatter();
+  }
+
+  /* ---------- "Where each system holds up" ---------- */
+  const grid = doc.getElementById('bench-grid-table');
+  if (grid) {
+    const hex = h => { h = h.replace('#', ''); return [0, 2, 4].map(i => parseInt(h.slice(i, i + 2), 16)); };
+    const lum = rgb => { const f = v => { v /= 255; return v <= .03928 ? v / 12.92 : Math.pow((v + .055) / 1.055, 2.4); }; return .2126 * f(rgb[0]) + .7152 * f(rgb[1]) + .0722 * f(rgb[2]); };
+    const box = grid.closest('.gr'), lo = hex(css(box, '--heat-lo')), hi = hex(css(box, '--heat-hi')), inkD = css(box, '--ink-dark'), inkL = css(box, '--ink-light');
+    let h = '<thead><tr><th></th>' + TASKS.map(([, l]) => `<th class="len" colspan="3">${l} tasks</th><th class="gap"></th>`).join('') + '<th class="len" colspan="2">Summary</th></tr><tr><th></th>' +
+      TASKS.map(() => TIERS.map(([, t]) => `<th>${t}</th>`).join('') + '<th class="gap"></th>').join('') + '<th>Lowest</th><th>Cells</th></tr></thead><tbody>';
+    for (const [g, gl] of GROUPS) {
+      h += `<tr class="grp"><th colspan="15">${esc(gl)}</th></tr>`;
+      for (const s of SYS.filter(x => x.grp === g)) {
+        const sw = s.mode ? `<span class="sw ${s.drive === 'outside' ? 'ring ' : ''}${s.mode}"></span>` : '<span class="sw riv"></span>';
+        h += `<tr class="${s.mode ? 'ours' : ''}"><th class="sys" scope="row">${sw}${esc(s.name)}<small>${esc(s.sub)}</small></th>`;
+        const vals = [];
+        for (const [task] of TASKS) {
+          for (const [tier] of TIERS) {
+            const c = get(task, tier, s.id);
+            if (!c) { h += '<td class="none" title="not measured">–</td>'; continue; }
+            vals.push(c.rate);
+            const rgb = lo.map((v, i) => Math.round(v + (hi[i] - v) * c.rate)), ink = lum(rgb) > .36 ? inkD : inkL;
+            h += `<td class="c" tabindex="0" data-i="${all.indexOf(c)}" style="background:rgb(${rgb.join(',')});color:${ink}">${Math.round(c.rate * 100)}${c.passive ? '<sup>†</sup>' : ''}</td>`;
+          }
+          h += '<td class="gap"></td>';
+        }
+        h += `<td class="sum">${vals.length ? Math.round(Math.min(...vals) * 100) + '%' : '–'}</td><td class="sum">${vals.length}/9</td></tr>`;
+      }
+    }
+    grid.innerHTML = h + '</tbody>';
+    const td = e => e.target.closest && e.target.closest('td.c');
+    grid.addEventListener('mouseover', e => { const t = td(e); if (t) show(t, details(all[+t.dataset.i])); });
+    grid.addEventListener('mouseout', e => { if (td(e)) hide(); });
+    grid.addEventListener('focusin', e => { const t = td(e); if (t) show(t, details(all[+t.dataset.i])); });
+    grid.addEventListener('focusout', hide);
+    // Picking a cell opens that task set and model size in the tables below.
+    const open = t => { const c = all[+t.dataset.i], b = doc.getElementById('benchmarks'); if (!b) return;
+      const tb = b.querySelector(`[data-tier="${c.tier}"]`), sb = b.querySelector(`[data-taskset="${c.task}"]`);
+      if (tb && tb.getAttribute('aria-pressed') !== 'true') tb.click(); if (sb && sb.getAttribute('aria-pressed') !== 'true') sb.click(); };
+    grid.addEventListener('click', e => { const t = td(e); if (t) open(t); });
+    grid.addEventListener('keydown', e => { const t = td(e); if (t && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); open(t); } });
+  }
 });
