@@ -102,9 +102,12 @@
     let s = `<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="Tasks completed against cost per completed task, ${esc(label(TASKS, state.task))} tasks">`;
     if (!pts.length) { plot.innerHTML = s + `<text x="${m.l}" y="${m.t + 16}" fill="${dim}" font-size="12">No figure on record for this view.</text></svg>`; return; }
     const lo = Math.floor(Math.log10(Math.min(...pts.map(p => p.cost)))), hi = Math.max(lo + 1, Math.ceil(Math.log10(Math.max(...pts.map(p => p.cost)))));
-    const X = v => m.l + (Math.log10(v) - lo) / (hi - lo) * iw, Y = v => m.t + (1 - v) * ih;
+    // The y-axis fits the tab's results (a dot chart needs no zero baseline): even steps, half a step of room below the lowest point.
+    const rs = pts.map(p => 100 * p.rate), rmin = Math.min(...rs), rmax = Math.max(...rs), step = [2, 5, 10, 20, 25].find(k => Math.max(rmax - rmin, 10) / k <= 6) || 25;
+    const y0 = Math.max(0, Math.floor((rmin - step / 2) / step) * step), y1 = Math.min(100, Math.ceil((rmax + step / 2) / step) * step);
+    const X = v => m.l + (Math.log10(v) - lo) / (hi - lo) * iw, top = y1 + (y1 === 100 ? step * 0.3 : 0), Y = v => m.t + (top - 100 * v) / (top - y0) * ih;
     s += `<text x="${m.l + 8}" y="${m.t + 16}" fill="${acc}" font-family="var(--font-mono)" font-size="10.5" letter-spacing="1.2">↖ MORE DONE, FOR LESS</text>`;
-    for (const v of [0, .25, .5, .75, 1]) s += `<line x1="${m.l}" x2="${m.l + iw}" y1="${Y(v)}" y2="${Y(v)}" stroke="${rule}"/><text x="${m.l - 7}" y="${Y(v) + 4}" fill="${dim}" font-family="var(--font-mono)" font-size="10.5" text-anchor="end">${v * 100}%</text>`;
+    for (let t = y0; t <= y1; t += step) { const v = t / 100; s += `<line x1="${m.l}" x2="${m.l + iw}" y1="${Y(v)}" y2="${Y(v)}" stroke="${rule}"/><text x="${m.l - 7}" y="${Y(v) + 4}" fill="${dim}" font-family="var(--font-mono)" font-size="10.5" text-anchor="end">${t}%</text>`; }
     for (let e = lo; e <= hi; e++) { const v = Math.pow(10, e), x = X(v); s += `<line x1="${x}" x2="${x}" y1="${m.t}" y2="${m.t + ih}" stroke="${rule}"/><text x="${x}" y="${m.t + ih + 17}" fill="${dim}" font-family="var(--font-mono)" font-size="10.5" text-anchor="middle">$${v >= 1 ? v : v.toFixed(-e)}</text>`; }
     s += `<text x="${m.l + iw / 2}" y="${H - 5}" fill="${fg2}" font-family="var(--font-mono)" font-size="11" text-anchor="middle">${small ? 'cost per completed task (log)' : 'cost per completed task (log scale) · less is better'}</text>` +
       `<text transform="translate(12 ${m.t + ih / 2}) rotate(-90)" fill="${fg2}" font-family="var(--font-mono)" font-size="11" text-anchor="middle">tasks completed</text>`;
@@ -124,7 +127,7 @@
     const rpts = [...new Set(cells.map(c => c.rpt))], runs = cells.map(c => c.of);
     doc.getElementById('range-runs').textContent = rpts.length === 1 && rpts[0] === 1
       ? `${label(TASKS, state.task)} tasks are one run per task (${Math.min(...runs)} to ${Math.max(...runs)} runs per point), so each is accurate to about ±20 percentage points.`
-      : `${label(TASKS, state.task)} tasks: ${rpts.sort().join(' to ')} runs per task; each point's details give its count.`;
+      : `${label(TASKS, state.task)} tasks: ${Math.min(...rpts)} to ${Math.max(...rpts)} runs per task; each point's details give its count.`;
     host.querySelectorAll('[data-flen]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.flen === state.task)));
   }
   if (host && plot) {
