@@ -105,13 +105,13 @@
     const W = Math.max(300, Math.round(plot.clientWidth || 640)), small = W < 520;
     // Speed is the third dimension, drawn faint behind the 2D chart (an oblique view): the depth axis recedes up and to the right,
     // and each point's faint line runs back to its time per completed task, so further back is slower. The front face is unchanged.
-    const D = small ? 44 : Math.round(Math.min(124, Math.max(56, W * 0.1))), dx = D * Math.cos(Math.PI * 32 / 180), dy = D * Math.sin(Math.PI * 32 / 180);
+    const D = small ? 46 : Math.round(Math.min(150, Math.max(60, W * 0.12))), dx = D * Math.cos(Math.PI * 32 / 180), dy = D * Math.sin(Math.PI * 32 / 180);
     const H = Math.round(Math.min(430, Math.max(280, W * 0.56)) + dy);
     const m = { l: small ? 40 : 52, r: Math.round(dx) + (small ? 42 : 46), t: Math.round(14 + dy), b: 42 }, iw = W - m.l - m.r, ih = H - m.t - m.b;
     const cells = all.filter(c => c.task === state.task), pts = cells.filter(c => c.cost != null);
     const fg = css(host, '--fg'), fg2 = css(host, '--fg-2'), dim = css(host, '--dim'), rule = css(host, '--rule'), bg2 = css(host, '--bg-2');
     const col = { ad: css(host, '--ad'), st: css(host, '--st') }, riv = css(host, "--riv"), acc = css(host, "--accent");
-    let s = `<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="Tasks completed against cost per completed task, with time per completed task as depth, ${esc(label(TASKS, state.task))} tasks">`;
+    let s = `<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="Tasks completed against cost per completed task, with time per completed task as depth, ${esc(label(TASKS, state.task))} tasks"><!--defs-->`;
     if (!pts.length) { plot.innerHTML = s + `<text x="${m.l}" y="${m.t + 16}" fill="${dim}" font-size="12">No figure on record for this view.</text></svg>`; return; }
     const lo = Math.floor(Math.log10(Math.min(...pts.map(p => p.cost)))), hi = Math.max(lo + 1, Math.ceil(Math.log10(Math.max(...pts.map(p => p.cost)))));
     // The y-axis fits the tab's results (a dot chart needs no zero baseline): even steps, half a step of room below the lowest point.
@@ -124,11 +124,23 @@
     const zlo = TK.filter(k => k <= tmin).pop() || 1, zhi = Math.max(TK.find(k => k >= tmax) || 7200, zlo * 2);
     const Z = t => (Math.log(t) - Math.log(zlo)) / (Math.log(zhi) - Math.log(zlo)), zmid = TK.filter(k => Z(k) > .25 && Z(k) < .75).sort((a, b) => Math.abs(Z(a) - .5) - Math.abs(Z(b) - .5))[0];
     const tf = t => t < 60 ? t + ' s' : t / 60 + ' min', xL = m.l, xR = m.l + iw, yT = m.t, yB = m.t + ih, P = (x, y, f) => `${(x + f * dx).toFixed(1)},${(y - f * dy).toFixed(1)}`;
-    // The faint box: the back face's top and right edges, the three receding edges you can see, a dashed rule at the middle time, ticks along the floor's right edge.
-    s += `<g stroke="${rule}" fill="none"><polyline points="${P(xL, yT, 1)} ${P(xR, yT, 1)} ${P(xR, yB, 1)}"/>` +
-      [[xL, yT], [xR, yT], [xR, yB]].map(([x, y]) => `<polyline points="${P(x, y, 0)} ${P(x, y, 1)}"/>`).join('') +
-      (zmid ? `<polyline stroke-dasharray="2 3" points="${P(xL, yT, Z(zmid))} ${P(xR, yT, Z(zmid))} ${P(xR, yB, Z(zmid))}"/>` : '') +
-      TK.filter(k => k >= zlo && k <= zhi).map(k => `<polyline points="${P(xR, yB, Z(k))} ${P(xR + 4, yB, Z(k))}"/>`).join('') + '</g>' +
+    // Shading: marks are lit spheres (light from the upper left), and things further back fade, so the eye reads depth.
+    const hx = h => { h = h.replace('#', ''); if (h.length === 3) h = h.replace(/./g, c => c + c); return [0, 2, 4].map(i => parseInt(h.slice(i, i + 2), 16)); };
+    const mix = (h, t, w) => '#' + hx(h).map((v, i) => Math.round(v + (hx(t)[i] - v) * w).toString(16).padStart(2, '0')).join('');
+    const sph = {}; let defs = '';
+    const ball = (k, hl = .5) => { if (!/^#([0-9a-f]{3}){1,2}$/i.test(k)) return k; const key = k + hl; if (!sph[key]) { const id = 'fc-s' + Object.keys(sph).length; sph[key] = `url(#${id})`;
+      defs += `<radialGradient id="${id}" cx=".36" cy=".32" r=".78"><stop offset="0" stop-color="${mix(k, '#ffffff', hl)}"/><stop offset=".5" stop-color="${k}"/><stop offset="1" stop-color="${mix(k, '#000000', .5)}"/></radialGradient>`; } return sph[key]; };
+    // The box behind the chart: its top and right faces, shaded apart (lit from above), carry the front grid's lines back to the far face,
+    // with a rule at each round time; then its edges; then the time ticks and labels along the floor's right edge.
+    const ys = [], xs = []; for (let t = y0; t <= y1; t += step) ys.push(Y(t / 100)); for (let e = lo; e <= hi; e++) xs.push(X(Math.pow(10, e)));
+    const zk = TK.filter(k => k >= zlo && k <= zhi), L = (a, b) => `<polyline points="${a} ${b}"/>`;
+    s += `<polygon points="${P(xL, yT, 0)} ${P(xR, yT, 0)} ${P(xR, yT, 1)} ${P(xL, yT, 1)}" fill="${fg}" fill-opacity=".045"/>` +
+      `<polygon points="${P(xR, yT, 0)} ${P(xR, yB, 0)} ${P(xR, yB, 1)} ${P(xR, yT, 1)}" fill="${fg}" fill-opacity=".022"/>` +
+      `<g stroke="${rule}" fill="none" stroke-opacity=".75">` + xs.map(x => L(P(x, yT, 0), P(x, yT, 1))).join('') + ys.map(y => L(P(xR, y, 0), P(xR, y, 1))).join('') +
+      zk.map(k => L(P(xL, yT, Z(k)), P(xR, yT, Z(k))) + L(P(xR, yT, Z(k)), P(xR, yB, Z(k)))).join('') + '</g>' +
+      `<g stroke="${rule}" fill="none"><polyline points="${P(xL, yT, 1)} ${P(xR, yT, 1)} ${P(xR, yB, 1)}"/>` +
+      [[xL, yT], [xR, yT], [xR, yB]].map(([x, y]) => L(P(x, y, 0), P(x, y, 1))).join('') +
+      zk.map(k => L(P(xR, yB, Z(k)), P(xR + 4, yB, Z(k)))).join('') + '</g>' +
       [zlo, zmid, zhi].filter(Boolean).map(k => `<text x="${(xR + Z(k) * dx + 7).toFixed(1)}" y="${(yB - Z(k) * dy + 3.5).toFixed(1)}" fill="${dim}" font-family="var(--font-mono)" font-size="${small ? 9.5 : 10}">${tf(k)}</text>`).join('');
     if (!small) s += `<text x="${m.l + 8}" y="${m.t + 16}" fill="${acc}" font-family="var(--font-mono)" font-size="10.5" letter-spacing="1.2">↖ MORE DONE, FOR LESS</text>`;
     for (let t = y0; t <= y1; t += step) { const v = t / 100; s += `<line x1="${m.l}" x2="${m.l + iw}" y1="${Y(v)}" y2="${Y(v)}" stroke="${rule}"/><text x="${m.l - 7}" y="${Y(v) + 4}" fill="${dim}" font-family="var(--font-mono)" font-size="10.5" text-anchor="end">${t}%</text>`; }
@@ -137,22 +149,25 @@
       `<text transform="translate(12 ${m.t + ih / 2}) rotate(-90)" fill="${fg2}" font-family="var(--font-mono)" font-size="11" text-anchor="middle">tasks completed</text>`;
     // rivals first, then ours on top; the rival picked in the tables below is drawn bright
     const order = pts.slice().sort((a, b) => (sys(a.id).mode ? 1 : 0) - (sys(b.id).mode ? 1 : 0) || (a.id === state.focus) - (b.id === state.focus));
-    // Each point's faint line back to its time, all under the full marks; pointing at a point lights its line and names its time.
+    // Each point's line back to its time: it fades as it recedes and ends in the same mark, smaller with distance. All sit under the
+    // full marks; pointing at a point lights its line and names its time.
     for (const c of order) if (c.time != null) {
-      const o = sys(c.id), k = !o.mode ? (c.id === state.focus ? fg : riv) : col[o.mode], x = X(c.cost), y = Y(c.rate), f = Z(c.time);
-      const gx = (x + f * dx).toFixed(1), gy = (y - f * dy).toFixed(1);
-      s += `<g class="fc-z" data-z="${all.indexOf(c)}"><line x1="${x.toFixed(1)}" y1="${y.toFixed(1)}" x2="${gx}" y2="${gy}" stroke="${k}" stroke-width="1.5"/>` +
-        (o.drive === 'outside' ? `<circle cx="${gx}" cy="${gy}" r="2.8" fill="${bg2}" stroke="${k}" stroke-width="1.5"/>` : `<circle cx="${gx}" cy="${gy}" r="3" fill="${k}"/>`) +
-        `<text x="${(+gx + 6).toFixed(1)}" y="${(+gy - 5).toFixed(1)}" fill="${fg}" font-family="var(--font-mono)" font-size="10.5" paint-order="stroke" stroke="${bg2}" stroke-width="3">${esc(c.rec.reportedTime)}</text></g>`;
+      const o = sys(c.id), k = !o.mode ? (c.id === state.focus ? fg : riv) : col[o.mode], x = X(c.cost), y = Y(c.rate), f = Z(c.time), i = all.indexOf(c);
+      const gx = (x + f * dx).toFixed(1), gy = (y - f * dy).toFixed(1), sc = 1 - 0.4 * f, r0 = !o.mode ? 5.5 : o.drive === 'own' ? 7 : 6;
+      defs += `<linearGradient id="fc-l${i}" gradientUnits="userSpaceOnUse" x1="${x.toFixed(1)}" y1="${y.toFixed(1)}" x2="${gx}" y2="${gy}"><stop offset="0" stop-color="${k}" stop-opacity=".95"/><stop offset="1" stop-color="${k}" stop-opacity=".25"/></linearGradient>`;
+      s += `<g class="fc-z" data-z="${i}"><line x1="${x.toFixed(1)}" y1="${y.toFixed(1)}" x2="${gx}" y2="${gy}" stroke="url(#fc-l${i})" stroke-width="1.6"/>` +
+        (o.drive === 'outside' ? `<circle class="fc-g" cx="${gx}" cy="${gy}" r="${(r0 * sc).toFixed(1)}" fill="${bg2}" stroke="${k}" stroke-width="${(2.5 * sc).toFixed(1)}"/>`
+          : `<circle class="fc-g" cx="${gx}" cy="${gy}" r="${(r0 * sc).toFixed(1)}" fill="${ball(k, o.mode ? .5 : .25)}"/>`) +
+        `<text x="${(+gx + 7).toFixed(1)}" y="${(+gy - 6).toFixed(1)}" fill="${fg}" font-family="var(--font-mono)" font-size="10.5" paint-order="stroke" stroke="${bg2}" stroke-width="3">${esc(c.rec.reportedTime)}</text></g>`;
     }
     for (const c of order) {
       const x = X(c.cost).toFixed(1), y = Y(c.rate).toFixed(1), o = sys(c.id), i = all.indexOf(c);
-      const mark = !o.mode ? `<circle cx="${x}" cy="${y}" r="5.5" fill="${c.id === state.focus ? fg : riv}" stroke="${bg2}" stroke-width="2"/>`
-        : o.drive === 'own' ? `<circle cx="${x}" cy="${y}" r="7" fill="${col[o.mode]}" stroke="${bg2}" stroke-width="2"/>`
+      const mark = !o.mode ? `<circle cx="${x}" cy="${y}" r="5.5" fill="${ball(c.id === state.focus ? fg : riv, .25)}" stroke="${bg2}" stroke-width="2"/>`
+        : o.drive === 'own' ? `<circle cx="${x}" cy="${y}" r="7" fill="${ball(col[o.mode])}" stroke="${bg2}" stroke-width="2"/>`
         : `<circle cx="${x}" cy="${y}" r="6" fill="${bg2}" stroke="${col[o.mode]}" stroke-width="2.5"/>`;
       s += `<g class="fc-pt" tabindex="0" data-i="${i}" aria-label="${esc(o.name + ', ' + o.sub + ', ' + label(TIERS, c.tier) + ' model: ' + c.right + ' of ' + c.of + ' completed, ' + (c.rec.cost || '') + ' and ' + (c.rec.reportedTime || 'unreported time') + ' per completed task')}"><circle cx="${x}" cy="${y}" r="14" fill="transparent"/>${mark}</g>`;
     }
-    plot.innerHTML = s + '</svg>';
+    plot.innerHTML = s.replace('<!--defs-->', '<defs>' + defs + '</defs>') + '</svg>';
     const rows = cells.slice().sort((a, b) => b.rate - a.rate || (a.cost ?? 1e9) - (b.cost ?? 1e9));
     doc.getElementById('range-table').innerHTML = '<thead><tr><th>System</th><th>Model size</th><th>Completed</th><th>Cost per completed task</th><th>Time per completed task</th></tr></thead><tbody>' +
       rows.map(c => `<tr><td>${esc(sys(c.id).name)} · ${esc(sys(c.id).sub)}${c.passive ? ' †' : ''}</td><td>${esc(label(TIERS, c.tier))}</td><td>${c.right} of ${c.of} (${pct1(c.rate)})</td><td>${esc(c.rec.cost || 'not reported')}</td><td>${esc(c.rec.reportedTime || 'not reported')}</td></tr>`).join('') + '</tbody>';

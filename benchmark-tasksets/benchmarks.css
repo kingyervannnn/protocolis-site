@@ -68,7 +68,7 @@
 .fc-plot{min-height:280px}
 .fc-plot svg{display:block;max-width:100%;height:auto}
 .fc-pt{cursor:pointer;outline:none}
-.fc-z{opacity:.4;pointer-events:none;transition:opacity .15s}.fc-z text{visibility:hidden}.fc-z.on{opacity:1}.fc-z.on text{visibility:visible}
+.fc-z{opacity:.62;pointer-events:none;transition:opacity .15s}.fc-z .fc-g{opacity:.8}.fc-z text{visibility:hidden}.fc-z.on{opacity:1}.fc-z.on text{visibility:visible}
 .fc-legend i.z{width:14px;border-radius:0;background:linear-gradient(to bottom right,transparent calc(50% - .8px),var(--fg-2) calc(50% - .8px),var(--fg-2) calc(50% + .8px),transparent calc(50% + .8px));opacity:.55}
 .fc-pt:focus-visible circle:last-child{stroke:var(--fg);stroke-width:2.5}
 .fc-table summary{font-family:var(--font-mono);font-size:.7rem;letter-spacing:.06em;color:var(--fg-2);cursor:pointer;margin-top:.7rem}
