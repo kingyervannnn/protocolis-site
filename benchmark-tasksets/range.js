@@ -107,7 +107,7 @@
     // and each point's faint line runs back to its time per completed task, so further back is slower. The front face is unchanged.
     const D = small ? 46 : Math.round(Math.min(150, Math.max(60, W * 0.12))), dx = D * Math.cos(Math.PI * 32 / 180), dy = D * Math.sin(Math.PI * 32 / 180);
     const H = Math.round(Math.min(430, Math.max(280, W * 0.56)) + dy);
-    const m = { l: small ? 40 : 52, r: Math.round(dx) + (small ? 42 : 46), t: Math.round((small ? 14 : 18) + dy), b: 42 }, iw = W - m.l - m.r, ih = H - m.t - m.b;
+    const m = { l: small ? 40 : 52, r: Math.round(dx) + (small ? 42 : 46), t: Math.round(14 + dy), b: 42 }, iw = W - m.l - m.r, ih = H - m.t - m.b;
     const cells = all.filter(c => c.task === state.task), pts = cells.filter(c => c.cost != null);
     const fg = css(host, '--fg'), fg2 = css(host, '--fg-2'), dim = css(host, '--dim'), rule = css(host, '--rule'), bg2 = css(host, '--bg-2');
     const col = { ad: css(host, '--ad'), st: css(host, '--st') }, riv = css(host, "--riv"), acc = css(host, "--accent");
@@ -150,8 +150,10 @@
       [zlo, zmid, zhi].filter(Boolean).map(k => `<text x="${(xR + Z(k) * dx + 7).toFixed(1)}" y="${(yB - Z(k) * dy + 3.5).toFixed(1)}" fill="${dim}" font-family="var(--font-mono)" font-size="${small ? 9.5 : 10}">${tf(k)}</text>`).join('');
     // The direction label takes the first clear corner, top left then bottom left, and is left out when points cover both.
     const marks = pts.flatMap(c => { const x = X(c.cost), y = Y(c.rate), f = c.time != null ? Z(c.time) : 0; return [[x, y], [x + f * dx, y - f * dy]]; });
-    // The direction label sits just above the top-left corner of the box (owner, 15 Nov), clear of the 100% ceiling; bottom-left only if a mark is there.
-    const spot = [yT - dy - 4, yB - 8].find(by => !marks.some(([x, y]) => x > m.l - 2 && x < m.l + 176 && y > by - 22 && y < by + 10));
+    // The direction label sits inside the box at the top-left (owner, 15 Nov): the first clear line from just under the 100% ceiling's marks
+    // down to the middle of the box; bottom-left only if none is clear.
+    const lanes = []; for (let by = yT + 24; by < yT + ih / 2; by += 7) lanes.push(by); lanes.push(yB - 8);
+    const spot = lanes.find(by => !marks.some(([x, y]) => x > m.l - 2 && x < m.l + 172 && y > by - 22 && y < by + 10)); // the label ends near m.l + 165
     if (!small && spot) s += `<text x="${m.l + 8}" y="${spot}" fill="${acc}" font-family="var(--font-mono)" font-size="10.5" letter-spacing="1.2">↖ MORE DONE, FOR LESS</text>`;
     for (let t = y0; t <= y1; t += step) { const v = t / 100; s += `<line x1="${m.l}" x2="${m.l + iw}" y1="${Y(v)}" y2="${Y(v)}" stroke="${rule}"/><text x="${m.l - 7}" y="${Y(v) + 4}" fill="${dim}" font-family="var(--font-mono)" font-size="10.5" text-anchor="end">${t}%</text>`; }
     // an end's label gives way when it would crowd a power of ten's
