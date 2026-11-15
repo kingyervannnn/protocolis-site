@@ -1422,7 +1422,7 @@
       "mode": "Adaptive",
       "category": "outside agent",
       "group": "tools",
-      "empty_label": "not run yet",
+      "empty_label": "new results with 0.10.3",
       "records": []
     },
     {
@@ -1431,7 +1431,7 @@
       "mode": "Standard",
       "category": "outside agent",
       "group": "tools",
-      "empty_label": "not run yet",
+      "empty_label": "new results with 0.10.3",
       "records": []
     }
   ],

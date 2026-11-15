@@ -120,9 +120,10 @@
     const xt = [Math.pow(10, lo)]; for (let e = Math.ceil(lo + 1e-9); e < hi - 1e-9; e++) xt.push(Math.pow(10, e)); xt.push(Math.pow(10, hi));
     const money = v => '$' + +v.toPrecision(v >= 1 ? 2 : 1);
     // The y-axis fits the tab's results (a dot chart needs no zero baseline): even steps, half a step of room below the lowest point.
+    // It stops at 100% with no room above (owner, 15 Nov): nothing can score higher, and the top face then reads as the ceiling.
     const rs = pts.map(p => 100 * p.rate), rmin = Math.min(...rs), rmax = Math.max(...rs), step = [2, 5, 10, 20, 25].find(k => Math.max(rmax - rmin, 10) / k <= 6) || 25;
     const y0 = Math.max(0, Math.floor((rmin - step / 2) / step) * step), y1 = Math.min(100, Math.ceil((rmax + step / 2) / step) * step);
-    const X = v => m.l + (Math.log10(v) - lo) / (hi - lo) * iw, top = y1 + (y1 === 100 ? step * 0.3 : 0), Y = v => m.t + (top - 100 * v) / (top - y0) * ih;
+    const X = v => m.l + (Math.log10(v) - lo) / (hi - lo) * iw, top = y1, Y = v => m.t + (top - 100 * v) / (top - y0) * ih;
     // The depth scale is logarithmic like cost and fits the tab: from the round time at or below the fastest point to the one at or above the slowest.
     const TK = [5, 10, 20, 30, 60, 120, 300, 600, 1200, 3600], tt = pts.map(p => p.time).filter(t => t != null);
     const tmin = tt.length ? Math.min(...tt) : 10, tmax = tt.length ? Math.max(...tt) : 20;

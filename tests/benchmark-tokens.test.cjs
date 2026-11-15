@@ -52,17 +52,19 @@ function checkRow(tr,set,tier){
  }else assert.equal(settings,null,'omit absent settings');
  return r;
 }
+// Tables are compared by caption, not page order: since 15 Nov the Agents table is shown above the Tools table (owner's word),
+// and the first table carries the column header while the second is a divider. The label header is left out for the same reason.
 function unchangedSnapshot(w){
  return [...w.document.querySelectorAll('.ts-table')].map(table=>({
   caption:table.querySelector('caption').textContent,
-  headers:[...table.querySelectorAll('thead th')].map(x=>x.classList.contains('ts-more-head')?'Details':x.textContent),
+  headers:[...table.querySelectorAll('thead th')].map(x=>x.classList.contains('ts-more-head')?'Details':x.textContent).filter(t=>!/^(Tools|Agents) · /.test(t)).map(t=>t.replace(/\s+/g,'')),
   rows:[...table.querySelectorAll('tbody tr')].map(tr=>({
    id:tr.dataset.contender,section:tr.dataset.section,action:tr.dataset.action,classes:tr.className,
    label:tr.getAttribute('aria-label'),current:tr.getAttribute('aria-current'),name:tr.querySelector('th').textContent,
    otherMetrics:[...tr.querySelectorAll('td[data-label]')].filter(x=>x.dataset.label!=='Tokens').map(x=>x.innerHTML),
    options:[...tr.querySelectorAll('option')].map(x=>[x.value,x.selected,x.textContent])
   }))
- }));
+ })).sort((a,b)=>a.caption.localeCompare(b.caption));
 }
 test('all nine published views use the site selection and show tokens beside cost, including empty/withheld rows',async()=>{
  const dom=await page();try{
