@@ -27,6 +27,8 @@
   const GROUPS = [['tools', 'Tools · I have an agent: which browser tool do I give it?'], ['agents', 'Agents · I hand over a task and get an answer']];
   const TIERS = [['glm', 'Small'], ['grok', 'Strong'], ['opus', 'Frontier']], TASKS = [['short', 'Short'], ['medium', 'Medium'], ['long', 'Long']];
   const sys = id => SYS.find(s => s.id === id);
+  // Every system in the tools group is driven by an outside agent (ours and rivals alike), and is drawn as a ring (owner, 16 Nov).
+  const outside = o => o.grp === 'tools';
   const label = (list, k) => (list.find(x => x[0] === k) || [k, k])[1];
   const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   const num = s => { const m = /^\$?(\d+(?:\.\d+)?)(?: s)?$/.exec(typeof s === 'string' ? s.trim() : ''); return m && +m[1] > 0 ? +m[1] : null; };
@@ -173,16 +175,17 @@
     // full marks; pointing at a point lights its line and names its time.
     for (const c of order) if (c.time != null) {
       const o = sys(c.id), k = !o.mode ? (c.id === state.focus ? fg : riv) : col[o.mode], x = X(c.cost), y = Y(c.rate), f = Z(c.time), i = all.indexOf(c);
-      const gx = (x + f * dx).toFixed(1), gy = (y - f * dy).toFixed(1), sc = 1 - 0.4 * f, r0 = !o.mode ? 5.5 : o.drive === 'own' ? 7 : 6;
+      const gx = (x + f * dx).toFixed(1), gy = (y - f * dy).toFixed(1), sc = 1 - 0.4 * f, r0 = !o.mode ? (outside(o) ? 5 : 5.5) : o.drive === 'own' ? 7 : 6;
       defs += `<linearGradient id="fc-l${i}" gradientUnits="userSpaceOnUse" x1="${x.toFixed(1)}" y1="${y.toFixed(1)}" x2="${gx}" y2="${gy}"><stop offset="0" stop-color="${k}" stop-opacity=".95"/><stop offset="1" stop-color="${k}" stop-opacity=".25"/></linearGradient>`;
       s += `<g class="fc-z" data-z="${i}"><line x1="${x.toFixed(1)}" y1="${y.toFixed(1)}" x2="${gx}" y2="${gy}" stroke="url(#fc-l${i})" stroke-width="1.6"/>` +
-        (o.drive === 'outside' ? shape(c.tier, gx, gy, r0 * sc, `class="fc-g" fill="${bg2}" stroke="${k}" stroke-width="${(2.5 * sc).toFixed(1)}"`)
+        (outside(o) ? shape(c.tier, gx, gy, r0 * sc, `class="fc-g" fill="${bg2}" stroke="${k}" stroke-width="${((o.mode ? 2.5 : 2.2) * sc).toFixed(1)}"`)
           : shape(c.tier, gx, gy, r0 * sc, `class="fc-g" fill="${ball(k, o.mode ? .5 : .25)}"`)) +
         `<text x="${(+gx + 7).toFixed(1)}" y="${(+gy - 6).toFixed(1)}" fill="${fg}" font-family="var(--font-mono)" font-size="10.5" paint-order="stroke" stroke="${bg2}" stroke-width="3">${esc(c.rec.reportedTime)}</text></g>`;
     }
     for (const c of order) {
       const x = X(c.cost).toFixed(1), y = Y(c.rate).toFixed(1), o = sys(c.id), i = all.indexOf(c);
-      const mark = !o.mode ? shape(c.tier, x, y, 5.5, `fill="${ball(c.id === state.focus ? fg : riv, .25)}" stroke="${bg2}" stroke-width="2"`)
+      const mark = !o.mode ? (outside(o) ? shape(c.tier, x, y, 5, `fill="${bg2}" stroke="${c.id === state.focus ? fg : riv}" stroke-width="2.2"`)
+          : shape(c.tier, x, y, 5.5, `fill="${ball(c.id === state.focus ? fg : riv, .25)}" stroke="${bg2}" stroke-width="2"`))
         : o.drive === 'own' ? shape(c.tier, x, y, 7, `fill="${ball(col[o.mode])}" stroke="${bg2}" stroke-width="2"`)
         : shape(c.tier, x, y, 6, `fill="${bg2}" stroke="${col[o.mode]}" stroke-width="2.5"`);
       s += `<g class="fc-pt" tabindex="0" data-i="${i}" aria-label="${esc(o.name + ', ' + o.sub + ', ' + label(TIERS, c.tier) + ' model: ' + c.right + ' of ' + c.of + ' completed, ' + (c.rec.cost || '') + ' and ' + (c.rec.reportedTime || 'unreported time') + ' per completed task')}"><circle cx="${x}" cy="${y}" r="14" fill="transparent"/>${mark}</g>`;
@@ -232,7 +235,7 @@
     for (const [g, gl] of GROUPS) {
       h += `<tr class="grp"><th colspan="15">${esc(gl)}</th></tr>`;
       for (const s of SYS.filter(x => x.grp === g)) {
-        const sw = s.mode ? `<span class="sw ${s.drive === 'outside' ? 'ring ' : ''}${s.mode}"></span>` : '<span class="sw riv"></span>';
+        const sw = `<span class="sw ${outside(s) ? 'ring ' : ''}${s.mode || 'riv'}"></span>`;
         h += `<tr class="${s.mode ? 'ours' : ''}"><th class="sys" scope="row">${sw}${esc(s.name)}<small>${esc(s.sub)}</small></th>`;
         const vals = [];
         for (const [task] of TASKS) {
