@@ -514,6 +514,13 @@ footer{display:flex;justify-content:space-between;align-items:flex-end;gap:1rem 
   .stat:nth-child(n+3){border-top:1px solid var(--rule)}
   .m:nth-child(n+3){margin-top:1.6rem;border-top:1px solid var(--rule)}
 }
+/*HERO-STACK: side by side only when the window is wide and landscape; otherwise logo on top. */
+@media (max-width:999px),(orientation:portrait){
+  .hero{grid-template-columns:minmax(0,1fr);align-items:start}
+  .hero-brand{order:-1;align-self:auto;padding-bottom:0}
+  .emblem{width:min(52vw,16rem)}
+  .motto{max-width:calc(min(52vw,16rem) * .78)}
+}
 @media (max-width:760px){
   .hero{grid-template-columns:minmax(0,1fr)}
   .hero-brand{order:-1}
@@ -772,7 +779,7 @@ body .sec.arch-sec h2{font-family:var(--font-display);font-size:clamp(1.35rem,2.
 
 <section class="hero">
   <div>
-    <h1>Web execution just entered the <span class="keep-together">solid-state era.</span><br>The just-in-time web compiler for agents.</h1>
+    <h1>Web execution just entered the <span class="keep-together">solid-state era.</span><br>The just-in-time compiler <span class="keep-together">for agents.</span></h1>
     <p class="lede"><span class="lede-lead" data-was="Turns web applications into a ">Browser agents have spent years teaching models to drive screens. That’s the wrong loop. Protocolis compiles the site instead, into a </span>verified protocol. Typed actions, verified as they run. Learned verification adapts as evidence changes. A model-blind credential broker keeps secrets out of the agent’s context. No screenshot loop. No site-specific setup. No model inference in the compilation. Screenshot agents are the spinning disk; this is the solid state.</p>
     <div class="chips">
       <a class="chip on acquisition-status" href="#acquisition">Operational · Offered for acquisition</a><a class="chip patent-status" href="#acquisition">Patents pending</a><a class="chip customers" href="#acquisition">Paying customers</a>
