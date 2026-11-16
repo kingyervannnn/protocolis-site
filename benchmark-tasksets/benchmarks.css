@@ -51,6 +51,7 @@
  .ts-table td[data-label="Cost"]::before{content:"Cost per completed task"}
  .ts-table td[data-label="Tokens"]::before{content:"Tokens per completed task"}
  .ts-table .ts-value{white-space:nowrap;overflow-wrap:normal;font-size:.73rem}
+ .ts-table .ts-cell:not(.ts-pair)>.ts-value{white-space:normal}
  .ts-table .ts-name{font-size:.8rem}.ts-table .ts-meta{font-size:.56rem}
  .ts-table .ts-reference-label{display:inline;margin-left:.45rem}.ts-table .ts-vs{font-size:.55rem}
  .ts-table.ts-labelled tbody tr:first-child td{padding-top:.4rem}
