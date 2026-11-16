@@ -136,6 +136,12 @@
     const sph = {}; let defs = '';
     const ball = (k, hl = .5) => { if (!/^#([0-9a-f]{3}){1,2}$/i.test(k)) return k; const key = k + hl; if (!sph[key]) { const id = 'fc-s' + Object.keys(sph).length; sph[key] = `url(#${id})`;
       defs += `<radialGradient id="${id}" cx=".36" cy=".32" r=".78"><stop offset="0" stop-color="${mix(k, '#ffffff', hl)}"/><stop offset=".5" stop-color="${k}"/><stop offset="1" stop-color="${mix(k, '#000000', .5)}"/></radialGradient>`; } return sph[key]; };
+    // Model size is the mark's shape (owner, 16 Nov): Small a triangle, Strong a circle, Frontier a square, each about the circle's area,
+    // so color keeps meaning the system and fill or ring who drove it.
+    const shape = (t, cx, cy, r, a) => { cx = +cx; cy = +cy; const f = v => v.toFixed(1);
+      if (t === 'glm') { const R = r * 1.5, h = R * Math.sin(Math.PI / 3); return `<path d="M${f(cx)},${f(cy - R)}L${f(cx + h)},${f(cy + R / 2)}L${f(cx - h)},${f(cy + R / 2)}Z" stroke-linejoin="round" ${a}/>`; }
+      if (t === 'opus') { const q = r * .9; return `<rect x="${f(cx - q)}" y="${f(cy - q)}" width="${f(2 * q)}" height="${f(2 * q)}" rx="1" ${a}/>`; }
+      return `<circle cx="${f(cx)}" cy="${f(cy)}" r="${f(r)}" ${a}/>`; };
     // The box behind the chart: its top and right faces, shaded apart (lit from above), carry the front grid's lines back to the far face,
     // with a rule at each round time; then its edges; then the time ticks and labels along the floor's right edge.
     const ys = [], xs = []; for (let t = y0; t <= y1; t += step) ys.push(Y(t / 100)); xt.forEach(v => xs.push(X(v)));
@@ -170,15 +176,15 @@
       const gx = (x + f * dx).toFixed(1), gy = (y - f * dy).toFixed(1), sc = 1 - 0.4 * f, r0 = !o.mode ? 5.5 : o.drive === 'own' ? 7 : 6;
       defs += `<linearGradient id="fc-l${i}" gradientUnits="userSpaceOnUse" x1="${x.toFixed(1)}" y1="${y.toFixed(1)}" x2="${gx}" y2="${gy}"><stop offset="0" stop-color="${k}" stop-opacity=".95"/><stop offset="1" stop-color="${k}" stop-opacity=".25"/></linearGradient>`;
       s += `<g class="fc-z" data-z="${i}"><line x1="${x.toFixed(1)}" y1="${y.toFixed(1)}" x2="${gx}" y2="${gy}" stroke="url(#fc-l${i})" stroke-width="1.6"/>` +
-        (o.drive === 'outside' ? `<circle class="fc-g" cx="${gx}" cy="${gy}" r="${(r0 * sc).toFixed(1)}" fill="${bg2}" stroke="${k}" stroke-width="${(2.5 * sc).toFixed(1)}"/>`
-          : `<circle class="fc-g" cx="${gx}" cy="${gy}" r="${(r0 * sc).toFixed(1)}" fill="${ball(k, o.mode ? .5 : .25)}"/>`) +
+        (o.drive === 'outside' ? shape(c.tier, gx, gy, r0 * sc, `class="fc-g" fill="${bg2}" stroke="${k}" stroke-width="${(2.5 * sc).toFixed(1)}"`)
+          : shape(c.tier, gx, gy, r0 * sc, `class="fc-g" fill="${ball(k, o.mode ? .5 : .25)}"`)) +
         `<text x="${(+gx + 7).toFixed(1)}" y="${(+gy - 6).toFixed(1)}" fill="${fg}" font-family="var(--font-mono)" font-size="10.5" paint-order="stroke" stroke="${bg2}" stroke-width="3">${esc(c.rec.reportedTime)}</text></g>`;
     }
     for (const c of order) {
       const x = X(c.cost).toFixed(1), y = Y(c.rate).toFixed(1), o = sys(c.id), i = all.indexOf(c);
-      const mark = !o.mode ? `<circle cx="${x}" cy="${y}" r="5.5" fill="${ball(c.id === state.focus ? fg : riv, .25)}" stroke="${bg2}" stroke-width="2"/>`
-        : o.drive === 'own' ? `<circle cx="${x}" cy="${y}" r="7" fill="${ball(col[o.mode])}" stroke="${bg2}" stroke-width="2"/>`
-        : `<circle cx="${x}" cy="${y}" r="6" fill="${bg2}" stroke="${col[o.mode]}" stroke-width="2.5"/>`;
+      const mark = !o.mode ? shape(c.tier, x, y, 5.5, `fill="${ball(c.id === state.focus ? fg : riv, .25)}" stroke="${bg2}" stroke-width="2"`)
+        : o.drive === 'own' ? shape(c.tier, x, y, 7, `fill="${ball(col[o.mode])}" stroke="${bg2}" stroke-width="2"`)
+        : shape(c.tier, x, y, 6, `fill="${bg2}" stroke="${col[o.mode]}" stroke-width="2.5"`);
       s += `<g class="fc-pt" tabindex="0" data-i="${i}" aria-label="${esc(o.name + ', ' + o.sub + ', ' + label(TIERS, c.tier) + ' model: ' + c.right + ' of ' + c.of + ' completed, ' + (c.rec.cost || '') + ' and ' + (c.rec.reportedTime || 'unreported time') + ' per completed task')}"><circle cx="${x}" cy="${y}" r="14" fill="transparent"/>${mark}</g>`;
     }
     plot.innerHTML = s.replace('<!--defs-->', '<defs>' + defs + '</defs>') + '</svg>';
