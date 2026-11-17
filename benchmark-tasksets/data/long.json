@@ -86,7 +86,7 @@
         {
           "tier": "grok",
           "model": "Grok 4.6",
-          "task_set_id": "LONG-L102S-19",
+          "task_set_id": "LONG-MX20",
           "judge_id": "WebJudge strict column, one judge: gpt-5.6-luna (medium) on the Codex route, the upstream Online-Mind2Web prompts; the judge sees the action history and screenshots, never the answer; no second judge",
           "window_id": "C4L",
           "date": "2026-11-17",
@@ -201,7 +201,7 @@
         {
           "tier": "grok",
           "model": "Grok 4.6",
-          "task_set_id": "LONG-L102S-19",
+          "task_set_id": "LONG-MX20",
           "judge_id": "WebJudge strict column, one judge: gpt-5.6-luna (medium) on the Codex route, the upstream Online-Mind2Web prompts; the judge sees the action history and screenshots, never the answer; no second judge",
           "window_id": "C4L",
           "date": "2026-11-17",
@@ -826,7 +826,7 @@
         {
           "tier": "grok",
           "model": "Grok 4.6",
-          "task_set_id": "LONG-L102S-19",
+          "task_set_id": "LONG-MX20",
           "judge_id": "WebJudge strict column, one judge: gpt-5.6-luna (medium) on the Codex route, the upstream Online-Mind2Web prompts; the judge sees the action history and screenshots, never the answer; no second judge",
           "window_id": "C4L",
           "date": "2026-11-17",
@@ -943,7 +943,7 @@
         {
           "tier": "grok",
           "model": "Grok 4.6",
-          "task_set_id": "LONG-L102S-19",
+          "task_set_id": "LONG-MX20",
           "judge_id": "WebJudge strict column, one judge: gpt-5.6-luna (medium) on the Codex route, the upstream Online-Mind2Web prompts; the judge sees the action history and screenshots, never the answer; no second judge",
           "window_id": "C4L",
           "date": "2026-11-17",
