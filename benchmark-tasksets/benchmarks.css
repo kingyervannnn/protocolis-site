@@ -57,7 +57,7 @@
  .ts-table.ts-labelled tbody tr:first-child td{padding-top:.4rem}
 }
 
-/* Front-page chart ("More done, for less") and the grid above the tables ("Where each system holds up").
+/* Front-page chart ("More done, for less") and the grid ("System strengths"); the detailed tables come first.
    Colours: Adaptive and Standard are a validated pair on the dark surface; rivals are one neutral; the grid is one hue, light for more. */
 #range,.gr{--ad:#b8863a;--st:#4a8fe0;--riv:#6f6c66;--wash:rgba(201,160,97,.07);--heat-lo:#1c1f25;--heat-hi:#efe4c8;--ink-dark:#14161a;--ink-light:#ece8df}
 .fc-fig{margin-top:1.6rem}

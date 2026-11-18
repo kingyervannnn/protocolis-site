@@ -2,7 +2,7 @@
 // so a chart and a table can never disagree, and a new result shows in both at once.
 //  - #range: "More done, for less": tasks completed against cost per completed task, one point per system and model size,
 //    for one task length (opens on Long). Time per completed task is a faint third axis (depth) and in each point's details.
-//  - #bench-grid: "Where each system holds up": every system across model size and task length, shaded by tasks completed.
+//  - #bench-grid: "System strengths": every system across model size and task length, shaded by tasks completed.
 (function (root, factory) {
   if (typeof module === 'object' && module.exports) module.exports = factory;
   else {
@@ -224,7 +224,7 @@
     drawScatter();
   }
 
-  /* ---------- "Where each system holds up" ---------- */
+  /* ---------- "System strengths" ---------- */
   const grid = doc.getElementById('bench-grid-table');
   if (grid) {
     const hex = h => { h = h.replace('#', ''); return [0, 2, 4].map(i => parseInt(h.slice(i, i + 2), 16)); };
