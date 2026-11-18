@@ -2603,6 +2603,39 @@
             "first": "2026-11-17T22:04:00Z",
             "last": "2026-11-18T04:49:00Z"
           }
+        },
+        {
+          "id": "published-short-small-xs-oxgr",
+          "tier": "glm",
+          "model": "GLM-5.3-flash",
+          "task_set_id": "BLOCK1-SETC-20",
+          "window_id": "OXGR-D9CC",
+          "judge_id": "Final-page check against a gold answer; every attempt counted",
+          "clock": "FINAL",
+          "comparisonEligible": false,
+          "contender": "Protocolis Standard · outside agent",
+          "mode": "Standard",
+          "category": "outside agent",
+          "completion": "40/40",
+          "finalTime": "25.8 s",
+          "reportedTime": "25.8 s",
+          "medianTime": "22.1 s",
+          "cost": "$0.0017",
+          "tokens": "28.1k",
+          "version": "0.10.4 candidate (measurement tip d9cc3b3a3)",
+          "sourceRunResolution": "Recorded measurement window",
+          "methodology": "0.10.4 CANDIDATE, not a release: measurement tip d9cc3b3a3, measured 18 Nov 2026 (a full rerun of this arm) on the short task set (BLOCK1-SETC-20), two runs per task, GLM-5.3-flash via OpenRouter as the outside agent's model, Agent Mode off (the outside agent drives Protocolis as its browser tool), one benchmark worker (W5). Scored by the page's final-page check against the gold answer; every attempt counted. Times: mean and median over the completed runs. Cost per completed task: every run's model calls (the outside agent's GLM calls, our writer's and engine calls) at OpenRouter's reported cost with its 5.5% fee, over the completed runs; the chooser's calls are counted, not priced. Our GLM calls skipped one OpenRouter provider (Friendli), which strips tool arguments; the earlier run of this arm landed on it twice and was replaced by this full rerun.",
+          "reasoning_set_by": "provider",
+          "driven_by": "outside agent (our kit loop)",
+          "driven_by_detail": "Protocolis Standard driven by an outside agent (Agent Mode off): the test kit’s own tool-calling loop sends page commands; the outside agent sends no reasoning setting (provider default); at most 500 turns and a 900 s wall; build: 0.10.4 candidate (measurement tip d9cc3b3a3). The engine ran as it ships, with its challenge handling on.",
+          "date": "2026-11-18",
+          "worker": "1 benchmark worker (W5)",
+          "worker_class": "class B",
+          "_row": "protocolis-standard-outside",
+          "measured_at": {
+            "first": "2026-11-18T15:15:12Z",
+            "last": "2026-11-18T16:09:29Z"
+          }
         }
       ]
     }
