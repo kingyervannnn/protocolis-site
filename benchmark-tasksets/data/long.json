@@ -323,6 +323,40 @@
       "first": "2026-11-13T12:56:43Z",
       "last": "2026-11-13T14:38:06Z"
      }
+    },
+    {
+     "id": "published-long-small-ba",
+     "contender": "Browser Use · own agent",
+     "mode": null,
+     "category": "agent",
+     "tier": "glm",
+     "model": "Claude Haiku 5.5",
+     "completion": "3/20",
+     "finalTime": "87.7 s",
+     "reportedTime": "87.7 s",
+     "medianTime": "79.3 s",
+     "cost": "$0.1882",
+     "tokens": "1542.5k",
+     "clock": "rival self-reported",
+     "date": "2026-11-13",
+     "worker": "1 benchmark worker (class B)",
+     "sourceRunResolution": "Recorded measurement window",
+     "comparisonEligible": false,
+     "window_id": "ORSMLXRBA",
+     "task_set_id": "LONG-MX20",
+     "judge_id": "WebJudge strict column, one judge: gpt-5.6-luna (medium) on the Codex route, the upstream Online-Mind2Web prompts; the judge sees the action history and screenshots, never the answer; no second judge",
+     "version": null,
+     "worker_class": "class B",
+     "measured_at": {
+      "first": "2026-11-13T10:42:56Z",
+      "last": "2026-11-13T11:11:14Z"
+     },
+     "methodology": "Small long view: the 20 long tasks (LONG-MX20; a task a site refuses to AI agents is replaced on every arm from LONG-MX40), each run once (20 runs per system) · the other seven systems on the same task in one cell on two class B workers; Browser Use own agent in its own cells on one class B worker the same morning, under its documented setting for models without strict output (below) · Claude Haiku 5.5 through OpenRouter at the provider default: we add no reasoning field on any system (each product as it ships) · driven by own agent · 900 s wall · WebJudge after the run (one judge, Luna; no second judge), strict column (the judge never sees the answer) · voids first · time per completed task on the clock the site uses for the system, mean (median beside) · cost per completed task: the model as billed (OpenRouter +5.5% fee) plus, for ours, the writer and the TypeSafe chooser at $0.042 per million input tokens",
+     "wire_reasoning": "provider default",
+     "reasoning_set_by": "product",
+     "driven_by": "own agent",
+     "driven_by_detail": "As shipped, Browser Use cannot run on this model: the provider rejects its agent schema at step 1 (five HTTP 400 'compiled grammar is too large'), then it quits. The figure shown was measured with Browser Use's documented setting for such models (ChatOpenAI dont_force_structured_output=True, add_schema_to_system_prompt=True). Browser Use 0.13.13 Agent.run() (kit fast/bu_run.py), otherwise as shipped: its own planner, loop and defaults (step limit 500 = the product's default Agent.run max_steps; use_judge and use_vision on, temperature 0.2, frequency_penalty 0.3: its defaults). The harness adds a 900 s wall and a first navigate action to the start URL. Our harness (environment, kept and disclosed): the worker's Chrome 156 binary (headless, 1280x900 window, a Mac Chrome 148 user agent) through CDP. Harness side channels off (disclosed): Browser Use telemetry and cloud sync off (ANONYMIZED_TELEMETRY=false, BROWSER_USE_CLOUD_SYNC=false).",
+     "completionNote": "As shipped, Browser Use cannot run on this model: the provider rejects its agent schema at step 1 (five HTTP 400 'compiled grammar is too large'), then it quits. The figure shown was measured with Browser Use's documented setting for such models (ChatOpenAI dont_force_structured_output=True, add_schema_to_system_prompt=True)."
     }
    ],
    "group": "agents"
