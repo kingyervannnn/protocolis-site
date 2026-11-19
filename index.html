@@ -763,6 +763,7 @@ body .sec.arch-sec h2{font-family:var(--font-display);font-size:clamp(1.35rem,2.
 
 /*RANGE*/.range-sec{padding-block:clamp(2.75rem,5vw,4.5rem)}.range-lede{color:var(--fg-2);font-size:clamp(.95rem,1.1vw,1.05rem);line-height:1.65;max-width:62rem;margin-top:1rem}.range-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin-top:1.6rem}@media (max-width:760px){.range-grid{grid-template-columns:1fr}}.range-panel{margin:0;padding:1.1rem 1.2rem 1rem;background:var(--bg-2);border-radius:4px}.range-panel figcaption{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;margin-bottom:.6rem}.range-panel figcaption b{font-family:var(--font-display);font-weight:500;font-size:1.05rem;letter-spacing:.03em;color:var(--fg)}.range-panel figcaption span{font-family:var(--font-mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--fg-2)}.range-panel svg{display:block;width:100%;height:auto}.range-axis{display:flex;justify-content:space-between;font-family:var(--font-mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);margin-top:.5rem}.range-key{display:flex;gap:1.5rem;flex-wrap:wrap;margin-top:1.1rem;font-family:var(--font-mono);font-size:.72rem;color:var(--fg-2)}.range-key .k::before{content:'';display:inline-block;width:1.4rem;height:0;border-top:2.5px solid var(--dim);vertical-align:middle;margin-right:.5rem}.range-key .k.us::before{border-color:var(--accent)}.range-note{font-family:var(--font-mono);font-size:.74rem;color:var(--fg-2);line-height:1.7;margin-top:1.1rem;max-width:62rem}.range-lbl{font-family:var(--font-mono);font-size:10.5px;fill:var(--dim);letter-spacing:.04em}.range-us{stroke:var(--accent);stroke-width:2.8;fill:none;stroke-linecap:round}.range-op{stroke:var(--dim);stroke-width:1.6;fill:none;stroke-linecap:round;opacity:.85}.range-op.d{stroke-dasharray:5 5}.range-gl{stroke:var(--rule);stroke-width:1}.range-ylab{font-family:var(--font-mono);font-size:9.5px;fill:var(--dim);letter-spacing:.1em}
 @media(max-width:700px){#benchmarks .mt-l .pend{font-size:.56rem;letter-spacing:.03em}}.rv-switch{margin-top:1.1rem}.rv-switch+.rv{margin-top:.9rem}</style>
+<style>/*COMPOUNDS*/.cmp-row{margin-top:clamp(2.75rem,5vw,4rem);padding-top:clamp(2rem,4vw,3rem);border-top:1px solid var(--rule)}.cmp-h{font-family:var(--font-display);font-size:clamp(1.4rem,2.4vw,2rem);font-weight:500;line-height:1.15;letter-spacing:.01em;color:var(--fg);margin:0}.cmp-sub{color:var(--fg-2);margin:.8rem 0 0;max-width:52rem;line-height:1.6}.cmp3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin-top:1.9rem}.cmp3-item{padding:0 1.5rem}.cmp3-item:first-child{padding-left:0}.cmp3-item+.cmp3-item{border-left:1px solid var(--rule)}.cmp3 h4{font-family:var(--font-display);font-size:1.15rem;font-weight:500;letter-spacing:.03em;color:var(--fg);margin:0 0 .6rem}.cmp3 h4 i{display:block;font:500 .72rem var(--font-mono);letter-spacing:.16em;color:var(--accent);font-style:normal;margin-bottom:.5rem}.cmp3 p{margin:0;color:var(--fg-2);line-height:1.6}@media (max-width:860px){.cmp3{grid-template-columns:minmax(0,1fr);gap:1.3rem}.cmp3-item,.cmp3-item:first-child{padding:1.3rem 0 0}.cmp3-item:first-child{padding-top:0}.cmp3-item+.cmp3-item{border-left:0;border-top:1px solid var(--rule)}}</style>
 </head>
 <body>
 
@@ -1141,6 +1142,25 @@ body .sec.arch-sec h2{font-family:var(--font-display);font-size:clamp(1.35rem,2.
       </div>
       <div class="arch-link" aria-hidden="true"><span>real input ↓</span><span>↑ live page</span></div>
       <div class="arch-box arch-site"><b>The website</b><span>Any live site, as it is. No selectors, no adapters, no taught workflows.</span></div>
+    </div>
+  </div>
+
+  <div class="cmp-row" id="compounds" aria-label="What improves with use">
+    <h3 class="cmp-h">And it compounds.</h3>
+    <p class="cmp-sub">Every result on this page is a first contact: a site the engine had never seen, with no memory of it and no learning carried in. In use, three things make it better.</p>
+    <div class="cmp3">
+      <div class="cmp3-item">
+        <h4><i>01</i>Warm knowledge</h4>
+        <p>What it compiles for a site, it can keep. A first visit is the worst case, and it is paid once per site. The more traffic a deployment carries, the more of its visits are repeat visits.</p>
+      </div>
+      <div class="cmp3-item">
+        <h4><i>02</i>One rule, every site</h4>
+        <p>A gap shows up as a page pattern, not as a site. One rule for that pattern applies on every site that uses it. Adapters grow with every site you add; rules do not. There are no adapters to maintain.</p>
+      </div>
+      <div class="cmp3-item">
+        <h4><i>03</i>Self-healing</h4>
+        <p>It learns from outcomes, with no developer in the loop. Checks that keep holding are kept; checks the evidence stops supporting are dropped. What it learns on one site can carry to others.</p>
+      </div>
     </div>
   </div>
 </section>
