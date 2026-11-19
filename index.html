@@ -824,11 +824,11 @@ body .sec.arch-sec h2{font-family:var(--font-display);font-size:clamp(1.35rem,2.
 </div>
 <div class="rv" data-rview="range" hidden>
 <div class="ts-controls range-layers" aria-label="Chart layer"><div class="ts-tabs"><button type="button" data-layer="completion" aria-pressed="true">Completed</button><button type="button" data-layer="speed" aria-pressed="false">Speed</button><button type="button" data-layer="cost" aria-pressed="false">Cost</button></div></div>
-<div class="range-grid" style="grid-template-columns:1fr">
+<div class="range-grid">
 <figure class="range-panel"><figcaption><b>Across models</b><span data-range-unit>tasks completed</span></figcaption>
 <div class="ts-controls range-pick" aria-label="Task set for this panel"><div class="ts-tabs"><button type="button" data-rtask="short" aria-pressed="true">Short</button><button type="button" data-rtask="medium" aria-pressed="false">Medium</button><button type="button" data-rtask="long" aria-pressed="false">Long</button></div></div>
 <div class="range-plot" id="range-models"></div></figure>
-<figure class="range-panel" hidden data-held="owner 14 Nov: hidden until the completion numbers improve"><figcaption><b>Across task length</b><span data-range-unit>tasks completed</span></figcaption>
+<figure class="range-panel"><figcaption><b>Across task length</b><span data-range-unit>tasks completed</span></figcaption>
 <div class="ts-controls range-pick" aria-label="Model tier for this panel"><div class="ts-tabs"><button type="button" data-rtier="glm" aria-pressed="false">Small</button><button type="button" data-rtier="grok" aria-pressed="true">Strong</button><button type="button" data-rtier="opus" aria-pressed="false">Frontier</button></div></div>
 <div class="range-plot" id="range-length"></div></figure>
 </div>
