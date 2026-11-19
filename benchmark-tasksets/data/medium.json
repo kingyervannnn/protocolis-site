@@ -1327,7 +1327,7 @@
           "finalTime": "10.2 s",
           "reportedTime": "10.2 s",
           "medianTime": "8.3 s",
-          "cost": null,
+          "cost": "$0.0408",
           "tokens": "48.0k",
           "maxRequestTokens": 84868,
           "comparisonEligible": false,
@@ -1345,7 +1345,8 @@
           "wire_reasoning": "low, set by our harness",
           "reasoning_set_by": "our harness (effort field)",
           "driven_by": "outside agent (our kit loop)",
-          "driven_by_detail": "Playwright MCP 0.0.84 tools driven by the kit's stock loop fast/baselines/pwm_run.mjs (kit arm pwml): chat loop, tool_choice auto, at most 500 steps, 300 s wall. The loop also sends max_tokens 8000 per model call (16000 on an empty cut); no call needed the retry."
+          "driven_by_detail": "Playwright MCP 0.0.84 tools driven by the kit's stock loop fast/baselines/pwm_run.mjs (kit arm pwml): chat loop, tool_choice auto, at most 500 steps, 300 s wall. The loop also sends max_tokens 8000 per model call (16000 on an empty cut); no call needed the retry.",
+          "costNote": "OpenRouter's billed charge for every model call of the counted runs (375 calls, $3.18), divided by the 78 completed tasks; same row set as the token figure."
         },
         {
           "id": "medium-reuse-playwright-mcp-s1c",
@@ -1364,7 +1365,7 @@
           "finalTime": "10.4 s",
           "reportedTime": "10.4 s",
           "medianTime": "8.6 s",
-          "cost": null,
+          "cost": "$0.0444",
           "tokens": "52.2k",
           "maxRequestTokens": 82717,
           "comparisonEligible": false,
@@ -1382,7 +1383,8 @@
           "wire_reasoning": "low, set by our harness",
           "reasoning_set_by": "our harness (effort field)",
           "driven_by": "outside agent (our kit loop)",
-          "driven_by_detail": "Playwright MCP 0.0.84 tools driven by the kit's stock loop fast/baselines/pwm_run.mjs (kit arm pwml): chat loop, tool_choice auto, at most 500 steps, 300 s wall. The loop also sends max_tokens 8000 per model call (16000 on an empty cut); no call needed the retry."
+          "driven_by_detail": "Playwright MCP 0.0.84 tools driven by the kit's stock loop fast/baselines/pwm_run.mjs (kit arm pwml): chat loop, tool_choice auto, at most 500 steps, 300 s wall. The loop also sends max_tokens 8000 per model call (16000 on an empty cut); no call needed the retry.",
+          "costNote": "OpenRouter's billed charge for every model call of the counted runs (189 calls, $1.69), divided by the 38 completed tasks; same row set as the token figure."
         }
       ],
       "reuse_plan": {
