@@ -2,7 +2,7 @@
 html[data-theme=light]{color-scheme:light}
 html[data-theme=light] img[src$="logo.svg"],html[data-theme=light] img[src$="glyph.svg"]{filter:brightness(0) saturate(100%) opacity(.9)}
 html[data-theme=light] .fc-fig{background:transparent;--bg-2:var(--bg);padding-left:0;padding-right:0}
-html[data-theme=light]{--bg:#f3f5f8;--bg-2:#ffffff;--fg:#17191d;--fg-2:#45474c;--dim:#646a73;--rule:rgba(23,30,45,0.13);--accent:#8f6a2c;--accent-ink:#ffffff;--accent-wash:rgba(143,106,44,0.09)}
+html[data-theme=light]{--bg:#eef0f3;--bg-2:#ffffff;--fg:#17191d;--fg-2:#45474c;--dim:#646a73;--rule:rgba(23,30,45,0.13);--accent:#8f6a2c;--accent-ink:#ffffff;--accent-wash:rgba(143,106,44,0.09)}
 html[data-theme=light] .chip.acquisition-status::after{background:linear-gradient(90deg,transparent,rgba(23,30,45,0.18),rgba(143,106,44,0.1),transparent)}
 html[data-theme=light] .chip.patent-status{border-color:rgba(23,30,45,0.6)}
 html[data-theme=light] a.chip.on:hover,html[data-theme=light] a.chip.on:focus-visible{color:#fff}
