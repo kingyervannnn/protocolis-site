@@ -59,7 +59,7 @@
 
 /* Front-page chart ("More done, for less") and the grid ("System strengths"); the detailed tables come first.
    Colours: Adaptive and Standard are a validated pair on the dark surface; rivals are one neutral; the grid is one hue, light for more. */
-#range,.gr{--ad:#b8863a;--st:#4a8fe0;--riv:#6f6c66;--wash:rgba(201,160,97,.07);--heat-lo:#1c1f25;--heat-hi:#efe4c8;--ink-dark:#14161a;--ink-light:#ece8df}
+#range,.gr{--ad:#b8863a;--st:#4a8fe0;--riv:#6f6c66;--wash:rgba(201,160,97,.07);--heat-lo:#1c1c1c;--heat-hi:#efe4c8;--ink-dark:#141414;--ink-light:#ece8df}
 .fc-fig{margin-top:1.6rem}
 .fc-ctl{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.8rem 1.5rem;margin-bottom:.4rem}
 .fc-legend{display:flex;flex-wrap:wrap;gap:.35rem 1.1rem;font-family:var(--font-mono);font-size:.7rem;color:var(--fg-2)}
