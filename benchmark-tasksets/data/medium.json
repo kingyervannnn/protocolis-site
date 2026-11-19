@@ -1204,45 +1204,45 @@
           "category": "framework",
           "clock": "rival self-reported",
           "comparisonEligible": false,
-          "completion": "36/39",
+          "completion": "37/40",
           "contender": "Stagehand",
-          "cost": "$0.6403",
+          "cost": "$0.6245",
           "counts": {
             "capture_excluded": 0,
             "challenges": 0,
-            "denominator": 39,
+            "denominator": 40,
             "rows": 40,
-            "strict": 36,
-            "void": 1
+            "strict": 37,
+            "void": 0
           },
           "date": "2026-11-19",
           "driven_by": "own agent",
           "driven_by_detail": "Stagehand 3.7.3 stagehand.agent().execute() in the mode Stagehand resolves from the model id for GPT-6.1 Sol (no mode passed; the resolved mode is read per row from its own log) (kit fast/baselines/sh_run.mjs), as shipped: step limit 20 = the product's default maxSteps; verbose 2 kept (logging only). The harness adds a 900 s wall, opens the start URL first (page.goto), and points the model at our relay (openai/<id>, openaiEndpointFormat chat). Our harness (environment, kept and disclosed): the worker's Chrome 156 binary (headless, 1280x900 window, a Mac Chrome 148 user agent) through CDP. Model route OFF this Mac: worker -> W2 relay -> OpenRouter openai/gpt-6.1-sol.",
-          "finalTime": "26.9 s",
+          "finalTime": "26.7 s",
           "group": "agents",
           "id": "published-medium-frontier-shsol",
           "judge_id": "strict oracle (status completed, client terminal verified, common body.innerText page check, gold answer, not wrong_done, not void); capture-failed rows excluded (block-2 rule)",
           "measured_at": {
             "first": "2026-11-19T07:48:15Z",
-            "last": "2026-11-19T19:57:36Z"
+            "last": "2026-11-19T22:27:14Z"
           },
-          "medianTime": "20.3 s",
-          "methodology": "Frontier medium view: the 40 block-2 tasks (D/E), each run ONCE for this system (40 runs; the other medium cells run each task twice) · driven by own agent · the Frontier model GPT-6.1 Sol through OpenRouter at the provider default: we add no reasoning field (each product as it ships) · the strict block-2 oracle, capture-failed rows excluded · voids first; cost per completed task: every model call of the counted runs as billed (OpenRouter +5.5% fee: $23.05 in all) over the 36 completed tasks",
+          "medianTime": "19.9 s",
+          "methodology": "Frontier medium view: the 40 block-2 tasks (D/E), each run ONCE for this system (40 runs; the other medium cells run each task twice) · driven by own agent · the Frontier model GPT-6.1 Sol through OpenRouter at the provider default: we add no reasoning field (each product as it ships) · the strict block-2 oracle, capture-failed rows excluded · voids first; cost per completed task: every model call of the counted runs as billed (OpenRouter +5.5% fee: $23.11 in all) over the 37 completed tasks",
           "mode": null,
           "model": "GPT-6.1 Sol",
           "reasoning_set_by": "product",
-          "reportedTime": "26.9 s",
+          "reportedTime": "26.7 s",
           "row_id": "stagehand",
           "sourceRunResolution": "Recorded measurement window",
           "task_set_id": "BLOCK2-DE-40",
           "tier": "opus",
-          "tokens": "434.5k",
+          "tokens": "423.8k",
           "version": null,
           "window_id": "SHSOL-M2",
           "wire_reasoning": "provider default",
           "worker": "w3",
           "worker_class": null,
-          "completionNote": "39 of 40 tasks counted; one row voided by an OpenRouter 402 (account credit ran out), its rerun pending. Two earlier 402 rows were each rerun once and those reruns are counted."
+          "completionNote": "40 of 40 tasks counted. Three runs were stopped by an OpenRouter 402 (account credit ran out); each was voided and rerun once, and the reruns are the counted runs."
         }
       ],
       "reuse_plan": {
