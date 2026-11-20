@@ -79,3 +79,4 @@ long,frontier,GPT-6.1 Sol,Tools,Browser Harness,2,18,11.1,0.4715,23.9,609600,no,
 long,frontier,GPT-6.1 Sol,Agents,Protocolis Adaptive,16,20,80.0,0.1663,83.1,128600,yes,0.10.4 candidate,2026-11-17
 long,frontier,GPT-6.1 Sol,Agents,Protocolis Standard,17,20,85.0,0.1776,54.8,116300,yes,0.10.4 candidate,2026-11-17
 long,frontier,GPT-6.1 Sol,Agents,Browser Use (agent),12,18,66.7,0.4773,97.5,295400,no,Browser Use 0.13.13,2026-11-13
+long,frontier,GPT-6.1 Sol,Agents,Stagehand,4,18,22.2,8.3833,25.6,4443500,no,Stagehand 3.7.3,2026-11-20
