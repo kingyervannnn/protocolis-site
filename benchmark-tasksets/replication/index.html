@@ -1,0 +1,264 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Protocolis benchmark: replication kit</title>
+<style>
+:root{color-scheme:dark}body{margin:0;background:#0e0e0e;color:#ece8df;font:16px/1.65 Georgia,'Times New Roman',serif}
+main{max-width:46rem;margin:0 auto;padding:3rem 1.25rem 5rem}h1{font-size:1.9rem;line-height:1.2;margin:0 0 1rem;font-weight:500}
+h2{font-size:1.2rem;margin:2.6rem 0 .6rem;font-weight:600}h3{font:600 .86rem/1.4 ui-monospace,Menlo,monospace;margin:1.6rem 0 .3rem;color:#c9a061}
+a{color:#c9a061}p,li{color:#d8d3c8}code{font:0.86em ui-monospace,Menlo,monospace;color:#ece8df}
+.files{list-style:none;padding:0;margin:1rem 0}.files li{padding:.7rem 0;border-top:1px solid #2a2a2a}.files li:last-child{border-bottom:1px solid #2a2a2a}
+.files a{font:600 .95rem ui-monospace,Menlo,monospace}.files span{display:block;color:#a9a498;font-size:.93rem}
+.back{font:.8rem ui-monospace,Menlo,monospace;letter-spacing:.06em}.kit{display:inline-block;margin:.4rem 0 0;padding:.55rem 1rem;border:1px solid #c9a061;text-decoration:none;font:600 .86rem ui-monospace,Menlo,monospace}
+</style></head><body><main>
+<p class="back"><a href="/#benchmarks">&larr; protocolis.co benchmarks</a></p>
+<h1>Benchmark replication kit</h1>
+<p>This kit holds the material behind the results published at
+protocolis.co and in the paper <em>Solid-State Web Execution: Compiling
+Web Applications into Verified Operations for AI Agents</em>. With it a
+reader can recompute every completion figure and run the same tasks on
+any system.</p>
+
+<p><a class="kit" href="protocolis-replication-kit.zip" download>Download the whole kit (.zip)</a></p>
+<h2>Files</h2>
+<ul class="files">
+<li><a href="tasks.csv">tasks.csv</a><span>The tasks: 20 short, 40 medium and 21 long, each with its start page and text. Short and medium tasks also carry the page a run must end on and the answers that are accepted.</span></li>
+<li><a href="outcomes.csv">outcomes.csv</a><span>One line for every counted run, 3,425 in all: the task, the system, the model, whether the system said it had finished, and whether the run was judged complete.</span></li>
+<li><a href="cells.csv">cells.csv</a><span>The 80 published cells: completed and attempted runs, cost, time and tokens per completed task.</span></li>
+</ul>
+<h2 id="how-to-read-it">How to read it</h2>
+<p>A cell is one system on one model on one task set. Its completion is
+the number of lines in <code>outcomes.csv</code> for that cell with
+<code>judged_complete</code> = yes, over the number of lines for that
+cell. Those two numbers are the <code>completed</code> and
+<code>attempted</code> columns of <code>cells.csv</code>, and they were
+checked against each other when this kit was built.</p>
+<p>Short and medium tasks were run more than once per system, so a task
+can appear several times in a cell; <code>attempt</code> numbers them.
+Long tasks were run once.</p>
+<p>Not every cell has the same number of long runs. The two rules in
+<code>JUDGING.md</code> explain why: tasks on a site that refused every
+system were replaced, and a single run that ended on a site's block page
+is left out of that system's count. The long tasks come from two public
+sets, WebVoyager and Mind2Web-Live; <code>tasks.csv</code> names the
+source of each.</p>
+<p>Two Protocolis cells on the short set (Tools, frontier model) are
+shown on the site at 20 of 20, counted by the page check alone. Here and
+in the paper they are 19 of 20, under the full check that every other
+short and medium cell uses.</p>
+<p>Every Protocolis run is a first visit: the system kept no memory of
+any site and has no site-specific code.</p>
+<h2 id="what-is-not-here">What is not here</h2>
+<p>The engine's source code and internal records are not published. The
+recorded runs are provided on request for replication. Access to the
+system itself, for running it on sites of your own choosing, can be
+requested at protocolis.co.</p>
+<p>Built from the published record as it stood on 20 November 2026.</p>
+
+<h2 id="how-each-run-was-judged">How each run was judged</h2>
+<p>One rule per task set. The same rule was applied to every system.</p>
+<h3 id="short-and-medium-tasks">Short and medium tasks</h2>
+<p>A run is complete when all of these hold: the system finished; the
+page it ended on matches the pattern in
+<code>final_page_must_match</code>; that page shows an answer matching
+<code>accepted_answer_pattern</code>; and the answer the system gave
+also matches <code>accepted_answer_pattern</code> (both patterns are in
+<code>tasks.csv</code>). Every attempt is counted. On the medium set, a
+run whose evidence could not be captured is left out for every system,
+and the published record of the row says how many.</p>
+<h3 id="long-tasks">Long tasks</h2>
+<p>Judged after the run by WebJudge, from the Online-Mind2Web project,
+with its own prompts and its strict column. One judge model,
+gpt-5.6-luna at medium reasoning, ruled on every run of every system.
+The judge sees the run's actions and screenshots. It does not see the
+answer the system gave. A run in which the system itself reports that it
+was blocked is not complete.</p>
+<p>The key points the judge checks were written once per task and used
+for every system. They are listed below.</p>
+<p>Two rules decide which runs are counted. A task whose site refused
+every system (the two Amazon tasks) is left out for every system and
+replaced from a list fixed before any run. A single run that ended on a
+site's block page or robot check is left out of that system's count; the
+published record of the row names it.</p>
+<h3 id="key-points-for-the-long-tasks">Key points for the long
+tasks</h2>
+<h3 id="wv-google_search--4">wv-Google_Search--4</h3>
+<p>Show most played games in Steam. And tell me the number of players in
+In game at this time</p>
+<ol type="1">
+<li>Open Steam’s most-played games list.</li>
+<li>Filter by highest player count.</li>
+<li>Report the current number of players marked “In-Game.”</li>
+</ol>
+<h3 id="wv-espn--22">wv-ESPN--22</h3>
+<p>Find the latest Team transactions in the NBA within the past
+week.</p>
+<ol type="1">
+<li>Find NBA team transactions.</li>
+<li>The transactions shown are from the past week.</li>
+<li>The transactions are shown latest first.</li>
+</ol>
+<h3 id="wv-cambridge_dictionary--9">wv-Cambridge_Dictionary--9</h3>
+<p>Look up the British pronunciation of the word "euphoria" and find an
+example sentence using that word on the Cambridge Dictionary.</p>
+<ol type="1">
+<li>Look up the British pronunciation of “euphoria.”</li>
+<li>Find an example sentence using “euphoria” on the Cambridge
+Dictionary.</li>
+</ol>
+<h3 id="wv-github--8">wv-GitHub--8</h3>
+<p>Look up the latest stable release version of Vuex and find out when
+it was published.</p>
+<ol type="1">
+<li>Look up Vuex releases.</li>
+<li>The release shown is the latest stable release (the one GitHub marks
+"Latest").</li>
+<li>Identify its version number.</li>
+<li>Find when it was published.</li>
+</ol>
+<h3 id="wv-coursera--23">wv-Coursera--23</h3>
+<p>Find a course on Coursera about 'Artificial Intelligence Ethics',
+which has a duration of less than 5 weeks and has been rated 4.5 stars
+or higher. Provide the course name and the instructor's name.</p>
+<ol type="1">
+<li>Find a course on Coursera about “Artificial Intelligence
+Ethics.”</li>
+<li>Filter for courses with a duration of less than 5 weeks.</li>
+<li>The course shown is rated 4.5 stars or higher.</li>
+<li>Provide the course name.</li>
+<li>Provide the instructor’s name.</li>
+</ol>
+<h3 id="wv-bbc_news--12">wv-BBC_News--12</h3>
+<p>Find a picture in the travel section that contains food, tell me what
+the food is called and what region it comes from.</p>
+<ol type="1">
+<li>Find a picture in the travel section that contains food.</li>
+<li>Identify what the food is called.</li>
+<li>Identify what region the food comes from.</li>
+</ol>
+<h3 id="wv-apple--19">wv-Apple--19</h3>
+<p>On Apple's website, what is the slogan for the Mac and what is the
+slogan for the Macbook pro.</p>
+<ol type="1">
+<li>Find the slogan for the Mac on Apple's website.</li>
+<li>Find the slogan for the MacBook Pro on Apple's website.</li>
+</ol>
+<h3 id="wv-espn--4">wv-ESPN--4</h3>
+<p>Check ESPN for the final scores of NBA games that were played
+yesterday.</p>
+<ol type="1">
+<li>Check ESPN.</li>
+<li>Identify NBA games played yesterday.</li>
+<li>Retrieve the final scores for those games.</li>
+</ol>
+<h3 id="wv-bbc_news--41">wv-BBC_News--41</h3>
+<p>Find Golf in BBC News, check the Leaderboard at this point in Women's
+Majors and count which country has the most players in the top 20? Which
+player has the best score amongst the Australian players and in what
+place.</p>
+<ol type="1">
+<li>Find Golf in BBC News.</li>
+<li>Check the Women’s Majors leaderboard.</li>
+<li>The top 20 of the leaderboard are shown.</li>
+<li>Count the players from each country.</li>
+<li>The answer identifies which country has the most players in the top
+20.</li>
+<li>Identify the Australian player with the best score.</li>
+<li>Determine that player’s place.</li>
+</ol>
+<h3 id="wv-wolfram_alpha--6">wv-Wolfram_Alpha--6</h3>
+<p>Simplify x^5-20x^4+163x^3-676x^2+1424x-1209 so that it has fewer
+items.</p>
+<ol type="1">
+<li>Simplify the polynomial (x^5-20x^4+163x^3-676x^2+1424x-1209).</li>
+<li>Express the result with fewer terms.</li>
+</ol>
+<h3 id="m2wl-97">m2wl-97</h3>
+<p>Find the most popular movies and showcase those with the highest IMDb
+ratings on imdb</p>
+<ol type="1">
+<li>Find the most popular movies on IMDb.</li>
+<li>Filter by highest IMDb ratings.</li>
+<li>Showcase the selected movies.</li>
+</ol>
+<h3 id="m2wl-78">m2wl-78</h3>
+<p>Browse through the Las Vegas city guide and find message services
+nearest to Henderson, the service provider should have a BBB rating of
+A+ on yellowpages</p>
+<ol type="1">
+<li>Browse the Las Vegas city guide.</li>
+<li>Find message services nearest to Henderson.</li>
+<li>Filter by closest.</li>
+<li>Verify the service provider has a BBB rating of A+ on
+Yellowpages.</li>
+</ol>
+<h3 id="m2wl-98">m2wl-98</h3>
+<p>Show list of popular businesses in Cleveland on yellowpages.</p>
+<ol type="1">
+<li>Open Yellowpages.</li>
+<li>Search for businesses in Cleveland.</li>
+<li>The businesses shown are listed as popular businesses in
+Cleveland.</li>
+<li>Show the list of results.</li>
+</ol>
+<h3 id="m2wl-37">m2wl-37</h3>
+<p>Find me the cheapest external HD for an Xbox One on gamestop.</p>
+<ol type="1">
+<li>Search GameStop.</li>
+<li>Find external hard drives compatible with Xbox One.</li>
+<li>Filter by lowest price.</li>
+</ol>
+<h3 id="m2wl-66">m2wl-66</h3>
+<p>Compare Apple watches and learn more about the ultra version on
+apple</p>
+<ol type="1">
+<li>Compare Apple Watches.</li>
+<li>Learn more about the Apple Watch Ultra version on Apple’s
+website.</li>
+</ol>
+<h3 id="m2wl-76">m2wl-76</h3>
+<p>What are the food festivals happening in Colorado This weekend? on
+eventbrite</p>
+<ol type="1">
+<li>Find food festivals happening this weekend.</li>
+<li>Limit results to events in Colorado.</li>
+<li>Search on Eventbrite.</li>
+</ol>
+<h3 id="m2wl-19">m2wl-19</h3>
+<p>Find the weight of baggage allowance for economy class on
+qatarairways</p>
+<ol type="1">
+<li>Find the baggage allowance weight for Economy Class on Qatar
+Airways.</li>
+</ol>
+<h3 id="m2wl-39">m2wl-39</h3>
+<p>Show me products from Calvin Klein brand menswear list on kohls.</p>
+<ol type="1">
+<li>Open the menswear product list on Kohl’s.</li>
+<li>Filter the list to the Calvin Klein brand.</li>
+<li>Show the matching products.</li>
+</ol>
+<h3 id="wv-google_map--4">wv-Google_Map--4</h3>
+<p>Plan a trip from Boston Logan Airport to North Station.</p>
+<ol type="1">
+<li>Plan a trip from Boston Logan Airport to North Station.</li>
+</ol>
+<h3 id="wv-allrecipes--18">wv-Allrecipes--18</h3>
+<p>Find a recipe for a vegetarian lasagna that has over 300 reviews and
+an average rating of 4.5 or higher on Allrecipes.</p>
+<ol type="1">
+<li>Find a vegetarian lasagna recipe on Allrecipes.</li>
+<li>Ensure the recipe has over 300 reviews.</li>
+<li>Ensure the recipe has an average rating of 4.5 or higher.</li>
+</ol>
+<h3 id="wv-coursera--21">wv-Coursera--21</h3>
+<p>Search for an online course on Coursera about 'Digital Marketing',
+suitable for beginner-level learners. Specify the course duration, the
+main learning outcomes, and the institution offering the course.</p>
+<ol type="1">
+<li>Search Coursera for an online course about “Digital Marketing.”</li>
+<li>Ensure the course is suitable for beginner-level learners.</li>
+<li>Specify the course duration.</li>
+<li>Identify the main learning outcomes.</li>
+<li>Identify the institution offering the course.</li>
+</ol>
+
+</main></body></html>
