@@ -21,8 +21,8 @@ any system.</p>
 <h2>Files</h2>
 <ul class="files">
 <li><a href="tasks.csv">tasks.csv</a><span>The tasks: 20 short, 40 medium and 21 long, each with its start page and text. Short and medium tasks also carry the page a run must end on and the answers that are accepted.</span></li>
-<li><a href="outcomes.csv">outcomes.csv</a><span>One line for every counted run, 3,425 in all: the task, the system, the model, whether the system said it had finished, and whether the run was judged complete.</span></li>
-<li><a href="cells.csv">cells.csv</a><span>The 80 published cells: completed and attempted runs, cost, time and tokens per completed task.</span></li>
+<li><a href="outcomes.csv">outcomes.csv</a><span>One line for every counted run, 3,443 in all: the task, the system, the model, whether the system said it had finished, and whether the run was judged complete.</span></li>
+<li><a href="cells.csv">cells.csv</a><span>The 81 published cells: completed and attempted runs, cost, time and tokens per completed task.</span></li>
 </ul>
 <h2 id="how-to-read-it">How to read it</h2>
 <p>A cell is one system on one model on one task set. Its completion is
@@ -82,6 +82,10 @@ every system (the two Amazon tasks) is left out for every system and
 replaced from a list fixed before any run. A single run that ended on a
 site's block page or robot check is left out of that system's count; the
 published record of the row names it.</p>
+<p>On the frontier model, a long run that spent more than $2.00 on model
+calls is counted as not complete, for every system, and its spend stays
+in the cost. One run is affected: a Stagehand run (wv-ESPN--22) that the
+judge accepted.</p>
 <h3 id="key-points-for-the-long-tasks">Key points for the long
 tasks</h2>
 <h3 id="wv-google_search--4">wv-Google_Search--4</h3>
