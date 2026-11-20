@@ -671,6 +671,40 @@
           "driven_by": "own agent",
           "driven_by_detail": "Stagehand 3.7.3 stagehand.agent().execute() in the mode Stagehand resolves from the model id: HYBRID for Claude Haiku 5.5 (no mode passed; the resolved mode is read per row from its own log) (kit fast/baselines/sh_run.mjs), as shipped: step limit 20 = the product's default maxSteps; verbose 2 kept (logging only). The harness adds a 900 s wall, opens the start URL first (page.goto), and points the model at our relay (openai/<id>, openaiEndpointFormat chat). Our harness (environment, kept and disclosed): the worker's Chrome 156 binary (headless, 1280x900 window, a Mac Chrome 148 user agent) through CDP.",
           "completionNote": "1 run left out of the count: Stagehand’s resolved agent mode could not be read from its own log, so the run could not be checked."
+        },
+        {
+          "id": "published-long-frontier-sh",
+          "tier": "opus",
+          "model": "GPT-6.1 Sol",
+          "task_set_id": "LONG-MX20",
+          "window_id": "FRONTIER-LONG-SH",
+          "judge_id": "WebJudge strict column, one judge: gpt-5.6-luna (medium) through the OpenAI API route, the upstream Online-Mind2Web prompts; the judge sees the action history and screenshots, never the answer; no second judge; checklist v3 on the five task-validity tasks (15 Nov)",
+          "clock": "rival self-reported",
+          "comparisonEligible": false,
+          "contender": "Stagehand",
+          "mode": "default",
+          "category": "framework",
+          "completion": "4/18",
+          "finalTime": null,
+          "reportedTime": "25.6 s",
+          "medianTime": "25.0 s",
+          "cost": "$8.3833",
+          "tokens": "4443.5k",
+          "version": "Stagehand 3.7.3",
+          "sourceRunResolution": "Recorded measurement window",
+          "methodology": "Frontier long view: the 18 long tasks every system ran (LONG-MX20 without its two Amazon tasks: Amazon refused AI agents, so under the pre-registered rule both are left out for every system), each run once · GPT-6.1 Sol through OpenRouter at the provider default: Stagehand as it ships, we add no reasoning field · run in its own window, 19 to 20 November, on one class B worker · 900 s wall; a $2.00 budget per run, applied after the run as on every frontier long row (a run over it counts as a failure, its spend kept; three runs went over, one of which, ESPN--22 at $4.91, had passed) · WebJudge after the run (one judge, Luna; no second judge), strict column (the judge never sees the answer) · time = the rival’s own reported task clock, mean per completed task, median beside · cost per completed task: every model call as billed (OpenRouter +5.5% fee) · tokens per completed task: every metered model call · checklist v3 on five tasks (Coursera--23, ESPN--22, GitHub--8, m2wl-98, BBC_News--41: steps no system could do on the live site reworded as the condition the task asks for, checked from the page), applied to every system.",
+          "wire_reasoning": "provider default",
+          "reasoning_set_by": "product",
+          "driven_by": "own agent",
+          "driven_by_detail": "Stagehand 3.7.3 stagehand.agent().execute() in its default DOM mode, as shipped: step limit 20 = the product’s default maxSteps. The harness adds a 900 s wall, opens the start URL first (page.goto), and points the model at our relay (openai/<id>, openaiEndpointFormat chat); the relay only meters.",
+          "completionNote": "2 runs were stopped when the OpenRouter credit ran out mid-run; both are left out and each task was run once more, and those reruns are counted. One rerun (m2wl-19) ran while another job was using the same worker, so its time is not clean; it did not complete, so it is not in the time figures.",
+          "date": "2026-11-20",
+          "worker": "benchmark worker (class B)",
+          "worker_class": "class B",
+          "measured_at": {
+            "first": "2026-11-19T19:55:55Z",
+            "last": "2026-11-20T18:47:28Z"
+          }
         }
       ],
       "group": "agents"
