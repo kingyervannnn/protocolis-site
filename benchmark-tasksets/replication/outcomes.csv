@@ -3424,3 +3424,21 @@ long,frontier,GPT-6.1 Sol,Agents,Browser Use (agent),wv-ESPN--4,1,yes,yes
 long,frontier,GPT-6.1 Sol,Agents,Browser Use (agent),wv-GitHub--8,1,yes,yes
 long,frontier,GPT-6.1 Sol,Agents,Browser Use (agent),wv-Google_Search--4,1,yes,no
 long,frontier,GPT-6.1 Sol,Agents,Browser Use (agent),wv-Wolfram_Alpha--6,1,yes,yes
+long,frontier,GPT-6.1 Sol,Agents,Stagehand,wv-Google_Search--4,1,yes,yes
+long,frontier,GPT-6.1 Sol,Agents,Stagehand,wv-ESPN--22,1,yes,no
+long,frontier,GPT-6.1 Sol,Agents,Stagehand,wv-Cambridge_Dictionary--9,1,no,no
+long,frontier,GPT-6.1 Sol,Agents,Stagehand,wv-GitHub--8,1,yes,yes
+long,frontier,GPT-6.1 Sol,Agents,Stagehand,wv-Coursera--23,1,yes,no
+long,frontier,GPT-6.1 Sol,Agents,Stagehand,wv-BBC_News--12,1,yes,no
+long,frontier,GPT-6.1 Sol,Agents,Stagehand,wv-Apple--19,1,yes,no
+long,frontier,GPT-6.1 Sol,Agents,Stagehand,wv-ESPN--4,1,yes,no
+long,frontier,GPT-6.1 Sol,Agents,Stagehand,wv-BBC_News--41,1,no,no
+long,frontier,GPT-6.1 Sol,Agents,Stagehand,wv-Wolfram_Alpha--6,1,yes,no
+long,frontier,GPT-6.1 Sol,Agents,Stagehand,m2wl-97,1,no,no
+long,frontier,GPT-6.1 Sol,Agents,Stagehand,m2wl-78,1,no,no
+long,frontier,GPT-6.1 Sol,Agents,Stagehand,m2wl-98,1,yes,no
+long,frontier,GPT-6.1 Sol,Agents,Stagehand,m2wl-37,1,no,no
+long,frontier,GPT-6.1 Sol,Agents,Stagehand,m2wl-66,1,yes,yes
+long,frontier,GPT-6.1 Sol,Agents,Stagehand,m2wl-76,1,yes,yes
+long,frontier,GPT-6.1 Sol,Agents,Stagehand,m2wl-19,1,yes,no
+long,frontier,GPT-6.1 Sol,Agents,Stagehand,m2wl-39,1,no,no
