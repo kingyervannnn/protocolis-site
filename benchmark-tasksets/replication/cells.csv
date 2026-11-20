@@ -1,0 +1,81 @@
+task_set,model_size,model,category,system,completed,attempted,completion_percent,cost_per_completed_task_usd,time_per_completed_task_s,tokens_per_completed_task,tokens_are_a_lower_bound,version_as_run,measured
+short,small,GLM-5.3-flash,Tools,Protocolis Adaptive,40,40,100.0,0.0009,13.6,7200,yes,0.10.4 candidate,2026-11-18
+short,small,GLM-5.3-flash,Tools,Protocolis Standard,40,40,100.0,0.0017,25.8,28100,no,0.10.4 candidate,2026-11-18
+short,small,GLM-5.3-flash,Tools,Playwright MCP,37,40,92.5,0.0025,17.7,41500,no,@playwright/mcp 0.0.84,2026-11-09
+short,small,GLM-5.3-flash,Tools,Browser Use (tools mode),59,59,100.0,0.0033,26.8,46300,no,Browser Use 0.13.13,2026-11-12
+short,small,GLM-5.3-flash,Tools,Browser Harness,52,59,88.1,0.0036,77.3,50700,no,Browser Harness 0.1.13,2026-11-12
+short,small,GLM-5.3-flash,Agents,Protocolis Adaptive,60,60,100.0,0.001,9.4,17500,yes,the release current at the time,2026-11-11
+short,small,GLM-5.3-flash,Agents,Protocolis Standard,60,60,100.0,0.0008,15.4,9300,yes,the release current at the time,2026-11-11
+short,small,GLM-5.3-flash,Agents,Browser Use (agent),59,60,98.3,0.0082,43.4,56900,no,Browser Use 0.13.13,2026-11-13
+short,small,GLM-5.3-flash,Agents,Stagehand,54,59,91.5,0.031,38.9,382100,no,Stagehand 3.7.3,2026-11-12
+short,strong,Grok 4.6,Tools,Protocolis Adaptive,40,40,100.0,0.0103,15.8,7600,yes,0.10.4 candidate,2026-11-18
+short,strong,Grok 4.6,Tools,Protocolis Standard,40,40,100.0,0.0326,26,25500,no,0.10.4 candidate,2026-11-18
+short,strong,Grok 4.6,Tools,Playwright MCP,40,40,100.0,0.0454,12.6,47400,no,@playwright/mcp 0.0.84,2026-11-09
+short,strong,Grok 4.6,Tools,Browser Use (tools mode),20,20,100.0,0.0639,26,61500,no,Browser Use 0.13.13,2026-11-09
+short,strong,Grok 4.6,Tools,Browser Harness,19,20,95.0,0.1382,106,145000,no,Browser Harness 0.1.13,2026-11-09
+short,strong,Grok 4.6,Agents,Protocolis Adaptive,40,40,100.0,0.0041,8.2,18700,yes,the release current at the time,2026-11-11
+short,strong,Grok 4.6,Agents,Protocolis Standard,40,40,100.0,0.0133,13.5,10600,no,the release current at the time,2026-11-09
+short,strong,Grok 4.6,Agents,Browser Use (agent),40,40,100.0,0.1074,39.5,58500,no,Browser Use 0.13.13,2026-11-09
+short,strong,Grok 4.6,Agents,Stagehand,38,40,95.0,0.3285,37.2,200000,no,Stagehand 3.7.3,2026-11-09
+short,frontier,GPT-6.1 Sol,Tools,Protocolis Adaptive,19,20,95.0,0.0052,11.6,5400,yes,0.10.4 candidate,2026-11-18
+short,frontier,GPT-6.1 Sol,Tools,Protocolis Standard,19,20,95.0,0.016,18.4,16600,no,0.10.4 candidate,2026-11-18
+short,frontier,GPT-6.1 Sol,Tools,Playwright MCP,38,40,95.0,0.0635,13.7,29600,no,@playwright/mcp 0.0.84,2026-11-11
+short,frontier,Opus 4.6,Tools,Browser Use (tools mode),20,20,100.0,0.2253,26.3,41800,no,Browser Use 0.13.13,2026-11-09
+short,frontier,Opus 4.6,Tools,Browser Harness,20,20,100.0,0.3005,82.8,54200,no,Browser Harness 0.1.13,2026-11-09
+short,frontier,GPT-6.1 Sol,Agents,Protocolis Adaptive,60,60,100.0,0.003,9.6,17600,yes,the release current at the time,2026-11-12
+short,frontier,GPT-6.1 Sol,Agents,Protocolis Standard,40,40,100.0,0.0078,12.6,7000,yes,the release current at the time,2026-11-12
+short,frontier,GPT-6.1 Sol,Agents,Browser Use (agent),19,20,95.0,0.0567,24.8,46200,no,Browser Use 0.13.13,2026-11-10
+short,frontier,GPT-6.1 Sol,Agents,Stagehand,17,20,85.0,0.2632,31.1,184000,no,Stagehand 3.7.3,2026-11-10
+medium,small,GLM-5.3-flash,Tools,Protocolis Adaptive,77,80,96.2,0.0012,14.4,11300,yes,0.10.4 candidate,2026-11-18
+medium,small,GLM-5.3-flash,Tools,Protocolis Standard,77,80,96.2,0.0018,19.3,27100,yes,0.10.4 candidate,2026-11-19
+medium,small,GLM-5.3-flash,Tools,Playwright MCP,74,80,92.5,0.0023,16.6,39100,no,@playwright/mcp 0.0.84,2026-11-12
+medium,small,GLM-5.3-flash,Tools,Browser Use (tools mode),78,80,97.5,0.0033,23.3,44900,no,Browser Use 0.13.13,2026-11-13
+medium,small,GLM-5.3-flash,Tools,Browser Harness,74,80,92.5,0.0034,44.7,45300,no,Browser Harness 0.1.13,2026-11-13
+medium,small,GLM-5.3-flash,Agents,Protocolis Adaptive,79,80,98.8,0.0012,8.4,20500,yes,the release current at the time,2026-11-12
+medium,small,GLM-5.3-flash,Agents,Protocolis Standard,78,80,97.5,0.0009,12.7,11300,yes,the release current at the time,2026-11-12
+medium,small,GLM-5.3-flash,Agents,Browser Use (agent),69,80,86.2,0.0067,38.2,49800,no,Browser Use 0.13.13,2026-11-13
+medium,small,GLM-5.3-flash,Agents,Stagehand,79,80,98.8,0.0116,32.1,125800,no,Stagehand 3.7.3,2026-11-13
+medium,strong,Grok 4.6,Tools,Protocolis Adaptive,78,80,97.5,0.0032,13.7,8700,yes,0.10.4 candidate,2026-11-19
+medium,strong,Grok 4.6,Tools,Protocolis Standard,78,80,97.5,0.0106,24.9,28900,yes,0.10.4 candidate,2026-11-19
+medium,strong,x-ai/grok-4.6,Tools,Playwright MCP,78,80,97.5,0.0408,10.2,48000,no,@playwright/mcp 0.0.84,2026-11-09
+medium,strong,Grok 4.6,Tools,Browser Use (tools mode),74,80,92.5,0.0266,23.5,82300,no,Browser Use 0.13.13,2026-11-13
+medium,strong,Grok 4.6,Tools,Browser Harness,72,80,90.0,0.0395,98.4,113000,no,Browser Harness 0.1.13,2026-11-13
+medium,strong,Grok 4.6,Agents,Protocolis Adaptive,79,79,100.0,0.0063,8.7,19800,yes,the release current at the time,2026-11-12
+medium,strong,Grok 4.6,Agents,Protocolis Standard,79,79,100.0,0.0052,10.2,11900,yes,the release current at the time,2026-11-12
+medium,strong,Grok 4.6,Agents,Browser Use (agent),76,80,95.0,0.031,38.9,56900,no,Browser Use 0.13.13,2026-11-13
+medium,strong,Grok 4.6,Agents,Stagehand,80,80,100.0,0.0771,26,131000,no,Stagehand 3.7.3,2026-11-13
+medium,frontier,GPT-6.1 Sol,Tools,Protocolis Adaptive,38,40,95.0,0.0072,9.8,6700,yes,0.10.4 candidate,2026-11-18
+medium,frontier,GPT-6.1 Sol,Tools,Protocolis Standard,39,40,97.5,0.0157,15.6,15400,no,0.10.4 candidate,2026-11-18
+medium,frontier,GPT-6.1 Sol,Tools,Playwright MCP,77,79,97.5,0.0366,11.8,17000,no,@playwright/mcp 0.0.84,2026-11-12
+medium,frontier,GPT-6.1 Sol,Tools,Browser Use (tools mode),39,40,97.5,0.0369,20.9,48600,no,Browser Use 0.13.13,2026-11-13
+medium,frontier,GPT-6.1 Sol,Tools,Browser Harness,37,40,92.5,0.0255,46.3,24100,no,Browser Harness 0.1.13,2026-11-13
+medium,frontier,GPT-6.1 Sol,Agents,Protocolis Adaptive,40,40,100.0,0.0052,8.7,18700,yes,the release current at the time,2026-11-12
+medium,frontier,GPT-6.1 Sol,Agents,Protocolis Standard,80,80,100.0,0.0093,9.4,6200,yes,the release current at the time,2026-11-12
+medium,frontier,GPT-6.1 Sol,Agents,Browser Use (agent),39,40,97.5,0.0685,24.4,46900,no,Browser Use 0.13.13,2026-11-13
+medium,frontier,GPT-6.1 Sol,Agents,Stagehand,37,40,92.5,0.6245,26.7,423800,no,Stagehand 3.7.3,2026-11-19
+long,small,Claude Haiku 5.5,Tools,Protocolis Adaptive,11,19,57.9,0.0089,33,75600,yes,0.10.4 candidate,2026-11-18
+long,small,Claude Haiku 5.5,Tools,Protocolis Standard,13,19,68.4,0.0141,42.5,120700,no,0.10.4 candidate,2026-11-18
+long,small,Claude Haiku 5.5,Tools,Playwright MCP,7,18,38.9,0.0379,27,342800,no,@playwright/mcp 0.0.84,2026-11-13
+long,small,Claude Haiku 5.5,Tools,Browser Use (tools mode),8,20,40.0,0.0596,44.5,524100,no,Browser Use 0.13.13,2026-11-13
+long,small,Claude Haiku 5.5,Tools,Browser Harness,4,19,21.1,0.0314,20.2,255900,no,Browser Harness 0.1.13,2026-11-13
+long,small,Claude Haiku 5.5,Agents,Protocolis Adaptive,12,19,63.2,0.0125,46.7,103800,yes,0.10.4 candidate,2026-11-18
+long,small,Claude Haiku 5.5,Agents,Protocolis Standard,11,20,55.0,0.0132,41.7,107800,yes,0.10.4 candidate,2026-11-18
+long,small,Claude Haiku 5.5,Agents,Browser Use (agent),4,20,20.0,0.1411,79.7,1156900,no,Browser Use 0.13.13,2026-11-13
+long,small,Claude Haiku 5.5,Agents,Stagehand,6,19,31.6,4.0056,58,7747400,no,Stagehand 3.7.3,2026-11-13
+long,strong,Grok 4.6,Tools,Protocolis Adaptive,16,18,88.9,0.0955,87.3,334000,yes,0.10.4 candidate,2026-11-17
+long,strong,Grok 4.6,Tools,Protocolis Standard,15,18,83.3,0.266,146.5,302000,no,0.10.4 candidate,2026-11-17
+long,strong,Grok 4.6,Tools,Playwright MCP,10,19,52.6,0.28,86.8,1215100,no,Playwright MCP 0.0.84,2026-11-13
+long,strong,Grok 4.6,Tools,Browser Use (tools mode),7,19,36.8,0.3068,149.7,1283700,no,Browser Use 0.13.13,2026-11-13
+long,strong,Grok 4.6,Tools,Browser Harness,8,19,42.1,0.1865,150,598000,no,Browser Harness 0.1.13,2026-11-13
+long,strong,Grok 4.6,Agents,Protocolis Adaptive,15,19,78.9,0.126,62.5,111800,yes,0.10.4 candidate,2026-11-17
+long,strong,Grok 4.6,Agents,Protocolis Standard,16,19,84.2,0.0724,106.6,186300,yes,0.10.4 candidate,2026-11-17
+long,strong,Grok 4.6,Agents,Browser Use (agent),10,19,52.6,0.2753,270.4,395800,yes,Browser Use 0.13.13,2026-11-13
+long,strong,Grok 4.6,Agents,Stagehand,6,19,31.6,0.4994,43.7,1246300,no,Stagehand 3.7.3,2026-11-13
+long,frontier,GPT-6.1 Sol,Tools,Protocolis Adaptive,16,18,88.9,0.0425,64.1,64000,yes,0.10.4 candidate,2026-11-17
+long,frontier,GPT-6.1 Sol,Tools,Protocolis Standard,16,19,84.2,0.0429,52.4,54600,no,0.10.4 candidate,2026-11-17
+long,frontier,GPT-6.1 Sol,Tools,Playwright MCP,4,18,22.2,0.2449,49.2,491800,no,@playwright/mcp 0.0.84,2026-11-13
+long,frontier,GPT-6.1 Sol,Tools,Browser Use (tools mode),5,18,27.8,0.226,36.9,398700,no,Browser Use 0.13.13,2026-11-13
+long,frontier,GPT-6.1 Sol,Tools,Browser Harness,2,18,11.1,0.4715,23.9,609600,no,Browser Harness 0.1.13,2026-11-13
+long,frontier,GPT-6.1 Sol,Agents,Protocolis Adaptive,16,20,80.0,0.1663,83.1,128600,yes,0.10.4 candidate,2026-11-17
+long,frontier,GPT-6.1 Sol,Agents,Protocolis Standard,17,20,85.0,0.1776,54.8,116300,yes,0.10.4 candidate,2026-11-17
+long,frontier,GPT-6.1 Sol,Agents,Browser Use (agent),12,18,66.7,0.4773,97.5,295400,no,Browser Use 0.13.13,2026-11-13
