@@ -110,10 +110,14 @@ h2{font:500 .74rem var(--font-mono);letter-spacing:.16em;text-transform:uppercas
 </main>
 <script>
 /* Show the paper inline where a browser can: a wide screen with a pointer. On a phone the buttons above open the PDF natively, and
-   nothing is downloaded here. Without scripting the buttons still work. */
+   nothing is downloaded here. Without scripting the buttons still work.
+   Zoom: a page is 816 x 1056 px at 100 percent, so the zoom is set from the height the viewer was given, to show about 85 percent
+   of a page at a time (the reader's own toolbar takes about 44 px). Without this a wide screen fits the page to the width and
+   shows only a slice of it. */
 (function(){try{if(!window.matchMedia('(min-width:901px) and (hover:hover)').matches)return;
 var v=document.getElementById('viewer');if(!v)return;
-v.innerHTML='<object type="application/pdf" aria-label="The paper, 24 pages" data="Solid-State_Web_Execution_Boudakian_2026.pdf#view=FitH&navpanes=0"><p>This browser cannot show the paper here. <a href="Solid-State_Web_Execution_Boudakian_2026.pdf" target="_blank" rel="noopener">Open the PDF</a>.</p></object>';
-v.hidden=false}catch(e){}})();
+v.hidden=false;var h=v.getBoundingClientRect().height;
+var z=Math.max(50,Math.min(140,Math.round((h-44)/(1056*0.85)*100)));
+v.innerHTML='<object type="application/pdf" aria-label="The paper, 24 pages" data="Solid-State_Web_Execution_Boudakian_2026.pdf#zoom='+z+'&navpanes=0"><p>This browser cannot show the paper here. <a href="Solid-State_Web_Execution_Boudakian_2026.pdf" target="_blank" rel="noopener">Open the PDF</a>.</p></object>'}catch(e){}})();
 </script>
 </body></html>
