@@ -51,19 +51,17 @@ h2{font:500 .74rem var(--font-mono);letter-spacing:.16em;text-transform:uppercas
 @media(min-width:901px) and (hover:hover){
   body{min-height:100vh;display:flex;flex-direction:column}
   main{flex:1;padding:0}
-  .strip{display:flex;order:1;align-items:center;justify-content:space-between;gap:.8rem 2rem;flex-wrap:wrap;padding:.3rem var(--gut);border-top:1px solid rgba(201,160,97,.45);border-bottom:1px solid rgba(201,160,97,.45);background:rgba(201,160,97,.08)}
-  .sn{order:0;flex-direction:row;align-items:baseline;gap:.8rem;margin:0;padding:0;border:0;background:none;font-size:.84rem;line-height:1.4}
-  .sn b{font-size:.68rem}
-  .sd{display:none}   /* the viewer's own toolbar has Download and Print */
-  h1,.more,.small-only{display:none}
+  .strip,h1,.more,.small-only{display:none}   /* wide screens: no top strip; the notice lives in the one-row bar at the bottom */
   .viewer{order:2;display:flex;flex:1 1 auto;min-height:480px;margin:0}
   .viewer[hidden]{display:none!important}
   .viewer object{flex:1 1 auto;width:100%;height:auto;border:0;background:#2a2a2a}
   .viewer p{padding:1rem var(--gut);margin:0;color:var(--fg-2)}
-  .foot{order:3;display:flex;flex-wrap:wrap;justify-content:space-between;gap:.2rem 2rem;margin:0;padding:.55rem var(--gut);font-size:.8rem;line-height:1.5}
+  .foot{order:3;display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:.1rem 2rem;margin:0;padding:.45rem var(--gut);font-size:.8rem;line-height:1.5;border-top:1px solid rgba(201,160,97,.45);background:rgba(201,160,97,.08)}
   .foot p{margin:0;max-width:none}
+  .foot .fn{display:block;color:var(--fg)}.foot .fn b{font:500 .68rem var(--font-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-right:.7rem}
+  .foot .lg{display:none}
 }
-@media(max-width:900px),(hover:none){.btn.sec-on-small{background:transparent;color:var(--accent)}.sd .meta{order:9}}
+@media(max-width:900px),(hover:none){.btn.sec-on-small{background:transparent;color:var(--accent)}.sd .meta{order:9}.foot .fn,.foot .sm{display:none}}
 </style></head><body>
 <header class="top">
   <a class="brand" href="/" aria-label="Protocolis"><img src="/glyph.svg" alt=""><b aria-hidden="true">rotocolis</b></a>
@@ -102,8 +100,10 @@ h2{font:500 .74rem var(--font-mono);letter-spacing:.16em;text-transform:uppercas
 </div>
 
 <div class="foot">
-<p>Recompute every figure from the <a href="/benchmark-tasksets/replication/">replication kit</a> &middot; <a href="/benchmark-tasksets/replication/protocolis-replication-kit.zip" download>download (.zip)</a></p>
-<p>Patent-pending, in production with paying customers, offered for acquisition. Evaluation access on request: <a href="/#contact">get in touch</a>.</p>
+<p class="fn"><b>Coming soon to arXiv</b>Author&rsquo;s copy until it is announced there.</p>
+<p class="sm"><a href="/benchmark-tasksets/replication/">Replication kit</a> &middot; Offered for acquisition &middot; <a href="/#contact">Get in touch</a></p>
+<p class="lg">Recompute every figure from the <a href="/benchmark-tasksets/replication/">replication kit</a> &middot; <a href="/benchmark-tasksets/replication/protocolis-replication-kit.zip" download>download (.zip)</a></p>
+<p class="lg">Patent-pending, in production with paying customers, offered for acquisition. Evaluation access on request: <a href="/#contact">get in touch</a>.</p>
 </div>
 </main>
 <script>
