@@ -29,34 +29,42 @@ a{color:var(--accent)}
 .top nav .nav-cta.nav-paper{background:transparent;color:var(--accent);border:1px solid var(--accent);padding:calc(.55rem - 1px) calc(1rem - 1px)}
 .top nav .nav-cta.nav-paper:hover,.top nav .nav-cta.nav-paper:focus-visible,.top nav .nav-cta.nav-paper[aria-current]{background:rgba(201,160,97,.12);color:var(--accent)}
 @media(max-width:760px){.top nav{display:none}}
-main{max-width:62rem;margin:0 auto;padding:.6rem var(--gut) 4rem}
-.notice{display:flex;gap:.8rem;align-items:baseline;margin:0 0 1.6rem;padding:.8rem 1.05rem;border:1px solid var(--accent);border-left-width:3px;background:rgba(201,160,97,.08);color:var(--fg);font-size:.95rem;line-height:1.5}
-.notice b{font:500 .74rem var(--font-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--accent);white-space:nowrap}
-.head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:1.2rem 2rem}
-.head .t{flex:1 1 30rem;min-width:0}
-.back{font:.78rem var(--font-mono);letter-spacing:.06em;margin:0 0 1rem}.back a{text-decoration:none}
-h1{font-family:var(--font-display);font-weight:500;font-size:clamp(1.4rem,3vw,2rem);line-height:1.22;letter-spacing:.01em;margin:0 0 .7rem}
-.by{color:var(--fg-2);margin:0;font-size:.96rem}.by b{color:var(--fg);font-weight:600}
-.dl{flex:0 0 auto;text-align:right}
-.btn{display:inline-block;padding:.8rem 1.3rem;border-radius:3px;text-decoration:none;font:500 .76rem var(--font-mono);letter-spacing:.12em;text-transform:uppercase;border:1px solid var(--accent);background:var(--accent);color:var(--accent-ink)}
+/* Phones and touch screens (no inline viewer): a stack. Wide screens: one strip, then the paper edge to edge (rules further down). */
+main{display:flex;flex-direction:column;padding:.6rem var(--gut) 3rem}
+.strip{display:contents}
+.sn{order:1;display:flex;flex-direction:column;gap:.3rem;margin:0 0 1.4rem;padding:.8rem 1.05rem;border:1px solid var(--accent);border-left-width:3px;background:rgba(201,160,97,.08);color:var(--fg);font-size:.95rem;line-height:1.5}
+.sn b{font:500 .74rem var(--font-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--accent);white-space:nowrap}
+h1{order:2;font-family:var(--font-display);font-weight:500;font-size:clamp(1.4rem,6vw,1.9rem);line-height:1.22;letter-spacing:.01em;margin:0 0 1.1rem}
+.sd{order:3;display:flex;flex-wrap:wrap;align-items:center;gap:.6rem}
+.btn{display:inline-block;padding:.8rem 1.3rem;border-radius:3px;text-decoration:none;font:500 .76rem var(--font-mono);letter-spacing:.12em;text-transform:uppercase;border:1px solid var(--accent);background:var(--accent);color:var(--accent-ink);white-space:nowrap}
 .btn:hover,.btn:focus-visible{background:#d6b074}
 .btn.sec{background:transparent;color:var(--accent)}.btn.sec:hover,.btn.sec:focus-visible{background:rgba(201,160,97,.09)}
-.meta{font:.74rem var(--font-mono);color:var(--dim);letter-spacing:.03em;margin:.55rem 0 0}
-.small-only{display:none}
-.viewer{margin:1.6rem 0 0}
-.viewer object{display:block;width:100%;height:min(86vh,1200px);min-height:560px;border:1px solid var(--rule);background:#2a2a2a}
-.viewer p{padding:1rem;margin:0;color:var(--fg-2)}
+.meta{font:.74rem var(--font-mono);color:var(--dim);letter-spacing:.03em;width:100%;margin:.2rem 0 0}
+.viewer{display:none}
 h2{font:500 .74rem var(--font-mono);letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin:2.6rem 0 .9rem;padding-top:1.4rem;border-top:1px solid var(--rule)}
-.more{max-width:49rem}
+.more{order:4;max-width:49rem}
 .abstract{font:1.07rem/1.72 Georgia,"Times New Roman",serif;color:var(--fg);margin:0}
 .heads{list-style:none;margin:0;padding:0;display:grid;gap:.9rem}
 .heads li{padding:.85rem 1.05rem;border-left:2px solid var(--accent);background:rgba(201,160,97,.06);color:var(--fg);font-size:.98rem;line-height:1.55}
-.foot{margin-top:2.6rem;padding-top:1.3rem;border-top:1px solid var(--rule);color:var(--dim);font-size:.9rem;max-width:49rem}
-.foot p{margin:0 0 .7rem;color:var(--dim)}.cite{font:.8rem/1.6 var(--font-mono);overflow-wrap:anywhere}
-/* Phones and touch screens cannot show a PDF inline: the page offers the paper to open, plus the abstract and the headline results. */
-@media(max-width:900px),(hover:none){.small-only{display:inline-block}.viewer{display:none!important}.dl{text-align:left;width:100%}.dl .btn{margin:0 .6rem .4rem 0}.btn.sec-on-small{background:transparent;color:var(--accent)}}
-@media(min-width:901px) and (hover:hover){.more{display:none}}
-@media(max-width:600px){.notice{flex-direction:column;gap:.3rem}}
+.foot{order:6;margin-top:2.4rem;padding-top:1.2rem;border-top:1px solid var(--rule);color:var(--dim);font-size:.9rem}
+.foot p{margin:0 0 .7rem;color:var(--dim);max-width:49rem}
+@media(min-width:901px) and (hover:hover){
+  body{min-height:100vh;display:flex;flex-direction:column}
+  main{flex:1;padding:0}
+  .strip{display:flex;order:1;align-items:center;justify-content:space-between;gap:.8rem 2rem;flex-wrap:wrap;padding:.6rem var(--gut);border-top:1px solid rgba(201,160,97,.45);border-bottom:1px solid rgba(201,160,97,.45);background:rgba(201,160,97,.08)}
+  .sn{order:0;flex-direction:row;align-items:baseline;gap:.8rem;margin:0;padding:0;border:0;background:none;font-size:.93rem}
+  .sd{order:0;flex-wrap:nowrap;gap:1rem;margin-left:auto}
+  .meta{width:auto;margin:0}
+  .btn{padding:.55rem 1rem}
+  h1,.more,.small-only{display:none}
+  .viewer{order:2;display:flex;flex:1 1 auto;min-height:480px;margin:0}
+  .viewer[hidden]{display:none!important}
+  .viewer object{flex:1 1 auto;width:100%;height:auto;border:0;background:#2a2a2a}
+  .viewer p{padding:1rem var(--gut);margin:0;color:var(--fg-2)}
+  .foot{order:3;display:flex;flex-wrap:wrap;justify-content:space-between;gap:.2rem 2rem;margin:0;padding:.55rem var(--gut);font-size:.8rem;line-height:1.5}
+  .foot p{margin:0;max-width:none}
+}
+@media(max-width:900px),(hover:none){.btn.sec-on-small{background:transparent;color:var(--accent)}.sd .meta{order:9}}
 </style></head><body>
 <header class="top">
   <a class="brand" href="/" aria-label="Protocolis"><img src="/glyph.svg" alt=""><b aria-hidden="true">rotocolis</b></a>
@@ -70,17 +78,13 @@ h2{font:500 .74rem var(--font-mono);letter-spacing:.16em;text-transform:uppercas
   </nav>
 </header>
 <main>
-<div class="notice" role="note"><b>Coming soon to arXiv</b><span>This preprint is being posted to arXiv (cs.AI). Until it is announced there, this is the author&rsquo;s copy, hosted here.</span></div>
-<div class="head">
-  <div class="t">
-    <p class="back"><a href="/">&larr; protocolis.co</a></p>
-    <h1>Solid-State Web Execution: Compiling Web Applications into Verified Operations for AI Agents</h1>
-    <p class="by"><b>Vahagn Boudakian</b> &middot; Protocolis &middot; Preprint, 21 November 2026</p>
-  </div>
-  <div class="dl">
+<div class="strip">
+  <div class="sn" role="note"><b>Coming soon to arXiv</b><span>Being posted to arXiv (cs.AI). Until it is announced there, this is the author&rsquo;s copy.</span></div>
+  <h1>Solid-State Web Execution: Compiling Web Applications into Verified Operations for AI Agents</h1>
+  <div class="sd">
     <a class="btn small-only" href="Solid-State_Web_Execution_Boudakian_2026.pdf" target="_blank" rel="noopener">Read the paper</a>
     <a class="btn sec-on-small" href="Solid-State_Web_Execution_Boudakian_2026.pdf" download>Download PDF</a>
-    <p class="meta">PDF &middot; 24 pages &middot; 1.4 MB</p>
+    <span class="meta">PDF &middot; 24 pages &middot; 1.4 MB</span>
   </div>
 </div>
 
@@ -99,9 +103,8 @@ h2{font:500 .74rem var(--font-mono);letter-spacing:.16em;text-transform:uppercas
 </div>
 
 <div class="foot">
-<p>Every completion figure in the paper can be recomputed from the replication kit: <a href="/benchmark-tasksets/replication/">the tasks, the outcome of every counted run and the judging rules</a> &middot; <a href="/benchmark-tasksets/replication/protocolis-replication-kit.zip" download>download the kit (.zip)</a>.</p>
-<p class="cite">Cite: Boudakian, V. (2026). Solid-State Web Execution: Compiling Web Applications into Verified Operations for AI Agents. Protocolis. Preprint, 21 November 2026. https://protocolis.co/paper/</p>
-<p>Protocolis is patent-pending, in production with paying customers, and offered for acquisition. A hosted evaluation platform is available for black-box replication. <a href="/#contact">Get in touch</a>.</p>
+<p>Recompute every figure from the <a href="/benchmark-tasksets/replication/">replication kit</a> &middot; <a href="/benchmark-tasksets/replication/protocolis-replication-kit.zip" download>download (.zip)</a></p>
+<p>Patent-pending, in production with paying customers, offered for acquisition. Evaluation access on request: <a href="/#contact">get in touch</a>.</p>
 </div>
 </main>
 <script>
