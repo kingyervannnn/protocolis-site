@@ -808,7 +808,7 @@ short,frontier,GPT-6.1 Sol,Tools,Protocolis Adaptive,internet-status-404,1,yes,y
 short,frontier,GPT-6.1 Sol,Tools,Protocolis Adaptive,mdn-includes-return,1,yes,yes
 short,frontier,GPT-6.1 Sol,Tools,Protocolis Adaptive,pydocs-json-dumps,1,yes,yes
 short,frontier,GPT-6.1 Sol,Tools,Protocolis Adaptive,pytut-list-pop,1,yes,yes
-short,frontier,GPT-6.1 Sol,Tools,Protocolis Adaptive,nodejs-events-stability,1,yes,no
+short,frontier,GPT-6.1 Sol,Tools,Protocolis Adaptive,nodejs-events-stability,1,yes,yes
 short,frontier,GPT-6.1 Sol,Tools,Protocolis Adaptive,git-stash-drop,1,yes,yes
 short,frontier,GPT-6.1 Sol,Tools,Protocolis Adaptive,rfc7540-title,1,yes,yes
 short,frontier,GPT-6.1 Sol,Tools,Protocolis Adaptive,arxiv-bert-first-author,1,yes,yes
@@ -828,7 +828,7 @@ short,frontier,GPT-6.1 Sol,Tools,Protocolis Standard,internet-status-404,1,yes,y
 short,frontier,GPT-6.1 Sol,Tools,Protocolis Standard,mdn-includes-return,1,yes,yes
 short,frontier,GPT-6.1 Sol,Tools,Protocolis Standard,pydocs-json-dumps,1,yes,yes
 short,frontier,GPT-6.1 Sol,Tools,Protocolis Standard,pytut-list-pop,1,yes,yes
-short,frontier,GPT-6.1 Sol,Tools,Protocolis Standard,nodejs-events-stability,1,yes,no
+short,frontier,GPT-6.1 Sol,Tools,Protocolis Standard,nodejs-events-stability,1,yes,yes
 short,frontier,GPT-6.1 Sol,Tools,Protocolis Standard,git-stash-drop,1,yes,yes
 short,frontier,GPT-6.1 Sol,Tools,Protocolis Standard,rfc7540-title,1,yes,yes
 short,frontier,GPT-6.1 Sol,Tools,Protocolis Standard,arxiv-bert-first-author,1,yes,yes
