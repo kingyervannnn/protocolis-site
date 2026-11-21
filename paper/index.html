@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Solid-State Web Execution: Compiling Web Applications into Verified Operations for AI Agents | Protocolis</title>
+<meta name="description" content="A deterministic compiler turns a web page, on first contact and with no model call, into typed operations that an AI agent invokes, each returning a verified result. Compared with widely used browser tools and agents, across three task lengths and three model sizes.">
+<link rel="canonical" href="https://protocolis.co/paper/">
+<meta property="og:type" content="article"><meta property="og:site_name" content="Protocolis"><meta property="og:url" content="https://protocolis.co/paper/">
+<meta property="og:title" content="Solid-State Web Execution: Compiling Web Applications into Verified Operations for AI Agents"><meta property="og:description" content="A deterministic compiler turns a web page, on first contact and with no model call, into typed operations that an AI agent invokes, each returning a verified result. Compared with widely used browser tools and agents, across three task lengths and three model sizes.">
+<meta property="og:image" content="https://protocolis.co/media/og-card-v2.jpg"><meta name="twitter:card" content="summary_large_image">
+<meta name="citation_title" content="Solid-State Web Execution: Compiling Web Applications into Verified Operations for AI Agents"><meta name="citation_author" content="Boudakian, Vahagn"><meta name="citation_author_institution" content="Protocolis">
+<meta name="citation_publication_date" content="2026/11/21"><meta name="citation_pdf_url" content="https://protocolis.co/paper/Solid-State_Web_Execution_Boudakian_2026.pdf"><meta name="citation_abstract_html_url" content="https://protocolis.co/paper/">
+<link rel="icon" type="image/svg+xml" href="/glyph.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "ScholarlyArticle", "headline": "Solid-State Web Execution: Compiling Web Applications into Verified Operations for AI Agents", "abstract": "Web agents have a language model read the page on every step, as a screenshot or as a structured snapshot, and decide what to do next. That per-step reading accounts for much of the time and cost of a web task and makes results depend heavily on which model is used. We evaluate a different design: a deterministic compiler that turns a page, on first contact and without any model call, into typed operations the agent invokes, each of which returns a verified result. To our knowledge it is the first such compiler in operation. We compare this system with widely used browser tools and browser agents, each as shipped, across three task lengths and three model tiers, judged by the same rules. It was the most stable system tested: across every task length and model size it never completed fewer than 55 percent of the tasks, while every other system fell to 28 percent or lower. On long tasks its better mode in each cell completed 80 percent (90 of 113), against 45 percent (51 of 113) for the best other system in each cell. A completed task cost 1.9 to 26 times less than with the cheapest other system on the same model. With its own agent it matched or exceeded the best other agent's completion rate in 9 of 9 cells, and as a tool in 8 of 9. It was the fastest system in 11 of 18 cells. On long tasks the judge rejected 22 percent of its reported finishes, against 56 percent for the other systems. Run on the small model, it cost less than every other system run on the frontier model in 30 of 30 pairings, and matched or exceeded its completion rate in 24. Every result is a first visit, with site memory and learning off and no site-specific code: the least favourable setting for the design, and the starting point for a deployment at volume. We report every cell in which another system leads and publish the tasks and the outcome of every run. The system is closed; access is provided for replication.", "datePublished": "2026-11-21", "url": "https://protocolis.co/paper/", "author": {"@type": "Person", "name": "Vahagn Boudakian", "affiliation": {"@type": "Organization", "name": "Protocolis"}}, "encoding": {"@type": "MediaObject", "contentUrl": "https://protocolis.co/paper/Solid-State_Web_Execution_Boudakian_2026.pdf", "encodingFormat": "application/pdf"}}</script>
+<style>
+:root{--bg:#0e0e0e;--bg-2:#161616;--fg:#ece8df;--fg-2:#c3beb2;--dim:#8c887f;--rule:rgba(236,232,223,.13);--accent:#c9a061;--accent-ink:#0e0e0e;--gut:clamp(16px,5vw,96px);
+--font-display:"Cinzel",Georgia,serif;--font-body:"Instrument Sans","Helvetica Neue",Arial,sans-serif;--font-mono:"JetBrains Mono",ui-monospace,Menlo,monospace;color-scheme:dark}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:400 1rem/1.65 var(--font-body)}
+a{color:var(--accent)}
+.top{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;padding:1.1rem var(--gut)}
+.brand{display:flex;align-items:center;gap:.3rem;text-decoration:none;color:var(--fg)}.brand img{height:2.6rem;width:auto;display:block}
+.brand b{font-family:var(--font-display);font-weight:600;letter-spacing:.3em;font-size:1.25rem;text-transform:uppercase;line-height:1}
+.top nav{display:flex;align-items:center;gap:1.6rem;flex-wrap:wrap;font-family:var(--font-mono);font-size:.78rem;color:var(--fg-2)}
+.top nav a{text-decoration:none;letter-spacing:.05em;color:inherit}.top nav a:hover,.top nav a:focus-visible,.top nav a[aria-current]{color:var(--accent)}
+.top nav .nav-cta{background:var(--accent);color:var(--accent-ink);padding:.55rem 1rem;border-radius:3px;font-size:.72rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase}
+.top nav .nav-cta:hover{background:#d6b074;color:var(--accent-ink)}
+@media(max-width:760px){.top nav{display:none}}
+main{max-width:49rem;margin:0 auto;padding:1.2rem var(--gut) 5rem}
+.back{font:.78rem var(--font-mono);letter-spacing:.06em;margin:0 0 2.2rem}.back a{text-decoration:none}
+.eyebrow{font:500 .72rem var(--font-mono);letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin:0 0 1rem}
+h1{font-family:var(--font-display);font-weight:500;font-size:clamp(1.55rem,3.6vw,2.35rem);line-height:1.2;letter-spacing:.01em;margin:0 0 1.1rem}
+.by{color:var(--fg-2);margin:0 0 1.9rem}.by b{color:var(--fg);font-weight:600}
+.actions{display:flex;flex-wrap:wrap;gap:.8rem;margin:0 0 .9rem}
+.btn{display:inline-block;padding:.8rem 1.3rem;border-radius:3px;text-decoration:none;font:500 .76rem var(--font-mono);letter-spacing:.12em;text-transform:uppercase;border:1px solid var(--accent)}
+.btn.pri{background:var(--accent);color:var(--accent-ink)}.btn.pri:hover,.btn.pri:focus-visible{background:#d6b074}
+.btn.sec{color:var(--accent)}.btn.sec:hover,.btn.sec:focus-visible{background:rgba(201,160,97,.09)}
+.meta{font:.76rem var(--font-mono);color:var(--dim);letter-spacing:.03em;margin:0 0 .5rem}
+.status{color:var(--fg-2);font-size:.94rem;margin:.2rem 0 0}
+h2{font:500 .74rem var(--font-mono);letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin:2.9rem 0 .9rem;padding-top:1.4rem;border-top:1px solid var(--rule)}
+.abstract{font:1.07rem/1.72 Georgia,"Times New Roman",serif;color:var(--fg);margin:0}
+.heads{list-style:none;margin:0;padding:0;display:grid;gap:.9rem}
+.heads li{padding:.85rem 1.05rem;border-left:2px solid var(--accent);background:rgba(201,160,97,.06);color:var(--fg);font-size:.98rem;line-height:1.55}
+p{margin:.2rem 0 .9rem;color:var(--fg-2)}
+.cite{font:.84rem/1.6 var(--font-mono);color:var(--fg-2);background:var(--bg-2);border:1px solid var(--rule);padding:.9rem 1rem;overflow-wrap:anywhere}
+.foot{margin-top:3rem;padding-top:1.4rem;border-top:1px solid var(--rule);color:var(--dim);font-size:.9rem}
+</style></head><body>
+<header class="top">
+  <a class="brand" href="/" aria-label="Protocolis"><img src="/glyph.svg" alt=""><b aria-hidden="true">rotocolis</b></a>
+  <nav aria-label="Sections">
+    <a href="/#demo">demonstration</a>
+    <a href="/#benchmarks">benchmarks</a>
+    <a href="/paper/" aria-current="page">research paper</a>
+    <a href="/#how">engine</a>
+    <a href="/#compare">comparisons</a>
+    <a class="nav-cta" href="https://app.protocolis.co/">platform</a>
+  </nav>
+</header>
+<main>
+<p class="back"><a href="/">&larr; protocolis.co</a></p>
+<p class="eyebrow">Research paper &middot; Preprint</p>
+<h1>Solid-State Web Execution: Compiling Web Applications into Verified Operations for AI Agents</h1>
+<p class="by"><b>Vahagn Boudakian</b> &middot; Protocolis</p>
+<div class="actions">
+  <a class="btn pri" href="Solid-State_Web_Execution_Boudakian_2026.pdf" target="_blank" rel="noopener">Read the paper</a>
+  <a class="btn sec" href="Solid-State_Web_Execution_Boudakian_2026.pdf" download>Download PDF</a>
+</div>
+<p class="meta">PDF &middot; 24 pages &middot; 1.4 MB &middot; version of 21 November 2026</p>
+<p class="status">A preprint. Posting to arXiv (cs.AI) is in progress; this page will link to the arXiv version once it is announced.</p>
+
+<h2>Abstract</h2>
+<p class="abstract">Web agents have a language model read the page on every step, as a screenshot or as a structured snapshot, and decide what to do next. That per-step reading accounts for much of the time and cost of a web task and makes results depend heavily on which model is used. We evaluate a different design: a deterministic compiler that turns a page, on first contact and without any model call, into typed operations the agent invokes, each of which returns a verified result. To our knowledge it is the first such compiler in operation. We compare this system with widely used browser tools and browser agents, each as shipped, across three task lengths and three model tiers, judged by the same rules. It was the most stable system tested: across every task length and model size it never completed fewer than 55 percent of the tasks, while every other system fell to 28 percent or lower. On long tasks its better mode in each cell completed 80 percent (90 of 113), against 45 percent (51 of 113) for the best other system in each cell. A completed task cost 1.9 to 26 times less than with the cheapest other system on the same model. With its own agent it matched or exceeded the best other agent&#x27;s completion rate in 9 of 9 cells, and as a tool in 8 of 9. It was the fastest system in 11 of 18 cells. On long tasks the judge rejected 22 percent of its reported finishes, against 56 percent for the other systems. Run on the small model, it cost less than every other system run on the frontier model in 30 of 30 pairings, and matched or exceeded its completion rate in 24. Every result is a first visit, with site memory and learning off and no site-specific code: the least favourable setting for the design, and the starting point for a deployment at volume. We report every cell in which another system leads and publish the tasks and the outcome of every run. The system is closed; access is provided for replication.</p>
+
+<h2>Headline results</h2>
+<ul class="heads">
+  <li>It was the most stable system tested: across every task length and model size it never completed fewer than 55 percent of the tasks, while every other system fell to 28 percent or lower.</li>
+  <li>On long tasks its better mode in each cell completed 80 percent (90 of 113), against 45 percent (51 of 113) for the best other system in each cell.</li>
+  <li>A completed task cost 1.9 to 26 times less than with the cheapest other system on the same model.</li>
+  <li>Run on the small model, it cost less than every other system run on the frontier model in 30 of 30 pairings, and matched or exceeded its completion rate in 24.</li>
+</ul>
+
+<h2>Check the numbers</h2>
+<p>Every completion figure in the paper can be recomputed from the replication kit: the tasks, the outcome of every counted run and the judging rules.</p>
+<p><a href="/benchmark-tasksets/replication/">Open the replication kit</a> &middot; <a href="/benchmark-tasksets/replication/protocolis-replication-kit.zip" download>download it (.zip)</a></p>
+
+<h2>Cite</h2>
+<div class="cite">Boudakian, V. (2026). Solid-State Web Execution: Compiling Web Applications into Verified Operations for AI Agents. Protocolis. Preprint, 21 November 2026. https://protocolis.co/paper/</div>
+
+<p class="foot">Protocolis is patent-pending, in production with paying customers, and offered for acquisition. A hosted evaluation platform is available for black-box replication. <a href="/#contact">Get in touch</a>.</p>
+</main>
+</body></html>
