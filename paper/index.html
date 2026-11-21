@@ -51,11 +51,10 @@ h2{font:500 .74rem var(--font-mono);letter-spacing:.16em;text-transform:uppercas
 @media(min-width:901px) and (hover:hover){
   body{min-height:100vh;display:flex;flex-direction:column}
   main{flex:1;padding:0}
-  .strip{display:flex;order:1;align-items:center;justify-content:space-between;gap:.8rem 2rem;flex-wrap:wrap;padding:.6rem var(--gut);border-top:1px solid rgba(201,160,97,.45);border-bottom:1px solid rgba(201,160,97,.45);background:rgba(201,160,97,.08)}
-  .sn{order:0;flex-direction:row;align-items:baseline;gap:.8rem;margin:0;padding:0;border:0;background:none;font-size:.93rem}
-  .sd{order:0;flex-wrap:nowrap;gap:1rem;margin-left:auto}
-  .meta{width:auto;margin:0}
-  .btn{padding:.55rem 1rem}
+  .strip{display:flex;order:1;align-items:center;justify-content:space-between;gap:.8rem 2rem;flex-wrap:wrap;padding:.3rem var(--gut);border-top:1px solid rgba(201,160,97,.45);border-bottom:1px solid rgba(201,160,97,.45);background:rgba(201,160,97,.08)}
+  .sn{order:0;flex-direction:row;align-items:baseline;gap:.8rem;margin:0;padding:0;border:0;background:none;font-size:.84rem;line-height:1.4}
+  .sn b{font-size:.68rem}
+  .sd{display:none}   /* the viewer's own toolbar has Download and Print */
   h1,.more,.small-only{display:none}
   .viewer{order:2;display:flex;flex:1 1 auto;min-height:480px;margin:0}
   .viewer[hidden]{display:none!important}
@@ -64,7 +63,6 @@ h2{font:500 .74rem var(--font-mono);letter-spacing:.16em;text-transform:uppercas
   .foot{order:3;display:flex;flex-wrap:wrap;justify-content:space-between;gap:.2rem 2rem;margin:0;padding:.55rem var(--gut);font-size:.8rem;line-height:1.5}
   .foot p{margin:0;max-width:none}
 }
-@media(min-width:901px) and (max-width:1199px) and (hover:hover){.strip .meta{display:none}}
 @media(max-width:900px),(hover:none){.btn.sec-on-small{background:transparent;color:var(--accent)}.sd .meta{order:9}}
 </style></head><body>
 <header class="top">
