@@ -62,7 +62,48 @@ h2{font:500 .74rem var(--font-mono);letter-spacing:.16em;text-transform:uppercas
   .foot .lg{display:none}
 }
 @media(max-width:900px),(hover:none){.btn.sec-on-small{background:transparent;color:var(--accent)}.sd .meta{order:9}.foot .fn,.foot .sm{display:none}}
-</style></head><body>
+</style><style>
+/*PHONE-VIEWER (owner 22 Nov): phones and touch screens read the paper on the page, rendered by PDF.js (self-hosted, pdfjs/ 3.11.174), like the desktop viewer. If PDF.js cannot run, the stack below stays as it was.*/
+@media(max-width:900px),(hover:none){
+  body.pv-try h1,body.pv-try .more,body.pv-try .small-only,body.pv-try .sd .meta{display:none}
+  body.pv-try .sn{margin-bottom:.8rem}
+  body.pv-try .sd{margin-bottom:1rem}
+  .pv{order:4;display:flex;flex-direction:column;gap:10px;margin:0 calc(-1 * var(--gut))}
+  .pv[hidden]{display:none}
+  .pv-page{width:100%;aspect-ratio:612/792;background:#f4f2ed}
+  .pv-page img{display:block;width:100%;height:auto}
+  .pv-load{margin:0;padding:1rem var(--gut);font:.8rem var(--font-mono);letter-spacing:.08em;color:var(--dim)}
+  /* one slim row above the paper: the arXiv note on the left, a small Download button on the right */
+  body.pv-try main{position:relative;padding-top:6px}
+  body.pv-try .sn{display:flex;flex-direction:row;align-items:center;gap:.6rem;margin:0 0 8px!important;padding:0 7.5rem 0 0;min-height:34px;border:0;background:none}
+  body.pv-try .sn span{display:none}
+  body.pv-try .sn b{font-size:10.5px;letter-spacing:.12em}
+  body.pv-try .sn::after{content:"Author\2019s copy";font:11px var(--font-mono);color:var(--dim);white-space:nowrap}
+  body.pv-try .sd{position:absolute;top:6px;right:var(--gut);margin:0!important}
+  body.pv-try .sd .btn{padding:8px 11px;font-size:10.5px;letter-spacing:.12em}
+}
+</style>
+<style>
+/*PHONE-HEADER (owner 22 Nov): the same header as the home page on phones (logo, Paper, Platform), sticky: slides away on scroll down, back on scroll up*/
+.top{position:sticky;top:0;z-index:40;transition:transform .28s ease,background-color .2s ease}
+.top.top-bg{background:color-mix(in srgb,var(--bg) 94%,transparent)}
+.top.top-hide{transform:translateY(-100%)}
+.top.top-hide:focus-within{transform:none}
+@media(max-width:760px){
+  :root{--gut:22px}
+  .top{flex-wrap:nowrap;gap:10px;padding-block:14px}
+  .top .brand img{height:1.9rem}
+  .top .brand b{font-size:.95rem;letter-spacing:.26em}
+  .top nav{display:flex!important;flex-wrap:nowrap;gap:6px;margin-left:auto}
+  .top nav a:not(.nav-cta){display:none}
+  .top nav .nav-cta{padding:7px 10px;font-size:10.5px;letter-spacing:.12em;white-space:nowrap}
+  .top nav .nav-cta.nav-paper{padding:6px 9px}
+  .top nav .nc-long{display:none}
+}
+@media(max-width:399px){body.pv-try .sn::after{display:none}}
+@media(max-width:359px){.top .brand img{height:1.6rem}.top .brand b{font-size:.8rem;letter-spacing:.22em}}
+</style>
+</head><body>
 <header class="top">
   <a class="brand" href="/" aria-label="Protocolis"><img src="/glyph.svg" alt=""><b aria-hidden="true">rotocolis</b></a>
   <nav aria-label="Sections">
@@ -70,7 +111,7 @@ h2{font:500 .74rem var(--font-mono);letter-spacing:.16em;text-transform:uppercas
     <a href="/#benchmarks">benchmarks</a>
     <a href="/#how">engine</a>
     <a href="/#compare">comparisons</a>
-    <a class="nav-cta nav-paper" href="/paper/" aria-current="page">arXiv paper</a>
+    <a class="nav-cta nav-paper" href="/paper/" aria-current="page"><span class="nc-long">arXiv </span>paper</a>
     <a class="nav-cta" href="https://app.protocolis.co/">platform</a>
   </nav>
 </header>
@@ -86,6 +127,7 @@ h2{font:500 .74rem var(--font-mono);letter-spacing:.16em;text-transform:uppercas
 </div>
 
 <div class="viewer" id="viewer" hidden></div>
+<div class="pv" id="pv" hidden aria-label="The paper, 24 pages"></div>
 
 <div class="more">
 <h2>Abstract</h2>
@@ -118,4 +160,27 @@ v.hidden=false;var h=v.getBoundingClientRect().height;
 var z=Math.max(50,Math.min(140,Math.round((h-44)/(1056*0.85)*100)));
 v.innerHTML='<object type="application/pdf" aria-label="The paper, 24 pages" data="Solid-State_Web_Execution_Boudakian_2026.pdf#zoom='+z+'&navpanes=0"><p>This browser cannot show the paper here. <a href="Solid-State_Web_Execution_Boudakian_2026.pdf" target="_blank" rel="noopener">Open the PDF</a>.</p></object>'}catch(e){}})();
 </script>
+<script>/*PHONE-VIEWER*/(function(){
+if(window.matchMedia('(min-width:901px) and (hover:hover)').matches)return;
+var pv=document.getElementById('pv');if(!pv)return;
+var PDF='Solid-State_Web_Execution_Boudakian_2026.pdf';
+function fail(){document.body.classList.remove('pv-try');if(pv.parentNode)pv.parentNode.removeChild(pv);}
+document.body.classList.add('pv-try');pv.hidden=false;pv.innerHTML='<p class="pv-load">Loading the paper&hellip;</p>';
+var s=document.createElement('script');s.src='pdfjs/pdf.min.js';s.onerror=fail;
+s.onload=function(){try{var L=window.pdfjsLib;L.GlobalWorkerOptions.workerSrc='pdfjs/pdf.worker.min.js';
+L.getDocument({url:PDF,isEvalSupported:false}).promise.then(function(doc){
+var slots=[],queue=[],busy=false;pv.innerHTML='';
+for(var i=1;i<=doc.numPages;i++){var d=document.createElement('div');d.className='pv-page';d.setAttribute('data-n',i);slots.push(d);pv.appendChild(d);}
+function pump(){if(busy||!queue.length)return;busy=true;var bi=0,bd=1e9;for(var k=0;k<queue.length;k++){var t=Math.abs(queue[k].getBoundingClientRect().top);if(t<bd){bd=t;bi=k;}}var d=queue.splice(bi,1)[0],n=+d.getAttribute('data-n');
+doc.getPage(n).then(function(pg){var v1=pg.getViewport({scale:1});d.style.aspectRatio=v1.width+' / '+v1.height;
+var dpr=Math.min(2,window.devicePixelRatio||1),w=d.clientWidth||pv.clientWidth||360,vp=pg.getViewport({scale:w*dpr/v1.width});
+var c=document.createElement('canvas');c.width=Math.floor(vp.width);c.height=Math.floor(vp.height);
+return pg.render({canvasContext:c.getContext('2d'),viewport:vp}).promise.then(function(){return new Promise(function(res){c.toBlob(function(b){
+var img=new Image();img.alt=n===1?'The paper, page 1 of '+doc.numPages:'Page '+n;img.decoding='async';img.src=URL.createObjectURL(b);d.appendChild(img);c.width=c.height=0;pg.cleanup();res();},'image/png');});});
+}).catch(function(){if(n===1)fail();d.removeAttribute('data-q');}).then(function(){busy=false;pump();});}
+function check(){var lim=innerHeight*2.5;for(var i=0;i<slots.length;i++){var d=slots[i];if(!d.hasAttribute('data-q')&&d.getBoundingClientRect().top<lim){d.setAttribute('data-q','1');queue.push(d);}}pump();}
+addEventListener('scroll',check,{passive:true});addEventListener('resize',check);check();
+},fail);}catch(e){fail();}};
+document.head.appendChild(s);})();</script>
+<script>/*PHONE-HEADER sticky*/(function(){var t=document.querySelector('.top');if(!t)return;var last=scrollY;function upd(){var y=scrollY,hh=t.offsetHeight;t.classList.toggle('top-bg',y>4);if(y<=hh)t.classList.remove('top-hide');else if(y>last+4)t.classList.add('top-hide');else if(y<last-4)t.classList.remove('top-hide');last=y;}addEventListener('scroll',upd,{passive:true});upd();})();</script>
 </body></html>
