@@ -850,9 +850,9 @@ body .top.top-hide:focus-within{transform:none}
 }
 </style>
 <style>
-/*MOBILE-EMBLEM-NUDGE (owner 22 Nov): on phones the emblem and motto stay centred, moved left by 13% of the screen width, between centred and the text edge*/
+/*MOBILE-EMBLEM-NUDGE (owner 22 Nov): on phones the emblem and motto stay centred, centred again (owner 22 Nov, to fill the right side)*/
 @media (max-width:760px){
-  body .hero.hero-screen .hero-brand{transform:translateX(-13vw)!important}
+  body .hero.hero-screen .hero-brand{transform:none!important}
 }
 /*STEPPER (owner 22 Nov): desktop section stepper in the right margin, visible from the first screen; the header keeps only Paper and Platform*/
 @media (min-width:761px){
@@ -882,20 +882,36 @@ body .top.top-hide:focus-within{transform:none}
   body .hero.hero-screen .motto{margin-top:10px!important;max-width:190px!important;margin-left:auto!important;margin-right:auto!important}
   /* owner 22 Nov: on phones the paragraph ends at "verified operations.", a little smaller, and the headline a little smaller */
   body .hero .hero-line .hero-first{display:none}
-  body .hero .hero-line{font-size:15px!important;text-wrap:balance}
-  body .hero.hero-screen h1.order-claim{font-size:32px!important}
+  body .hero .hero-line{font-size:16px!important;text-wrap:balance}
+  body .hero.hero-screen h1.order-claim{font-size:calc((100vw - 44px) * .107)!important}
   body .hero.hero-screen .emblem{width:min(60vw,29svh)!important}
   body .hero .hero-status{gap:6px!important;font-size:10px!important;letter-spacing:.1em!important}
   body .hero .hero-status>b,body .hero .hero-status>span{padding:5px 8px!important}
 }
-@media (max-width:359px){body .hero.hero-screen h1.order-claim{font-size:28px!important}}
+@media (max-width:359px){body .hero.hero-screen h1.order-claim{font-size:calc((100vw - 44px) * .107)!important}}
 </style>
 <style>
 /*MOBILE-CAPTION-TYPED*/
 @media (max-width:760px){
   body .hero.hero-screen .motto.motto-cap{font-family:var(--font-display)!important;font-size:17px!important;line-height:1.25;letter-spacing:0!important;text-transform:none!important;
     color:var(--fg-2)!important;max-width:15em!important;text-align:center!important;margin:14px auto 0!important}
+  /* a thin caret in the caption's own colour, not the bronze block of the mono motto */
+  body .hero .motto.motto-cap .cur{height:1.05em;vertical-align:-.15em}
+  body .hero .motto.motto-cap .cur::after{left:.06em;width:1.5px;background:currentColor}
 }
+</style>
+<style>
+/*MOBILE-COPY (owner 22 Nov): phones read their own shorter text (same claims and figures); desktop text unchanged. The chart-reading notes fold behind a toggle on phones.*/
+.m-txt{display:none}
+@media (max-width:760px){
+  .d-txt{display:none}
+  .m-txt{display:inline}
+  #range .range-note{display:none}
+  #range .rn-open+.range-note{display:block}
+  #range .rn-toggle{display:block;margin:10px 0 0;padding:0;background:none;border:0;color:var(--accent);cursor:pointer;
+    font:500 11px/1.4 var(--font-mono);letter-spacing:.12em;text-transform:uppercase}
+}
+@media (min-width:761px){#range .rn-toggle{display:none}}
 </style>
 </head>
 <body>
@@ -941,7 +957,7 @@ body .top.top-hide:focus-within{transform:none}
       <div class="m-standard"><dt>Protocolis Standard</dt><dd><b>The fastest and cheapest full-model agent mode we’ve ever measured.</b> <b>Highest measured completion.</b> Only Protocolis Adaptive costs less.<span class="mode-detail"><b>Nothing between your agent and the page but compiled operations.</b> Standard lets you evaluate the engine without Adaptive’s helper models. The same engine as Adaptive; the one difference is that your agent’s model makes every pick, with no choice model and no second agent.</span></dd></div>
       <div class="modes-span" role="note"><span>One engine, two modes</span></div>
       </dl>
-      <div class="modes-why"><h3>The trade the others make</h3><p>Every other agent makes you shift gears yourself. Browser Use ships its own agent, a flash mode, a tools mode and a hosted Ultrafast; the faster the mode, the fewer tasks it finishes. So you pick a full mode for hard tasks and a fast one for easy ones, and pay for the wrong choice either way. Protocolis Adaptive is one mode that shifts on its own: step by step, the engine’s evidence decides whether a small choice model is enough or the agent’s model is needed. No fast mode, no full mode, and no trade. Measured against Browser Use, Browserbase’s Stagehand, Microsoft’s Playwright MCP and Jev Ultrafast on the same model and tasks.</p></div>
+      <div class="modes-why"><h3>The trade the others make</h3><p><span class="d-txt">Every other agent makes you shift gears yourself. Browser Use ships its own agent, a flash mode, a tools mode and a hosted Ultrafast; the faster the mode, the fewer tasks it finishes. So you pick a full mode for hard tasks and a fast one for easy ones, and pay for the wrong choice either way. Protocolis Adaptive is one mode that shifts on its own: step by step, the engine’s evidence decides whether a small choice model is enough or the agent’s model is needed. No fast mode, no full mode, and no trade. Measured against Browser Use, Browserbase’s Stagehand, Microsoft’s Playwright MCP and Jev Ultrafast on the same model and tasks.</span><span class="m-txt">Other agents make you shift gears: a full mode for hard tasks, a fast one for easy ones, and you pay for the wrong pick either way. Protocolis Adaptive shifts on its own, step by step. No fast mode, no full mode, no trade. Measured against Browser Use, Stagehand, Playwright MCP and Jev Ultrafast, same model, same tasks.</span></p></div>
     </div>
   </div>
 </section>
@@ -950,7 +966,7 @@ body .top.top-hide:focus-within{transform:none}
 <div class="vr-head">
 <div class="rail">verified</div>
 <h2>It checks the result, not the click.</h2>
-<p class="vr-lede">Screenshot agents report what they did. Protocolis reports what happened: after every action it reads the page back and says what changed, or why nothing did. Built for work where a false &ldquo;done&rdquo; costs money: finance, commerce, government.</p>
+<p class="vr-lede"><span class="d-txt">Screenshot agents report what they did. Protocolis reports what happened: after every action it reads the page back and says what changed, or why nothing did. Built for work where a false &ldquo;done&rdquo; costs money: finance, commerce, government.</span><span class="m-txt">Other agents report what they did. Protocolis reads the page back after every action and reports what actually happened. Built for work where a false &ldquo;done&rdquo; costs money.</span></p>
 </div>
 <div class="vr-right">
 <div class="vr-grid">
@@ -973,14 +989,14 @@ body .top.top-hide:focus-within{transform:none}
 </dl>
 </article>
 </div>
-<p class="vr-broker"><b>Secrets stay out of the model.</b> Passwords and API keys are filled by a model-blind broker into verified fields: the agent logs in, pays and manages keys without ever seeing one.</p>
+<p class="vr-broker"><span class="d-txt"><b>Secrets stay out of the model.</b> Passwords and API keys are filled by a model-blind broker into verified fields: the agent logs in, pays and manages keys without ever seeing one.</span><span class="m-txt"><b>Secrets stay out of the model.</b> A model-blind broker fills passwords and keys; the agent logs in and pays without ever seeing one.</span></p>
 </div>
 </div></section>
 
 <section class="sec range-sec" id="range"><div>
 <div class="rail">one engine</div>
 <h2>One engine. Any model. Any task length.</h2>
-<p class="range-lede">Every screenshot stack holds in one corner and falls away in the others: a tools mode for small models, an agent for frontier ones, a fast mode for short tasks. That is why Browser Use ships six ways to run the same agent. One compiled layer holds across the range, and the model above it can be whatever the budget allows.</p>
+<p class="range-lede"><span class="d-txt">Every screenshot stack holds in one corner and falls away in the others: a tools mode for small models, an agent for frontier ones, a fast mode for short tasks. That is why Browser Use ships six ways to run the same agent. One compiled layer holds across the range, and the model above it can be whatever the budget allows.</span><span class="m-txt">Screenshot stacks need a different mode for every model size and task length; Browser Use ships six. One compiled layer holds across the range, under whatever model the budget allows.</span></p>
 <p class="range-proof">First on completion, cost and speed across more than 2,800 runs: a small model on Protocolis beat GPT-6.1 Sol on Browser Use, 28.6 seconds and correct against 97.2 seconds and wrong.</p>
 <div class="ts-controls rv-switch" aria-label="Chart view"><div class="ts-tabs"><button type="button" data-rview-btn="value" aria-pressed="true">Cost &amp; time</button><button type="button" data-rview-btn="range" aria-pressed="false">Range</button></div></div>
 <div class="rv" data-rview="value">
@@ -1254,15 +1270,15 @@ body .top.top-hide:focus-within{transform:none}
   <div class="arch">
     <aside class="arch-vs">
       <h2>Solid state, not a spinning disk.</h2>
-    <p class="arch-lede">A disk seeks before every read. A screenshot agent works the same way: look at the screen, think, act, look again, with a model call at every turn. Protocolis compiles the site instead. On first contact, with no model, no recording and no setup, it turns a site it has never seen into named operations your agent calls directly. Every call lands, and every answer is read from the page.</p>
+    <p class="arch-lede"><span class="d-txt">A disk seeks before every read. A screenshot agent works the same way: look at the screen, think, act, look again, with a model call at every turn. Protocolis compiles the site instead. On first contact, with no model, no recording and no setup, it turns a site it has never seen into named operations your agent calls directly. Every call lands, and every answer is read from the page.</span><span class="m-txt">A disk seeks before every read; a screenshot agent calls a model before every action. Protocolis compiles the site instead: on first contact, with no model and no setup, into operations your agent calls directly.</span></p>
       <div class="arch-comparison">
         <div class="arch-comparison-item">
       <h3>The screenshot loop</h3>
-      <p>Hand the tool a task. Its own model looks at a screenshot, decides, acts and looks again, until it stops. You wait for the answer, and the model inside the tool is the one driving.</p>
+      <p><span class="d-txt">Hand the tool a task. Its own model looks at a screenshot, decides, acts and looks again, until it stops. You wait for the answer, and the model inside the tool is the one driving.</span><span class="m-txt">The tool’s own model looks, decides and acts until it stops. You wait; it drives.</span></p>
         </div>
         <div class="arch-comparison-item">
       <h3>Solid state</h3>
-      <p>Your agent keeps the wheel. The site is compiled into operations once, by rules alone; the agent calls them and reads the evidence. No model in the compiler, so a site the engine has never seen takes no model call to compile.</p>
+      <p><span class="d-txt">Your agent keeps the wheel. The site is compiled into operations once, by rules alone; the agent calls them and reads the evidence. No model in the compiler, so a site the engine has never seen takes no model call to compile.</span><span class="m-txt">Your agent keeps the wheel. Rules alone compile the site, no model, and your agent calls the operations.</span></p>
         </div>
       </div>
     </aside>
@@ -1284,19 +1300,19 @@ body .top.top-hide:focus-within{transform:none}
 
   <div class="cmp-row" id="compounds" aria-label="What improves with use">
     <h3 class="cmp-h">And it compounds.</h3>
-    <p class="cmp-sub">Every result on this page is a first contact: a site the engine had never seen, with no memory of it and no learning carried in. In use, three things make it better.</p>
+    <p class="cmp-sub"><span class="d-txt">Every result on this page is a first contact: a site the engine had never seen, with no memory of it and no learning carried in. In use, three things make it better.</span><span class="m-txt">Every result here is a first contact, on a site the engine had never seen. In use, three things make it better.</span></p>
     <div class="cmp3">
       <div class="cmp3-item">
         <h4><i>01</i>Warm knowledge</h4>
-        <p>What it compiles for a site, it can keep. A first visit is the worst case, and it is paid once per site. The more traffic a deployment carries, the more of its visits are repeat visits.</p>
+        <p><span class="d-txt">What it compiles for a site, it can keep. A first visit is the worst case, and it is paid once per site. The more traffic a deployment carries, the more of its visits are repeat visits.</span><span class="m-txt">It keeps what it compiles: a first visit is paid once per site.</span></p>
       </div>
       <div class="cmp3-item">
         <h4><i>02</i>One rule, every site</h4>
-        <p>A gap shows up as a page pattern, not as a site. One rule for that pattern applies on every site that uses it. Adapters grow with every site you add; rules do not. There are no adapters to maintain.</p>
+        <p><span class="d-txt">A gap shows up as a page pattern, not as a site. One rule for that pattern applies on every site that uses it. Adapters grow with every site you add; rules do not. There are no adapters to maintain.</span><span class="m-txt">Gaps are fixed as page patterns, not per site, so there are no adapters to maintain.</span></p>
       </div>
       <div class="cmp3-item">
         <h4><i>03</i>Self-healing</h4>
-        <p>It learns from outcomes, with no developer in the loop. Checks that keep holding are kept; checks the evidence stops supporting are dropped. What it learns on one site can carry to others.</p>
+        <p><span class="d-txt">It learns from outcomes, with no developer in the loop. Checks that keep holding are kept; checks the evidence stops supporting are dropped. What it learns on one site can carry to others.</span><span class="m-txt">It learns from outcomes: checks that keep holding stay, the rest are dropped.</span></p>
       </div>
     </div>
   </div>
@@ -1548,7 +1564,7 @@ body .top.top-hide:focus-within{transform:none}
     <h2>Offered for outright acquisition.</h2>
     <div class="two">
       <div class="acquisition-copy">
-      <p>Protocolis is the work of a sole inventor. It is operational, patent pending and in use by its first paying customers, two trucking dispatch offices. The engine, the credential broker, the patent filings, the measurement record and the reproduction kit are offered together, with a transition period and, if the acquirer wants one, a continuing role.</p>
+      <p><span class="d-txt">Protocolis is the work of a sole inventor. It is operational, patent pending and in use by its first paying customers, two trucking dispatch offices. The engine, the credential broker, the patent filings, the measurement record and the reproduction kit are offered together, with a transition period and, if the acquirer wants one, a continuing role.</span><span class="m-txt">The work of a sole inventor: operational, patent pending, and in use by its first paying customers, two trucking dispatch offices. Engine, credential broker, patent filings, measurement record and reproduction kit are offered together, with a transition period and an optional continuing role.</span></p>
         <div class="acquisition-contact" id="contact">
           <p class="contact-name">Vahagn Boudakian, inventor.</p>
           <div class="mail">
@@ -1967,6 +1983,7 @@ function upd(){var y=scrollY,lim=innerHeight*.35,cur=null;nav.classList.add('on'
 for(var i=0;i<items.length;i++){if(items[i][0].getBoundingClientRect().top<=lim)cur=items[i][1];}
 items.forEach(function(it){if(it[1]===cur)it[1].setAttribute('aria-current','true');else it[1].removeAttribute('aria-current');});}
 addEventListener('scroll',upd,{passive:true});addEventListener('resize',upd);upd();})();</script>
+<script>/*MOBILE-COPY toggle*/(function(){document.querySelectorAll('#range .range-note').forEach(function(n){var b=document.createElement('button');b.type='button';b.className='rn-toggle';b.setAttribute('aria-expanded','false');b.textContent='How to read this \u2193';b.addEventListener('click',function(){var o=b.classList.toggle('rn-open');b.setAttribute('aria-expanded',o?'true':'false');b.textContent=o?'Hide \u2191':'How to read this \u2193';});n.parentNode.insertBefore(b,n);});})();</script>
 </body>
 </html>
 
