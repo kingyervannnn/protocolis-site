@@ -854,7 +854,7 @@ body .top.top-hide:focus-within{transform:none}
 @media (max-width:760px){
   body .hero.hero-screen .hero-brand{transform:translateX(-13vw)!important}
 }
-/*STEPPER (owner 22 Nov): desktop section stepper in the right margin; the header keeps only Paper and Platform*/
+/*STEPPER (owner 22 Nov): desktop section stepper in the right margin, visible from the first screen; the header keeps only Paper and Platform*/
 @media (min-width:761px){
   body .top nav a:not(.nav-cta){display:none}
   .stepper{position:fixed;right:calc(max(var(--gut),env(safe-area-inset-right,0px)) / 2);top:50%;transform:translate(50%,-50%);z-index:30;
@@ -890,6 +890,13 @@ body .top.top-hide:focus-within{transform:none}
 }
 @media (max-width:359px){body .hero.hero-screen h1.order-claim{font-size:28px!important}}
 </style>
+<style>
+/*MOBILE-CAPTION-TYPED*/
+@media (max-width:760px){
+  body .hero.hero-screen .motto.motto-cap{font-family:var(--font-display)!important;font-size:17px!important;line-height:1.25;letter-spacing:0!important;text-transform:none!important;
+    color:var(--fg-2)!important;max-width:15em!important;text-align:center!important;margin:14px auto 0!important}
+}
+</style>
 </head>
 <body>
 
@@ -920,6 +927,7 @@ body .top.top-hide:focus-within{transform:none}
     </div>
     <p class="brand-cap" aria-hidden="true">The first just-in-time compiler for agents.</p>
     <p class="motto">Protocollum ex ipsa applicatione</p>
+    <script>/*MOBILE-CAPTION-TYPED (owner 22 Nov): on phones the motto line types out the caption instead of the Latin; the static caption hides*/(function(){if(!window.matchMedia||!matchMedia('(max-width:760px)').matches)return;var m=document.querySelector('.hero .motto'),c=document.querySelector('.hero .brand-cap');if(!m||!c)return;m.textContent=c.textContent;m.classList.add('motto-cap');m.setAttribute('aria-hidden','true');c.style.display='none';})();</script>
   </div>
   <a class="hero-scroll" href="#modes" aria-label="Scroll to the next section">scroll &darr;</a>
 </section>
@@ -1955,7 +1963,7 @@ var g=document.getElementById('bench-grid');if(g){g.addEventListener('click',fun
 var nav=document.createElement('nav');nav.className='stepper';nav.setAttribute('aria-label','Sections');var items=[];
 S.forEach(function(s){var sec=document.getElementById(s[0]);if(!sec)return;var a=document.createElement('a');a.href='#'+s[0];a.setAttribute('aria-label',s[1]);a.innerHTML='<span>'+s[1]+'</span><i></i>';nav.appendChild(a);items.push([sec,a]);});
 document.body.appendChild(nav);
-function upd(){var y=scrollY,lim=innerHeight*.35,cur=null;nav.classList.toggle('on',y>innerHeight*.6);
+function upd(){var y=scrollY,lim=innerHeight*.35,cur=null;nav.classList.add('on');
 for(var i=0;i<items.length;i++){if(items[i][0].getBoundingClientRect().top<=lim)cur=items[i][1];}
 items.forEach(function(it){if(it[1]===cur)it[1].setAttribute('aria-current','true');else it[1].removeAttribute('aria-current');});}
 addEventListener('scroll',upd,{passive:true});addEventListener('resize',upd);upd();})();</script>
