@@ -913,6 +913,12 @@ body .top.top-hide:focus-within{transform:none}
 }
 @media (min-width:761px){#range .rn-toggle{display:none}}
 </style>
+<style>
+/*GRID-CELLS (owner 23 Nov): the sweep is drawn as grid cells instead of a glow: the cell under the moving head gets a faint bronze wash and outline, the last few cells behind it fade out. Same motion as GRID-DRIFT (it still sets --mx/--my/--gl); the glow layer is off.*/
+body::after{display:none!important}
+.grid-cells{position:fixed;inset:0;z-index:-1;pointer-events:none;width:100vw;height:100vh;opacity:calc(1 - var(--gfade,0));
+  -webkit-mask-image:radial-gradient(ellipse at 62% 40%,#000 35%,transparent 95%);mask-image:radial-gradient(ellipse at 62% 40%,#000 35%,transparent 95%)}
+</style>
 </head>
 <body>
 
@@ -1984,6 +1990,21 @@ for(var i=0;i<items.length;i++){if(items[i][0].getBoundingClientRect().top<=lim)
 items.forEach(function(it){if(it[1]===cur)it[1].setAttribute('aria-current','true');else it[1].removeAttribute('aria-current');});}
 addEventListener('scroll',upd,{passive:true});addEventListener('resize',upd);upd();})();</script>
 <script>/*MOBILE-COPY toggle*/(function(){document.querySelectorAll('#range .range-note').forEach(function(n){var b=document.createElement('button');b.type='button';b.className='rn-toggle';b.setAttribute('aria-expanded','false');b.textContent='How to read this \u2193';b.addEventListener('click',function(){var o=b.classList.toggle('rn-open');b.setAttribute('aria-expanded',o?'true':'false');b.textContent=o?'Hide \u2191':'How to read this \u2193';});n.parentNode.insertBefore(b,n);});})();</script>
+<script>/*GRID-CELLS*/(function(){var r=document.documentElement,c=document.createElement('canvas');c.className='grid-cells';c.setAttribute('aria-hidden','true');document.body.insertBefore(c,document.body.firstChild);
+var x=c.getContext('2d'),G=72,TRAIL=4,LIFE=520,FILL=.075,LINE=.32,dpr=1,W=0,H=0,head=null,trail=[],dirty=true;
+var acc=(getComputedStyle(r).getPropertyValue('--accent')||'#c9a061').trim()||'#c9a061';
+function size(){dpr=Math.min(2,window.devicePixelRatio||1);W=innerWidth;H=innerHeight;c.width=Math.round(W*dpr);c.height=Math.round(H*dpr);x.setTransform(dpr,0,0,dpr,0,0);dirty=true}
+function cell(px,py){var ox=W/2-36,oy=H/2-36;return {i:Math.floor((px-ox)/G),j:Math.floor((py-oy)/G)}}
+function draw(cl,a){if(a<=.002)return;var ox=W/2-36,oy=H/2-36,cx=ox+cl.i*G,cy=oy+cl.j*G;x.globalAlpha=a*FILL;x.fillStyle=acc;x.fillRect(cx+1,cy+1,G-1,G-1);x.globalAlpha=a*LINE;x.strokeStyle=acc;x.lineWidth=1;x.strokeRect(cx+.5,cy+.5,G,G)}
+function f(now){requestAnimationFrame(f);var gl=parseFloat(r.style.getPropertyValue('--gl'))||0,mx=parseFloat(r.style.getPropertyValue('--mx')),my=parseFloat(r.style.getPropertyValue('--my'));
+var nh=(gl>.01&&isFinite(mx)&&isFinite(my))?cell(mx,my):null;
+if(head&&(!nh||nh.i!==head.i||nh.j!==head.j)){trail.unshift({i:head.i,j:head.j,t:now,a:head.a});if(trail.length>TRAIL)trail.length=TRAIL;dirty=true}
+if(nh){nh.a=gl;if(!head||head.a!==gl)dirty=true}head=nh;
+trail=trail.filter(function(t){return now-t.t<LIFE});if(trail.length)dirty=true;
+if(!dirty)return;dirty=false;x.clearRect(0,0,W,H);
+for(var k=trail.length-1;k>=0;k--){var t=trail[k],age=(now-t.t)/LIFE;draw(t,t.a*(1-age)*(1-k/(TRAIL+1)))}
+if(head)draw(head,head.a)}
+addEventListener('resize',size);size();requestAnimationFrame(f)})();</script>
 </body>
 </html>
 
