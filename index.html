@@ -923,7 +923,6 @@ body::after{display:none!important}
 /*DESKTOP-REVEAL (owner 24 Nov): on wide screens each section's main blocks fade up as they scroll in, lighter than on phones (12px, 0.55s). Tables, charts, the measured results and the detailed benchmarks are never animated.*/
 @media (min-width:761px){.mrv-d{opacity:0;transform:translateY(12px);transition:opacity .55s cubic-bezier(.2,.7,.2,1),transform .55s cubic-bezier(.2,.7,.2,1)}.mrv-d.mrv-in{opacity:1;transform:none}}
 </style>
-<style>/*VERIFY-CHESS-ROWS owner 24 Nov: chess probe rows, raw records in the chess-probe folder*/.vr-row.vr-row-q{flex-direction:column;align-items:flex-start;gap:.3rem}.vr-row dd.vr-q{white-space:normal;text-align:left;font:500 .82rem/1.4 var(--font-mono)}.vr-note{margin:.75rem 0 0;font-size:.8rem;line-height:1.45;color:var(--dim)}</style>
 </head>
 <body>
 
@@ -986,13 +985,9 @@ body::after{display:none!important}
 <p class="vr-what">The site refused the pawn move. The board did not change.</p>
 <div class="vr-cap">What each tool reported</div>
 <dl class="vr-rows">
-<div class="vr-row them"><dt>Browser Use, tools mode</dt><dd><code>ok: true</code></dd></div>
-<div class="vr-row them vr-row-q"><dt>Browser Use, agent</dt><dd class="vr-q">&ldquo;Moved the white pawn from e2&nbsp;to&nbsp;e5.&rdquo;</dd></div>
-<div class="vr-row them vr-row-q"><dt>Playwright MCP</dt><dd class="vr-q">&ldquo;Ran Playwright code&rdquo;</dd></div>
-<div class="vr-row them"><dt>Browser Harness</dt><dd><code>{}</code></dd></div>
+<div class="vr-row them"><dt>Browser Use, Playwright MCP, Browser Harness</dt><dd>no error</dd></div>
 <div class="vr-row us"><dt>Protocolis</dt><dd><code>moved: false</code></dd></div>
 </dl>
-<p class="vr-note">Playwright MCP and Browser Harness give the same reply when the move goes through.</p>
 </article>
 <article class="vr-card">
 <div class="vr-k">80 runs &middot; same tasks, same speed</div>
