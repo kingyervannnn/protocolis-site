@@ -919,6 +919,10 @@ body::after{display:none!important}
 .grid-cells{position:fixed;inset:0;z-index:-1;pointer-events:none;width:100vw;height:100vh;opacity:calc(1 - var(--gfade,0));
   -webkit-mask-image:radial-gradient(ellipse at 62% 40%,#000 35%,transparent 95%);mask-image:radial-gradient(ellipse at 62% 40%,#000 35%,transparent 95%)}
 </style>
+<style>
+/*DESKTOP-REVEAL (owner 24 Nov): on wide screens each section's main blocks fade up as they scroll in, lighter than on phones (12px, 0.55s). Tables, charts, the measured results and the detailed benchmarks are never animated.*/
+@media (min-width:761px){.mrv-d{opacity:0;transform:translateY(12px);transition:opacity .55s cubic-bezier(.2,.7,.2,1),transform .55s cubic-bezier(.2,.7,.2,1)}.mrv-d.mrv-in{opacity:1;transform:none}}
+</style>
 </head>
 <body>
 
@@ -2005,6 +2009,31 @@ if(!dirty)return;dirty=false;x.clearRect(0,0,W,H);
 for(var k=trail.length-1;k>=0;k--){var t=trail[k],age=(now-t.t)/LIFE;draw(t,t.a*(1-age)*(1-k/(TRAIL+1)))}
 if(head)draw(head,head.a)}
 addEventListener('resize',size);size();requestAnimationFrame(f)})();</script>
+<script>/*DESKTOP-REVEAL (owner 24 Nov): wide screens only; nothing is hidden if this script does not run; anything at or above the fold, a stepper jump or the page bottom reveals at once.*/
+(function(){
+  if(!window.matchMedia||!matchMedia('(min-width:761px)').matches)return;
+  var SKIP_SECTIONS={measured:1,benchmarks:1};
+  var DATA='table,.fc-fig,.range-panel,.fc-scroll,canvas';
+  var els=[],queued=false;
+  function blocks(s){var k=[].slice.call(s.children);while(k.length===1&&k[0].tagName==='DIV'&&k[0].children.length)k=[].slice.call(k[0].children);return k;}
+  function show(e,i){e.style.transitionDelay=(Math.min(i,3)*90)+'ms';e.classList.add('mrv-in');}
+  function check(){queued=false;var lim=innerHeight*0.9,n=0,rest=[];if(scrollY+innerHeight>=document.documentElement.scrollHeight-4)lim=1e9;
+    for(var i=0;i<els.length;i++){var e=els[i];if(e.getBoundingClientRect().top<lim)show(e,n++);else rest.push(e);}
+    els=rest;if(!els.length){removeEventListener('scroll',onScroll);removeEventListener('resize',onScroll);}}
+  function onScroll(){if(!queued){queued=true;setTimeout(check,50);}}
+  function go(){
+    document.querySelectorAll('section.sec').forEach(function(s){if(SKIP_SECTIONS[s.id])return;
+      blocks(s).forEach(function(e){
+        if(e.hidden||!e.offsetHeight||e.closest('details,[hidden]'))return;
+        if(e.matches(DATA)||e.querySelector(DATA))return;
+        if(e.tagName==='SCRIPT'||e.tagName==='STYLE')return;
+        e.classList.add('mrv-d');els.push(e);});});
+    addEventListener('scroll',onScroll,{passive:true});addEventListener('resize',onScroll);
+    addEventListener('hashchange',function(){setTimeout(check,50)});document.addEventListener('click',function(){setTimeout(check,50)},true);check();
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',go);else go();
+})();
+</script>
 </body>
 </html>
 
