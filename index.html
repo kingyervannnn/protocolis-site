@@ -891,8 +891,11 @@ body .top.top-hide:focus-within{transform:none}
 @media (max-width:359px){body .hero.hero-screen h1.order-claim{font-size:calc((100vw - 44px) * .107)!important}}
 </style>
 <style>
-/*MOBILE-CAPTION-TYPED*/
-@media (max-width:760px){
+/* Phones type the English caption beneath the emblem. */
+@media (max-width:760px), (max-width:960px) and (max-height:500px) and (pointer:coarse){
+  .hero .desktop-motto{display:none}
+  body .hero.hero-screen .brand-cap{display:block;width:100%}
+  body .hero.hero-screen h1.order-claim .h1-a{position:absolute!important;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
   body .hero.hero-screen .motto.motto-cap{font-family:var(--font-display)!important;font-size:17px!important;line-height:1.25;letter-spacing:0!important;text-transform:none!important;
     color:var(--fg-2)!important;max-width:15em!important;text-align:center!important;margin:14px auto 0!important}
   /* a thin caret in the caption's own colour, not the bronze block of the mono motto */
@@ -956,9 +959,8 @@ body .hero .hero-line{font-size:clamp(.95rem,1.1vw,1.08rem);max-width:42rem}
     <div class="emblem" aria-hidden="true">
       <img class="emblem-still" src="logo.svg" alt="" width="1254" height="1254">
     </div>
-    <p class="brand-cap" aria-hidden="true">The just-in-time compiler for the web.</p>
-    <p class="motto">Protocollum ex ipsa applicatione</p>
-    <script>/*MOBILE-CAPTION-TYPED (owner 22 Nov): on phones the motto line types out the caption instead of the Latin; the static caption hides*/(function(){if(!window.matchMedia||!matchMedia('(max-width:760px)').matches)return;var m=document.querySelector('.hero .motto'),c=document.querySelector('.hero .brand-cap');if(!m||!c)return;m.textContent=c.textContent;m.classList.add('motto-cap');m.setAttribute('aria-hidden','true');c.style.display='none';})();</script>
+    <p class="brand-cap motto motto-cap" aria-hidden="true">The just-in-time compiler for the web.</p>
+    <p class="motto desktop-motto">Protocollum ex ipsa applicatione</p>
   </div>
   <a class="hero-scroll" href="#modes" aria-label="Scroll to the next section">scroll &darr;</a>
 </section>
@@ -1699,7 +1701,61 @@ body .hero .hero-line{font-size:clamp(.95rem,1.1vw,1.08rem);max-width:42rem}
 })();
 
 </script>
-<script>(function(){var m=document.querySelector('.hero .motto');if(!m)return;var t=m.textContent.trim();var words=t.split(' ');m.textContent='';var spans=words.map(function(w){var e=document.createElement('span');e.textContent=w;return e});spans.forEach(function(e,i){m.appendChild(e);if(i<spans.length-1)m.appendChild(document.createTextNode(' '))});var lines=[],cur=[],top=null;spans.forEach(function(e){var y=e.offsetTop;if(top!==null&&y>top+2){lines.push(cur.join(' '));cur=[]}top=y;cur.push(e.textContent)});lines.push(cur.join(' '));var typed=lines.join('\n');var h=m.getBoundingClientRect().height;m.style.minHeight=h+'px';m.classList.add('typing');m.textContent='';var c=document.createElement('span');c.className='cur';c.setAttribute('aria-hidden','true');m.appendChild(c);m.setAttribute('aria-label',t);var i=0;function step(){if(i<typed.length){var ch=typed[i++];m.insertBefore(document.createTextNode(ch),c);setTimeout(step,(ch===' '||ch==='\n')?110:48+Math.random()*52)}else{setTimeout(function(){var badge=document.querySelector('.hero .acquisition-status');if(badge)badge.classList.add('is-glimmering')},1000);setTimeout(function(){c.remove();m.classList.remove('typing');m.textContent=t;m.removeAttribute('aria-label')},4000)}}setTimeout(step,1000)})();</script>
+<script>
+(function(){
+  const caption=document.querySelector('.hero .brand-cap');
+  const latin=document.querySelector('.hero .desktop-motto');
+  const phone=matchMedia('(max-width:760px), (max-width:960px) and (max-height:500px) and (pointer:coarse)');
+  const reduced=matchMedia('(prefers-reduced-motion:reduce)');
+  const originals=new Map([[caption,caption.textContent],[latin,latin.textContent]]);
+  let timer;
+  function showCaption(){
+    clearTimeout(timer);
+    for(const [line,text] of originals){
+      line.textContent=text;
+      line.classList.remove('typing');
+      line.style.minHeight='';
+      line.removeAttribute('aria-label');
+    }
+    if(reduced.matches)return;
+    const line=phone.matches?caption:latin;
+    const text=originals.get(line);
+    const words=text.split(' ').map(word=>Object.assign(document.createElement('span'),{textContent:word}));
+    line.replaceChildren();
+    words.forEach((word,i)=>{if(i)line.append(' ');line.append(word)});
+    const typed=words.map((word,i)=>(i?(word.offsetTop>words[i-1].offsetTop+2?'\n':' '):'')+word.textContent).join('');
+    line.style.minHeight=line.getBoundingClientRect().height+'px';
+    const caret=document.createElement('span');
+    caret.className='cur';
+    caret.setAttribute('aria-hidden','true');
+    line.replaceChildren(caret);
+    if(line===latin)line.setAttribute('aria-label',text);
+    line.classList.add('typing');
+    let i=0;
+    function step(){
+      if(i<typed.length){
+        const ch=typed[i++];
+        caret.before(ch);
+        timer=setTimeout(step,/\s/.test(ch)?110:48+Math.random()*52);
+        return;
+      }
+      timer=setTimeout(()=>{
+        document.querySelector('.hero .acquisition-status')?.classList.add('is-glimmering');
+        timer=setTimeout(()=>{
+          line.textContent=text;
+          line.classList.remove('typing');
+          line.style.minHeight='';
+          line.removeAttribute('aria-label');
+        },3000);
+      },1000);
+    }
+    timer=setTimeout(step,1000);
+  }
+  phone.addEventListener('change',showCaption);
+  reduced.addEventListener('change',showCaption);
+  showCaption();
+})();
+</script>
 <script data-goatcounter="https://protocolis.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 (function(){var root=document.getElementById('demo');if(!root)return;var c=root.querySelector('.carousel'),t=c.querySelector('.track'),d=c.querySelector('.cdots'),all=[].slice.call(t.querySelectorAll('.slide')),soon=t.querySelector('.slide.soon'),opp='harness',tier='all',cx='all',vis=[];
