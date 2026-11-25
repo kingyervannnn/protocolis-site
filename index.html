@@ -5,11 +5,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Protocolis: solid-state browsing for AI agents</title>
-<meta name="description" content="A just-in-time compiler for the web. It checks the result, not the click. 3.4× faster per completed task than Browser Use, same model: a live site becomes typed, verified operations an agent calls on its first visit. Patent-pending, in production with paying customers, offered for acquisition.">
+<meta name="description" content="The just-in-time compiler for the web. It checks the result, not the click. 3.4× faster per completed task than Browser Use, same model: a live site becomes typed, verified operations an agent calls on its first visit. Patent-pending, in production with paying customers, offered for acquisition.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Protocolis">
 <meta property="og:url" content="https://protocolis.co/">
-<meta property="og:title" content="A just-in-time compiler for the web. It checks the result, not the click.">
+<meta property="og:title" content="The just-in-time compiler for the web. It checks the result, not the click.">
 <meta property="og:description" content="3.4× faster per completed task than Browser Use, same model. The just-in-time web compiler for AI agents: patent-pending, in production with paying customers, offered for acquisition.">
 <meta property="og:image" content="https://protocolis.co/media/og-card-v2.jpg">
 <meta property="og:image:type" content="image/jpeg">
@@ -17,7 +17,7 @@
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Same task on Cambridge Dictionary: Protocolis on a small model, 28.6 s and correct; Browser Use on GPT-6.1 Sol, 97.2 s and failed.">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="A just-in-time compiler for the web. It checks the result, not the click.">
+<meta name="twitter:title" content="The just-in-time compiler for the web. It checks the result, not the click.">
 <meta name="twitter:description" content="3.4× faster per completed task than Browser Use, same model. The just-in-time web compiler for AI agents: patent-pending, in production with paying customers, offered for acquisition.">
 <meta name="twitter:image" content="https://protocolis.co/media/og-card-v2.jpg">
 <link rel="icon" type="image/svg+xml" href="glyph.svg">
@@ -923,8 +923,9 @@ body::after{display:none!important}
 /*DESKTOP-REVEAL (owner 24 Nov): on wide screens each section's main blocks fade up as they scroll in, lighter than on phones (12px, 0.55s). Tables, charts, the measured results and the detailed benchmarks are never animated.*/
 @media (min-width:761px){.mrv-d{opacity:0;transform:translateY(12px);transition:opacity .55s cubic-bezier(.2,.7,.2,1),transform .55s cubic-bezier(.2,.7,.2,1)}.mrv-d.mrv-in{opacity:1;transform:none}}
 </style>
-<style>/*HERO-LINE-2 (owner 25 Nov): the measured row is a second paragraph in the same font as the first*/
-.hero .hero-line-2{margin-top:.75em}
+<style>/*HERO-LINE-ONE (owner 25 Nov): one paragraph under the headline, smaller type*/
+body .hero .hero-line{font-size:clamp(.95rem,1.1vw,1.08rem);max-width:42rem}
+@media (max-width:760px){body .hero .hero-line{font-size:15px!important}}
 .hero .hero-actions .hero-status span{color:inherit}
 </style>
 </head>
@@ -945,10 +946,9 @@ body::after{display:none!important}
 
 <section class="hero hero-screen">
   <div class="hero-main">
-    <h1 class="order-claim"><span class="h1-a">A just-in-time <span class="keep-together-desktop">compiler <span class="keep-together">for the web.</span></span></span><br class="h1-br"><span class="h1-b">It checks the result,<br class="desk-br"> <span class="keep-together-desktop">not the <span class="keep-together">click.</span></span></span></h1>
+    <h1 class="order-claim"><span class="h1-a">The just-in-time <span class="keep-together-desktop">compiler <span class="keep-together">for the web.</span></span></span><br class="h1-br"><span class="h1-b">It checks the result,<br class="desk-br"> <span class="keep-together-desktop">not the <span class="keep-together">click.</span></span></span></h1>
     <div class="hero-foot">
-      <p class="hero-line">Protocolis turns a live site into operations an AI agent can call on its first visit, with no adapter and no setup, then reads the page back to confirm what changed.</p>
-      <p class="hero-line hero-line-2">In 80 runs on the same tasks, Browser Use&rsquo;s fastest paid product said &ldquo;done&rdquo; with a wrong answer 11 times. Protocolis never did.</p>
+      <p class="hero-line">Protocolis turns a live site into operations an AI agent can call on its first visit, with no adapter and no setup, then reads the page back to confirm what changed. In 80 runs on the same tasks, Browser Use&rsquo;s fastest paid product said &ldquo;done&rdquo; with a wrong answer 11 times. Protocolis never did.</p>
       <div class="hero-actions"><a class="hero-status" href="#acquisition"><b>Available for acquisition</b></a><a class="hero-status" href="paper/"><span>Paper</span></a><a class="hero-status" href="#demo"><span>Recordings</span></a></div>
     </div>
   </div>
@@ -956,7 +956,7 @@ body::after{display:none!important}
     <div class="emblem" aria-hidden="true">
       <img class="emblem-still" src="logo.svg" alt="" width="1254" height="1254">
     </div>
-    <p class="brand-cap" aria-hidden="true">A just-in-time compiler for the web.</p>
+    <p class="brand-cap" aria-hidden="true">The just-in-time compiler for the web.</p>
     <p class="motto">Protocollum ex ipsa applicatione</p>
     <script>/*MOBILE-CAPTION-TYPED (owner 22 Nov): on phones the motto line types out the caption instead of the Latin; the static caption hides*/(function(){if(!window.matchMedia||!matchMedia('(max-width:760px)').matches)return;var m=document.querySelector('.hero .motto'),c=document.querySelector('.hero .brand-cap');if(!m||!c)return;m.textContent=c.textContent;m.classList.add('motto-cap');m.setAttribute('aria-hidden','true');c.style.display='none';})();</script>
   </div>
