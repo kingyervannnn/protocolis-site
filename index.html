@@ -923,12 +923,9 @@ body::after{display:none!important}
 /*DESKTOP-REVEAL (owner 24 Nov): on wide screens each section's main blocks fade up as they scroll in, lighter than on phones (12px, 0.55s). Tables, charts, the measured results and the detailed benchmarks are never animated.*/
 @media (min-width:761px){.mrv-d{opacity:0;transform:translateY(12px);transition:opacity .55s cubic-bezier(.2,.7,.2,1),transform .55s cubic-bezier(.2,.7,.2,1)}.mrv-d.mrv-in{opacity:1;transform:none}}
 </style>
-<style>/*HERO-PROOF (owner 25 Nov): the first screen leads with one measured row instead of status badges*/
-.hero .hero-proof{margin-top:1.15rem;font:.68rem/1.7 var(--font-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--fg-2);max-width:44rem}
-.hero .hero-proof b{font-weight:500}.hero .hero-proof .hp-them{color:var(--fg)}.hero .hero-proof .hp-us{color:var(--accent)}
-.hero .hero-proof .hp-row{white-space:nowrap}.hero .hero-proof .hp-sep:first-of-type{display:block;height:0;overflow:hidden}
+<style>/*HERO-LINE-2 (owner 25 Nov): the measured row is a second paragraph in the same font as the first*/
+.hero .hero-line-2{margin-top:.75em}
 .hero .hero-actions .hero-status span{color:inherit}
-@media (max-width:760px){body .hero .hero-proof{margin-top:14px;font-size:10px;letter-spacing:.1em}}
 </style>
 </head>
 <body>
@@ -951,7 +948,7 @@ body::after{display:none!important}
     <h1 class="order-claim"><span class="h1-a">A just-in-time <span class="keep-together-desktop">compiler <span class="keep-together">for the web.</span></span></span><br class="h1-br"><span class="h1-b">It checks the result,<br class="desk-br"> <span class="keep-together-desktop">not the <span class="keep-together">click.</span></span></span></h1>
     <div class="hero-foot">
       <p class="hero-line">Protocolis turns a live site into operations an AI agent can call on its first visit, with no adapter and no setup, then reads the page back to confirm what changed.</p>
-      <p class="hero-proof">Said &ldquo;done&rdquo; with a wrong answer, out of 80 runs<span class="hp-sep"> &middot; </span><span class="hp-row">Browser Use&rsquo;s fastest paid product <b class="hp-them">11</b></span><span class="hp-sep"> &middot; </span><span class="hp-row">Protocolis <b class="hp-us">0</b></span></p>
+      <p class="hero-line hero-line-2">In 80 runs on the same tasks, Browser Use&rsquo;s fastest paid product said &ldquo;done&rdquo; with a wrong answer 11 times. Protocolis never did.</p>
       <div class="hero-actions"><a class="hero-status" href="#acquisition"><b>Available for acquisition</b></a><a class="hero-status" href="paper/"><span>Paper</span></a><a class="hero-status" href="#demo"><span>Recordings</span></a></div>
     </div>
   </div>
